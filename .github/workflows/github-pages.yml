@@ -1,0 +1,49 @@
+on: [push]
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    container:
+      image: wonderlandengine/editor:latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Package
+      run: |
+        apt install -y zip
+        mkdir public
+        for project in * ; do
+          if [ ! -d "$project" ]; then continue; fi
+          if [ "$project" = ".github" ]; then continue; fi
+          if [ "$project" = "public" ]; then continue; fi
+
+          echo "Zipping $project"
+          zip -r ./public/$project.zip $project
+
+          echo "Building $project"
+          for projectFile in $project/*.wlp ; do
+            /usr/local/bin/entrypoint.sh WonderlandEditor --credentials "$WLE_CREDENTIALS" --windowless --package --project ./$projectFile --output ./public/
+          done
+          mv public/index.html public/$project.html
+        done
+      env:
+          WLE_CREDENTIALS: ${{ secrets.WLE_CREDENTIALS }}
+    - name: Gzip
+      run: gzip -k public/*
+    - name: Upload package artifact
+      uses: actions/upload-artifact@v2
+      with:
+  deploy:
+    needs: package
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Download package artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: wonderland-engine-examples-deploy
+        path: public/
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@4.1.1
+      with:
+        branch: gh-pages
+        folder: public
