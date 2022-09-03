@@ -732,8 +732,8 @@
         },
         "43": {
             "link": {
-                "name": "6.jpeg",
-                "file": "assets\\matcap\\6.jpeg"
+                "name": "6.jpg",
+                "file": "assets\\matcap\\6.jpg"
             }
         },
         "45": {
@@ -744,8 +744,8 @@
         },
         "47": {
             "link": {
-                "name": "2.jpeg",
-                "file": "assets\\matcap\\2.jpeg"
+                "name": "2.jpg",
+                "file": "assets\\matcap\\2.jpg"
             }
         },
         "49": {
@@ -788,8 +788,8 @@
     "images": {
         "40": {
             "link": {
-                "name": "1.jpeg",
-                "file": "assets\\matcap\\1.jpeg"
+                "name": "1.jpg",
+                "file": "assets\\matcap\\1.jpg"
             },
             "compress": false,
             "maxSize": [
@@ -800,8 +800,8 @@
         },
         "42": {
             "link": {
-                "name": "6.jpeg",
-                "file": "assets\\matcap\\6.jpeg"
+                "name": "6.jpg",
+                "file": "assets\\matcap\\6.jpg"
             },
             "compress": false,
             "maxSize": [
@@ -824,8 +824,8 @@
         },
         "46": {
             "link": {
-                "name": "2.jpeg",
-                "file": "assets\\matcap\\2.jpeg"
+                "name": "2.jpg",
+                "file": "assets\\matcap\\2.jpg"
             },
             "compress": false,
             "maxSize": [
@@ -1267,16 +1267,14 @@
     },
     "files": [
         "assets/scenes/WonderlandShaderBall.glb",
-        "assets/matcap/1.jpeg",
-        "assets/matcap/6.jpeg",
-        "assets/matcap/4.jpg",
-        "assets/matcap/2.jpeg",
-        "assets/matcap/5.jpg",
+        "assets/matcap/1.jpg",
+        "assets/matcap/2.jpg",
         "assets/matcap/3.jpg",
+        "assets/matcap/4.jpg",
+        "assets/matcap/5.jpg",
+        "assets/matcap/6.jpg",
         "assets/matcap/7.jpg",
         "assets/matcap/8.jpg",
-        "assets/matcap/9.jpg",
-        "assets/matcap/6.jpg",
-        "assets/matcap/1.jpg"
+        "assets/matcap/9.jpg"
     ]
 }
