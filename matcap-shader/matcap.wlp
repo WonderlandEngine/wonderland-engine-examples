@@ -1,0 +1,1282 @@
+{
+    "objects": {
+        "29": {
+            "name": "Mesh",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "p0",
+                        "material": "30"
+                    }
+                }
+            ],
+            "transformation": [
+                1.25,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                -1.490109724500144e-7,
+                -1.2499945,
+                0.0,
+                0.0,
+                1.2499998,
+                -1.4901161193847656e-7,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        "31": {
+            "name": "Light",
+            "components": [
+                {
+                    "type": "light",
+                    "light": {
+                        "type": "spot",
+                        "shadows": true,
+                        "shadowBias": 0.001,
+                        "shadowNormalBias": 0.1,
+                        "shadowTexelSize": 0.3,
+                        "range": 10.0,
+                        "outerAngle": 103.6999969,
+                        "attenuation": 0.25
+                    }
+                }
+            ],
+            "transformation": [
+                0.9636123,
+                -0.0265362,
+                -0.26598,
+                0.0,
+                0.1937512,
+                0.7548483,
+                0.6266268,
+                0.0,
+                0.1841467,
+                -0.6553608,
+                0.7325241,
+                0.0,
+                0.3394651,
+                0.9639311,
+                1.1078034,
+                1.0
+            ]
+        },
+        "36": {
+            "link": {
+                "name": "WL_ShaderBall",
+                "file": "assets\\scenes\\WonderlandShaderBall.glb"
+            },
+            "components": [
+                {
+                    "mesh": {
+                        "material": "63"
+                    }
+                },
+                {
+                    "mesh": {
+                        "material": "52"
+                    }
+                },
+                {
+                    "type": "rotate.js"
+                }
+            ],
+            "name": "WL_ShaderBall_1",
+            "parent": "57",
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        "54": {
+            "name": "View",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "mouse-look",
+                    "mouse-look": {
+                        "sensitity": 0.15,
+                        "requireMouseDown": true
+                    }
+                }
+            ],
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.7602908,
+                -0.6495825,
+                0.0,
+                0.0,
+                0.6495825,
+                0.7602908,
+                0.0,
+                0.0,
+                1.1936378,
+                1.9353854,
+                1.0
+            ],
+            "parent": "81"
+        },
+        "55": {
+            "link": {
+                "name": "WL_ShaderBall",
+                "file": "assets\\scenes\\WonderlandShaderBall.glb"
+            },
+            "components": [
+                {
+                    "mesh": {
+                        "material": "39"
+                    }
+                },
+                {
+                    "mesh": {
+                        "material": "52"
+                    }
+                },
+                {
+                    "type": "rotate.js"
+                }
+            ],
+            "name": "WL_ShaderBall_0",
+            "parent": "57",
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                -0.5,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        "56": {
+            "link": {
+                "name": "WL_ShaderBall",
+                "file": "assets\\scenes\\WonderlandShaderBall.glb"
+            },
+            "components": [
+                {
+                    "mesh": {
+                        "material": "64"
+                    }
+                },
+                {
+                    "mesh": {
+                        "material": "52"
+                    }
+                },
+                {
+                    "type": "rotate.js"
+                }
+            ],
+            "name": "WL_ShaderBall_2",
+            "parent": "57",
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.5,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        "57": {
+            "name": "Row_0",
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                -0.6570763,
+                1.0
+            ]
+        },
+        "59": {
+            "name": "Row_1",
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "parent": null
+        },
+        "60": {
+            "link": {
+                "name": "WL_ShaderBall",
+                "file": "assets\\scenes\\WonderlandShaderBall.glb"
+            },
+            "components": [
+                {
+                    "mesh": {
+                        "material": "67"
+                    }
+                },
+                {
+                    "mesh": {
+                        "material": "52"
+                    }
+                },
+                {
+                    "type": "rotate.js"
+                }
+            ],
+            "name": "WL_ShaderBall_4",
+            "parent": "59",
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        "61": {
+            "link": {
+                "name": "WL_ShaderBall",
+                "file": "assets\\scenes\\WonderlandShaderBall.glb"
+            },
+            "components": [
+                {
+                    "mesh": {
+                        "material": "65"
+                    }
+                },
+                {
+                    "mesh": {
+                        "material": "52"
+                    }
+                },
+                {
+                    "type": "rotate.js"
+                }
+            ],
+            "name": "WL_ShaderBall_3",
+            "parent": "59",
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                -0.5,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        "62": {
+            "link": {
+                "name": "WL_ShaderBall",
+                "file": "assets\\scenes\\WonderlandShaderBall.glb"
+            },
+            "components": [
+                {
+                    "mesh": {
+                        "material": "68"
+                    }
+                },
+                {
+                    "mesh": {
+                        "material": "52"
+                    }
+                },
+                {
+                    "type": "rotate.js"
+                }
+            ],
+            "name": "WL_ShaderBall_5",
+            "parent": "59",
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.5,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        "71": {
+            "name": "Row_2",
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.6619992,
+                1.0
+            ],
+            "parent": null
+        },
+        "72": {
+            "link": {
+                "name": "WL_ShaderBall",
+                "file": "assets\\scenes\\WonderlandShaderBall.glb"
+            },
+            "components": [
+                {
+                    "mesh": {
+                        "material": "76"
+                    }
+                },
+                {
+                    "mesh": {
+                        "material": "52"
+                    }
+                },
+                {
+                    "type": "rotate.js"
+                }
+            ],
+            "name": "WL_ShaderBall_7",
+            "parent": "71",
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        "73": {
+            "link": {
+                "name": "WL_ShaderBall",
+                "file": "assets\\scenes\\WonderlandShaderBall.glb"
+            },
+            "components": [
+                {
+                    "mesh": {
+                        "material": "75"
+                    }
+                },
+                {
+                    "mesh": {
+                        "material": "52"
+                    }
+                },
+                {
+                    "type": "rotate.js"
+                }
+            ],
+            "name": "WL_ShaderBall_6",
+            "parent": "71",
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.9999998,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                -0.5,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        "74": {
+            "link": {
+                "name": "WL_ShaderBall",
+                "file": "assets\\scenes\\WonderlandShaderBall.glb"
+            },
+            "components": [
+                {
+                    "mesh": {
+                        "material": "77"
+                    }
+                },
+                {
+                    "mesh": {
+                        "material": "52"
+                    }
+                },
+                {
+                    "type": "rotate.js"
+                }
+            ],
+            "name": "WL_ShaderBall_8",
+            "parent": "71",
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.5,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        "81": {
+            "name": "Player",
+            "components": [
+                {
+                    "type": "wasd-controls",
+                    "wasd-controls": {
+                        "headObject": "54",
+                        "speed": 0.05
+                    }
+                }
+            ]
+        },
+        "88": {
+            "name": "Credit",
+            "transformation": [
+                -1.19208827698003e-7,
+                0.0,
+                0.999996,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                -0.999996,
+                0.0,
+                -1.19208827698003e-7,
+                0.0,
+                2.0118598,
+                0.9416615,
+                1.1920928955078125e-7,
+                1.0
+            ]
+        },
+        "89": {
+            "name": "CreditTitle",
+            "parent": "88",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Credit"
+                    }
+                }
+            ]
+        },
+        "90": {
+            "name": "CreditInfo",
+            "parent": "88",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "The matcap textures used are from multiple sources:\n",
+                        "lineSpacing": 1.2
+                    }
+                }
+            ],
+            "transformation": [
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                -1.1920974429813214e-7,
+                -0.2299603,
+                -2.384185791015625e-7,
+                1.0
+            ]
+        },
+        "91": {
+            "name": "CreditContent",
+            "parent": "88",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "- Emma Koch: https://twitter.com/emmakoch\n- Artists on: https://devtalk.blender.org/\n- Matcap generator: https://www.kchapelier.com/matcap-studio/\n- Blender: https://github.com/blender/blender",
+                        "lineSpacing": 1.2
+                    }
+                }
+            ],
+            "transformation": [
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                -1.1920974429813214e-7,
+                -0.4552878,
+                -2.384185791015625e-7,
+                1.0
+            ]
+        },
+        "92": {
+            "name": "CreditInfoDistribution",
+            "parent": "88",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Please ensure they are\ndistributed with an appropriate license before using.",
+                        "lineSpacing": 1.2
+                    }
+                }
+            ],
+            "transformation": [
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                -1.1920974429813214e-7,
+                -0.7226754,
+                -2.384185791015625e-7,
+                1.0
+            ]
+        }
+    },
+    "meshes": {
+        "p0": {
+            "link": {
+                "name": "PrimitivePlane",
+                "file": "default"
+            }
+        },
+        "p1": {
+            "link": {
+                "name": "PrimitiveCube",
+                "file": "default"
+            }
+        },
+        "p2": {
+            "link": {
+                "name": "PrimitiveSphere",
+                "file": "default"
+            }
+        },
+        "p3": {
+            "link": {
+                "name": "PrimitiveCone",
+                "file": "default"
+            }
+        },
+        "p4": {
+            "link": {
+                "name": "PrimitiveCylinder",
+                "file": "default"
+            }
+        },
+        "p5": {
+            "link": {
+                "name": "PrimitiveCircle",
+                "file": "default"
+            }
+        },
+        "34": {
+            "link": {
+                "name": "WL_ShaderBall",
+                "file": "assets\\scenes\\WonderlandShaderBall.glb"
+            }
+        },
+        "35": {
+            "link": {
+                "name": "WL_ShaderBall.0",
+                "file": "assets\\scenes\\WonderlandShaderBall.glb"
+            }
+        }
+    },
+    "textures": {
+        "41": {
+            "link": {
+                "name": "1.jpg",
+                "file": "assets\\matcap\\1.jpg"
+            }
+        },
+        "43": {
+            "link": {
+                "name": "6.jpeg",
+                "file": "assets\\matcap\\6.jpeg"
+            }
+        },
+        "45": {
+            "link": {
+                "name": "4.jpg",
+                "file": "assets\\matcap\\4.jpg"
+            }
+        },
+        "47": {
+            "link": {
+                "name": "2.jpeg",
+                "file": "assets\\matcap\\2.jpeg"
+            }
+        },
+        "49": {
+            "link": {
+                "name": "5.jpg",
+                "file": "assets\\matcap\\5.jpg"
+            }
+        },
+        "51": {
+            "link": {
+                "name": "3.jpg",
+                "file": "assets\\matcap\\3.jpg"
+            }
+        },
+        "70": {
+            "link": {
+                "name": "7.jpg",
+                "file": "assets\\matcap\\7.jpg"
+            }
+        },
+        "79": {
+            "link": {
+                "name": "8.jpg",
+                "file": "assets\\matcap\\8.jpg"
+            }
+        },
+        "83": {
+            "link": {
+                "name": "9.jpg",
+                "file": "assets\\matcap\\9.jpg"
+            }
+        },
+        "86": {
+            "link": {
+                "name": "6.jpg",
+                "file": "assets\\matcap\\6.jpg"
+            }
+        }
+    },
+    "images": {
+        "40": {
+            "link": {
+                "name": "1.jpeg",
+                "file": "assets\\matcap\\1.jpeg"
+            },
+            "compress": false,
+            "maxSize": [
+                256,
+                256
+            ],
+            "stream": false
+        },
+        "42": {
+            "link": {
+                "name": "6.jpeg",
+                "file": "assets\\matcap\\6.jpeg"
+            },
+            "compress": false,
+            "maxSize": [
+                512,
+                512
+            ],
+            "stream": false
+        },
+        "44": {
+            "link": {
+                "name": "4.jpg",
+                "file": "assets\\matcap\\4.jpg"
+            },
+            "compress": false,
+            "maxSize": [
+                256,
+                256
+            ],
+            "stream": false
+        },
+        "46": {
+            "link": {
+                "name": "2.jpeg",
+                "file": "assets\\matcap\\2.jpeg"
+            },
+            "compress": false,
+            "maxSize": [
+                256,
+                256
+            ],
+            "stream": false
+        },
+        "48": {
+            "link": {
+                "name": "5.jpg",
+                "file": "assets\\matcap\\5.jpg"
+            },
+            "compress": false,
+            "maxSize": [
+                256,
+                256
+            ],
+            "stream": false
+        },
+        "50": {
+            "link": {
+                "name": "3.jpg",
+                "file": "assets\\matcap\\3.jpg"
+            },
+            "compress": false,
+            "maxSize": [
+                256,
+                256
+            ],
+            "stream": false
+        },
+        "69": {
+            "link": {
+                "name": "7.jpg",
+                "file": "assets\\matcap\\7.jpg"
+            },
+            "maxSize": [
+                256,
+                256
+            ],
+            "compress": false,
+            "stream": false
+        },
+        "82": {
+            "link": {
+                "name": "9.jpg",
+                "file": "assets\\matcap\\9.jpg"
+            },
+            "stream": false,
+            "compress": false,
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "84": {
+            "link": {
+                "name": "8.jpg",
+                "file": "assets\\matcap\\8.jpg"
+            },
+            "compress": false,
+            "stream": false,
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "85": {
+            "link": {
+                "name": "6.jpg",
+                "file": "assets\\matcap\\6.jpg"
+            },
+            "compress": false,
+            "stream": false,
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "87": {
+            "link": {
+                "name": "1.jpg",
+                "file": "assets\\matcap\\1.jpg"
+            }
+        }
+    },
+    "materials": {
+        "DefaultFontMaterial": {
+            "link": {
+                "name": "DefaultFontMaterial",
+                "file": "default"
+            }
+        },
+        "30": {
+            "name": "Plane"
+        },
+        "32": {
+            "link": {
+                "name": "WL_ShaderBall_Custom",
+                "file": "assets\\scenes\\WonderlandShaderBall.glb"
+            }
+        },
+        "33": {
+            "link": {
+                "name": "WL_ShaderBall_grey",
+                "file": "assets\\scenes\\WonderlandShaderBall.glb"
+            }
+        },
+        "39": {
+            "name": "Matcap_0",
+            "pipeline": "38",
+            "Matcap": {
+                "texture": "41"
+            }
+        },
+        "52": {
+            "name": "Foot",
+            "Phong": {
+                "diffuseColor": [
+                    0.1764705,
+                    0.1764705,
+                    0.1764705,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.0784313,
+                    0.0784313,
+                    0.0784313,
+                    1.0
+                ]
+            }
+        },
+        "63": {
+            "name": "Matcap_1",
+            "pipeline": "38",
+            "Matcap": {
+                "texture": "47"
+            }
+        },
+        "64": {
+            "name": "Matcap_2",
+            "pipeline": "38",
+            "Matcap": {
+                "texture": "51"
+            }
+        },
+        "65": {
+            "name": "Matcap_3",
+            "pipeline": "38",
+            "Matcap": {
+                "texture": "45"
+            }
+        },
+        "67": {
+            "name": "Matcap_4",
+            "pipeline": "38",
+            "Matcap": {
+                "texture": "49"
+            }
+        },
+        "68": {
+            "name": "Matcap_5",
+            "pipeline": "38",
+            "Matcap": {
+                "texture": "86"
+            }
+        },
+        "75": {
+            "name": "Matcap_6",
+            "pipeline": "38",
+            "Matcap": {
+                "texture": "70"
+            }
+        },
+        "76": {
+            "name": "Matcap_7",
+            "pipeline": "38",
+            "Matcap": {
+                "texture": "79"
+            }
+        },
+        "77": {
+            "name": "Matcap_8",
+            "pipeline": "38",
+            "Matcap": {
+                "texture": "83"
+            }
+        },
+        "80": {
+            "name": "Sky",
+            "pipeline": "28",
+            "Matcap": {
+                "texture": "43"
+            },
+            "Background": {
+                "colorStop1": [
+                    0.0431372,
+                    0.0431372,
+                    0.0431372,
+                    1.0
+                ],
+                "colorStop0": [
+                    0.1764705,
+                    0.1764705,
+                    0.1764705,
+                    1.0
+                ]
+            }
+        }
+    },
+    "shaders": {
+        "1": {
+            "link": {
+                "name": "Background.frag",
+                "file": "default"
+            }
+        },
+        "2": {
+            "link": {
+                "name": "Depth.frag",
+                "file": "default"
+            }
+        },
+        "4": {
+            "link": {
+                "name": "DistanceFieldVector.frag",
+                "file": "default"
+            }
+        },
+        "6": {
+            "link": {
+                "name": "Dynamic.vert",
+                "file": "default"
+            }
+        },
+        "7": {
+            "link": {
+                "name": "Flat.frag",
+                "file": "default"
+            }
+        },
+        "10": {
+            "link": {
+                "name": "FullScreenTriangle.vert",
+                "file": "default"
+            }
+        },
+        "11": {
+            "link": {
+                "name": "MeshVisualizer.frag",
+                "file": "default"
+            }
+        },
+        "13": {
+            "link": {
+                "name": "Phong.frag",
+                "file": "default"
+            }
+        },
+        "16": {
+            "link": {
+                "name": "Physical.frag",
+                "file": "default"
+            }
+        },
+        "19": {
+            "link": {
+                "name": "Skinning.vert",
+                "file": "default"
+            }
+        },
+        "20": {
+            "link": {
+                "name": "Sky.frag",
+                "file": "default"
+            }
+        },
+        "21": {
+            "link": {
+                "name": "Text.frag",
+                "file": "default"
+            }
+        },
+        "23": {
+            "link": {
+                "name": "Text.vert",
+                "file": "default"
+            }
+        },
+        "24": {
+            "link": {
+                "name": "TileFeedback.frag",
+                "file": "default"
+            }
+        },
+        "25": {
+            "link": {
+                "name": "Particle.frag",
+                "file": "default"
+            }
+        },
+        "37": {
+            "link": {
+                "name": "Matcap.frag",
+                "file": "default"
+            }
+        }
+    },
+    "animations": {},
+    "skins": {},
+    "pipelines": {
+        "3": {
+            "link": {
+                "name": "Depth",
+                "file": "default"
+            }
+        },
+        "5": {
+            "link": {
+                "name": "DistanceFieldVector",
+                "file": "default"
+            }
+        },
+        "8": {
+            "link": {
+                "name": "Flat Opaque",
+                "file": "default"
+            }
+        },
+        "9": {
+            "link": {
+                "name": "Flat Opaque Textured",
+                "file": "default"
+            }
+        },
+        "12": {
+            "link": {
+                "name": "MeshVisualizer",
+                "file": "default"
+            }
+        },
+        "14": {
+            "link": {
+                "name": "Phong Opaque",
+                "file": "default"
+            },
+            "depthWrite": true,
+            "depthTest": true
+        },
+        "15": {
+            "link": {
+                "name": "Phong Opaque Textured",
+                "file": "default"
+            }
+        },
+        "17": {
+            "link": {
+                "name": "Physical Opaque",
+                "file": "default"
+            }
+        },
+        "18": {
+            "link": {
+                "name": "Physical Opaque Textured",
+                "file": "default"
+            }
+        },
+        "22": {
+            "link": {
+                "name": "Text",
+                "file": "default"
+            }
+        },
+        "26": {
+            "link": {
+                "name": "Foliage",
+                "file": "default"
+            }
+        },
+        "27": {
+            "link": {
+                "name": "Particle",
+                "file": "default"
+            }
+        },
+        "28": {
+            "link": {
+                "name": "Sky",
+                "file": "default"
+            },
+            "shader": "1",
+            "features": {
+                "GRADIENT": true,
+                "TEXTURED": false
+            }
+        },
+        "38": {
+            "link": {
+                "name": "Matcap Opaque",
+                "file": "default"
+            },
+            "name": "Matcap",
+            "depthTest": true,
+            "depthWrite": true
+        },
+        "53": {
+            "link": {
+                "name": "Matcap Opaque",
+                "file": "default"
+            }
+        }
+    },
+    "settings": {
+        "project": {
+            "name": "MatcapLand",
+            "version": [
+                0,
+                9,
+                0,
+                0
+            ]
+        },
+        "scripting": {
+            "sourcePaths": [
+                "/js/editor-components-bundle.js",
+                "js"
+            ]
+        },
+        "vr": {
+            "enable": false
+        },
+        "rendering": {
+            "sky": {
+                "enabled": true,
+                "material": "80"
+            }
+        }
+    },
+    "files": [
+        "assets/scenes/WonderlandShaderBall.glb",
+        "assets/matcap/1.jpeg",
+        "assets/matcap/6.jpeg",
+        "assets/matcap/4.jpg",
+        "assets/matcap/2.jpeg",
+        "assets/matcap/5.jpg",
+        "assets/matcap/3.jpg",
+        "assets/matcap/7.jpg",
+        "assets/matcap/8.jpg",
+        "assets/matcap/9.jpg",
+        "assets/matcap/6.jpg",
+        "assets/matcap/1.jpg"
+    ]
+}

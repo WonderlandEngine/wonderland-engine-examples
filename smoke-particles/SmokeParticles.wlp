@@ -1,0 +1,3550 @@
+{
+    "objects": {
+        "14": {
+            "name": "Player",
+            "components": [
+                {
+                    "type": "wasd-controls",
+                    "wasd-controls": {
+                        "headObject": "17"
+                    }
+                },
+                {
+                    "type": "fixed-foveation",
+                    "fixed-foveation": {
+                        "fixedFoveation": 0.5
+                    }
+                }
+            ],
+            "transformation": [
+                0.7160133,
+                0.0,
+                0.6980865,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                -0.6980865,
+                0.0,
+                0.7160133,
+                0.0,
+                -3.2591099,
+                1.8000135,
+                1.7569212,
+                1.0
+            ]
+        },
+        "17": {
+            "name": "NonVrCamera",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "mouse-look"
+                }
+            ]
+        },
+        "18": {
+            "name": "EyeLeft",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "input",
+                    "input": {
+                        "type": "eye left"
+                    }
+                }
+            ]
+        },
+        "19": {
+            "name": "EyeRight",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "input",
+                    "input": {
+                        "type": "eye right"
+                    }
+                }
+            ]
+        },
+        "21": {
+            "name": "Sun",
+            "components": [
+                {
+                    "type": "light",
+                    "light": {
+                        "attenuation": 0.1,
+                        "type": "sun",
+                        "color": [
+                            1.0,
+                            0.9928103,
+                            0.945098
+                        ]
+                    },
+                    "active": true
+                }
+            ],
+            "transformation": [
+                0.9362548,
+                0.3513203,
+                0.0,
+                0.0,
+                -0.3513203,
+                0.9362548,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                -0.3938742,
+                3.000004,
+                2.0000042,
+                1.0
+            ]
+        },
+        "23": {
+            "name": "Fire",
+            "components": [
+                {
+                    "type": "light",
+                    "light": {
+                        "attenuation": 0.1,
+                        "color": [
+                            0.9137254,
+                            0.7508356,
+                            0.3117415
+                        ]
+                    }
+                }
+            ],
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                3.3378546,
+                2.6455011,
+                5.4063205,
+                1.0
+            ]
+        },
+        "28": {
+            "name": "Particle",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "7",
+                        "material": "29"
+                    }
+                }
+            ],
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                -4.9189047,
+                2.7227282,
+                -4.069457,
+                1.0
+            ]
+        },
+        "39": {
+            "name": "ParticleEmitter",
+            "components": [
+                {
+                    "type": "particles",
+                    "particles": {
+                        "mesh": "7",
+                        "material": "29",
+                        "initialSpeed": 0.9499999,
+                        "maxParticles": 52,
+                        "delay": 0.2
+                    }
+                }
+            ],
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                3.3564379,
+                5.9179191,
+                -6.8381881,
+                1.0
+            ]
+        },
+        "279": {
+            "link": {
+                "name": "RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "transformation": [
+                -0.9999998,
+                -5.960462345910855e-8,
+                -1.5297999311769672e-7,
+                0.0,
+                -1.529791973098327e-7,
+                -1.192086642731738e-7,
+                0.9999946,
+                0.0,
+                -5.9604346347441606e-8,
+                0.9999946,
+                1.788129964097607e-7,
+                0.0,
+                3.3671226,
+                1.1920926112907185e-7,
+                0.0,
+                1.0
+            ],
+            "name": "Locomotive"
+        },
+        "280": {
+            "link": {
+                "name": "RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "279"
+        },
+        "281": {
+            "link": {
+                "name": "a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "280"
+        },
+        "282": {
+            "link": {
+                "name": "object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "281"
+        },
+        "283": {
+            "link": {
+                "name": "RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "282"
+        },
+        "284": {
+            "link": {
+                "name": "nontouch<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "283"
+        },
+        "285": {
+            "link": {
+                "name": "locolmotive:coupling_rods<nontouch<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "284",
+            "components": [
+                {
+                    "animation": {
+                        "preview": true,
+                        "autoplay": true,
+                        "retarget": false
+                    }
+                }
+            ]
+        },
+        "286": {
+            "link": {
+                "name": "coupling_rods_mesh<locolmotive:coupling_rods<nontouch<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "285"
+        },
+        "287": {
+            "link": {
+                "name": "coupling_rods_mesh_rod_0<coupling_rods_mesh<locolmotive:coupling_rods<nontouch<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "286"
+        },
+        "288": {
+            "link": {
+                "name": "locolmotive:radius_rod<nontouch<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "284"
+        },
+        "289": {
+            "link": {
+                "name": "locolmotive:link<nontouch<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "284"
+        },
+        "290": {
+            "link": {
+                "name": "link<nontouch<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "284"
+        },
+        "291": {
+            "link": {
+                "name": "pCube4<nontouch<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "284"
+        },
+        "292": {
+            "link": {
+                "name": "ikHandle6<nontouch<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "284"
+        },
+        "293": {
+            "link": {
+                "name": "controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "283"
+        },
+        "294": {
+            "link": {
+                "name": "object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "293"
+        },
+        "295": {
+            "link": {
+                "name": "_rootJoint<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "294",
+            "skin": "271"
+        },
+        "296": {
+            "link": {
+                "name": "joint8_09<_rootJoint<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "295",
+            "skin": "271"
+        },
+        "297": {
+            "link": {
+                "name": "joint9_010<joint8_09<_rootJoint<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "296",
+            "skin": "271"
+        },
+        "298": {
+            "link": {
+                "name": "joint10_011<joint9_010<joint8_09<_rootJoint<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "297",
+            "skin": "271"
+        },
+        "299": {
+            "link": {
+                "name": "object_0<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "294",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "271"
+                    }
+                }
+            ]
+        },
+        "300": {
+            "link": {
+                "name": "object_1<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "294"
+        },
+        "301": {
+            "link": {
+                "name": "left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "294"
+        },
+        "302": {
+            "link": {
+                "name": "object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "301"
+        },
+        "303": {
+            "link": {
+                "name": "_rootJoint<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "302",
+            "skin": "272"
+        },
+        "304": {
+            "link": {
+                "name": "joint3_05<_rootJoint<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "303",
+            "skin": "272"
+        },
+        "305": {
+            "link": {
+                "name": "joint4_06<joint3_05<_rootJoint<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "304",
+            "skin": "272"
+        },
+        "306": {
+            "link": {
+                "name": "joint5_07<joint4_06<joint3_05<_rootJoint<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "305",
+            "skin": "272"
+        },
+        "307": {
+            "link": {
+                "name": "locator4_08<joint3_05<_rootJoint<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "304",
+            "skin": "272"
+        },
+        "308": {
+            "link": {
+                "name": "object_0<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "302",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "272"
+                    }
+                }
+            ]
+        },
+        "309": {
+            "link": {
+                "name": "object_1<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "302"
+        },
+        "310": {
+            "link": {
+                "name": "locolmotive:wheel1<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "302"
+        },
+        "311": {
+            "link": {
+                "name": "locolmotive:wheel1_wheel_0<locolmotive:wheel1<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "310"
+        },
+        "312": {
+            "link": {
+                "name": "locolmotive:wheel2<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "302"
+        },
+        "313": {
+            "link": {
+                "name": "locolmotive:wheel2_wheel_0<locolmotive:wheel2<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "312"
+        },
+        "314": {
+            "link": {
+                "name": "locolmotive:wheel3<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "302"
+        },
+        "315": {
+            "link": {
+                "name": "locolmotive:wheel3_wheel_0<locolmotive:wheel3<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "314"
+        },
+        "316": {
+            "link": {
+                "name": "locator1<locolmotive:wheel3<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "314"
+        },
+        "317": {
+            "link": {
+                "name": "object_0<locator1<locolmotive:wheel3<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "316"
+        },
+        "318": {
+            "link": {
+                "name": "_rootJoint<object_0<locator1<locolmotive:wheel3<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "317",
+            "skin": "273"
+        },
+        "319": {
+            "link": {
+                "name": "joint1_00<_rootJoint<object_0<locator1<locolmotive:wheel3<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "318",
+            "skin": "273"
+        },
+        "320": {
+            "link": {
+                "name": "joint2_01<joint1_00<_rootJoint<object_0<locator1<locolmotive:wheel3<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "319",
+            "skin": "273"
+        },
+        "321": {
+            "link": {
+                "name": "object_0<object_0<locator1<locolmotive:wheel3<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "317",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "273"
+                    }
+                }
+            ]
+        },
+        "322": {
+            "link": {
+                "name": "object_1<object_0<locator1<locolmotive:wheel3<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "317"
+        },
+        "323": {
+            "link": {
+                "name": "locolmotive:pCylinder22<object_0<locator1<locolmotive:wheel3<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "317"
+        },
+        "324": {
+            "link": {
+                "name": "locolmotive:pCylinder22_wheel_0<locolmotive:pCylinder22<object_0<locator1<locolmotive:wheel3<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "323"
+        },
+        "325": {
+            "link": {
+                "name": "locator3<locolmotive:pCylinder22<object_0<locator1<locolmotive:wheel3<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "323"
+        },
+        "326": {
+            "link": {
+                "name": "object_0<locator3<locolmotive:pCylinder22<object_0<locator1<locolmotive:wheel3<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "325"
+        },
+        "327": {
+            "link": {
+                "name": "_rootJoint<object_0<locator3<locolmotive:pCylinder22<object_0<locator1<locolmotive:wheel3<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "326",
+            "skin": "274"
+        },
+        "328": {
+            "link": {
+                "name": "joint6_02<_rootJoint<object_0<locator3<locolmotive:pCylinder22<object_0<locator1<locolmotive:wheel3<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "327",
+            "skin": "274"
+        },
+        "329": {
+            "link": {
+                "name": "joint7_03<joint6_02<_rootJoint<object_0<locator3<locolmotive:pCylinder22<object_0<locator1<locolmotive:wheel3<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "328",
+            "skin": "274"
+        },
+        "330": {
+            "link": {
+                "name": "object_0<object_0<locator3<locolmotive:pCylinder22<object_0<locator1<locolmotive:wheel3<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "326",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "274"
+                    }
+                }
+            ]
+        },
+        "331": {
+            "link": {
+                "name": "object_1<object_0<locator3<locolmotive:pCylinder22<object_0<locator1<locolmotive:wheel3<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "326"
+        },
+        "332": {
+            "link": {
+                "name": "locolmotive:wheel4<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "302"
+        },
+        "333": {
+            "link": {
+                "name": "locolmotive:wheel4_wheel_0<locolmotive:wheel4<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "332"
+        },
+        "334": {
+            "link": {
+                "name": "locolmotive:wheel5<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "302"
+        },
+        "335": {
+            "link": {
+                "name": "locolmotive:wheel5_wheel_0<locolmotive:wheel5<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "334"
+        },
+        "336": {
+            "link": {
+                "name": "locolmotive:valve_rods<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "302"
+        },
+        "337": {
+            "link": {
+                "name": "locolmotive:valve_rods_rod_0<locolmotive:valve_rods<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "336"
+        },
+        "338": {
+            "link": {
+                "name": "ikHandle1<locolmotive:valve_rods<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "336"
+        },
+        "339": {
+            "link": {
+                "name": "locator2<locolmotive:valve_rods<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "336"
+        },
+        "340": {
+            "link": {
+                "name": "rotatelink6<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "302"
+        },
+        "341": {
+            "link": {
+                "name": "rotatelink6_rod_0<rotatelink6<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "340"
+        },
+        "342": {
+            "link": {
+                "name": "ikHandle7<rotatelink6<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "340"
+        },
+        "343": {
+            "link": {
+                "name": "locolmotive:piston<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "302"
+        },
+        "344": {
+            "link": {
+                "name": "locolmotive:piston_rod_0<locolmotive:piston<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "343"
+        },
+        "345": {
+            "link": {
+                "name": "locolmotive:pCylinder25<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "302"
+        },
+        "346": {
+            "link": {
+                "name": "locolmotive:pCylinder25_rod_0<locolmotive:pCylinder25<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "345"
+        },
+        "347": {
+            "link": {
+                "name": "rotatelink<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "302"
+        },
+        "348": {
+            "link": {
+                "name": "wheel_small<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "302"
+        },
+        "349": {
+            "link": {
+                "name": "wheel_small_wheel_0<wheel_small<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "348"
+        },
+        "350": {
+            "link": {
+                "name": "wheel_small1<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "302"
+        },
+        "351": {
+            "link": {
+                "name": "wheel_small1_wheel_0<wheel_small1<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "350"
+        },
+        "352": {
+            "link": {
+                "name": "wheel_small2<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "302"
+        },
+        "353": {
+            "link": {
+                "name": "wheel_small2_wheel_0<wheel_small2<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "352"
+        },
+        "354": {
+            "link": {
+                "name": "wheel_small3<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "302"
+        },
+        "355": {
+            "link": {
+                "name": "wheel_small3_wheel_0<wheel_small3<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "354"
+        },
+        "356": {
+            "link": {
+                "name": "wheel_small4<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "302"
+        },
+        "357": {
+            "link": {
+                "name": "wheel_small4_wheel_0<wheel_small4<object_0<left_controller<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "356"
+        },
+        "358": {
+            "link": {
+                "name": "ikHandle8<object_0<controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "294"
+        },
+        "359": {
+            "link": {
+                "name": "r:nontouch<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "283"
+        },
+        "360": {
+            "link": {
+                "name": "r:locolmotive:coupling_rods<r:nontouch<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "359"
+        },
+        "361": {
+            "link": {
+                "name": "r:coupling_rods_mesh<r:locolmotive:coupling_rods<r:nontouch<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "360"
+        },
+        "362": {
+            "link": {
+                "name": "r:coupling_rods_mesh_rod_0<r:coupling_rods_mesh<r:locolmotive:coupling_rods<r:nontouch<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "361"
+        },
+        "363": {
+            "link": {
+                "name": "r:locolmotive:radius_rod<r:nontouch<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "359"
+        },
+        "364": {
+            "link": {
+                "name": "r:locolmotive:link<r:nontouch<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "359"
+        },
+        "365": {
+            "link": {
+                "name": "r:link<r:nontouch<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "359"
+        },
+        "366": {
+            "link": {
+                "name": "r:pCube4<r:nontouch<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "359"
+        },
+        "367": {
+            "link": {
+                "name": "r:ikHandle6<r:nontouch<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "359"
+        },
+        "368": {
+            "link": {
+                "name": "r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "283"
+        },
+        "369": {
+            "link": {
+                "name": "object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "368"
+        },
+        "370": {
+            "link": {
+                "name": "_rootJoint<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "369",
+            "skin": "275"
+        },
+        "371": {
+            "link": {
+                "name": "r:joint8_020<_rootJoint<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "370",
+            "skin": "275"
+        },
+        "372": {
+            "link": {
+                "name": "r:joint9_04<r:joint8_020<_rootJoint<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "371",
+            "skin": "275"
+        },
+        "373": {
+            "link": {
+                "name": "r:joint10_021<r:joint9_04<r:joint8_020<_rootJoint<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "372",
+            "skin": "275"
+        },
+        "374": {
+            "link": {
+                "name": "object_0<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "369",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "275"
+                    }
+                }
+            ]
+        },
+        "375": {
+            "link": {
+                "name": "object_1<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "369"
+        },
+        "376": {
+            "link": {
+                "name": "r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "369"
+        },
+        "377": {
+            "link": {
+                "name": "object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "376"
+        },
+        "378": {
+            "link": {
+                "name": "_rootJoint<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "377",
+            "skin": "276"
+        },
+        "379": {
+            "link": {
+                "name": "r:joint3_016<_rootJoint<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "378",
+            "skin": "276"
+        },
+        "380": {
+            "link": {
+                "name": "r:joint4_017<r:joint3_016<_rootJoint<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "379",
+            "skin": "276"
+        },
+        "381": {
+            "link": {
+                "name": "r:joint5_018<r:joint4_017<r:joint3_016<_rootJoint<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "380",
+            "skin": "276"
+        },
+        "382": {
+            "link": {
+                "name": "r:locator4_019<r:joint3_016<_rootJoint<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "379",
+            "skin": "276"
+        },
+        "383": {
+            "link": {
+                "name": "object_0<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "377",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "276"
+                    }
+                }
+            ]
+        },
+        "384": {
+            "link": {
+                "name": "object_1<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "377"
+        },
+        "385": {
+            "link": {
+                "name": "r:locolmotive:wheel1<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "377"
+        },
+        "386": {
+            "link": {
+                "name": "r:locolmotive:wheel1_wheel_0<r:locolmotive:wheel1<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "385"
+        },
+        "387": {
+            "link": {
+                "name": "r:locolmotive:wheel2<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "377"
+        },
+        "388": {
+            "link": {
+                "name": "r:locolmotive:wheel2_wheel_0<r:locolmotive:wheel2<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "387"
+        },
+        "389": {
+            "link": {
+                "name": "r:locolmotive:wheel3<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "377"
+        },
+        "390": {
+            "link": {
+                "name": "r:locolmotive:wheel3_wheel_0<r:locolmotive:wheel3<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "389"
+        },
+        "391": {
+            "link": {
+                "name": "r:locator1<r:locolmotive:wheel3<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "389"
+        },
+        "392": {
+            "link": {
+                "name": "object_0<r:locator1<r:locolmotive:wheel3<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "391"
+        },
+        "393": {
+            "link": {
+                "name": "_rootJoint<object_0<r:locator1<r:locolmotive:wheel3<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "392",
+            "skin": "277"
+        },
+        "394": {
+            "link": {
+                "name": "r:joint1_012<_rootJoint<object_0<r:locator1<r:locolmotive:wheel3<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "393",
+            "skin": "277"
+        },
+        "395": {
+            "link": {
+                "name": "r:joint2_013<r:joint1_012<_rootJoint<object_0<r:locator1<r:locolmotive:wheel3<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "394",
+            "skin": "277"
+        },
+        "396": {
+            "link": {
+                "name": "object_0<object_0<r:locator1<r:locolmotive:wheel3<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "392",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "277"
+                    }
+                }
+            ]
+        },
+        "397": {
+            "link": {
+                "name": "object_1<object_0<r:locator1<r:locolmotive:wheel3<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "392"
+        },
+        "398": {
+            "link": {
+                "name": "r:locolmotive:pCylinder22<object_0<r:locator1<r:locolmotive:wheel3<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "392"
+        },
+        "399": {
+            "link": {
+                "name": "r:locolmotive:pCylinder22_wheel_0<r:locolmotive:pCylinder22<object_0<r:locator1<r:locolmotive:wheel3<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "398"
+        },
+        "400": {
+            "link": {
+                "name": "r:locator3<r:locolmotive:pCylinder22<object_0<r:locator1<r:locolmotive:wheel3<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "398"
+        },
+        "401": {
+            "link": {
+                "name": "object_0<r:locator3<r:locolmotive:pCylinder22<object_0<r:locator1<r:locolmotive:wheel3<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "400"
+        },
+        "402": {
+            "link": {
+                "name": "_rootJoint<object_0<r:locator3<r:locolmotive:pCylinder22<object_0<r:locator1<r:locolmotive:wheel3<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "401",
+            "skin": "278"
+        },
+        "403": {
+            "link": {
+                "name": "r:joint6_014<_rootJoint<object_0<r:locator3<r:locolmotive:pCylinder22<object_0<r:locator1<r:locolmotive:wheel3<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "402",
+            "skin": "278"
+        },
+        "404": {
+            "link": {
+                "name": "r:joint7_015<r:joint6_014<_rootJoint<object_0<r:locator3<r:locolmotive:pCylinder22<object_0<r:locator1<r:locolmotive:wheel3<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "403",
+            "skin": "278"
+        },
+        "405": {
+            "link": {
+                "name": "object_0<object_0<r:locator3<r:locolmotive:pCylinder22<object_0<r:locator1<r:locolmotive:wheel3<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "401",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "278"
+                    }
+                }
+            ]
+        },
+        "406": {
+            "link": {
+                "name": "object_1<object_0<r:locator3<r:locolmotive:pCylinder22<object_0<r:locator1<r:locolmotive:wheel3<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "401"
+        },
+        "407": {
+            "link": {
+                "name": "r:locolmotive:wheel4<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "377"
+        },
+        "408": {
+            "link": {
+                "name": "r:locolmotive:wheel4_wheel_0<r:locolmotive:wheel4<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "407"
+        },
+        "409": {
+            "link": {
+                "name": "r:locolmotive:wheel5<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "377"
+        },
+        "410": {
+            "link": {
+                "name": "r:locolmotive:wheel5_wheel_0<r:locolmotive:wheel5<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "409"
+        },
+        "411": {
+            "link": {
+                "name": "r:locolmotive:valve_rods<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "377"
+        },
+        "412": {
+            "link": {
+                "name": "r:locolmotive:valve_rods_rod_0<r:locolmotive:valve_rods<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "411"
+        },
+        "413": {
+            "link": {
+                "name": "r:ikHandle1<r:locolmotive:valve_rods<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "411"
+        },
+        "414": {
+            "link": {
+                "name": "r:locator2<r:locolmotive:valve_rods<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "411"
+        },
+        "415": {
+            "link": {
+                "name": "r:rotatelink6<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "377"
+        },
+        "416": {
+            "link": {
+                "name": "r:rotatelink6_rod_0<r:rotatelink6<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "415"
+        },
+        "417": {
+            "link": {
+                "name": "r:ikHandle7<r:rotatelink6<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "415"
+        },
+        "418": {
+            "link": {
+                "name": "r:locolmotive:piston<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "377"
+        },
+        "419": {
+            "link": {
+                "name": "r:locolmotive:piston_rod_0<r:locolmotive:piston<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "418"
+        },
+        "420": {
+            "link": {
+                "name": "r:locolmotive:pCylinder25<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "377"
+        },
+        "421": {
+            "link": {
+                "name": "r:locolmotive:pCylinder25_rod_0<r:locolmotive:pCylinder25<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "420"
+        },
+        "422": {
+            "link": {
+                "name": "r:rotatelink<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "377"
+        },
+        "423": {
+            "link": {
+                "name": "r:wheel_small<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "377"
+        },
+        "424": {
+            "link": {
+                "name": "r:wheel_small_wheel_0<r:wheel_small<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "423"
+        },
+        "425": {
+            "link": {
+                "name": "r:wheel_small1<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "377"
+        },
+        "426": {
+            "link": {
+                "name": "r:wheel_small1_wheel_0<r:wheel_small1<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "425"
+        },
+        "427": {
+            "link": {
+                "name": "r:wheel_small2<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "377"
+        },
+        "428": {
+            "link": {
+                "name": "r:wheel_small2_wheel_0<r:wheel_small2<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "427"
+        },
+        "429": {
+            "link": {
+                "name": "r:wheel_small3<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "377"
+        },
+        "430": {
+            "link": {
+                "name": "r:wheel_small3_wheel_0<r:wheel_small3<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "429"
+        },
+        "431": {
+            "link": {
+                "name": "r:wheel_small4<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "377"
+        },
+        "432": {
+            "link": {
+                "name": "r:wheel_small4_wheel_0<r:wheel_small4<object_0<r:left_controller<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "431"
+        },
+        "433": {
+            "link": {
+                "name": "r:ikHandle8<object_0<r:controller<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "369"
+        },
+        "434": {
+            "link": {
+                "name": "extra<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "283"
+        },
+        "435": {
+            "link": {
+                "name": "extra_body_extra_0<extra<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "434"
+        },
+        "436": {
+            "link": {
+                "name": "extra_window_0<extra<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "434"
+        },
+        "437": {
+            "link": {
+                "name": "tender2<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "283"
+        },
+        "438": {
+            "link": {
+                "name": "tender2_tender_0<tender2<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "437"
+        },
+        "439": {
+            "link": {
+                "name": "tender2_window_0<tender2<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "437"
+        },
+        "440": {
+            "link": {
+                "name": "track<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "283"
+        },
+        "441": {
+            "link": {
+                "name": "track_lambert1_0<track<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "440",
+            "transformation": [
+                1.0,
+                0.0,
+                -0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                -0.0,
+                1.0
+            ]
+        },
+        "442": {
+            "link": {
+                "name": "body2<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "283"
+        },
+        "443": {
+            "link": {
+                "name": "body2_body_0<body2<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "442"
+        },
+        "444": {
+            "link": {
+                "name": "body2_tender_base1_0<body2<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "442"
+        },
+        "445": {
+            "link": {
+                "name": "tender_base<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "283"
+        },
+        "446": {
+            "link": {
+                "name": "tender_base_tender_base1_0<tender_base<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "445"
+        },
+        "447": {
+            "link": {
+                "name": "glass<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "283"
+        },
+        "448": {
+            "link": {
+                "name": "glass_window_0<glass<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "447"
+        },
+        "449": {
+            "link": {
+                "name": "cab1<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "283"
+        },
+        "450": {
+            "link": {
+                "name": "cab1_cab_0<cab1<RootNode<object_0<a32f74c2436f4c18a4964ee2f9433778.fbx<RootNode (model correction matrix)<RootNode (gltf orientation matrix)",
+                "file": "locomotive\\scene.gltf"
+            },
+            "parent": "449"
+        },
+        "452": {
+            "name": "Text",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "\"BR52 Steam Locomotive Animation\" - by Ryan.Qin on Sketchfab.",
+                        "effect": "outline"
+                    }
+                }
+            ],
+            "transformation": [
+                -1.1920865716774645e-7,
+                0.0,
+                0.9999946,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                -0.9999946,
+                0.0,
+                -1.1920865716774645e-7,
+                0.0,
+                1.4153616,
+                0.3953565,
+                -5.960464477539065e-8,
+                1.0
+            ]
+        },
+        "453": {
+            "name": "ParticleLabel",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Example Particle"
+                    }
+                }
+            ],
+            "transformation": [
+                0.9999946,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.9999946,
+                0.0,
+                0.0,
+                -1.1646461,
+                0.0,
+                1.0
+            ],
+            "parent": "28"
+        }
+    },
+    "meshes": {
+        "7": {
+            "link": {
+                "name": "PrimitivePlane",
+                "file": "default"
+            }
+        },
+        "8": {
+            "link": {
+                "name": "PrimitiveCube",
+                "file": "default"
+            }
+        },
+        "9": {
+            "link": {
+                "name": "PrimitiveSphere",
+                "file": "default"
+            }
+        },
+        "10": {
+            "link": {
+                "name": "PrimitiveCone",
+                "file": "default"
+            }
+        },
+        "11": {
+            "link": {
+                "name": "PrimitiveCylinder",
+                "file": "default"
+            }
+        },
+        "12": {
+            "link": {
+                "name": "PrimitiveCircle",
+                "file": "default"
+            }
+        },
+        "122": {
+            "link": {
+                "name": "coupling_rods_mesh_rod_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "123": {
+            "link": {
+                "name": "coupling_rods_mesh_rod_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "124": {
+            "link": {
+                "name": "coupling_rods_mesh_rod_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "125": {
+            "link": {
+                "name": "pCube4_rod_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "126": {
+            "link": {
+                "name": "pCube4_rod_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "127": {
+            "link": {
+                "name": "pCube4_rod_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "128": {
+            "link": {
+                "name": "locolmotive:link_rod_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "129": {
+            "link": {
+                "name": "locolmotive:link_rod_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "130": {
+            "link": {
+                "name": "locolmotive:link_rod_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "131": {
+            "link": {
+                "name": "locolmotive:wheel1_wheel_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "132": {
+            "link": {
+                "name": "locolmotive:wheel1_wheel_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "133": {
+            "link": {
+                "name": "locolmotive:wheel1_wheel_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "134": {
+            "link": {
+                "name": "locolmotive:wheel2_wheel_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "135": {
+            "link": {
+                "name": "locolmotive:wheel2_wheel_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "136": {
+            "link": {
+                "name": "locolmotive:wheel2_wheel_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "137": {
+            "link": {
+                "name": "locolmotive:wheel3_wheel_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "138": {
+            "link": {
+                "name": "locolmotive:wheel3_wheel_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "139": {
+            "link": {
+                "name": "locolmotive:wheel3_wheel_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "140": {
+            "link": {
+                "name": "locolmotive:radius_rod_rod_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "141": {
+            "link": {
+                "name": "locolmotive:radius_rod_rod_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "142": {
+            "link": {
+                "name": "locolmotive:radius_rod_rod_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "143": {
+            "link": {
+                "name": "locolmotive:pCylinder22_wheel_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "144": {
+            "link": {
+                "name": "locolmotive:pCylinder22_wheel_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "145": {
+            "link": {
+                "name": "locolmotive:pCylinder22_wheel_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "146": {
+            "link": {
+                "name": "link_rod_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "147": {
+            "link": {
+                "name": "link_rod_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "148": {
+            "link": {
+                "name": "link_rod_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "149": {
+            "link": {
+                "name": "locolmotive:wheel4_wheel_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "150": {
+            "link": {
+                "name": "locolmotive:wheel4_wheel_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "151": {
+            "link": {
+                "name": "locolmotive:wheel4_wheel_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "152": {
+            "link": {
+                "name": "locolmotive:wheel5_wheel_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "153": {
+            "link": {
+                "name": "locolmotive:wheel5_wheel_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "154": {
+            "link": {
+                "name": "locolmotive:wheel5_wheel_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "155": {
+            "link": {
+                "name": "locolmotive:valve_rods_rod_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "156": {
+            "link": {
+                "name": "locolmotive:valve_rods_rod_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "157": {
+            "link": {
+                "name": "locolmotive:valve_rods_rod_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "158": {
+            "link": {
+                "name": "rotatelink6_rod_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "159": {
+            "link": {
+                "name": "rotatelink6_rod_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "160": {
+            "link": {
+                "name": "rotatelink6_rod_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "161": {
+            "link": {
+                "name": "locolmotive:piston_rod_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "162": {
+            "link": {
+                "name": "locolmotive:piston_rod_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "163": {
+            "link": {
+                "name": "locolmotive:piston_rod_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "164": {
+            "link": {
+                "name": "locolmotive:pCylinder25_rod_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "165": {
+            "link": {
+                "name": "locolmotive:pCylinder25_rod_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "166": {
+            "link": {
+                "name": "locolmotive:pCylinder25_rod_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "167": {
+            "link": {
+                "name": "wheel_small_wheel_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "168": {
+            "link": {
+                "name": "wheel_small_wheel_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "169": {
+            "link": {
+                "name": "wheel_small_wheel_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "170": {
+            "link": {
+                "name": "wheel_small1_wheel_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "171": {
+            "link": {
+                "name": "wheel_small1_wheel_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "172": {
+            "link": {
+                "name": "wheel_small1_wheel_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "173": {
+            "link": {
+                "name": "wheel_small2_wheel_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "174": {
+            "link": {
+                "name": "wheel_small2_wheel_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "175": {
+            "link": {
+                "name": "wheel_small2_wheel_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "176": {
+            "link": {
+                "name": "wheel_small3_wheel_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "177": {
+            "link": {
+                "name": "wheel_small3_wheel_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "178": {
+            "link": {
+                "name": "wheel_small3_wheel_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "179": {
+            "link": {
+                "name": "wheel_small4_wheel_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "180": {
+            "link": {
+                "name": "wheel_small4_wheel_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "181": {
+            "link": {
+                "name": "wheel_small4_wheel_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "182": {
+            "link": {
+                "name": "r:coupling_rods_mesh_rod_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "183": {
+            "link": {
+                "name": "r:coupling_rods_mesh_rod_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "184": {
+            "link": {
+                "name": "r:coupling_rods_mesh_rod_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "185": {
+            "link": {
+                "name": "r:pCube4_rod_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "186": {
+            "link": {
+                "name": "r:pCube4_rod_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "187": {
+            "link": {
+                "name": "r:pCube4_rod_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "188": {
+            "link": {
+                "name": "r:locolmotive:link_rod_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "189": {
+            "link": {
+                "name": "r:locolmotive:link_rod_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "190": {
+            "link": {
+                "name": "r:locolmotive:link_rod_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "191": {
+            "link": {
+                "name": "r:locolmotive:wheel1_wheel_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "192": {
+            "link": {
+                "name": "r:locolmotive:wheel1_wheel_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "193": {
+            "link": {
+                "name": "r:locolmotive:wheel1_wheel_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "194": {
+            "link": {
+                "name": "r:locolmotive:wheel2_wheel_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "195": {
+            "link": {
+                "name": "r:locolmotive:wheel2_wheel_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "196": {
+            "link": {
+                "name": "r:locolmotive:wheel2_wheel_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "197": {
+            "link": {
+                "name": "r:locolmotive:wheel3_wheel_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "198": {
+            "link": {
+                "name": "r:locolmotive:wheel3_wheel_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "199": {
+            "link": {
+                "name": "r:locolmotive:wheel3_wheel_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "200": {
+            "link": {
+                "name": "r:locolmotive:radius_rod_rod_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "201": {
+            "link": {
+                "name": "r:locolmotive:radius_rod_rod_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "202": {
+            "link": {
+                "name": "r:locolmotive:radius_rod_rod_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "203": {
+            "link": {
+                "name": "r:locolmotive:pCylinder22_wheel_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "204": {
+            "link": {
+                "name": "r:locolmotive:pCylinder22_wheel_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "205": {
+            "link": {
+                "name": "r:locolmotive:pCylinder22_wheel_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "206": {
+            "link": {
+                "name": "r:link_rod_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "207": {
+            "link": {
+                "name": "r:link_rod_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "208": {
+            "link": {
+                "name": "r:link_rod_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "209": {
+            "link": {
+                "name": "r:locolmotive:wheel4_wheel_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "210": {
+            "link": {
+                "name": "r:locolmotive:wheel4_wheel_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "211": {
+            "link": {
+                "name": "r:locolmotive:wheel4_wheel_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "212": {
+            "link": {
+                "name": "r:locolmotive:wheel5_wheel_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "213": {
+            "link": {
+                "name": "r:locolmotive:wheel5_wheel_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "214": {
+            "link": {
+                "name": "r:locolmotive:wheel5_wheel_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "215": {
+            "link": {
+                "name": "r:locolmotive:valve_rods_rod_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "216": {
+            "link": {
+                "name": "r:locolmotive:valve_rods_rod_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "217": {
+            "link": {
+                "name": "r:locolmotive:valve_rods_rod_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "218": {
+            "link": {
+                "name": "r:rotatelink6_rod_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "219": {
+            "link": {
+                "name": "r:rotatelink6_rod_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "220": {
+            "link": {
+                "name": "r:rotatelink6_rod_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "221": {
+            "link": {
+                "name": "r:locolmotive:piston_rod_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "222": {
+            "link": {
+                "name": "r:locolmotive:piston_rod_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "223": {
+            "link": {
+                "name": "r:locolmotive:piston_rod_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "224": {
+            "link": {
+                "name": "r:locolmotive:pCylinder25_rod_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "225": {
+            "link": {
+                "name": "r:locolmotive:pCylinder25_rod_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "226": {
+            "link": {
+                "name": "r:locolmotive:pCylinder25_rod_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "227": {
+            "link": {
+                "name": "r:wheel_small_wheel_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "228": {
+            "link": {
+                "name": "r:wheel_small_wheel_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "229": {
+            "link": {
+                "name": "r:wheel_small_wheel_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "230": {
+            "link": {
+                "name": "r:wheel_small1_wheel_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "231": {
+            "link": {
+                "name": "r:wheel_small1_wheel_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "232": {
+            "link": {
+                "name": "r:wheel_small1_wheel_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "233": {
+            "link": {
+                "name": "r:wheel_small2_wheel_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "234": {
+            "link": {
+                "name": "r:wheel_small2_wheel_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "235": {
+            "link": {
+                "name": "r:wheel_small2_wheel_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "236": {
+            "link": {
+                "name": "r:wheel_small3_wheel_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "237": {
+            "link": {
+                "name": "r:wheel_small3_wheel_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "238": {
+            "link": {
+                "name": "r:wheel_small3_wheel_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "239": {
+            "link": {
+                "name": "r:wheel_small4_wheel_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "240": {
+            "link": {
+                "name": "r:wheel_small4_wheel_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "241": {
+            "link": {
+                "name": "r:wheel_small4_wheel_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "242": {
+            "link": {
+                "name": "extra_body_extra_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "243": {
+            "link": {
+                "name": "extra_body_extra_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "244": {
+            "link": {
+                "name": "extra_window_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "245": {
+            "link": {
+                "name": "extra_window_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "246": {
+            "link": {
+                "name": "extra_window_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "247": {
+            "link": {
+                "name": "extra_window_0-uv3",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "248": {
+            "link": {
+                "name": "tender2_tender_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "249": {
+            "link": {
+                "name": "tender2_tender_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "250": {
+            "link": {
+                "name": "tender2_tender_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "251": {
+            "link": {
+                "name": "tender2_window_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "252": {
+            "link": {
+                "name": "tender2_window_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "253": {
+            "link": {
+                "name": "tender2_window_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "254": {
+            "link": {
+                "name": "tender2_window_0-uv3",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "255": {
+            "link": {
+                "name": "track_lambert1_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "256": {
+            "link": {
+                "name": "track_lambert1_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "257": {
+            "link": {
+                "name": "body2_body_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "258": {
+            "link": {
+                "name": "body2_body_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "259": {
+            "link": {
+                "name": "body2_body_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "260": {
+            "link": {
+                "name": "body2_tender_base1_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "261": {
+            "link": {
+                "name": "body2_tender_base1_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "262": {
+            "link": {
+                "name": "tender_base_tender_base1_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "263": {
+            "link": {
+                "name": "tender_base_tender_base1_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "264": {
+            "link": {
+                "name": "glass_window_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "265": {
+            "link": {
+                "name": "glass_window_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "266": {
+            "link": {
+                "name": "glass_window_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "267": {
+            "link": {
+                "name": "glass_window_0-uv3",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "268": {
+            "link": {
+                "name": "cab1_cab_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "269": {
+            "link": {
+                "name": "cab1_cab_0-uv1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "270": {
+            "link": {
+                "name": "cab1_cab_0-uv2",
+                "file": "locomotive\\scene.gltf"
+            }
+        }
+    },
+    "textures": {
+        "13": {
+            "link": {
+                "name": "DefaultTexture",
+                "file": "default"
+            },
+            "name": "DefaultFont"
+        },
+        "31": {
+            "link": {
+                "name": "cloud.png",
+                "file": "cloud.png"
+            }
+        },
+        "33": {
+            "link": {
+                "name": "noise.png",
+                "file": "noise.png"
+            }
+        },
+        "36": {
+            "link": {
+                "name": "fbmnoise3.png",
+                "file": "fbmnoise3.png"
+            }
+        },
+        "38": {
+            "link": {
+                "name": "cloud2.png",
+                "file": "cloud2.png"
+            }
+        },
+        "86": {
+            "link": {
+                "name": "texture_0",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "87": {
+            "link": {
+                "name": "texture_1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "88": {
+            "link": {
+                "name": "texture_2",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "89": {
+            "link": {
+                "name": "texture_3",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "90": {
+            "link": {
+                "name": "texture_4",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "91": {
+            "link": {
+                "name": "texture_5",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "92": {
+            "link": {
+                "name": "texture_6",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "93": {
+            "link": {
+                "name": "texture_7",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "94": {
+            "link": {
+                "name": "texture_8",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "95": {
+            "link": {
+                "name": "texture_9",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "96": {
+            "link": {
+                "name": "texture_10",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "97": {
+            "link": {
+                "name": "texture_11",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "98": {
+            "link": {
+                "name": "texture_12",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "99": {
+            "link": {
+                "name": "texture_13",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "100": {
+            "link": {
+                "name": "texture_14",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "101": {
+            "link": {
+                "name": "texture_15",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "102": {
+            "link": {
+                "name": "texture_16",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "103": {
+            "link": {
+                "name": "texture_17",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "104": {
+            "link": {
+                "name": "texture_18",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "105": {
+            "link": {
+                "name": "texture_19",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "106": {
+            "link": {
+                "name": "texture_20",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "107": {
+            "link": {
+                "name": "texture_21",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "108": {
+            "link": {
+                "name": "texture_22",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "109": {
+            "link": {
+                "name": "texture_23",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "110": {
+            "link": {
+                "name": "texture_24",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "111": {
+            "link": {
+                "name": "texture_25",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "112": {
+            "link": {
+                "name": "texture_26",
+                "file": "locomotive\\scene.gltf"
+            }
+        }
+    },
+    "images": {
+        "30": {
+            "link": {
+                "name": "cloud.png",
+                "file": "cloud.png"
+            },
+            "stream": false,
+            "compress": false
+        },
+        "32": {
+            "link": {
+                "name": "noise.png",
+                "file": "noise.png"
+            },
+            "compress": false,
+            "stream": false
+        },
+        "35": {
+            "link": {
+                "name": "fbmnoise3.png",
+                "file": "fbmnoise3.png"
+            },
+            "compress": false,
+            "stream": false
+        },
+        "37": {
+            "link": {
+                "name": "cloud2.png",
+                "file": "cloud2.png"
+            },
+            "compress": false,
+            "stream": false
+        },
+        "f0": {
+            "link": {
+                "name": "DefaultImage",
+                "file": "default"
+            }
+        },
+        "59": {
+            "link": {
+                "name": "image_0",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                1024,
+                1024
+            ]
+        },
+        "60": {
+            "link": {
+                "name": "image_1",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "61": {
+            "link": {
+                "name": "image_2",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "62": {
+            "link": {
+                "name": "image_3",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                512,
+                512
+            ]
+        },
+        "63": {
+            "link": {
+                "name": "image_4",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "64": {
+            "link": {
+                "name": "image_5",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "65": {
+            "link": {
+                "name": "image_6",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                512,
+                512
+            ]
+        },
+        "66": {
+            "link": {
+                "name": "image_7",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "67": {
+            "link": {
+                "name": "image_8",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "68": {
+            "link": {
+                "name": "image_9",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "69": {
+            "link": {
+                "name": "image_10",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "70": {
+            "link": {
+                "name": "image_11",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "71": {
+            "link": {
+                "name": "image_12",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                1024,
+                1024
+            ]
+        },
+        "72": {
+            "link": {
+                "name": "image_13",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "73": {
+            "link": {
+                "name": "image_14",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "74": {
+            "link": {
+                "name": "image_15",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "75": {
+            "link": {
+                "name": "image_16",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "76": {
+            "link": {
+                "name": "image_17",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "77": {
+            "link": {
+                "name": "image_18",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                1024,
+                1024
+            ]
+        },
+        "78": {
+            "link": {
+                "name": "image_19",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "79": {
+            "link": {
+                "name": "image_20",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "80": {
+            "link": {
+                "name": "image_21",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                512,
+                512
+            ]
+        },
+        "81": {
+            "link": {
+                "name": "image_22",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "82": {
+            "link": {
+                "name": "image_23",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "83": {
+            "link": {
+                "name": "image_24",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                2048,
+                2048
+            ]
+        },
+        "84": {
+            "link": {
+                "name": "image_25",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "85": {
+            "link": {
+                "name": "image_26",
+                "file": "locomotive\\scene.gltf"
+            },
+            "maxSize": [
+                256,
+                256
+            ]
+        }
+    },
+    "materials": {
+        "DefaultFontMaterial": {
+            "link": {
+                "name": "DefaultFontMaterial",
+                "file": "default"
+            }
+        },
+        "20": {
+            "name": "White",
+            "Phong": {
+                "specularColor": [
+                    9.999899930335232e-7,
+                    9.99993744699168e-7,
+                    9.999999974752427e-7,
+                    1.0
+                ],
+                "shininess": 1
+            },
+            "pipeline": "53"
+        },
+        "22": {
+            "name": "Pink",
+            "Phong": {
+                "diffuseColor": [
+                    0.9098039,
+                    0.0,
+                    0.5411764,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999899930335232e-7,
+                    9.999911299019004e-7,
+                    9.999999974752427e-7,
+                    1.0
+                ],
+                "shininess": 10,
+                "ambientColor": [
+                    0.317647,
+                    0.0,
+                    0.2165777,
+                    1.0
+                ]
+            }
+        },
+        "25": {
+            "name": "Yellow",
+            "Phong": {
+                "diffuseColor": [
+                    1.0,
+                    0.8039215,
+                    0.0,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.3843137,
+                    0.3089579,
+                    0.0,
+                    1.0
+                ]
+            }
+        },
+        "26": {
+            "name": "Green",
+            "Phong": {
+                "diffuseColor": [
+                    0.1529411,
+                    0.7882353,
+                    0.5411764,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.0,
+                    0.2352941,
+                    0.1437908,
+                    1.0
+                ]
+            }
+        },
+        "29": {
+            "name": "ParticleMaterial",
+            "Particle Textured": {
+                "flatTexture": "31",
+                "alphaMaskThreshold": 0.0,
+                "offsetX": 0.0,
+                "mainTexture": "38",
+                "noiseTexture": "36",
+                "offsetY": 0.0,
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "Particle": {
+                "mainTexture": "38",
+                "noiseTexture": "36",
+                "offsetX": 243.0,
+                "offsetY": 83.0999984,
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "pipeline": "58"
+        },
+        "113": {
+            "link": {
+                "name": "material",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "114": {
+            "link": {
+                "name": "wheel",
+                "file": "locomotive\\scene.gltf"
+            },
+            "Phong": {
+                "ambientFactor": 0.14
+            }
+        },
+        "115": {
+            "link": {
+                "name": "body_extra",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "116": {
+            "link": {
+                "name": "window",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "117": {
+            "link": {
+                "name": "tender",
+                "file": "locomotive\\scene.gltf"
+            },
+            "Phong": {
+                "ambientFactor": 0.15
+            }
+        },
+        "118": {
+            "link": {
+                "name": "lambert1",
+                "file": "locomotive\\scene.gltf"
+            },
+            "Phong": {
+                "ambientFactor": 0.15
+            }
+        },
+        "119": {
+            "link": {
+                "name": "body",
+                "file": "locomotive\\scene.gltf"
+            },
+            "Phong": {
+                "ambientFactor": 0.15
+            }
+        },
+        "120": {
+            "link": {
+                "name": "tender_base1",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "121": {
+            "link": {
+                "name": "material_8",
+                "file": "locomotive\\scene.gltf"
+            },
+            "Phong": {
+                "ambientFactor": 0.15
+            }
+        }
+    },
+    "shaders": {
+        "43": {
+            "link": {
+                "name": "DistanceFieldVector.frag",
+                "file": "default"
+            }
+        },
+        "45": {
+            "link": {
+                "name": "Dynamic.vert",
+                "file": "default"
+            }
+        },
+        "46": {
+            "link": {
+                "name": "Flat.frag",
+                "file": "default"
+            }
+        },
+        "49": {
+            "link": {
+                "name": "MeshVisualizer.frag",
+                "file": "default"
+            }
+        },
+        "51": {
+            "link": {
+                "name": "Static.frag",
+                "file": "default"
+            }
+        },
+        "52": {
+            "link": {
+                "name": "Phong.frag",
+                "file": "default"
+            }
+        },
+        "55": {
+            "link": {
+                "name": "Skinning.vert",
+                "file": "default"
+            }
+        },
+        "56": {
+            "link": {
+                "name": "Particle.frag",
+                "file": "default"
+            }
+        },
+        "455": {
+            "link": {
+                "name": "Depth.frag",
+                "file": "default"
+            }
+        },
+        "457": {
+            "link": {
+                "name": "Physical.frag",
+                "file": "default"
+            }
+        },
+        "460": {
+            "link": {
+                "name": "Sky.frag",
+                "file": "default"
+            }
+        },
+        "461": {
+            "link": {
+                "name": "Sky.vert",
+                "file": "default"
+            }
+        },
+        "462": {
+            "link": {
+                "name": "Text.frag",
+                "file": "default"
+            }
+        },
+        "464": {
+            "link": {
+                "name": "Text.vert",
+                "file": "default"
+            }
+        },
+        "465": {
+            "link": {
+                "name": "TileFeedback.frag",
+                "file": "default"
+            }
+        }
+    },
+    "settings": {
+        "project": {
+            "name": "SmokeParticles",
+            "version": [
+                0,
+                8,
+                10
+            ]
+        },
+        "vr": {
+            "leftEyeObject": "18",
+            "rightEyeObject": "19"
+        },
+        "scripting": {
+            "sourcePaths": [
+                "/js/editor-components-bundle.js",
+                "particles.js"
+            ]
+        },
+        "rendering": {
+            "clearColor": [
+                9.999899930335232e-7,
+                9.999988606068657e-7,
+                9.999999974752427e-7,
+                1.0
+            ],
+            "fontOutline": true
+        }
+    },
+    "files": [
+        "cloud.png",
+        "noise.png",
+        "fbmnoise3.png",
+        "cloud2.png",
+        "locomotive/scene.gltf"
+    ],
+    "animations": {
+        "451": {
+            "link": {
+                "name": "Take 001",
+                "file": "locomotive\\scene.gltf"
+            }
+        }
+    },
+    "skins": {
+        "271": {
+            "link": {
+                "name": "skin_0",
+                "file": "locomotive\\scene.gltf"
+            },
+            "joints": [
+                "295",
+                "296",
+                "297",
+                "298"
+            ]
+        },
+        "272": {
+            "link": {
+                "name": "skin_1",
+                "file": "locomotive\\scene.gltf"
+            },
+            "joints": [
+                "303",
+                "304",
+                "305",
+                "306",
+                "307"
+            ]
+        },
+        "273": {
+            "link": {
+                "name": "skin_2",
+                "file": "locomotive\\scene.gltf"
+            },
+            "joints": [
+                "318",
+                "319",
+                "320"
+            ]
+        },
+        "274": {
+            "link": {
+                "name": "skin_3",
+                "file": "locomotive\\scene.gltf"
+            },
+            "joints": [
+                "327",
+                "328",
+                "329"
+            ]
+        },
+        "275": {
+            "link": {
+                "name": "skin_4",
+                "file": "locomotive\\scene.gltf"
+            },
+            "joints": [
+                "370",
+                "371",
+                "372",
+                "373"
+            ]
+        },
+        "276": {
+            "link": {
+                "name": "skin_5",
+                "file": "locomotive\\scene.gltf"
+            },
+            "joints": [
+                "378",
+                "379",
+                "380",
+                "381",
+                "382"
+            ]
+        },
+        "277": {
+            "link": {
+                "name": "skin_6",
+                "file": "locomotive\\scene.gltf"
+            },
+            "joints": [
+                "393",
+                "394",
+                "395"
+            ]
+        },
+        "278": {
+            "link": {
+                "name": "skin_7",
+                "file": "locomotive\\scene.gltf"
+            },
+            "joints": [
+                "402",
+                "403",
+                "404"
+            ]
+        }
+    },
+    "pipelines": {
+        "44": {
+            "link": {
+                "name": "DistanceFieldVector",
+                "file": "default"
+            }
+        },
+        "47": {
+            "link": {
+                "name": "Flat Opaque",
+                "file": "default"
+            }
+        },
+        "48": {
+            "link": {
+                "name": "Flat Opaque Textured",
+                "file": "default"
+            }
+        },
+        "50": {
+            "link": {
+                "name": "MeshVisualizer",
+                "file": "default"
+            }
+        },
+        "53": {
+            "link": {
+                "name": "Phong Opaque",
+                "file": "default"
+            }
+        },
+        "54": {
+            "link": {
+                "name": "Phong Opaque Textured",
+                "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": false,
+                "WITH_FOG": false,
+                "TEXTURED": true
+            }
+        },
+        "57": {
+            "link": {
+                "name": "Foliage",
+                "file": "default"
+            }
+        },
+        "58": {
+            "link": {
+                "name": "Particle",
+                "file": "default"
+            },
+            "blendSrcRgb": "source alpha",
+            "blendDestAlpha": "one minus source alpha",
+            "blendDestRgb": "one minus source alpha",
+            "blendSrcAlpha": "one",
+            "blending": true
+        },
+        "456": {
+            "link": {
+                "name": "Depth",
+                "file": "default"
+            }
+        },
+        "458": {
+            "link": {
+                "name": "Physical Opaque",
+                "file": "default"
+            }
+        },
+        "459": {
+            "link": {
+                "name": "Physical Opaque Textured",
+                "file": "default"
+            }
+        },
+        "463": {
+            "link": {
+                "name": "Text",
+                "file": "default"
+            }
+        },
+        "466": {
+            "link": {
+                "name": "Sky",
+                "file": "default"
+            }
+        }
+    }
+}

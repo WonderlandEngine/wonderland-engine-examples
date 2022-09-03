@@ -1,0 +1,2603 @@
+{
+    "objects": {
+        "14": {
+            "name": "Player",
+            "components": [
+                {
+                    "type": "wasd-controls",
+                    "wasd-controls": {
+                        "headObject": "17"
+                    }
+                }
+            ],
+            "transformation": [
+                0.7160133,
+                0.0,
+                0.6980865,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                -0.6980865,
+                0.0,
+                0.7160133,
+                0.0,
+                -2.3766674,
+                1.647154,
+                4.0391578,
+                1.0
+            ]
+        },
+        "15": {
+            "name": "FloorPlane",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "7",
+                        "material": "20"
+                    }
+                }
+            ],
+            "transformation": [
+                4.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                -0.0016164,
+                -3.9999997,
+                0.0,
+                0.0,
+                3.9999997,
+                -0.0016164,
+                0.0,
+                0.0,
+                0.0,
+                1.192092895507813e-7,
+                1.0
+            ]
+        },
+        "16": {
+            "name": "Cube",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "8",
+                        "material": "22"
+                    }
+                }
+            ],
+            "transformation": [
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                -2.4659779,
+                0.4999999,
+                -2.2636544,
+                1.0
+            ]
+        },
+        "17": {
+            "name": "NonVrCamera",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "mouse-look"
+                }
+            ]
+        },
+        "18": {
+            "name": "EyeLeft",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "input",
+                    "input": {
+                        "type": "eye left"
+                    }
+                }
+            ]
+        },
+        "19": {
+            "name": "EyeRight",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "input",
+                    "input": {
+                        "type": "eye right"
+                    }
+                }
+            ]
+        },
+        "21": {
+            "name": "Light",
+            "components": [
+                {
+                    "type": "light",
+                    "light": {
+                        "attenuation": 0.1
+                    }
+                }
+            ],
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                3.0,
+                2.0,
+                1.0
+            ]
+        },
+        "23": {
+            "name": "Light.000",
+            "components": [
+                {
+                    "type": "light",
+                    "light": {
+                        "attenuation": 0.1
+                    }
+                }
+            ],
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                -1.0,
+                3.0,
+                -1.0,
+                1.0
+            ]
+        },
+        "24": {
+            "name": "Cone",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "10",
+                        "material": "25"
+                    }
+                }
+            ],
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                2.424299,
+                1.0,
+                -0.0446543,
+                1.0
+            ]
+        },
+        "27": {
+            "name": "Sphere",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "9",
+                        "material": "26"
+                    }
+                }
+            ],
+            "transformation": [
+                0.75,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.75,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.75,
+                0.0,
+                0.4999999,
+                0.75,
+                -1.25,
+                1.0
+            ]
+        },
+        "37": {
+            "link": {
+                "name": "Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "transformation": [
+                0.0099999,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                -0.0,
+                0.0099999,
+                0.0,
+                0.0,
+                -0.0099999,
+                -0.0,
+                0.0,
+                0.0,
+                1.4901161193847656e-8,
+                0.3106041,
+                1.0
+            ]
+        },
+        "38": {
+            "link": {
+                "name": "Beta_Joints<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "37",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "36"
+                    }
+                }
+            ]
+        },
+        "39": {
+            "link": {
+                "name": "Beta_Surface<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "37",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "36"
+                    }
+                }
+            ]
+        },
+        "40": {
+            "link": {
+                "name": "mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "components": [
+                {
+                    "animation": {
+                        "preview": true,
+                        "autoplay": true,
+                        "playCount": 0
+                    }
+                }
+            ],
+            "parent": "37",
+            "skin": "36"
+        },
+        "41": {
+            "link": {
+                "name": "mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "40",
+            "skin": "36"
+        },
+        "42": {
+            "link": {
+                "name": "mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "41",
+            "skin": "36"
+        },
+        "43": {
+            "link": {
+                "name": "mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "42",
+            "skin": "36"
+        },
+        "44": {
+            "link": {
+                "name": "mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "43",
+            "skin": "36"
+        },
+        "45": {
+            "link": {
+                "name": "mixamorig:Head<mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "44",
+            "skin": "36"
+        },
+        "46": {
+            "link": {
+                "name": "mixamorig:HeadTop_End<mixamorig:Head<mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "45",
+            "skin": "36"
+        },
+        "47": {
+            "link": {
+                "name": "mixamorig:LeftEye<mixamorig:Head<mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "45",
+            "skin": "36"
+        },
+        "48": {
+            "link": {
+                "name": "mixamorig:RightEye<mixamorig:Head<mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "45",
+            "skin": "36"
+        },
+        "49": {
+            "link": {
+                "name": "mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "43",
+            "skin": "36"
+        },
+        "50": {
+            "link": {
+                "name": "mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "49",
+            "skin": "36"
+        },
+        "51": {
+            "link": {
+                "name": "mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "50",
+            "skin": "36"
+        },
+        "52": {
+            "link": {
+                "name": "mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "51",
+            "skin": "36"
+        },
+        "53": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "52",
+            "skin": "36"
+        },
+        "54": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb2<mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "53",
+            "skin": "36"
+        },
+        "55": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb3<mixamorig:LeftHandThumb2<mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "54",
+            "skin": "36"
+        },
+        "56": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb4<mixamorig:LeftHandThumb3<mixamorig:LeftHandThumb2<mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "55",
+            "skin": "36"
+        },
+        "57": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "52",
+            "skin": "36"
+        },
+        "58": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex2<mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "57",
+            "skin": "36"
+        },
+        "59": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex3<mixamorig:LeftHandIndex2<mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "58",
+            "skin": "36"
+        },
+        "60": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex4<mixamorig:LeftHandIndex3<mixamorig:LeftHandIndex2<mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "59",
+            "skin": "36"
+        },
+        "61": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "52",
+            "skin": "36"
+        },
+        "62": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle2<mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "61",
+            "skin": "36"
+        },
+        "63": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle3<mixamorig:LeftHandMiddle2<mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "62",
+            "skin": "36"
+        },
+        "64": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle4<mixamorig:LeftHandMiddle3<mixamorig:LeftHandMiddle2<mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "63",
+            "skin": "36"
+        },
+        "65": {
+            "link": {
+                "name": "mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "52",
+            "skin": "36"
+        },
+        "66": {
+            "link": {
+                "name": "mixamorig:LeftHandRing2<mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "65",
+            "skin": "36"
+        },
+        "67": {
+            "link": {
+                "name": "mixamorig:LeftHandRing3<mixamorig:LeftHandRing2<mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "66",
+            "skin": "36"
+        },
+        "68": {
+            "link": {
+                "name": "mixamorig:LeftHandRing4<mixamorig:LeftHandRing3<mixamorig:LeftHandRing2<mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "67",
+            "skin": "36"
+        },
+        "69": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "52",
+            "skin": "36"
+        },
+        "70": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky2<mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "69",
+            "skin": "36"
+        },
+        "71": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky3<mixamorig:LeftHandPinky2<mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "70",
+            "skin": "36"
+        },
+        "72": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky4<mixamorig:LeftHandPinky3<mixamorig:LeftHandPinky2<mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "71",
+            "skin": "36"
+        },
+        "73": {
+            "link": {
+                "name": "mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "43",
+            "skin": "36"
+        },
+        "74": {
+            "link": {
+                "name": "mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "73",
+            "skin": "36"
+        },
+        "75": {
+            "link": {
+                "name": "mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "74",
+            "skin": "36"
+        },
+        "76": {
+            "link": {
+                "name": "mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "75",
+            "skin": "36"
+        },
+        "77": {
+            "link": {
+                "name": "mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "76",
+            "skin": "36"
+        },
+        "78": {
+            "link": {
+                "name": "mixamorig:RightHandPinky2<mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "77",
+            "skin": "36"
+        },
+        "79": {
+            "link": {
+                "name": "mixamorig:RightHandPinky3<mixamorig:RightHandPinky2<mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "78",
+            "skin": "36"
+        },
+        "80": {
+            "link": {
+                "name": "mixamorig:RightHandPinky4<mixamorig:RightHandPinky3<mixamorig:RightHandPinky2<mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "79",
+            "skin": "36"
+        },
+        "81": {
+            "link": {
+                "name": "mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "76",
+            "skin": "36"
+        },
+        "82": {
+            "link": {
+                "name": "mixamorig:RightHandRing2<mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "81",
+            "skin": "36"
+        },
+        "83": {
+            "link": {
+                "name": "mixamorig:RightHandRing3<mixamorig:RightHandRing2<mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "82",
+            "skin": "36"
+        },
+        "84": {
+            "link": {
+                "name": "mixamorig:RightHandRing4<mixamorig:RightHandRing3<mixamorig:RightHandRing2<mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "83",
+            "skin": "36"
+        },
+        "85": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "76",
+            "skin": "36"
+        },
+        "86": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle2<mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "85",
+            "skin": "36"
+        },
+        "87": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle3<mixamorig:RightHandMiddle2<mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "86",
+            "skin": "36"
+        },
+        "88": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle4<mixamorig:RightHandMiddle3<mixamorig:RightHandMiddle2<mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "87",
+            "skin": "36"
+        },
+        "89": {
+            "link": {
+                "name": "mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "76",
+            "skin": "36"
+        },
+        "90": {
+            "link": {
+                "name": "mixamorig:RightHandIndex2<mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "89",
+            "skin": "36"
+        },
+        "91": {
+            "link": {
+                "name": "mixamorig:RightHandIndex3<mixamorig:RightHandIndex2<mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "90",
+            "skin": "36"
+        },
+        "92": {
+            "link": {
+                "name": "mixamorig:RightHandIndex4<mixamorig:RightHandIndex3<mixamorig:RightHandIndex2<mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "91",
+            "skin": "36"
+        },
+        "93": {
+            "link": {
+                "name": "mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "76",
+            "skin": "36"
+        },
+        "94": {
+            "link": {
+                "name": "mixamorig:RightHandThumb2<mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "93",
+            "skin": "36"
+        },
+        "95": {
+            "link": {
+                "name": "mixamorig:RightHandThumb3<mixamorig:RightHandThumb2<mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "94",
+            "skin": "36"
+        },
+        "96": {
+            "link": {
+                "name": "mixamorig:RightHandThumb4<mixamorig:RightHandThumb3<mixamorig:RightHandThumb2<mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "95",
+            "skin": "36"
+        },
+        "97": {
+            "link": {
+                "name": "mixamorig:LeftUpLeg<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "40",
+            "skin": "36"
+        },
+        "98": {
+            "link": {
+                "name": "mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "97",
+            "skin": "36"
+        },
+        "99": {
+            "link": {
+                "name": "mixamorig:LeftFoot<mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "98",
+            "skin": "36"
+        },
+        "100": {
+            "link": {
+                "name": "mixamorig:LeftToeBase<mixamorig:LeftFoot<mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "99",
+            "skin": "36"
+        },
+        "101": {
+            "link": {
+                "name": "mixamorig:LeftToe_End<mixamorig:LeftToeBase<mixamorig:LeftFoot<mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "100",
+            "skin": "36"
+        },
+        "102": {
+            "link": {
+                "name": "mixamorig:RightUpLeg<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "40",
+            "skin": "36"
+        },
+        "103": {
+            "link": {
+                "name": "mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "102",
+            "skin": "36"
+        },
+        "104": {
+            "link": {
+                "name": "mixamorig:RightFoot<mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "103",
+            "skin": "36"
+        },
+        "105": {
+            "link": {
+                "name": "mixamorig:RightToeBase<mixamorig:RightFoot<mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "104",
+            "skin": "36"
+        },
+        "106": {
+            "link": {
+                "name": "mixamorig:RightToe_End<mixamorig:RightToeBase<mixamorig:RightFoot<mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips<Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "parent": "105",
+            "skin": "36"
+        },
+        "113": {
+            "link": {
+                "name": "Z_UP",
+                "file": "CesiumMan.glb"
+            },
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                -1.192085932189002e-7,
+                -0.999994,
+                0.0,
+                0.0,
+                0.999994,
+                -1.192085932189002e-7,
+                0.0,
+                -1.2229355,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        "114": {
+            "link": {
+                "name": "Armature<Z_UP",
+                "file": "CesiumMan.glb"
+            },
+            "parent": "113"
+        },
+        "115": {
+            "link": {
+                "name": "Skeleton_torso_joint_1<Armature<Z_UP",
+                "file": "CesiumMan.glb"
+            },
+            "components": [
+                {
+                    "animation": {
+                        "preview": true,
+                        "autoplay": true,
+                        "playCount": 0
+                    }
+                }
+            ],
+            "transformation": [
+                0.9973582,
+                0.0000964,
+                -0.0726386,
+                0.0,
+                -0.0000597,
+                0.9999996,
+                0.0005056,
+                0.0,
+                0.0726389,
+                -0.0004997,
+                0.9973579,
+                0.0,
+                0.0008547,
+                -0.0200001,
+                0.6476648,
+                1.0
+            ],
+            "parent": "114",
+            "skin": "112"
+        },
+        "116": {
+            "link": {
+                "name": "Skeleton_torso_joint_2<Skeleton_torso_joint_1<Armature<Z_UP",
+                "file": "CesiumMan.glb"
+            },
+            "parent": "115",
+            "skin": "112"
+        },
+        "117": {
+            "link": {
+                "name": "torso_joint_3<Skeleton_torso_joint_2<Skeleton_torso_joint_1<Armature<Z_UP",
+                "file": "CesiumMan.glb"
+            },
+            "parent": "116",
+            "skin": "112"
+        },
+        "118": {
+            "link": {
+                "name": "Skeleton_neck_joint_1<torso_joint_3<Skeleton_torso_joint_2<Skeleton_torso_joint_1<Armature<Z_UP",
+                "file": "CesiumMan.glb"
+            },
+            "parent": "117",
+            "skin": "112"
+        },
+        "119": {
+            "link": {
+                "name": "Skeleton_neck_joint_2<Skeleton_neck_joint_1<torso_joint_3<Skeleton_torso_joint_2<Skeleton_torso_joint_1<Armature<Z_UP",
+                "file": "CesiumMan.glb"
+            },
+            "parent": "118",
+            "skin": "112"
+        },
+        "120": {
+            "link": {
+                "name": "Skeleton_arm_joint_L__4_<torso_joint_3<Skeleton_torso_joint_2<Skeleton_torso_joint_1<Armature<Z_UP",
+                "file": "CesiumMan.glb"
+            },
+            "parent": "117",
+            "skin": "112"
+        },
+        "121": {
+            "link": {
+                "name": "Skeleton_arm_joint_L__3_<Skeleton_arm_joint_L__4_<torso_joint_3<Skeleton_torso_joint_2<Skeleton_torso_joint_1<Armature<Z_UP",
+                "file": "CesiumMan.glb"
+            },
+            "parent": "120",
+            "skin": "112"
+        },
+        "122": {
+            "link": {
+                "name": "Skeleton_arm_joint_L__2_<Skeleton_arm_joint_L__3_<Skeleton_arm_joint_L__4_<torso_joint_3<Skeleton_torso_joint_2<Skeleton_torso_joint_1<Armature<Z_UP",
+                "file": "CesiumMan.glb"
+            },
+            "parent": "121",
+            "skin": "112"
+        },
+        "123": {
+            "link": {
+                "name": "Skeleton_arm_joint_R<torso_joint_3<Skeleton_torso_joint_2<Skeleton_torso_joint_1<Armature<Z_UP",
+                "file": "CesiumMan.glb"
+            },
+            "parent": "117",
+            "skin": "112"
+        },
+        "124": {
+            "link": {
+                "name": "Skeleton_arm_joint_R__2_<Skeleton_arm_joint_R<torso_joint_3<Skeleton_torso_joint_2<Skeleton_torso_joint_1<Armature<Z_UP",
+                "file": "CesiumMan.glb"
+            },
+            "parent": "123",
+            "skin": "112"
+        },
+        "125": {
+            "link": {
+                "name": "Skeleton_arm_joint_R__3_<Skeleton_arm_joint_R__2_<Skeleton_arm_joint_R<torso_joint_3<Skeleton_torso_joint_2<Skeleton_torso_joint_1<Armature<Z_UP",
+                "file": "CesiumMan.glb"
+            },
+            "parent": "124",
+            "skin": "112"
+        },
+        "126": {
+            "link": {
+                "name": "leg_joint_L_1<Skeleton_torso_joint_1<Armature<Z_UP",
+                "file": "CesiumMan.glb"
+            },
+            "parent": "115",
+            "skin": "112"
+        },
+        "127": {
+            "link": {
+                "name": "leg_joint_L_2<leg_joint_L_1<Skeleton_torso_joint_1<Armature<Z_UP",
+                "file": "CesiumMan.glb"
+            },
+            "parent": "126",
+            "skin": "112"
+        },
+        "128": {
+            "link": {
+                "name": "leg_joint_L_3<leg_joint_L_2<leg_joint_L_1<Skeleton_torso_joint_1<Armature<Z_UP",
+                "file": "CesiumMan.glb"
+            },
+            "parent": "127",
+            "skin": "112"
+        },
+        "129": {
+            "link": {
+                "name": "leg_joint_L_5<leg_joint_L_3<leg_joint_L_2<leg_joint_L_1<Skeleton_torso_joint_1<Armature<Z_UP",
+                "file": "CesiumMan.glb"
+            },
+            "parent": "128",
+            "skin": "112"
+        },
+        "130": {
+            "link": {
+                "name": "leg_joint_R_1<Skeleton_torso_joint_1<Armature<Z_UP",
+                "file": "CesiumMan.glb"
+            },
+            "parent": "115",
+            "skin": "112"
+        },
+        "131": {
+            "link": {
+                "name": "leg_joint_R_2<leg_joint_R_1<Skeleton_torso_joint_1<Armature<Z_UP",
+                "file": "CesiumMan.glb"
+            },
+            "parent": "130",
+            "skin": "112"
+        },
+        "132": {
+            "link": {
+                "name": "leg_joint_R_3<leg_joint_R_2<leg_joint_R_1<Skeleton_torso_joint_1<Armature<Z_UP",
+                "file": "CesiumMan.glb"
+            },
+            "parent": "131",
+            "skin": "112"
+        },
+        "133": {
+            "link": {
+                "name": "leg_joint_R_5<leg_joint_R_3<leg_joint_R_2<leg_joint_R_1<Skeleton_torso_joint_1<Armature<Z_UP",
+                "file": "CesiumMan.glb"
+            },
+            "parent": "132",
+            "skin": "112"
+        },
+        "134": {
+            "link": {
+                "name": "Cesium_Man<Armature<Z_UP",
+                "file": "CesiumMan.glb"
+            },
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0467092,
+                0.0000017,
+                0.0,
+                1.0
+            ],
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "112"
+                    }
+                }
+            ],
+            "parent": "114"
+        },
+        "176": {
+            "link": {
+                "name": "Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "name": "Armature2",
+            "transformation": [
+                0.0060574,
+                -0.0,
+                0.0079565,
+                0.0,
+                -0.0079563,
+                -1.8328034201431368e-8,
+                0.0060573,
+                0.0,
+                1.4304789353047909e-8,
+                -0.0099997,
+                -1.1622641515884881e-8,
+                0.0,
+                0.1872284,
+                -4.4703483581542975e-8,
+                -0.1393271,
+                1.0
+            ]
+        },
+        "177": {
+            "link": {
+                "name": "Lowpoly_Fingers<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "176",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "175"
+                    }
+                }
+            ]
+        },
+        "178": {
+            "link": {
+                "name": "Lowpoly_Jacket<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "175"
+                    }
+                }
+            ],
+            "parent": "176"
+        },
+        "179": {
+            "link": {
+                "name": "Lowpoly_Pants<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "176",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "175"
+                    }
+                }
+            ]
+        },
+        "180": {
+            "link": {
+                "name": "Lowpoly_Tennis<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "176",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "175"
+                    }
+                }
+            ]
+        },
+        "181": {
+            "link": {
+                "name": "Mesh_Hair_D_02<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "176",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "175"
+                    }
+                }
+            ]
+        },
+        "182": {
+            "link": {
+                "name": "Wolf3D_Head<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "175"
+                    }
+                },
+                {
+                    "mesh": {
+                        "skin": "175"
+                    },
+                    "active": true
+                }
+            ],
+            "transformation": [
+                1.0000034,
+                -2.020984197770304e-7,
+                -1.4843021745036824e-7,
+                0.0,
+                2.020986897832701e-7,
+                1.0000041,
+                0.000001,
+                0.0,
+                1.484297627030174e-7,
+                -0.000001,
+                1.000002,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "parent": "176"
+        },
+        "183": {
+            "link": {
+                "name": "Wolf3D_Teeth<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "176",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "175"
+                    }
+                }
+            ]
+        },
+        "184": {
+            "link": {
+                "name": "mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "176",
+            "skin": "175"
+        },
+        "185": {
+            "link": {
+                "name": "mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "184",
+            "skin": "175"
+        },
+        "186": {
+            "link": {
+                "name": "mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "185",
+            "skin": "175"
+        },
+        "187": {
+            "link": {
+                "name": "mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "186",
+            "skin": "175"
+        },
+        "188": {
+            "link": {
+                "name": "mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "187",
+            "skin": "175"
+        },
+        "189": {
+            "link": {
+                "name": "mixamorig:Head<mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "188",
+            "skin": "175"
+        },
+        "190": {
+            "link": {
+                "name": "mixamorig:HeadTop_End<mixamorig:Head<mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "189",
+            "skin": "175"
+        },
+        "191": {
+            "link": {
+                "name": "mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "187",
+            "skin": "175"
+        },
+        "192": {
+            "link": {
+                "name": "mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "191",
+            "skin": "175"
+        },
+        "193": {
+            "link": {
+                "name": "mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "192",
+            "skin": "175"
+        },
+        "194": {
+            "link": {
+                "name": "mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "193",
+            "skin": "175"
+        },
+        "195": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "194",
+            "skin": "175"
+        },
+        "196": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb2<mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "195",
+            "skin": "175"
+        },
+        "197": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb3<mixamorig:LeftHandThumb2<mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "196",
+            "skin": "175"
+        },
+        "198": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb4<mixamorig:LeftHandThumb3<mixamorig:LeftHandThumb2<mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "197",
+            "skin": "175"
+        },
+        "199": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "194",
+            "skin": "175"
+        },
+        "200": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex2<mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "199",
+            "skin": "175"
+        },
+        "201": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex3<mixamorig:LeftHandIndex2<mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "200",
+            "skin": "175"
+        },
+        "202": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex4<mixamorig:LeftHandIndex3<mixamorig:LeftHandIndex2<mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "201",
+            "skin": "175"
+        },
+        "203": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "194",
+            "skin": "175"
+        },
+        "204": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle2<mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "203",
+            "skin": "175"
+        },
+        "205": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle3<mixamorig:LeftHandMiddle2<mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "204",
+            "skin": "175"
+        },
+        "206": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle4<mixamorig:LeftHandMiddle3<mixamorig:LeftHandMiddle2<mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "205",
+            "skin": "175"
+        },
+        "207": {
+            "link": {
+                "name": "mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "194",
+            "skin": "175"
+        },
+        "208": {
+            "link": {
+                "name": "mixamorig:LeftHandRing2<mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "207",
+            "skin": "175"
+        },
+        "209": {
+            "link": {
+                "name": "mixamorig:LeftHandRing3<mixamorig:LeftHandRing2<mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "208",
+            "skin": "175"
+        },
+        "210": {
+            "link": {
+                "name": "mixamorig:LeftHandRing4<mixamorig:LeftHandRing3<mixamorig:LeftHandRing2<mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "209",
+            "skin": "175"
+        },
+        "211": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "194",
+            "skin": "175"
+        },
+        "212": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky2<mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "211",
+            "skin": "175"
+        },
+        "213": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky3<mixamorig:LeftHandPinky2<mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "212",
+            "skin": "175"
+        },
+        "214": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky4<mixamorig:LeftHandPinky3<mixamorig:LeftHandPinky2<mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "213",
+            "skin": "175"
+        },
+        "215": {
+            "link": {
+                "name": "mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "187",
+            "skin": "175"
+        },
+        "216": {
+            "link": {
+                "name": "mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "215",
+            "skin": "175"
+        },
+        "217": {
+            "link": {
+                "name": "mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "216",
+            "skin": "175"
+        },
+        "218": {
+            "link": {
+                "name": "mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "217",
+            "skin": "175"
+        },
+        "219": {
+            "link": {
+                "name": "mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "218",
+            "skin": "175"
+        },
+        "220": {
+            "link": {
+                "name": "mixamorig:RightHandThumb2<mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "219",
+            "skin": "175"
+        },
+        "221": {
+            "link": {
+                "name": "mixamorig:RightHandThumb3<mixamorig:RightHandThumb2<mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "220",
+            "skin": "175"
+        },
+        "222": {
+            "link": {
+                "name": "mixamorig:RightHandThumb4<mixamorig:RightHandThumb3<mixamorig:RightHandThumb2<mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "221",
+            "skin": "175"
+        },
+        "223": {
+            "link": {
+                "name": "mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "218",
+            "skin": "175"
+        },
+        "224": {
+            "link": {
+                "name": "mixamorig:RightHandIndex2<mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "223",
+            "skin": "175"
+        },
+        "225": {
+            "link": {
+                "name": "mixamorig:RightHandIndex3<mixamorig:RightHandIndex2<mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "224",
+            "skin": "175"
+        },
+        "226": {
+            "link": {
+                "name": "mixamorig:RightHandIndex4<mixamorig:RightHandIndex3<mixamorig:RightHandIndex2<mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "225",
+            "skin": "175"
+        },
+        "227": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "218",
+            "skin": "175"
+        },
+        "228": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle2<mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "227",
+            "skin": "175"
+        },
+        "229": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle3<mixamorig:RightHandMiddle2<mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "228",
+            "skin": "175"
+        },
+        "230": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle4<mixamorig:RightHandMiddle3<mixamorig:RightHandMiddle2<mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "229",
+            "skin": "175"
+        },
+        "231": {
+            "link": {
+                "name": "mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "218",
+            "skin": "175"
+        },
+        "232": {
+            "link": {
+                "name": "mixamorig:RightHandRing2<mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "231",
+            "skin": "175"
+        },
+        "233": {
+            "link": {
+                "name": "mixamorig:RightHandRing3<mixamorig:RightHandRing2<mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "232",
+            "skin": "175"
+        },
+        "234": {
+            "link": {
+                "name": "mixamorig:RightHandRing4<mixamorig:RightHandRing3<mixamorig:RightHandRing2<mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "233",
+            "skin": "175"
+        },
+        "235": {
+            "link": {
+                "name": "mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "218",
+            "skin": "175"
+        },
+        "236": {
+            "link": {
+                "name": "mixamorig:RightHandPinky2<mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "235",
+            "skin": "175"
+        },
+        "237": {
+            "link": {
+                "name": "mixamorig:RightHandPinky3<mixamorig:RightHandPinky2<mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "236",
+            "skin": "175"
+        },
+        "238": {
+            "link": {
+                "name": "mixamorig:RightHandPinky4<mixamorig:RightHandPinky3<mixamorig:RightHandPinky2<mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "237",
+            "skin": "175"
+        },
+        "239": {
+            "link": {
+                "name": "mixamorig:LeftUpLeg<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "184",
+            "skin": "175"
+        },
+        "240": {
+            "link": {
+                "name": "mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "239",
+            "skin": "175"
+        },
+        "241": {
+            "link": {
+                "name": "mixamorig:LeftFoot<mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "240",
+            "skin": "175"
+        },
+        "242": {
+            "link": {
+                "name": "mixamorig:LeftToeBase<mixamorig:LeftFoot<mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "241",
+            "skin": "175"
+        },
+        "243": {
+            "link": {
+                "name": "mixamorig:LeftToe_End<mixamorig:LeftToeBase<mixamorig:LeftFoot<mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "242",
+            "skin": "175"
+        },
+        "244": {
+            "link": {
+                "name": "mixamorig:RightUpLeg<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "184",
+            "skin": "175"
+        },
+        "245": {
+            "link": {
+                "name": "mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "244",
+            "skin": "175"
+        },
+        "246": {
+            "link": {
+                "name": "mixamorig:RightFoot<mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "245",
+            "skin": "175"
+        },
+        "247": {
+            "link": {
+                "name": "mixamorig:RightToeBase<mixamorig:RightFoot<mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "246",
+            "skin": "175"
+        },
+        "248": {
+            "link": {
+                "name": "mixamorig:RightToe_End<mixamorig:RightToeBase<mixamorig:RightFoot<mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips<Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "parent": "247",
+            "skin": "175"
+        }
+    },
+    "meshes": {
+        "7": {
+            "link": {
+                "name": "PrimitivePlane",
+                "file": "default"
+            }
+        },
+        "8": {
+            "link": {
+                "name": "PrimitiveCube",
+                "file": "default"
+            }
+        },
+        "9": {
+            "link": {
+                "name": "PrimitiveSphere",
+                "file": "default"
+            }
+        },
+        "10": {
+            "link": {
+                "name": "PrimitiveCone",
+                "file": "default"
+            }
+        },
+        "11": {
+            "link": {
+                "name": "PrimitiveCylinder",
+                "file": "default"
+            }
+        },
+        "12": {
+            "link": {
+                "name": "PrimitiveCircle",
+                "file": "default"
+            }
+        },
+        "34": {
+            "link": {
+                "name": "Beta_Joints",
+                "file": "mixamo-breakdance.glb"
+            }
+        },
+        "35": {
+            "link": {
+                "name": "Beta_Surface",
+                "file": "mixamo-breakdance.glb"
+            }
+        },
+        "111": {
+            "link": {
+                "name": "Cesium_Man",
+                "file": "CesiumMan.glb"
+            }
+        },
+        "165": {
+            "link": {
+                "name": "Mesh.010",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "166": {
+            "link": {
+                "name": "Mesh.012",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "167": {
+            "link": {
+                "name": "Mesh.011",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "168": {
+            "link": {
+                "name": "Mesh.013",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "169": {
+            "link": {
+                "name": "Mesh.009",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "170": {
+            "link": {
+                "name": "Wolf3D_head",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "171": {
+            "link": {
+                "name": "Wolf3D_head-uv1",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "172": {
+            "link": {
+                "name": "Wolf3D_head.0",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "173": {
+            "link": {
+                "name": "Wolf3D_head-uv1.0",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "174": {
+            "link": {
+                "name": "Wolf3D_Teeth",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        }
+    },
+    "textures": {
+        "13": {
+            "link": {
+                "name": "DefaultTexture",
+                "file": "default"
+            },
+            "name": "DefaultFont"
+        },
+        "109": {
+            "link": {
+                "name": "texture_0",
+                "file": "CesiumMan.glb"
+            }
+        },
+        "147": {
+            "link": {
+                "name": "texture_1",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "148": {
+            "link": {
+                "name": "texture_2",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "149": {
+            "link": {
+                "name": "texture_3",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "150": {
+            "link": {
+                "name": "texture_4",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "151": {
+            "link": {
+                "name": "texture_5",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "152": {
+            "link": {
+                "name": "texture_6",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "153": {
+            "link": {
+                "name": "texture_7",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "154": {
+            "link": {
+                "name": "texture_8",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "155": {
+            "link": {
+                "name": "texture_9",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "156": {
+            "link": {
+                "name": "texture_10",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "250": {
+            "link": {
+                "name": "texture_0",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        }
+    },
+    "images": {
+        "108": {
+            "link": {
+                "name": "image_0",
+                "file": "CesiumMan.glb"
+            }
+        },
+        "136": {
+            "link": {
+                "name": "Hands_Normal",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "137": {
+            "link": {
+                "name": "Shirt_NormaOPGL",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "138": {
+            "link": {
+                "name": "Shirt_BaseColor_01",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "139": {
+            "link": {
+                "name": "Pants_Normal",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "140": {
+            "link": {
+                "name": "Pants_BaseColor_01",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "141": {
+            "link": {
+                "name": "Shoes_NormaOPGL",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "142": {
+            "link": {
+                "name": "Shoes_BaseColor_01",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "143": {
+            "link": {
+                "name": "hair_male_long_normal",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "144": {
+            "link": {
+                "name": "hair_male_long_color",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "145": {
+            "link": {
+                "name": "rainer",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "146": {
+            "link": {
+                "name": "Eye_gray",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "f0": {
+            "link": {
+                "name": "DefaultImage",
+                "file": "default"
+            }
+        }
+    },
+    "materials": {
+        "DefaultFontMaterial": {
+            "link": {
+                "name": "DefaultFontMaterial",
+                "file": "default"
+            }
+        },
+        "20": {
+            "name": "White",
+            "Phong": {
+                "specularColor": [
+                    9.999899930335232e-7,
+                    9.99993744699168e-7,
+                    9.999999974752427e-7,
+                    1.0
+                ],
+                "shininess": 1
+            },
+            "pipeline": "262"
+        },
+        "22": {
+            "name": "Pink",
+            "Phong": {
+                "diffuseColor": [
+                    0.9098039,
+                    0.0,
+                    0.5411764,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999899930335232e-7,
+                    9.999911299019004e-7,
+                    9.999999974752427e-7,
+                    1.0
+                ],
+                "shininess": 10,
+                "ambientColor": [
+                    0.317647,
+                    0.0,
+                    0.2165777,
+                    1.0
+                ]
+            }
+        },
+        "25": {
+            "name": "Yellow",
+            "Phong": {
+                "diffuseColor": [
+                    1.0,
+                    0.8039215,
+                    0.0,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.3843137,
+                    0.3089579,
+                    0.0,
+                    1.0
+                ]
+            }
+        },
+        "26": {
+            "name": "Green",
+            "Phong": {
+                "diffuseColor": [
+                    0.1529411,
+                    0.7882353,
+                    0.5411764,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.0,
+                    0.2352941,
+                    0.1437908,
+                    1.0
+                ]
+            }
+        },
+        "32": {
+            "link": {
+                "name": "Beta_Joints_MAT",
+                "file": "mixamo-breakdance.glb"
+            }
+        },
+        "33": {
+            "link": {
+                "name": "asdf1:Beta_HighLimbsGeoSG2",
+                "file": "mixamo-breakdance.glb"
+            }
+        },
+        "110": {
+            "link": {
+                "name": "Cesium_Man-effect",
+                "file": "CesiumMan.glb"
+            }
+        },
+        "157": {
+            "link": {
+                "name": "Wolf3D_Hands",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "158": {
+            "link": {
+                "name": "Wolf3D_Shirt",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "Phong": {
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    0.0
+                ]
+            }
+        },
+        "159": {
+            "link": {
+                "name": "Wolf3D_Pants",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "160": {
+            "link": {
+                "name": "Wolf3D_Shoes",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "161": {
+            "link": {
+                "name": "Wolf3D_Hair_D",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "162": {
+            "link": {
+                "name": "Wolf3D_Skin",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "Phong": {
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    0.0
+                ]
+            }
+        },
+        "163": {
+            "link": {
+                "name": "Wolf3D_Eye.001",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "164": {
+            "link": {
+                "name": "Wolf3D_Teeth",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        }
+    },
+    "shaders": {
+        "275": {
+            "link": {
+                "name": "DistanceFieldVector.frag",
+                "file": "default"
+            }
+        },
+        "276": {
+            "link": {
+                "name": "Dynamic.vert",
+                "file": "default"
+            }
+        },
+        "277": {
+            "link": {
+                "name": "Flat.frag",
+                "file": "default"
+            }
+        },
+        "278": {
+            "link": {
+                "name": "MeshVisualizer.frag",
+                "file": "default"
+            }
+        },
+        "279": {
+            "link": {
+                "name": "Particle.frag",
+                "file": "default"
+            }
+        },
+        "280": {
+            "link": {
+                "name": "Phong.frag",
+                "file": "default"
+            }
+        },
+        "281": {
+            "link": {
+                "name": "Skinning.vert",
+                "file": "default"
+            }
+        },
+        "282": {
+            "link": {
+                "name": "Static.frag",
+                "file": "default"
+            }
+        },
+        "283": {
+            "link": {
+                "name": "Depth.frag",
+                "file": "default"
+            }
+        },
+        "285": {
+            "link": {
+                "name": "Physical.frag",
+                "file": "default"
+            }
+        },
+        "288": {
+            "link": {
+                "name": "Sky.frag",
+                "file": "default"
+            }
+        },
+        "289": {
+            "link": {
+                "name": "Sky.vert",
+                "file": "default"
+            }
+        },
+        "290": {
+            "link": {
+                "name": "Text.frag",
+                "file": "default"
+            }
+        },
+        "292": {
+            "link": {
+                "name": "Text.vert",
+                "file": "default"
+            }
+        },
+        "293": {
+            "link": {
+                "name": "TileFeedback.frag",
+                "file": "default"
+            }
+        }
+    },
+    "settings": {
+        "project": {
+            "name": "Skinning",
+            "version": [
+                0,
+                8,
+                10
+            ]
+        },
+        "vr": {
+            "leftEyeObject": "18",
+            "rightEyeObject": "19",
+            "framebufferScaleFactor": 1.2
+        },
+        "scripting": {
+            "sourcePaths": [
+                "/js/editor-components-bundle.js"
+            ]
+        }
+    },
+    "animations": {
+        "107": {
+            "link": {
+                "name": "Armature|mixamo.com|Layer0",
+                "file": "mixamo-breakdance.glb"
+            }
+        },
+        "135": {
+            "link": {
+                "name": "animation_1",
+                "file": "CesiumMan.glb"
+            }
+        },
+        "249": {
+            "link": {
+                "name": "animation_0",
+                "file": "CesiumMan.glb"
+            }
+        }
+    },
+    "skins": {
+        "36": {
+            "link": {
+                "name": "Armature",
+                "file": "mixamo-breakdance.glb"
+            },
+            "joints": [
+                "40",
+                "41",
+                "42",
+                "43",
+                "44",
+                "45",
+                "46",
+                "47",
+                "48",
+                "49",
+                "50",
+                "51",
+                "52",
+                "53",
+                "54",
+                "55",
+                "56",
+                "57",
+                "58",
+                "59",
+                "60",
+                "61",
+                "62",
+                "63",
+                "64",
+                "65",
+                "66",
+                "67",
+                "68",
+                "69",
+                "70",
+                "71",
+                "72",
+                "73",
+                "74",
+                "75",
+                "76",
+                "77",
+                "78",
+                "79",
+                "80",
+                "81",
+                "82",
+                "83",
+                "84",
+                "85",
+                "86",
+                "87",
+                "88",
+                "89",
+                "90",
+                "91",
+                "92",
+                "93",
+                "94",
+                "95",
+                "96",
+                "97",
+                "98",
+                "99",
+                "100",
+                "101",
+                "102",
+                "103",
+                "104",
+                "105",
+                "106"
+            ]
+        },
+        "112": {
+            "link": {
+                "name": "Armature",
+                "file": "CesiumMan.glb"
+            },
+            "joints": [
+                "115",
+                "116",
+                "117",
+                "118",
+                "119",
+                "120",
+                "123",
+                "121",
+                "124",
+                "122",
+                "125",
+                "126",
+                "130",
+                "127",
+                "131",
+                "128",
+                "132",
+                "129",
+                "133"
+            ]
+        },
+        "175": {
+            "link": {
+                "name": "Armature",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            },
+            "joints": [
+                "184",
+                "185",
+                "186",
+                "187",
+                "188",
+                "189",
+                "190",
+                "191",
+                "192",
+                "193",
+                "194",
+                "195",
+                "196",
+                "197",
+                "198",
+                "199",
+                "200",
+                "201",
+                "202",
+                "203",
+                "204",
+                "205",
+                "206",
+                "207",
+                "208",
+                "209",
+                "210",
+                "211",
+                "212",
+                "213",
+                "214",
+                "215",
+                "216",
+                "217",
+                "218",
+                "219",
+                "220",
+                "221",
+                "222",
+                "223",
+                "224",
+                "225",
+                "226",
+                "227",
+                "228",
+                "229",
+                "230",
+                "231",
+                "232",
+                "233",
+                "234",
+                "235",
+                "236",
+                "237",
+                "238",
+                "239",
+                "240",
+                "241",
+                "242",
+                "243",
+                "244",
+                "245",
+                "246",
+                "247",
+                "248"
+            ]
+        }
+    },
+    "files": [
+        "mixamo-breakdance.glb",
+        "CesiumMan.glb",
+        "Sci-Fi_warrior_V02_male_rigged.glb"
+    ],
+    "pipelines": {
+        "252": {
+            "link": {
+                "name": "DistanceFieldVector",
+                "file": "default"
+            }
+        },
+        "255": {
+            "link": {
+                "name": "Flat Opaque",
+                "file": "default"
+            }
+        },
+        "256": {
+            "link": {
+                "name": "Flat Opaque Textured",
+                "file": "default"
+            }
+        },
+        "258": {
+            "link": {
+                "name": "MeshVisualizer",
+                "file": "default"
+            }
+        },
+        "260": {
+            "link": {
+                "name": "Particle",
+                "file": "default"
+            }
+        },
+        "262": {
+            "link": {
+                "name": "Phong Opaque",
+                "file": "default"
+            }
+        },
+        "263": {
+            "link": {
+                "name": "Phong Opaque Textured",
+                "file": "default"
+            }
+        },
+        "266": {
+            "link": {
+                "name": "Foliage",
+                "file": "default"
+            }
+        },
+        "284": {
+            "link": {
+                "name": "Depth",
+                "file": "default"
+            }
+        },
+        "286": {
+            "link": {
+                "name": "Physical Opaque",
+                "file": "default"
+            }
+        },
+        "287": {
+            "link": {
+                "name": "Physical Opaque Textured",
+                "file": "default"
+            }
+        },
+        "291": {
+            "link": {
+                "name": "Text",
+                "file": "default"
+            }
+        },
+        "294": {
+            "link": {
+                "name": "Sky",
+                "file": "default"
+            }
+        }
+    }
+}

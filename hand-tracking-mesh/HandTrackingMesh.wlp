@@ -1,0 +1,1300 @@
+{
+    "objects": {
+        "14": {
+            "name": "Player",
+            "components": [
+                {
+                    "type": "wasd-controls",
+                    "wasd-controls": {
+                        "headObject": "17"
+                    }
+                }
+            ],
+            "transformation": [
+                0.7160133,
+                0.0,
+                0.6980865,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                -0.6980865,
+                0.0,
+                0.7160133,
+                0.0,
+                -3.2591099,
+                1.8000135,
+                1.7569212,
+                1.0
+            ]
+        },
+        "15": {
+            "name": "FloorPlane",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "7",
+                        "material": "20"
+                    }
+                }
+            ],
+            "transformation": [
+                4.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                -0.0016164,
+                -3.9999997,
+                0.0,
+                0.0,
+                3.9999997,
+                -0.0016164,
+                0.0,
+                0.0,
+                0.0,
+                1.192092895507813e-7,
+                1.0
+            ]
+        },
+        "16": {
+            "name": "Cube",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "8",
+                        "material": "22"
+                    }
+                }
+            ],
+            "transformation": [
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                2.9802322387695326e-8,
+                0.4999999,
+                5.960464477539065e-8,
+                1.0
+            ]
+        },
+        "17": {
+            "name": "NonVrCamera",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "mouse-look"
+                }
+            ]
+        },
+        "18": {
+            "name": "EyeLeft",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "input",
+                    "input": {
+                        "type": "eye left"
+                    }
+                }
+            ]
+        },
+        "19": {
+            "name": "EyeRight",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "input",
+                    "input": {
+                        "type": "eye right"
+                    }
+                }
+            ]
+        },
+        "21": {
+            "name": "Light",
+            "components": [
+                {
+                    "type": "light",
+                    "light": {
+                        "attenuation": 0.1
+                    }
+                }
+            ],
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                3.0,
+                2.0,
+                1.0
+            ]
+        },
+        "23": {
+            "name": "Light.000",
+            "components": [
+                {
+                    "type": "light",
+                    "light": {
+                        "attenuation": 0.1
+                    }
+                }
+            ],
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                -1.0,
+                3.0,
+                -1.0,
+                1.0
+            ]
+        },
+        "24": {
+            "name": "Cone",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "10",
+                        "material": "25"
+                    }
+                }
+            ],
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                1.5,
+                1.0,
+                -1.4901161193847656e-8,
+                1.0
+            ]
+        },
+        "27": {
+            "name": "Sphere",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "9",
+                        "material": "26"
+                    }
+                }
+            ],
+            "transformation": [
+                0.75,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.75,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.75,
+                0.0,
+                0.4999999,
+                0.75,
+                -1.25,
+                1.0
+            ]
+        },
+        "35": {
+            "link": {
+                "name": "Armature",
+                "file": "l_hand.glb"
+            },
+            "name": "HandLeftArmature",
+            "parent": "14",
+            "transformation": [
+                1.0,
+                -6.166255417383584e-8,
+                0.0,
+                0.0,
+                6.166255417383584e-8,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "components": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                {
+                    "type": "hand-tracking",
+                    "hand-tracking": {
+                        "handSkin": "34",
+                        "jointMesh": null,
+                        "jointMaterial": null
+                    },
+                    "active": true
+                }
+            ]
+        },
+        "36": {
+            "link": {
+                "name": "l_handMeshNode<Armature",
+                "file": "l_hand.glb"
+            },
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "parent": "35",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "34"
+                    }
+                }
+            ]
+        },
+        "117": {
+            "link": {
+                "name": "Armature",
+                "file": "r_hand.glb"
+            },
+            "name": "HandRightArmature",
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "parent": "14",
+            "components": [
+                {
+                    "type": "hand-tracking",
+                    "hand-tracking": {
+                        "handSkin": "116",
+                        "handedness": "right",
+                        "jointMesh": null
+                    }
+                }
+            ]
+        },
+        "118": {
+            "link": {
+                "name": "r_handMeshNode<Armature",
+                "file": "r_hand.glb"
+            },
+            "transformation": [
+                1.0,
+                0.0,
+                -0.0,
+                0.0,
+                -0.0,
+                1.0000002,
+                0.0,
+                0.0,
+                0.0,
+                -0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0000038,
+                1.0
+            ],
+            "components": [
+                {
+                    "mesh": {
+                        "material": "32",
+                        "skin": "116"
+                    },
+                    "active": true
+                }
+            ],
+            "parent": "117"
+        },
+        "199": {
+            "link": {
+                "name": "xr_standard_trigger_pressed_max<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35"
+        },
+        "200": {
+            "link": {
+                "name": "xr_standard_trigger_pressed_min<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35"
+        },
+        "201": {
+            "link": {
+                "name": "xr_standard_trigger_pressed_value<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35"
+        },
+        "202": {
+            "link": {
+                "name": "pinky-finger-tip<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "203": {
+            "link": {
+                "name": "pinky-finger-phalanx-distal<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "204": {
+            "link": {
+                "name": "pinky-finger-phalanx-intermediate<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "205": {
+            "link": {
+                "name": "pinky-finger-phalanx-proximal<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "206": {
+            "link": {
+                "name": "pinky-finger-metacarpal<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "207": {
+            "link": {
+                "name": "ring-finger-tip<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "208": {
+            "link": {
+                "name": "ring-finger-phalanx-distal<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "209": {
+            "link": {
+                "name": "ring-finger-phalanx-intermediate<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "210": {
+            "link": {
+                "name": "ring-finger-phalanx-proximal<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "211": {
+            "link": {
+                "name": "ring-finger-metacarpal<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "212": {
+            "link": {
+                "name": "middle-finger-tip<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "213": {
+            "link": {
+                "name": "middle-finger-phalanx-distal<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "214": {
+            "link": {
+                "name": "middle-finger-phalanx-intermediate<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "215": {
+            "link": {
+                "name": "middle-finger-phalanx-proximal<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "216": {
+            "link": {
+                "name": "middle-finger-metacarpal<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "217": {
+            "link": {
+                "name": "index-finger-tip<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "218": {
+            "link": {
+                "name": "index-finger-phalanx-distal<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "219": {
+            "link": {
+                "name": "index-finger-phalanx-intermediate<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "220": {
+            "link": {
+                "name": "index-finger-phalanx-proximal<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "221": {
+            "link": {
+                "name": "index-finger-metacarpal<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "222": {
+            "link": {
+                "name": "thumb-tip<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "223": {
+            "link": {
+                "name": "thumb-phalanx-distal<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "224": {
+            "link": {
+                "name": "thumb-phalanx-proximal<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "225": {
+            "link": {
+                "name": "thumb-metacarpal<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "226": {
+            "link": {
+                "name": "wrist<Armature",
+                "file": "l_hand.glb"
+            },
+            "parent": "35",
+            "skin": "34"
+        },
+        "228": {
+            "link": {
+                "name": "wrist<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "229": {
+            "link": {
+                "name": "thumb-metacarpal<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "230": {
+            "link": {
+                "name": "thumb-phalanx-proximal<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "231": {
+            "link": {
+                "name": "thumb-phalanx-distal<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "232": {
+            "link": {
+                "name": "thumb-tip<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "233": {
+            "link": {
+                "name": "index-finger-metacarpal<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "234": {
+            "link": {
+                "name": "index-finger-phalanx-proximal<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "235": {
+            "link": {
+                "name": "index-finger-phalanx-intermediate<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "236": {
+            "link": {
+                "name": "index-finger-phalanx-distal<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "237": {
+            "link": {
+                "name": "index-finger-tip<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "238": {
+            "link": {
+                "name": "middle-finger-metacarpal<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "239": {
+            "link": {
+                "name": "middle-finger-phalanx-proximal<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "240": {
+            "link": {
+                "name": "middle-finger-phalanx-intermediate<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "241": {
+            "link": {
+                "name": "middle-finger-phalanx-distal<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "242": {
+            "link": {
+                "name": "middle-finger-tip<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "243": {
+            "link": {
+                "name": "ring-finger-metacarpal<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "244": {
+            "link": {
+                "name": "ring-finger-phalanx-proximal<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "245": {
+            "link": {
+                "name": "ring-finger-phalanx-intermediate<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "246": {
+            "link": {
+                "name": "ring-finger-phalanx-distal<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "247": {
+            "link": {
+                "name": "ring-finger-tip<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "248": {
+            "link": {
+                "name": "pinky-finger-metacarpal<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "249": {
+            "link": {
+                "name": "pinky-finger-phalanx-proximal<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "250": {
+            "link": {
+                "name": "pinky-finger-phalanx-intermediate<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "251": {
+            "link": {
+                "name": "pinky-finger-phalanx-distal<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        },
+        "252": {
+            "link": {
+                "name": "pinky-finger-tip<Armature",
+                "file": "r_hand.glb"
+            },
+            "parent": "117",
+            "skin": "116"
+        }
+    },
+    "meshes": {
+        "7": {
+            "link": {
+                "name": "PrimitivePlane",
+                "file": "default"
+            }
+        },
+        "8": {
+            "link": {
+                "name": "PrimitiveCube",
+                "file": "default"
+            }
+        },
+        "9": {
+            "link": {
+                "name": "PrimitiveSphere",
+                "file": "default"
+            }
+        },
+        "10": {
+            "link": {
+                "name": "PrimitiveCone",
+                "file": "default"
+            }
+        },
+        "11": {
+            "link": {
+                "name": "PrimitiveCylinder",
+                "file": "default"
+            }
+        },
+        "12": {
+            "link": {
+                "name": "PrimitiveCircle",
+                "file": "default"
+            }
+        },
+        "33": {
+            "link": {
+                "name": "Mesh",
+                "file": "l_hand.glb"
+            },
+            "importScaling": 1.0,
+            "name": "HandLeft"
+        },
+        "115": {
+            "link": {
+                "name": "Mesh",
+                "file": "r_hand.glb"
+            },
+            "importScaling": 1.0,
+            "name": "HandRight"
+        },
+        "227": {
+            "link": {
+                "name": "Mesh.001",
+                "file": "r_hand.glb"
+            }
+        }
+    },
+    "textures": {
+        "13": {
+            "link": {
+                "name": "DefaultTexture",
+                "file": "default"
+            },
+            "name": "DefaultFont"
+        }
+    },
+    "images": {
+        "f0": {
+            "link": {
+                "name": "DefaultImage",
+                "file": "default"
+            }
+        }
+    },
+    "materials": {
+        "DefaultFontMaterial": {
+            "link": {
+                "name": "DefaultFontMaterial",
+                "file": "default"
+            }
+        },
+        "20": {
+            "name": "White",
+            "Phong": {
+                "specularColor": [
+                    9.999899930335232e-7,
+                    9.99993744699168e-7,
+                    9.999999974752427e-7,
+                    1.0
+                ],
+                "shininess": 1
+            },
+            "pipeline": "264"
+        },
+        "22": {
+            "name": "Pink",
+            "Phong": {
+                "diffuseColor": [
+                    0.9098039,
+                    0.0,
+                    0.5411764,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999899930335232e-7,
+                    9.999911299019004e-7,
+                    9.999999974752427e-7,
+                    1.0
+                ],
+                "shininess": 10,
+                "ambientColor": [
+                    0.317647,
+                    0.0,
+                    0.2165777,
+                    1.0
+                ]
+            }
+        },
+        "25": {
+            "name": "Yellow",
+            "Phong": {
+                "diffuseColor": [
+                    1.0,
+                    0.8039215,
+                    0.0,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.3843137,
+                    0.3089579,
+                    0.0,
+                    1.0
+                ]
+            }
+        },
+        "26": {
+            "name": "Green",
+            "Phong": {
+                "diffuseColor": [
+                    0.1529411,
+                    0.7882353,
+                    0.5411764,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.0,
+                    0.2352941,
+                    0.1437908,
+                    1.0
+                ]
+            }
+        },
+        "32": {
+            "link": {
+                "name": "lambert2",
+                "file": "l_hand.glb"
+            },
+            "Phong": {
+                "diffuseColor": [
+                    0.9764705,
+                    0.9764608,
+                    0.9764608,
+                    1.0
+                ]
+            }
+        },
+        "197": {
+            "link": {
+                "name": "lambert2",
+                "file": "r_hand.glb"
+            }
+        },
+        "198": {
+            "link": {
+                "name": "Default_Material",
+                "file": "l_hand.glb"
+            }
+        }
+    },
+    "shaders": {
+        "253": {
+            "link": {
+                "name": "DistanceFieldVector.frag",
+                "file": "default"
+            }
+        },
+        "255": {
+            "link": {
+                "name": "Dynamic.vert",
+                "file": "default"
+            }
+        },
+        "256": {
+            "link": {
+                "name": "Flat.frag",
+                "file": "default"
+            }
+        },
+        "259": {
+            "link": {
+                "name": "MeshVisualizer.frag",
+                "file": "default"
+            }
+        },
+        "261": {
+            "link": {
+                "name": "Particle.frag",
+                "file": "default"
+            }
+        },
+        "263": {
+            "link": {
+                "name": "Phong.frag",
+                "file": "default"
+            }
+        },
+        "266": {
+            "link": {
+                "name": "Skinning.vert",
+                "file": "default"
+            }
+        },
+        "267": {
+            "link": {
+                "name": "Static.frag",
+                "file": "default"
+            }
+        },
+        "269": {
+            "link": {
+                "name": "Depth.frag",
+                "file": "default"
+            }
+        },
+        "271": {
+            "link": {
+                "name": "Physical.frag",
+                "file": "default"
+            }
+        },
+        "274": {
+            "link": {
+                "name": "Sky.frag",
+                "file": "default"
+            }
+        },
+        "275": {
+            "link": {
+                "name": "Sky.vert",
+                "file": "default"
+            }
+        },
+        "276": {
+            "link": {
+                "name": "Text.frag",
+                "file": "default"
+            }
+        },
+        "278": {
+            "link": {
+                "name": "Text.vert",
+                "file": "default"
+            }
+        },
+        "279": {
+            "link": {
+                "name": "TileFeedback.frag",
+                "file": "default"
+            }
+        }
+    },
+    "settings": {
+        "project": {
+            "name": "HandTrackingMesh",
+            "version": [
+                0,
+                8,
+                10
+            ]
+        },
+        "vr": {
+            "leftEyeObject": "18",
+            "rightEyeObject": "19"
+        },
+        "scripting": {
+            "sourcePaths": [
+                "/js/editor-components-bundle.js",
+                "js/"
+            ]
+        }
+    },
+    "animations": {},
+    "skins": {
+        "34": {
+            "link": {
+                "name": "Armature",
+                "file": "l_hand.glb"
+            },
+            "name": "ArmatureLeft",
+            "joints": [
+                "202",
+                "203",
+                "204",
+                "205",
+                "206",
+                "207",
+                "208",
+                "209",
+                "210",
+                "211",
+                "212",
+                "213",
+                "214",
+                "215",
+                "216",
+                "217",
+                "218",
+                "219",
+                "220",
+                "221",
+                "222",
+                "223",
+                "224",
+                "225",
+                "226"
+            ]
+        },
+        "116": {
+            "link": {
+                "name": "Armature",
+                "file": "r_hand.glb"
+            },
+            "name": "ArmatureRight",
+            "joints": [
+                "228",
+                "229",
+                "230",
+                "231",
+                "232",
+                "233",
+                "234",
+                "235",
+                "236",
+                "237",
+                "238",
+                "239",
+                "240",
+                "241",
+                "242",
+                "243",
+                "244",
+                "245",
+                "246",
+                "247",
+                "248",
+                "249",
+                "250",
+                "251",
+                "252"
+            ]
+        }
+    },
+    "files": [
+        "l_hand.glb",
+        "r_hand.glb"
+    ],
+    "pipelines": {
+        "254": {
+            "link": {
+                "name": "DistanceFieldVector",
+                "file": "default"
+            }
+        },
+        "257": {
+            "link": {
+                "name": "Flat Opaque",
+                "file": "default"
+            }
+        },
+        "258": {
+            "link": {
+                "name": "Flat Opaque Textured",
+                "file": "default"
+            }
+        },
+        "260": {
+            "link": {
+                "name": "MeshVisualizer",
+                "file": "default"
+            }
+        },
+        "262": {
+            "link": {
+                "name": "Particle",
+                "file": "default"
+            }
+        },
+        "264": {
+            "link": {
+                "name": "Phong Opaque",
+                "file": "default"
+            }
+        },
+        "265": {
+            "link": {
+                "name": "Phong Opaque Textured",
+                "file": "default"
+            }
+        },
+        "268": {
+            "link": {
+                "name": "Foliage",
+                "file": "default"
+            }
+        },
+        "270": {
+            "link": {
+                "name": "Depth",
+                "file": "default"
+            }
+        },
+        "272": {
+            "link": {
+                "name": "Physical Opaque",
+                "file": "default"
+            }
+        },
+        "273": {
+            "link": {
+                "name": "Physical Opaque Textured",
+                "file": "default"
+            }
+        },
+        "277": {
+            "link": {
+                "name": "Text",
+                "file": "default"
+            }
+        },
+        "280": {
+            "link": {
+                "name": "Sky",
+                "file": "default"
+            }
+        }
+    }
+}

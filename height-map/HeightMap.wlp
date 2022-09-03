@@ -1,0 +1,644 @@
+{
+    "objects": {
+        "14": {
+            "name": "Player",
+            "components": [
+                {
+                    "type": "wasd-controls",
+                    "wasd-controls": {
+                        "headObject": "17"
+                    }
+                }
+            ],
+            "transformation": [
+                0.2715123,
+                0.0,
+                0.9624347,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                -0.9624347,
+                0.0,
+                0.2715123,
+                0.0,
+                -3.2591099,
+                1.3000135,
+                1.7569215,
+                1.0
+            ]
+        },
+        "15": {
+            "name": "HeightMap",
+            "transformation": [
+                4.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                4.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                4.0,
+                0.0,
+                -10.6602602,
+                0.0,
+                -10.8828248,
+                1.0
+            ],
+            "components": [
+                {
+                    "type": "height-map",
+                    "height-map": {
+                        "material": "22",
+                        "resolutionX": 128.0,
+                        "resolutionY": 128.0,
+                        "sizeX": 8.0,
+                        "sizeY": 8.0
+                    }
+                }
+            ]
+        },
+        "17": {
+            "name": "NonVrCamera",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "mouse-look"
+                }
+            ]
+        },
+        "18": {
+            "name": "EyeLeft",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "input",
+                    "input": {
+                        "type": "eye left"
+                    }
+                }
+            ]
+        },
+        "19": {
+            "name": "EyeRight",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "input",
+                    "input": {
+                        "type": "eye right"
+                    }
+                }
+            ]
+        },
+        "21": {
+            "name": "Light",
+            "components": [
+                {
+                    "type": "light",
+                    "light": {
+                        "attenuation": 0.0099999
+                    }
+                }
+            ],
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                1.6161401,
+                5.8483805,
+                1.0
+            ]
+        },
+        "23": {
+            "name": "Light.000",
+            "components": [
+                {
+                    "type": "light",
+                    "light": {
+                        "attenuation": 0.1
+                    }
+                }
+            ],
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                -1.0,
+                3.0,
+                -1.0,
+                1.0
+            ]
+        },
+        "33": {
+            "name": "Text",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Heightmap Example",
+                        "material": "35",
+                        "effect": "none"
+                    }
+                }
+            ],
+            "transformation": [
+                0.4999999,
+                0.0,
+                0.8660252,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                -0.8660252,
+                0.0,
+                0.4999999,
+                0.0,
+                -0.0154986,
+                1.4449837,
+                0.0,
+                1.0
+            ]
+        },
+        "34": {
+            "name": "Text.000",
+            "parent": "33",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "This example demonstrates generating meshes\nthrough JavaScript at runtime.\n\nThe terrain is generated from a grayscale\nheightmap .png image.",
+                        "alignment": "left",
+                        "justification": "top"
+                    }
+                }
+            ],
+            "transformation": [
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                -0.4967989,
+                -0.1531696,
+                0.0,
+                1.0
+            ]
+        },
+        "36": {
+            "name": "MaterialSphere",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "9",
+                        "material": "22"
+                    },
+                    "active": false
+                }
+            ],
+            "transformation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                11.849184,
+                -7.543446,
+                -1.6830136,
+                1.0
+            ]
+        }
+    },
+    "meshes": {
+        "7": {
+            "link": {
+                "name": "PrimitivePlane",
+                "file": "default"
+            }
+        },
+        "8": {
+            "link": {
+                "name": "PrimitiveCube",
+                "file": "default"
+            }
+        },
+        "9": {
+            "link": {
+                "name": "PrimitiveSphere",
+                "file": "default"
+            }
+        },
+        "10": {
+            "link": {
+                "name": "PrimitiveCone",
+                "file": "default"
+            }
+        },
+        "11": {
+            "link": {
+                "name": "PrimitiveCylinder",
+                "file": "default"
+            }
+        },
+        "12": {
+            "link": {
+                "name": "PrimitiveCircle",
+                "file": "default"
+            }
+        }
+    },
+    "textures": {
+        "t0": {
+            "link": {
+                "name": "DefaultTexture",
+                "file": "default"
+            },
+            "name": "DefaultFont"
+        }
+    },
+    "images": {
+        "f0": {
+            "link": {
+                "name": "DefaultImage",
+                "file": "default"
+            }
+        }
+    },
+    "materials": {
+        "DefaultFontMaterial": {
+            "link": {
+                "name": "DefaultFontMaterial",
+                "file": "default"
+            }
+        },
+        "20": {
+            "name": "White",
+            "Phong": {
+                "specularColor": [
+                    9.999899930335232e-7,
+                    9.99993744699168e-7,
+                    9.999999974752427e-7,
+                    1.0
+                ],
+                "shininess": 1
+            },
+            "pipeline": "49"
+        },
+        "22": {
+            "name": "MeshVisualization",
+            "Phong": {
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999899930335232e-7,
+                    9.999911299019004e-7,
+                    9.999999974752427e-7,
+                    1.0
+                ],
+                "shininess": 10,
+                "ambientColor": [
+                    0.1333333,
+                    0.1333333,
+                    0.1333333,
+                    1.0
+                ],
+                "fogColor": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            },
+            "MeshVisualizer": {
+                "color": [
+                    0.5019608,
+                    0.5019608,
+                    0.5019608,
+                    0.0
+                ]
+            },
+            "pipeline": "49"
+        },
+        "25": {
+            "name": "Yellow",
+            "Phong": {
+                "diffuseColor": [
+                    1.0,
+                    0.8039215,
+                    0.0,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.3843137,
+                    0.3089579,
+                    0.0,
+                    1.0
+                ]
+            }
+        },
+        "26": {
+            "name": "Green",
+            "Phong": {
+                "diffuseColor": [
+                    0.1529411,
+                    0.7882353,
+                    0.5411764,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.0,
+                    0.2352941,
+                    0.1437908,
+                    1.0
+                ]
+            }
+        },
+        "35": {
+            "link": {
+                "name": "DefaultFontMaterial",
+                "file": "default"
+            },
+            "name": "TextAccent",
+            "Text": {
+                "color": [
+                    0.9098039,
+                    0.0,
+                    0.5411764,
+                    1.0
+                ]
+            }
+        }
+    },
+    "shaders": {
+        "37": {
+            "link": {
+                "name": "Depth.frag",
+                "file": "default"
+            }
+        },
+        "39": {
+            "link": {
+                "name": "DistanceFieldVector.frag",
+                "file": "default"
+            }
+        },
+        "41": {
+            "link": {
+                "name": "Dynamic.vert",
+                "file": "default"
+            }
+        },
+        "42": {
+            "link": {
+                "name": "Flat.frag",
+                "file": "default"
+            }
+        },
+        "45": {
+            "link": {
+                "name": "MeshVisualizer.frag",
+                "file": "default"
+            }
+        },
+        "47": {
+            "link": {
+                "name": "Skinning.vert",
+                "file": "default"
+            }
+        },
+        "48": {
+            "link": {
+                "name": "Phong.frag",
+                "file": "default"
+            }
+        },
+        "51": {
+            "link": {
+                "name": "Particle.frag",
+                "file": "default"
+            }
+        },
+        "54": {
+            "link": {
+                "name": "Background.frag",
+                "file": "default"
+            }
+        },
+        "55": {
+            "link": {
+                "name": "FullScreenTriangle.vert",
+                "file": "default"
+            }
+        },
+        "56": {
+            "link": {
+                "name": "Physical.frag",
+                "file": "default"
+            }
+        },
+        "59": {
+            "link": {
+                "name": "Sky.frag",
+                "file": "default"
+            }
+        },
+        "60": {
+            "link": {
+                "name": "Text.frag",
+                "file": "default"
+            }
+        },
+        "62": {
+            "link": {
+                "name": "Text.vert",
+                "file": "default"
+            }
+        },
+        "63": {
+            "link": {
+                "name": "TileFeedback.frag",
+                "file": "default"
+            }
+        }
+    },
+    "settings": {
+        "project": {
+            "name": "HeightMap",
+            "version": [
+                0,
+                9,
+                0,
+                1
+            ]
+        },
+        "vr": {
+            "leftEyeObject": "18",
+            "rightEyeObject": "19"
+        },
+        "scripting": {
+            "sourcePaths": [
+                "/js/editor-components-bundle.js",
+                "js/",
+                "height-map.js"
+            ]
+        },
+        "rendering": {
+            "clearColor": [
+                0.1686274,
+                0.1686274,
+                0.1686274,
+                1.0
+            ],
+            "fontOutline": true
+        }
+    },
+    "animations": {},
+    "skins": {},
+    "pipelines": {
+        "38": {
+            "link": {
+                "name": "Depth",
+                "file": "default"
+            }
+        },
+        "40": {
+            "link": {
+                "name": "DistanceFieldVector",
+                "file": "default"
+            }
+        },
+        "43": {
+            "link": {
+                "name": "Flat Opaque",
+                "file": "default"
+            }
+        },
+        "44": {
+            "link": {
+                "name": "Flat Opaque Textured",
+                "file": "default"
+            }
+        },
+        "46": {
+            "link": {
+                "name": "MeshVisualizer",
+                "file": "default"
+            }
+        },
+        "49": {
+            "link": {
+                "name": "Phong Opaque",
+                "file": "default"
+            },
+            "features": {
+                "VERTEX_COLORS": true
+            }
+        },
+        "50": {
+            "link": {
+                "name": "Phong Opaque Textured",
+                "file": "default"
+            }
+        },
+        "52": {
+            "link": {
+                "name": "Foliage",
+                "file": "default"
+            }
+        },
+        "53": {
+            "link": {
+                "name": "Particle",
+                "file": "default"
+            }
+        },
+        "57": {
+            "link": {
+                "name": "Physical Opaque",
+                "file": "default"
+            }
+        },
+        "58": {
+            "link": {
+                "name": "Physical Opaque Textured",
+                "file": "default"
+            }
+        },
+        "61": {
+            "link": {
+                "name": "Text",
+                "file": "default"
+            }
+        },
+        "64": {
+            "link": {
+                "name": "Sky",
+                "file": "default"
+            }
+        }
+    }
+}
