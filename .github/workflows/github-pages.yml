@@ -31,7 +31,6 @@ jobs:
       run: gzip -k public/*
     - name: Upload package artifact
       uses: actions/upload-artifact@v2
-      with:
   deploy-pages:
     needs: package
     if: github.ref == 'refs/heads/master'
