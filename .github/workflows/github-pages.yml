@@ -31,6 +31,9 @@ jobs:
       run: gzip -k public/**/*.*
     - name: Upload package artifact
       uses: actions/upload-artifact@v2
+      with:
+        name: wonderland-engine-examples-deploy
+        path: public/
   deploy-pages:
     needs: package
     if: github.ref == 'refs/heads/master'
