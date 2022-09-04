@@ -68,6 +68,7 @@ jobs:
       uses: BetaHuhn/do-spaces-action@v2
       with:
         source: './public/'
+        out_dir: '/examples'
         space_name: ${{ secrets.AWS_NAME }}
         space_region: ${{ secrets.AWS_REGION}}
         access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
