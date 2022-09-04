@@ -1,3 +1,5 @@
+![build](https://github.com/WonderlandEngine/wonderland-engine-examples/actions/workflows/github-pages.yml/badge.svg)
+
 # Wonderland Engine Examples
 
 Repository of official examples for [Wonderland Engine](https://wonderlandengine.com),
