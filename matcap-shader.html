@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <link rel="preload" href="MatcapLand-bundle.js?t=2022-09-04T12:30:03.950" as="script">
-    <title>MatcapLand</title>
+    <link rel="preload" href="MatcapShader-bundle.js?t=2022-09-04T16:51:46.638" as="script">
+    <title>MatcapShader</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="white">
@@ -57,7 +57,7 @@
         };
     </script>
     
-    <script src="wonderland.min.js?t=2022-09-04T12:30:03.950"></script>
+    <script src="wonderland.min.js?t=2022-09-04T16:51:46.638"></script>
     <script type="module">
         function loadScript(scriptURL) {
             return new Promise((res, rej) => {
@@ -77,10 +77,10 @@
                     if(button) button.dataset.supported = supported;
                 });
 
-                const bundle = await loadScript("MatcapLand-bundle.js?t=2022-09-04T12:30:03.950");
+                const bundle = await loadScript("MatcapShader-bundle.js?t=2022-09-04T16:51:46.638");
                 bundle.id = 'bundle';
 
-                WL.scene.load('MatcapLand.bin');
+                WL.scene.load('MatcapShader.bin');
             } catch(e) {
               console.error(e);
             }
