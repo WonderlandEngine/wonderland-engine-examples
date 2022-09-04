@@ -65,12 +65,10 @@ jobs:
         name: wonderland-engine-examples-deploy
         path: public/
     - name: Deploy static site to S3 bucket
-      uses: idlefingers/do-space-sync-action@master
+      uses: BetaHuhn/do-spaces-action@v2
       with:
-        args: --acl public-read
-      env:
-        SOURCE_DIR: './public/'
-        SPACE_NAME: ${{ secrets.AWS_NAME }}
-        SPACE_REGION: ${{ secrets.AWS_REGION}}
-        SPACE_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        SPACE_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        source: './public/'
+        space_name: ${{ secrets.AWS_NAME }}
+        space_region: ${{ secrets.AWS_REGION}}
+        access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
