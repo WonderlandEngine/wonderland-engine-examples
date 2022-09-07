@@ -65,6 +65,12 @@ Simple implementation of a matcap shader with various materials.
 
 [View Live](https://wonderlandengine.com/showcase/matcap-shader/)
 
+### materials
+
+Demonstrates built-in materials and pipeline features.
+
+[View Live](https://wonderlandengine.com/showcase/materials/)
+
 ### mesh-particles
 
 A basic implementation of particles as custom JavaScript component.
