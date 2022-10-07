@@ -83,6 +83,12 @@ Example showing off Normal Map support.
 
 [View Live](https://wonderlandengine.com/showcase/normal-maps/)
 
+### playbook-xr
+
+Very basic example of import of UI exported from [Playbook XR](https://www.playbookxr.com/).
+
+[View Live](https://static.wonderlandengine.com/examples/playbook-xr.html)
+
 ### physics
 
 Simple demonstration of Physics via PhysX in Wonderland Engine.
