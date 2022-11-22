@@ -1230,7 +1230,8 @@
             },
             "name": "Matcap",
             "depthTest": true,
-            "depthWrite": true
+            "depthWrite": true,
+            "castShadows": true
         },
         "53": {
             "link": {
@@ -1245,8 +1246,7 @@
             "version": [
                 0,
                 9,
-                0,
-                0
+                2
             ]
         },
         "scripting": {
