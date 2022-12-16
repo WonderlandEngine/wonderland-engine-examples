@@ -16,8 +16,10 @@ WL.registerComponent('dust-particles', {
     minSpeed: {type: WL.Type.Float, default: 0.005},
     /* Maximum speed of dust particles */
     maxSpeed: {type: WL.Type.Float, default: 0.04},
-    /* Size of a particle */
+    /* Size of a dust particle */
     particleScale: {type: WL.Type.Float, default: 0.02},
+    /* Scale factor to apply when an XR session is active */
+    xrScaleFactor: {type: WL.Type.Float, default: 0.5},
     /* Extent in all directions (cube) */
     extent: {type: WL.Type.Float, default: 5.0},
 }, {
@@ -33,6 +35,19 @@ WL.registerComponent('dust-particles', {
         this.vel = [0, 0, 0];
         this.viewPos = [0, 0, 0];
         this.up = [0, 1, 0];
+
+        /* In VR the dust particles will be scaled down, so keep track of the
+         * effective particle scale and adjust the size of existing particles
+         * whenever an XR session is started or ended */
+        this.effectiveParticleScale = WL.xrSession ? (this.particleScale * this.xrScaleFactor) : this.particleScale;
+        WL.onXRSessionStart.push(() => {
+            this.effectiveParticleScale = this.particleScale * this.xrScaleFactor;
+            this.objects.forEach(obj => obj.scalingLocal = [this.effectiveParticleScale, this.effectiveParticleScale, this.effectiveParticleScale]);
+        });
+        WL.onXRSessionEnd.push(() => {
+            this.effectiveParticleScale = this.particleScale;
+            this.objects.forEach(obj => obj.scalingLocal = [this.effectiveParticleScale, this.effectiveParticleScale, this.effectiveParticleScale]);
+        });
 
         /* Prepare and initialize particles */
         this.objects = WL.scene.addObjects(this.numParticles, null, 1);
@@ -73,7 +88,7 @@ WL.registerComponent('dust-particles', {
     resetParticle: function(index) {
         let obj = this.objects[index];
         obj.resetTransform();
-        obj.scale([this.particleScale, this.particleScale, this.particleScale]);
+        obj.scale([this.effectiveParticleScale, this.effectiveParticleScale, this.effectiveParticleScale]);
 
         const origin = this.origin;
         glMatrix.quat2.getTranslation(origin, this.object.transformWorld);
