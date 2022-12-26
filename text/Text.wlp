@@ -10,23 +10,21 @@
                     }
                 }
             ],
-            "transformation": [
-                0.7160133123397827,
+            "translation": [
+                -4.9501523,
+                1.8000216,
+                2.8657224
+            ],
+            "rotation": [
                 0.0,
-                0.6980865001678467,
+                -0.4524206,
                 0.0,
-                0.0,
+                0.8918046
+            ],
+            "scale": [
+                0.9999992,
                 1.0,
-                0.0,
-                0.0,
-                -0.6980865001678467,
-                0.0,
-                0.7160133123397827,
-                0.0,
-                -3.2591099739074709,
-                1.800013542175293,
-                1.7569212913513184,
-                1.0
+                0.9999992
             ]
         },
         "15": {
@@ -40,23 +38,21 @@
                     }
                 }
             ],
-            "transformation": [
+            "translation": [
+                0.0,
+                0.0,
+                1.1920928955078125e-7
+            ],
+            "rotation": [
+                -0.7072496,
+                0.0,
+                0.0,
+                0.7069638
+            ],
+            "scale": [
                 4.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                -0.0016164779663085938,
-                -3.999999761581421,
-                0.0,
-                0.0,
-                3.999999761581421,
-                -0.0016164779663085938,
-                0.0,
-                0.0,
-                0.0,
-                1.192092895507813e-7,
-                1.0
+                4.0,
+                4.0
             ]
         },
         "16": {
@@ -70,23 +66,21 @@
                     }
                 }
             ],
-            "transformation": [
-                0.5,
+            "translation": [
+                2.9802322387695313e-8,
+                0.4999999,
+                5.960464477539065e-8
+            ],
+            "rotation": [
                 0.0,
                 0.0,
                 0.0,
-                0.0,
-                0.5,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.5,
-                0.0,
-                2.9802322387695329e-8,
-                0.4999999403953552,
-                5.960464477539065e-8,
                 1.0
+            ],
+            "scale": [
+                0.5,
+                0.5,
+                0.5
             ]
         },
         "17": {
@@ -137,26 +131,24 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.10000000149011612
+                        "attenuation": 0.1
                     }
                 }
             ],
-            "transformation": [
-                1.0,
+            "translation": [
                 0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                4.656612873077393e-10,
                 3.0,
-                2.0,
+                2.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
                 1.0
             ]
         },
@@ -166,26 +158,24 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.10000000149011612
+                        "attenuation": 0.1
                     }
                 }
             ],
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
+            "translation": [
                 -1.0,
                 3.0,
-                -1.0,
+                -1.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
                 1.0
             ]
         },
@@ -200,22 +190,20 @@
                     }
                 }
             ],
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
+            "translation": [
                 1.5,
                 1.0,
-                -1.4901161193847657e-8,
+                -1.4901161193847656e-8
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
                 1.0
             ]
         },
@@ -230,210 +218,727 @@
                     }
                 }
             ],
-            "transformation": [
+            "translation": [
+                0.4999999,
                 0.75,
+                -1.25
+            ],
+            "rotation": [
                 0.0,
                 0.0,
                 0.0,
-                0.0,
-                0.75,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.75,
-                0.0,
-                0.4999999701976776,
-                0.75,
-                -1.25,
                 1.0
+            ],
+            "scale": [
+                0.75,
+                0.75,
+                0.75
             ]
         },
         "28": {
-            "name": "TextSphere",
-            "parent": "27",
+            "name": "TextFonts",
+            "parent": null,
             "components": [
                 {
                     "type": "text",
                     "text": {
-                        "text": "Sphere",
-                        "material": "33"
+                        "text": "Multiple fonts per scene",
+                        "material": "70",
+                        "effect": "outline",
+                        "characterSpacing": 0.0,
+                        "lineSpacing": 1.2
                     }
                 }
             ],
-            "transformation": [
-                2.024416923522949,
+            "translation": [
+                -0.0341547,
+                1.6092075,
+                -1.0426961
+            ],
+            "rotation": [
                 0.0,
-                2.213986873626709,
+                -0.4156784,
                 0.0,
-                0.0,
-                3.0,
-                0.0,
-                0.0,
-                -2.213986873626709,
-                0.0,
-                2.024416923522949,
-                0.0,
-                0.0000368952751159668,
-                1.286677360534668,
-                -0.000022172927856445314,
-                1.0
+                0.9095116
+            ],
+            "scale": [
+                2.0,
+                2.0,
+                2.0
             ]
         },
         "29": {
-            "name": "TextCone",
-            "parent": "24",
-            "transformation": [
-                1.333935022354126,
-                0.0,
-                1.490172028541565,
-                0.0,
-                0.0,
-                2.0,
-                0.0,
-                0.0,
-                -1.490172028541565,
-                0.0,
-                1.333935022354126,
-                0.0,
-                0.0000050067901611328129,
-                1.227057933807373,
-                0.00000108964741230011,
-                1.0
-            ],
+            "name": "UI",
+            "parent": null,
             "components": [
                 {
                     "type": "text",
                     "text": {
-                        "text": "Cone",
-                        "material": "32"
+                        "text": "a",
+                        "material": "84",
+                        "effect": "outline"
+                    }
+                },
+                {
+                    "type": "look-at-player",
+                    "look-at-player": {
+                        "player": "14"
                     }
                 }
+            ],
+            "translation": [
+                1.5000044,
+                2.1554677,
+                6.556510925292969e-7
+            ],
+            "rotation": [
+                0.0,
+                -0.4080637,
+                0.0,
+                0.9129534
+            ],
+            "scale": [
+                4.999999,
+                5.0,
+                4.999999
             ]
         },
         "30": {
-            "name": "Cube",
-            "parent": "16",
+            "name": "TextWelcome",
+            "parent": null,
             "components": [
                 {
                     "type": "text",
                     "text": {
-                        "text": "Cube\n"
+                        "text": "",
+                        "effect": "outline",
+                        "alignment": "left"
+                    }
+                },
+                {
+                    "type": "text-scroller",
+                    "text-scroller": {
+                        "speed": 0.2
                     }
                 }
             ],
-            "transformation": [
-                2.762826919555664,
-                -0.08850771933794022,
-                2.8911852836608888,
+            "translation": [
+                -0.8633192,
+                3.3691728,
+                -0.9034327
+            ],
+            "rotation": [
+                0.0124506,
+                -0.393195,
+                -0.0067102,
+                0.9193463
+            ],
+            "scale": [
+                3.0000002,
+                2.9999997,
+                2.9999997
+            ]
+        },
+        "68": {
+            "name": "TextGlyphs",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "material": "69",
+                        "text": "ⰒⰓⰡⰗⰀⰜⰋⰡ  ⰄⰑ\nⰲⱑⱍⱐⱀⱏⰹ ⰱⰶⰵ ",
+                        "justification": "line",
+                        "alignment": "left"
+                    }
+                }
+            ],
+            "translation": [
+                -3.2082679,
+                2.6001198,
+                0.0
+            ],
+            "rotation": [
                 0.0,
-                0.010181650519371033,
-                3.9983999729156496,
-                0.11267320811748505,
                 0.0,
-                -2.8925211429595949,
-                -0.07046487182378769,
-                2.761946439743042,
                 0.0,
-                -3.725290298461914e-9,
-                1.32131826877594,
-                -0.000001341104507446289,
+                1.0
+            ],
+            "scale": [
+                2.0,
+                2.0,
+                2.0
+            ],
+            "parent": "71"
+        },
+        "71": {
+            "name": "Unicode",
+            "translation": [
+                -0.1196993,
+                -1.5359771,
+                -1.7087143
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
                 1.0
             ]
+        },
+        "72": {
+            "name": "Text",
+            "parent": "71",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Full Unicode support:",
+                        "alignment": "left",
+                        "material": "83"
+                    }
+                }
+            ],
+            "translation": [
+                -3.2069053,
+                2.9618678,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "74": {
+            "name": "Left",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Left\nalignment",
+                        "alignment": "left"
+                    },
+                    "active": true
+                }
+            ],
+            "translation": [
+                -2.1065969,
+                3.6898071,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "76"
+        },
+        "75": {
+            "name": "Spacing",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Controllable\ncharacter spacing and\nline spacing"
+                    }
+                },
+                {
+                    "type": "text-change-spacing",
+                    "text-change-spacing": {
+                        "speed": 0.5,
+                        "lineLimit": 2.0,
+                        "characterLimit": 1.0,
+                        "lineMin": 0.8,
+                        "characterMin": 0.2,
+                        "characterMax": 1.1,
+                        "lineMax": 2.25
+                    }
+                }
+            ],
+            "translation": [
+                0.565146,
+                1.5729212,
+                2.2831394
+            ],
+            "rotation": [
+                0.0,
+                -0.7037149,
+                0.0,
+                0.7104824
+            ],
+            "scale": [
+                1.0000039,
+                1.0,
+                1.0000039
+            ]
+        },
+        "76": {
+            "name": "Alignment",
+            "translation": [
+                -0.8110357,
+                -0.7796598,
+                -1.7058796
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "77": {
+            "name": "Center",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Center\nalignment",
+                        "alignment": "center"
+                    },
+                    "active": true
+                }
+            ],
+            "translation": [
+                -2.1065969,
+                3.3078994,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "76"
+        },
+        "78": {
+            "name": "Right",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Right\nalignment",
+                        "alignment": "right"
+                    },
+                    "active": true
+                }
+            ],
+            "translation": [
+                -2.1065969,
+                2.8634564,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "76"
+        },
+        "79": {
+            "name": "LeftIcon",
+            "parent": "76",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "material": "73",
+                        "text": "d"
+                    }
+                }
+            ],
+            "translation": [
+                -1.3805433,
+                3.632102,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                2.0,
+                2.0,
+                2.0
+            ]
+        },
+        "80": {
+            "name": "CenterIcon",
+            "parent": "76",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "material": "73",
+                        "text": "e"
+                    }
+                }
+            ],
+            "translation": [
+                -1.3805433,
+                3.2196063,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                2.0,
+                2.0,
+                2.0
+            ]
+        },
+        "81": {
+            "name": "RightIcon",
+            "parent": "76",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "material": "73",
+                        "text": "f"
+                    }
+                }
+            ],
+            "translation": [
+                -1.3805433,
+                2.7603201,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                2.0,
+                2.0,
+                2.0
+            ]
+        },
+        "82": {
+            "name": "OriginLine",
+            "parent": "76",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "material": "22",
+                        "mesh": "11"
+                    }
+                }
+            ],
+            "scale": [
+                0.0099999,
+                0.6499999,
+                0.0099999
+            ],
+            "translation": [
+                -2.0991251,
+                3.2812838,
+                -0.0605988
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        "86": {
+            "name": "Justification",
+            "translation": [
+                -0.998875,
+                0.475176,
+                -1.8331962
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": null
+        },
+        "87": {
+            "name": "Line",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Line\njustification\n",
+                        "alignment": "left",
+                        "justification": "line"
+                    },
+                    "active": true
+                }
+            ],
+            "translation": [
+                -3.3120331,
+                3.2849974,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "86"
+        },
+        "88": {
+            "name": "Middle",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Middle\njustification",
+                        "alignment": "left"
+                    },
+                    "active": true
+                }
+            ],
+            "translation": [
+                -2.5500144,
+                3.2951874,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "86"
+        },
+        "89": {
+            "name": "Top",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Top\njustification",
+                        "alignment": "left",
+                        "justification": "top"
+                    },
+                    "active": true
+                }
+            ],
+            "translation": [
+                -1.7772947,
+                3.2972474,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "86"
+        },
+        "93": {
+            "name": "OriginLine",
+            "parent": "86",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "material": "22",
+                        "mesh": "11"
+                    }
+                }
+            ],
+            "scale": [
+                0.0099999,
+                1.6,
+                0.0099997
+            ],
+            "translation": [
+                -1.8925412,
+                3.2912631,
+                -0.060615
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                -0.7053056,
+                0.7089033
+            ]
+        },
+        "94": {
+            "name": "Bottom",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Bottom\njustification",
+                        "alignment": "left",
+                        "justification": "bottom"
+                    },
+                    "active": true
+                }
+            ],
+            "translation": [
+                -0.9804342,
+                3.305341,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "86"
         }
     },
     "meshes": {
         "7": {
             "link": {
                 "name": "PrimitivePlane",
-                "file": 0
+                "file": "default"
             }
         },
         "8": {
             "link": {
                 "name": "PrimitiveCube",
-                "file": 0
+                "file": "default"
             }
         },
         "9": {
             "link": {
                 "name": "PrimitiveSphere",
-                "file": 0
+                "file": "default"
             }
         },
         "10": {
             "link": {
                 "name": "PrimitiveCone",
-                "file": 0
+                "file": "default"
             }
         },
         "11": {
             "link": {
                 "name": "PrimitiveCylinder",
-                "file": 0
+                "file": "default"
             }
         },
         "12": {
             "link": {
                 "name": "PrimitiveCircle",
-                "file": 0
+                "file": "default"
             }
         }
     },
-    "textures": {
-        "13": {
-            "link": {
-                "name": "DefaultFont",
-                "file": 0
-            },
-            "name": "DefaultFont"
-        }
-    },
+    "textures": {},
     "images": {},
     "materials": {
         "DefaultFontMaterial": {
             "link": {
                 "name": "DefaultFontMaterial",
-                "file": 0
+                "file": "default"
             },
-            "DistanceFieldVector": {
-                "vectorTexture": "13",
-                "smoothness": 0.05000000074505806
+            "Text": {
+                "font": "64"
             }
         },
         "20": {
             "name": "White",
-            "shader": "Phong",
             "Phong": {
                 "specularColor": [
-                    9.999899930335233e-7,
+                    9.999899930335232e-7,
                     9.99993744699168e-7,
-                    9.999999974752428e-7,
+                    9.999999974752427e-7,
                     1.0
                 ],
                 "shininess": 1
-            }
+            },
+            "pipeline": "47"
         },
         "22": {
             "name": "Pink",
             "Phong": {
                 "diffuseColor": [
-                    0.9098039269447328,
+                    0.9098039,
                     0.0,
-                    0.5411764979362488,
-                    0.0
+                    0.5411764,
+                    1.0
                 ],
                 "specularColor": [
-                    9.999899930335233e-7,
-                    9.999911299019005e-7,
-                    9.999999974752428e-7,
+                    9.999899930335232e-7,
+                    9.999911299019004e-7,
+                    9.999999974752427e-7,
                     1.0
                 ],
                 "shininess": 10,
                 "ambientColor": [
-                    0.3176470398902893,
+                    0.317647,
                     0.0,
-                    0.2165777683258057,
+                    0.2165777,
                     1.0
                 ]
             }
@@ -443,19 +948,19 @@
             "Phong": {
                 "diffuseColor": [
                     1.0,
-                    0.8039215803146362,
+                    0.8039215,
                     0.0,
                     1.0
                 ],
                 "specularColor": [
-                    9.999999974752428e-7,
-                    9.999899930335233e-7,
-                    9.999899930335233e-7,
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
                     1.0
                 ],
                 "ambientColor": [
-                    0.384313702583313,
-                    0.3089579045772553,
+                    0.3843137,
+                    0.3089579,
                     0.0,
                     1.0
                 ]
@@ -465,103 +970,180 @@
             "name": "Green",
             "Phong": {
                 "diffuseColor": [
-                    0.15294118225574494,
-                    0.7882353067398071,
-                    0.5411764979362488,
+                    0.1529411,
+                    0.7882353,
+                    0.5411764,
                     1.0
                 ],
                 "specularColor": [
-                    9.999999974752428e-7,
-                    9.999899930335233e-7,
-                    9.999899930335233e-7,
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
                     1.0
                 ],
                 "ambientColor": [
                     0.0,
-                    0.23529410362243653,
-                    0.1437908560037613,
+                    0.2352941,
+                    0.1437908,
                     1.0
                 ]
             }
         },
-        "32": {
-            "name": "NoOutlineFontMaterial",
-            "shader": "DistanceFieldVector Textured",
-            "DistanceFieldVector": {
-                "vectorTexture": "13",
-                "outlineRange": [
-                    0.4000000059604645,
-                    0.5
-                ],
-                "smoothness": 0.019999999552965165
+        "69": {
+            "name": "GlagoliticMaterial",
+            "pipeline": "55",
+            "Text": {
+                "font": "67"
             }
         },
-        "33": {
-            "name": "CrazyFontMaterial",
-            "shader": "DistanceFieldVector Textured",
-            "DistanceFieldVector": {
-                "vectorTexture": "13",
+        "70": {
+            "name": "PermanentMarkerMaterial",
+            "pipeline": "55",
+            "Text": {
+                "font": "66",
+                "color": [
+                    0.9098039,
+                    0.0,
+                    0.5411764,
+                    1.0
+                ]
+            }
+        },
+        "73": {
+            "name": "IconMaterial",
+            "pipeline": "55",
+            "Text": {
+                "font": "65",
                 "color": [
                     1.0,
-                    0.8039215803146362,
-                    0.0,
-                    1.0
-                ],
-                "outlineColor": [
                     1.0,
-                    0.978787899017334,
-                    0.7333333492279053,
+                    1.0,
+                    1.0
+                ]
+            }
+        },
+        "83": {
+            "name": "PinkFontMaterial",
+            "pipeline": "55",
+            "Text": {
+                "font": "64",
+                "color": [
+                    0.9098039,
+                    0.0,
+                    0.5411764,
+                    1.0
+                ]
+            }
+        },
+        "84": {
+            "name": "PinkIconMaterial",
+            "pipeline": "55",
+            "Text": {
+                "font": "65",
+                "color": [
+                    0.9098039,
+                    0.0,
+                    0.5411764,
                     1.0
                 ],
-                "smoothness": 0.10000000149011612,
-                "outlineRange": [
-                    0.4000000059604645,
-                    0.10000000149011612
+                "effectColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
                 ]
             }
         }
     },
     "shaders": {
-        "1": {
+        "34": {
             "link": {
-                "name": "DistanceFieldVector Textured",
-                "file": 0
+                "name": "Background.frag",
+                "file": "default"
             }
         },
-        "2": {
+        "35": {
             "link": {
-                "name": "Flat",
-                "file": 0
+                "name": "Depth.frag",
+                "file": "default"
             }
         },
-        "3": {
+        "37": {
             "link": {
-                "name": "Flat Textured",
-                "file": 0
+                "name": "DistanceFieldVector.frag",
+                "file": "default"
             }
         },
-        "4": {
+        "39": {
             "link": {
-                "name": "MeshVisualizer",
-                "file": 0
+                "name": "Dynamic.vert",
+                "file": "default"
             }
         },
-        "5": {
+        "40": {
             "link": {
-                "name": "Phong",
-                "file": 0
+                "name": "Flat.frag",
+                "file": "default"
             }
         },
-        "6": {
+        "43": {
             "link": {
-                "name": "Phong Textured",
-                "file": 0
+                "name": "FullScreenTriangle.vert",
+                "file": "default"
             }
         },
-        "31": {
+        "44": {
             "link": {
-                "name": "Particle Textured",
-                "file": 0
+                "name": "MeshVisualizer.frag",
+                "file": "default"
+            }
+        },
+        "46": {
+            "link": {
+                "name": "Phong.frag",
+                "file": "default"
+            }
+        },
+        "49": {
+            "link": {
+                "name": "Physical.frag",
+                "file": "default"
+            }
+        },
+        "52": {
+            "link": {
+                "name": "Skinning.vert",
+                "file": "default"
+            }
+        },
+        "53": {
+            "link": {
+                "name": "Sky.frag",
+                "file": "default"
+            }
+        },
+        "54": {
+            "link": {
+                "name": "Text.frag",
+                "file": "default"
+            }
+        },
+        "56": {
+            "link": {
+                "name": "Text.vert",
+                "file": "default"
+            }
+        },
+        "57": {
+            "link": {
+                "name": "TileFeedback.frag",
+                "file": "default"
+            }
+        },
+        "58": {
+            "link": {
+                "name": "Particle.frag",
+                "file": "default"
             }
         }
     },
@@ -570,8 +1152,8 @@
             "name": "Text",
             "version": [
                 0,
-                6,
-                3
+                9,
+                5
             ]
         },
         "vr": {
@@ -580,9 +1162,142 @@
         },
         "scripting": {
             "sourcePaths": [
-                "/js/components/"
+                "/js/editor-components-bundle.js",
+                "js"
             ]
+        },
+        "rendering": {}
+    },
+    "animations": {},
+    "skins": {},
+    "pipelines": {
+        "36": {
+            "link": {
+                "name": "Depth",
+                "file": "default"
+            }
+        },
+        "38": {
+            "link": {
+                "name": "DistanceFieldVector",
+                "file": "default"
+            }
+        },
+        "41": {
+            "link": {
+                "name": "Flat Opaque",
+                "file": "default"
+            }
+        },
+        "42": {
+            "link": {
+                "name": "Flat Opaque Textured",
+                "file": "default"
+            }
+        },
+        "45": {
+            "link": {
+                "name": "MeshVisualizer",
+                "file": "default"
+            }
+        },
+        "47": {
+            "link": {
+                "name": "Phong Opaque",
+                "file": "default"
+            }
+        },
+        "48": {
+            "link": {
+                "name": "Phong Opaque Textured",
+                "file": "default"
+            }
+        },
+        "50": {
+            "link": {
+                "name": "Physical Opaque",
+                "file": "default"
+            }
+        },
+        "51": {
+            "link": {
+                "name": "Physical Opaque Textured",
+                "file": "default"
+            }
+        },
+        "55": {
+            "link": {
+                "name": "Text",
+                "file": "default"
+            },
+            "doubleSided": true,
+            "castShadows": false
+        },
+        "59": {
+            "link": {
+                "name": "Phong Normalmapped",
+                "file": "default"
+            }
+        },
+        "60": {
+            "link": {
+                "name": "Phong Lightmapped",
+                "file": "default"
+            }
+        },
+        "61": {
+            "link": {
+                "name": "Foliage",
+                "file": "default"
+            }
+        },
+        "62": {
+            "link": {
+                "name": "Particle",
+                "file": "default"
+            }
+        },
+        "63": {
+            "link": {
+                "name": "Sky",
+                "file": "default"
+            }
         }
     },
-    "animations": {}
+    "fonts": {
+        "64": {
+            "link": {
+                "name": "DejaVuSans.ttf",
+                "file": "default"
+            },
+            "outline": true
+        },
+        "65": {
+            "link": {
+                "name": "font_0",
+                "file": "fonts\\Icons\\icomoon.ttf"
+            },
+            "outline": true,
+            "outlineSize": 0.025
+        },
+        "66": {
+            "link": {
+                "name": "font_0",
+                "file": "fonts\\PermanentMarker\\PermanentMarker-Regular.ttf"
+            },
+            "outline": true
+        },
+        "67": {
+            "link": {
+                "name": "font_0",
+                "file": "fonts\\Glagolitic\\NotoSansGlagolitic-Regular.ttf"
+            },
+            "characters": "ⰒⰓⰡⰗⰀⰜⰋⰡⰄⰑⰲⱑⱍⱐⱀⱏⰹⰱⰶⰵ"
+        }
+    },
+    "files": [
+        "fonts/Icons/icomoon.ttf",
+        "fonts/PermanentMarker/PermanentMarker-Regular.ttf",
+        "fonts/Glagolitic/NotoSansGlagolitic-Regular.ttf"
+    ]
 }
