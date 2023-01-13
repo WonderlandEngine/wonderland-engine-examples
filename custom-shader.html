@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <link rel="preload" href="CustomShader-bundle.js?t=2022-11-22T12:41:59.407" as="script">
+    <link rel="preload" href="CustomShader-bundle.js?t=2023-01-13T22:00:24.388" as="script">
     <title>CustomShader</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,6 +33,16 @@
       display: block;
       pointer-events: all;
       cursor: pointer;
+    }
+
+    #canvas {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      touch-action: none;
     }
 
     /* Once supported state is known, show the button */
@@ -82,7 +92,7 @@
         };
     </script>
     
-    <script src="wonderland.min.js?t=2022-11-22T12:41:59.407"></script>
+    <script src="wonderland.min.js?t=2023-01-13T22:00:24.388"></script>
     <script type="module">
         function loadScript(scriptURL) {
             return new Promise((res, rej) => {
@@ -107,7 +117,7 @@
                     if(el) setTimeout(() => el.remove(), 2000);
                 })
 
-                const bundle = await loadScript("CustomShader-bundle.js?t=2022-11-22T12:41:59.407");
+                const bundle = await loadScript("CustomShader-bundle.js?t=2023-01-13T22:00:24.388");
                 bundle.id = 'bundle';
 
                 WL.scene.load('CustomShader.bin');
@@ -116,6 +126,7 @@
             }
         }
         init();
+        
     </script>
     
     </script>
@@ -124,7 +135,7 @@
   <body>
     <canvas id="canvas" style="width: 100%; height: 100%; display: block;" tabindex="0"></canvas>
     <div id="version">
-        <a>Wonderland Engine 0.9.3</a>
+        <a>Wonderland Engine 0.9.5-nightly-20230113</a>
     </div>
     <div class="xr-button-container">
       <a id="vr-button" onclick="Module['webxr_request_session_func']('immersive-vr', ['local',], ['local','hand-tracking','hit-test',])">
