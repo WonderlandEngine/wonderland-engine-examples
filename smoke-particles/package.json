@@ -1,0 +1,19 @@
+{
+    "name": "SmokeParticles",
+    "version": "1.0.0",
+    "description": "My Wonderland project",
+    "main": "js/index.js",
+    "type": "module",
+    "module": "js/index.js",
+    "scripts": {
+        "build": "esbuild ./js/index.js --bundle --outfile=\"deploy/SmokeParticles-bundle.js\""
+    },
+    "keywords": [
+        "wonderland-engine"
+    ],
+    "dependencies": {
+        "@wonderlandengine/api": "^0.9.8",
+        "@wonderlandengine/components": "^1.0.0-rc.1",
+        "gl-matrix": "^3.4.3"
+    }
+}
