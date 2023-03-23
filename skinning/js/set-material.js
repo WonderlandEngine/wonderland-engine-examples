@@ -1,13 +1,22 @@
-WL.registerComponent('set-material', {
-    mat: {type: WL.Type.Material},
-}, {
-    init: function() {
-    },
-    start: function() {
-        setTimeout(() => {
-            this.object.getComponent('mesh').material = this.mat;
-        }, 1500);
-    },
-    update: function(dt) {
-    },
-});
+import {Component, Type} from '@wonderlandengine/api';
+
+export class SetMaterial extends Component {
+    static TypeName = 'set-material';
+    static Properties = {
+        mat: {type: Type.Material},
+        switchMat: {type: Type.Material},
+    };
+    init() {
+        this.switchflag = true;
+    }
+    start() {
+        setInterval(this.changeMaterial.bind(this), 1000);
+    }
+
+    changeMaterial() {
+        this.object.getComponent('mesh').material = this.switchflag
+            ? this.mat
+            : this.switchMat;
+        this.switchflag = !this.switchflag;
+    }
+}
