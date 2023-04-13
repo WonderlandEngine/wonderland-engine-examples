@@ -6,10 +6,8 @@ export class SetMaterial extends Component {
         mat: {type: Type.Material},
         switchMat: {type: Type.Material},
     };
-    init() {
-        this.switchflag = true;
-    }
     start() {
+        this.switchflag = true;
         setInterval(this.changeMaterial.bind(this), 1000);
     }
 

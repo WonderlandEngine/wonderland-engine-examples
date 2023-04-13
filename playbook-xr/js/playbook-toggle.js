@@ -1,10 +1,13 @@
 import {Component, Type} from '@wonderlandengine/api';
+import {CursorTarget} from '@wonderlandengine/components';
 
 export class PlaybookToggle extends Component {
     static TypeName = 'playbook-toggle';
     static Properties = {
         param: {type: Type.Float, default: 1.0},
     };
+
+    static Dependencies = [CursorTarget];
 
     init() {
         this.toggled = false;

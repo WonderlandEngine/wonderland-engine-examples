@@ -1,4 +1,5 @@
 import {Component, Type} from '@wonderlandengine/api';
+import {HowlerAudioSource} from '@wonderlandengine/components';
 
 export class Button extends Component {
     static TypeName = 'button';
@@ -6,6 +7,7 @@ export class Button extends Component {
         buttonMeshObject: {type: Type.Object},
         hoverMaterial: {type: Type.Material},
     };
+    static Dependencies = [HowlerAudioSource];
 
     start() {
         this.mesh = this.buttonMeshObject.getComponent('mesh');

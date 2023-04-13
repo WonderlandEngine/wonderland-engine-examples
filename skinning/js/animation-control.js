@@ -1,4 +1,4 @@
-import {Component, Type} from '@wonderlandengine/api';
+import {Component} from '@wonderlandengine/api';
 
 export class AnimationControl extends Component {
     static TypeName = 'animation-control';

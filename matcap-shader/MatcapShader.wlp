@@ -79,7 +79,7 @@
                     }
                 },
                 {
-                    "type": "rotate.js"
+                    "type": "rotate"
                 }
             ],
             "name": "WL_ShaderBall_1",
@@ -150,7 +150,7 @@
                     }
                 },
                 {
-                    "type": "rotate.js"
+                    "type": "rotate"
                 }
             ],
             "name": "WL_ShaderBall_0",
@@ -189,7 +189,7 @@
                     }
                 },
                 {
-                    "type": "rotate.js"
+                    "type": "rotate"
                 }
             ],
             "name": "WL_ShaderBall_2",
@@ -267,7 +267,7 @@
                     }
                 },
                 {
-                    "type": "rotate.js"
+                    "type": "rotate"
                 }
             ],
             "name": "WL_ShaderBall_4",
@@ -306,7 +306,7 @@
                     }
                 },
                 {
-                    "type": "rotate.js"
+                    "type": "rotate"
                 }
             ],
             "name": "WL_ShaderBall_3",
@@ -345,7 +345,7 @@
                     }
                 },
                 {
-                    "type": "rotate.js"
+                    "type": "rotate"
                 }
             ],
             "name": "WL_ShaderBall_5",
@@ -404,7 +404,7 @@
                     }
                 },
                 {
-                    "type": "rotate.js"
+                    "type": "rotate"
                 }
             ],
             "name": "WL_ShaderBall_7",
@@ -443,7 +443,7 @@
                     }
                 },
                 {
-                    "type": "rotate.js"
+                    "type": "rotate"
                 }
             ],
             "name": "WL_ShaderBall_6",
@@ -482,7 +482,7 @@
                     }
                 },
                 {
-                    "type": "rotate.js"
+                    "type": "rotate"
                 }
             ],
             "name": "WL_ShaderBall_8",
