@@ -12,39 +12,18 @@
  */
 
 /* wle:auto-imports:start */
-import {Cursor} from '@wonderlandengine/components';
-import {FingerCursor} from '@wonderlandengine/components';
-import {HandTracking} from '@wonderlandengine/components';
-import {HowlerAudioListener} from '@wonderlandengine/components';
-import {MouseLookComponent} from '@wonderlandengine/components';
-import {PlaneDetection} from '@wonderlandengine/components';
-import {PlayerHeight} from '@wonderlandengine/components';
-import {VrModeActiveSwitch} from '@wonderlandengine/components';
-import {PlaceShapeAnchor} from './place-shape-anchor.js';
-import {RandomPlaneColors} from './random-plane-colors.js';
 /* wle:auto-imports:end */
 
 import {loadRuntime} from '@wonderlandengine/api';
 import * as API from '@wonderlandengine/api'; // Deprecated: Backward compatibility.
 
 /* wle:auto-constants:start */
-const ProjectName = 'MixedReality';
-const RuntimeBaseName = 'WonderlandRuntime';
-const WithPhysX = false;
-const WithLoader = false;
-const WebXRFramebufferScaleFactor = 1;
-const WebXRRequiredFeatures = ['local',];
-const WebXROptionalFeatures = ['local','local-floor','hand-tracking','hit-test','plane-detection','anchors',];
 /* wle:auto-constants:end */
 
-const engine = await loadRuntime(RuntimeBaseName, {
-    physx: WithPhysX,
-    loader: WithLoader,
-});
+const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
 Object.assign(engine, API); // Deprecated: Backward compatibility.
 window.WL = engine; // Deprecated: Backward compatibility.
 
-engine.xrFramebufferScaleFactor = WebXRFramebufferScaleFactor;
 engine.onSceneLoaded.once(() => {
     const el = document.getElementById('version');
     if (el) setTimeout(() => el.remove(), 2000);
@@ -54,7 +33,11 @@ engine.onSceneLoaded.once(() => {
 
 function requestSession(mode) {
     engine
-        .requestXRSession(mode, WebXRRequiredFeatures, WebXROptionalFeatures)
+        .requestXRSession(
+            mode,
+            Constants.WebXRRequiredFeatures,
+            Constants.WebXROptionalFeatures
+        )
         .catch((e) => console.error(e));
 }
 
@@ -79,19 +62,9 @@ if (document.readyState === 'loading') {
 }
 
 /* wle:auto-register:start */
-engine.registerComponent(Cursor);
-engine.registerComponent(FingerCursor);
-engine.registerComponent(HandTracking);
-engine.registerComponent(HowlerAudioListener);
-engine.registerComponent(MouseLookComponent);
-engine.registerComponent(PlaneDetection);
-engine.registerComponent(PlayerHeight);
-engine.registerComponent(VrModeActiveSwitch);
-engine.registerComponent(PlaceShapeAnchor);
-engine.registerComponent(RandomPlaneColors);
 /* wle:auto-register:end */
 
-engine.scene.load(`${ProjectName}.bin`);
+engine.scene.load(`${Constants.ProjectName}.bin`);
 
 /* wle:auto-benchmark:start */
 /* wle:auto-benchmark:end */
