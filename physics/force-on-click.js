@@ -1,4 +1,8 @@
-import {Component, Type} from '@wonderlandengine/api';
+import {Component, Type, ForceMode} from '@wonderlandengine/api';
+import {Cursor} from '@wonderlandengine/components';
+
+/* Temporary vector for the force to apply */
+const force = new Float32Array(3);
 
 export class ApplyForceOnClick extends Component {
     static TypeName = 'apply-force-on-click';
@@ -7,21 +11,26 @@ export class ApplyForceOnClick extends Component {
     };
 
     start() {
-        const target = this.object.getComponent('cursor').globalTarget;
+        /* The global target allows receiving onClick for any object
+         * that has a physx component attached. The cursor is set to
+         * ray cast mode "physx" to ray cast against physx components
+         * instead of collision components */
+        const target = this.object.getComponent(Cursor).globalTarget;
         target.onClick.add(this.onClick.bind(this));
-        this.force = new Float32Array(3);
     }
 
     onClick(object, cursor) {
         const body = object.getComponent('physx');
         if (body.static) return;
-        /** map cursor direction to the force and scale with strength**/
-        this.force = [...cursor.direction].map((f) => f * this.strength);
-        body.addForce(
-            this.force,
-            this.engine.ForceMode.Force,
-            false,
-            cursor.rayHit.locations[0]
-        );
+
+        /* Get cursor direction */
+        cursor.object.getForwardWorld(force);
+
+        /* Multiply with the strenght set in the editor */
+        force[0] *= this.strength;
+        force[1] *= this.strength;
+        force[2] *= this.strength;
+
+        body.addForce(force, ForceMode.Force, false, cursor.cursorPos);
     }
 }
