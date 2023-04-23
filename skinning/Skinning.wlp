@@ -282,13 +282,6 @@
                     "mesh": {
                         "skin": "36"
                     }
-                },
-                {
-                    "type": "set-material",
-                    "set-material": {
-                        "mat": "33",
-                        "switchMat": "26"
-                    }
                 }
             ]
         },
@@ -304,9 +297,6 @@
                         "autoplay": true,
                         "playCount": 0
                     }
-                },
-                {
-                    "type": "animation-control"
                 }
             ],
             "parent": "37",
