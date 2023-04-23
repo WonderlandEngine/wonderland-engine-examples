@@ -12,34 +12,18 @@
  */
 
 /* wle:auto-imports:start */
-import {MouseLookComponent} from '@wonderlandengine/components';
-import {WasdControlsComponent} from '@wonderlandengine/components';
-import {LookAtPlayer} from './look-at-player.js';
-import {TextChangeSpacing} from './text-change-spacing.js';
-import {TextScroller} from './text-scroller.js';
 /* wle:auto-imports:end */
 
 import {loadRuntime} from '@wonderlandengine/api';
 import * as API from '@wonderlandengine/api'; // Deprecated: Backward compatibility.
 
 /* wle:auto-constants:start */
-const ProjectName = 'Text';
-const RuntimeBaseName = 'WonderlandRuntime';
-const WithPhysX = false;
-const WithLoader = false;
-const WebXRFramebufferScaleFactor = 1;
-const WebXRRequiredFeatures = ['local'];
-const WebXROptionalFeatures = ['local', 'hand-tracking', 'hit-test'];
 /* wle:auto-constants:end */
 
-const engine = await loadRuntime(RuntimeBaseName, {
-    physx: WithPhysX,
-    loader: WithLoader,
-});
+const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
 Object.assign(engine, API); // Deprecated: Backward compatibility.
 window.WL = engine; // Deprecated: Backward compatibility.
 
-engine.xrFramebufferScaleFactor = WebXRFramebufferScaleFactor;
 engine.onSceneLoaded.once(() => {
     const el = document.getElementById('version');
     if (el) setTimeout(() => el.remove(), 2000);
@@ -49,7 +33,11 @@ engine.onSceneLoaded.once(() => {
 
 function requestSession(mode) {
     engine
-        .requestXRSession(mode, WebXRRequiredFeatures, WebXROptionalFeatures)
+        .requestXRSession(
+            mode,
+            Constants.WebXRRequiredFeatures,
+            Constants.WebXROptionalFeatures
+        )
         .catch((e) => console.error(e));
 }
 
@@ -74,14 +62,9 @@ if (document.readyState === 'loading') {
 }
 
 /* wle:auto-register:start */
-engine.registerComponent(MouseLookComponent);
-engine.registerComponent(WasdControlsComponent);
-engine.registerComponent(LookAtPlayer);
-engine.registerComponent(TextChangeSpacing);
-engine.registerComponent(TextScroller);
 /* wle:auto-register:end */
 
-engine.scene.load(`${ProjectName}.bin`);
+engine.scene.load(`${Constants.ProjectName}.bin`);
 
 /* wle:auto-benchmark:start */
 /* wle:auto-benchmark:end */

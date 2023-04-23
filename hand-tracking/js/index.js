@@ -20,14 +20,10 @@ import * as API from '@wonderlandengine/api'; // Deprecated: Backward compatibil
 /* wle:auto-constants:start */
 /* wle:auto-constants:end */
 
-const engine = await loadRuntime(RuntimeBaseName, {
-    physx: WithPhysX,
-    loader: WithLoader,
-});
+const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
 Object.assign(engine, API); // Deprecated: Backward compatibility.
 window.WL = engine; // Deprecated: Backward compatibility.
 
-engine.xrFramebufferScaleFactor = WebXRFramebufferScaleFactor;
 engine.onSceneLoaded.once(() => {
     const el = document.getElementById('version');
     if (el) setTimeout(() => el.remove(), 2000);
@@ -37,7 +33,11 @@ engine.onSceneLoaded.once(() => {
 
 function requestSession(mode) {
     engine
-        .requestXRSession(mode, WebXRRequiredFeatures, WebXROptionalFeatures)
+        .requestXRSession(
+            mode,
+            Constants.WebXRRequiredFeatures,
+            Constants.WebXROptionalFeatures
+        )
         .catch((e) => console.error(e));
 }
 
@@ -64,7 +64,7 @@ if (document.readyState === 'loading') {
 /* wle:auto-register:start */
 /* wle:auto-register:end */
 
-engine.scene.load(`${ProjectName}.bin`);
+engine.scene.load(`${Constants.ProjectName}.bin`);
 
 /* wle:auto-benchmark:start */
 /* wle:auto-benchmark:end */
