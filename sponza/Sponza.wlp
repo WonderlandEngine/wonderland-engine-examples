@@ -11,20 +11,20 @@
                 }
             ],
             "translation": [
-                -0.1038165,
-                2.3439409,
+                -0.1038164,
+                2.3439404,
                 0.0
             ],
             "rotation": [
                 0.0,
-                -0.3768196,
+                -0.7071067,
                 0.0,
-                0.9262866
+                0.7071068
             ],
             "scaling": [
-                0.9999994,
+                0.9999992,
                 1.0,
-                0.9999994
+                0.9999992
             ]
         },
         "17": {
@@ -76,43 +76,14 @@
                     "type": "light",
                     "light": {
                         "attenuation": 0.1
-                    }
+                    },
+                    "active": true
                 }
             ],
             "translation": [
                 6.3584785,
                 3.0,
                 -0.46077
-            ],
-            "rotation": [
-                0.0,
-                0.0,
-                0.0,
-                1.0
-            ],
-            "scaling": [
-                1.0,
-                1.0,
-                1.0
-            ]
-        },
-        "23": {
-            "name": "Light.000",
-            "components": [
-                {
-                    "type": "light",
-                    "light": {
-                        "attenuation": 0.1,
-                        "type": "point",
-                        "shadows": true,
-                        "shadowBias": 0.5
-                    }
-                }
-            ],
-            "translation": [
-                -1.0,
-                3.0,
-                -0.8057701
             ],
             "rotation": [
                 0.0,
@@ -162,7 +133,7 @@
             ]
         },
         "184": {
-            "name": "Light.001",
+            "name": "lower-green",
             "components": [
                 {
                     "type": "light",
@@ -175,7 +146,8 @@
                         "attenuation": 0.0799999,
                         "shadows": false,
                         "shadowBias": 1.0,
-                        "shadowNormalBias": 0.001
+                        "shadowNormalBias": 0.001,
+                        "range": 15.0
                     }
                 },
                 {
@@ -190,25 +162,25 @@
                 }
             ],
             "translation": [
-                -0.0,
-                0.0,
+                -0.1038164,
+                2.3439404,
                 0.0
             ],
             "rotation": [
                 0.0,
-                0.3768197,
+                -0.3885317,
                 0.0,
-                0.9262865
+                0.9214353
             ],
             "scaling": [
-                0.1199627,
+                0.1199626,
                 0.1199999,
                 0.1199998
             ],
-            "parent": "14"
+            "parent": null
         },
         "185": {
-            "name": "Light.001",
+            "name": "upper-red",
             "components": [
                 {
                     "type": "light",
@@ -221,7 +193,8 @@
                         "attenuation": 0.0799999,
                         "shadows": false,
                         "shadowBias": 1.0,
-                        "shadowNormalBias": 0.001
+                        "shadowNormalBias": 0.001,
+                        "range": 20.0
                     }
                 },
                 {
@@ -239,25 +212,25 @@
                 }
             ],
             "translation": [
-                0.0,
-                4.9289264,
+                -0.1038164,
+                7.2728667,
                 0.0
             ],
             "rotation": [
-                -0.0,
-                0.3768197,
-                -7.853159900150786e-8,
-                0.9262865
+                5.5530225750999314e-8,
+                -0.3885317,
+                -5.5530232856426665e-8,
+                0.9214353
             ],
             "scaling": [
                 0.1076399,
                 0.1076399,
                 0.1076399
             ],
-            "parent": "14"
+            "parent": null
         },
         "186": {
-            "name": "Light.001",
+            "name": "lower-red",
             "components": [
                 {
                     "type": "light",
@@ -270,13 +243,14 @@
                         "attenuation": 0.0799999,
                         "shadows": false,
                         "shadowBias": 1.0,
-                        "shadowNormalBias": 0.001
+                        "shadowNormalBias": 0.001,
+                        "range": 20.0
                     }
                 },
                 {
                     "type": "oval-motion",
                     "oval-motion": {
-                        "time": 3.0
+                        "time": 15.0
                     }
                 },
                 {
@@ -288,25 +262,25 @@
                 }
             ],
             "translation": [
-                -0.0,
-                0.0,
+                -0.1038164,
+                2.3439404,
                 0.0
             ],
             "rotation": [
                 0.0,
-                0.3768197,
+                -0.3885317,
                 0.0,
-                0.9262866
+                0.9214353
             ],
             "scaling": [
-                0.1199998,
+                0.1199997,
                 0.1199999,
-                0.1199998
+                0.1199997
             ],
-            "parent": "14"
+            "parent": null
         },
         "187": {
-            "name": "Light.001",
+            "name": "upper-green",
             "components": [
                 {
                     "type": "light",
@@ -317,10 +291,12 @@
                             0.7780392
                         ],
                         "attenuation": 0.0799999,
-                        "shadows": false,
+                        "shadows": true,
                         "shadowBias": 1.0,
-                        "shadowNormalBias": 0.001
-                    }
+                        "shadowNormalBias": 0.001,
+                        "range": 30.0
+                    },
+                    "active": false
                 },
                 {
                     "type": "oval-motion",
@@ -337,22 +313,22 @@
                 }
             ],
             "translation": [
-                0.0,
-                4.9083642,
+                -0.1038164,
+                7.252305,
                 0.0
             ],
             "rotation": [
                 0.0,
-                0.3768197,
+                -0.3885317,
                 0.0,
-                0.9262866
+                0.9214353
             ],
             "scaling": [
                 0.1099999,
-                0.1100015,
+                0.1100014,
                 0.1099999
             ],
-            "parent": "14"
+            "parent": null
         }
     },
     "meshes": {
