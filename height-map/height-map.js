@@ -1,6 +1,9 @@
 import {Component, Type, Mesh, MeshAttribute, MeshIndexType} from '@wonderlandengine/api';
 
-import * as glMatrix from 'gl-matrix';
+import {vec3} from 'gl-matrix';
+
+const u = new Float32Array(3);
+const v = new Float32Array(3);
 
 /**
  * Component to generate a mesh from a 2D height map image
@@ -168,17 +171,12 @@ export class HeightMap extends Component {
         return height;
     }
 
-    surfaceNormal() {
-        const u = new Float32Array(3);
-        const v = new Float32Array(3);
+    surfaceNormal(out, p1, p2, p3) {
+        vec3.sub(u, p2, p1);
+        vec3.sub(v, p3, p1);
+        vec3.cross(out, u, v);
+        vec3.normalize(out, out);
 
-        return function (out, p1, p2, p3) {
-            glMatrix.vec3.sub(u, p2, p1);
-            glMatrix.vec3.sub(v, p3, p1);
-            glMatrix.vec3.cross(out, u, v);
-            glMatrix.vec3.normalize(out, out);
-
-            return out;
-        };
+        return out;
     }
 }
