@@ -1,9 +1,9 @@
-const CACHE = 'NormalMaps-static-v1';
+const CacheName = 'NormalMaps-static-v1';
 const files = [
     "index.html",
-    "wonderland.min.js",
-    "vr-button.svg",
-    "ar-button.svg",
+
+    "manifest.json",
+    "WonderlandRuntime-LoadingScreen.bin",
     "WonderlandRuntime.wasm",
     "WonderlandRuntime.js",
     "WonderlandRuntime-simd.wasm",
@@ -17,16 +17,22 @@ const files = [
 ];
 
 self.addEventListener('install', event => {
-    event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(files) ));
+    event.waitUntil(caches.open(CacheName).then(cache => cache.addAll(files) ));
 });
-self.addEventListener('activate', event => {
+self.addEventListener('activate', () => {
     console.log('Service worker initialized.');
 });
 
-self.addEventListener('fetch', event => {
-    const url = new URL(event.request.url);
-    const base = url.pathname.split('?')[0];
-    if(url.origin == location.origin && files.includes(base)) {
-        event.respondWith(caches.match(base));
-    }
+self.addEventListener('fetch', e => {
+    e.respondWith(
+        (async () => {
+            const r = await caches.match(e.request, {ignoreSearch: true});
+            if (r) return r;
+
+            const response = await fetch(e.request);
+            const cache = await caches.open(CacheName);
+            cache.put(e.request, response.clone());
+            return response;
+        })()
+    );
 });

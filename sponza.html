@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <link rel="preload" href="Sponza-bundle.js?t=2023-01-13T22:02:59.729" as="script">
+    <link rel="preload" href="Sponza-bundle.js?t=2023-04-23T16:29:35.992" as="script">
     <title>Sponza</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -86,48 +86,10 @@
     }
 
     </style>
-    <script>
-        var Module = {
-          webxr_framebuffer_scale_factor: 1.000
-        };
-    </script>
     
-    <script src="wonderland.min.js?t=2023-01-13T22:02:59.729"></script>
-    <script type="module">
-        function loadScript(scriptURL) {
-            return new Promise((res, rej) => {
-                const s = document.createElement('script');
-                s.onload = () => res(s);
-                s.onerror = rej;
-                s.src = scriptURL;
-                document.body.appendChild(s);
-            });
-        }
 
-        async function init() {
-            try {
-                await WL.loadRuntime('WonderlandRuntime');
-                WL.onXRSupported.push((type, supported) => {
-                    const button = document.getElementById(type + '-button');
-                    if(button) button.dataset.supported = supported;
-                });
+    <script type="module" src="Sponza-bundle.js?t=2023-04-23T16:29:35.992"></script>
 
-                WL.onSceneLoaded.push(() => {
-                    const el = document.getElementById('version');
-                    if(el) setTimeout(() => el.remove(), 2000);
-                })
-
-                const bundle = await loadScript("Sponza-bundle.js?t=2023-01-13T22:02:59.729");
-                bundle.id = 'bundle';
-
-                WL.scene.load('Sponza.bin');
-            } catch(e) {
-              console.error(e);
-            }
-        }
-        init();
-        
-    </script>
     
     </script>
     
@@ -135,13 +97,12 @@
   <body>
     <canvas id="canvas" style="width: 100%; height: 100%; display: block;" tabindex="0"></canvas>
     <div id="version">
-        <a>Wonderland Engine 0.9.5-nightly-20230113</a>
+        <a>Wonderland Engine 1.0.0-nightly-20230422</a>
     </div>
     <div class="xr-button-container">
-      <a id="vr-button" onclick="Module['webxr_request_session_func']('immersive-vr', ['local',], ['local','hand-tracking','hit-test',])">
+      <a id="vr-button">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 109.41 65"><rect class="xr-button-frame" x="3.5" y="3.5" width="102.41" height="58" rx="16.68" style="fill:none;stroke-linejoin:round;stroke-width:7px"/><path class="xr-button-label" d="M36.24,48.84a2,2,0,0,1-1.78-1.15L23.39,17.46a1.84,1.84,0,0,1,1.78-1.84h5.45a1.8,1.8,0,0,1,1.66,1.21l7.29,20.42,7.28-20.42a1.8,1.8,0,0,1,1.67-1.21H54a1.84,1.84,0,0,1,1.78,1.84L44.67,47.69a2,2,0,0,1-1.78,1.15Z"/><path class="xr-button-label" d="M70.61,40H68v7a1.84,1.84,0,0,1-1.78,1.84H61.31A1.83,1.83,0,0,1,59.54,47V17.46a1.83,1.83,0,0,1,1.77-1.84H73s13,.12,13,12.22c0,6-3.21,9-6.42,10.5L86.38,47a1.76,1.76,0,0,1-1.77,1.84h-5.8a1.91,1.91,0,0,1-1.43-.69ZM68,32.09h5c2.24,0,4.08-1.15,4.08-4.25s-1.84-4.36-4.08-4.36H68Z"/></svg>
       </a>
-
       
     </div>
   </body>
