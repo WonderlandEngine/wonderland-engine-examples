@@ -10,23 +10,21 @@
                     }
                 }
             ],
-            "transformation": [
-                0.7160133,
-                0.0,
-                0.6980865,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                -0.6980865,
-                0.0,
-                0.7160133,
-                0.0,
+            "translation": [
                 -2.3766674,
-                1.647154,
-                4.0391578,
-                1.0
+                1.6471539,
+                4.0391578
+            ],
+            "rotation": [
+                0.0,
+                -0.3768199,
+                0.0,
+                0.9262865
+            ],
+            "scaling": [
+                0.9999998,
+                1.0,
+                0.9999998
             ]
         },
         "15": {
@@ -40,23 +38,21 @@
                     }
                 }
             ],
-            "transformation": [
+            "translation": [
+                0.0,
+                0.0,
+                1.1920928955078125e-7
+            ],
+            "rotation": [
+                -0.7072496,
+                0.0,
+                0.0,
+                0.7069638
+            ],
+            "scaling": [
                 4.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                -0.0016164,
-                -3.9999997,
-                0.0,
-                0.0,
-                3.9999997,
-                -0.0016164,
-                0.0,
-                0.0,
-                0.0,
-                1.192092895507813e-7,
-                1.0
+                4.0,
+                4.0
             ]
         },
         "16": {
@@ -70,23 +66,21 @@
                     }
                 }
             ],
-            "transformation": [
-                0.5,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.5,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.5,
-                0.0,
+            "translation": [
                 -2.4659779,
                 0.4999999,
-                -2.2636544,
+                -2.2636544
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
                 1.0
+            ],
+            "scaling": [
+                0.5,
+                0.5,
+                0.5
             ]
         },
         "17": {
@@ -141,22 +135,20 @@
                     }
                 }
             ],
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
+            "translation": [
                 0.0,
                 3.0,
-                2.0,
+                2.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
                 1.0
             ]
         },
@@ -170,22 +162,20 @@
                     }
                 }
             ],
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
+            "translation": [
                 -1.0,
                 3.0,
-                -1.0,
+                -1.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
                 1.0
             ]
         },
@@ -200,22 +190,20 @@
                     }
                 }
             ],
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
+            "translation": [
                 2.424299,
                 1.0,
-                -0.0446543,
+                -0.0446542
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
                 1.0
             ]
         },
@@ -230,23 +218,21 @@
                     }
                 }
             ],
-            "transformation": [
-                0.75,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.75,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.75,
-                0.0,
+            "translation": [
                 0.4999999,
                 0.75,
-                -1.25,
+                -1.25
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
                 1.0
+            ],
+            "scaling": [
+                0.75,
+                0.75,
+                0.75
             ]
         },
         "37": {
@@ -254,23 +240,21 @@
                 "name": "Armature",
                 "file": "mixamo-breakdance.glb"
             },
-            "transformation": [
-                0.0099999,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                -0.0,
-                0.0099999,
-                0.0,
-                0.0,
-                -0.0099999,
-                -0.0,
-                0.0,
+            "translation": [
                 0.0,
                 1.4901161193847656e-8,
-                0.3106041,
-                1.0
+                0.310604
+            ],
+            "rotation": [
+                0.7071067,
+                0.0,
+                0.0,
+                0.7071067
+            ],
+            "scaling": [
+                0.0099999,
+                0.0099999,
+                0.0099999
             ]
         },
         "38": {
@@ -851,23 +835,21 @@
                 "name": "Z_UP",
                 "file": "CesiumMan.glb"
             },
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                -1.192085932189002e-7,
-                -0.999994,
-                0.0,
-                0.0,
-                0.999994,
-                -1.192085932189002e-7,
-                0.0,
+            "translation": [
                 -1.2229355,
                 0.0,
+                0.0
+            ],
+            "rotation": [
+                -0.7071068,
                 0.0,
-                1.0
+                0.0,
+                0.7071067
+            ],
+            "scaling": [
+                1.0,
+                0.9999939,
+                0.9999939
             ]
         },
         "114": {
@@ -891,26 +873,24 @@
                     }
                 }
             ],
-            "transformation": [
-                0.9973582,
-                0.0000964,
-                -0.0726386,
-                0.0,
-                -0.0000597,
-                0.9999996,
-                0.0005056,
-                0.0,
-                0.0726389,
-                -0.0004997,
-                0.9973579,
-                0.0,
-                0.0008547,
-                -0.0200001,
-                0.6476648,
-                1.0
-            ],
             "parent": "114",
-            "skin": "112"
+            "skin": "112",
+            "translation": [
+                0.0008546,
+                -0.0200001,
+                0.6476647
+            ],
+            "rotation": [
+                0.0002515,
+                0.0363433,
+                0.000039,
+                0.9993393
+            ],
+            "scaling": [
+                0.9999998,
+                0.9999997,
+                0.9999997
+            ]
         },
         "116": {
             "link": {
@@ -1061,24 +1041,6 @@
                 "name": "Cesium_Man<Armature<Z_UP",
                 "file": "CesiumMan.glb"
             },
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0467092,
-                0.0000017,
-                0.0,
-                1.0
-            ],
             "components": [
                 {
                     "mesh": {
@@ -1086,7 +1048,23 @@
                     }
                 }
             ],
-            "parent": "114"
+            "parent": "114",
+            "translation": [
+                0.0467091,
+                0.0000016,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
         },
         "176": {
             "link": {
@@ -1094,23 +1072,21 @@
                 "file": "Sci-Fi_warrior_V02_male_rigged.glb"
             },
             "name": "Armature2",
-            "transformation": [
-                0.0060574,
-                -0.0,
-                0.0079565,
-                0.0,
-                -0.0079563,
-                -1.8328034201431368e-8,
-                0.0060573,
-                0.0,
-                1.4304789353047909e-8,
-                -0.0099997,
-                -1.1622641515884881e-8,
-                0.0,
-                0.1872284,
+            "translation": [
+                0.1872283,
                 -4.4703483581542975e-8,
-                -0.1393271,
-                1.0
+                -0.139327
+            ],
+            "rotation": [
+                0.6335907,
+                -0.3139479,
+                0.3139485,
+                0.6335896
+            ],
+            "scaling": [
+                0.0099998,
+                0.0099996,
+                0.0099996
             ]
         },
         "177": {
@@ -1201,25 +1177,23 @@
                     "active": true
                 }
             ],
-            "transformation": [
-                1.0000034,
-                -2.020984197770304e-7,
-                -1.4843021745036824e-7,
-                0.0,
-                2.020986897832701e-7,
-                1.0000041,
-                0.000001,
-                0.0,
-                1.484297627030174e-7,
-                -0.000001,
-                1.000002,
+            "parent": "176",
+            "translation": [
                 0.0,
                 0.0,
-                0.0,
-                0.0,
+                0.0
+            ],
+            "rotation": [
+                4.999979523745424e-7,
+                7.421480319180773e-8,
+                -1.0104889724971144e-7,
                 1.0
             ],
-            "parent": "176"
+            "scaling": [
+                1.0000034,
+                1.000004,
+                1.000002
+            ]
         },
         "183": {
             "link": {
@@ -1888,67 +1862,73 @@
         },
         "147": {
             "link": {
-                "name": "texture_1",
+                "name": "texture_0",
                 "file": "Sci-Fi_warrior_V02_male_rigged.glb"
             }
         },
         "148": {
             "link": {
-                "name": "texture_2",
+                "name": "texture_1",
                 "file": "Sci-Fi_warrior_V02_male_rigged.glb"
             }
         },
         "149": {
             "link": {
-                "name": "texture_3",
+                "name": "texture_2",
                 "file": "Sci-Fi_warrior_V02_male_rigged.glb"
             }
         },
         "150": {
             "link": {
-                "name": "texture_4",
+                "name": "texture_3",
                 "file": "Sci-Fi_warrior_V02_male_rigged.glb"
             }
         },
         "151": {
             "link": {
-                "name": "texture_5",
+                "name": "texture_4",
                 "file": "Sci-Fi_warrior_V02_male_rigged.glb"
             }
         },
         "152": {
             "link": {
-                "name": "texture_6",
+                "name": "texture_5",
                 "file": "Sci-Fi_warrior_V02_male_rigged.glb"
             }
         },
         "153": {
             "link": {
-                "name": "texture_7",
+                "name": "texture_6",
                 "file": "Sci-Fi_warrior_V02_male_rigged.glb"
             }
         },
         "154": {
             "link": {
-                "name": "texture_8",
+                "name": "texture_7",
                 "file": "Sci-Fi_warrior_V02_male_rigged.glb"
             }
         },
         "155": {
             "link": {
-                "name": "texture_9",
+                "name": "texture_8",
                 "file": "Sci-Fi_warrior_V02_male_rigged.glb"
             }
         },
         "156": {
             "link": {
-                "name": "texture_10",
+                "name": "texture_9",
                 "file": "Sci-Fi_warrior_V02_male_rigged.glb"
             }
         },
         "250": {
             "link": {
                 "name": "texture_0",
+                "file": "Sci-Fi_warrior_V02_male_rigged.glb"
+            }
+        },
+        "300": {
+            "link": {
+                "name": "texture_10",
                 "file": "Sci-Fi_warrior_V02_male_rigged.glb"
             }
         }
@@ -2038,6 +2018,9 @@
             "link": {
                 "name": "DefaultFontMaterial",
                 "file": "default"
+            },
+            "Text": {
+                "font": "299"
             }
         },
         "20": {
@@ -2275,7 +2258,7 @@
         },
         "289": {
             "link": {
-                "name": "Sky.vert",
+                "name": "FullScreenTriangle.vert",
                 "file": "default"
             }
         },
@@ -2296,15 +2279,27 @@
                 "name": "TileFeedback.frag",
                 "file": "default"
             }
+        },
+        "295": {
+            "link": {
+                "name": "Background.frag",
+                "file": "default"
+            }
+        },
+        "296": {
+            "link": {
+                "name": "FullScreenTriangle.vert",
+                "file": "default"
+            }
         }
     },
     "settings": {
         "project": {
             "name": "Skinning",
             "version": [
+                1,
                 0,
-                8,
-                10
+                0
             ]
         },
         "vr": {
@@ -2314,8 +2309,13 @@
         },
         "scripting": {
             "sourcePaths": [
-                "/js/editor-components-bundle.js"
-            ]
+                "js"
+            ],
+            "libraryPaths": [
+                "/js/lib/"
+            ],
+            "bundlingType": "esbuild",
+            "autoManageEntryPoint": true
         }
     },
     "animations": {
@@ -2537,6 +2537,9 @@
             "link": {
                 "name": "Flat Opaque Textured",
                 "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true
             }
         },
         "258": {
@@ -2561,6 +2564,9 @@
             "link": {
                 "name": "Phong Opaque Textured",
                 "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true
             }
         },
         "266": {
@@ -2585,6 +2591,9 @@
             "link": {
                 "name": "Physical Opaque Textured",
                 "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true
             }
         },
         "291": {
@@ -2598,6 +2607,27 @@
                 "name": "Sky",
                 "file": "default"
             }
+        },
+        "297": {
+            "link": {
+                "name": "Phong Normalmapped",
+                "file": "default"
+            }
+        },
+        "298": {
+            "link": {
+                "name": "Phong Lightmapped",
+                "file": "default"
+            }
         }
-    }
+    },
+    "fonts": {
+        "299": {
+            "link": {
+                "name": "DejaVuSans.ttf",
+                "file": "default"
+            }
+        }
+    },
+    "languages": {}
 }

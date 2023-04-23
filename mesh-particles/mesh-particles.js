@@ -1,3 +1,7 @@
+import {Component, Type} from '@wonderlandengine/api';
+
+import * as glMatrix from 'gl-matrix';
+
 /**
 Very simple mesh particles system
 
@@ -6,34 +10,42 @@ and a simple pooling pattern.
 
 Use it and customize it for your own game.
 */
-WL.registerComponent('mesh-particles', {
-    /* Mesh for spawned particles */
-    mesh: {type: WL.Type.Mesh, default: null},
-    /* Material for spawned particles */
-    material: {type: WL.Type.Material, default: null},
-    /* Delay between particle spawns. If below time of a frame, will spawn multiple particles in update. */
-    delay: {type: WL.Type.Float, default: 0.1},
-    /* Maximum number of particles, once limit is reached, particles are recycled first-in-first-out. */
-    maxParticles: {type: WL.Type.Int, default: 64},
-    /* Initial speed of emitted particles. */
-    initialSpeed: {type: WL.Type.Float, default: 30},
-    /* Size of a particle */
-    particleScale: {type: WL.Type.Float, default: 0.1},
-}, {
-    init: function() {
+export class MeshParticles extends Component {
+    static TypeName = 'mesh-particles';
+    static Properties = {
+        /* Mesh for spawned particles */
+        mesh: {type: Type.Mesh, default: null},
+        /* Material for spawned particles */
+        material: {type: Type.Material, default: null},
+        /* Delay between particle spawns. If below time of a frame, will spawn multiple particles in update. */
+        delay: {type: Type.Float, default: 0.1},
+        /* Maximum number of particles, once limit is reached, particles are recycled first-in-first-out. */
+        maxParticles: {type: Type.Int, default: 64},
+        /* Initial speed of emitted particles. */
+        initialSpeed: {type: Type.Float, default: 30},
+        /* Size of a particle */
+        particleScale: {type: Type.Float, default: 0.1},
+    };
+
+    init() {
         this.time = 0.0;
         this.count = 0;
-    },
-    start: function() {
+    }
+
+    start() {
         this.objects = [];
         this.velocities = [];
 
-        this.objects = WL.scene.addObjects(this.maxParticles, null, this.maxParticles);
+        this.objects = this.engine.scene.addObjects(
+            this.maxParticles,
+            null,
+            this.maxParticles
+        );
 
-        for(let i = 0; i < this.maxParticles; ++i) {
+        for (let i = 0; i < this.maxParticles; ++i) {
             this.velocities.push([0, 0, 0]);
             let obj = this.objects[i];
-            obj.name = "particle" + this.count.toString();
+            obj.name = 'particle' + this.count.toString();
             let mesh = obj.addComponent('mesh');
 
             mesh.mesh = this.mesh;
@@ -41,23 +53,24 @@ WL.registerComponent('mesh-particles', {
             /* Most efficient way to hide the mesh */
             obj.scale([0, 0, 0]);
         }
-    },
-    update: function(dt) {
+    }
+
+    update(dt) {
         this.time += dt;
-        if(this.time > this.delay) {
+        if (this.time > this.delay) {
             /* Time to spawn particles */
-            const spawnCount = Math.floor(this.time / this.delay)
-            for(let i = 0; i < spawnCount; ++i) this.spawn();
-            this.time -= this.delay*spawnCount;
+            const spawnCount = Math.floor(this.time / this.delay);
+            for (let i = 0; i < spawnCount; ++i) this.spawn();
+            this.time -= this.delay * spawnCount;
         }
 
-        this.object.translate([dt*4, 0, 0]);
-        this.object.rotateAxisAngleDeg([0, 1, 0], dt*90);
+        this.object.translate([dt * 4, 0, 0]);
+        this.object.rotateAxisAngleDeg([0, 1, 0], dt * 90);
 
         /* Target for retrieving particles world locations */
         let origin = [0, 0, 0];
         let distance = [0, 0, 0];
-        for(let i = 0; i < Math.min(this.count, this.objects.length); ++i) {
+        for (let i = 0; i < Math.min(this.count, this.objects.length); ++i) {
             /* Get translation first, as object.translate() will mark
              * the object as dirty, which will cause it to recalculate
              * obj.transformWorld on access. We want to avoid this and
@@ -67,30 +80,30 @@ WL.registerComponent('mesh-particles', {
 
             /* Apply gravity */
             const vel = this.velocities[i];
-            vel[1] -= 9.81*dt;
+            vel[1] -= 9.81 * dt;
 
             /* Check if particle would collide */
-            if((origin[1] + vel[1]*dt) <= this.particleScale && vel[1] <= 0) {
+            if (origin[1] + vel[1] * dt <= this.particleScale && vel[1] <= 0) {
                 /* Pseudo friction */
-                const frict = 1/(1 - vel[1]);
-                vel[0] = frict*vel[0];
-                vel[2] = frict*vel[2];
+                const frict = 1 / (1 - vel[1]);
+                vel[0] = frict * vel[0];
+                vel[2] = frict * vel[2];
 
                 /* Reflect */
-                vel[1] = -0.6*vel[1];
-                if(vel[1] < 0.6) vel[1] = 0;
+                vel[1] = -0.6 * vel[1];
+                if (vel[1] < 0.6) vel[1] = 0;
             }
         }
 
-        for(let i = 0; i < Math.min(this.count, this.objects.length); ++i) {
+        for (let i = 0; i < Math.min(this.count, this.objects.length); ++i) {
             /* Apply velocity */
             glMatrix.vec3.scale(distance, this.velocities[i], dt);
             this.objects[i].translate(distance);
         }
-    },
+    }
 
     /** Spawn a particle */
-    spawn: function() {
+    spawn() {
         let index = this.count % this.maxParticles;
 
         let obj = this.objects[index];
@@ -109,8 +122,12 @@ WL.registerComponent('mesh-particles', {
         this.velocities[index][2] = Math.random() - 0.5;
 
         glMatrix.vec3.normalize(this.velocities[index], this.velocities[index]);
-        glMatrix.vec3.scale(this.velocities[index], this.velocities[index], this.initialSpeed);
+        glMatrix.vec3.scale(
+            this.velocities[index],
+            this.velocities[index],
+            this.initialSpeed
+        );
 
         this.count += 1;
     }
-});
+}

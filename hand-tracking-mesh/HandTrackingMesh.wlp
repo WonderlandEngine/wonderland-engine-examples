@@ -10,23 +10,21 @@
                     }
                 }
             ],
-            "transformation": [
-                0.7160133,
-                0.0,
-                0.6980865,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                -0.6980865,
-                0.0,
-                0.7160133,
-                0.0,
+            "translation": [
                 -3.2591099,
                 1.8000135,
-                1.7569212,
-                1.0
+                1.7569211
+            ],
+            "rotation": [
+                0.0,
+                -0.3768199,
+                0.0,
+                0.9262865
+            ],
+            "scaling": [
+                0.9999998,
+                1.0,
+                0.9999998
             ]
         },
         "15": {
@@ -40,23 +38,21 @@
                     }
                 }
             ],
-            "transformation": [
+            "translation": [
+                0.0,
+                0.0,
+                1.1920928955078125e-7
+            ],
+            "rotation": [
+                -0.7072496,
+                0.0,
+                0.0,
+                0.7069638
+            ],
+            "scaling": [
                 4.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                -0.0016164,
-                -3.9999997,
-                0.0,
-                0.0,
-                3.9999997,
-                -0.0016164,
-                0.0,
-                0.0,
-                0.0,
-                1.192092895507813e-7,
-                1.0
+                4.0,
+                4.0
             ]
         },
         "16": {
@@ -70,23 +66,21 @@
                     }
                 }
             ],
-            "transformation": [
-                0.5,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.5,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.5,
-                0.0,
-                2.9802322387695326e-8,
+            "translation": [
+                2.9802322387695313e-8,
                 0.4999999,
-                5.960464477539065e-8,
+                5.960464477539065e-8
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
                 1.0
+            ],
+            "scaling": [
+                0.5,
+                0.5,
+                0.5
             ]
         },
         "17": {
@@ -141,22 +135,20 @@
                     }
                 }
             ],
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
+            "translation": [
                 0.0,
                 3.0,
-                2.0,
+                2.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
                 1.0
             ]
         },
@@ -170,22 +162,20 @@
                     }
                 }
             ],
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
+            "translation": [
                 -1.0,
                 3.0,
-                -1.0,
+                -1.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
                 1.0
             ]
         },
@@ -200,22 +190,20 @@
                     }
                 }
             ],
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
+            "translation": [
                 1.5,
                 1.0,
-                -1.4901161193847656e-8,
+                -1.4901161193847656e-8
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
                 1.0
             ]
         },
@@ -230,50 +218,26 @@
                     }
                 }
             ],
-            "transformation": [
-                0.75,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.75,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.75,
-                0.0,
+            "translation": [
                 0.4999999,
                 0.75,
-                -1.25,
-                1.0
-            ]
-        },
-        "35": {
-            "link": {
-                "name": "Armature",
-                "file": "l_hand.glb"
-            },
-            "name": "HandLeftArmature",
-            "parent": "14",
-            "transformation": [
-                1.0,
-                -6.166255417383584e-8,
-                0.0,
-                0.0,
-                6.166255417383584e-8,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
+                -1.25
+            ],
+            "rotation": [
                 0.0,
                 0.0,
                 0.0,
                 1.0
             ],
+            "scaling": [
+                0.75,
+                0.75,
+                0.75
+            ]
+        },
+        "35": {
+            "name": "HandLeftArmature",
+            "parent": "14",
             "components": [
                 null,
                 null,
@@ -304,536 +268,522 @@
                 {
                     "type": "hand-tracking",
                     "hand-tracking": {
-                        "handSkin": "34",
-                        "jointMesh": null,
+                        "handSkin": "489",
+                        "jointMesh": "488",
                         "jointMaterial": null
                     },
                     "active": true
                 }
-            ]
-        },
-        "36": {
-            "link": {
-                "name": "l_handMeshNode<Armature",
-                "file": "l_hand.glb"
-            },
-            "transformation": [
-                1.0,
+            ],
+            "translation": [
                 0.0,
                 0.0,
+                0.0
+            ],
+            "rotation": [
                 0.0,
                 0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
+                -3.0831277086917914e-8,
                 1.0
             ],
-            "parent": "35",
-            "components": [
-                {
-                    "mesh": {
-                        "skin": "34"
-                    }
-                }
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
             ]
         },
         "117": {
-            "link": {
-                "name": "Armature",
-                "file": "r_hand.glb"
-            },
             "name": "HandRightArmature",
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0
-            ],
             "parent": "14",
             "components": [
                 {
                     "type": "hand-tracking",
                     "hand-tracking": {
-                        "handSkin": "116",
+                        "handSkin": "520",
                         "handedness": "right",
-                        "jointMesh": null
+                        "jointMesh": "519"
+                    }
+                }
+            ],
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "552": {
+            "link": {
+                "name": "Armature",
+                "file": "left.glb"
+            },
+            "parent": "35"
+        },
+        "553": {
+            "link": {
+                "name": "l_handMeshNode<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "551"
                     }
                 }
             ]
         },
-        "118": {
+        "554": {
+            "link": {
+                "name": "xr_standard_trigger_pressed_max<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552"
+        },
+        "555": {
+            "link": {
+                "name": "xr_standard_trigger_pressed_min<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552"
+        },
+        "556": {
+            "link": {
+                "name": "xr_standard_trigger_pressed_value<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552"
+        },
+        "557": {
+            "link": {
+                "name": "pinky-finger-tip<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "558": {
+            "link": {
+                "name": "pinky-finger-phalanx-distal<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "559": {
+            "link": {
+                "name": "pinky-finger-phalanx-intermediate<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "560": {
+            "link": {
+                "name": "pinky-finger-phalanx-proximal<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "561": {
+            "link": {
+                "name": "pinky-finger-metacarpal<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "562": {
+            "link": {
+                "name": "ring-finger-tip<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "563": {
+            "link": {
+                "name": "ring-finger-phalanx-distal<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "564": {
+            "link": {
+                "name": "ring-finger-phalanx-intermediate<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "565": {
+            "link": {
+                "name": "ring-finger-phalanx-proximal<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "566": {
+            "link": {
+                "name": "ring-finger-metacarpal<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "567": {
+            "link": {
+                "name": "middle-finger-tip<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "568": {
+            "link": {
+                "name": "middle-finger-phalanx-distal<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "569": {
+            "link": {
+                "name": "middle-finger-phalanx-intermediate<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "570": {
+            "link": {
+                "name": "middle-finger-phalanx-proximal<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "571": {
+            "link": {
+                "name": "middle-finger-metacarpal<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "572": {
+            "link": {
+                "name": "index-finger-tip<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "573": {
+            "link": {
+                "name": "index-finger-phalanx-distal<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "574": {
+            "link": {
+                "name": "index-finger-phalanx-intermediate<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "575": {
+            "link": {
+                "name": "index-finger-phalanx-proximal<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "576": {
+            "link": {
+                "name": "index-finger-metacarpal<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "577": {
+            "link": {
+                "name": "thumb-tip<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "578": {
+            "link": {
+                "name": "thumb-phalanx-distal<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "579": {
+            "link": {
+                "name": "thumb-phalanx-proximal<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "580": {
+            "link": {
+                "name": "thumb-metacarpal<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "581": {
+            "link": {
+                "name": "wrist<Armature",
+                "file": "left.glb"
+            },
+            "parent": "552",
+            "skin": "551"
+        },
+        "585": {
+            "link": {
+                "name": "Armature",
+                "file": "right.glb"
+            },
+            "parent": "117"
+        },
+        "586": {
             "link": {
                 "name": "r_handMeshNode<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "transformation": [
-                1.0,
-                0.0,
-                -0.0,
-                0.0,
-                -0.0,
-                1.0000002,
-                0.0,
-                0.0,
-                0.0,
-                -0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0000038,
-                1.0
-            ],
+            "parent": "585",
             "components": [
                 {
                     "mesh": {
-                        "material": "32",
-                        "skin": "116"
-                    },
-                    "active": true
+                        "skin": "584"
+                    }
                 }
-            ],
-            "parent": "117"
+            ]
         },
-        "199": {
-            "link": {
-                "name": "xr_standard_trigger_pressed_max<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35"
-        },
-        "200": {
-            "link": {
-                "name": "xr_standard_trigger_pressed_min<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35"
-        },
-        "201": {
-            "link": {
-                "name": "xr_standard_trigger_pressed_value<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35"
-        },
-        "202": {
-            "link": {
-                "name": "pinky-finger-tip<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "203": {
-            "link": {
-                "name": "pinky-finger-phalanx-distal<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "204": {
-            "link": {
-                "name": "pinky-finger-phalanx-intermediate<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "205": {
-            "link": {
-                "name": "pinky-finger-phalanx-proximal<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "206": {
-            "link": {
-                "name": "pinky-finger-metacarpal<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "207": {
-            "link": {
-                "name": "ring-finger-tip<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "208": {
-            "link": {
-                "name": "ring-finger-phalanx-distal<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "209": {
-            "link": {
-                "name": "ring-finger-phalanx-intermediate<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "210": {
-            "link": {
-                "name": "ring-finger-phalanx-proximal<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "211": {
-            "link": {
-                "name": "ring-finger-metacarpal<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "212": {
-            "link": {
-                "name": "middle-finger-tip<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "213": {
-            "link": {
-                "name": "middle-finger-phalanx-distal<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "214": {
-            "link": {
-                "name": "middle-finger-phalanx-intermediate<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "215": {
-            "link": {
-                "name": "middle-finger-phalanx-proximal<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "216": {
-            "link": {
-                "name": "middle-finger-metacarpal<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "217": {
-            "link": {
-                "name": "index-finger-tip<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "218": {
-            "link": {
-                "name": "index-finger-phalanx-distal<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "219": {
-            "link": {
-                "name": "index-finger-phalanx-intermediate<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "220": {
-            "link": {
-                "name": "index-finger-phalanx-proximal<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "221": {
-            "link": {
-                "name": "index-finger-metacarpal<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "222": {
-            "link": {
-                "name": "thumb-tip<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "223": {
-            "link": {
-                "name": "thumb-phalanx-distal<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "224": {
-            "link": {
-                "name": "thumb-phalanx-proximal<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "225": {
-            "link": {
-                "name": "thumb-metacarpal<Armature",
-                "file": "l_hand.glb"
-            },
-            "parent": "35",
-            "skin": "34"
-        },
-        "226": {
+        "587": {
             "link": {
                 "name": "wrist<Armature",
-                "file": "l_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "35",
-            "skin": "34"
+            "parent": "585",
+            "skin": "584"
         },
-        "228": {
-            "link": {
-                "name": "wrist<Armature",
-                "file": "r_hand.glb"
-            },
-            "parent": "117",
-            "skin": "116"
-        },
-        "229": {
+        "588": {
             "link": {
                 "name": "thumb-metacarpal<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "230": {
+        "589": {
             "link": {
                 "name": "thumb-phalanx-proximal<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "231": {
+        "590": {
             "link": {
                 "name": "thumb-phalanx-distal<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "232": {
+        "591": {
             "link": {
                 "name": "thumb-tip<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "233": {
+        "592": {
             "link": {
                 "name": "index-finger-metacarpal<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "234": {
+        "593": {
             "link": {
                 "name": "index-finger-phalanx-proximal<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "235": {
+        "594": {
             "link": {
                 "name": "index-finger-phalanx-intermediate<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "236": {
+        "595": {
             "link": {
                 "name": "index-finger-phalanx-distal<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "237": {
+        "596": {
             "link": {
                 "name": "index-finger-tip<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "238": {
+        "597": {
             "link": {
                 "name": "middle-finger-metacarpal<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "239": {
+        "598": {
             "link": {
                 "name": "middle-finger-phalanx-proximal<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "240": {
+        "599": {
             "link": {
                 "name": "middle-finger-phalanx-intermediate<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "241": {
+        "600": {
             "link": {
                 "name": "middle-finger-phalanx-distal<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "242": {
+        "601": {
             "link": {
                 "name": "middle-finger-tip<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "243": {
+        "602": {
             "link": {
                 "name": "ring-finger-metacarpal<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "244": {
+        "603": {
             "link": {
                 "name": "ring-finger-phalanx-proximal<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "245": {
+        "604": {
             "link": {
                 "name": "ring-finger-phalanx-intermediate<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "246": {
+        "605": {
             "link": {
                 "name": "ring-finger-phalanx-distal<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "247": {
+        "606": {
             "link": {
                 "name": "ring-finger-tip<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "248": {
+        "607": {
             "link": {
                 "name": "pinky-finger-metacarpal<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "249": {
+        "608": {
             "link": {
                 "name": "pinky-finger-phalanx-proximal<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "250": {
+        "609": {
             "link": {
                 "name": "pinky-finger-phalanx-intermediate<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "251": {
+        "610": {
             "link": {
                 "name": "pinky-finger-phalanx-distal<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         },
-        "252": {
+        "611": {
             "link": {
                 "name": "pinky-finger-tip<Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "parent": "117",
-            "skin": "116"
+            "parent": "585",
+            "skin": "584"
         }
     },
     "meshes": {
@@ -873,26 +823,28 @@
                 "file": "default"
             }
         },
-        "33": {
+        "488": {
+            "link": {
+                "name": "Tracked Hand Skin Left",
+                "file": "tracked_hand_left_credits_Immersive_Web.fbx"
+            }
+        },
+        "519": {
+            "link": {
+                "name": "Tracked Hand Skin Right",
+                "file": "tracked_hand_right_credits_Immersive_Web.fbx"
+            }
+        },
+        "550": {
             "link": {
                 "name": "Mesh",
-                "file": "l_hand.glb"
-            },
-            "importScaling": 1.0,
-            "name": "HandLeft"
+                "file": "left.glb"
+            }
         },
-        "115": {
-            "link": {
-                "name": "Mesh",
-                "file": "r_hand.glb"
-            },
-            "importScaling": 1.0,
-            "name": "HandRight"
-        },
-        "227": {
+        "583": {
             "link": {
                 "name": "Mesh.001",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             }
         }
     },
@@ -918,6 +870,9 @@
             "link": {
                 "name": "DefaultFontMaterial",
                 "file": "default"
+            },
+            "Text": {
+                "font": "285"
             }
         },
         "20": {
@@ -1004,10 +959,6 @@
             }
         },
         "32": {
-            "link": {
-                "name": "lambert2",
-                "file": "l_hand.glb"
-            },
             "Phong": {
                 "diffuseColor": [
                     0.9764705,
@@ -1017,16 +968,68 @@
                 ]
             }
         },
-        "197": {
-            "link": {
-                "name": "lambert2",
-                "file": "r_hand.glb"
+        "356": {
+            "name": "Right"
+        },
+        "386": {
+            "name": "Left",
+            "Phong": {
+                "ambientColor": [
+                    0.6412556,
+                    0.6412556,
+                    0.6412556,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
-        "198": {
+        "419": {
+            "name": "left"
+        },
+        "450": {
+            "name": "right",
+            "Phong": {
+                "ambientColor": [
+                    0.8475336,
+                    0.8475336,
+                    0.8475336,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    0.6591928,
+                    0.6591928,
+                    1.0
+                ]
+            }
+        },
+        "487": {
+            "link": {
+                "name": "Tracked Hand",
+                "file": "tracked_hand_left_credits_Immersive_Web.fbx"
+            }
+        },
+        "518": {
+            "link": {
+                "name": "Tracked Hand",
+                "file": "tracked_hand_right_credits_Immersive_Web.fbx"
+            }
+        },
+        "549": {
             "link": {
                 "name": "Default_Material",
-                "file": "l_hand.glb"
+                "file": "left.glb"
+            }
+        },
+        "582": {
+            "link": {
+                "name": "lambert2",
+                "file": "right.glb"
             }
         }
     },
@@ -1099,7 +1102,7 @@
         },
         "275": {
             "link": {
-                "name": "Sky.vert",
+                "name": "FullScreenTriangle.vert",
                 "file": "default"
             }
         },
@@ -1120,15 +1123,27 @@
                 "name": "TileFeedback.frag",
                 "file": "default"
             }
+        },
+        "281": {
+            "link": {
+                "name": "Background.frag",
+                "file": "default"
+            }
+        },
+        "282": {
+            "link": {
+                "name": "FullScreenTriangle.vert",
+                "file": "default"
+            }
         }
     },
     "settings": {
         "project": {
             "name": "HandTrackingMesh",
             "version": [
+                1,
                 0,
-                8,
-                10
+                0
             ]
         },
         "vr": {
@@ -1137,85 +1152,154 @@
         },
         "scripting": {
             "sourcePaths": [
-                "/js/editor-components-bundle.js",
                 "js/"
-            ]
+            ],
+            "libraryPaths": [
+                "/js/lib/"
+            ],
+            "bundlingType": "esbuild"
         }
     },
     "animations": {},
     "skins": {
-        "34": {
+        "489": {
+            "link": {
+                "name": "skin_0",
+                "file": "tracked_hand_left_credits_Immersive_Web.fbx"
+            },
+            "joints": [
+                "493",
+                "494",
+                "495",
+                "496",
+                "497",
+                "498",
+                "499",
+                "500",
+                "501",
+                "502",
+                "503",
+                "504",
+                "505",
+                "506",
+                "507",
+                "508",
+                "509",
+                "510",
+                "511",
+                "512",
+                "513",
+                "514",
+                "515",
+                "516",
+                "517"
+            ],
+            "name": "left"
+        },
+        "520": {
+            "link": {
+                "name": "skin_0",
+                "file": "tracked_hand_right_credits_Immersive_Web.fbx"
+            },
+            "joints": [
+                "524",
+                "525",
+                "526",
+                "527",
+                "528",
+                "529",
+                "530",
+                "531",
+                "532",
+                "533",
+                "534",
+                "535",
+                "536",
+                "537",
+                "538",
+                "539",
+                "540",
+                "541",
+                "542",
+                "543",
+                "544",
+                "545",
+                "546",
+                "547",
+                "548"
+            ],
+            "name": "right"
+        },
+        "551": {
             "link": {
                 "name": "Armature",
-                "file": "l_hand.glb"
+                "file": "left.glb"
             },
-            "name": "ArmatureLeft",
             "joints": [
-                "202",
-                "203",
-                "204",
-                "205",
-                "206",
-                "207",
-                "208",
-                "209",
-                "210",
-                "211",
-                "212",
-                "213",
-                "214",
-                "215",
-                "216",
-                "217",
-                "218",
-                "219",
-                "220",
-                "221",
-                "222",
-                "223",
-                "224",
-                "225",
-                "226"
+                "557",
+                "558",
+                "559",
+                "560",
+                "561",
+                "562",
+                "563",
+                "564",
+                "565",
+                "566",
+                "567",
+                "568",
+                "569",
+                "570",
+                "571",
+                "572",
+                "573",
+                "574",
+                "575",
+                "576",
+                "577",
+                "578",
+                "579",
+                "580",
+                "581"
             ]
         },
-        "116": {
+        "584": {
             "link": {
                 "name": "Armature",
-                "file": "r_hand.glb"
+                "file": "right.glb"
             },
-            "name": "ArmatureRight",
             "joints": [
-                "228",
-                "229",
-                "230",
-                "231",
-                "232",
-                "233",
-                "234",
-                "235",
-                "236",
-                "237",
-                "238",
-                "239",
-                "240",
-                "241",
-                "242",
-                "243",
-                "244",
-                "245",
-                "246",
-                "247",
-                "248",
-                "249",
-                "250",
-                "251",
-                "252"
+                "587",
+                "588",
+                "589",
+                "590",
+                "591",
+                "592",
+                "593",
+                "594",
+                "595",
+                "596",
+                "597",
+                "598",
+                "599",
+                "600",
+                "601",
+                "602",
+                "603",
+                "604",
+                "605",
+                "606",
+                "607",
+                "608",
+                "609",
+                "610",
+                "611"
             ]
         }
     },
     "files": [
-        "l_hand.glb",
-        "r_hand.glb"
+        "left.glb",
+        "right.glb"
     ],
     "pipelines": {
         "254": {
@@ -1234,6 +1318,9 @@
             "link": {
                 "name": "Flat Opaque Textured",
                 "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true
             }
         },
         "260": {
@@ -1258,6 +1345,9 @@
             "link": {
                 "name": "Phong Opaque Textured",
                 "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true
             }
         },
         "268": {
@@ -1282,6 +1372,9 @@
             "link": {
                 "name": "Physical Opaque Textured",
                 "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true
             }
         },
         "277": {
@@ -1295,6 +1388,27 @@
                 "name": "Sky",
                 "file": "default"
             }
+        },
+        "283": {
+            "link": {
+                "name": "Phong Normalmapped",
+                "file": "default"
+            }
+        },
+        "284": {
+            "link": {
+                "name": "Phong Lightmapped",
+                "file": "default"
+            }
         }
-    }
+    },
+    "fonts": {
+        "285": {
+            "link": {
+                "name": "DejaVuSans.ttf",
+                "file": "default"
+            }
+        }
+    },
+    "languages": {}
 }
