@@ -2314,19 +2314,19 @@ var require_earcut = __commonJS({
         return start;
       if (!end)
         end = start;
-      var p2 = start, again;
+      var p = start, again;
       do {
         again = false;
-        if (!p2.steiner && (equals6(p2, p2.next) || area(p2.prev, p2, p2.next) === 0)) {
-          removeNode(p2);
-          p2 = end = p2.prev;
-          if (p2 === p2.next)
+        if (!p.steiner && (equals6(p, p.next) || area(p.prev, p, p.next) === 0)) {
+          removeNode(p);
+          p = end = p.prev;
+          if (p === p.next)
             break;
           again = true;
         } else {
-          p2 = p2.next;
+          p = p.next;
         }
-      } while (again || p2 !== end);
+      } while (again || p !== end);
       return end;
     }
     function earcutLinked(ear, triangles, dim, minX, minY, invSize, pass) {
@@ -2367,11 +2367,11 @@ var require_earcut = __commonJS({
         return false;
       var ax = a.x, bx = b.x, cx = c.x, ay = a.y, by = b.y, cy = c.y;
       var x0 = ax < bx ? ax < cx ? ax : cx : bx < cx ? bx : cx, y0 = ay < by ? ay < cy ? ay : cy : by < cy ? by : cy, x1 = ax > bx ? ax > cx ? ax : cx : bx > cx ? bx : cx, y1 = ay > by ? ay > cy ? ay : cy : by > cy ? by : cy;
-      var p2 = c.next;
-      while (p2 !== a) {
-        if (p2.x >= x0 && p2.x <= x1 && p2.y >= y0 && p2.y <= y1 && pointInTriangle(ax, ay, bx, by, cx, cy, p2.x, p2.y) && area(p2.prev, p2, p2.next) >= 0)
+      var p = c.next;
+      while (p !== a) {
+        if (p.x >= x0 && p.x <= x1 && p.y >= y0 && p.y <= y1 && pointInTriangle(ax, ay, bx, by, cx, cy, p.x, p.y) && area(p.prev, p, p.next) >= 0)
           return false;
-        p2 = p2.next;
+        p = p.next;
       }
       return true;
     }
@@ -2382,19 +2382,19 @@ var require_earcut = __commonJS({
       var ax = a.x, bx = b.x, cx = c.x, ay = a.y, by = b.y, cy = c.y;
       var x0 = ax < bx ? ax < cx ? ax : cx : bx < cx ? bx : cx, y0 = ay < by ? ay < cy ? ay : cy : by < cy ? by : cy, x1 = ax > bx ? ax > cx ? ax : cx : bx > cx ? bx : cx, y1 = ay > by ? ay > cy ? ay : cy : by > cy ? by : cy;
       var minZ = zOrder(x0, y0, minX, minY, invSize), maxZ = zOrder(x1, y1, minX, minY, invSize);
-      var p2 = ear.prevZ, n = ear.nextZ;
-      while (p2 && p2.z >= minZ && n && n.z <= maxZ) {
-        if (p2.x >= x0 && p2.x <= x1 && p2.y >= y0 && p2.y <= y1 && p2 !== a && p2 !== c && pointInTriangle(ax, ay, bx, by, cx, cy, p2.x, p2.y) && area(p2.prev, p2, p2.next) >= 0)
+      var p = ear.prevZ, n = ear.nextZ;
+      while (p && p.z >= minZ && n && n.z <= maxZ) {
+        if (p.x >= x0 && p.x <= x1 && p.y >= y0 && p.y <= y1 && p !== a && p !== c && pointInTriangle(ax, ay, bx, by, cx, cy, p.x, p.y) && area(p.prev, p, p.next) >= 0)
           return false;
-        p2 = p2.prevZ;
+        p = p.prevZ;
         if (n.x >= x0 && n.x <= x1 && n.y >= y0 && n.y <= y1 && n !== a && n !== c && pointInTriangle(ax, ay, bx, by, cx, cy, n.x, n.y) && area(n.prev, n, n.next) >= 0)
           return false;
         n = n.nextZ;
       }
-      while (p2 && p2.z >= minZ) {
-        if (p2.x >= x0 && p2.x <= x1 && p2.y >= y0 && p2.y <= y1 && p2 !== a && p2 !== c && pointInTriangle(ax, ay, bx, by, cx, cy, p2.x, p2.y) && area(p2.prev, p2, p2.next) >= 0)
+      while (p && p.z >= minZ) {
+        if (p.x >= x0 && p.x <= x1 && p.y >= y0 && p.y <= y1 && p !== a && p !== c && pointInTriangle(ax, ay, bx, by, cx, cy, p.x, p.y) && area(p.prev, p, p.next) >= 0)
           return false;
-        p2 = p2.prevZ;
+        p = p.prevZ;
       }
       while (n && n.z <= maxZ) {
         if (n.x >= x0 && n.x <= x1 && n.y >= y0 && n.y <= y1 && n !== a && n !== c && pointInTriangle(ax, ay, bx, by, cx, cy, n.x, n.y) && area(n.prev, n, n.next) >= 0)
@@ -2404,20 +2404,20 @@ var require_earcut = __commonJS({
       return true;
     }
     function cureLocalIntersections(start, triangles, dim) {
-      var p2 = start;
+      var p = start;
       do {
-        var a = p2.prev, b = p2.next.next;
-        if (!equals6(a, b) && intersects(a, p2, p2.next, b) && locallyInside(a, b) && locallyInside(b, a)) {
+        var a = p.prev, b = p.next.next;
+        if (!equals6(a, b) && intersects(a, p, p.next, b) && locallyInside(a, b) && locallyInside(b, a)) {
           triangles.push(a.i / dim | 0);
-          triangles.push(p2.i / dim | 0);
+          triangles.push(p.i / dim | 0);
           triangles.push(b.i / dim | 0);
-          removeNode(p2);
-          removeNode(p2.next);
-          p2 = start = b;
+          removeNode(p);
+          removeNode(p.next);
+          p = start = b;
         }
-        p2 = p2.next;
-      } while (p2 !== start);
-      return filterPoints(p2);
+        p = p.next;
+      } while (p !== start);
+      return filterPoints(p);
     }
     function splitEarcut(start, triangles, dim, minX, minY, invSize) {
       var a = start;
@@ -2466,61 +2466,61 @@ var require_earcut = __commonJS({
       return filterPoints(bridge, bridge.next);
     }
     function findHoleBridge(hole, outerNode) {
-      var p2 = outerNode, hx = hole.x, hy = hole.y, qx = -Infinity, m;
+      var p = outerNode, hx = hole.x, hy = hole.y, qx = -Infinity, m;
       do {
-        if (hy <= p2.y && hy >= p2.next.y && p2.next.y !== p2.y) {
-          var x = p2.x + (hy - p2.y) * (p2.next.x - p2.x) / (p2.next.y - p2.y);
+        if (hy <= p.y && hy >= p.next.y && p.next.y !== p.y) {
+          var x = p.x + (hy - p.y) * (p.next.x - p.x) / (p.next.y - p.y);
           if (x <= hx && x > qx) {
             qx = x;
-            m = p2.x < p2.next.x ? p2 : p2.next;
+            m = p.x < p.next.x ? p : p.next;
             if (x === hx)
               return m;
           }
         }
-        p2 = p2.next;
-      } while (p2 !== outerNode);
+        p = p.next;
+      } while (p !== outerNode);
       if (!m)
         return null;
       var stop = m, mx = m.x, my = m.y, tanMin = Infinity, tan;
-      p2 = m;
+      p = m;
       do {
-        if (hx >= p2.x && p2.x >= mx && hx !== p2.x && pointInTriangle(hy < my ? hx : qx, hy, mx, my, hy < my ? qx : hx, hy, p2.x, p2.y)) {
-          tan = Math.abs(hy - p2.y) / (hx - p2.x);
-          if (locallyInside(p2, hole) && (tan < tanMin || tan === tanMin && (p2.x > m.x || p2.x === m.x && sectorContainsSector(m, p2)))) {
-            m = p2;
+        if (hx >= p.x && p.x >= mx && hx !== p.x && pointInTriangle(hy < my ? hx : qx, hy, mx, my, hy < my ? qx : hx, hy, p.x, p.y)) {
+          tan = Math.abs(hy - p.y) / (hx - p.x);
+          if (locallyInside(p, hole) && (tan < tanMin || tan === tanMin && (p.x > m.x || p.x === m.x && sectorContainsSector(m, p)))) {
+            m = p;
             tanMin = tan;
           }
         }
-        p2 = p2.next;
-      } while (p2 !== stop);
+        p = p.next;
+      } while (p !== stop);
       return m;
     }
-    function sectorContainsSector(m, p2) {
-      return area(m.prev, m, p2.prev) < 0 && area(p2.next, m, m.next) < 0;
+    function sectorContainsSector(m, p) {
+      return area(m.prev, m, p.prev) < 0 && area(p.next, m, m.next) < 0;
     }
     function indexCurve(start, minX, minY, invSize) {
-      var p2 = start;
+      var p = start;
       do {
-        if (p2.z === 0)
-          p2.z = zOrder(p2.x, p2.y, minX, minY, invSize);
-        p2.prevZ = p2.prev;
-        p2.nextZ = p2.next;
-        p2 = p2.next;
-      } while (p2 !== start);
-      p2.prevZ.nextZ = null;
-      p2.prevZ = null;
-      sortLinked(p2);
+        if (p.z === 0)
+          p.z = zOrder(p.x, p.y, minX, minY, invSize);
+        p.prevZ = p.prev;
+        p.nextZ = p.next;
+        p = p.next;
+      } while (p !== start);
+      p.prevZ.nextZ = null;
+      p.prevZ = null;
+      sortLinked(p);
     }
     function sortLinked(list) {
-      var i, p2, q, e, tail, numMerges, pSize, qSize, inSize = 1;
+      var i, p, q, e, tail, numMerges, pSize, qSize, inSize = 1;
       do {
-        p2 = list;
+        p = list;
         list = null;
         tail = null;
         numMerges = 0;
-        while (p2) {
+        while (p) {
           numMerges++;
-          q = p2;
+          q = p;
           pSize = 0;
           for (i = 0; i < inSize; i++) {
             pSize++;
@@ -2530,9 +2530,9 @@ var require_earcut = __commonJS({
           }
           qSize = inSize;
           while (pSize > 0 || qSize > 0 && q) {
-            if (pSize !== 0 && (qSize === 0 || !q || p2.z <= q.z)) {
-              e = p2;
-              p2 = p2.nextZ;
+            if (pSize !== 0 && (qSize === 0 || !q || p.z <= q.z)) {
+              e = p;
+              p = p.nextZ;
               pSize--;
             } else {
               e = q;
@@ -2546,7 +2546,7 @@ var require_earcut = __commonJS({
             e.prevZ = tail;
             tail = e;
           }
-          p2 = q;
+          p = q;
         }
         tail.nextZ = null;
         inSize *= 2;
@@ -2567,12 +2567,12 @@ var require_earcut = __commonJS({
       return x | y << 1;
     }
     function getLeftmost(start) {
-      var p2 = start, leftmost = start;
+      var p = start, leftmost = start;
       do {
-        if (p2.x < leftmost.x || p2.x === leftmost.x && p2.y < leftmost.y)
-          leftmost = p2;
-        p2 = p2.next;
-      } while (p2 !== start);
+        if (p.x < leftmost.x || p.x === leftmost.x && p.y < leftmost.y)
+          leftmost = p;
+        p = p.next;
+      } while (p !== start);
       return leftmost;
     }
     function pointInTriangle(ax, ay, bx, by, cx, cy, px, py) {
@@ -2584,8 +2584,8 @@ var require_earcut = __commonJS({
       (area(a.prev, a, b.prev) || area(a, b.prev, b)) || // does not create opposite-facing sectors
       equals6(a, b) && area(a.prev, a, a.next) > 0 && area(b.prev, b, b.next) > 0);
     }
-    function area(p2, q, r) {
-      return (q.y - p2.y) * (r.x - q.x) - (q.x - p2.x) * (r.y - q.y);
+    function area(p, q, r) {
+      return (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
     }
     function equals6(p1, p2) {
       return p1.x === p2.x && p1.y === p2.y;
@@ -2607,31 +2607,31 @@ var require_earcut = __commonJS({
         return true;
       return false;
     }
-    function onSegment(p2, q, r) {
-      return q.x <= Math.max(p2.x, r.x) && q.x >= Math.min(p2.x, r.x) && q.y <= Math.max(p2.y, r.y) && q.y >= Math.min(p2.y, r.y);
+    function onSegment(p, q, r) {
+      return q.x <= Math.max(p.x, r.x) && q.x >= Math.min(p.x, r.x) && q.y <= Math.max(p.y, r.y) && q.y >= Math.min(p.y, r.y);
     }
     function sign(num) {
       return num > 0 ? 1 : num < 0 ? -1 : 0;
     }
     function intersectsPolygon(a, b) {
-      var p2 = a;
+      var p = a;
       do {
-        if (p2.i !== a.i && p2.next.i !== a.i && p2.i !== b.i && p2.next.i !== b.i && intersects(p2, p2.next, a, b))
+        if (p.i !== a.i && p.next.i !== a.i && p.i !== b.i && p.next.i !== b.i && intersects(p, p.next, a, b))
           return true;
-        p2 = p2.next;
-      } while (p2 !== a);
+        p = p.next;
+      } while (p !== a);
       return false;
     }
     function locallyInside(a, b) {
       return area(a.prev, a, a.next) < 0 ? area(a, b, a.next) >= 0 && area(a, a.prev, b) >= 0 : area(a, b, a.prev) < 0 || area(a, a.next, b) < 0;
     }
     function middleInside(a, b) {
-      var p2 = a, inside = false, px = (a.x + b.x) / 2, py = (a.y + b.y) / 2;
+      var p = a, inside = false, px = (a.x + b.x) / 2, py = (a.y + b.y) / 2;
       do {
-        if (p2.y > py !== p2.next.y > py && p2.next.y !== p2.y && px < (p2.next.x - p2.x) * (py - p2.y) / (p2.next.y - p2.y) + p2.x)
+        if (p.y > py !== p.next.y > py && p.next.y !== p.y && px < (p.next.x - p.x) * (py - p.y) / (p.next.y - p.y) + p.x)
           inside = !inside;
-        p2 = p2.next;
-      } while (p2 !== a);
+        p = p.next;
+      } while (p !== a);
       return inside;
     }
     function splitPolygon(a, b) {
@@ -2647,25 +2647,25 @@ var require_earcut = __commonJS({
       return b2;
     }
     function insertNode(i, x, y, last) {
-      var p2 = new Node(i, x, y);
+      var p = new Node(i, x, y);
       if (!last) {
-        p2.prev = p2;
-        p2.next = p2;
+        p.prev = p;
+        p.next = p;
       } else {
-        p2.next = last.next;
-        p2.prev = last;
-        last.next.prev = p2;
-        last.next = p2;
+        p.next = last.next;
+        p.prev = last;
+        last.next.prev = p;
+        last.next = p;
       }
-      return p2;
+      return p;
     }
-    function removeNode(p2) {
-      p2.next.prev = p2.prev;
-      p2.prev.next = p2.next;
-      if (p2.prevZ)
-        p2.prevZ.nextZ = p2.nextZ;
-      if (p2.nextZ)
-        p2.nextZ.prevZ = p2.prevZ;
+    function removeNode(p) {
+      p.next.prev = p.prev;
+      p.prev.next = p.next;
+      if (p.prevZ)
+        p.prevZ.nextZ = p.nextZ;
+      if (p.nextZ)
+        p.nextZ.prevZ = p.prevZ;
     }
     function Node(i, x, y) {
       this.i = i;
@@ -3828,7 +3828,7 @@ var _CollisionComponent = class extends Component {
    */
   queryOverlaps() {
     const count = this._engine.wasm._wl_collision_component_query_overlaps(this._id, this._engine.wasm._tempMem, this._engine.wasm._tempMemSize >> 1);
-    let overlaps = new Array(count);
+    const overlaps = new Array(count);
     for (let i = 0; i < count; ++i) {
       overlaps[i] = new _CollisionComponent(this._engine, this._manager, this._engine.wasm._tempMemUint16[i]);
     }
@@ -4700,13 +4700,13 @@ var PhysXComponent = class extends Component {
    * @param p Position to apply force at, default is center of mass.
    * @param local Whether position is in local space, default `false`.
    */
-  addForce(f, m = ForceMode.Force, localForce = false, p2, local = false) {
+  addForce(f, m = ForceMode.Force, localForce = false, p, local = false) {
     const wasm = this._engine.wasm;
-    if (!p2) {
+    if (!p) {
       wasm._wl_physx_component_addForce(this._id, f[0], f[1], f[2], m, localForce);
       return;
     }
-    wasm._wl_physx_component_addForceAt(this._id, f[0], f[1], f[2], m, localForce, p2[0], p2[1], p2[2], local);
+    wasm._wl_physx_component_addForceAt(this._id, f[0], f[1], f[2], m, localForce, p[0], p[1], p[2], local);
   }
   /**
    * Apply torque.
@@ -5211,7 +5211,7 @@ var Material = class {
             case MaterialParamType.Sampler:
               return engine2.textures.wrap(wasm._tempMemInt[0]);
             default:
-              throw new Error(`Invalid type ${type} on parameter ${param.index} for material ${target._index}`);
+              throw new Error(`Invalid type ${type.type} on parameter ${param.index} for material ${target._index}`);
           }
         }
       },
@@ -5528,8 +5528,8 @@ var Object3D = class {
    * Parent of this object or `null` if parented to root.
    */
   get parent() {
-    const p2 = this._engine.wasm._wl_object_parent(this.objectId);
-    return p2 === 0 ? null : this._engine.wrapObject(p2);
+    const p = this._engine.wasm._wl_object_parent(this.objectId);
+    return p === 0 ? null : this._engine.wrapObject(p);
   }
   /**
    * Children of this object.
@@ -6220,11 +6220,11 @@ var Object3D = class {
    *
    * @since 0.8.7
    */
-  transformPointWorld(out, p2 = out) {
+  transformPointWorld(out, p = out) {
     const wasm = this._engine.wasm;
-    wasm._tempMemFloat[0] = p2[0];
-    wasm._tempMemFloat[1] = p2[1];
-    wasm._tempMemFloat[2] = p2[2];
+    wasm._tempMemFloat[0] = p[0];
+    wasm._tempMemFloat[1] = p[1];
+    wasm._tempMemFloat[2] = p[2];
     wasm._wl_object_transformPointWorld(this.objectId, wasm._tempMem);
     out[0] = wasm._tempMemFloat[0];
     out[1] = wasm._tempMemFloat[1];
@@ -6240,11 +6240,11 @@ var Object3D = class {
    *
    * @since 0.8.7
    */
-  transformPointLocal(out, p2 = out) {
+  transformPointLocal(out, p = out) {
     const wasm = this._engine.wasm;
-    wasm._tempMemFloat[0] = p2[0];
-    wasm._tempMemFloat[1] = p2[1];
-    wasm._tempMemFloat[2] = p2[2];
+    wasm._tempMemFloat[0] = p[0];
+    wasm._tempMemFloat[1] = p[1];
+    wasm._tempMemFloat[2] = p[2];
     wasm._wl_object_transformPointLocal(this.objectId, wasm._tempMem);
     out[0] = wasm._tempMemFloat[0];
     out[1] = wasm._tempMemFloat[1];
@@ -6300,11 +6300,11 @@ var Object3D = class {
    *
    * @since 0.8.7
    */
-  transformPointInverseWorld(out, p2 = out) {
+  transformPointInverseWorld(out, p = out) {
     const wasm = this._engine.wasm;
-    wasm._tempMemFloat[0] = p2[0];
-    wasm._tempMemFloat[1] = p2[1];
-    wasm._tempMemFloat[2] = p2[2];
+    wasm._tempMemFloat[0] = p[0];
+    wasm._tempMemFloat[1] = p[1];
+    wasm._tempMemFloat[2] = p[2];
     wasm._wl_object_transformPointInverseWorld(this.objectId, wasm._tempMem);
     out[0] = wasm._tempMemFloat[0];
     out[1] = wasm._tempMemFloat[1];
@@ -6320,9 +6320,9 @@ var Object3D = class {
    *
    * @since 0.8.7
    */
-  transformPointInverseLocal(out, p2 = out) {
+  transformPointInverseLocal(out, p = out) {
     const wasm = this._engine.wasm;
-    wasm._tempMemFloat.set(p2);
+    wasm._tempMemFloat.set(p);
     wasm._wl_object_transformPointInverseLocal(this.objectId, wasm._tempMem);
     out[0] = wasm._tempMemFloat[0];
     out[1] = wasm._tempMemFloat[1];
@@ -6362,9 +6362,9 @@ var Object3D = class {
    * @since 0.8.7
    */
   toLocalSpaceTransform(out, q = out) {
-    const p2 = this.parent;
-    if (p2) {
-      p2.toObjectSpaceTransform(out, q);
+    const p = this.parent;
+    if (p) {
+      p.toObjectSpaceTransform(out, q);
       return out;
     }
     if (out !== q) {
@@ -6415,8 +6415,8 @@ var Object3D = class {
    *
    * @returns Reference to self (for method chaining).
    */
-  lookAt(p2, up = UP_VECTOR) {
-    this._engine.wasm._wl_object_lookAt(this.objectId, p2[0], p2[1], p2[2], up[0], up[1], up[2]);
+  lookAt(p, up = UP_VECTOR) {
+    this._engine.wasm._wl_object_lookAt(this.objectId, p[0], p[1], p[2], up[0], up[1], up[2]);
     return this;
   }
   /** Destroy the object with all of its components and remove it from the scene */
@@ -6626,19 +6626,19 @@ var RayHit = class {
   }
   /** Array of ray hit locations. */
   get locations() {
-    let p2 = this._ptr;
+    let p = this._ptr;
     let l = [];
     for (let i = 0; i < this.hitCount; ++i) {
-      l.push(new Float32Array(this._engine.wasm.HEAPF32.buffer, p2 + 12 * i, 3));
+      l.push(new Float32Array(this._engine.wasm.HEAPF32.buffer, p + 12 * i, 3));
     }
     return l;
   }
   /** Array of ray hit normals (only when using {@link Physics#rayCast}. */
   get normals() {
-    let p2 = this._ptr + 48;
+    let p = this._ptr + 48;
     let l = [];
     for (let i = 0; i < this.hitCount; ++i) {
-      l.push(new Float32Array(this._engine.wasm.HEAPF32.buffer, p2 + 12 * i, 3));
+      l.push(new Float32Array(this._engine.wasm.HEAPF32.buffer, p + 12 * i, 3));
     }
     return l;
   }
@@ -6648,16 +6648,16 @@ var RayHit = class {
    * Distances of array hits to ray origin.
    */
   get distances() {
-    const p2 = this._ptr + 48 * 2;
-    return new Float32Array(this._engine.wasm.HEAPF32.buffer, p2, this.hitCount);
+    const p = this._ptr + 48 * 2;
+    return new Float32Array(this._engine.wasm.HEAPF32.buffer, p, this.hitCount);
   }
   /** Hit objects */
   get objects() {
     const HEAPU16 = this._engine.wasm.HEAPU16;
     const objects = [null, null, null, null];
-    let p2 = this._ptr + (48 * 2 + 16) >> 1;
+    let p = this._ptr + (48 * 2 + 16) >> 1;
     for (let i = 0; i < this.hitCount; ++i) {
-      objects[i] = this._engine.wrapObject(HEAPU16[p2 + i]);
+      objects[i] = this._engine.wrapObject(HEAPU16[p + i]);
     }
     return objects;
   }
@@ -7401,22 +7401,22 @@ var _componentDefaults = /* @__PURE__ */ new Map([
 ]);
 function _setupDefaults(ctor) {
   for (const name in ctor.Properties) {
-    const p2 = ctor.Properties[name];
-    if (p2.type === Type.Enum) {
-      if (p2.values?.length) {
-        if (typeof p2.default !== "number") {
-          p2.default = p2.values.indexOf(p2.default);
+    const p = ctor.Properties[name];
+    if (p.type === Type.Enum) {
+      if (p.values?.length) {
+        if (typeof p.default !== "number") {
+          p.default = p.values.indexOf(p.default);
         }
-        if (p2.default < 0 || p2.default >= p2.values.length) {
-          p2.default = 0;
+        if (p.default < 0 || p.default >= p.values.length) {
+          p.default = 0;
         }
       } else {
-        p2.default = void 0;
+        p.default = void 0;
       }
     } else {
-      p2.default = p2.default ?? _componentDefaults.get(p2.type);
+      p.default = p.default ?? _componentDefaults.get(p.type);
     }
-    ctor.prototype[name] = p2.default;
+    ctor.prototype[name] = p.default;
   }
 }
 var WASM = class {
@@ -7492,7 +7492,9 @@ var WASM = class {
    *
    * @note This api is meant to be used internally.
    */
-  webxr_fbo = -1;
+  /* webxr_fbo will not get overwritten if we are rendering to the
+   * default framebuffer, e.g., when using WebXR emulator. */
+  webxr_fbo = 0;
   /**
    * Convert a WASM memory view to a JavaScript string.
    *
@@ -7837,49 +7839,49 @@ var WASM = class {
     }
     this._materialDefinitions[definitionId] = definition;
   }
-  _wljs_set_component_param_bool(c, p2, pe, v) {
-    const param = this.UTF8ViewToString(p2, pe);
+  _wljs_set_component_param_bool(c, p, pe, v) {
+    const param = this.UTF8ViewToString(p, pe);
     this._components[c][param] = v !== 0;
   }
-  _wljs_set_component_param_int(c, p2, pe, v) {
-    const param = this.UTF8ViewToString(p2, pe);
+  _wljs_set_component_param_int(c, p, pe, v) {
+    const param = this.UTF8ViewToString(p, pe);
     this._components[c][param] = v;
   }
-  _wljs_set_component_param_float(c, p2, pe, v) {
-    const param = this.UTF8ViewToString(p2, pe);
+  _wljs_set_component_param_float(c, p, pe, v) {
+    const param = this.UTF8ViewToString(p, pe);
     this._components[c][param] = v;
   }
-  _wljs_set_component_param_string(c, p2, pe, v, ve) {
-    const param = this.UTF8ViewToString(p2, pe);
+  _wljs_set_component_param_string(c, p, pe, v, ve) {
+    const param = this.UTF8ViewToString(p, pe);
     const value = this.UTF8ViewToString(v, ve);
     this._components[c][param] = value;
   }
-  _wljs_set_component_param_color(c, p2, pe, v) {
-    const param = this.UTF8ViewToString(p2, pe);
+  _wljs_set_component_param_color(c, p, pe, v) {
+    const param = this.UTF8ViewToString(p, pe);
     this._components[c][param] = new Float32Array([0, 8, 16, 24].map((s) => (v >>> s & 255) / 255));
   }
-  _wljs_set_component_param_object(c, p2, pe, v) {
-    const param = this.UTF8ViewToString(p2, pe);
+  _wljs_set_component_param_object(c, p, pe, v) {
+    const param = this.UTF8ViewToString(p, pe);
     this._components[c][param] = v > 0 ? this._engine.wrapObject(v) : null;
   }
-  _wljs_set_component_param_mesh(c, p2, pe, v) {
-    const param = this.UTF8ViewToString(p2, pe);
+  _wljs_set_component_param_mesh(c, p, pe, v) {
+    const param = this.UTF8ViewToString(p, pe);
     this._components[c][param] = v > 0 ? new Mesh(this._engine, v) : null;
   }
-  _wljs_set_component_param_texture(c, p2, pe, v) {
-    const param = this.UTF8ViewToString(p2, pe);
+  _wljs_set_component_param_texture(c, p, pe, v) {
+    const param = this.UTF8ViewToString(p, pe);
     this._components[c][param] = v > 0 ? this._engine.textures.wrap(v) : null;
   }
-  _wljs_set_component_param_material(c, p2, pe, v) {
-    const param = this.UTF8ViewToString(p2, pe);
+  _wljs_set_component_param_material(c, p, pe, v) {
+    const param = this.UTF8ViewToString(p, pe);
     this._components[c][param] = v > 0 ? new Material(this._engine, v) : null;
   }
-  _wljs_set_component_param_animation(c, p2, pe, v) {
-    const param = this.UTF8ViewToString(p2, pe);
+  _wljs_set_component_param_animation(c, p, pe, v) {
+    const param = this.UTF8ViewToString(p, pe);
     this._components[c][param] = v > 0 ? new Animation(this._engine, v) : null;
   }
-  _wljs_set_component_param_skin(c, p2, pe, v) {
-    const param = this.UTF8ViewToString(p2, pe);
+  _wljs_set_component_param_skin(c, p, pe, v) {
+    const param = this.UTF8ViewToString(p, pe);
     this._components[c][param] = v > 0 ? new Skin(this._engine, v) : null;
   }
   _wljs_get_component_type_index(namePtr, nameEndPtr) {
@@ -8224,7 +8226,7 @@ var APIVersion = {
   major: 1,
   minor: 0,
   patch: 0,
-  rc: 6
+  rc: 7
 };
 
 // node_modules/@wonderlandengine/api/dist/index.js
@@ -10603,39 +10605,39 @@ function transformQuat(out, a, q) {
   return out;
 }
 function rotateX2(out, a, b, rad) {
-  var p2 = [], r = [];
-  p2[0] = a[0] - b[0];
-  p2[1] = a[1] - b[1];
-  p2[2] = a[2] - b[2];
-  r[0] = p2[0];
-  r[1] = p2[1] * Math.cos(rad) - p2[2] * Math.sin(rad);
-  r[2] = p2[1] * Math.sin(rad) + p2[2] * Math.cos(rad);
+  var p = [], r = [];
+  p[0] = a[0] - b[0];
+  p[1] = a[1] - b[1];
+  p[2] = a[2] - b[2];
+  r[0] = p[0];
+  r[1] = p[1] * Math.cos(rad) - p[2] * Math.sin(rad);
+  r[2] = p[1] * Math.sin(rad) + p[2] * Math.cos(rad);
   out[0] = r[0] + b[0];
   out[1] = r[1] + b[1];
   out[2] = r[2] + b[2];
   return out;
 }
 function rotateY2(out, a, b, rad) {
-  var p2 = [], r = [];
-  p2[0] = a[0] - b[0];
-  p2[1] = a[1] - b[1];
-  p2[2] = a[2] - b[2];
-  r[0] = p2[2] * Math.sin(rad) + p2[0] * Math.cos(rad);
-  r[1] = p2[1];
-  r[2] = p2[2] * Math.cos(rad) - p2[0] * Math.sin(rad);
+  var p = [], r = [];
+  p[0] = a[0] - b[0];
+  p[1] = a[1] - b[1];
+  p[2] = a[2] - b[2];
+  r[0] = p[2] * Math.sin(rad) + p[0] * Math.cos(rad);
+  r[1] = p[1];
+  r[2] = p[2] * Math.cos(rad) - p[0] * Math.sin(rad);
   out[0] = r[0] + b[0];
   out[1] = r[1] + b[1];
   out[2] = r[2] + b[2];
   return out;
 }
 function rotateZ2(out, a, b, rad) {
-  var p2 = [], r = [];
-  p2[0] = a[0] - b[0];
-  p2[1] = a[1] - b[1];
-  p2[2] = a[2] - b[2];
-  r[0] = p2[0] * Math.cos(rad) - p2[1] * Math.sin(rad);
-  r[1] = p2[0] * Math.sin(rad) + p2[1] * Math.cos(rad);
-  r[2] = p2[2];
+  var p = [], r = [];
+  p[0] = a[0] - b[0];
+  p[1] = a[1] - b[1];
+  p[2] = a[2] - b[2];
+  r[0] = p[0] * Math.cos(rad) - p[1] * Math.sin(rad);
+  r[1] = p[0] * Math.sin(rad) + p[1] * Math.cos(rad);
+  r[2] = p[2];
   out[0] = r[0] + b[0];
   out[1] = r[1] + b[1];
   out[2] = r[2] + b[2];
@@ -11563,12 +11565,11 @@ var HitTestLocation = class extends Component {
   onHitLost = new Emitter();
   /** Emits an event when the hit test switches from invisible to visible */
   onHitFound = new Emitter();
+  onSessionStartCallback = null;
+  onSessionEndCallback = null;
   start() {
-    this.engine.onXRSessionStart.add(this.xrSessionStart.bind(this));
-    this.engine.onXRSessionEnd.add(this.xrSessionEnd.bind(this));
-    if (this.engine.xr) {
-      this.xrSessionStart(this.engine.xr.session);
-    }
+    this.onSessionStartCallback = this.onXRSessionStart.bind(this);
+    this.onSessionEndCallback = this.onXRSessionEnd.bind(this);
     if (this.scaleObject) {
       this.tempScaling.set(this.object.scalingLocal);
       this.object.scale([0, 0, 0]);
@@ -11581,6 +11582,14 @@ var HitTestLocation = class extends Component {
         this.object.setDirty();
       });
     }
+  }
+  onActivate() {
+    this.engine.onXRSessionStart.add(this.onSessionStartCallback);
+    this.engine.onXRSessionEnd.add(this.onSessionEndCallback);
+  }
+  onDeactivate() {
+    this.engine.onXRSessionStart.remove(this.onSessionStartCallback);
+    this.engine.onXRSessionEnd.remove(this.onSessionEndCallback);
   }
   update() {
     const wasVisible = this.visible;
@@ -11610,7 +11619,7 @@ var HitTestLocation = class extends Component {
       return [];
     return frame.getHitTestResults(this.xrHitTestSource);
   }
-  xrSessionStart(session) {
+  onXRSessionStart(session) {
     if (session.requestHitTestSource === void 0) {
       console.error("hit-test-location: hit test feature not available. Deactivating component.");
       this.active = false;
@@ -11622,7 +11631,7 @@ var HitTestLocation = class extends Component {
       this.xrHitTestSource = hitTestSource;
     }).catch(console.error);
   }
-  xrSessionEnd() {
+  onXRSessionEnd() {
     if (!this.xrHitTestSource)
       return;
     this.xrHitTestSource.cancel();
@@ -11677,8 +11686,9 @@ var Cursor = class extends Component {
   _arTouchDown = false;
   _lastCursorPosOnTarget = new Float32Array(3);
   _cursorRayScale = new Float32Array(3);
-  hitTestLocation = null;
-  hitTestObject = null;
+  _hitTestLocation = null;
+  _hitTestObject = null;
+  _onSessionStartCallback = null;
   /**
    * Whether the cursor (and cursorObject) is visible, i.e. pointing at an object
    * that matches the collision group
@@ -11746,13 +11756,15 @@ var Cursor = class extends Component {
     }
     this._viewComponent = this.object.getComponent(ViewComponent);
     if (this.useWebXRHitTest) {
-      this.hitTestObject = this.engine.scene.addObject(this.object);
-      this.hitTestLocation = this.hitTestObject.addComponent(HitTestLocation, {
+      this._hitTestObject = this.engine.scene.addObject(this.object);
+      this._hitTestLocation = this._hitTestObject.addComponent(HitTestLocation, {
         scaleObject: false
       }) ?? null;
     }
+    this._onSessionStartCallback = this.setupVREvents.bind(this);
   }
   onActivate() {
+    this.engine.onXRSessionStart.add(this._onSessionStartCallback);
     this._setCursorVisibility(true);
     if (this._viewComponent != null) {
       const canvas2 = this.engine.canvas;
@@ -11774,14 +11786,6 @@ var Cursor = class extends Component {
         canvas2.removeEventListener("pointerup", onPointerUp);
         window.removeEventListener("resize", onViewportResize);
       });
-    }
-    const onXRSessionStart = this.setupVREvents.bind(this);
-    this.engine.onXRSessionStart.add(onXRSessionStart);
-    this._onDeactivateCallbacks.push(() => {
-      this.engine.onXRSessionStart.remove(onXRSessionStart);
-    });
-    if (this.engine.xr) {
-      this.setupVREvents(this.engine.xr.session);
     }
     this.object.getTranslationWorld(this._origin);
     this.object.getForward(this._direction);
@@ -11822,9 +11826,9 @@ var Cursor = class extends Component {
   }
   update() {
     if (this.engine.xr && this._arTouchDown && this._input && this.engine.xr.session.inputSources[0].handedness === "none" && this.engine.xr.session.inputSources[0].gamepad) {
-      const p2 = this.engine.xr.session.inputSources[0].gamepad.axes;
-      this._direction[0] = p2[0];
-      this._direction[1] = -p2[1];
+      const p = this.engine.xr.session.inputSources[0].gamepad.axes;
+      this._direction[0] = p[0];
+      this._direction[1] = -p[1];
       this._direction[2] = -1;
       this.updateDirection();
     } else {
@@ -11907,8 +11911,7 @@ var Cursor = class extends Component {
    * Setup event listeners on session object
    * @param s WebXR session
    *
-   * Sets up 'select' and 'end' events and caches the session to avoid
-   * Module object access.
+   * Sets up 'select' and 'end' events.
    */
   setupVREvents(s) {
     if (!s)
@@ -11929,6 +11932,7 @@ var Cursor = class extends Component {
     this.onViewportResize();
   }
   onDeactivate() {
+    this.engine.onXRSessionStart.remove(this._onSessionStartCallback);
     this._setCursorVisibility(false);
     if (this.hoveringObject)
       this.notify("onUnhover", null);
@@ -11939,7 +11943,7 @@ var Cursor = class extends Component {
     this._onDeactivateCallbacks.length = 0;
   }
   onDestroy() {
-    this.hitTestObject?.destroy();
+    this._hitTestObject?.destroy();
   }
   /** 'select' event listener */
   onSelect(e) {
@@ -12013,9 +12017,11 @@ var Cursor = class extends Component {
   rayCast(originalEvent, frame = null, doClick = false) {
     const rayHit = this.rayCastMode == 0 ? this.engine.scene.rayCast(this._origin, this._direction, this._collisionMask) : this.engine.physics.rayCast(this._origin, this._direction, this._collisionMask, this.maxDistance);
     let hitResultDistance = Infinity;
-    if (this.hitTestLocation?.visible) {
-      this.hitTestObject.getTranslationWorld(this.cursorPos);
+    let hitTestResult = null;
+    if (this._hitTestLocation?.visible) {
+      this._hitTestObject.getTranslationWorld(this.cursorPos);
       hitResultDistance = vec3_exports.distance(this.object.getTranslationWorld(tempVec2), this.cursorPos);
+      hitTestResult = this._hitTestLocation?.getHitTestResults(frame)[0];
     }
     let hoveringReality = false;
     if (rayHit.hitCount > 0) {
@@ -12030,12 +12036,12 @@ var Cursor = class extends Component {
       this.cursorPos.fill(0);
     }
     if (hoveringReality && !this.hoveringReality) {
-      this.hitTestTarget.onHover.notify(null, this);
-    } else {
-      this.hitTestTarget.onUnhover.notify(null, this);
+      this.hitTestTarget.onHover.notify(hitTestResult, this);
+    } else if (!hoveringReality && this.hoveringReality) {
+      this.hitTestTarget.onUnhover.notify(hitTestResult, this);
     }
     this.hoveringReality = hoveringReality;
-    this.hoverBehaviour(rayHit, frame && this.hitTestLocation && hoveringReality ? this.hitTestLocation?.getHitTestResults(frame)[0] : null, doClick, originalEvent);
+    this.hoverBehaviour(rayHit, hitTestResult, doClick, originalEvent);
     return rayHit;
   }
 };
@@ -12136,11 +12142,13 @@ __publicField(FingerCursor, "Properties", {});
 // node_modules/@wonderlandengine/components/dist/fixed-foveation.js
 var FixedFoveation = class extends Component {
   start() {
-    if (this.engine.xr) {
-      this.setFixedFoveation();
-    } else {
-      this.engine.onXRSessionStart.push(this.setFixedFoveation.bind(this));
-    }
+    this.onSessionStartCallback = this.setFixedFoveation().bind(this);
+  }
+  onActivate() {
+    this.engine.onXRSessionStart.add(this.onSessionStartCallback);
+  }
+  onDeactivate() {
+    this.engine.onXRSessionStart.remove(this.onSessionStartCallback);
   }
   setFixedFoveation() {
     this.engine.xr.baseLayer.fixedFoveation = this.fixedFoveation;
@@ -12180,15 +12188,18 @@ var ORDERED_JOINTS = [
   "pinky-finger-phalanx-distal",
   "pinky-finger-tip"
 ];
+var invTranslation = new Float32Array(3);
+var invRotation = new Float32Array(4);
 var HandTracking = class extends Component {
   init() {
     this.handedness = ["left", "right"][this.handedness];
   }
+  joints = {};
+  session = null;
+  /* Whether last update had a hand pose */
+  hasPose = false;
+  _childrenActive = true;
   start() {
-    this.joints = [];
-    this.session = null;
-    this.hasPose = false;
-    this._childrenActive = true;
     if (!("XRHand" in window)) {
       console.warn("WebXR Hand Tracking not supported by this browser.");
       this.active = false;
@@ -12204,11 +12215,13 @@ var HandTracking = class extends Component {
       }
       return;
     }
-    for (let j = 0; j <= ORDERED_JOINTS.length; ++j) {
-      let joint = this.engine.scene.addObject(this.object.parent);
-      let mesh = joint.addComponent("mesh");
-      mesh.mesh = this.jointMesh;
-      mesh.material = this.jointMaterial;
+    const jointObjects = this.engine.scene.addObjects(ORDERED_JOINTS.length, this.object.parent, ORDERED_JOINTS.length);
+    for (let j = 0; j < ORDERED_JOINTS.length; ++j) {
+      let joint = jointObjects[j];
+      joint.addComponent(MeshComponent, {
+        mesh: this.jointMesh,
+        material: this.jointMaterial
+      });
       this.joints[ORDERED_JOINTS[j]] = joint;
     }
   }
@@ -12221,29 +12234,30 @@ var HandTracking = class extends Component {
       return;
     this.hasPose = false;
     if (this.session && this.session.inputSources) {
-      for (let i = 0; i <= this.session.inputSources.length; ++i) {
+      for (let i = 0; i < this.session.inputSources.length; ++i) {
         const inputSource = this.session.inputSources[i];
         if (!inputSource || !inputSource.hand || inputSource.handedness != this.handedness)
           continue;
         this.hasPose = true;
-        if (inputSource.hand.get("wrist") !== null) {
-          const p2 = Module["webxr_frame"].getJointPose(inputSource.hand.get("wrist"), this.engine.xr.currentReferenceSpace);
-          if (p2) {
-            setXRRigidTransformLocal(this.object, p2.transform);
+        const wristSpace = inputSource.hand.get("wrist");
+        if (wristSpace !== null) {
+          const p = this.engine.xr.frame.getJointPose(wristSpace, this.engine.xr.currentReferenceSpace);
+          if (p) {
+            setXRRigidTransformLocal(this.object, p.transform);
           }
         }
-        let invTranslation = new Float32Array(3);
-        let invRotation = new Float32Array(4);
-        quat_exports.invert(invRotation, this.object.transformLocal);
+        this.object.getRotationLocal(invRotation);
+        quat_exports.conjugate(invRotation, invRotation);
         this.object.getTranslationLocal(invTranslation);
         for (let j = 0; j < ORDERED_JOINTS.length; ++j) {
           const jointName = ORDERED_JOINTS[j];
           const joint = this.joints[jointName];
-          if (joint == null)
+          if (joint === null)
             continue;
           let jointPose = null;
-          if (inputSource.hand.get(jointName) !== null) {
-            jointPose = this.engine.xr.frame.getJointPose(inputSource.hand.get(jointName), this.engine.xr.currentReferenceSpace);
+          const jointSpace = inputSource.hand.get(jointName);
+          if (jointSpace !== null) {
+            jointPose = this.engine.xr.frame.getJointPose(jointSpace, this.engine.xr.currentReferenceSpace);
           }
           if (jointPose !== null) {
             if (this.handSkin) {
@@ -12261,13 +12275,10 @@ var HandTracking = class extends Component {
                 jointPose.transform.orientation.w
               ]);
             } else {
-              setXRRigidTransformLocal(this.object, p.transform);
+              setXRRigidTransformLocal(joint, jointPose.transform);
               const r = jointPose.radius || 7e-3;
-              joint.scale([r, r, r]);
+              joint.setScalingLocal([r, r, r]);
             }
-          } else {
-            if (!this.handSkin)
-              joint.scale([0, 0, 0]);
           }
         }
       }
@@ -12556,11 +12567,13 @@ __publicField(PlayerHeight, "Properties", {
 // node_modules/@wonderlandengine/components/dist/target-framerate.js
 var TargetFramerate = class extends Component {
   start() {
-    if (this.engine.xrSession) {
-      this.setTargetFramerate(this.engine.xrSession);
-    } else {
-      this.engine.onXRSessionStart.push(this.setTargetFramerate.bind(this));
-    }
+    this.onSessionStartCallback = this.setTargetFramerate().bind(this);
+  }
+  onActivate() {
+    this.engine.onXRSessionStart.add(this.onSessionStartCallback);
+  }
+  onDeactivate() {
+    this.engine.onXRSessionStart.remove(this.onSessionStartCallback);
   }
   setTargetFramerate(s) {
     if (s.supportedFrameRates && s.updateTargetFrameRate) {
@@ -12619,8 +12632,14 @@ var TeleportComponent = class extends Component {
     } else {
       this.handedness = ["left", "right"][this.handedness - 1];
     }
-    this.engine.onXRSessionStart.push(this.setupVREvents.bind(this));
+    this.onSessionStartCallback = this.setupVREvents.bind(this);
     this.teleportIndicatorMeshObject.active = false;
+  }
+  onActivate() {
+    this.engine.onXRSessionStart.add(this.onSessionStartCallback);
+  }
+  onDeactivate() {
+    this.engine.onXRSessionStart.remove(this.onSessionStartCallback);
   }
   /* Get current camera Y rotation */
   _getCamRotation() {
@@ -12738,22 +12757,22 @@ var TeleportComponent = class extends Component {
   }
   _teleportPlayer(newPosition, rotationToAdd) {
     this.camRoot.rotateAxisAngleRad([0, 1, 0], rotationToAdd);
-    const p2 = this._tempVec;
+    const p = this._tempVec;
     const p1 = this._tempVec0;
     if (this.session) {
-      this.eyeLeft.getTranslationWorld(p2);
+      this.eyeLeft.getTranslationWorld(p);
       this.eyeRight.getTranslationWorld(p1);
-      vec3_exports.add(p2, p2, p1);
-      vec3_exports.scale(p2, p2, 0.5);
+      vec3_exports.add(p, p, p1);
+      vec3_exports.scale(p, p, 0.5);
     } else {
-      this.cam.getTranslationWorld(p2);
+      this.cam.getTranslationWorld(p);
     }
     this.camRoot.getTranslationWorld(p1);
-    vec3_exports.sub(p2, p1, p2);
-    p2[0] += newPosition[0];
-    p2[1] = newPosition[1];
-    p2[2] += newPosition[2];
-    this.camRoot.setTranslationWorld(p2);
+    vec3_exports.sub(p, p1, p);
+    p[0] += newPosition[0];
+    p[1] = newPosition[1];
+    p[2] += newPosition[2];
+    this.camRoot.setTranslationWorld(p);
   }
 };
 __publicField(TeleportComponent, "TypeName", "teleport");
@@ -12988,18 +13007,18 @@ var TwoJointIkSolver = class extends Component {
     ];
   }
   update() {
-    const p2 = this.p;
-    this.root.getTranslationWorld(p2[0]);
-    this.middle.getTranslationWorld(p2[1]);
-    this.end.getTranslationWorld(p2[2]);
-    this.target.getTranslationWorld(p2[3]);
-    const tla = p2[4];
-    const tlb = p2[5];
+    const p = this.p;
+    this.root.getTranslationWorld(p[0]);
+    this.middle.getTranslationWorld(p[1]);
+    this.end.getTranslationWorld(p[2]);
+    this.target.getTranslationWorld(p[3]);
+    const tla = p[4];
+    const tlb = p[5];
     this.root.getTranslationLocal(tla);
     this.middle.getTranslationLocal(tlb);
     if (this.helper)
-      this.helper.getTranslationWorld(p2[6]);
-    twoJointIK(this.root.transformLocal, this.middle.transformLocal, p2[0], p2[1], p2[2], p2[3], 0.01, this.root.transformWorld.subarray(0, 4), this.middle.transformWorld.subarray(0, 4), this.helper ? p2[6] : null);
+      this.helper.getTranslationWorld(p[6]);
+    twoJointIK(this.root.transformLocal, this.middle.transformLocal, p[0], p[1], p[2], p[3], 0.01, this.root.transformWorld.subarray(0, 4), this.middle.transformWorld.subarray(0, 4), this.helper ? p[6] : null);
     this.root.setTranslationLocal(tla);
     this.middle.setTranslationLocal(tlb);
     this.root.setDirty();
@@ -13107,8 +13126,16 @@ var VrModeActiveSwitch = class extends Component {
     this.components = [];
     this.getComponents(this.object);
     this.onXRSessionEnd();
-    this.engine.onXRSessionStart.push(this.onXRSessionStart.bind(this));
-    this.engine.onXRSessionEnd.push(this.onXRSessionEnd.bind(this));
+    this.onSessionStartCallback = this.onXRSessionStart.bind(this);
+    this.onSessionEndCallback = this.onXRSessionEnd.bind(this);
+  }
+  onActivate() {
+    this.engine.onXRSessionStart.add(this.onSessionStartCallback);
+    this.engine.onXRSessionEnd.add(this.onSessionEndCallback);
+  }
+  onDeactivate() {
+    this.engine.onXRSessionStart.remove(this.onSessionStartCallback);
+    this.engine.onXRSessionEnd.remove(this.onSessionEndCallback);
   }
   getComponents(obj) {
     const comps = obj.getComponents().filter((c) => c.type !== "vr-mode-active-switch");
@@ -13127,13 +13154,9 @@ var VrModeActiveSwitch = class extends Component {
     }
   }
   onXRSessionStart() {
-    if (!this.active)
-      return;
     this.setComponentsActive(this.activateComponents == 0);
   }
   onXRSessionEnd() {
-    if (!this.active)
-      return;
     this.setComponentsActive(this.activateComponents != 0);
   }
 };
