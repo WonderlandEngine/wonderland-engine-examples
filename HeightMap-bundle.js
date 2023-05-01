@@ -2753,6 +2753,7 @@ __export(dist_exports, {
   MeshAttributeAccessor: () => MeshAttributeAccessor,
   MeshComponent: () => MeshComponent,
   MeshIndexType: () => MeshIndexType,
+  MeshSkinningType: () => MeshSkinningType,
   Object: () => Object3D,
   Object3D: () => Object3D,
   PhysXComponent: () => PhysXComponent,
@@ -3016,14 +3017,53 @@ var Emitter = class {
    * emitter.remove('my-callback');
    * ```
    *
-   * @param listener The registered callback or a string representing the `id`.
+   * Using identifiers, you will need to ensure your value is unique to avoid
+   * removing listeners from other libraries, e.g.,:
+   *
+   * ```js
+   * emitter.add((data) => console.log(data), {id: 'non-unique'});
+   * // This second listener could be added by a third-party library.
+   * emitter.add((data) => console.log('Hello From Library!'), {id: 'non-unique'});
+   *
+   * // Ho Snap! This also removed the library listener!
+   * emitter.remove('non-unique');
+   * ```
+   *
+   * The identifier can be any type. However, remember that the comparison will be
+   * by-value for primitive types (string, number), but by reference for objects.
+   *
+   * Example:
+   *
+   * ```js
+   * emitter.add(() => console.log('Hello'), {id: {value: 42}});
+   * emitter.add(() => console.log('World!'), {id: {value: 42}});
+   * emitter.remove({value: 42}); // None of the above listeners match!
+   * emitter.notify(); // Prints 'Hello' and 'World!'.
+   * ```
+   *
+   * Here, both emitters have id `{value: 42}`, but the comparison is made by reference. Thus,
+   * the `remove()` call has no effect. We can make it work by doing:
+   *
+   * ```js
+   * const id = {value: 42};
+   * emitter.add(() => console.log('Hello'), {id});
+   * emitter.add(() => console.log('World!'), {id});
+   * emitter.remove(id); // Same reference, it works!
+   * emitter.notify(); // Doesn't print.
+   * ```
+   *
+   * @param listener The registered callback or a value representing the `id`.
    *
    * @returns Reference to self (for method chaining)
    */
   remove(listener) {
-    const index = this._find(listener);
-    if (index !== null)
-      this._listeners.splice(index, 1);
+    const listeners = this._listeners;
+    for (let i = 0; i < listeners.length; ++i) {
+      const target = listeners[i];
+      if (target.callback === listener || target.id === listener) {
+        listeners.splice(i--, 1);
+      }
+    }
     return this;
   }
   /**
@@ -3031,11 +3071,17 @@ var Emitter = class {
    *
    * @note This method performs a linear search.
    *
-   * @param listener The registered callback or a string representing the `id`.
+   * @param listener The registered callback or a value representing the `id`.
    * @returns `true` if the handle is found, `false` otherwise.
    */
   has(listener) {
-    return this._find(listener) !== null;
+    const listeners = this._listeners;
+    for (let i = 0; i < listeners.length; ++i) {
+      const target = listeners[i];
+      if (target.callback === listener || target.id === listener)
+        return true;
+    }
+    return false;
   }
   /**
    * Notify listeners with the given data object.
@@ -3096,28 +3142,13 @@ var Emitter = class {
       });
     });
   }
-  /**
-   * Find the listener index.
-   *
-   * @param listener The registered callback or a string representing the `id`.
-   * @returns The index if found, `null` otherwise.
-   *
-   * @hidden
-   */
-  _find(listener) {
-    const listeners = this._listeners;
-    if (isString(listener)) {
-      for (let i = 0; i < listeners.length; ++i) {
-        if (listeners[i].id === listener)
-          return i;
-      }
-      return null;
-    }
-    for (let i = 0; i < listeners.length; ++i) {
-      if (listeners[i].callback === listener)
-        return i;
-    }
-    return null;
+  /** Number of listeners. */
+  get listenerCount() {
+    return this._listeners.length;
+  }
+  /** `true` if it has no listeners, `false` otherwise. */
+  get isEmpty() {
+    return this.listenerCount === 0;
   }
 };
 var RetainEmitterUndefined = {};
@@ -3140,7 +3171,7 @@ var RetainEmitter = class extends Emitter {
     return this;
   }
   /**
-   * @overload
+   * @override
    *
    * @param listener The callback to register.
    * @param immediate If `true`, directly resolves if the emitter retains a value.
@@ -3172,7 +3203,40 @@ var RetainEmitter = class extends Emitter {
     this._event = RetainEmitterUndefined;
     return this;
   }
+  /** Returns the retained data, or `undefined` if no data was retained. */
+  get data() {
+    return this.isDataRetained ? this._event : void 0;
+  }
+  /** `true` if data is retained from the last event, `false` otherwise. */
+  get isDataRetained() {
+    return this._event !== RetainEmitterUndefined;
+  }
 };
+
+// node_modules/@wonderlandengine/api/dist/utils/fetch.js
+function fetchWithProgress(path, onProgress) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", path);
+    xhr.responseType = "arraybuffer";
+    xhr.onprogress = (progress) => {
+      if (progress.lengthComputable) {
+        onProgress?.(progress.loaded, progress.total);
+      }
+    };
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        const buffer = xhr.response;
+        onProgress?.(buffer.byteLength, buffer.byteLength);
+        resolve(buffer);
+      } else {
+        reject(xhr.statusText);
+      }
+    };
+    xhr.onerror = () => reject(xhr.statusText);
+    xhr.send();
+  });
+}
 
 // node_modules/@wonderlandengine/api/dist/wonderland.js
 var __decorate = function(decorators, target, key, desc) {
@@ -3419,23 +3483,48 @@ var Scene = class {
     return this._engine;
   }
   /**
-   * Load a scene file (.bin)
+   * Load a scene file (.bin).
    *
    * Will replace the currently active scene with the one loaded
    * from given file. It is assumed that JavaScript components required by
    * the new scene were registered in advance.
    *
+   * Once the scene is loaded successfully and initialized,
+   * {@link WonderlandEngine.onSceneLoaded} is notified.
+   *
    * @param filename Path to the .bin file.
+   * @returns Promise that resolves when the scene was loaded.
    */
-  load(filename) {
+  async load(filename) {
     const wasm = this._engine.wasm;
-    wasm._wl_load_scene(wasm.tempUTF8(filename));
+    const buffer = await fetchWithProgress(filename, (bytes, size2) => {
+      console.log(`Scene downloading: ${bytes} / ${size2}`);
+      wasm._wl_set_loading_screen_progress(bytes / size2);
+    });
+    const size = buffer.byteLength;
+    console.log(`Scene download of ${size} bytes successful.`);
+    const ptr = wasm._malloc(size);
+    new Uint8Array(wasm.HEAPU8.buffer, ptr, size).set(new Uint8Array(buffer));
+    try {
+      wasm._wl_load_scene_bin(ptr, size, wasm.tempUTF8(filename));
+    } finally {
+      wasm._free(ptr);
+    }
+    const binQueue = wasm._queuedBinFiles;
+    if (binQueue.length > 0) {
+      wasm._queuedBinFiles = [];
+      await Promise.all(binQueue.map((path) => this.append(path)));
+    }
+    this._engine.onSceneLoaded.notify();
   }
   /**
-   * Load an external 3D file (.gltf, .glb).
+   * Append a scene file.
    *
-   * Loads and parses the gltf file and its images and appends the result
-   * to scene.
+   * Loads and parses the file and its images and appends the result
+   * to the currently active scene.
+   *
+   * Supported formats are streamable Wonderland scene files (.bin) and glTF
+   * 3D scenes (.gltf, .glb).
    *
    * ```js
    * WL.scene.append(filename).then(root => {
@@ -3460,26 +3549,57 @@ var Scene = class {
    * });
    * ```
    *
-   * @param filename Path to the .gltf or .glb file.
+   * @param file The .bin, .gltf or .glb file to append. Should be a URL or
+   *   an `ArrayBuffer` with the file content.
    * @param options Additional options for loading.
-   * @returns Root of the loaded scene.
+   * @returns Promise that resolves when the scene was appended.
    */
-  append(filename, options) {
-    options = options || {};
+  async append(file, options) {
+    const buffer = isString(file) ? await fetchWithProgress(file) : file;
     const wasm = this._engine.wasm;
-    const loadGltfExtensions = !!options.loadGltfExtensions;
-    const callback = wasm._sceneLoadedCallback.length;
+    let callback;
     const promise = new Promise((resolve, reject) => {
-      wasm._sceneLoadedCallback[callback] = {
-        success: (id, extensions) => {
-          const root = this._engine.wrapObject(id);
-          resolve(extensions ? { root, extensions } : root);
-        },
-        error: () => reject()
-      };
-    });
-    wasm._wl_append_scene(wasm.tempUTF8(filename), loadGltfExtensions, callback);
-    return promise;
+      callback = wasm.addFunction((objectId, extensionData, extensionDataSize) => {
+        if (objectId < 0) {
+          reject();
+          return;
+        }
+        const root = objectId ? this._engine.wrapObject(objectId) : null;
+        if (extensionData && extensionDataSize) {
+          const marshalled = new Uint32Array(wasm.HEAPU32.buffer, extensionData, extensionDataSize / 4);
+          const extensions = this._unmarshallGltfExtensions(marshalled);
+          resolve({ root, extensions });
+        } else {
+          resolve(root);
+        }
+      }, "viii");
+    }).finally(() => wasm.removeFunction(callback));
+    const size = buffer.byteLength;
+    const ptr = wasm._malloc(size);
+    const data = new Uint8Array(wasm.HEAPU8.buffer, ptr, size);
+    data.set(new Uint8Array(buffer));
+    const MAGIC = "WLEV";
+    const isBinFile = data.byteLength > MAGIC.length && data.subarray(0, MAGIC.length).every((value, i) => value === MAGIC.charCodeAt(i));
+    try {
+      if (isBinFile) {
+        wasm._wl_append_scene_bin(ptr, size, callback);
+      } else {
+        const loadExtensions = options?.loadGltfExtensions ?? false;
+        wasm._wl_append_scene_gltf(ptr, size, loadExtensions, callback);
+      }
+    } catch (e) {
+      wasm.removeFunction(callback);
+      throw e;
+    } finally {
+      wasm._free(ptr);
+    }
+    const result = await promise;
+    const binQueue = wasm._queuedBinFiles;
+    if (isBinFile && binQueue.length > 0) {
+      wasm._queuedBinFiles = [];
+      await Promise.all(binQueue.map((path) => this.append(path, options)));
+    }
+    return result;
   }
   /**
    * Unmarshalls the GltfExtensions from an Uint32Array.
@@ -3494,7 +3614,7 @@ var Scene = class {
       root: {},
       mesh: {},
       node: {},
-      idMapping: {}
+      idMapping: []
     };
     let index = 0;
     const readString = () => {
@@ -4085,15 +4205,42 @@ __decorate([
   enumerable()
 ], InputComponent.prototype, "handedness", null);
 var LightComponent = class extends Component {
-  /** View on the light color. */
+  getColor(out = new Float32Array(3)) {
+    const wasm = this._engine.wasm;
+    const ptr = wasm._wl_light_component_get_color(this._id) / 4;
+    out[0] = wasm.HEAPF32[ptr];
+    out[1] = wasm.HEAPF32[ptr + 1];
+    out[2] = wasm.HEAPF32[ptr + 2];
+    return out;
+  }
+  /**
+   * Set light color.
+   *
+   * @param c New color array/vector, expected to have at least 3 elements.
+   * @since 1.0.0
+   */
+  setColor(c) {
+    const wasm = this._engine.wasm;
+    const ptr = wasm._wl_light_component_get_color(this._id) / 4;
+    wasm.HEAPF32[ptr] = c[0];
+    wasm.HEAPF32[ptr + 1] = c[1];
+    wasm.HEAPF32[ptr + 2] = c[2];
+  }
+  /**
+   * View on the light color.
+   *
+   * @note Prefer to use {@link getColor} in performance-critical code.
+   */
   get color() {
     const wasm = this._engine.wasm;
-    return new Float32Array(wasm.HEAPF32.buffer, wasm._wl_light_component_get_color(this._id), 4);
+    return new Float32Array(wasm.HEAPF32.buffer, wasm._wl_light_component_get_color(this._id), 3);
   }
   /**
    * Set light color.
    *
    * @param c Color of the light component.
+   *
+   * @note Prefer to use {@link setColor} in performance-critical code.
    */
   set color(c) {
     this.color.set(c);
@@ -4110,6 +4257,150 @@ var LightComponent = class extends Component {
   set lightType(t) {
     this._engine.wasm._wl_light_component_set_type(this._id, t);
   }
+  /**
+   * Light intensity.
+   * @since 1.0.0
+   */
+  get intensity() {
+    return this._engine.wasm._wl_light_component_get_intensity(this._id);
+  }
+  /**
+   * Set light intensity.
+   *
+   * @param intensity Intensity of the light component.
+   * @since 1.0.0
+   */
+  set intensity(intensity) {
+    this._engine.wasm._wl_light_component_set_intensity(this._id, intensity);
+  }
+  /**
+   * Outer angle for spot lights, in degrees.
+   * @since 1.0.0
+   */
+  get outerAngle() {
+    return this._engine.wasm._wl_light_component_get_outerAngle(this._id);
+  }
+  /**
+   * Set outer angle for spot lights.
+   *
+   * @param angle Outer angle, in degrees.
+   * @since 1.0.0
+   */
+  set outerAngle(angle2) {
+    this._engine.wasm._wl_light_component_set_outerAngle(this._id, angle2);
+  }
+  /**
+   * Inner angle for spot lights, in degrees.
+   * @since 1.0.0
+   */
+  get innerAngle() {
+    return this._engine.wasm._wl_light_component_get_innerAngle(this._id);
+  }
+  /**
+   * Set inner angle for spot lights.
+   *
+   * @param angle Inner angle, in degrees.
+   * @since 1.0.0
+   */
+  set innerAngle(angle2) {
+    this._engine.wasm._wl_light_component_set_innerAngle(this._id, angle2);
+  }
+  /**
+   * Whether the light casts shadows.
+   * @since 1.0.0
+   */
+  get shadows() {
+    return !!this._engine.wasm._wl_light_component_get_shadows(this._id);
+  }
+  /**
+   * Set whether the light casts shadows.
+   *
+   * @param b Whether the light casts shadows.
+   * @since 1.0.0
+   */
+  set shadows(b) {
+    this._engine.wasm._wl_light_component_set_shadows(this._id, b);
+  }
+  /**
+   * Range for shadows.
+   * @since 1.0.0
+   */
+  get shadowRange() {
+    return this._engine.wasm._wl_light_component_get_shadowRange(this._id);
+  }
+  /**
+   * Set range for shadows.
+   *
+   * @param range Range for shadows.
+   * @since 1.0.0
+   */
+  set shadowRange(range) {
+    this._engine.wasm._wl_light_component_set_shadowRange(this._id, range);
+  }
+  /**
+   * Bias value for shadows.
+   * @since 1.0.0
+   */
+  get shadowBias() {
+    return this._engine.wasm._wl_light_component_get_shadowBias(this._id);
+  }
+  /**
+   * Set bias value for shadows.
+   *
+   * @param bias Bias for shadows.
+   * @since 1.0.0
+   */
+  set shadowBias(bias) {
+    this._engine.wasm._wl_light_component_set_shadowBias(this._id, bias);
+  }
+  /**
+   * Normal bias value for shadows.
+   * @since 1.0.0
+   */
+  get shadowNormalBias() {
+    return this._engine.wasm._wl_light_component_get_shadowNormalBias(this._id);
+  }
+  /**
+   * Set normal bias value for shadows.
+   *
+   * @param bias Normal bias for shadows.
+   * @since 1.0.0
+   */
+  set shadowNormalBias(bias) {
+    this._engine.wasm._wl_light_component_set_shadowNormalBias(this._id, bias);
+  }
+  /**
+   * Texel size for shadows.
+   * @since 1.0.0
+   */
+  get shadowTexelSize() {
+    return this._engine.wasm._wl_light_component_get_shadowTexelSize(this._id);
+  }
+  /**
+   * Set texel size for shadows.
+   *
+   * @param size Texel size for shadows.
+   * @since 1.0.0
+   */
+  set shadowTexelSize(size) {
+    this._engine.wasm._wl_light_component_set_shadowTexelSize(this._id, size);
+  }
+  /**
+   * Cascade count for {@link LightType.Sun} shadows.
+   * @since 1.0.0
+   */
+  get cascadeCount() {
+    return this._engine.wasm._wl_light_component_get_cascadeCount(this._id);
+  }
+  /**
+   * Set cascade count for {@link LightType.Sun} shadows.
+   *
+   * @param count Cascade count.
+   * @since 1.0.0
+   */
+  set cascadeCount(count) {
+    this._engine.wasm._wl_light_component_set_cascadeCount(this._id, count);
+  }
 };
 /** @override */
 __publicField(LightComponent, "TypeName", "light");
@@ -4119,6 +4410,33 @@ __decorate([
 __decorate([
   nativeProperty()
 ], LightComponent.prototype, "lightType", null);
+__decorate([
+  nativeProperty()
+], LightComponent.prototype, "intensity", null);
+__decorate([
+  nativeProperty()
+], LightComponent.prototype, "outerAngle", null);
+__decorate([
+  nativeProperty()
+], LightComponent.prototype, "innerAngle", null);
+__decorate([
+  nativeProperty()
+], LightComponent.prototype, "shadows", null);
+__decorate([
+  nativeProperty()
+], LightComponent.prototype, "shadowRange", null);
+__decorate([
+  nativeProperty()
+], LightComponent.prototype, "shadowBias", null);
+__decorate([
+  nativeProperty()
+], LightComponent.prototype, "shadowNormalBias", null);
+__decorate([
+  nativeProperty()
+], LightComponent.prototype, "shadowTexelSize", null);
+__decorate([
+  nativeProperty()
+], LightComponent.prototype, "cascadeCount", null);
 var AnimationComponent = class extends Component {
   /**
    * Set animation to play.
@@ -4889,6 +5207,12 @@ var MeshIndexType;
   MeshIndexType2[MeshIndexType2["UnsignedShort"] = 2] = "UnsignedShort";
   MeshIndexType2[MeshIndexType2["UnsignedInt"] = 4] = "UnsignedInt";
 })(MeshIndexType || (MeshIndexType = {}));
+var MeshSkinningType;
+(function(MeshSkinningType2) {
+  MeshSkinningType2[MeshSkinningType2["None"] = 0] = "None";
+  MeshSkinningType2[MeshSkinningType2["FourJoints"] = 1] = "FourJoints";
+  MeshSkinningType2[MeshSkinningType2["EightJoints"] = 2] = "EightJoints";
+})(MeshSkinningType || (MeshSkinningType = {}));
 var Mesh = class {
   /**
    * Index of the mesh in the manager.
@@ -4933,8 +5257,8 @@ var Mesh = class {
           break;
       }
     }
-    const { skinned = false } = params;
-    this._index = wasm._wl_mesh_create(indexData, indexDataSize, indexType, params.vertexCount, skinned);
+    const { skinningType = MeshSkinningType.None } = params;
+    this._index = wasm._wl_mesh_create(indexData, indexDataSize, indexType, params.vertexCount, skinningType);
   }
   /** Number of vertices in this mesh. */
   get vertexCount() {
@@ -5576,13 +5900,17 @@ var Object3D = class {
     return this;
   }
   /**
-   * Reset local translation and rotation to identity.
+   * Reset local position and rotation to identity.
    *
    * @returns Reference to self (for method chaining).
    */
-  resetTranslationRotation() {
+  resetPositionRotation() {
     this._engine.wasm._wl_object_reset_translation_rotation(this.objectId);
     return this;
+  }
+  /** @deprecated Please use {@link Object3D.resetPositionRotation} instead. */
+  resetTranslationRotation() {
+    return this.resetPositionRotation();
   }
   /**
    * Reset local rotation, keep translation.
@@ -5604,9 +5932,13 @@ var Object3D = class {
    *
    * @returns Reference to self (for method chaining).
    */
-  resetTranslation() {
+  resetPosition() {
     this._engine.wasm._wl_object_reset_translation(this.objectId);
     return this;
+  }
+  /** @deprecated Please use {@link Object3D.resetPosition} instead. */
+  resetTranslation() {
+    return this.resetPosition();
   }
   /**
    * Reset local scaling to identity (``[1.0, 1.0, 1.0]``).
@@ -5778,7 +6110,7 @@ var Object3D = class {
     this._engine.wasm._wl_object_scale(this.objectId, v2[0], v2[1], v2[2]);
     return this;
   }
-  getTranslationLocal(out = new Float32Array(3)) {
+  getPositionLocal(out = new Float32Array(3)) {
     const wasm = this._engine.wasm;
     wasm._wl_object_get_translation_local(this.objectId, wasm._tempMem);
     out[0] = wasm._tempMemFloat[0];
@@ -5786,7 +6118,10 @@ var Object3D = class {
     out[2] = wasm._tempMemFloat[2];
     return out;
   }
-  getTranslationWorld(out = new Float32Array(3)) {
+  getTranslationLocal(out = new Float32Array(3)) {
+    return this.getPositionLocal(out);
+  }
+  getPositionWorld(out = new Float32Array(3)) {
     const wasm = this._engine.wasm;
     wasm._wl_object_get_translation_world(this.objectId, wasm._tempMem);
     out[0] = wasm._tempMemFloat[0];
@@ -5794,32 +6129,43 @@ var Object3D = class {
     out[2] = wasm._tempMemFloat[2];
     return out;
   }
+  getTranslationWorld(out = new Float32Array(3)) {
+    return this.getPositionWorld(out);
+  }
   /**
-   * Set local / object space translation.
+   * Set local / object space position.
    *
    * Concatenates a new translation dual quaternion onto the existing rotation.
    *
-   * @param v New local translation array/vector, expected to have at least 3 elements.
+   * @param v New local position array/vector, expected to have at least 3 elements.
    *
    * @returns Reference to self (for method chaining).
    */
-  setTranslationLocal(v2) {
+  setPositionLocal(v2) {
     this._engine.wasm._wl_object_set_translation_local(this.objectId, v2[0], v2[1], v2[2]);
     return this;
   }
+  /** @deprecated Please use {@link Object3D.setPositionLocal} instead. */
+  setTranslationLocal(v2) {
+    return this.setPositionLocal(v2);
+  }
   /**
-   * Set world space translation.
+   * Set world space position.
    *
    * Applies the inverse parent transform with a new translation dual quaternion
    * which is concatenated onto the existing rotation.
    *
-   * @param v New world translation array/vector, expected to have at least 3 elements.
+   * @param v New world position array/vector, expected to have at least 3 elements.
    *
    * @returns Reference to self (for method chaining).
    */
-  setTranslationWorld(v2) {
+  setPositionWorld(v2) {
     this._engine.wasm._wl_object_set_translation_world(this.objectId, v2[0], v2[1], v2[2]);
     return this;
+  }
+  /** @deprecated Please use {@link Object3D.setPositionWorld} instead. */
+  setTranslationWorld(v2) {
+    return this.setPositionWorld(v2);
   }
   getScalingLocal(out = new Float32Array(3)) {
     const wasm = this._engine.wasm;
@@ -6454,6 +6800,8 @@ var Object3D = class {
     const componentType = wasm._wl_get_component_manager_index(wasm.tempUTF8(type));
     if (componentType < 0) {
       const typeIndex = wasm._componentTypeIndices[type];
+      if (typeIndex === void 0)
+        return null;
       const jsIndex = wasm._wl_get_js_component_index(this.objectId, typeIndex, index);
       return jsIndex < 0 ? null : this._engine.wasm._components[jsIndex];
     }
@@ -7000,6 +7348,20 @@ var WonderlandEngine = class {
    * ```
    */
   onXRSessionStart = new RetainEmitter();
+  /**
+   * {@link Emitter} for canvas / main framebuffer resize events.
+   *
+   * Usage from a within a component:
+   * ```js
+   * this.engine.onResize.add(() => {
+   *     const canvas = this.engine.canvas;
+   *     console.log(`New Size: ${canvas.width}, ${canvas.height}`);
+   * });
+   * ```
+   *
+   * @note The size of the canvas is in physical pixels, and is set via {@link WonderlandEngine.resize}.
+   */
+  onResize = new Emitter();
   /** Whether AR is supported by the browser. */
   arSupported = false;
   /** Whether VR is supported by the browser. */
@@ -7131,7 +7493,8 @@ var WonderlandEngine = class {
    * Resize the canvas and the rendering context.
    *
    * @note The `width` and `height` parameters will be scaled by the
-   * `dpr` one.
+   * `devicePixelRatio` value. By default, the pixel ratio used is
+   * [window.devicePixelRatio](https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio).
    *
    * @param width The width, in CSS pixels.
    * @param height The height, in CSS pixels.
@@ -7143,6 +7506,18 @@ var WonderlandEngine = class {
     this.canvas.width = width;
     this.canvas.height = height;
     this.wasm._wl_application_resize(width, height);
+    this.onResize.notify();
+  }
+  /**
+   * Run the next frame.
+   *
+   * @param fixedDelta The elapsed time between this frame and the previous one.
+   *
+   * @note The engine automatically schedules next frames. You should only
+   * use this method for testing.
+   */
+  nextFrame(fixedDelta) {
+    this.#wasm._wl_nextFrame(fixedDelta);
   }
   /**
    * Request a XR session.
@@ -7546,6 +7921,8 @@ var WASM = class {
   _withPhysX = false;
   /** Decoder for UTF8 `ArrayBuffer` to JavaScript string. */
   _utf8Decoder = new TextDecoder("utf8");
+  /** List of .bin files to delay-load. */
+  _queuedBinFiles = [];
   /**
    * Create a new instance of the WebAssembly <> API bridge.
    *
@@ -8000,10 +8377,13 @@ var WASM = class {
   stringToUTF8 = null;
   UTF8ToString = null;
   addFunction = null;
+  removeFunction = null;
   _wl_set_error_callback = null;
   _wl_application_version = null;
   _wl_application_start = null;
   _wl_application_resize = null;
+  _wl_nextUpdate = null;
+  _wl_nextFrame = null;
   _wl_scene_get_active_views = null;
   _wl_scene_ray_cast = null;
   _wl_scene_add_object = null;
@@ -8011,8 +8391,10 @@ var WASM = class {
   _wl_scene_reserve_objects = null;
   _wl_scene_set_clearColor = null;
   _wl_scene_enableColorClear = null;
-  _wl_load_scene = null;
-  _wl_append_scene = null;
+  _wl_set_loading_screen_progress = null;
+  _wl_load_scene_bin = null;
+  _wl_append_scene_bin = null;
+  _wl_append_scene_gltf = null;
   _wl_scene_reset = null;
   _wl_component_get_object = null;
   _wl_component_setActive = null;
@@ -8050,6 +8432,24 @@ var WASM = class {
   _wl_light_component_get_color = null;
   _wl_light_component_get_type = null;
   _wl_light_component_set_type = null;
+  _wl_light_component_get_intensity = null;
+  _wl_light_component_set_intensity = null;
+  _wl_light_component_get_outerAngle = null;
+  _wl_light_component_set_outerAngle = null;
+  _wl_light_component_get_innerAngle = null;
+  _wl_light_component_set_innerAngle = null;
+  _wl_light_component_get_shadows = null;
+  _wl_light_component_set_shadows = null;
+  _wl_light_component_get_shadowRange = null;
+  _wl_light_component_set_shadowRange = null;
+  _wl_light_component_get_shadowBias = null;
+  _wl_light_component_set_shadowBias = null;
+  _wl_light_component_get_shadowNormalBias = null;
+  _wl_light_component_set_shadowNormalBias = null;
+  _wl_light_component_get_shadowTexelSize = null;
+  _wl_light_component_set_shadowTexelSize = null;
+  _wl_light_component_get_cascadeCount = null;
+  _wl_light_component_set_cascadeCount = null;
   _wl_animation_component_get_animation = null;
   _wl_animation_component_set_animation = null;
   _wl_animation_component_get_playCount = null;
@@ -8115,7 +8515,6 @@ var WASM = class {
   _wl_physx_component_addTorque = null;
   _wl_physx_component_addCallback = null;
   _wl_physx_component_removeCallback = null;
-  _wl_physx_update = null;
   _wl_physx_update_global_pose = null;
   _wl_physx_ray_cast = null;
   _wl_physx_set_collision_callback = null;
@@ -8226,7 +8625,7 @@ var APIVersion = {
   major: 1,
   minor: 0,
   patch: 0,
-  rc: 7
+  rc: 0
 };
 
 // node_modules/@wonderlandengine/api/dist/index.js
@@ -11741,6 +12140,11 @@ var Cursor = class extends Component {
    * by the cursor to send events to the hitTestTarget with HitTestResult.
    */
   useWebXRHitTest = false;
+  _onViewportResize = () => {
+    if (!this._viewComponent)
+      return;
+    mat4_exports.invert(this._projectionMatrix, this._viewComponent.projectionMatrix);
+  };
   start() {
     this._collisionMask = 1 << this.collisionGroup;
     if (this.handedness == 0) {
@@ -11765,6 +12169,7 @@ var Cursor = class extends Component {
   }
   onActivate() {
     this.engine.onXRSessionStart.add(this._onSessionStartCallback);
+    this.engine.onResize.add(this._onViewportResize);
     this._setCursorVisibility(true);
     if (this._viewComponent != null) {
       const canvas2 = this.engine.canvas;
@@ -11776,28 +12181,20 @@ var Cursor = class extends Component {
       canvas2.addEventListener("pointermove", onPointerMove);
       canvas2.addEventListener("pointerdown", onPointerDown);
       canvas2.addEventListener("pointerup", onPointerUp);
-      mat4_exports.invert(this._projectionMatrix, this._viewComponent.projectionMatrix);
-      const onViewportResize = this.onViewportResize.bind(this);
-      window.addEventListener("resize", onViewportResize);
       this._onDeactivateCallbacks.push(() => {
         canvas2.removeEventListener("click", onClick);
         canvas2.removeEventListener("pointermove", onPointerMove);
         canvas2.removeEventListener("pointerdown", onPointerDown);
         canvas2.removeEventListener("pointerup", onPointerUp);
-        window.removeEventListener("resize", onViewportResize);
       });
     }
+    this._onViewportResize();
     this.object.getTranslationWorld(this._origin);
     this.object.getForward(this._direction);
     if (this.cursorRayObject) {
       this._cursorRayScale.set(this.cursorRayObject.scalingLocal);
       this._setCursorRayTransform(vec3_exports.add(tempVec2, this._origin, this._direction));
     }
-  }
-  onViewportResize() {
-    if (!this._viewComponent)
-      return;
-    mat4_exports.invert(this._projectionMatrix, this._viewComponent.projectionMatrix);
   }
   _setCursorRayTransform(hitPosition) {
     if (!this.cursorRayObject)
@@ -11929,10 +12326,11 @@ var Cursor = class extends Component {
       s.removeEventListener("selectstart", onSelectStart);
       s.removeEventListener("selectend", onSelectEnd);
     });
-    this.onViewportResize();
+    this._onViewportResize();
   }
   onDeactivate() {
     this.engine.onXRSessionStart.remove(this._onSessionStartCallback);
+    this.engine.onResize.remove(this._onViewportResize);
     this._setCursorVisibility(false);
     if (this.hoveringObject)
       this.notify("onUnhover", null);
@@ -12106,7 +12504,7 @@ __decorate5([
 // node_modules/@wonderlandengine/components/dist/fixed-foveation.js
 var FixedFoveation = class extends Component {
   start() {
-    this.onSessionStartCallback = this.setFixedFoveation().bind(this);
+    this.onSessionStartCallback = this.setFixedFoveation.bind(this);
   }
   onActivate() {
     this.engine.onXRSessionStart.add(this.onSessionStartCallback);
@@ -12387,6 +12785,35 @@ __publicField(HowlerAudioSource, "Properties", {
   src: { type: Type.String, default: "" }
 });
 
+// node_modules/@wonderlandengine/components/dist/utils/utils.js
+function setFirstMaterialTexture(mat, texture, customTextureProperty) {
+  if (customTextureProperty !== "auto") {
+    mat[customTextureProperty] = texture;
+    return true;
+  }
+  const shader = mat.shader;
+  if (shader === "Flat Opaque Textured") {
+    mat.flatTexture = texture;
+    return true;
+  } else if (shader === "Phong Opaque Textured" || shader === "Foliage" || shader === "Phong Normalmapped" || shader === "Phong Lightmapped") {
+    mat.diffuseTexture = texture;
+    return true;
+  } else if (shader === "Particle") {
+    mat.mainTexture = texture;
+    return true;
+  } else if (shader === "DistanceFieldVector") {
+    mat.vectorTexture = texture;
+    return true;
+  } else if (shader === "Background" || shader === "Sky") {
+    mat.texture = texture;
+    return true;
+  } else if (shader === "Physical Opaque Textured") {
+    mat.albedoTexture = texture;
+    return true;
+  }
+  return false;
+}
+
 // node_modules/@wonderlandengine/components/dist/image-texture.js
 var ImageTexture = class extends Component {
   start() {
@@ -12395,17 +12822,8 @@ var ImageTexture = class extends Component {
     }
     this.engine.textures.load(this.url, "anonymous").then((texture) => {
       const mat = this.material;
-      const shader = mat.shader;
-      if (shader === "Flat Opaque Textured") {
-        mat.flatTexture = texture;
-      } else if (shader === "Phong Opaque Textured" || shader === "Foliage") {
-        mat.diffuseTexture = texture;
-      } else if (shader === "Background") {
-        mat.texture = texture;
-      } else if (shader === "Physical Opaque Textured") {
-        mat.albedoTexture = texture;
-      } else {
-        console.error("Shader", shader, "not supported by image-texture");
+      if (!setFirstMaterialTexture(mat, texture, this.textureProperty)) {
+        console.error("Shader", mat.shader, "not supported by image-texture");
       }
     }).catch(console.err);
   }
@@ -12413,9 +12831,11 @@ var ImageTexture = class extends Component {
 __publicField(ImageTexture, "TypeName", "image-texture");
 __publicField(ImageTexture, "Properties", {
   /** URL to download the image from */
-  url: { type: Type.String },
+  url: Property.string(),
   /** Material to apply the video texture to */
-  material: { type: Type.Material }
+  material: Property.material(),
+  /** Name of the texture property to set */
+  textureProperty: Property.string("auto")
 });
 
 // node_modules/@wonderlandengine/components/dist/mouse-look.js
@@ -12531,7 +12951,7 @@ __publicField(PlayerHeight, "Properties", {
 // node_modules/@wonderlandengine/components/dist/target-framerate.js
 var TargetFramerate = class extends Component {
   start() {
-    this.onSessionStartCallback = this.setTargetFramerate().bind(this);
+    this.onSessionStartCallback = this.setTargetFramerate.bind(this);
   }
   onActivate() {
     this.engine.onXRSessionStart.add(this.onSessionStartCallback);
@@ -12541,9 +12961,9 @@ var TargetFramerate = class extends Component {
   }
   setTargetFramerate(s) {
     if (s.supportedFrameRates && s.updateTargetFrameRate) {
-      const a = this.engine.xrSession.supportedFrameRates;
+      const a = this.engine.xr.session.supportedFrameRates;
       a.sort((a2, b) => Math.abs(a2 - this.framerate) - Math.abs(b - this.framerate));
-      this.engine.xrSession.updateTargetFrameRate(a[0]);
+      this.engine.xr.session.updateTargetFrameRate(a[0]);
     }
   }
 };
@@ -12630,14 +13050,14 @@ var TeleportComponent = class extends Component {
     }
     if (this.isIndicating && this.teleportIndicatorMeshObject && this.input) {
       const origin = this._tempVec0;
-      quat2_exports.getTranslation(origin, this.object.transformWorld);
-      const direction2 = this.object.getForward(this._tempVec);
+      this.object.getPositionWorld(origin);
+      const direction2 = this.object.getForwardWorld(this._tempVec);
       let rayHit = this.rayHit = this.rayCastMode == 0 ? this.engine.scene.rayCast(origin, direction2, 1 << this.floorGroup) : this.engine.physics.rayCast(origin, direction2, 1 << this.floorGroup, this.maxDistance);
       if (rayHit.hitCount > 0) {
         this.indicatorHidden = false;
         this._extraRotation = Math.PI + Math.atan2(this._currentStickAxes[0], this._currentStickAxes[1]);
         this._currentIndicatorRotation = this._getCamRotation() + (this._extraRotation - Math.PI);
-        this.teleportIndicatorMeshObject.resetTranslationRotation();
+        this.teleportIndicatorMeshObject.resetPositionRotation();
         this.teleportIndicatorMeshObject.rotateAxisAngleRad([0, 1, 0], this._currentIndicatorRotation);
         this.teleportIndicatorMeshObject.translate(rayHit.locations[0]);
         this.teleportIndicatorMeshObject.translate([
@@ -12697,7 +13117,7 @@ var TeleportComponent = class extends Component {
   }
   onMousePressed() {
     let origin = [0, 0, 0];
-    quat2_exports.getTranslation(origin, this.cam.transformWorld);
+    this.cam.getPositionWorld(origin);
     const direction2 = this.cam.getForward(this._tempVec);
     let rayHit = this.rayHit = this.rayCastMode == 0 ? this.engine.scene.rayCast(origin, direction2, 1 << this.floorGroup) : this.engine.physics.rayCast(origin, direction2, 1 << this.floorGroup, this.maxDistance);
     if (rayHit.hitCount > 0) {
@@ -12705,7 +13125,7 @@ var TeleportComponent = class extends Component {
       direction2[1] = 0;
       vec3_exports.normalize(direction2, direction2);
       this._currentIndicatorRotation = -Math.sign(direction2[2]) * Math.acos(direction2[0]) - Math.PI * 0.5;
-      this.teleportIndicatorMeshObject.resetTranslationRotation();
+      this.teleportIndicatorMeshObject.resetPositionRotation();
       this.teleportIndicatorMeshObject.rotateAxisAngleRad([0, 1, 0], this._currentIndicatorRotation);
       this.teleportIndicatorMeshObject.translate(rayHit.locations[0]);
       this.teleportIndicatorMeshObject.active = true;
@@ -12724,19 +13144,19 @@ var TeleportComponent = class extends Component {
     const p = this._tempVec;
     const p1 = this._tempVec0;
     if (this.session) {
-      this.eyeLeft.getTranslationWorld(p);
-      this.eyeRight.getTranslationWorld(p1);
+      this.eyeLeft.getPositionWorld(p);
+      this.eyeRight.getPositionWorld(p1);
       vec3_exports.add(p, p, p1);
       vec3_exports.scale(p, p, 0.5);
     } else {
-      this.cam.getTranslationWorld(p);
+      this.cam.getPositionWorld(p);
     }
-    this.camRoot.getTranslationWorld(p1);
+    this.camRoot.getPositionWorld(p1);
     vec3_exports.sub(p, p1, p);
     p[0] += newPosition[0];
     p[1] = newPosition[1];
     p[2] += newPosition[2];
-    this.camRoot.setTranslationWorld(p);
+    this.camRoot.setPositionWorld(p);
   }
 };
 __publicField(TeleportComponent, "TypeName", "teleport");
@@ -13036,15 +13456,7 @@ var VideoTexture = class extends Component {
     const mat = this.material;
     const shader = mat.shader;
     const texture = this.texture = new Texture(this.engine, this.video);
-    if (shader === "Flat Opaque Textured") {
-      mat.flatTexture = texture;
-    } else if (shader === "Phong Opaque Textured" || shader === "Foliage") {
-      mat.diffuseTexture = texture;
-    } else if (shader === "Background") {
-      mat.texture = texture;
-    } else if (shader === "Physical Opaque Textured") {
-      mat.albedoTexture = texture;
-    } else {
+    if (!setFirstMaterialTexture(mat, texture, this.textureProperty)) {
       console.error("Shader", shader, "not supported by video-texture");
     }
     if ("requestVideoFrameCallback" in this.video) {
@@ -13073,15 +13485,17 @@ var VideoTexture = class extends Component {
 __publicField(VideoTexture, "TypeName", "video-texture");
 __publicField(VideoTexture, "Properties", {
   /** URL to download video from */
-  url: { type: Type.String },
+  url: Property.string(),
   /** Material to apply the video texture to */
-  material: { type: Type.Material },
+  material: Property.material(),
   /** Whether to loop the video */
-  loop: { type: Type.Bool, default: true },
+  loop: Property.bool(true),
   /** Whether to automatically start playing the video */
-  autoplay: { type: Type.Bool, default: true },
+  autoplay: Property.bool(true),
   /** Whether to mute sound */
-  muted: { type: Type.Bool, default: true }
+  muted: Property.bool(true),
+  /** Name of the texture property to set */
+  textureProperty: Property.string("auto")
 });
 
 // node_modules/@wonderlandengine/components/dist/vr-mode-active-switch.js
