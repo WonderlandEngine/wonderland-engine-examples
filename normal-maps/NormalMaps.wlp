@@ -131,14 +131,15 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.1
+                        "attenuation": 0.1,
+                        "intensity": 3.2999999
                     }
                 }
             ],
             "translation": [
-                0.0,
+                -1.0,
                 3.0,
-                2.0
+                -1.0
             ],
             "rotation": [
                 0.0,
@@ -158,7 +159,8 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.1
+                        "attenuation": 0.1,
+                        "intensity": 1.0
                     }
                 },
                 {
@@ -166,9 +168,9 @@
                 }
             ],
             "translation": [
-                0.0665204,
-                2.1283874,
-                5.774199962615967e-8
+                0.0665124,
+                2.1283931,
+                5.401670932769775e-7
             ],
             "rotation": [
                 0.0,
@@ -245,7 +247,7 @@
             },
             "translation": [
                 0.0,
-                5.960464477539064e-8,
+                5.960464477539065e-8,
                 -1.626698
             ],
             "rotation": [
@@ -286,10 +288,10 @@
             "translation": [
                 0.0,
                 -1.1565891,
-                8.760495973092476e-8
+                8.760495973092477e-8
             ],
             "rotation": [
-                8.940696716308595e-8,
+                8.940696716308596e-8,
                 0.0,
                 0.0,
                 1.0
@@ -313,9 +315,9 @@
                 }
             ],
             "translation": [
-                -0.0255255,
-                -0.4353817,
-                -0.206455
+                0.0,
+                0.0,
+                0.0
             ],
             "rotation": [
                 0.0,
@@ -356,6 +358,35 @@
                 0.584989,
                 0.584989
             ]
+        },
+        "77": {
+            "name": "Light",
+            "components": [
+                {
+                    "type": "light",
+                    "light": {
+                        "attenuation": 0.1,
+                        "intensity": 3.2999999
+                    }
+                }
+            ],
+            "translation": [
+                0.0,
+                3.0,
+                3.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": null
         }
     },
     "meshes": {
@@ -774,8 +805,8 @@
         "rendering": {},
         "runtime": {
             "pwa": {
-                "enable": true,
-                "appIcon": "46"
+                "enable": false,
+                "appIcon": null
             }
         }
     },

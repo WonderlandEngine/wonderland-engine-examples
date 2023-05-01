@@ -1,4 +1,0 @@
-import * as __wonderlandengine_components from '@wonderlandengine/components';
-_registerEditor(__wonderlandengine_components);
-import * as _C__Users_rixon_Desktop_tcs_wle_Projects_GitFork_wonderland_engine_examples_normal_maps_js_light_animation_js from 'C:/Users/rixon/Desktop/tcs/wle/Projects/GitFork/wonderland-engine-examples/normal-maps/js/light-animation.js';
-_registerEditor(_C__Users_rixon_Desktop_tcs_wle_Projects_GitFork_wonderland_engine_examples_normal_maps_js_light_animation_js);
