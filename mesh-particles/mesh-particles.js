@@ -1,6 +1,14 @@
-import {Component, Type} from '@wonderlandengine/api';
+import {Component, Property} from '@wonderlandengine/api';
 
-import * as glMatrix from 'gl-matrix';
+import {vec3} from 'gl-matrix';
+
+/* Vectors constants */
+const ZeroVector = new Float32Array(3);
+const AxisY = [0, 1, 0];
+
+/* Temp vectors */
+const origin = new Float32Array(3);
+const distance = new Float32Array(3);
 
 /**
 Very simple mesh particles system
@@ -14,44 +22,43 @@ export class MeshParticles extends Component {
     static TypeName = 'mesh-particles';
     static Properties = {
         /* Mesh for spawned particles */
-        mesh: {type: Type.Mesh, default: null},
+        mesh: Property.mesh(),
         /* Material for spawned particles */
-        material: {type: Type.Material, default: null},
+        material: Property.material(),
         /* Delay between particle spawns. If below time of a frame, will spawn multiple particles in update. */
-        delay: {type: Type.Float, default: 0.1},
+        delay: Property.float(0.1),
         /* Maximum number of particles, once limit is reached, particles are recycled first-in-first-out. */
-        maxParticles: {type: Type.Int, default: 64},
+        maxParticles: Property.int(64),
         /* Initial speed of emitted particles. */
-        initialSpeed: {type: Type.Float, default: 30},
+        initialSpeed: Property.float(30),
         /* Size of a particle */
-        particleScale: {type: Type.Float, default: 0.1},
+        particleScale: Property.float(0.1),
     };
 
-    init() {
-        this.time = 0.0;
-        this.count = 0;
-    }
+    time = 0.0;
+    count = 0;
+    particleScaleVector = new Float32Array(3);
 
     start() {
-        this.objects = [];
-        this.velocities = [];
-
         this.objects = this.engine.scene.addObjects(
             this.maxParticles,
             null,
             this.maxParticles
         );
+        this.velocities = new Array(this.maxParticles);
+        this.particleScaleVector.fill(this.particleScale);
 
         for (let i = 0; i < this.maxParticles; ++i) {
-            this.velocities.push([0, 0, 0]);
-            let obj = this.objects[i];
-            obj.name = 'particle' + this.count.toString();
-            let mesh = obj.addComponent('mesh');
+            this.velocities[i] = new Float32Array(3);
+            const obj = this.objects[i];
+            obj.name = 'ptcl' + this.count.toString();
+            obj.addComponent('mesh', {
+                mesh: this.mesh,
+                material: this.material,
+            });
 
-            mesh.mesh = this.mesh;
-            mesh.material = this.material;
             /* Most efficient way to hide the mesh */
-            obj.scale([0, 0, 0]);
+            obj.scaleLocal(ZeroVector);
         }
     }
 
@@ -64,41 +71,39 @@ export class MeshParticles extends Component {
             this.time -= this.delay * spawnCount;
         }
 
-        this.object.translate([dt * 4, 0, 0]);
-        this.object.rotateAxisAngleDeg([0, 1, 0], dt * 90);
+        /* Animate the emitter */
+        distance[0] = dt * 4;
+        distance[1] = distance[2] = 0;
+        this.object.translateLocal(distance);
+        this.object.rotateAxisAngleDegLocal(AxisY, dt * 90);
 
         /* Target for retrieving particles world locations */
-        let origin = [0, 0, 0];
-        let distance = [0, 0, 0];
         for (let i = 0; i < Math.min(this.count, this.objects.length); ++i) {
-            /* Get translation first, as object.translate() will mark
-             * the object as dirty, which will cause it to recalculate
-             * obj.transformWorld on access. We want to avoid this and
-             * have it be recalculated in batch at the end of frame
-             * instead */
-            glMatrix.quat2.getTranslation(origin, this.objects[i].transformWorld);
+            this.objects[i].getPositionLocal(origin);
 
             /* Apply gravity */
-            const vel = this.velocities[i];
-            vel[1] -= 9.81 * dt;
+            const v = this.velocities[i];
+            v[1] -= 9.81 * dt;
 
-            /* Check if particle would collide */
-            if (origin[1] + vel[1] * dt <= this.particleScale && vel[1] <= 0) {
+            /* Check if particle would collide with floor (Y=0 plane) */
+            if (origin[1] + v[1] * dt <= this.particleScale && v[1] <= 0) {
                 /* Pseudo friction */
-                const frict = 1 / (1 - vel[1]);
-                vel[0] = frict * vel[0];
-                vel[2] = frict * vel[2];
+                const frict = 1 / (1 - v[1]);
+                v[0] = frict * v[0];
+                v[2] = frict * v[2];
 
                 /* Reflect */
-                vel[1] = -0.6 * vel[1];
-                if (vel[1] < 0.6) vel[1] = 0;
+                v[1] = -0.6 * v[1];
+
+                /* Come to rest if velocity slows below 0.6 after bounce */
+                if (v[1] < 0.6) v[1] = 0;
             }
         }
 
         for (let i = 0; i < Math.min(this.count, this.objects.length); ++i) {
             /* Apply velocity */
-            glMatrix.vec3.scale(distance, this.velocities[i], dt);
-            this.objects[i].translate(distance);
+            vec3.scale(distance, this.velocities[i], dt);
+            this.objects[i].translateLocal(distance);
         }
     }
 
@@ -108,26 +113,19 @@ export class MeshParticles extends Component {
 
         let obj = this.objects[index];
         obj.resetTransform();
-        obj.scale([this.particleScale, this.particleScale, this.particleScale]);
+        obj.scaleLocal(this.particleScaleVector);
 
-        /* Activate component, otherwise it will not show up! */
-        obj.getComponent('mesh').active = true;
+        this.object.getPositionWorld(origin)
+        obj.translateLocal(origin);
 
-        const origin = [0, 0, 0];
-        glMatrix.quat2.getTranslation(origin, this.object.transformWorld);
-        obj.translate(origin);
+        const v = this.velocities[index];
+        v[0] = Math.random() - 0.5;
+        v[1] = Math.random();
+        v[2] = Math.random() - 0.5;
 
-        this.velocities[index][0] = Math.random() - 0.5;
-        this.velocities[index][1] = Math.random();
-        this.velocities[index][2] = Math.random() - 0.5;
+        vec3.normalize(v, v);
+        vec3.scale(v, v, this.initialSpeed);
 
-        glMatrix.vec3.normalize(this.velocities[index], this.velocities[index]);
-        glMatrix.vec3.scale(
-            this.velocities[index],
-            this.velocities[index],
-            this.initialSpeed
-        );
-
-        this.count += 1;
+        ++this.count;
     }
 }
