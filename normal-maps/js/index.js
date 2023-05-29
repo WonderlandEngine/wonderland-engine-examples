@@ -12,12 +12,27 @@
  */
 
 /* wle:auto-imports:start */
+import {MouseLookComponent} from '@wonderlandengine/components';
+import {WasdControlsComponent} from '@wonderlandengine/components';
+import {LightAnimation} from './light-animation.js';
 /* wle:auto-imports:end */
 
 import {loadRuntime} from '@wonderlandengine/api';
 import * as API from '@wonderlandengine/api'; // Deprecated: Backward compatibility.
 
 /* wle:auto-constants:start */
+const RuntimeOptions = {
+    physx: false,
+    loader: false,
+    xrFramebufferScaleFactor: 1,
+    canvas: 'canvas',
+};
+const Constants = {
+    ProjectName: 'NormalMaps',
+    RuntimeBaseName: 'WonderlandRuntime',
+    WebXRRequiredFeatures: ['local',],
+    WebXROptionalFeatures: ['local','hand-tracking','hit-test',],
+};
 /* wle:auto-constants:end */
 
 const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
@@ -62,6 +77,9 @@ if (document.readyState === 'loading') {
 }
 
 /* wle:auto-register:start */
+engine.registerComponent(MouseLookComponent);
+engine.registerComponent(WasdControlsComponent);
+engine.registerComponent(LightAnimation);
 /* wle:auto-register:end */
 
 engine.scene.load(`${Constants.ProjectName}.bin`);

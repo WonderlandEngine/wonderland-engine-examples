@@ -10,23 +10,21 @@
                     }
                 }
             ],
-            "transformation": [
-                0.7160133,
-                0.0,
-                0.6980865,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                -0.6980865,
-                0.0,
-                0.7160133,
-                0.0,
+            "translation": [
                 -3.2591099,
                 1.8000135,
-                1.7569212,
-                1.0
+                1.7569211
+            ],
+            "rotation": [
+                0.0,
+                -0.3768199,
+                0.0,
+                0.9262865
+            ],
+            "scaling": [
+                0.9999998,
+                1.0,
+                0.9999998
             ]
         },
         "15": {
@@ -40,23 +38,21 @@
                     }
                 }
             ],
-            "transformation": [
+            "translation": [
+                0.0,
+                0.0,
+                1.1920928955078125e-7
+            ],
+            "rotation": [
+                -0.7072496,
+                0.0,
+                0.0,
+                0.7069638
+            ],
+            "scaling": [
                 4.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                -0.0016164,
-                -3.9999997,
-                0.0,
-                0.0,
-                3.9999997,
-                -0.0016164,
-                0.0,
-                0.0,
-                0.0,
-                1.192092895507813e-7,
-                1.0
+                4.0,
+                4.0
             ]
         },
         "16": {
@@ -70,23 +66,21 @@
                     }
                 }
             ],
-            "transformation": [
-                0.5,
+            "translation": [
+                -1.2828012,
+                0.4999997,
+                -1.3018671
+            ],
+            "rotation": [
                 0.0,
                 0.0,
                 0.0,
-                0.0,
-                0.5,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.5,
-                0.0,
-                -1.2828013,
-                0.4999998,
-                -1.3018671,
                 1.0
+            ],
+            "scaling": [
+                0.5,
+                0.5,
+                0.5
             ]
         },
         "17": {
@@ -137,26 +131,25 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.1
+                        "attenuation": 0.1,
+                        "intensity": 3.2999999
                     }
                 }
             ],
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
+            "translation": [
+                -1.0,
                 3.0,
-                2.0,
+                -1.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
                 1.0
             ]
         },
@@ -166,29 +159,28 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.1
+                        "attenuation": 0.1,
+                        "intensity": 1.0
                     }
                 },
                 {
                     "type": "light-animation"
                 }
             ],
-            "transformation": [
+            "translation": [
+                0.0665124,
+                2.1283931,
+                5.401670932769775e-7
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
                 1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
                 1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                2.1283876,
-                0.0,
                 1.0
             ]
         },
@@ -203,22 +195,20 @@
                     }
                 }
             ],
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
+            "translation": [
                 2.6415002,
                 1.0,
-                -0.9085673,
+                -0.9085673
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
                 1.0
             ]
         },
@@ -233,23 +223,21 @@
                     }
                 }
             ],
-            "transformation": [
-                0.75,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.75,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.75,
-                0.0,
+            "translation": [
                 0.4999999,
                 0.75,
-                -1.25,
+                -1.25
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
                 1.0
+            ],
+            "scaling": [
+                0.75,
+                0.75,
+                0.75
             ]
         },
         "52": {
@@ -257,23 +245,21 @@
                 "name": "RootNode (gltf orientation matrix)",
                 "file": "scene.gltf"
             },
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                3.576221274670388e-7,
-                -0.9999838,
-                0.0,
-                0.0,
-                0.9999838,
-                3.576221274670388e-7,
-                0.0,
+            "translation": [
                 0.0,
                 5.960464477539065e-8,
-                -1.626698,
-                1.0
+                -1.626698
+            ],
+            "rotation": [
+                -0.7071066,
+                0.0,
+                0.0,
+                0.7071068
+            ],
+            "scaling": [
+                1.0,
+                0.9999837,
+                0.9999837
             ]
         },
         "53": {
@@ -296,26 +282,24 @@
                 "file": "scene.gltf"
             },
             "parent": "54",
-            "transformation": [
-                0.25,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.25,
-                4.4703483581542975e-8,
-                0.0,
-                0.0,
-                -4.4703483581542975e-8,
-                0.25,
-                0.0,
-                0.0,
-                -1.1565891,
-                8.76049597309248e-8,
-                1.0
-            ],
             "components": [
                 null
+            ],
+            "translation": [
+                0.0,
+                -1.1565891,
+                8.760495973092477e-8
+            ],
+            "rotation": [
+                8.940696716308596e-8,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                0.25,
+                0.25,
+                0.25
             ]
         },
         "59": {
@@ -330,23 +314,21 @@
                     }
                 }
             ],
-            "transformation": [
-                0.05,
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
                 0.0,
                 0.0,
                 0.0,
-                0.0,
-                0.05,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.05,
-                0.0,
-                -0.0255256,
-                -0.4353818,
-                -0.2064551,
                 1.0
+            ],
+            "scaling": [
+                0.05,
+                0.05,
+                0.05
             ]
         },
         "61": {
@@ -360,24 +342,51 @@
                     }
                 }
             ],
-            "transformation": [
-                0.5849999,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                -6.97361386414741e-8,
-                -0.584989,
-                0.0,
-                0.0,
-                0.584989,
-                -6.97361386414741e-8,
-                0.0,
+            "translation": [
                 -1.4901161193847656e-8,
                 0.0013944,
-                -0.267798,
-                1.0
+                -0.267798
+            ],
+            "rotation": [
+                -0.7071068,
+                0.0,
+                0.0,
+                0.7071067
+            ],
+            "scaling": [
+                0.5849999,
+                0.584989,
+                0.584989
             ]
+        },
+        "77": {
+            "name": "Light",
+            "components": [
+                {
+                    "type": "light",
+                    "light": {
+                        "attenuation": 0.1,
+                        "intensity": 3.2999999
+                    }
+                }
+            ],
+            "translation": [
+                0.0,
+                3.0,
+                3.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": null
         }
     },
     "meshes": {
@@ -463,20 +472,25 @@
             "link": {
                 "name": "image_0",
                 "file": "scene.gltf"
-            }
+            },
+            "stream": true,
+            "compression": "uastc"
         },
         "45": {
             "link": {
                 "name": "image_1",
                 "file": "scene.gltf"
-            }
+            },
+            "stream": true,
+            "compression": "uastc"
         },
         "46": {
             "link": {
                 "name": "image_2",
                 "file": "scene.gltf"
             },
-            "compress": false
+            "compression": "none",
+            "stream": true
         }
     },
     "materials": {
@@ -484,6 +498,9 @@
             "link": {
                 "name": "DefaultFontMaterial",
                 "file": "default"
+            },
+            "Text": {
+                "font": "76"
             }
         },
         "20": {
@@ -496,7 +513,13 @@
                     9.999999974752427e-7,
                     1.0
                 ],
-                "shininess": 1
+                "shininess": 1,
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ]
             }
         },
         "22": {
@@ -516,9 +539,15 @@
                 ],
                 "shininess": 10,
                 "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "emissiveColor": [
                     0.317647,
                     0.0,
-                    0.2165777,
+                    0.2165776,
                     1.0
                 ]
             }
@@ -539,6 +568,12 @@
                     1.0
                 ],
                 "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "emissiveColor": [
                     0.3843137,
                     0.3089579,
                     0.0,
@@ -562,9 +597,15 @@
                     1.0
                 ],
                 "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "emissiveColor": [
                     0.0,
                     0.2352941,
-                    0.1437908,
+                    0.1437907,
                     1.0
                 ]
             }
@@ -573,7 +614,22 @@
             "link": {
                 "name": "Scene_-_Root",
                 "file": "scene.gltf"
-            }
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "pipeline": "64"
         },
         "60": {
             "name": "LightVisualization",
@@ -689,7 +745,7 @@
         },
         "66": {
             "link": {
-                "name": "Sky.vert",
+                "name": "FullScreenTriangle.vert",
                 "file": "default"
             }
         },
@@ -710,15 +766,27 @@
                 "name": "TileFeedback.frag",
                 "file": "default"
             }
+        },
+        "72": {
+            "link": {
+                "name": "Background.frag",
+                "file": "default"
+            }
+        },
+        "73": {
+            "link": {
+                "name": "FullScreenTriangle.vert",
+                "file": "default"
+            }
         }
     },
     "settings": {
         "project": {
             "name": "NormalMaps",
             "version": [
+                1,
                 0,
-                8,
-                10
+                0
             ]
         },
         "vr": {
@@ -727,18 +795,18 @@
         },
         "scripting": {
             "sourcePaths": [
-                "/js/editor-components-bundle.js",
                 "js/"
-            ]
+            ],
+            "libraryPaths": [
+                "/js/lib/"
+            ],
+            "bundlingType": "esbuild"
         },
-        "rendering": {
-            "fontOutline": true,
-            "fontOutlineSize": 0.0299999
-        },
+        "rendering": {},
         "runtime": {
             "pwa": {
-                "enable": true,
-                "appIcon": "46"
+                "enable": false,
+                "appIcon": null
             }
         }
     },
@@ -761,6 +829,9 @@
             "link": {
                 "name": "Flat Opaque Textured",
                 "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true
             }
         },
         "36": {
@@ -773,6 +844,9 @@
             "link": {
                 "name": "Phong Opaque",
                 "file": "default"
+            },
+            "features": {
+                "WITH_EMISSIVE": true
             }
         },
         "38": {
@@ -784,8 +858,7 @@
                 "NORMAL_MAPPING": true,
                 "ALPHA_MASKED": true,
                 "WITH_FOG": false,
-                "TEXTURED": true,
-                "ALPHA": true
+                "TEXTURED": true
             }
         },
         "40": {
@@ -828,6 +901,10 @@
             "link": {
                 "name": "Physical Opaque Textured",
                 "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true,
+                "NORMAL_MAPPING": true
             }
         },
         "68": {
@@ -841,9 +918,35 @@
                 "name": "Sky",
                 "file": "default"
             }
+        },
+        "74": {
+            "link": {
+                "name": "Phong Normalmapped",
+                "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true
+            }
+        },
+        "75": {
+            "link": {
+                "name": "Phong Lightmapped",
+                "file": "default"
+            }
         }
     },
     "files": [
         "scene.gltf"
-    ]
+    ],
+    "fonts": {
+        "76": {
+            "link": {
+                "name": "DejaVuSans.ttf",
+                "file": "default"
+            },
+            "outline": true,
+            "outlineSize": 0.0299999
+        }
+    },
+    "languages": {}
 }
