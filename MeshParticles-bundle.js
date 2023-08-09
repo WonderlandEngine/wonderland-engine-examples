@@ -12487,11 +12487,11 @@ var DebugObject = class extends Component {
   /** A second object to print the name of */
   obj = null;
   start() {
-    let origin = new Float32Array(3);
-    quat2_exports.getTranslation(origin, this.object.transformWorld);
+    let origin2 = new Float32Array(3);
+    quat2_exports.getTranslation(origin2, this.object.transformWorld);
     console.log("Debug object:", this.object.name);
     console.log("Other object:", this.obj?.name);
-    console.log("	translation", origin);
+    console.log("	translation", origin2);
     console.log("	transformWorld", this.object.transformWorld);
     console.log("	transformLocal", this.object.transformLocal);
   }
@@ -13049,10 +13049,10 @@ var TeleportComponent = class extends Component {
       }
     }
     if (this.isIndicating && this.teleportIndicatorMeshObject && this.input) {
-      const origin = this._tempVec0;
-      this.object.getPositionWorld(origin);
+      const origin2 = this._tempVec0;
+      this.object.getPositionWorld(origin2);
       const direction2 = this.object.getForwardWorld(this._tempVec);
-      let rayHit = this.rayHit = this.rayCastMode == 0 ? this.engine.scene.rayCast(origin, direction2, 1 << this.floorGroup) : this.engine.physics.rayCast(origin, direction2, 1 << this.floorGroup, this.maxDistance);
+      let rayHit = this.rayHit = this.rayCastMode == 0 ? this.engine.scene.rayCast(origin2, direction2, 1 << this.floorGroup) : this.engine.physics.rayCast(origin2, direction2, 1 << this.floorGroup, this.maxDistance);
       if (rayHit.hitCount > 0) {
         this.indicatorHidden = false;
         this._extraRotation = Math.PI + Math.atan2(this._currentStickAxes[0], this._currentStickAxes[1]);
@@ -13116,10 +13116,10 @@ var TeleportComponent = class extends Component {
     }
   }
   onMousePressed() {
-    let origin = [0, 0, 0];
-    this.cam.getPositionWorld(origin);
+    let origin2 = [0, 0, 0];
+    this.cam.getPositionWorld(origin2);
     const direction2 = this.cam.getForward(this._tempVec);
-    let rayHit = this.rayHit = this.rayCastMode == 0 ? this.engine.scene.rayCast(origin, direction2, 1 << this.floorGroup) : this.engine.physics.rayCast(origin, direction2, 1 << this.floorGroup, this.maxDistance);
+    let rayHit = this.rayHit = this.rayCastMode == 0 ? this.engine.scene.rayCast(origin2, direction2, 1 << this.floorGroup) : this.engine.physics.rayCast(origin2, direction2, 1 << this.floorGroup, this.maxDistance);
     if (rayHit.hitCount > 0) {
       this.indicatorHidden = false;
       direction2[1] = 0;
@@ -14331,27 +14331,31 @@ __publicField(WasdControlsComponent, "Properties", {
 });
 
 // mesh-particles.js
+var ZeroVector = new Float32Array(3);
+var AxisY = [0, 1, 0];
+var origin = new Float32Array(3);
+var distance2 = new Float32Array(3);
 var MeshParticles = class extends Component {
-  init() {
-    this.time = 0;
-    this.count = 0;
-  }
+  time = 0;
+  count = 0;
+  particleScaleVector = new Float32Array(3);
   start() {
-    this.objects = [];
-    this.velocities = [];
     this.objects = this.engine.scene.addObjects(
       this.maxParticles,
       null,
       this.maxParticles
     );
+    this.velocities = new Array(this.maxParticles);
+    this.particleScaleVector.fill(this.particleScale);
     for (let i = 0; i < this.maxParticles; ++i) {
-      this.velocities.push([0, 0, 0]);
-      let obj = this.objects[i];
-      obj.name = "particle" + this.count.toString();
-      let mesh = obj.addComponent("mesh");
-      mesh.mesh = this.mesh;
-      mesh.material = this.material;
-      obj.scale([0, 0, 0]);
+      this.velocities[i] = new Float32Array(3);
+      const obj = this.objects[i];
+      obj.name = "ptcl" + this.count.toString();
+      obj.addComponent("mesh", {
+        mesh: this.mesh,
+        material: this.material
+      });
+      obj.scaleLocal(ZeroVector);
     }
   }
   update(dt) {
@@ -14362,26 +14366,26 @@ var MeshParticles = class extends Component {
         this.spawn();
       this.time -= this.delay * spawnCount;
     }
-    this.object.translate([dt * 4, 0, 0]);
-    this.object.rotateAxisAngleDeg([0, 1, 0], dt * 90);
-    let origin = [0, 0, 0];
-    let distance2 = [0, 0, 0];
+    distance2[0] = dt * 4;
+    distance2[1] = distance2[2] = 0;
+    this.object.translateLocal(distance2);
+    this.object.rotateAxisAngleDegLocal(AxisY, dt * 90);
     for (let i = 0; i < Math.min(this.count, this.objects.length); ++i) {
-      quat2_exports.getTranslation(origin, this.objects[i].transformWorld);
-      const vel = this.velocities[i];
-      vel[1] -= 9.81 * dt;
-      if (origin[1] + vel[1] * dt <= this.particleScale && vel[1] <= 0) {
-        const frict = 1 / (1 - vel[1]);
-        vel[0] = frict * vel[0];
-        vel[2] = frict * vel[2];
-        vel[1] = -0.6 * vel[1];
-        if (vel[1] < 0.6)
-          vel[1] = 0;
+      this.objects[i].getPositionLocal(origin);
+      const v = this.velocities[i];
+      v[1] -= 9.81 * dt;
+      if (origin[1] + v[1] * dt <= this.particleScale && v[1] <= 0) {
+        const frict = 1 / (1 - v[1]);
+        v[0] = frict * v[0];
+        v[2] = frict * v[2];
+        v[1] = -0.6 * v[1];
+        if (v[1] < 0.6)
+          v[1] = 0;
       }
     }
     for (let i = 0; i < Math.min(this.count, this.objects.length); ++i) {
       vec3_exports.scale(distance2, this.velocities[i], dt);
-      this.objects[i].translate(distance2);
+      this.objects[i].translateLocal(distance2);
     }
   }
   /** Spawn a particle */
@@ -14389,37 +14393,32 @@ var MeshParticles = class extends Component {
     let index = this.count % this.maxParticles;
     let obj = this.objects[index];
     obj.resetTransform();
-    obj.scale([this.particleScale, this.particleScale, this.particleScale]);
-    obj.getComponent("mesh").active = true;
-    const origin = [0, 0, 0];
-    quat2_exports.getTranslation(origin, this.object.transformWorld);
-    obj.translate(origin);
-    this.velocities[index][0] = Math.random() - 0.5;
-    this.velocities[index][1] = Math.random();
-    this.velocities[index][2] = Math.random() - 0.5;
-    vec3_exports.normalize(this.velocities[index], this.velocities[index]);
-    vec3_exports.scale(
-      this.velocities[index],
-      this.velocities[index],
-      this.initialSpeed
-    );
-    this.count += 1;
+    obj.scaleLocal(this.particleScaleVector);
+    this.object.getPositionWorld(origin);
+    obj.translateLocal(origin);
+    const v = this.velocities[index];
+    v[0] = Math.random() - 0.5;
+    v[1] = Math.random();
+    v[2] = Math.random() - 0.5;
+    vec3_exports.normalize(v, v);
+    vec3_exports.scale(v, v, this.initialSpeed);
+    ++this.count;
   }
 };
 __publicField(MeshParticles, "TypeName", "mesh-particles");
 __publicField(MeshParticles, "Properties", {
   /* Mesh for spawned particles */
-  mesh: { type: Type.Mesh, default: null },
+  mesh: Property.mesh(),
   /* Material for spawned particles */
-  material: { type: Type.Material, default: null },
+  material: Property.material(),
   /* Delay between particle spawns. If below time of a frame, will spawn multiple particles in update. */
-  delay: { type: Type.Float, default: 0.1 },
+  delay: Property.float(0.1),
   /* Maximum number of particles, once limit is reached, particles are recycled first-in-first-out. */
-  maxParticles: { type: Type.Int, default: 64 },
+  maxParticles: Property.int(64),
   /* Initial speed of emitted particles. */
-  initialSpeed: { type: Type.Float, default: 30 },
+  initialSpeed: Property.float(30),
   /* Size of a particle */
-  particleScale: { type: Type.Float, default: 0.1 }
+  particleScale: Property.float(0.1)
 });
 
 // js/index.js
