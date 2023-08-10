@@ -13,6 +13,7 @@
 #define USE_POSITION_WORLD /* provides fragPositionWorld */
 
 #include "lib/Inputs.frag"
+#include "lib/Uniforms.glsl"
 #include "lib/Textures.frag"
 #include "lib/Materials.frag"
 

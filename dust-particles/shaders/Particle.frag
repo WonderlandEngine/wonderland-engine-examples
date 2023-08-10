@@ -10,6 +10,7 @@
 #define USE_TEXTURE_COORDS /* provides fragTextureCoords */
 
 #include "lib/Inputs.frag"
+#include "lib/Uniforms.glsl"
 #include "lib/Textures.frag"
 #include "lib/Materials.frag"
 
