@@ -30,6 +30,7 @@
 #define USE_POSITION_WORLD
 
 #include "lib/Inputs.frag"
+#include "lib/Uniforms.glsl"
 
 #if NUM_LIGHTS > 0
 #include "lib/Lights.frag"
