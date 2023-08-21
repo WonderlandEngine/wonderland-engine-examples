@@ -131,7 +131,7 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.1
+                        "intensity": 3.3329999
                     }
                 }
             ],
@@ -158,7 +158,7 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.1
+                        "intensity": 3.3329999
                     }
                 }
             ],
@@ -268,8 +268,8 @@
                 {
                     "type": "hand-tracking",
                     "hand-tracking": {
-                        "handSkin": "489",
-                        "jointMesh": "488",
+                        "handSkin": "551",
+                        "jointMesh": "550",
                         "jointMaterial": null
                     },
                     "active": true
@@ -299,9 +299,9 @@
                 {
                     "type": "hand-tracking",
                     "hand-tracking": {
-                        "handSkin": "520",
+                        "handSkin": "584",
                         "handedness": "right",
-                        "jointMesh": "519"
+                        "jointMesh": "583"
                     }
                 }
             ],
@@ -823,29 +823,19 @@
                 "file": "default"
             }
         },
-        "488": {
-            "link": {
-                "name": "Tracked Hand Skin Left",
-                "file": "tracked_hand_left_credits_Immersive_Web.fbx"
-            }
-        },
-        "519": {
-            "link": {
-                "name": "Tracked Hand Skin Right",
-                "file": "tracked_hand_right_credits_Immersive_Web.fbx"
-            }
-        },
         "550": {
             "link": {
                 "name": "Mesh",
                 "file": "left.glb"
-            }
+            },
+            "name": "LeftMesh"
         },
         "583": {
             "link": {
                 "name": "Mesh.001",
                 "file": "right.glb"
-            }
+            },
+            "name": "RightMesh"
         }
     },
     "textures": {
@@ -1143,8 +1133,7 @@
             "version": [
                 1,
                 0,
-                0,
-                2
+                4
             ]
         },
         "vr": {
@@ -1163,74 +1152,6 @@
     },
     "animations": {},
     "skins": {
-        "489": {
-            "link": {
-                "name": "skin_0",
-                "file": "tracked_hand_left_credits_Immersive_Web.fbx"
-            },
-            "joints": [
-                "493",
-                "494",
-                "495",
-                "496",
-                "497",
-                "498",
-                "499",
-                "500",
-                "501",
-                "502",
-                "503",
-                "504",
-                "505",
-                "506",
-                "507",
-                "508",
-                "509",
-                "510",
-                "511",
-                "512",
-                "513",
-                "514",
-                "515",
-                "516",
-                "517"
-            ],
-            "name": "left"
-        },
-        "520": {
-            "link": {
-                "name": "skin_0",
-                "file": "tracked_hand_right_credits_Immersive_Web.fbx"
-            },
-            "joints": [
-                "524",
-                "525",
-                "526",
-                "527",
-                "528",
-                "529",
-                "530",
-                "531",
-                "532",
-                "533",
-                "534",
-                "535",
-                "536",
-                "537",
-                "538",
-                "539",
-                "540",
-                "541",
-                "542",
-                "543",
-                "544",
-                "545",
-                "546",
-                "547",
-                "548"
-            ],
-            "name": "right"
-        },
         "551": {
             "link": {
                 "name": "Armature",
@@ -1262,7 +1183,8 @@
                 "579",
                 "580",
                 "581"
-            ]
+            ],
+            "name": "Left"
         },
         "584": {
             "link": {
@@ -1295,12 +1217,19 @@
                 "609",
                 "610",
                 "611"
-            ]
+            ],
+            "name": "Right"
         }
     },
     "files": [
-        "left.glb",
-        "right.glb"
+        {
+            "fileName": "left.glb",
+            "importerName": ""
+        },
+        {
+            "fileName": "right.glb",
+            "importerName": ""
+        }
     ],
     "pipelines": {
         "254": {
@@ -1340,6 +1269,9 @@
             "link": {
                 "name": "Phong Opaque",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "265": {
@@ -1348,13 +1280,17 @@
                 "file": "default"
             },
             "features": {
-                "ALPHA_MASKED": true
+                "ALPHA_MASKED": true,
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "268": {
             "link": {
                 "name": "Foliage",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "270": {
@@ -1394,12 +1330,18 @@
             "link": {
                 "name": "Phong Normalmapped",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "284": {
             "link": {
                 "name": "Phong Lightmapped",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         }
     },
