@@ -1,0 +1,9 @@
+{
+  "translation": {
+    "48-text-0": "Dieser Text wird automatisch ausgetauscht",
+    "49-text-1": "Sprache auswählen:",
+    "54-text-0": null,
+    "55-text-0": "Dieser Text wird manuell übersetzt, um den Sekundenzähler zu setzen\nSekunden: {seconds}",
+    "projectName": null
+  }
+}
