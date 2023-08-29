@@ -312,7 +312,7 @@
                 {
                     "type": "text",
                     "text": {
-                        "text": "Select Language:",
+                        "text": "Select language:",
                         "justification": "middle",
                         "alignment": "left"
                     }
@@ -404,7 +404,7 @@
                 {
                     "type": "text",
                     "text": {
-                        "text": "This text has an unset translation on german\nwhich makes it fall back to english if set to german",
+                        "text": "This text has an unset translation on german\nwhich makes it fall back to English if set to German",
                         "alignment": "right",
                         "justification": "top"
                     }
@@ -436,7 +436,8 @@
                     "text": {
                         "text": "This text is manually translated to set the seconds counter\nSeconds: {seconds}",
                         "alignment": "right",
-                        "justification": "top"
+                        "justification": "top",
+                        "text_term": "timerText"
                     }
                 },
                 {
