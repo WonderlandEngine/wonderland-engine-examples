@@ -1,0 +1,588 @@
+{
+    "settings": {
+        "project": {
+            "name": "Localization",
+            "version": [
+                1,
+                0,
+                4
+            ]
+        },
+        "scripting": {
+            "sourcePaths": [
+                "js",
+                "/../wonderland-engine-examples/localization/js/timer-text.js"
+            ]
+        },
+        "vr": {
+            "enable": false
+        },
+        "localization": {
+            "defaultLanguage": "en"
+        }
+    },
+    "files": {},
+    "images": {},
+    "shaders": {
+        "1": {
+            "link": {
+                "name": "Background.frag",
+                "file": "default"
+            }
+        },
+        "2": {
+            "link": {
+                "name": "lib\\Color.glsl",
+                "file": "default"
+            }
+        },
+        "3": {
+            "link": {
+                "name": "lib\\Compatibility.frag",
+                "file": "default"
+            }
+        },
+        "4": {
+            "link": {
+                "name": "lib\\CoordinateSystems.glsl",
+                "file": "default"
+            }
+        },
+        "5": {
+            "link": {
+                "name": "Depth.frag",
+                "file": "default"
+            }
+        },
+        "7": {
+            "link": {
+                "name": "DistanceFieldVector.frag",
+                "file": "default"
+            }
+        },
+        "9": {
+            "link": {
+                "name": "Dynamic.vert",
+                "file": "default"
+            }
+        },
+        "10": {
+            "link": {
+                "name": "Flat.frag",
+                "file": "default"
+            }
+        },
+        "13": {
+            "link": {
+                "name": "FullScreenTriangle.vert",
+                "file": "default"
+            }
+        },
+        "14": {
+            "link": {
+                "name": "lib\\GI.frag",
+                "file": "default"
+            }
+        },
+        "15": {
+            "link": {
+                "name": "lib\\Inputs.frag",
+                "file": "default"
+            }
+        },
+        "16": {
+            "link": {
+                "name": "lib\\Lights.frag",
+                "file": "default"
+            }
+        },
+        "17": {
+            "link": {
+                "name": "lib\\Materials.frag",
+                "file": "default"
+            }
+        },
+        "18": {
+            "link": {
+                "name": "lib\\Math.glsl",
+                "file": "default"
+            }
+        },
+        "19": {
+            "link": {
+                "name": "MeshVisualizer.frag",
+                "file": "default"
+            }
+        },
+        "21": {
+            "link": {
+                "name": "lib\\Packing.frag",
+                "file": "default"
+            }
+        },
+        "22": {
+            "link": {
+                "name": "Phong.frag",
+                "file": "default"
+            }
+        },
+        "25": {
+            "link": {
+                "name": "Physical.frag",
+                "file": "default"
+            }
+        },
+        "28": {
+            "link": {
+                "name": "lib\\Quaternion.glsl",
+                "file": "default"
+            }
+        },
+        "29": {
+            "link": {
+                "name": "Skinning.vert",
+                "file": "default"
+            }
+        },
+        "30": {
+            "link": {
+                "name": "Sky.frag",
+                "file": "default"
+            }
+        },
+        "31": {
+            "link": {
+                "name": "lib\\Slug.frag",
+                "file": "default"
+            }
+        },
+        "32": {
+            "link": {
+                "name": "lib\\Slug.vert",
+                "file": "default"
+            }
+        },
+        "33": {
+            "link": {
+                "name": "lib\\Surface.frag",
+                "file": "default"
+            }
+        },
+        "34": {
+            "link": {
+                "name": "Text.frag",
+                "file": "default"
+            }
+        },
+        "36": {
+            "link": {
+                "name": "Text.vert",
+                "file": "default"
+            }
+        },
+        "37": {
+            "link": {
+                "name": "lib\\Textures.frag",
+                "file": "default"
+            }
+        },
+        "38": {
+            "link": {
+                "name": "TileFeedback.frag",
+                "file": "default"
+            }
+        },
+        "40": {
+            "link": {
+                "name": "lib\\Uniforms.glsl",
+                "file": "default"
+            }
+        },
+        "41": {
+            "link": {
+                "name": "Particle.frag",
+                "file": "default"
+            }
+        }
+    },
+    "meshes": {
+        "p0": {
+            "link": {
+                "name": "PrimitivePlane",
+                "file": "default"
+            }
+        },
+        "p1": {
+            "link": {
+                "name": "PrimitiveCube",
+                "file": "default"
+            }
+        },
+        "p2": {
+            "link": {
+                "name": "PrimitiveSphere",
+                "file": "default"
+            }
+        },
+        "p3": {
+            "link": {
+                "name": "PrimitiveCone",
+                "file": "default"
+            }
+        },
+        "p4": {
+            "link": {
+                "name": "PrimitiveCylinder",
+                "file": "default"
+            }
+        },
+        "p5": {
+            "link": {
+                "name": "PrimitiveCircle",
+                "file": "default"
+            }
+        }
+    },
+    "textures": {},
+    "materials": {
+        "DefaultFontMaterial": {
+            "link": {
+                "name": "DefaultFontMaterial",
+                "file": "default"
+            }
+        },
+        "52": {
+            "name": "material"
+        }
+    },
+    "objects": {
+        "48": {
+            "name": "Text",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "This text will be swapped automatically",
+                        "alignment": "right"
+                    }
+                }
+            ],
+            "scaling": [
+                0.4999998,
+                0.5,
+                0.9999997
+            ],
+            "translation": [
+                0.9000437,
+                0.2376308,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                -0.282538,
+                0.0,
+                0.959256
+            ]
+        },
+        "49": {
+            "name": "Languages",
+            "translation": [
+                -0.9114934,
+                0.2390791,
+                3.576278686523438e-7
+            ],
+            "rotation": [
+                0.0,
+                0.2910046,
+                0.0,
+                0.9567216
+            ],
+            "scaling": [
+                0.9999998,
+                1.0,
+                0.9999998
+            ],
+            "components": [
+                {
+                    "type": "language-select",
+                    "language-select": {
+                        "textMaterial": "DefaultFontMaterial"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Select language:",
+                        "justification": "middle",
+                        "alignment": "left"
+                    }
+                }
+            ]
+        },
+        "50": {
+            "name": "View",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "cursor"
+                }
+            ],
+            "translation": [
+                5.960464477539065e-8,
+                0.0,
+                0.9999999
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                0.9999999,
+                1.0,
+                0.9999999
+            ]
+        },
+        "51": {
+            "name": "Mesh",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "p0",
+                        "material": "52"
+                    }
+                }
+            ],
+            "rotation": [
+                -0.7071068,
+                0.0,
+                0.0,
+                0.7071067
+            ],
+            "translation": [
+                0.0,
+                -0.1495515,
+                -0.0
+            ],
+            "scaling": [
+                1.0,
+                0.9999963,
+                0.9999963
+            ]
+        },
+        "53": {
+            "name": "Light",
+            "components": [
+                {
+                    "type": "light"
+                }
+            ],
+            "translation": [
+                0.0,
+                1.0476536,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "54": {
+            "name": "Text",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "This text has an unset translation on german\nwhich makes it fall back to English if set to German",
+                        "alignment": "right",
+                        "justification": "top"
+                    }
+                }
+            ],
+            "scaling": [
+                0.4999997,
+                0.5,
+                0.9999997
+            ],
+            "translation": [
+                0.9000416,
+                0.1958891,
+                1.4901161193847656e-8
+            ],
+            "rotation": [
+                0.0,
+                -0.282538,
+                0.0,
+                0.959256
+            ],
+            "parent": null
+        },
+        "55": {
+            "name": "Text",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "This text is manually translated to set the seconds counter\nSeconds: {seconds}",
+                        "alignment": "right",
+                        "justification": "top",
+                        "text_term": "timerText"
+                    }
+                },
+                {
+                    "type": "timer-text"
+                }
+            ],
+            "scaling": [
+                0.4999997,
+                0.5,
+                0.9999997
+            ],
+            "translation": [
+                0.9000416,
+                0.0153518,
+                1.4901161193847656e-8
+            ],
+            "rotation": [
+                0.0,
+                -0.282538,
+                0.0,
+                0.959256
+            ],
+            "parent": null
+        }
+    },
+    "animations": {},
+    "skins": {},
+    "pipelines": {
+        "6": {
+            "link": {
+                "name": "Depth",
+                "file": "default"
+            }
+        },
+        "8": {
+            "link": {
+                "name": "DistanceFieldVector",
+                "file": "default"
+            }
+        },
+        "11": {
+            "link": {
+                "name": "Flat Opaque",
+                "file": "default"
+            }
+        },
+        "12": {
+            "link": {
+                "name": "Flat Opaque Textured",
+                "file": "default"
+            }
+        },
+        "20": {
+            "link": {
+                "name": "MeshVisualizer",
+                "file": "default"
+            }
+        },
+        "23": {
+            "link": {
+                "name": "Phong Opaque",
+                "file": "default"
+            }
+        },
+        "24": {
+            "link": {
+                "name": "Phong Opaque Textured",
+                "file": "default"
+            }
+        },
+        "26": {
+            "link": {
+                "name": "Physical Opaque",
+                "file": "default"
+            }
+        },
+        "27": {
+            "link": {
+                "name": "Physical Opaque Textured",
+                "file": "default"
+            }
+        },
+        "35": {
+            "link": {
+                "name": "Text",
+                "file": "default"
+            }
+        },
+        "39": {
+            "link": {
+                "name": "TileFeedback",
+                "file": "default"
+            }
+        },
+        "42": {
+            "link": {
+                "name": "Phong Normalmapped",
+                "file": "default"
+            }
+        },
+        "43": {
+            "link": {
+                "name": "Phong Lightmapped",
+                "file": "default"
+            }
+        },
+        "44": {
+            "link": {
+                "name": "Foliage",
+                "file": "default"
+            }
+        },
+        "45": {
+            "link": {
+                "name": "Particle",
+                "file": "default"
+            }
+        },
+        "46": {
+            "link": {
+                "name": "Sky",
+                "file": "default"
+            }
+        }
+    },
+    "fonts": {
+        "47": {
+            "link": {
+                "name": "DejaVuSans.ttf",
+                "file": "default"
+            }
+        }
+    },
+    "languages": {
+        "en": {
+            "name": "English"
+        },
+        "nl": {
+            "name": "Dutch"
+        },
+        "fr": {
+            "name": "French"
+        },
+        "de": {
+            "name": "German"
+        }
+    }
+}

@@ -1,0 +1,9 @@
+{
+  "translation": {
+    "48-text-0": "Deze text word automatisch vervangen",
+    "49-text-1": "Selecteer taal:",
+    "54-text-0": "Deze text heeft geen duitse vertaling\nhierdoor word de engelse vertaling\ngebruikt als de taal op duits word gezet",
+    "projectName": null,
+    "timerText": "Deze text word manueel vertaald om de seconden teller te setten\nSeconden: {seconds}"
+  }
+}

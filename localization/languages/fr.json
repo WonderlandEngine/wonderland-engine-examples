@@ -1,0 +1,9 @@
+{
+  "translation": {
+    "48-text-0": "Ce texte sera modifié automatiquement",
+    "49-text-1": "Choisir la langue:",
+    "54-text-0": "Ce texte n'a pas de traduction en allemand,\nce qui le fait revenir à l'anglais si la traduction choisie est l'allemand",
+    "projectName": null,
+    "timerText": "Ce texte est traduit manuellement pour régler le compteur des secondes\nSecondes: {seconds}"
+  }
+}

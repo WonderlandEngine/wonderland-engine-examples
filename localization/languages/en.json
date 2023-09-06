@@ -1,0 +1,9 @@
+{
+  "translation": {
+    "48-text-0": "This text will be swapped automatically",
+    "49-text-1": "Select language:",
+    "54-text-0": "This text has an unset translation on german\nwhich makes it fall back to English if set to German",
+    "projectName": "Localization",
+    "timerText": "This text is manually translated to set the seconds counter\nSeconds: {seconds}"
+  }
+}
