@@ -611,7 +611,7 @@ var require_howler = __commonJS({
           }
           var seek = Math.max(0, sound._seek > 0 ? sound._seek : self2._sprite[sprite][0] / 1e3);
           var duration = Math.max(0, (self2._sprite[sprite][0] + self2._sprite[sprite][1]) / 1e3 - seek);
-          var timeout = duration * 1e3 / Math.abs(sound._rate);
+          var timeout2 = duration * 1e3 / Math.abs(sound._rate);
           var start = self2._sprite[sprite][0] / 1e3;
           var stop = (self2._sprite[sprite][0] + self2._sprite[sprite][1]) / 1e3;
           sound._sprite = sprite;
@@ -641,8 +641,8 @@ var require_howler = __commonJS({
               } else {
                 sound._loop ? node.bufferSource.start(0, seek, 86400) : node.bufferSource.start(0, seek, duration);
               }
-              if (timeout !== Infinity) {
-                self2._endTimers[sound._id] = setTimeout(self2._ended.bind(self2, sound), timeout);
+              if (timeout2 !== Infinity) {
+                self2._endTimers[sound._id] = setTimeout(self2._ended.bind(self2, sound), timeout2);
               }
               if (!internal) {
                 setTimeout(function() {
@@ -694,7 +694,7 @@ var require_howler = __commonJS({
                   return;
                 }
                 if (sprite !== "__default" || sound._loop) {
-                  self2._endTimers[sound._id] = setTimeout(self2._ended.bind(self2, sound), timeout);
+                  self2._endTimers[sound._id] = setTimeout(self2._ended.bind(self2, sound), timeout2);
                 } else {
                   self2._endTimers[sound._id] = function() {
                     self2._ended(sound);
@@ -1139,10 +1139,10 @@ var require_howler = __commonJS({
                 }
                 var seek = self2.seek(id[i]);
                 var duration = (self2._sprite[sound._sprite][0] + self2._sprite[sound._sprite][1]) / 1e3 - seek;
-                var timeout = duration * 1e3 / Math.abs(sound._rate);
+                var timeout2 = duration * 1e3 / Math.abs(sound._rate);
                 if (self2._endTimers[id[i]] || !sound._paused) {
                   self2._clearTimer(id[i]);
-                  self2._endTimers[id[i]] = setTimeout(self2._ended.bind(self2, sound), timeout);
+                  self2._endTimers[id[i]] = setTimeout(self2._ended.bind(self2, sound), timeout2);
                 }
                 self2._emit("rate", sound._id);
               }
@@ -1445,8 +1445,8 @@ var require_howler = __commonJS({
             sound._seek = sound._start || 0;
             sound._rateSeek = 0;
             sound._playStart = Howler2.ctx.currentTime;
-            var timeout = (sound._stop - sound._start) * 1e3 / Math.abs(sound._rate);
-            self2._endTimers[sound._id] = setTimeout(self2._ended.bind(self2, sound), timeout);
+            var timeout2 = (sound._stop - sound._start) * 1e3 / Math.abs(sound._rate);
+            self2._endTimers[sound._id] = setTimeout(self2._ended.bind(self2, sound), timeout2);
           }
           if (self2._webAudio && !loop) {
             sound._paused = true;
@@ -2733,6 +2733,7 @@ __export(dist_exports, {
   Animation: () => Animation,
   AnimationComponent: () => AnimationComponent,
   AnimationState: () => AnimationState,
+  BrokenComponent: () => BrokenComponent,
   Collider: () => Collider,
   CollisionComponent: () => CollisionComponent,
   CollisionEventType: () => CollisionEventType,
@@ -2774,6 +2775,7 @@ __export(dist_exports, {
   WonderlandEngine: () => WonderlandEngine,
   XR: () => XR,
   checkRuntimeCompatibility: () => checkRuntimeCompatibility,
+  inheritProperties: () => inheritProperties,
   loadRuntime: () => loadRuntime,
   math: () => math
 });
@@ -2849,28 +2851,28 @@ var Property = {
     return { type: Type.Enum, values, default: defaultValue };
   },
   /** Create an {@link Object3D} reference property. */
-  object() {
-    return { type: Type.Object, default: null };
+  object(opts) {
+    return { type: Type.Object, default: null, required: opts?.required ?? false };
   },
   /** Create a {@link Mesh} reference property. */
-  mesh() {
-    return { type: Type.Mesh, default: null };
+  mesh(opts) {
+    return { type: Type.Mesh, default: null, required: opts?.required ?? false };
   },
   /** Create a {@link Texture} reference property. */
-  texture() {
-    return { type: Type.Texture, default: null };
+  texture(opts) {
+    return { type: Type.Texture, default: null, required: opts?.required ?? false };
   },
   /** Create a {@link Material} reference property. */
-  material() {
-    return { type: Type.Material, default: null };
+  material(opts) {
+    return { type: Type.Material, default: null, required: opts?.required ?? false };
   },
   /** Create an {@link Animation} reference property. */
-  animation() {
-    return { type: Type.Animation, default: null };
+  animation(opts) {
+    return { type: Type.Animation, default: null, required: opts?.required ?? false };
   },
   /** Create a {@link Skin} reference property. */
-  skin() {
-    return { type: Type.Skin, default: null };
+  skin(opts) {
+    return { type: Type.Skin, default: null, required: opts?.required ?? false };
   },
   /**
    * Create a color property.
@@ -2889,7 +2891,7 @@ var Property = {
 function propertyDecorator(data) {
   return function(target, propertyKey) {
     const ctor = target.constructor;
-    ctor.Properties = ctor.Properties ?? {};
+    ctor.Properties = ctor.hasOwnProperty("Properties") ? ctor.Properties : {};
     ctor.Properties[propertyKey] = data;
   };
 }
@@ -3213,31 +3215,6 @@ var RetainEmitter = class extends Emitter {
   }
 };
 
-// node_modules/@wonderlandengine/api/dist/utils/fetch.js
-function fetchWithProgress(path, onProgress) {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", path);
-    xhr.responseType = "arraybuffer";
-    xhr.onprogress = (progress) => {
-      if (progress.lengthComputable) {
-        onProgress?.(progress.loaded, progress.total);
-      }
-    };
-    xhr.onload = () => {
-      if (xhr.status >= 200 && xhr.status < 300) {
-        const buffer = xhr.response;
-        onProgress?.(buffer.byteLength, buffer.byteLength);
-        resolve(buffer);
-      } else {
-        reject(xhr.statusText);
-      }
-    };
-    xhr.onerror = () => reject(xhr.statusText);
-    xhr.send();
-  });
-}
-
 // node_modules/@wonderlandengine/api/dist/wonderland.js
 var __decorate = function(decorators, target, key, desc) {
   var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3340,319 +3317,11 @@ var MaterialParamType;
 function isMeshShape(shape) {
   return shape === Shape.ConvexMesh || shape === Shape.TriangleMesh;
 }
+function isBaseComponentClass(value) {
+  return !!value && value.hasOwnProperty("_isBaseComponent") && value._isBaseComponent;
+}
 var UP_VECTOR = [0, 1, 0];
-var Scene = class {
-  /** Called before rendering the scene */
-  onPreRender = new Emitter();
-  /** Called after the scene has been rendered */
-  onPostRender = new Emitter();
-  /** Wonderland Engine instance. @hidden */
-  _engine;
-  /** Ray hit pointer in WASM heap. @hidden */
-  _rayHit;
-  /** Ray hit. @hidden */
-  _hit;
-  constructor(engine2) {
-    this._engine = engine2;
-    this._rayHit = engine2.wasm._malloc(4 * (3 * 4 + 3 * 4 + 4 + 2) + 4);
-    this._hit = new RayHit(this._engine, this._rayHit);
-  }
-  /**
-   * Currently active view components.
-   */
-  get activeViews() {
-    const wasm = this._engine.wasm;
-    const count = wasm._wl_scene_get_active_views(this._engine.wasm._tempMem, 16);
-    const views = [];
-    const viewTypeIndex = wasm._typeIndexFor("view");
-    for (let i = 0; i < count; ++i) {
-      views.push(new ViewComponent(this._engine, viewTypeIndex, this._engine.wasm._tempMemInt[i]));
-    }
-    return views;
-  }
-  /**
-   * Cast a ray through the scene and find intersecting objects.
-   *
-   * The resulting ray hit will contain up to **4** closest ray hits,
-   * sorted by increasing distance.
-   *
-   * @param o Ray origin.
-   * @param d Ray direction.
-   * @param group Collision group to filter by: only objects that are
-   *        part of given group are considered for raycast.
-   *
-   * @returns The scene cached {@link RayHit} instance.
-   * @note The returned object is owned by the Scene instance
-   *   will be reused with the next {@link Scene#rayCast} call.
-   */
-  rayCast(o, d, group) {
-    this._engine.wasm._wl_scene_ray_cast(o[0], o[1], o[2], d[0], d[1], d[2], group, this._rayHit);
-    return this._hit;
-  }
-  /**
-   * Add an object to the scene.
-   *
-   * @param parent Parent object or `null`.
-   * @returns A newly created object.
-   */
-  addObject(parent = null) {
-    const parentId = parent ? parent.objectId : 0;
-    const objectId = this._engine.wasm._wl_scene_add_object(parentId);
-    return this._engine.wrapObject(objectId);
-  }
-  /**
-   * Batch-add objects to the scene.
-   *
-   * Will provide better performance for adding multiple objects (e.g. > 16)
-   * than calling {@link Scene#addObject} repeatedly in a loop.
-   *
-   * By providing upfront information of how many objects will be required,
-   * the engine is able to batch-allocate the required memory rather than
-   * convervatively grow the memory in small steps.
-   *
-   * **Experimental:** This API might change in upcoming versions.
-   *
-   * @param count Number of objects to add.
-   * @param parent Parent object or `null`, default `null`.
-   * @param componentCountHint Hint for how many components in total will
-   *      be added to the created objects afterwards, default `0`.
-   * @returns Newly created objects
-   */
-  addObjects(count, parent = null, componentCountHint = 0) {
-    const parentId = parent ? parent.objectId : 0;
-    this._engine.wasm.requireTempMem(count * 2);
-    const actualCount = this._engine.wasm._wl_scene_add_objects(parentId, count, componentCountHint || 0, this._engine.wasm._tempMem, this._engine.wasm._tempMemSize >> 1);
-    const ids = this._engine.wasm._tempMemUint16.subarray(0, actualCount);
-    const wrapper = this._engine.wrapObject.bind(this._engine);
-    const objects = Array.from(ids, wrapper);
-    return objects;
-  }
-  /**
-   * Pre-allocate memory for a given amount of objects and components.
-   *
-   * Will provide better performance for adding objects later with {@link Scene#addObject}
-   * and {@link Scene#addObjects}.
-   *
-   * By providing upfront information of how many objects will be required,
-   * the engine is able to batch-allocate the required memory rather than
-   * conservatively grow the memory in small steps.
-   *
-   * **Experimental:** This API might change in upcoming versions.
-   *
-   * @param objectCount Number of objects to add.
-   * @param componentCountPerType Amount of components to
-   *      allocate for {@link Object3D.addComponent}, e.g. `{mesh: 100, collision: 200, "my-comp": 100}`.
-   * @since 0.8.10
-   */
-  reserveObjects(objectCount, componentCountPerType) {
-    const wasm = this._engine.wasm;
-    componentCountPerType = componentCountPerType || {};
-    const jsManagerIndex = wasm._typeIndexFor("js");
-    let countsPerTypeIndex = wasm._tempMemInt.subarray();
-    countsPerTypeIndex.fill(0);
-    for (const e of Object.entries(componentCountPerType)) {
-      const typeIndex = wasm._typeIndexFor(e[0]);
-      countsPerTypeIndex[typeIndex < 0 ? jsManagerIndex : typeIndex] += e[1];
-    }
-    wasm._wl_scene_reserve_objects(objectCount, wasm._tempMem);
-  }
-  /**
-   * Set the background clear color.
-   *
-   * @param color new clear color (RGBA).
-   * @since 0.8.5
-   */
-  set clearColor(color) {
-    this._engine.wasm._wl_scene_set_clearColor(color[0], color[1], color[2], color[3]);
-  }
-  /**
-   * Set whether to clear the color framebuffer before drawing.
-   *
-   * This function is useful if an external framework (e.g. an AR tracking
-   * framework) is responsible for drawing a camera frame before Wonderland
-   * Engine draws the scene on top of it.
-   *
-   * @param b Whether to enable color clear.
-   * @since 0.9.4
-   */
-  set colorClearEnabled(b) {
-    this._engine.wasm._wl_scene_enableColorClear(b);
-  }
-  /** Hosting engine instance. */
-  get engine() {
-    return this._engine;
-  }
-  /**
-   * Load a scene file (.bin).
-   *
-   * Will replace the currently active scene with the one loaded
-   * from given file. It is assumed that JavaScript components required by
-   * the new scene were registered in advance.
-   *
-   * Once the scene is loaded successfully and initialized,
-   * {@link WonderlandEngine.onSceneLoaded} is notified.
-   *
-   * @param filename Path to the .bin file.
-   * @returns Promise that resolves when the scene was loaded.
-   */
-  async load(filename) {
-    const wasm = this._engine.wasm;
-    const buffer = await fetchWithProgress(filename, (bytes, size2) => {
-      console.log(`Scene downloading: ${bytes} / ${size2}`);
-      wasm._wl_set_loading_screen_progress(bytes / size2);
-    });
-    const size = buffer.byteLength;
-    console.log(`Scene download of ${size} bytes successful.`);
-    const ptr = wasm._malloc(size);
-    new Uint8Array(wasm.HEAPU8.buffer, ptr, size).set(new Uint8Array(buffer));
-    try {
-      wasm._wl_load_scene_bin(ptr, size, wasm.tempUTF8(filename));
-    } finally {
-      wasm._free(ptr);
-    }
-    const binQueue = wasm._queuedBinFiles;
-    if (binQueue.length > 0) {
-      wasm._queuedBinFiles = [];
-      await Promise.all(binQueue.map((path) => this.append(path)));
-    }
-    this._engine.onSceneLoaded.notify();
-  }
-  /**
-   * Append a scene file.
-   *
-   * Loads and parses the file and its images and appends the result
-   * to the currently active scene.
-   *
-   * Supported formats are streamable Wonderland scene files (.bin) and glTF
-   * 3D scenes (.gltf, .glb).
-   *
-   * ```js
-   * WL.scene.append(filename).then(root => {
-   *     // root contains the loaded scene
-   * });
-   * ```
-   *
-   * In case the `loadGltfExtensions` option is set to true, the response
-   * will be an object containing both the root of the loaded scene and
-   * any glTF extensions found on nodes, meshes and the root of the file.
-   *
-   * ```js
-   * WL.scene.append(filename, { loadGltfExtensions: true }).then(({root, extensions}) => {
-   *     // root contains the loaded scene
-   *     // extensions.root contains any extensions at the root of glTF document
-   *     const rootExtensions = extensions.root;
-   *     // extensions.mesh and extensions.node contain extensions indexed by Object id
-   *     const childObject = root.children[0];
-   *     const meshExtensions = root.meshExtensions[childObject.objectId];
-   *     const nodeExtensions = root.nodeExtensions[childObject.objectId];
-   *     // extensions.idMapping contains a mapping from glTF node index to Object id
-   * });
-   * ```
-   *
-   * @param file The .bin, .gltf or .glb file to append. Should be a URL or
-   *   an `ArrayBuffer` with the file content.
-   * @param options Additional options for loading.
-   * @returns Promise that resolves when the scene was appended.
-   */
-  async append(file, options) {
-    const buffer = isString(file) ? await fetchWithProgress(file) : file;
-    const wasm = this._engine.wasm;
-    let callback;
-    const promise = new Promise((resolve, reject) => {
-      callback = wasm.addFunction((objectId, extensionData, extensionDataSize) => {
-        if (objectId < 0) {
-          reject();
-          return;
-        }
-        const root = objectId ? this._engine.wrapObject(objectId) : null;
-        if (extensionData && extensionDataSize) {
-          const marshalled = new Uint32Array(wasm.HEAPU32.buffer, extensionData, extensionDataSize / 4);
-          const extensions = this._unmarshallGltfExtensions(marshalled);
-          resolve({ root, extensions });
-        } else {
-          resolve(root);
-        }
-      }, "viii");
-    }).finally(() => wasm.removeFunction(callback));
-    const size = buffer.byteLength;
-    const ptr = wasm._malloc(size);
-    const data = new Uint8Array(wasm.HEAPU8.buffer, ptr, size);
-    data.set(new Uint8Array(buffer));
-    const MAGIC = "WLEV";
-    const isBinFile = data.byteLength > MAGIC.length && data.subarray(0, MAGIC.length).every((value, i) => value === MAGIC.charCodeAt(i));
-    try {
-      if (isBinFile) {
-        wasm._wl_append_scene_bin(ptr, size, callback);
-      } else {
-        const loadExtensions = options?.loadGltfExtensions ?? false;
-        wasm._wl_append_scene_gltf(ptr, size, loadExtensions, callback);
-      }
-    } catch (e) {
-      wasm.removeFunction(callback);
-      throw e;
-    } finally {
-      wasm._free(ptr);
-    }
-    const result = await promise;
-    const binQueue = wasm._queuedBinFiles;
-    if (isBinFile && binQueue.length > 0) {
-      wasm._queuedBinFiles = [];
-      await Promise.all(binQueue.map((path) => this.append(path, options)));
-    }
-    return result;
-  }
-  /**
-   * Unmarshalls the GltfExtensions from an Uint32Array.
-   *
-   * @param data Array containing the gltf extension data.
-   * @returns The extensions stored in an object literal.
-   *
-   * @hidden
-   */
-  _unmarshallGltfExtensions(data) {
-    const extensions = {
-      root: {},
-      mesh: {},
-      node: {},
-      idMapping: []
-    };
-    let index = 0;
-    const readString = () => {
-      const strPtr = data[index++];
-      const strLen = data[index++];
-      return this._engine.wasm.UTF8ViewToString(strPtr, strPtr + strLen);
-    };
-    const idMappingSize = data[index++];
-    const idMapping = new Array(idMappingSize);
-    for (let i = 0; i < idMappingSize; ++i) {
-      idMapping[i] = data[index++];
-    }
-    extensions.idMapping = idMapping;
-    const meshExtensionsSize = data[index++];
-    for (let i = 0; i < meshExtensionsSize; ++i) {
-      const objectId = data[index++];
-      extensions.mesh[idMapping[objectId]] = JSON.parse(readString());
-    }
-    const nodeExtensionsSize = data[index++];
-    for (let i = 0; i < nodeExtensionsSize; ++i) {
-      const objectId = data[index++];
-      extensions.node[idMapping[objectId]] = JSON.parse(readString());
-    }
-    const rootExtensionsStr = readString();
-    if (rootExtensionsStr) {
-      extensions.root = JSON.parse(rootExtensionsStr);
-    }
-    return extensions;
-  }
-  /**
-   * Reset the scene.
-   *
-   * This method deletes all used and allocated objects, and components.
-   */
-  reset() {
-    this._engine.wasm._wl_scene_reset();
-  }
-};
+var SQRT_3 = Math.sqrt(3);
 var Component = class {
   /** Manager index. @hidden */
   _manager;
@@ -3733,6 +3402,11 @@ var Component = class {
    * @since 0.9.0
    */
   destroy() {
+    if (this._manager < 0 || this._id < 0)
+      return;
+    const cache = this._engine._componentCache[this._manager];
+    if (cache)
+      cache[this._id] = null;
     this._engine.wasm._wl_component_remove(this._manager, this._id);
     this._manager = -1;
     this._id = -1;
@@ -3749,7 +3423,177 @@ var Component = class {
       return false;
     return this._manager == otherComponent._manager && this._id == otherComponent._id;
   }
+  /**
+   * Reset the component properties to default.
+   *
+   * @note This is automatically called during the component instantiation.
+   *
+   * @returns Reference to self (for method chaining).
+   */
+  resetProperties() {
+    const ctor = this.constructor;
+    const properties = ctor.Properties;
+    if (!properties)
+      return this;
+    for (const name in properties) {
+      this[name] = properties[name].default;
+    }
+    return this;
+  }
+  /** @deprecated Use {@link Component.resetProperties} instead. */
+  reset() {
+    return this.resetProperties();
+  }
+  /**
+   * Validate the properties on this instance.
+   *
+   * @throws If any of the required properties isn't initialized
+   * on this instance.
+   */
+  validateProperties() {
+    const ctor = this.constructor;
+    if (!ctor.Properties)
+      return;
+    for (const name in ctor.Properties) {
+      if (!ctor.Properties[name].required)
+        continue;
+      if (!this[name]) {
+        throw new Error(`Property '${name}' is required but was not initialized`);
+      }
+    }
+  }
+  /**
+   * Trigger the component {@link Component.init} method.
+   *
+   * @note Use this method instead of directly calling {@link Component.init},
+   * because this method creates an handler for the {@link Component.start}.
+   *
+   * @note This api is meant to be used internally.
+   *
+   * @hidden
+   */
+  _triggerInit() {
+    if (this.init) {
+      try {
+        this.init();
+      } catch (e) {
+        console.error(`Exception during ${this.type} init() on object ${this.object.name}`);
+        console.error(e);
+      }
+    }
+    const oldActivate = this.onActivate;
+    this.onActivate = function() {
+      this.onActivate = oldActivate;
+      let failed = false;
+      try {
+        this.validateProperties();
+      } catch (e) {
+        console.error(`Exception during ${this.type} validateProperties() on object ${this.object.name}`);
+        console.error(e);
+        failed = true;
+      }
+      try {
+        this.start?.();
+      } catch (e) {
+        console.error(`Exception during ${this.type} start() on object ${this.object.name}`);
+        console.error(e);
+        failed = true;
+      }
+      if (failed) {
+        this.active = false;
+        return;
+      }
+      if (!this.onActivate)
+        return;
+      try {
+        this.onActivate();
+      } catch (e) {
+        console.error(`Exception during ${this.type} onActivate() on object ${this.object.name}`);
+        console.error(e);
+      }
+    };
+  }
+  /**
+   * Trigger the component {@link Component.update} method.
+   *
+   * @note This api is meant to be used internally.
+   *
+   * @hidden
+   */
+  _triggerUpdate(dt) {
+    if (!this.update)
+      return;
+    try {
+      this.update(dt);
+    } catch (e) {
+      console.error(`Exception during ${this.type} update() on object ${this.object.name}`);
+      console.error(e);
+      if (this._engine.wasm._deactivate_component_on_error) {
+        this.active = false;
+      }
+    }
+  }
+  /**
+   * Trigger the component {@link Component.onActivate} method.
+   *
+   * @note This api is meant to be used internally.
+   *
+   * @hidden
+   */
+  _triggerOnActivate() {
+    if (!this.onActivate)
+      return;
+    try {
+      this.onActivate();
+    } catch (e) {
+      console.error(`Exception during ${this.type} onActivate() on object ${this.object.name}`);
+      console.error(e);
+    }
+  }
+  /**
+   * Trigger the component {@link Component.onDeactivate} method.
+   *
+   * @note This api is meant to be used internally.
+   *
+   * @hidden
+   */
+  _triggerOnDeactivate() {
+    if (!this.onDeactivate)
+      return;
+    try {
+      this.onDeactivate();
+    } catch (e) {
+      console.error(`Exception during ${this.type} onDeactivate() on object ${this.object.name}`);
+      console.error(e);
+    }
+  }
+  /**
+   * Trigger the component {@link Component.onDestroy} method.
+   *
+   * @note This api is meant to be used internally.
+   *
+   * @hidden
+   */
+  _triggerOnDestroy() {
+    if (!this.onDestroy)
+      return;
+    try {
+      this.onDestroy();
+    } catch (e) {
+      console.error(`Exception during ${this.type} onDestroy() on object ${this.object.name}`);
+      console.error(e);
+    }
+  }
 };
+/**
+ * `true` for every class inheriting from this class.
+ *
+ * @note This is a workaround for `instanceof` to prevent issues
+ * that could arise when an application ends up using multiple API versions.
+ *
+ * @hidden
+ */
+__publicField(Component, "_isBaseComponent", true);
 /**
  * Unique identifier for this component class.
  *
@@ -3791,8 +3635,57 @@ __publicField(Component, "TypeName");
  * myComponent.myBoolean = false;
  * myComponent.myFloat = -42.0;
  * ```
+ *
+ * ## References
+ *
+ * Reference types (i.e., mesh, object, etc...) can also be listed as **required**:
+ *
+ * ```js
+ * import {Component, Property} from '@wonderlandengine/api';
+ *
+ * class MyComponent extends Component {
+ *     static Properties = {
+ *         myObject: Property.object({required: true}),
+ *         myAnimation: Property.animation({required: true}),
+ *         myTexture: Property.texture({required: true}),
+ *         myMesh: Property.mesh({required: true}),
+ *     }
+ * }
+ * ```
+ *
+ * Please note that references are validated **once** before the call to {@link Component.start} only,
+ * via the {@link Component.validateProperties} method.
  */
 __publicField(Component, "Properties");
+/**
+ * When set to `true`, the child class inherits from the parent
+ * properties, as shown in the following example:
+ *
+ * ```js
+ * import {Component, Property} from '@wonderlandengine/api';
+ *
+ * class Parent extends Component {
+ *     static TypeName = 'parent';
+ *     static Properties = {parentName: Property.string('parent')}
+ * }
+ *
+ * class Child extends Parent {
+ *     static TypeName = 'child';
+ *     static Properties = {name: Property.string('child')}
+ *     static InheritProperties = true;
+ *
+ *     start() {
+ *         // Works because `InheritProperties` is `true`.
+ *         console.log(`${this.name} inherits from ${this.parentName}`);
+ *     }
+ * }
+ *
+ * @note Properties defined in descendant classes will override properties
+ * with the same name defined in ancestor classes.
+ *
+ * Defaults to `true`.
+ */
+__publicField(Component, "InheritProperties");
 /**
  * This was never released in an official version, we are keeping it
  * to easy transition to the new API.
@@ -3815,7 +3708,7 @@ __publicField(Component, "Dependencies");
  * class Spawner extends Component {
  *     static TypeName = 'spawner';
  *
- *     static onRegister() {
+ *     static onRegister(engine) {
  *         engine.registerComponent(SpawnedComponent);
  *     }
  *
@@ -3836,7 +3729,7 @@ __publicField(Component, "Dependencies");
  *     static TypeName = 'spawner';
  *     static Properties = SharedProperties;
  *
- *     static onRegister() {
+ *     static onRegister(engine) {
  *         if(navigator.xr === undefined) {
  *             /* WebXR unsupported, keep this dummy component *\/
  *             return;
@@ -3852,6 +3745,32 @@ __publicField(Component, "Dependencies");
  * ```
  */
 __publicField(Component, "onRegister");
+var BrokenComponent = class extends Component {
+};
+__publicField(BrokenComponent, "TypeName", "__broken-component__");
+function inheritProperties(target) {
+  if (!target.TypeName)
+    return;
+  const chain = [];
+  let curr = target;
+  while (curr && !isBaseComponentClass(curr)) {
+    const comp = curr;
+    const needsMerge = comp.hasOwnProperty("InheritProperties") ? comp.InheritProperties : true;
+    if (!needsMerge)
+      break;
+    if (comp.TypeName && comp.hasOwnProperty("Properties")) {
+      chain.push(comp.Properties);
+    }
+    curr = Object.getPrototypeOf(curr);
+  }
+  if (chain.length <= 1)
+    return;
+  const merged = {};
+  for (let i = chain.length - 1; i >= 0; --i) {
+    Object.assign(merged, chain[i]);
+  }
+  target.Properties = merged;
+}
 var _CollisionComponent = class extends Component {
   /** Collision component collider */
   get collider() {
@@ -3893,6 +3812,51 @@ var _CollisionComponent = class extends Component {
    */
   set extents(extents) {
     this.extents.set(extents);
+  }
+  /**
+   * Get collision component radius.
+   *
+   * @note If {@link collider} is not {@link Collider.Sphere}, the returned value
+   * corresponds to the radius of a sphere enclosing the shape.
+   *
+   * Example:
+   * ```js
+   * sphere.radius = 3.0;
+   * console.log(sphere.radius); // 3.0
+   *
+   * box.extents = [2.0, 2.0, 2.0];
+   * console.log(box.radius); // 1.732...
+   * ```
+   *
+   */
+  get radius() {
+    const wasm = this._engine.wasm;
+    if (this.collider === Collider.Sphere)
+      return wasm.HEAPF32[wasm._wl_collision_component_get_extents(this._id) >> 2];
+    const extents = new Float32Array(wasm.HEAPF32.buffer, wasm._wl_collision_component_get_extents(this._id), 3);
+    const x2 = extents[0] * extents[0];
+    const y2 = extents[1] * extents[1];
+    const z2 = extents[2] * extents[2];
+    return Math.sqrt(x2 + y2 + z2) / 2;
+  }
+  /**
+   * Set collision component radius.
+   *
+   * @param radius Radius of the collision component
+   *
+   * @note If {@link collider} is not {@link Collider.Sphere},
+   * the extents are set to form a square that fits a sphere with the provided radius.
+   *
+   * Example:
+   * ```js
+   * aabbCollision.radius = 2.0; // AABB fits a sphere of radius 2.0
+   * boxCollision.radius = 3.0; // Box now fits a sphere of radius 3.0, keeping orientation
+   * ```
+   *
+   */
+  set radius(radius) {
+    const length5 = this.collider === Collider.Sphere ? radius : 2 * radius / SQRT_3;
+    this.extents.set([length5, length5, length5]);
   }
   /**
    * Collision component group.
@@ -4041,7 +4005,7 @@ var TextComponent = class extends Component {
    */
   set text(text) {
     const wasm = this._engine.wasm;
-    wasm._wl_text_component_set_text(this._id, wasm.tempUTF8(text));
+    wasm._wl_text_component_set_text(this._id, wasm.tempUTF8(text.toString()));
   }
   /**
    * Set material to render the text with.
@@ -4736,7 +4700,9 @@ var PhysXComponent = class extends Component {
   get shapeData() {
     if (!isMeshShape(this.shape))
       return null;
-    return { index: this._engine.wasm._wl_physx_component_get_shape_data(this._id) };
+    return {
+      index: this._engine.wasm._wl_physx_component_get_shape_data(this._id)
+    };
   }
   /**
    * Set the shape extents for collision detection.
@@ -5051,7 +5017,7 @@ var PhysXComponent = class extends Component {
    *      if(type == CollisionEventType.TouchLost) return;
    *
    *      // Take damage on collision with enemies
-   *      if(other.object.name.startsWith('enemy-')) {
+   *      if(other.object.name.startsWith("enemy-")) {
    *          this.applyDamage(10);
    *      }
    *  }.bind(this));
@@ -5422,7 +5388,7 @@ var MeshAttributeAccessor = class {
    *
    * ```js
    * const vertexCount = 4;
-   * const positionAttribute = mesh.attribute(MeshAttributes.Position);
+   * const positionAttribute = mesh.attribute(MeshAttribute.Position);
    *
    * // A position has 3 floats per vertex. Thus, positions has length 3 * 4.
    * const positions = positionAttribute.createArray(vertexCount);
@@ -5697,7 +5663,10 @@ var Texture = class {
       if (!ctx) {
         throw new Error("Texture.updateSubImage(): Failed to obtain CanvasRenderingContext2D.");
       }
-      temp2d = { canvas: canvas2, ctx };
+      temp2d = {
+        canvas: canvas2,
+        ctx
+      };
     }
     const wasm = this._engine.wasm;
     const img = wasm._images[this._imageIndex];
@@ -5857,6 +5826,15 @@ var Object3D = class {
   }
   /**
    * Children of this object.
+   *
+   * @note Child order is **undefined**. No assumptions should be made
+   * about the index of a specific object.
+   *
+   * If you need to access a specific child of this object, you can
+   * use {@link Object3D.findByName}.
+   *
+   * When the object exists in the scene at editor time, prefer passing it as
+   * a component property.
    */
   get children() {
     const childrenCount = this._engine.wasm._wl_object_get_children_count(this.objectId);
@@ -6767,6 +6745,9 @@ var Object3D = class {
   }
   /** Destroy the object with all of its components and remove it from the scene */
   destroy() {
+    if (this._objectId < 0)
+      return;
+    this._engine._objectCache[this._objectId] = null;
     this._engine.wasm._wl_scene_remove_object(this.objectId);
     this._objectId = -1;
   }
@@ -6803,21 +6784,14 @@ var Object3D = class {
       if (typeIndex === void 0)
         return null;
       const jsIndex = wasm._wl_get_js_component_index(this.objectId, typeIndex, index);
-      return jsIndex < 0 ? null : this._engine.wasm._components[jsIndex];
+      if (jsIndex < 0)
+        return null;
+      const component = this._engine.wasm._components[jsIndex];
+      return component.constructor !== BrokenComponent ? component : null;
     }
     const componentId = this._engine.wasm._wl_get_component_id(this.objectId, componentType, index);
     return this._engine._wrapComponent(type, componentType, componentId);
   }
-  /**
-   * @param typeOrClass Type name, pass a falsey value (`undefined` or `null`) to retrieve all.
-   *     It's also possible to give a class definition. In this case, the method will use the `class.TypeName` field to
-   *     find the components.
-   * @returns All components of given type attached to this object.
-   *
-   * @note As this function is non-trivial, avoid using it in `update()` repeatedly,
-   *      but rather store its result in `init()` or `start()`
-   * @warning This method will currently return at most 341 components.
-   */
   getComponents(typeOrClass) {
     const wasm = this._engine.wasm;
     let componentType = null;
@@ -6831,15 +6805,17 @@ var Object3D = class {
     const componentsCount = wasm._wl_object_get_components(this.objectId, wasm._tempMem, maxComps);
     const offset2 = 2 * componentsCount;
     wasm._wl_object_get_component_types(this.objectId, wasm._tempMem + offset2, maxComps);
-    const jsManagerIndex = wasm._typeIndexFor("js");
+    const jsManagerIndex = wasm._jsManagerIndex;
     for (let i = 0; i < componentsCount; ++i) {
       const t = wasm._tempMemUint8[i + offset2];
       const componentId = wasm._tempMemUint16[i];
       if (t == jsManagerIndex) {
         const typeIndex = wasm._wl_get_js_component_index_for_id(componentId);
         const comp = wasm._components[typeIndex];
-        if (componentType === null || comp.type == type)
+        const matches = componentType === null || comp.type == type;
+        if (comp.constructor !== BrokenComponent && matches) {
           components.push(comp);
+        }
         continue;
       }
       if (componentType === null) {
@@ -6883,6 +6859,82 @@ var Object3D = class {
       component.active = true;
     }
     return component;
+  }
+  /**
+   * Search for descendants matching the name.
+   *
+   * This method is a wrapper around {@link Object3D.findByNameDirect} and
+   * {@link Object3D.findByNameRecursive}.
+   *
+   * @param name The name to search for.
+   * @param recursive If `true`, the method will look at all the descendants of this object.
+   *     If `false`, this method will only perform the search in direct children.
+   * @returns An array of {@link Object3D} matching the name.
+   *
+   * @since 1.1.0
+   */
+  findByName(name, recursive = false) {
+    return recursive ? this.findByNameRecursive(name) : this.findByNameDirect(name);
+  }
+  /**
+   * Search for all **direct** children matching the name.
+   *
+   * @note Even though this method is heavily optimized, it does perform
+   * a linear search to find the objects. Do not use in a hot path.
+   *
+   * @param name The name to search for.
+   * @returns An array of {@link Object3D} matching the name.
+   *
+   * @since 1.1.0
+   */
+  findByNameDirect(name) {
+    const wasm = this._engine.wasm;
+    const id = this._objectId;
+    const tempSizeU16 = wasm._tempMemSize >> 2;
+    const maxCount = tempSizeU16 - 2;
+    const buffer = wasm._tempMemUint16;
+    buffer[maxCount] = 0;
+    buffer[maxCount + 1] = 0;
+    const bufferPtr = wasm._tempMem;
+    const indexPtr = bufferPtr + maxCount * 2;
+    const childCountPtr = bufferPtr + maxCount * 2 + 2;
+    const namePtr = wasm.tempUTF8(name, (maxCount + 2) * 2);
+    const result = [];
+    let read = 0;
+    while (read = wasm._wl_object_findByName(id, namePtr, indexPtr, childCountPtr, bufferPtr, maxCount)) {
+      for (let i = 0; i < read; ++i)
+        result.push(this.engine.wrapObject(buffer[i]));
+    }
+    return result;
+  }
+  /**
+   * Search for **all descendants** matching the name.
+   *
+   * @note Even though this method is heavily optimized, it does perform
+   * a linear search to find the objects. Do not use in a hot path.
+   *
+   * @param name The name to search for.
+   * @returns An array of {@link Object3D} with the give name
+   *
+   * @returns An array of {@link Object3D} matching the name.
+   */
+  findByNameRecursive(name) {
+    const wasm = this._engine.wasm;
+    const id = this._objectId;
+    const tempSizeU16 = wasm._tempMemSize >> 2;
+    const maxCount = tempSizeU16 - 1;
+    const buffer = wasm._tempMemUint16;
+    buffer[maxCount] = 0;
+    const bufferPtr = wasm._tempMem;
+    const indexPtr = bufferPtr + maxCount * 2;
+    const namePtr = wasm.tempUTF8(name, (maxCount + 1) * 2);
+    let read = 0;
+    const result = [];
+    while (read = wasm._wl_object_findByNameRecursive(id, namePtr, indexPtr, bufferPtr, maxCount)) {
+      for (let i = 0; i < read; ++i)
+        result.push(this.engine.wrapObject(buffer[i]));
+    }
+    return result;
   }
   /**
    * Whether given object's transformation has changed.
@@ -7067,6 +7119,8 @@ var I18N = class {
   onLanguageChanged = new Emitter();
   /** Wonderland Engine instance. @hidden */
   _engine;
+  /** Previously set language index. @hidden */
+  _prevLanguageIndex = -1;
   /**
    * Constructor
    */
@@ -7076,24 +7130,51 @@ var I18N = class {
   /**
    * Set current language and apply translations to linked text parameters.
    *
+   * @note This is equivalent to {@link I18N.setLanguage}.
+   *
    * @param code Language code to switch to
    */
   set language(code) {
-    if (code == null)
-      return;
-    const wasm = this._engine.wasm;
-    wasm._wl_i18n_setLanguage(wasm.tempUTF8(code));
+    this.setLanguage(code);
   }
-  /**
-   * Get current language code.
-   *
-   */
+  /** Get current language code. */
   get language() {
     const wasm = this._engine.wasm;
     const code = wasm._wl_i18n_currentLanguage();
     if (code === 0)
       return null;
     return wasm.UTF8ToString(code);
+  }
+  /**
+   * Get the current language index.
+   *
+   * This method is more efficient than its equivalent:
+   *
+   * ```js
+   * const index = i18n.languageIndex(i18n.language);
+   * ```
+   */
+  get currentIndex() {
+    return this._engine.wasm._wl_i18n_currentLanguageIndex();
+  }
+  /** Previous language index. */
+  get previousIndex() {
+    return this._prevLanguageIndex;
+  }
+  /**
+   * Set current language and apply translations to linked text parameters.
+   *
+   * @param code The language code.
+   * @returns A promise that resolves with the current index code when the
+   *     language is loaded.
+   */
+  setLanguage(code) {
+    if (code == null)
+      return Promise.resolve(this.currentIndex);
+    const wasm = this._engine.wasm;
+    this._prevLanguageIndex = this.currentIndex;
+    wasm._wl_i18n_setLanguage(wasm.tempUTF8(code));
+    return this._engine.scene._flushAppend(this._engine.scene.baseURL).then(() => this.currentIndex);
   }
   /**
    * Get translated string for a term for the currently loaded language.
@@ -7200,6 +7281,430 @@ var XR = class {
       return [this.#wasm.GL.framebuffers[this.#wasm.webxr_fbo]];
     }
     return this.#wasm.webxr_fbo.map((id) => this.#wasm.GL.framebuffers[id]);
+  }
+};
+
+// node_modules/@wonderlandengine/api/dist/utils/fetch.js
+function fetchWithProgress(path, onProgress) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", path);
+    xhr.responseType = "arraybuffer";
+    xhr.onprogress = (progress) => {
+      if (progress.lengthComputable) {
+        onProgress?.(progress.loaded, progress.total);
+      }
+    };
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        const buffer = xhr.response;
+        onProgress?.(buffer.byteLength, buffer.byteLength);
+        resolve(buffer);
+      } else {
+        reject(xhr.statusText);
+      }
+    };
+    xhr.onerror = () => reject(xhr.statusText);
+    xhr.send();
+  });
+}
+function getBaseUrl(url) {
+  return url.substring(0, url.lastIndexOf("/"));
+}
+
+// node_modules/@wonderlandengine/api/dist/utils/misc.js
+function timeout(time) {
+  return new Promise((res) => setTimeout(res, time));
+}
+
+// node_modules/@wonderlandengine/api/dist/scene.js
+var MAGIC_BIN = "WLEV";
+var Scene = class {
+  /** Called before rendering the scene */
+  onPreRender = new Emitter();
+  /** Called after the scene has been rendered */
+  onPostRender = new Emitter();
+  /** Wonderland Engine instance. @hidden */
+  _engine;
+  /** Ray hit pointer in WASM heap. @hidden */
+  _rayHit;
+  /** Ray hit. @hidden */
+  _hit;
+  /**
+   * Relative directory of the scene that was loaded with {@link Scene.load}
+   * Used for loading any files relative to the main scene.
+   *
+   * We need this for the tests that load bin files since we aren't loading
+   * from the deploy folder directly. (test/resources/projects/*.bin)
+   *
+   * @hidden
+   */
+  _baseURL;
+  constructor(engine2) {
+    this._engine = engine2;
+    this._rayHit = engine2.wasm._malloc(4 * (3 * 4 + 3 * 4 + 4 + 2) + 4);
+    this._hit = new RayHit(this._engine, this._rayHit);
+    this._baseURL = "";
+  }
+  /**
+   * Currently active view components.
+   */
+  get activeViews() {
+    const wasm = this._engine.wasm;
+    const count = wasm._wl_scene_get_active_views(this._engine.wasm._tempMem, 16);
+    const views = [];
+    const viewTypeIndex = wasm._typeIndexFor("view");
+    for (let i = 0; i < count; ++i) {
+      views.push(new ViewComponent(this._engine, viewTypeIndex, this._engine.wasm._tempMemInt[i]));
+    }
+    return views;
+  }
+  /**
+   * Relative directory of the scene that was loaded with {@link Scene.load}
+   * Used for loading any files relative to the main scene.
+   *
+   * @hidden
+   */
+  get baseURL() {
+    return this._baseURL;
+  }
+  /**
+   * Cast a ray through the scene and find intersecting objects.
+   *
+   * The resulting ray hit will contain up to **4** closest ray hits,
+   * sorted by increasing distance.
+   *
+   * @param o Ray origin.
+   * @param d Ray direction.
+   * @param group Collision group to filter by: only objects that are
+   *        part of given group are considered for raycast.
+   * @param maxDistance Maximum **inclusive** hit distance. Defaults to `100`.
+   *
+   * @returns The scene cached {@link RayHit} instance.
+   * @note The returned object is owned by the Scene instance
+   *   will be reused with the next {@link Scene#rayCast} call.
+   */
+  rayCast(o, d, group, maxDistance = 100) {
+    this._engine.wasm._wl_scene_ray_cast(o[0], o[1], o[2], d[0], d[1], d[2], group, this._rayHit, maxDistance);
+    return this._hit;
+  }
+  /**
+   * Add an object to the scene.
+   *
+   * @param parent Parent object or `null`.
+   * @returns A newly created object.
+   */
+  addObject(parent = null) {
+    const parentId = parent ? parent.objectId : 0;
+    const objectId = this._engine.wasm._wl_scene_add_object(parentId);
+    return this._engine.wrapObject(objectId);
+  }
+  /**
+   * Batch-add objects to the scene.
+   *
+   * Will provide better performance for adding multiple objects (e.g. > 16)
+   * than calling {@link Scene#addObject} repeatedly in a loop.
+   *
+   * By providing upfront information of how many objects will be required,
+   * the engine is able to batch-allocate the required memory rather than
+   * convervatively grow the memory in small steps.
+   *
+   * **Experimental:** This API might change in upcoming versions.
+   *
+   * @param count Number of objects to add.
+   * @param parent Parent object or `null`, default `null`.
+   * @param componentCountHint Hint for how many components in total will
+   *      be added to the created objects afterwards, default `0`.
+   * @returns Newly created objects
+   */
+  addObjects(count, parent = null, componentCountHint = 0) {
+    const parentId = parent ? parent.objectId : 0;
+    this._engine.wasm.requireTempMem(count * 2);
+    const actualCount = this._engine.wasm._wl_scene_add_objects(parentId, count, componentCountHint || 0, this._engine.wasm._tempMem, this._engine.wasm._tempMemSize >> 1);
+    const ids = this._engine.wasm._tempMemUint16.subarray(0, actualCount);
+    const wrapper = this._engine.wrapObject.bind(this._engine);
+    const objects = Array.from(ids, wrapper);
+    return objects;
+  }
+  /**
+   * Pre-allocate memory for a given amount of objects and components.
+   *
+   * Will provide better performance for adding objects later with {@link Scene#addObject}
+   * and {@link Scene#addObjects}.
+   *
+   * By providing upfront information of how many objects will be required,
+   * the engine is able to batch-allocate the required memory rather than
+   * conservatively grow the memory in small steps.
+   *
+   * **Experimental:** This API might change in upcoming versions.
+   *
+   * @param objectCount Number of objects to add.
+   * @param componentCountPerType Amount of components to
+   *      allocate for {@link Object3D.addComponent}, e.g. `{mesh: 100, collision: 200, "my-comp": 100}`.
+   * @since 0.8.10
+   */
+  reserveObjects(objectCount, componentCountPerType) {
+    const wasm = this._engine.wasm;
+    componentCountPerType = componentCountPerType || {};
+    const jsManagerIndex = wasm._jsManagerIndex;
+    let countsPerTypeIndex = wasm._tempMemInt.subarray();
+    countsPerTypeIndex.fill(0);
+    for (const e of Object.entries(componentCountPerType)) {
+      const typeIndex = wasm._typeIndexFor(e[0]);
+      countsPerTypeIndex[typeIndex < 0 ? jsManagerIndex : typeIndex] += e[1];
+    }
+    wasm._wl_scene_reserve_objects(objectCount, wasm._tempMem);
+  }
+  /**
+   * Set the background clear color.
+   *
+   * @param color new clear color (RGBA).
+   * @since 0.8.5
+   */
+  set clearColor(color) {
+    this._engine.wasm._wl_scene_set_clearColor(color[0], color[1], color[2], color[3]);
+  }
+  /**
+   * Set whether to clear the color framebuffer before drawing.
+   *
+   * This function is useful if an external framework (e.g. an AR tracking
+   * framework) is responsible for drawing a camera frame before Wonderland
+   * Engine draws the scene on top of it.
+   *
+   * @param b Whether to enable color clear.
+   * @since 0.9.4
+   */
+  set colorClearEnabled(b) {
+    this._engine.wasm._wl_scene_enableColorClear(b);
+  }
+  /** Hosting engine instance. */
+  get engine() {
+    return this._engine;
+  }
+  /**
+   * Load a scene file (.bin).
+   *
+   * Will replace the currently active scene with the one loaded
+   * from given file. It is assumed that JavaScript components required by
+   * the new scene were registered in advance.
+   *
+   * Once the scene is loaded successfully and initialized,
+   * {@link WonderlandEngine.onSceneLoaded} is notified.
+   *
+   * @param filename Path to the .bin file.
+   * @returns Promise that resolves when the scene was loaded.
+   */
+  async load(filename) {
+    this._baseURL = getBaseUrl(filename);
+    const wasm = this._engine.wasm;
+    const buffer = await fetchWithProgress(filename, (bytes, size2) => {
+      console.log(`Scene downloading: ${bytes} / ${size2}`);
+      wasm._wl_set_loading_screen_progress(bytes / size2);
+    });
+    const size = buffer.byteLength;
+    console.log(`Scene download of ${size} bytes successful.`);
+    const ptr = wasm._malloc(size);
+    new Uint8Array(wasm.HEAPU8.buffer, ptr, size).set(new Uint8Array(buffer));
+    try {
+      wasm._wl_load_scene_bin(ptr, size, wasm.tempUTF8(filename));
+    } finally {
+      wasm._free(ptr);
+    }
+    const i18n = this._engine.i18n;
+    const langPromise = i18n.setLanguage(i18n.languageCode(0));
+    await Promise.all([langPromise, this._flushAppend(this._baseURL)]);
+    this._engine.onSceneLoaded.notify();
+  }
+  /**
+   * Append a scene file.
+   *
+   * Loads and parses the file and its images and appends the result
+   * to the currently active scene.
+   *
+   * Supported formats are streamable Wonderland scene files (.bin) and glTF
+   * 3D scenes (.gltf, .glb).
+   *
+   * ```js
+   * WL.scene.append(filename).then(root => {
+   *     // root contains the loaded scene
+   * });
+   * ```
+   *
+   * In case the `loadGltfExtensions` option is set to true, the response
+   * will be an object containing both the root of the loaded scene and
+   * any glTF extensions found on nodes, meshes and the root of the file.
+   *
+   * ```js
+   * WL.scene.append(filename, { loadGltfExtensions: true }).then(({root, extensions}) => {
+   *     // root contains the loaded scene
+   *     // extensions.root contains any extensions at the root of glTF document
+   *     const rootExtensions = extensions.root;
+   *     // extensions.mesh and extensions.node contain extensions indexed by Object id
+   *     const childObject = root.children[0];
+   *     const meshExtensions = root.meshExtensions[childObject.objectId];
+   *     const nodeExtensions = root.nodeExtensions[childObject.objectId];
+   *     // extensions.idMapping contains a mapping from glTF node index to Object id
+   * });
+   * ```
+   *
+   * If the file to be loaded is located in a subfolder, it might be useful
+   * to define the `baseURL` option. This will ensure any bin files
+   * referenced by the loaded bin file are loaded at the correct path.
+   *
+   * ```js
+   * WL.scene.append(filename, { baseURL: 'scenes' }).then(({root, extensions}) => {
+   *     // do stuff
+   * });
+   * ```
+   *
+   *
+   * @param file The .bin, .gltf or .glb file to append. Should be a URL or
+   *   an `ArrayBuffer` with the file content.
+   * @param options Additional options for loading.
+   * @returns Promise that resolves when the scene was appended.
+   */
+  async append(file, options = {}) {
+    const { loadGltfExtensions = false, baseURL = isString(file) ? getBaseUrl(file) : this._baseURL } = options;
+    const wasm = this._engine.wasm;
+    const buffer = isString(file) ? await fetchWithProgress(file) : file;
+    let error = null;
+    let result = void 0;
+    let callback = wasm.addFunction((objectId, extensionData, extensionDataSize) => {
+      if (objectId < 0) {
+        error = new Error(`Scene.append(): Internal runtime error, found root id = ${objectId}`);
+        return;
+      }
+      const root = objectId ? this._engine.wrapObject(objectId) : null;
+      result = root;
+      if (!extensionData || !extensionDataSize)
+        return;
+      const marshalled = new Uint32Array(wasm.HEAPU32.buffer, extensionData, extensionDataSize / 4);
+      const extensions = this._unmarshallGltfExtensions(marshalled);
+      result = { root, extensions };
+    }, "viii");
+    const queuedBinCount = wasm._wl_scene_queued_bin_count();
+    const size = buffer.byteLength;
+    const ptr = wasm._malloc(size);
+    const data = new Uint8Array(wasm.HEAPU8.buffer, ptr, size);
+    data.set(new Uint8Array(buffer));
+    const isBinFile = data.byteLength > MAGIC_BIN.length && data.subarray(0, MAGIC_BIN.length).every((value, i) => value === MAGIC_BIN.charCodeAt(i));
+    try {
+      if (isBinFile) {
+        wasm._wl_append_scene_bin(ptr, size, callback);
+      } else {
+        wasm._wl_append_scene_gltf(ptr, size, loadGltfExtensions, callback);
+      }
+    } catch (e) {
+      wasm.removeFunction(callback);
+      throw e;
+    } finally {
+      wasm._free(ptr);
+    }
+    while (result === void 0 && !error)
+      await timeout(4);
+    wasm.removeFunction(callback);
+    if (error)
+      throw error;
+    if (isBinFile)
+      await this._flushAppend(baseURL);
+    return result;
+  }
+  /**
+   * Set the current material to render the sky.
+   *
+   * @note The sky needs to be enabled in the editor when creating the scene.
+   * For more information, please refer to the background ![tutorial](https://wonderlandengine.com/tutorials/background-effect/).
+   */
+  set skyMaterial(material) {
+    this._engine.wasm._wl_scene_set_sky_material(material?._index ?? 0);
+  }
+  /** Current sky material, or `null` if no sky is set. */
+  get skyMaterial() {
+    const id = this._engine.wasm._wl_scene_get_sky_material();
+    return id > 0 ? new Material(this._engine, id) : null;
+  }
+  /**
+   * Load all currently queued bin files.
+   *
+   * Used by {@link Scene.append} and {@link Scene.load}
+   * to load all delay-load bins.
+   *
+   * Used by {@link I18N.language} to trigger loading the
+   * associated language bin, after it was queued.
+   *
+   * @param baseURL Url that is added to each path.
+   * @param options Additional options for loading.
+   *
+   * @hidden
+   */
+  _flushAppend(baseURL) {
+    const wasm = this._engine.wasm;
+    const count = wasm._wl_scene_queued_bin_count();
+    if (!count)
+      return Promise.resolve();
+    const urls = new Array(count).fill(0).map((_, i) => {
+      const ptr = wasm._wl_scene_queued_bin_path(i);
+      return wasm.UTF8ToString(ptr);
+    });
+    wasm._wl_scene_clear_queued_bin_list();
+    const promises = urls.map((path) => this.append(baseURL.length ? `${baseURL}/${path}` : path));
+    return Promise.all(promises).then((data) => {
+      const i18n = this._engine.i18n;
+      this._engine.i18n.onLanguageChanged.notify(i18n.previousIndex, i18n.currentIndex);
+      return data;
+    });
+  }
+  /**
+   * Unmarshalls the GltfExtensions from an Uint32Array.
+   *
+   * @param data Array containing the gltf extension data.
+   * @returns The extensions stored in an object literal.
+   *
+   * @hidden
+   */
+  _unmarshallGltfExtensions(data) {
+    const extensions = {
+      root: {},
+      mesh: {},
+      node: {},
+      idMapping: []
+    };
+    let index = 0;
+    const readString = () => {
+      const strPtr = data[index++];
+      const strLen = data[index++];
+      return this._engine.wasm.UTF8ViewToString(strPtr, strPtr + strLen);
+    };
+    const idMappingSize = data[index++];
+    const idMapping = new Array(idMappingSize);
+    for (let i = 0; i < idMappingSize; ++i) {
+      idMapping[i] = data[index++];
+    }
+    extensions.idMapping = idMapping;
+    const meshExtensionsSize = data[index++];
+    for (let i = 0; i < meshExtensionsSize; ++i) {
+      const objectId = data[index++];
+      extensions.mesh[idMapping[objectId]] = JSON.parse(readString());
+    }
+    const nodeExtensionsSize = data[index++];
+    for (let i = 0; i < nodeExtensionsSize; ++i) {
+      const objectId = data[index++];
+      extensions.node[idMapping[objectId]] = JSON.parse(readString());
+    }
+    const rootExtensionsStr = readString();
+    if (rootExtensionsStr) {
+      extensions.root = JSON.parse(rootExtensionsStr);
+    }
+    return extensions;
+  }
+  /**
+   * Reset the scene.
+   *
+   * This method deletes all used and allocated objects, and components.
+   */
+  reset() {
+    this._engine.wasm._wl_scene_reset();
+    this._baseURL = "";
   }
 };
 
@@ -7390,9 +7895,15 @@ var WonderlandEngine = class {
    * WebXR related state, `null` if no XR session is active.
    */
   xr = null;
-  /* Component class instances per type to avoid GC */
+  /**
+   * Component class instances per type to avoid GC.
+   *
+   * @note Maps the manager index to the list of components.
+   *
+   * @hidden
+   */
   _componentCache = {};
-  /* Object class instances per type to avoid GC */
+  /** Object class instances to avoid GC. @hidden */
   _objectCache = [];
   /**
    * WebAssembly bridge.
@@ -7516,7 +8027,7 @@ var WonderlandEngine = class {
    * @note The engine automatically schedules next frames. You should only
    * use this method for testing.
    */
-  nextFrame(fixedDelta) {
+  nextFrame(fixedDelta = 0) {
     this.#wasm._wl_nextFrame(fixedDelta);
   }
   /**
@@ -7921,8 +8432,17 @@ var WASM = class {
   _withPhysX = false;
   /** Decoder for UTF8 `ArrayBuffer` to JavaScript string. */
   _utf8Decoder = new TextDecoder("utf8");
-  /** List of .bin files to delay-load. */
-  _queuedBinFiles = [];
+  /** JavaScript manager index. */
+  _jsManagerIndexCached = null;
+  /**
+   * Registration index of {@link BrokenComponent}.
+   *
+   * This is used to return dummy instances when a component
+   * isn't registered.
+   *
+   * @hidden
+   */
+  _brokenComponentIndex = 0;
   /**
    * Create a new instance of the WebAssembly <> API bridge.
    *
@@ -7942,18 +8462,22 @@ var WASM = class {
         return "";
       return this._utf8Decoder.decode(this.HEAPU8.subarray(s, e));
     };
+    this._brokenComponentIndex = this._registerComponent(BrokenComponent);
   }
   /**
-   * Reset the cache of the library
+   * Reset the cache of the library.
    *
    * @note Should only be called when tearing down the runtime.
    */
   reset() {
+    this.allocateTempMemory(1024);
     this._materialDefinitions = [];
     this._images = [];
     this._components = [];
     this._componentTypes = [];
     this._componentTypeIndices = {};
+    this._jsManagerIndexCached = null;
+    this._brokenComponentIndex = this._registerComponent(BrokenComponent);
   }
   /**
    * Checks whether the given component is registered or not.
@@ -7993,6 +8517,9 @@ var WASM = class {
   _registerComponent(ctor) {
     if (!ctor.TypeName)
       throw new Error("no name provided for component.");
+    if (!ctor.prototype._triggerInit) {
+      throw new Error(`registerComponent(): Component ${ctor.TypeName} must extend Component`);
+    }
     const dependencies = ctor.Dependencies;
     if (dependencies) {
       for (const dependency of dependencies) {
@@ -8001,10 +8528,13 @@ var WASM = class {
         }
       }
     }
+    inheritProperties(ctor);
     _setupDefaults(ctor);
     const typeIndex = ctor.TypeName in this._componentTypeIndices ? this._componentTypeIndices[ctor.TypeName] : this._componentTypes.length;
     this._componentTypes[typeIndex] = ctor;
     this._componentTypeIndices[ctor.TypeName] = typeIndex;
+    if (ctor === BrokenComponent)
+      return typeIndex;
     console.log("Registered component", ctor.TypeName, `(class ${ctor.name})`, "with index", typeIndex);
     if (ctor.onRegister)
       ctor.onRegister(this._engine);
@@ -8121,13 +8651,16 @@ var WASM = class {
    * overridden by any next call modifying the temporary memory.
    *
    * @param str The string to write to temporary memory
+   * @param byteOffset The starting byte offset in the temporary memory at which
+   *     the string should be written. This is useful when using multiple temporaries.
    * @return The temporary pointer onto the WASM memory
    */
-  tempUTF8(str5) {
+  tempUTF8(str5, byteOffset = 0) {
     const strLen = this.lengthBytesUTF8(str5) + 1;
-    this.requireTempMem(strLen);
-    this.stringToUTF8(str5, this._tempMem, strLen);
-    return this._tempMem;
+    this.requireTempMem(strLen + byteOffset);
+    const ptr = this._tempMem + byteOffset;
+    this.stringToUTF8(str5, ptr, strLen);
+    return ptr;
   }
   /**
    * Return the index of the component type.
@@ -8161,6 +8694,13 @@ var WASM = class {
   get withPhysX() {
     return this._withPhysX;
   }
+  /** JavaScript manager index. */
+  get _jsManagerIndex() {
+    if (this._jsManagerIndexCached === null) {
+      this._jsManagerIndexCached = this._typeIndexFor("js");
+    }
+    return this._jsManagerIndexCached;
+  }
   /**
    * Set the engine instance holding this bridge.
    *
@@ -8173,8 +8713,10 @@ var WASM = class {
   }
   /* WebAssembly to JS call bridge. */
   _wljs_xr_session_start(mode) {
-    this._engine.xr = new XR(this, mode);
-    this._engine.onXRSessionStart.notify(this.webxr_session, mode);
+    if (this._engine.xr === null) {
+      this._engine.xr = new XR(this, mode);
+      this._engine.onXRSessionStart.notify(this.webxr_session, mode);
+    }
   }
   _wljs_xr_session_end() {
     const startEmitter = this._engine.onXRSessionStart;
@@ -8262,373 +8804,77 @@ var WASM = class {
     this._components[c][param] = v2 > 0 ? new Skin(this._engine, v2) : null;
   }
   _wljs_get_component_type_index(namePtr, nameEndPtr) {
-    return this._componentTypeIndices[this.UTF8ViewToString(namePtr, nameEndPtr)];
+    const typename = this.UTF8ViewToString(namePtr, nameEndPtr);
+    const index = this._componentTypeIndices[typename];
+    if (index === void 0) {
+      console.error(`component '${typename}' not found during scene loading.
+Components must be registered before loading using 'engine.registerComponent()'`);
+      return this._brokenComponentIndex;
+    }
+    return index;
   }
   _wljs_component_create(jsManagerIndex, index, id, type, object) {
     const ctor = this._componentTypes[type];
-    const component = new ctor();
+    if (!ctor) {
+      throw new Error(`Type index ${type} isn't registered`);
+    }
+    let component = null;
+    try {
+      component = new ctor();
+    } catch (e) {
+      console.error(`Exception during instantiation of component ${ctor.TypeName}`);
+      component = new BrokenComponent(this._engine);
+    }
     component._engine = this._engine;
     component._manager = jsManagerIndex;
     component._id = id;
     component._object = this._engine.wrapObject(object);
+    try {
+      component.resetProperties();
+    } catch (e) {
+      console.error(`Exception during ${component.type} resetProperties() on object ${component.object.name}`);
+    }
     this._components[index] = component;
     return component;
   }
   _wljs_component_init(component) {
     const c = this._components[component];
-    if (c.init) {
-      try {
-        c.init();
-      } catch (e) {
-        console.error(`Exception during ${c.type} init() on object ${c.object.name}`);
-        console.error(e);
-      }
-    }
-    if (c.start) {
-      const oldActivate = c.onActivate;
-      c.onActivate = function() {
-        try {
-          if (this.start)
-            this.start();
-        } catch (e) {
-          console.error(`Exception during ${this.type} start() on object ${this.object.name}`);
-          console.error(e);
-        }
-        this.onActivate = oldActivate;
-        if (this.onActivate) {
-          try {
-            this.onActivate();
-          } catch (e) {
-            console.error(`Exception during ${this.type} onActivate() on object ${this.object.name}`);
-            console.error(e);
-          }
-        }
-      };
-    }
+    c._triggerInit();
   }
   _wljs_component_update(component, dt) {
     const c = this._components[component];
-    if (!c) {
-      console.warn("WL: component was undefined:", component);
-      this._components[component] = new Component(this._engine);
-      return;
-    }
-    if (!c.update)
-      return;
-    try {
-      c.update(dt);
-    } catch (e) {
-      console.error(`Exception during ${c.type} update() on object ${c.object.name}`);
-      console.error(e);
-      if (this._deactivate_component_on_error)
-        c.active = false;
-    }
+    c._triggerUpdate(dt);
   }
   _wljs_component_onActivate(component) {
     const c = this._components[component];
-    if (!c || !c.onActivate)
-      return;
-    try {
-      c.onActivate();
-    } catch (e) {
-      console.error(`Exception during ${c.type} onActivate() on object ${c.object.name}`);
-      console.error(e);
-    }
+    if (c)
+      c._triggerOnActivate();
   }
   _wljs_component_onDeactivate(component) {
     const c = this._components[component];
-    if (!c.onDeactivate)
-      return;
-    try {
-      c.onDeactivate();
-    } catch (e) {
-      console.error(`Exception during ${c.type} onDeactivate() on object ${c.object.name}`);
-      console.error(e);
-    }
+    c._triggerOnDeactivate();
   }
   _wljs_component_onDestroy(component) {
     const c = this._components[component];
-    if (!c.onDestroy)
-      return;
-    try {
-      c.onDestroy();
-    } catch (e) {
-      console.error(`Exception during ${c.type} onDestroy() on object ${c.object.name}`);
-      console.error(e);
-    }
+    c._triggerOnDestroy();
   }
   _wljs_swap(a, b) {
     const componentA = this._components[a];
     this._components[a] = this._components[b];
     this._components[b] = componentA;
   }
-  /* JS to WebAssembly bridge. */
-  HEAP8 = null;
-  HEAPU8 = null;
-  HEAPU16 = null;
-  HEAPU32 = null;
-  HEAP32 = null;
-  HEAPF32 = null;
-  GL = null;
-  assert = null;
-  _free = null;
-  _malloc = null;
-  lengthBytesUTF8 = null;
-  stringToUTF8 = null;
-  UTF8ToString = null;
-  addFunction = null;
-  removeFunction = null;
-  _wl_set_error_callback = null;
-  _wl_application_version = null;
-  _wl_application_start = null;
-  _wl_application_resize = null;
-  _wl_nextUpdate = null;
-  _wl_nextFrame = null;
-  _wl_scene_get_active_views = null;
-  _wl_scene_ray_cast = null;
-  _wl_scene_add_object = null;
-  _wl_scene_add_objects = null;
-  _wl_scene_reserve_objects = null;
-  _wl_scene_set_clearColor = null;
-  _wl_scene_enableColorClear = null;
-  _wl_set_loading_screen_progress = null;
-  _wl_load_scene_bin = null;
-  _wl_append_scene_bin = null;
-  _wl_append_scene_gltf = null;
-  _wl_scene_reset = null;
-  _wl_component_get_object = null;
-  _wl_component_setActive = null;
-  _wl_component_isActive = null;
-  _wl_component_remove = null;
-  _wl_collision_component_get_collider = null;
-  _wl_collision_component_set_collider = null;
-  _wl_collision_component_get_extents = null;
-  _wl_collision_component_get_group = null;
-  _wl_collision_component_set_group = null;
-  _wl_collision_component_query_overlaps = null;
-  _wl_text_component_get_horizontal_alignment = null;
-  _wl_text_component_set_horizontal_alignment = null;
-  _wl_text_component_get_vertical_alignment = null;
-  _wl_text_component_set_vertical_alignment = null;
-  _wl_text_component_get_character_spacing = null;
-  _wl_text_component_set_character_spacing = null;
-  _wl_text_component_get_line_spacing = null;
-  _wl_text_component_set_line_spacing = null;
-  _wl_text_component_get_effect = null;
-  _wl_text_component_set_effect = null;
-  _wl_text_component_get_text = null;
-  _wl_text_component_set_text = null;
-  _wl_text_component_set_material = null;
-  _wl_text_component_get_material = null;
-  _wl_view_component_get_projection_matrix = null;
-  _wl_view_component_get_near = null;
-  _wl_view_component_set_near = null;
-  _wl_view_component_get_far = null;
-  _wl_view_component_set_far = null;
-  _wl_view_component_get_fov = null;
-  _wl_view_component_set_fov = null;
-  _wl_input_component_get_type = null;
-  _wl_input_component_set_type = null;
-  _wl_light_component_get_color = null;
-  _wl_light_component_get_type = null;
-  _wl_light_component_set_type = null;
-  _wl_light_component_get_intensity = null;
-  _wl_light_component_set_intensity = null;
-  _wl_light_component_get_outerAngle = null;
-  _wl_light_component_set_outerAngle = null;
-  _wl_light_component_get_innerAngle = null;
-  _wl_light_component_set_innerAngle = null;
-  _wl_light_component_get_shadows = null;
-  _wl_light_component_set_shadows = null;
-  _wl_light_component_get_shadowRange = null;
-  _wl_light_component_set_shadowRange = null;
-  _wl_light_component_get_shadowBias = null;
-  _wl_light_component_set_shadowBias = null;
-  _wl_light_component_get_shadowNormalBias = null;
-  _wl_light_component_set_shadowNormalBias = null;
-  _wl_light_component_get_shadowTexelSize = null;
-  _wl_light_component_set_shadowTexelSize = null;
-  _wl_light_component_get_cascadeCount = null;
-  _wl_light_component_set_cascadeCount = null;
-  _wl_animation_component_get_animation = null;
-  _wl_animation_component_set_animation = null;
-  _wl_animation_component_get_playCount = null;
-  _wl_animation_component_set_playCount = null;
-  _wl_animation_component_get_speed = null;
-  _wl_animation_component_set_speed = null;
-  _wl_animation_component_play = null;
-  _wl_animation_component_stop = null;
-  _wl_animation_component_pause = null;
-  _wl_animation_component_state = null;
-  _wl_mesh_component_get_material = null;
-  _wl_mesh_component_set_material = null;
-  _wl_mesh_component_get_mesh = null;
-  _wl_mesh_component_set_mesh = null;
-  _wl_mesh_component_get_skin = null;
-  _wl_mesh_component_set_skin = null;
-  _wl_physx_component_get_static = null;
-  _wl_physx_component_set_static = null;
-  _wl_physx_component_get_kinematic = null;
-  _wl_physx_component_set_kinematic = null;
-  _wl_physx_component_get_gravity = null;
-  _wl_physx_component_set_gravity = null;
-  _wl_physx_component_get_simulate = null;
-  _wl_physx_component_set_simulate = null;
-  _wl_physx_component_get_allowSimulation = null;
-  _wl_physx_component_set_allowSimulation = null;
-  _wl_physx_component_get_allowQuery = null;
-  _wl_physx_component_set_allowQuery = null;
-  _wl_physx_component_get_trigger = null;
-  _wl_physx_component_set_trigger = null;
-  _wl_physx_component_get_shape = null;
-  _wl_physx_component_set_shape = null;
-  _wl_physx_component_get_shape_data = null;
-  _wl_physx_component_set_shape_data = null;
-  _wl_physx_component_get_extents = null;
-  _wl_physx_component_get_staticFriction = null;
-  _wl_physx_component_set_staticFriction = null;
-  _wl_physx_component_get_dynamicFriction = null;
-  _wl_physx_component_set_dynamicFriction = null;
-  _wl_physx_component_get_bounciness = null;
-  _wl_physx_component_set_bounciness = null;
-  _wl_physx_component_get_linearDamping = null;
-  _wl_physx_component_set_linearDamping = null;
-  _wl_physx_component_get_angularDamping = null;
-  _wl_physx_component_set_angularDamping = null;
-  _wl_physx_component_get_linearVelocity = null;
-  _wl_physx_component_set_linearVelocity = null;
-  _wl_physx_component_get_angularVelocity = null;
-  _wl_physx_component_set_angularVelocity = null;
-  _wl_physx_component_get_groupsMask = null;
-  _wl_physx_component_set_groupsMask = null;
-  _wl_physx_component_get_blocksMask = null;
-  _wl_physx_component_set_blocksMask = null;
-  _wl_physx_component_get_linearLockAxis = null;
-  _wl_physx_component_set_linearLockAxis = null;
-  _wl_physx_component_get_angularLockAxis = null;
-  _wl_physx_component_set_angularLockAxis = null;
-  _wl_physx_component_get_mass = null;
-  _wl_physx_component_set_mass = null;
-  _wl_physx_component_set_massSpaceInertiaTensor = null;
-  _wl_physx_component_addForce = null;
-  _wl_physx_component_addForceAt = null;
-  _wl_physx_component_addTorque = null;
-  _wl_physx_component_addCallback = null;
-  _wl_physx_component_removeCallback = null;
-  _wl_physx_update_global_pose = null;
-  _wl_physx_ray_cast = null;
-  _wl_physx_set_collision_callback = null;
-  _wl_mesh_create = null;
-  _wl_mesh_get_vertexData = null;
-  _wl_mesh_get_vertexCount = null;
-  _wl_mesh_get_indexData = null;
-  _wl_mesh_update = null;
-  _wl_mesh_get_boundingSphere = null;
-  _wl_mesh_get_attribute = null;
-  _wl_mesh_destroy = null;
-  _wl_mesh_get_attribute_values = null;
-  _wl_mesh_set_attribute_values = null;
-  _wl_material_create = null;
-  _wl_material_get_definition = null;
-  _wl_material_definition_get_count = null;
-  _wl_material_definition_get_param_name = null;
-  _wl_material_definition_get_param_type = null;
-  _wl_material_get_pipeline = null;
-  _wl_material_clone = null;
-  _wl_material_get_param_index = null;
-  _wl_material_get_param_type = null;
-  _wl_material_get_param_value = null;
-  _wl_material_set_param_value_uint = null;
-  _wl_material_set_param_value_float = null;
-  _wl_renderer_addImage = null;
-  _wl_texture_width = null;
-  _wl_texture_height = null;
-  _wl_renderer_updateImage = null;
-  _wl_texture_destroy = null;
-  _wl_animation_get_duration = null;
-  _wl_animation_get_trackCount = null;
-  _wl_animation_retargetToSkin = null;
-  _wl_animation_retarget = null;
-  _wl_object_name = null;
-  _wl_object_set_name = null;
-  _wl_object_parent = null;
-  _wl_object_get_children_count = null;
-  _wl_object_get_children = null;
-  _wl_object_set_parent = null;
-  _wl_object_reset_scaling = null;
-  _wl_object_reset_translation_rotation = null;
-  _wl_object_reset_rotation = null;
-  _wl_object_reset_translation = null;
-  _wl_object_translate = null;
-  _wl_object_translate_obj = null;
-  _wl_object_translate_world = null;
-  _wl_object_rotate_axis_angle = null;
-  _wl_object_rotate_axis_angle_rad = null;
-  _wl_object_rotate_axis_angle_obj = null;
-  _wl_object_rotate_axis_angle_rad_obj = null;
-  _wl_object_rotate_quat = null;
-  _wl_object_rotate_quat_obj = null;
-  _wl_object_scale = null;
-  _wl_object_trans_local = null;
-  _wl_object_get_translation_local = null;
-  _wl_object_set_translation_local = null;
-  _wl_object_get_translation_world = null;
-  _wl_object_set_translation_world = null;
-  _wl_object_trans_world = null;
-  _wl_object_trans_world_to_local = null;
-  _wl_object_scaling_local = null;
-  _wl_object_scaling_world = null;
-  _wl_object_set_scaling_local = null;
-  _wl_object_set_scaling_world = null;
-  _wl_object_scaling_world_to_local = null;
-  _wl_object_set_rotation_local = null;
-  _wl_object_set_rotation_world = null;
-  _wl_object_transformVectorWorld = null;
-  _wl_object_transformVectorLocal = null;
-  _wl_object_transformPointWorld = null;
-  _wl_object_transformPointLocal = null;
-  _wl_object_transformVectorInverseWorld = null;
-  _wl_object_transformVectorInverseLocal = null;
-  _wl_object_transformPointInverseWorld = null;
-  _wl_object_transformPointInverseLocal = null;
-  _wl_object_toWorldSpaceTransform = null;
-  _wl_object_toObjectSpaceTransform = null;
-  _wl_object_lookAt = null;
-  _wl_scene_remove_object = null;
-  _wl_object_set_dirty = null;
-  _wl_get_component_manager_index = null;
-  _wl_get_js_component_index = null;
-  _wl_get_js_component_index_for_id = null;
-  _wl_get_component_id = null;
-  _wl_object_get_components = null;
-  _wl_object_get_component_types = null;
-  _wl_object_add_js_component = null;
-  _wl_object_add_component = null;
-  _wl_object_is_changed = null;
-  _wl_component_manager_name = null;
-  _wl_skin_get_joint_count = null;
-  _wl_skin_joint_ids = null;
-  _wl_skin_inverse_bind_transforms = null;
-  _wl_skin_inverse_bind_scalings = null;
-  _wl_math_cubicHermite = null;
-  _wl_i18n_setLanguage = null;
-  _wl_i18n_currentLanguage = null;
-  _wl_i18n_translate = null;
-  _wl_i18n_languageCount = null;
-  _wl_i18n_languageIndex = null;
-  _wl_i18n_languageCode = null;
-  _wl_i18n_languageName = null;
 };
 
 // node_modules/@wonderlandengine/api/dist/version.js
 var APIVersion = {
   major: 1,
-  minor: 0,
+  minor: 1,
   patch: 0,
   rc: 0
 };
 
 // node_modules/@wonderlandengine/api/dist/index.js
+var LOADING_SCREEN_PATH = "WonderlandRuntime-LoadingScreen.bin";
 function loadScript(scriptURL) {
   return new Promise((res, rej) => {
     const s = document.createElement("script");
@@ -8695,8 +8941,9 @@ function checkRuntimeCompatibility(version) {
 }
 async function loadRuntime(runtime, options = {}) {
   const xrPromise = checkXRSupport();
+  const baseURL = getBaseUrl(runtime);
   const { simdSupported, threadsSupported } = await detectFeatures();
-  const { simd: simd2 = simdSupported, threads: threads2 = threadsSupported, physx = false, loader = false, xrFramebufferScaleFactor = 1, loadingScreen = "WonderlandRuntime-LoadingScreen.bin", canvas: canvas2 = "canvas" } = options;
+  const { simd: simd2 = simdSupported, threads: threads2 = threadsSupported, physx = false, loader = false, xrFramebufferScaleFactor = 1, loadingScreen = baseURL ? `${baseURL}/${LOADING_SCREEN_PATH}` : LOADING_SCREEN_PATH, canvas: canvas2 = "canvas" } = options;
   const variant = [];
   if (loader)
     variant.push("loader");
@@ -8719,7 +8966,7 @@ async function loadRuntime(runtime, options = {}) {
   };
   const [wasmData, loadingScreenData] = await Promise.all([
     download(`${filename}.wasm`, "Failed to fetch runtime .wasm file"),
-    download(loadingScreen, "Failed to fetch loading screen file").catch((_) => null)
+    download(loadingScreen, "Failed to fetch loading screen file")
   ]);
   const glCanvas = document.getElementById(canvas2);
   if (!glCanvas) {
@@ -8744,8 +8991,8 @@ async function loadRuntime(runtime, options = {}) {
     window.instantiateWonderlandRuntime = void 0;
   }
   await runtimes[runtimeGlobalId](wasm);
-  checkRuntimeCompatibility(engine2.runtimeVersion);
   engine2._init();
+  checkRuntimeCompatibility(engine2.runtimeVersion);
   const xr = await xrPromise;
   engine2.arSupported = xr.ar;
   engine2.vrSupported = xr.vr;
