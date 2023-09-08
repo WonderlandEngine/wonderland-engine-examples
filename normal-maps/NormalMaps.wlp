@@ -484,7 +484,7 @@
             "stream": true,
             "compression": "uastc"
         },
-        "46": {
+        "146": {
             "link": {
                 "name": "image_2",
                 "file": "scene.gltf"
