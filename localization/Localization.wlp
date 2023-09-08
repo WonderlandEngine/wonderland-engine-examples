@@ -4,14 +4,13 @@
             "name": "Localization",
             "version": [
                 1,
-                0,
-                4
+                1,
+                0
             ]
         },
         "scripting": {
             "sourcePaths": [
-                "js",
-                "/../wonderland-engine-examples/localization/js/timer-text.js"
+                "js"
             ]
         },
         "vr": {
