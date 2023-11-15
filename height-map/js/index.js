@@ -12,17 +12,29 @@
  */
 
 /* wle:auto-imports:start */
+import {MouseLookComponent} from '@wonderlandengine/components';
+import {WasdControlsComponent} from '@wonderlandengine/components';
+import {HeightMap} from './height-map.js';
 /* wle:auto-imports:end */
 
 import {loadRuntime} from '@wonderlandengine/api';
-import * as API from '@wonderlandengine/api'; // Deprecated: Backward compatibility.
 
 /* wle:auto-constants:start */
+const RuntimeOptions = {
+    physx: false,
+    loader: false,
+    xrFramebufferScaleFactor: 1,
+    canvas: 'canvas',
+};
+const Constants = {
+    ProjectName: 'HeightMap',
+    RuntimeBaseName: 'WonderlandRuntime',
+    WebXRRequiredFeatures: ['local',],
+    WebXROptionalFeatures: ['local','hand-tracking','hit-test',],
+};
 /* wle:auto-constants:end */
 
 const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
-Object.assign(engine, API); // Deprecated: Backward compatibility.
-window.WL = engine; // Deprecated: Backward compatibility.
 
 engine.onSceneLoaded.once(() => {
     const el = document.getElementById('version');
@@ -62,9 +74,12 @@ if (document.readyState === 'loading') {
 }
 
 /* wle:auto-register:start */
+engine.registerComponent(MouseLookComponent);
+engine.registerComponent(WasdControlsComponent);
+engine.registerComponent(HeightMap);
 /* wle:auto-register:end */
 
-engine.scene.load(`${Constants.ProjectName}.bin`);
+/* Animation the VR/AR buttons after a timeout for testing purposes */
+await new Promise((res) => setTimeout(res, 750));
 
-/* wle:auto-benchmark:start */
-/* wle:auto-benchmark:end */
+engine.scene.load(`${Constants.ProjectName}.bin`);

@@ -1,0 +1,7 @@
+{
+    "project": "./HeightMap.wlp",
+    "scenarios": {
+        "readyEvent": "HeightMap.bin",
+        "reference": "./test/reference.png"
+    }
+}

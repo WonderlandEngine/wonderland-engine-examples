@@ -12,17 +12,29 @@
  */
 
 /* wle:auto-imports:start */
+import {MouseLookComponent} from '@wonderlandengine/components';
+import {WasdControlsComponent} from '@wonderlandengine/components';
+import {Rotate} from './rotate.js';
 /* wle:auto-imports:end */
 
 import {loadRuntime} from '@wonderlandengine/api';
-import * as API from '@wonderlandengine/api'; // Deprecated: Backward compatibility.
 
 /* wle:auto-constants:start */
+const RuntimeOptions = {
+    physx: false,
+    loader: false,
+    xrFramebufferScaleFactor: 1,
+    canvas: 'canvas',
+};
+const Constants = {
+    ProjectName: 'MatcapShader',
+    RuntimeBaseName: 'WonderlandRuntime',
+    WebXRRequiredFeatures: ['local',],
+    WebXROptionalFeatures: ['local','hand-tracking','hit-test',],
+};
 /* wle:auto-constants:end */
 
 const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
-Object.assign(engine, API); // Deprecated: Backward compatibility.
-window.WL = engine; // Deprecated: Backward compatibility.
 
 engine.onSceneLoaded.once(() => {
     const el = document.getElementById('version');
@@ -62,9 +74,25 @@ if (document.readyState === 'loading') {
 }
 
 /* wle:auto-register:start */
+engine.registerComponent(MouseLookComponent);
+engine.registerComponent(WasdControlsComponent);
+engine.registerComponent(Rotate);
 /* wle:auto-register:end */
 
-engine.scene.load(`${Constants.ProjectName}.bin`);
+await engine.scene.load(`${Constants.ProjectName}.bin`);
 
-/* wle:auto-benchmark:start */
-/* wle:auto-benchmark:end */
+/* Dispatch scene ready event once the image is loaded.
+* This ensure the test suite takes a screenshot after
+* all resources are available. */
+const promises = [];
+for (const img of engine.wasm._images) {
+    if (!(img instanceof HTMLImageElement)) continue;
+    if (img.complete) continue;
+    promises.push(new Promise((res, rej) => {
+        img.addEventListener('load', res, {once: true});
+        img.addEventListener('error', rej, {once: true});
+    }));
+}
+
+await Promise.all(promises);
+engine.scene.dispatchReadyEvent();
