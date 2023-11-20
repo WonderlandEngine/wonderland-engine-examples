@@ -1,5 +1,4 @@
 {
-    "project": "./Materials.wlp",
     "scenarios": {
         "readyEvent": "Materials.bin",
         "reference": "./test/reference.png"

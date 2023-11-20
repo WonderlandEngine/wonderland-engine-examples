@@ -1,8 +1,7 @@
 {
-    "project": "./MatcapShader.wlp",
     "scenarios": {
         "readyEvent": "MatcapShader.bin",
         "reference": "./test/reference.png",
-        "maxThreshold": 2048
+        "perPixelTolerance": 2048
     }
 }

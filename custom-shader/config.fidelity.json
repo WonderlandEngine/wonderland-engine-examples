@@ -1,7 +1,0 @@
-{
-    "project": "./CustomShader.wlp",
-    "scenarios": {
-        "readyEvent": "CustomShader.bin",
-        "reference": "./test/reference.png"
-    }
-}

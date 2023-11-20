@@ -35,10 +35,8 @@ const Constants = {
 
 const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
 
-engine.onSceneLoaded.once(() => {
-    const el = document.getElementById('version');
-    if (el) setTimeout(() => el.remove(), 2000);
-});
+const el = document.getElementById('version');
+if (el) el.remove();
 
 /* WebXR setup. */
 

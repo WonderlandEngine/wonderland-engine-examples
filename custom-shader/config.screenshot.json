@@ -1,7 +1,6 @@
 {
-    "project": "./HeightMap.wlp",
     "scenarios": {
-        "readyEvent": "HeightMap.bin",
+        "readyEvent": "CustomShader.bin",
         "reference": "./test/reference.png"
     }
 }
