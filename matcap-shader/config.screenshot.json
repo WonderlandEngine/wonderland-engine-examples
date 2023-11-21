@@ -1,0 +1,7 @@
+{
+    "scenarios": {
+        "readyEvent": "MatcapShader.bin",
+        "reference": "./test/reference.png",
+        "perPixelTolerance": 2048
+    }
+}

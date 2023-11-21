@@ -11,19 +11,19 @@
                 }
             ],
             "translation": [
-                -3.2591099,
-                1.3000135,
-                1.7569215
+                -1.751977,
+                1.6101415,
+                0.8518906
             ],
             "rotation": [
-                0.0,
-                -0.6035261,
-                0.0,
-                0.7973431
+                -0.1452649,
+                -0.6435911,
+                -0.2228796,
+                0.7176442
             ],
             "scaling": [
-                0.9999997,
-                1.0,
+                0.9999989,
+                0.9999989,
                 0.9999997
             ]
         },
@@ -106,7 +106,7 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.0099999
+                        "intensity": 33.329998
                     }
                 }
             ],
@@ -133,7 +133,7 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.1
+                        "intensity": 3.3329999
                     }
                 }
             ],
@@ -537,6 +537,96 @@
                 "name": "TileFeedback.frag",
                 "file": "default"
             }
+        },
+        "68": {
+            "link": {
+                "name": "lib\\Color.glsl",
+                "file": "default"
+            }
+        },
+        "69": {
+            "link": {
+                "name": "lib\\Compatibility.frag",
+                "file": "default"
+            }
+        },
+        "70": {
+            "link": {
+                "name": "lib\\CoordinateSystems.glsl",
+                "file": "default"
+            }
+        },
+        "71": {
+            "link": {
+                "name": "lib\\GI.frag",
+                "file": "default"
+            }
+        },
+        "72": {
+            "link": {
+                "name": "lib\\Inputs.frag",
+                "file": "default"
+            }
+        },
+        "73": {
+            "link": {
+                "name": "lib\\Lights.frag",
+                "file": "default"
+            }
+        },
+        "74": {
+            "link": {
+                "name": "lib\\Materials.frag",
+                "file": "default"
+            }
+        },
+        "75": {
+            "link": {
+                "name": "lib\\Math.glsl",
+                "file": "default"
+            }
+        },
+        "76": {
+            "link": {
+                "name": "lib\\Packing.frag",
+                "file": "default"
+            }
+        },
+        "77": {
+            "link": {
+                "name": "lib\\Quaternion.glsl",
+                "file": "default"
+            }
+        },
+        "78": {
+            "link": {
+                "name": "lib\\Slug.frag",
+                "file": "default"
+            }
+        },
+        "79": {
+            "link": {
+                "name": "lib\\Slug.vert",
+                "file": "default"
+            }
+        },
+        "80": {
+            "link": {
+                "name": "lib\\Surface.frag",
+                "file": "default"
+            }
+        },
+        "81": {
+            "link": {
+                "name": "lib\\Textures.frag",
+                "file": "default"
+            }
+        },
+        "83": {
+            "link": {
+                "name": "lib\\Uniforms.glsl",
+                "file": "default"
+            }
         }
     },
     "settings": {
@@ -544,9 +634,8 @@
             "name": "HeightMap",
             "version": [
                 1,
-                0,
-                0,
-                2
+                1,
+                3
             ]
         },
         "vr": {
@@ -555,13 +644,12 @@
         },
         "scripting": {
             "sourcePaths": [
-                "js/",
-                "height-map.js"
+                "js/"
             ],
+            "bundlingType": "esbuild",
             "libraryPaths": [
                 "/js/lib/"
-            ],
-            "bundlingType": "esbuild"
+            ]
         },
         "rendering": {
             "clearColor": [
@@ -615,7 +703,8 @@
             },
             "features": {
                 "VERTEX_COLORS": true,
-                "WITH_EMISSIVE": true
+                "WITH_EMISSIVE": true,
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "50": {
@@ -624,13 +713,17 @@
                 "file": "default"
             },
             "features": {
-                "ALPHA_MASKED": true
+                "ALPHA_MASKED": true,
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "52": {
             "link": {
                 "name": "Foliage",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "53": {
@@ -670,11 +763,23 @@
             "link": {
                 "name": "Phong Normalmapped",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "66": {
             "link": {
                 "name": "Phong Lightmapped",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "82": {
+            "link": {
+                "name": "TileFeedback",
                 "file": "default"
             }
         }
@@ -688,5 +793,6 @@
             "outline": true
         }
     },
-    "languages": {}
+    "languages": {},
+    "files": {}
 }
