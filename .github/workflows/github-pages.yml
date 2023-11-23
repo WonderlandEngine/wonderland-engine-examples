@@ -52,24 +52,3 @@ jobs:
       with:
         branch: gh-pages
         folder: public
-  deploy-bucket:
-    needs: package
-    if: github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@master
-    - name: Download package artifact
-      uses: actions/download-artifact@v2
-      with:
-        name: wonderland-engine-examples-deploy
-        path: public/
-    - name: Deploy static site to S3 bucket
-      uses: BetaHuhn/do-spaces-action@v2
-      with:
-        source: './public/'
-        out_dir: 'examples'
-        space_name: ${{ secrets.AWS_NAME }}
-        space_region: ${{ secrets.AWS_REGION}}
-        access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
