@@ -5,7 +5,7 @@ jobs:
   package:
     runs-on: ubuntu-latest
     container:
-      image: wonderlandengine/editor:edge
+      image: wonderlandengine/editor:latest
     steps:
     - uses: actions/checkout@v2
     - name: Package
