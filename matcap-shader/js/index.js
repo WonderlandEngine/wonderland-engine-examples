@@ -18,6 +18,7 @@ import {Rotate} from './rotate.js';
 /* wle:auto-imports:end */
 
 import {loadRuntime} from '@wonderlandengine/api';
+import * as API from '@wonderlandengine/api'; // Deprecated: Backward compatibility.
 
 /* wle:auto-constants:start */
 const RuntimeOptions = {
@@ -35,19 +36,19 @@ const Constants = {
 /* wle:auto-constants:end */
 
 const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
+Object.assign(engine, API); // Deprecated: Backward compatibility.
+window.WL = engine; // Deprecated: Backward compatibility.
 
-const el = document.getElementById('version');
-if (el) el.remove();
+engine.onSceneLoaded.once(() => {
+    const el = document.getElementById('version');
+    if (el) setTimeout(() => el.remove(), 2000);
+});
 
 /* WebXR setup. */
 
 function requestSession(mode) {
     engine
-        .requestXRSession(
-            mode,
-            Constants.WebXRRequiredFeatures,
-            Constants.WebXROptionalFeatures
-        )
+        .requestXRSession(mode, Constants.WebXRRequiredFeatures, Constants.WebXROptionalFeatures)
         .catch((e) => console.error(e));
 }
 
@@ -77,20 +78,10 @@ engine.registerComponent(WasdControlsComponent);
 engine.registerComponent(Rotate);
 /* wle:auto-register:end */
 
-await engine.scene.load(`${Constants.ProjectName}.bin`);
+engine.scene.load(`${Constants.ProjectName}.bin`).catch((e) => {
+    console.error(e);
+    window.alert(`Failed to load ${Constants.ProjectName}.bin:`, e);
+});
 
-/* Dispatch scene ready event once the image is loaded.
-* This ensure the test suite takes a screenshot after
-* all resources are available. */
-const promises = [];
-for (const img of engine.wasm._images) {
-    if (!(img instanceof HTMLImageElement)) continue;
-    if (img.complete) continue;
-    promises.push(new Promise((res, rej) => {
-        img.addEventListener('load', res, {once: true});
-        img.addEventListener('error', rej, {once: true});
-    }));
-}
-
-await Promise.all(promises);
-engine.scene.dispatchReadyEvent();
+/* wle:auto-benchmark:start */
+/* wle:auto-benchmark:end */
