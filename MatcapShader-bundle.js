@@ -2725,6 +2725,64 @@ var require_earcut = __commonJS({
   }
 });
 
+// node_modules/@wonderlandengine/api/dist/index.js
+var dist_exports = {};
+__export(dist_exports, {
+  APIVersion: () => APIVersion,
+  Alignment: () => Alignment,
+  Animation: () => Animation,
+  AnimationComponent: () => AnimationComponent,
+  AnimationState: () => AnimationState,
+  BrokenComponent: () => BrokenComponent,
+  Collider: () => Collider,
+  CollisionComponent: () => CollisionComponent,
+  CollisionEventType: () => CollisionEventType,
+  Component: () => Component,
+  DestroyedComponentInstance: () => DestroyedComponentInstance,
+  DestroyedObjectInstance: () => DestroyedObjectInstance,
+  DestroyedTextureInstance: () => DestroyedTextureInstance,
+  Emitter: () => Emitter,
+  ForceMode: () => ForceMode,
+  I18N: () => I18N,
+  InputComponent: () => InputComponent,
+  InputType: () => InputType,
+  Justification: () => Justification,
+  LightComponent: () => LightComponent,
+  LightType: () => LightType,
+  LockAxis: () => LockAxis,
+  Material: () => Material,
+  MaterialParamType: () => MaterialParamType,
+  Mesh: () => Mesh,
+  MeshAttribute: () => MeshAttribute,
+  MeshAttributeAccessor: () => MeshAttributeAccessor,
+  MeshComponent: () => MeshComponent,
+  MeshIndexType: () => MeshIndexType,
+  MeshSkinningType: () => MeshSkinningType,
+  Object: () => Object3D,
+  Object3D: () => Object3D,
+  PhysXComponent: () => PhysXComponent,
+  Physics: () => Physics,
+  Property: () => Property,
+  RayHit: () => RayHit,
+  RetainEmitter: () => RetainEmitter,
+  Scene: () => Scene,
+  Shape: () => Shape,
+  Skin: () => Skin,
+  TextComponent: () => TextComponent,
+  TextEffect: () => TextEffect,
+  Texture: () => Texture,
+  TextureManager: () => TextureManager,
+  Type: () => Type,
+  ViewComponent: () => ViewComponent,
+  WASM: () => WASM,
+  WonderlandEngine: () => WonderlandEngine,
+  XR: () => XR,
+  checkRuntimeCompatibility: () => checkRuntimeCompatibility,
+  inheritProperties: () => inheritProperties,
+  loadRuntime: () => loadRuntime,
+  math: () => math
+});
+
 // node_modules/wasm-feature-detect/dist/esm/index.js
 var simd = async () => WebAssembly.validate(new Uint8Array([0, 97, 115, 109, 1, 0, 0, 0, 1, 5, 1, 96, 0, 1, 123, 3, 2, 1, 0, 10, 10, 1, 8, 0, 65, 0, 253, 15, 253, 98, 11]));
 var threads = () => (async (e) => {
@@ -7202,6 +7260,40 @@ var RayHit = class {
     return Math.min(this._engine.wasm.HEAPU32[this._ptr / 4 + 30], 4);
   }
 };
+var math = class {
+  /** (Experimental!) Cubic Hermite spline interpolation for vector3 and quaternions.
+   *
+   * With `f == 0`, `out` will be `b`, if `f == 1`, `out` will be c.
+   *
+   * Whether a quaternion or vector3 interpolation is intended is determined by
+   * length of `a`.
+   *
+   * @param out Array to write result to.
+   * @param a First tangent/handle.
+   * @param b First point or quaternion.
+   * @param c Second point or quaternion.
+   * @param d Second handle.
+   * @param f Interpolation factor in [0; 1].
+   * @returns The `out` parameter.
+   *
+   * @since 0.8.6
+   */
+  static cubicHermite(out, a, b, c, d, f, engine2 = WL) {
+    const wasm = engine2.wasm;
+    wasm._tempMemFloat.subarray(0).set(a);
+    wasm._tempMemFloat.subarray(4).set(b);
+    wasm._tempMemFloat.subarray(8).set(c);
+    wasm._tempMemFloat.subarray(12).set(d);
+    const isQuat = a.length == 4;
+    wasm._wl_math_cubicHermite(wasm._tempMem + 4 * 16, wasm._tempMem + 4 * 0, wasm._tempMem + 4 * 4, wasm._tempMem + 4 * 8, wasm._tempMem + 4 * 12, f, isQuat);
+    out[0] = wasm._tempMemFloat[16];
+    out[1] = wasm._tempMemFloat[17];
+    out[2] = wasm._tempMemFloat[18];
+    if (isQuat)
+      out[3] = wasm._tempMemFloat[19];
+    return out;
+  }
+};
 var I18N = class {
   /**
    * {@link Emitter} for language change events.
@@ -7792,8 +7884,8 @@ var Scene = class {
       return wasm.UTF8ToString(ptr);
     });
     wasm._wl_scene_clear_queued_bin_list();
-    const promises2 = urls.map((path) => this.append(baseURL.length ? `${baseURL}/${path}` : path));
-    return Promise.all(promises2).then((data) => {
+    const promises = urls.map((path) => this.append(baseURL.length ? `${baseURL}/${path}` : path));
+    return Promise.all(promises).then((data) => {
       const i18n = this._engine.i18n;
       this._engine.i18n.onLanguageChanged.notify(i18n.previousIndex, i18n.currentIndex);
       return data;
@@ -14872,15 +14964,15 @@ var Constants = {
   WebXROptionalFeatures: ["local", "hand-tracking", "hit-test"]
 };
 var engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
-var el = document.getElementById("version");
-if (el)
-  el.remove();
+Object.assign(engine, dist_exports);
+window.WL = engine;
+engine.onSceneLoaded.once(() => {
+  const el = document.getElementById("version");
+  if (el)
+    setTimeout(() => el.remove(), 2e3);
+});
 function requestSession(mode) {
-  engine.requestXRSession(
-    mode,
-    Constants.WebXRRequiredFeatures,
-    Constants.WebXROptionalFeatures
-  ).catch((e) => console.error(e));
+  engine.requestXRSession(mode, Constants.WebXRRequiredFeatures, Constants.WebXROptionalFeatures).catch((e) => console.error(e));
 }
 function setupButtonsXR() {
   const arButton = document.getElementById("ar-button");
@@ -14902,20 +14994,10 @@ if (document.readyState === "loading") {
 engine.registerComponent(MouseLookComponent);
 engine.registerComponent(WasdControlsComponent);
 engine.registerComponent(Rotate);
-await engine.scene.load(`${Constants.ProjectName}.bin`);
-var promises = [];
-for (const img of engine.wasm._images) {
-  if (!(img instanceof HTMLImageElement))
-    continue;
-  if (img.complete)
-    continue;
-  promises.push(new Promise((res, rej) => {
-    img.addEventListener("load", res, { once: true });
-    img.addEventListener("error", rej, { once: true });
-  }));
-}
-await Promise.all(promises);
-engine.scene.dispatchReadyEvent();
+engine.scene.load(`${Constants.ProjectName}.bin`).catch((e) => {
+  console.error(e);
+  window.alert(`Failed to load ${Constants.ProjectName}.bin:`, e);
+});
 /*! Bundled license information:
 
 howler/dist/howler.js:
