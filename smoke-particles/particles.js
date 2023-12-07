@@ -1,5 +1,5 @@
-import {Component, Type} from '@wonderlandengine/api';
-import * as glMatrix from 'gl-matrix';
+import {Component, Property} from '@wonderlandengine/api';
+import {vec3, quat} from 'gl-matrix';
 
 /**
 Very simple smoke particles system
@@ -8,15 +8,15 @@ export class Particles extends Component {
     static TypeName = 'particles';
     static Properties = {
         /* Mesh for spawned particles */
-        mesh: {type: Type.Mesh, default: null},
+        mesh: Property.mesh(),
         /* Material for spawned particles */
-        material: {type: Type.Material, default: null},
+        material: Property.material(),
         /* Delay between particle spawns. If below time of a frame, will spawn multiple particles in update. */
-        delay: {type: Type.Float, default: 0.1},
+        delay: Property.float(0.1),
         /* Maximum number of particles, once limit is reached, particles are recycled first-in-first-out. */
-        maxParticles: {type: Type.Int, default: 64},
+        maxParticles: Property.int(64),
         /* Initial speed of emitted particles. */
-        initialSpeed: {type: Type.Float, default: 30},
+        initialSpeed: Property.float(30),
     };
 
     init() {
@@ -52,30 +52,30 @@ export class Particles extends Component {
         const vel = this.vel;
         const viewPos = this.viewPos;
 
-        this.object.getTranslationWorld(origin);
+        this.object.getPositionWorld(origin);
         /* Target for retrieving particles world locations */
-        this.engine.scene.activeViews[0].object.getTranslationWorld(viewPos);
+        this.engine.scene.activeViews[0].object.getPositionWorld(viewPos);
 
-        glMatrix.vec3.sub(viewPos, origin, viewPos);
+        vec3.sub(viewPos, origin, viewPos);
         viewPos[1] = 0;
-        glMatrix.vec3.normalize(viewPos, viewPos);
-        const rotation = glMatrix.quat.rotationTo([], [0, 0, 1], viewPos);
+        vec3.normalize(viewPos, viewPos);
+        const rotation = quat.rotationTo([], [0, 0, 1], viewPos);
 
         let col = [1, 1, 1, 1];
 
         for (let i = 0; i < this.velocities.length; ++i) {
             const lifeTime = this.time - this.startTime[i];
             let obj = this.objects[i];
-            glMatrix.vec3.scale(vel, this.velocities[i], dt);
-            obj.getTranslationWorld(origin);
+            vec3.scale(vel, this.velocities[i], dt);
+            obj.getPositionWorld(origin);
             /* Apply velocity */
-            glMatrix.vec3.add(origin, origin, vel);
+            vec3.add(origin, origin, vel);
 
             obj.resetTransform();
             const s = 0.25 + 0.25 * lifeTime;
-            obj.scale([s, s, s]);
-            obj.rotate(rotation);
-            obj.setTranslationLocal(origin);
+            obj.scaleLocal([s, s, s]);
+            obj.rotateLocal(rotation);
+            obj.setPositionLocal(origin);
 
             this.materials[i].offsetX = 0.1 * lifeTime + 100 * this.rotationFactor[i];
 
@@ -87,7 +87,7 @@ export class Particles extends Component {
         /* drag */
         for (let i = 0; i < this.velocities.length; ++i) {
             this.velocities[i][2] += dt;
-            glMatrix.vec3.scale(this.velocities[i], this.velocities[i], 1.0 - 0.5 * dt);
+            vec3.scale(this.velocities[i], this.velocities[i], 1.0 - 0.5 * dt);
         }
     }
 
@@ -106,21 +106,21 @@ export class Particles extends Component {
             });
             this.materials.push(mesh.material);
         }
-        obj.transformWorld = this.object.transformWorld;
-        obj.scalingLocal.set([0, 0, 0]);
+        
+        obj.setTransformWorld(this.object.transformWorld);
+        obj.scaleLocal([0, 0, 0]);
 
         this.startTime[index] = this.time;
         this.rotationFactor[index] = Math.random();
-        this.velocities[index][0] = 2.0 * (Math.random() - 0.5);
-        this.velocities[index][1] = Math.random() * 3.0 + 3.0;
-        this.velocities[index][2] = 2.0 * (Math.random() - 0.5) + 2.0;
 
-        glMatrix.vec3.normalize(this.velocities[index], this.velocities[index]);
-        glMatrix.vec3.scale(
-            this.velocities[index],
-            this.velocities[index],
-            this.initialSpeed
-        );
+        const v = this.velocities[index];
+
+        v[0] = 2.0 * (Math.random() - 0.5);
+        v[1] = Math.random() * 3.0 + 3.0;
+        v[2] = 2.0 * (Math.random() - 0.5) + 2.0;
+
+        vec3.normalize(v,v);
+        vec3.scale(v,v,this.initialSpeed);
 
         this.count += 1;
     }

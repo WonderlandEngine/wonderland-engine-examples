@@ -16,23 +16,21 @@
                     }
                 }
             ],
-            "transformation": [
-                0.7160133,
-                0.0,
-                0.6980865,
-                0.0,
-                0.0,
+            "scaling": [
+                0.9999998,
                 1.0,
-                0.0,
-                0.0,
-                -0.6980865,
-                0.0,
-                0.7160133,
-                0.0,
+                0.9999998
+            ],
+            "translation": [
                 -3.2591099,
                 1.8000135,
-                1.7569212,
-                1.0
+                1.7569211
+            ],
+            "rotation": [
+                0.0,
+                -0.3768199,
+                0.0,
+                0.9262865
             ]
         },
         "17": {
@@ -83,7 +81,7 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.1,
+                        "intensity": 1.0,
                         "type": "sun",
                         "color": [
                             1.0,
@@ -94,23 +92,21 @@
                     "active": true
                 }
             ],
-            "transformation": [
-                0.9362548,
-                0.3513203,
-                0.0,
-                0.0,
-                -0.3513203,
-                0.9362548,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                -0.3938742,
-                3.000004,
-                2.0000042,
+            "scaling": [
+                0.9999994,
+                0.9999994,
                 1.0
+            ],
+            "translation": [
+                -0.3938741,
+                3.000004,
+                2.0000042
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.1785283,
+                0.9839347
             ]
         },
         "23": {
@@ -119,7 +115,7 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.1,
+                        "intensity": 3.3329999,
                         "color": [
                             0.9137254,
                             0.7508356,
@@ -128,22 +124,20 @@
                     }
                 }
             ],
-            "transformation": [
+            "scaling": [
                 1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
                 1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
+                1.0
+            ],
+            "translation": [
                 3.3378546,
                 2.6455011,
-                5.4063205,
+                5.4063205
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
                 1.0
             ]
         },
@@ -158,22 +152,20 @@
                     }
                 }
             ],
-            "transformation": [
+            "scaling": [
                 1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
                 1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
+                1.0
+            ],
+            "translation": [
                 -4.9189047,
                 2.7227282,
-                -4.069457,
+                -4.069457
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
                 1.0
             ]
         },
@@ -191,22 +183,20 @@
                     }
                 }
             ],
-            "transformation": [
+            "scaling": [
                 1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
                 1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
+                1.0
+            ],
+            "translation": [
                 3.3564379,
                 5.9179191,
-                -6.8381881,
+                -6.8381881
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
                 1.0
             ]
         },
@@ -215,25 +205,23 @@
                 "name": "RootNode (gltf orientation matrix)",
                 "file": "locomotive\\scene.gltf"
             },
-            "transformation": [
-                -0.9999998,
-                -5.960462345910855e-8,
-                -1.5297999311769672e-7,
-                0.0,
-                -1.529791973098327e-7,
-                -1.192086642731738e-7,
-                0.9999946,
-                0.0,
-                -5.9604346347441606e-8,
-                0.9999946,
-                1.788129964097607e-7,
-                0.0,
-                3.3671226,
-                1.1920926112907185e-7,
-                0.0,
-                1.0
+            "scaling": [
+                0.9999998,
+                0.9999945,
+                0.9999945
             ],
-            "name": "Locomotive"
+            "name": "Locomotive",
+            "translation": [
+                3.3671226,
+                1.1920926112907183e-7,
+                0.0
+            ],
+            "rotation": [
+                -7.516003108776205e-8,
+                0.7071067,
+                0.7071068,
+                3.3013179745466914e-8
+            ]
         },
         "280": {
             "link": {
@@ -1463,22 +1451,20 @@
                 "file": "locomotive\\scene.gltf"
             },
             "parent": "440",
-            "transformation": [
+            "scaling": [
                 1.0,
-                0.0,
-                -0.0,
-                0.0,
-                0.0,
                 1.0,
+                1.0
+            ],
+            "translation": [
+                0.0,
+                0.0,
+                -0.0
+            ],
+            "rotation": [
                 0.0,
                 0.0,
                 0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                -0.0,
                 1.0
             ]
         },
@@ -1556,23 +1542,21 @@
                     }
                 }
             ],
-            "transformation": [
-                -1.1920865716774645e-7,
-                0.0,
-                0.9999946,
-                0.0,
-                0.0,
+            "scaling": [
+                0.9999945,
                 1.0,
-                0.0,
-                0.0,
-                -0.9999946,
-                0.0,
-                -1.1920865716774645e-7,
-                0.0,
+                0.9999945
+            ],
+            "translation": [
                 1.4153616,
                 0.3953565,
-                -5.960464477539065e-8,
-                1.0
+                -5.960464477539064e-8
+            ],
+            "rotation": [
+                0.0,
+                -0.7071068,
+                0.0,
+                0.7071067
             ]
         },
         "453": {
@@ -1585,25 +1569,23 @@
                     }
                 }
             ],
-            "transformation": [
-                0.9999946,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
+            "scaling": [
+                0.9999945,
                 1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.9999946,
-                0.0,
+                0.9999945
+            ],
+            "parent": "28",
+            "translation": [
                 0.0,
                 -1.1646461,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
                 0.0,
                 1.0
-            ],
-            "parent": "28"
+            ]
         }
     },
     "meshes": {
@@ -2596,137 +2578,161 @@
         },
         "90": {
             "link": {
-                "name": "texture_4",
+                "name": "texture_0",
                 "file": "locomotive\\scene.gltf"
             }
         },
         "91": {
             "link": {
-                "name": "texture_5",
+                "name": "texture_1",
                 "file": "locomotive\\scene.gltf"
             }
         },
         "92": {
             "link": {
-                "name": "texture_6",
+                "name": "texture_2",
                 "file": "locomotive\\scene.gltf"
             }
         },
         "93": {
             "link": {
-                "name": "texture_7",
+                "name": "texture_3",
                 "file": "locomotive\\scene.gltf"
             }
         },
         "94": {
             "link": {
-                "name": "texture_8",
+                "name": "texture_4",
                 "file": "locomotive\\scene.gltf"
             }
         },
         "95": {
             "link": {
-                "name": "texture_9",
+                "name": "texture_5",
                 "file": "locomotive\\scene.gltf"
             }
         },
         "96": {
             "link": {
-                "name": "texture_10",
+                "name": "texture_6",
                 "file": "locomotive\\scene.gltf"
             }
         },
         "97": {
             "link": {
-                "name": "texture_11",
+                "name": "texture_7",
                 "file": "locomotive\\scene.gltf"
             }
         },
         "98": {
             "link": {
-                "name": "texture_12",
+                "name": "texture_8",
                 "file": "locomotive\\scene.gltf"
             }
         },
         "99": {
             "link": {
-                "name": "texture_13",
+                "name": "texture_9",
                 "file": "locomotive\\scene.gltf"
             }
         },
         "100": {
             "link": {
-                "name": "texture_14",
+                "name": "texture_10",
                 "file": "locomotive\\scene.gltf"
             }
         },
         "101": {
             "link": {
-                "name": "texture_15",
+                "name": "texture_11",
                 "file": "locomotive\\scene.gltf"
             }
         },
         "102": {
             "link": {
-                "name": "texture_16",
+                "name": "texture_12",
                 "file": "locomotive\\scene.gltf"
             }
         },
         "103": {
             "link": {
-                "name": "texture_17",
+                "name": "texture_13",
                 "file": "locomotive\\scene.gltf"
             }
         },
         "104": {
             "link": {
-                "name": "texture_18",
+                "name": "texture_14",
                 "file": "locomotive\\scene.gltf"
             }
         },
         "105": {
             "link": {
-                "name": "texture_19",
+                "name": "texture_15",
                 "file": "locomotive\\scene.gltf"
             }
         },
         "106": {
             "link": {
-                "name": "texture_20",
+                "name": "texture_16",
                 "file": "locomotive\\scene.gltf"
             }
         },
         "107": {
             "link": {
-                "name": "texture_21",
+                "name": "texture_17",
                 "file": "locomotive\\scene.gltf"
             }
         },
         "108": {
             "link": {
-                "name": "texture_22",
+                "name": "texture_18",
                 "file": "locomotive\\scene.gltf"
             }
         },
         "109": {
             "link": {
-                "name": "texture_23",
+                "name": "texture_19",
                 "file": "locomotive\\scene.gltf"
             }
         },
         "110": {
             "link": {
-                "name": "texture_24",
+                "name": "texture_20",
                 "file": "locomotive\\scene.gltf"
             }
         },
         "111": {
             "link": {
-                "name": "texture_25",
+                "name": "texture_21",
                 "file": "locomotive\\scene.gltf"
             }
         },
         "112": {
+            "link": {
+                "name": "texture_22",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "493": {
+            "link": {
+                "name": "texture_23",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "494": {
+            "link": {
+                "name": "texture_24",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "495": {
+            "link": {
+                "name": "texture_25",
+                "file": "locomotive\\scene.gltf"
+            }
+        },
+        "496": {
             "link": {
                 "name": "texture_26",
                 "file": "locomotive\\scene.gltf"
@@ -2740,14 +2746,14 @@
                 "file": "cloud.png"
             },
             "stream": false,
-            "compress": false
+            "compression": "none"
         },
         "32": {
             "link": {
                 "name": "noise.png",
                 "file": "noise.png"
             },
-            "compress": false,
+            "compression": "none",
             "stream": false
         },
         "35": {
@@ -2755,7 +2761,7 @@
                 "name": "fbmnoise3.png",
                 "file": "fbmnoise3.png"
             },
-            "compress": false,
+            "compression": "none",
             "stream": false
         },
         "37": {
@@ -2763,7 +2769,7 @@
                 "name": "cloud2.png",
                 "file": "cloud2.png"
             },
-            "compress": false,
+            "compression": "none",
             "stream": false
         },
         "f0": {
@@ -3040,6 +3046,9 @@
             "link": {
                 "name": "DefaultFontMaterial",
                 "file": "default"
+            },
+            "Text": {
+                "font": "487"
             }
         },
         "20": {
@@ -3051,7 +3060,19 @@
                     9.999999974752427e-7,
                     1.0
                 ],
-                "shininess": 1
+                "shininess": 1,
+                "emissiveColor": [
+                    0.2,
+                    0.2,
+                    0.2,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ]
             },
             "pipeline": "53"
         },
@@ -3076,6 +3097,12 @@
                     0.0,
                     0.2165777,
                     1.0
+                ],
+                "emissiveColor": [
+                    0.317647,
+                    0.0,
+                    0.2165776,
+                    1.0
                 ]
             }
         },
@@ -3095,6 +3122,12 @@
                     1.0
                 ],
                 "ambientColor": [
+                    0.3843137,
+                    0.3089579,
+                    0.0,
+                    1.0
+                ],
+                "emissiveColor": [
                     0.3843137,
                     0.3089579,
                     0.0,
@@ -3121,6 +3154,12 @@
                     0.0,
                     0.2352941,
                     0.1437908,
+                    1.0
+                ],
+                "emissiveColor": [
+                    0.0,
+                    0.2352941,
+                    0.1437907,
                     1.0
                 ]
             }
@@ -3159,6 +3198,20 @@
             "link": {
                 "name": "material",
                 "file": "locomotive\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "114": {
@@ -3167,19 +3220,58 @@
                 "file": "locomotive\\scene.gltf"
             },
             "Phong": {
-                "ambientFactor": 0.14
+                "ambientColor": [
+                    0.14,
+                    0.14,
+                    0.14,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "115": {
             "link": {
                 "name": "body_extra",
                 "file": "locomotive\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "116": {
             "link": {
                 "name": "window",
                 "file": "locomotive\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "117": {
@@ -3188,7 +3280,18 @@
                 "file": "locomotive\\scene.gltf"
             },
             "Phong": {
-                "ambientFactor": 0.15
+                "ambientColor": [
+                    0.15,
+                    0.15,
+                    0.15,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "118": {
@@ -3197,7 +3300,18 @@
                 "file": "locomotive\\scene.gltf"
             },
             "Phong": {
-                "ambientFactor": 0.15
+                "ambientColor": [
+                    0.15,
+                    0.15,
+                    0.15,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "119": {
@@ -3206,13 +3320,38 @@
                 "file": "locomotive\\scene.gltf"
             },
             "Phong": {
-                "ambientFactor": 0.15
+                "ambientColor": [
+                    0.15,
+                    0.15,
+                    0.15,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "120": {
             "link": {
                 "name": "tender_base1",
                 "file": "locomotive\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "121": {
@@ -3221,7 +3360,18 @@
                 "file": "locomotive\\scene.gltf"
             },
             "Phong": {
-                "ambientFactor": 0.15
+                "ambientColor": [
+                    0.15,
+                    0.15,
+                    0.15,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         }
     },
@@ -3294,7 +3444,7 @@
         },
         "461": {
             "link": {
-                "name": "Sky.vert",
+                "name": "FullScreenTriangle.vert",
                 "file": "default"
             }
         },
@@ -3315,15 +3465,117 @@
                 "name": "TileFeedback.frag",
                 "file": "default"
             }
+        },
+        "467": {
+            "link": {
+                "name": "Background.frag",
+                "file": "default"
+            }
+        },
+        "468": {
+            "link": {
+                "name": "lib\\Color.glsl",
+                "file": "default"
+            }
+        },
+        "469": {
+            "link": {
+                "name": "lib\\Compatibility.frag",
+                "file": "default"
+            }
+        },
+        "470": {
+            "link": {
+                "name": "lib\\CoordinateSystems.glsl",
+                "file": "default"
+            }
+        },
+        "471": {
+            "link": {
+                "name": "FullScreenTriangle.vert",
+                "file": "default"
+            }
+        },
+        "472": {
+            "link": {
+                "name": "lib\\GI.frag",
+                "file": "default"
+            }
+        },
+        "473": {
+            "link": {
+                "name": "lib\\Inputs.frag",
+                "file": "default"
+            }
+        },
+        "474": {
+            "link": {
+                "name": "lib\\Lights.frag",
+                "file": "default"
+            }
+        },
+        "475": {
+            "link": {
+                "name": "lib\\Materials.frag",
+                "file": "default"
+            }
+        },
+        "476": {
+            "link": {
+                "name": "lib\\Math.glsl",
+                "file": "default"
+            }
+        },
+        "477": {
+            "link": {
+                "name": "lib\\Packing.frag",
+                "file": "default"
+            }
+        },
+        "478": {
+            "link": {
+                "name": "lib\\Quaternion.glsl",
+                "file": "default"
+            }
+        },
+        "479": {
+            "link": {
+                "name": "lib\\Slug.frag",
+                "file": "default"
+            }
+        },
+        "480": {
+            "link": {
+                "name": "lib\\Slug.vert",
+                "file": "default"
+            }
+        },
+        "481": {
+            "link": {
+                "name": "lib\\Surface.frag",
+                "file": "default"
+            }
+        },
+        "482": {
+            "link": {
+                "name": "lib\\Textures.frag",
+                "file": "default"
+            }
+        },
+        "484": {
+            "link": {
+                "name": "lib\\Uniforms.glsl",
+                "file": "default"
+            }
         }
     },
     "settings": {
         "project": {
             "name": "SmokeParticles",
             "version": [
-                0,
-                8,
-                10
+                1,
+                1,
+                4
             ]
         },
         "vr": {
@@ -3332,9 +3584,12 @@
         },
         "scripting": {
             "sourcePaths": [
-                "/js/editor-components-bundle.js",
                 "particles.js"
-            ]
+            ],
+            "libraryPaths": [
+                "/js/lib/"
+            ],
+            "bundlingType": "esbuild"
         },
         "rendering": {
             "clearColor": [
@@ -3342,17 +3597,31 @@
                 9.999988606068657e-7,
                 9.999999974752427e-7,
                 1.0
-            ],
-            "fontOutline": true
+            ]
         }
     },
-    "files": [
-        "cloud.png",
-        "noise.png",
-        "fbmnoise3.png",
-        "cloud2.png",
-        "locomotive/scene.gltf"
-    ],
+    "files": {
+        "488": {
+            "fileName": "cloud.png",
+            "importerName": ""
+        },
+        "489": {
+            "fileName": "noise.png",
+            "importerName": ""
+        },
+        "490": {
+            "fileName": "fbmnoise3.png",
+            "importerName": ""
+        },
+        "491": {
+            "fileName": "cloud2.png",
+            "importerName": ""
+        },
+        "492": {
+            "fileName": "locomotive/scene.gltf",
+            "importerName": ""
+        }
+    },
     "animations": {
         "451": {
             "link": {
@@ -3474,6 +3743,9 @@
             "link": {
                 "name": "Flat Opaque Textured",
                 "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true
             }
         },
         "50": {
@@ -3486,6 +3758,10 @@
             "link": {
                 "name": "Phong Opaque",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true,
+                "WITH_EMISSIVE": true
             }
         },
         "54": {
@@ -3496,13 +3772,17 @@
             "features": {
                 "ALPHA_MASKED": false,
                 "WITH_FOG": false,
-                "TEXTURED": true
+                "TEXTURED": true,
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "57": {
             "link": {
                 "name": "Foliage",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "58": {
@@ -3532,6 +3812,9 @@
             "link": {
                 "name": "Physical Opaque Textured",
                 "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true
             }
         },
         "463": {
@@ -3545,6 +3828,40 @@
                 "name": "Sky",
                 "file": "default"
             }
+        },
+        "483": {
+            "link": {
+                "name": "TileFeedback",
+                "file": "default"
+            }
+        },
+        "485": {
+            "link": {
+                "name": "Phong Normalmapped",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "486": {
+            "link": {
+                "name": "Phong Lightmapped",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
         }
-    }
+    },
+    "fonts": {
+        "487": {
+            "link": {
+                "name": "DejaVuSans.ttf",
+                "file": "default"
+            },
+            "outline": true
+        }
+    },
+    "languages": {}
 }

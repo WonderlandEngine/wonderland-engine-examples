@@ -12,12 +12,28 @@
  */
 
 /* wle:auto-imports:start */
+import {FixedFoveation} from '@wonderlandengine/components';
+import {MouseLookComponent} from '@wonderlandengine/components';
+import {WasdControlsComponent} from '@wonderlandengine/components';
+import {Particles} from './../particles.js';
 /* wle:auto-imports:end */
 
 import {loadRuntime} from '@wonderlandengine/api';
 import * as API from '@wonderlandengine/api'; // Deprecated: Backward compatibility.
 
 /* wle:auto-constants:start */
+const RuntimeOptions = {
+    physx: false,
+    loader: false,
+    xrFramebufferScaleFactor: 1,
+    canvas: 'canvas',
+};
+const Constants = {
+    ProjectName: 'SmokeParticles',
+    RuntimeBaseName: 'WonderlandRuntime',
+    WebXRRequiredFeatures: ['local',],
+    WebXROptionalFeatures: ['local','hand-tracking','hit-test',],
+};
 /* wle:auto-constants:end */
 
 const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
@@ -62,6 +78,10 @@ if (document.readyState === 'loading') {
 }
 
 /* wle:auto-register:start */
+engine.registerComponent(FixedFoveation);
+engine.registerComponent(MouseLookComponent);
+engine.registerComponent(WasdControlsComponent);
+engine.registerComponent(Particles);
 /* wle:auto-register:end */
 
 engine.scene.load(`${Constants.ProjectName}.bin`);
