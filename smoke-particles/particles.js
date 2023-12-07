@@ -1,6 +1,8 @@
 import {Component, Property} from '@wonderlandengine/api';
 import {vec3, quat} from 'gl-matrix';
 
+const origin = new Float32Array(3);
+
 /**
 Very simple smoke particles system
 */
@@ -107,7 +109,8 @@ export class Particles extends Component {
             this.materials.push(mesh.material);
         }
         
-        obj.setTransformWorld(this.object.transformWorld);
+        this.object.getPositionWorld(origin)
+        obj.setPositionWorld(origin);
         obj.scaleLocal([0, 0, 0]);
 
         this.startTime[index] = this.time;
