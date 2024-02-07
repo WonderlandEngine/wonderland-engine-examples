@@ -12,6 +12,7 @@
  */
 
 /* wle:auto-imports:start */
+import {Cursor} from '@wonderlandengine/components';
 import {MouseLookComponent} from '@wonderlandengine/components';
 import {WasdControlsComponent} from '@wonderlandengine/components';
 /* wle:auto-imports:end */
@@ -19,9 +20,11 @@ import {WasdControlsComponent} from '@wonderlandengine/components';
 import {loadRuntime} from '@wonderlandengine/api';
 import * as API from '@wonderlandengine/api'; // Deprecated: Backward compatibility.
 
+import registerMenuComponents from './menu-index.js';
+
 /* wle:auto-constants:start */
 const Constants = {
-    ProjectName: 'SceneB.wlp',
+    ProjectName: 'SceneA',
     RuntimeBaseName: 'WonderlandRuntime',
     WebXRRequiredFeatures: ['local',],
     WebXROptionalFeatures: ['local','hand-tracking','hit-test',],
@@ -77,15 +80,43 @@ if (document.readyState === 'loading') {
 }
 
 /* wle:auto-register:start */
+engine.registerComponent(Cursor);
 engine.registerComponent(MouseLookComponent);
 engine.registerComponent(WasdControlsComponent);
 /* wle:auto-register:end */
 
-const scene = await engine.loadRootScene(`${Constants.ProjectName}.bin`).catch((e) => {
+registerMenuComponents(engine);
+
+/* Create a root scene that will contain sub scenes */
+const rootScene = await engine.loadSceneRoot(`SceneA.bin`).catch((e) => {
     console.error(e);
     window.alert(`Failed to load ${Constants.ProjectName}.bin:`, e);
 });
-engine.switchScene(scene);
+
+const sceneA = rootScene.getScene(0);
+
+const menuScene = await rootScene.loadScene('Menu.bin');
+sceneA.activate();
+// sceneA.instantiate(menuScene);
+
+await rootScene.loadScene('SceneB.bin');
+
+const sceneB = rootScene.getScene(2);
+// sceneB.instantiate(menuScene);
+
+// let index = 0;
+// function test() {
+//     index = (index + 1) % 2;
+//     if (index === 0) {
+//         sceneA.activate();
+//     } else {
+//         sceneB.activate();
+//     }
+//     setTimeout(test, 4000);
+// }
+// setTimeout(test, 2000);
+
+sceneB.activate();
 
 /* wle:auto-benchmark:start */
 /* wle:auto-benchmark:end */

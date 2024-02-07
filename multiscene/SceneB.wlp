@@ -64,6 +64,9 @@
                 },
                 {
                     "type": "mouse-look"
+                },
+                {
+                    "type": "cursor"
                 }
             ]
         },
@@ -159,6 +162,62 @@
                 5.0,
                 5.0,
                 5.0
+            ]
+        },
+        "75": {
+            "name": "Cylinder",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "11",
+                        "material": "26"
+                    }
+                }
+            ],
+            "translation": [
+                0.0,
+                0.9373369,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "76": {
+            "name": "Mesh",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "8",
+                        "material": "77"
+                    }
+                }
+            ],
+            "translation": [
+                -2.4641237,
+                0.5087568,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                0.5,
+                0.5,
+                0.5
             ]
         }
     },
@@ -328,6 +387,37 @@
                     1.0
                 ]
             }
+        },
+        "77": {
+            "name": "Texture",
+            "Phong": {
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.5,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "emissiveColor": [
+                    0.0,
+                    0.2352941,
+                    0.1437908,
+                    1.0
+                ],
+                "diffuseTexture": "79"
+            },
+            "pipeline": "38"
         }
     },
     "shaders": {
@@ -544,7 +634,7 @@
     },
     "settings": {
         "project": {
-            "name": "SceneB.wlp",
+            "name": "SceneB",
             "version": [
                 1,
                 1,
@@ -557,7 +647,7 @@
         },
         "scripting": {
             "sourcePaths": [
-                "js/"
+                "js/components/"
             ],
             "bundlingType": "esbuild",
             "libraryPaths": [
@@ -681,8 +771,23 @@
             }
         }
     },
-    "textures": {},
-    "images": {},
+    "textures": {
+        "79": {
+            "link": {
+                "name": "texture.png",
+                "file": "textures\\texture.png"
+            }
+        }
+    },
+    "images": {
+        "78": {
+            "link": {
+                "name": "texture.png",
+                "file": "textures\\texture.png"
+            },
+            "compression": "none"
+        }
+    },
     "fonts": {
         "55": {
             "link": {
@@ -693,5 +798,10 @@
         }
     },
     "languages": {},
-    "files": {}
+    "files": {
+        "80": {
+            "fileName": "textures/texture.png",
+            "importerName": ""
+        }
+    }
 }

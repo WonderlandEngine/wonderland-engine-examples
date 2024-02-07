@@ -11,76 +11,20 @@
                 }
             ],
             "scaling": [
-                0.9999998,
+                0.999999,
                 1.0,
-                0.9999998
+                0.9999994
             ],
             "translation": [
-                -3.2591099,
-                1.8000135,
-                1.7569212
+                -5.647994,
+                -0.3556431,
+                5.7182893
             ],
             "rotation": [
-                0.0,
-                -0.3768199,
-                0.0,
-                0.9262865
-            ]
-        },
-        "15": {
-            "name": "FloorPlane",
-            "components": [
-                {
-                    "type": "mesh",
-                    "mesh": {
-                        "mesh": "7",
-                        "material": "20"
-                    }
-                }
-            ],
-            "scaling": [
-                4.0,
-                4.0,
-                4.0
-            ],
-            "translation": [
-                0.0,
-                0.0,
-                1.1920928955078125e-7
-            ],
-            "rotation": [
-                -0.7072496,
-                0.0,
-                0.0,
-                0.7069638
-            ]
-        },
-        "16": {
-            "name": "Cube",
-            "components": [
-                {
-                    "type": "mesh",
-                    "mesh": {
-                        "mesh": "8",
-                        "material": "22"
-                    }
-                }
-            ],
-            "scaling": [
-                0.5,
-                0.5,
-                0.5
-            ],
-            "translation": [
-                -0.7315585,
-                0.4999999,
-                0.6088503
-            ],
-            "rotation": [
-                0.0,
-                0.0,
-                0.0,
-                1.0
+                0.0000017,
+                -0.3768197,
+                -0.0000011,
+                0.9262866
             ]
         },
         "17": {
@@ -92,6 +36,9 @@
                 },
                 {
                     "type": "mouse-look"
+                },
+                {
+                    "type": "cursor"
                 }
             ]
         },
@@ -159,6 +106,95 @@
                 0.9145832
             ]
         },
+        "75": {
+            "name": "Debug",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "material": "76",
+                        "mesh": "8"
+                    }
+                }
+            ],
+            "translation": [
+                0.0,
+                -3.2421646,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "77": {
+            "name": "Environment"
+        },
+        "16": {
+            "name": "Cube",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "8",
+                        "material": "22"
+                    }
+                }
+            ],
+            "scaling": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "translation": [
+                -0.7315585,
+                0.4999999,
+                0.6088503
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "parent": "77"
+        },
+        "27": {
+            "name": "Sphere",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "9",
+                        "material": "26"
+                    }
+                }
+            ],
+            "scaling": [
+                0.75,
+                0.75,
+                0.75
+            ],
+            "translation": [
+                -0.2315586,
+                0.75,
+                -0.6411498
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "parent": "77"
+        },
         "24": {
             "name": "Cone",
             "components": [
@@ -185,35 +221,8 @@
                 0.0,
                 0.0,
                 1.0
-            ]
-        },
-        "27": {
-            "name": "Sphere",
-            "components": [
-                {
-                    "type": "mesh",
-                    "mesh": {
-                        "mesh": "9",
-                        "material": "26"
-                    }
-                }
             ],
-            "scaling": [
-                0.75,
-                0.75,
-                0.75
-            ],
-            "translation": [
-                -0.2315587,
-                0.75,
-                -0.6411498
-            ],
-            "rotation": [
-                0.0,
-                0.0,
-                0.0,
-                1.0
-            ]
+            "parent": "77"
         },
         "74": {
             "name": "SceneId",
@@ -243,7 +252,37 @@
                 5.0,
                 5.0,
                 5.0
-            ]
+            ],
+            "parent": "77"
+        },
+        "15": {
+            "name": "FloorPlane",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "7",
+                        "material": "20"
+                    }
+                }
+            ],
+            "scaling": [
+                4.0,
+                3.9999995,
+                3.9999995
+            ],
+            "translation": [
+                0.0,
+                0.0,
+                1.1920928955078125e-7
+            ],
+            "rotation": [
+                -0.7072496,
+                0.0,
+                0.0,
+                0.7069638
+            ],
+            "parent": "77"
         }
     },
     "meshes": {
@@ -412,6 +451,36 @@
                     1.0
                 ]
             }
+        },
+        "76": {
+            "name": "Texture",
+            "Phong": {
+                "diffuseColor": [
+                    0.1529411,
+                    0.7882353,
+                    0.5411764,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.0,
+                    0.2352941,
+                    0.1437908,
+                    1.0
+                ],
+                "emissiveColor": [
+                    0.0,
+                    0.2352941,
+                    0.1437908,
+                    1.0
+                ]
+            },
+            "pipeline": "38"
         }
     },
     "shaders": {
@@ -628,7 +697,7 @@
     },
     "settings": {
         "project": {
-            "name": "SceneA.wlp",
+            "name": "SceneA",
             "version": [
                 1,
                 1,
@@ -641,7 +710,7 @@
         },
         "scripting": {
             "sourcePaths": [
-                "js/"
+                "js/components/"
             ],
             "bundlingType": "esbuild",
             "libraryPaths": [
@@ -692,8 +761,11 @@
                 "file": "default"
             },
             "features": {
-                "DEPRECATED_LIGHT_ATTENUATION": true
-            }
+                "DEPRECATED_LIGHT_ATTENUATION": true,
+                "WITH_EMISSIVE": true,
+                "WITH_FOG": true
+            },
+            "doubleSided": false
         },
         "40": {
             "link": {
