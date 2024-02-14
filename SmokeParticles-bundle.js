@@ -15054,17 +15054,22 @@ __publicField(Particles, "Properties", {
 });
 
 // js/index.js
-var RuntimeOptions = {
-  physx: false,
-  loader: false,
-  xrFramebufferScaleFactor: 1,
-  canvas: "canvas"
-};
 var Constants = {
   ProjectName: "SmokeParticles",
   RuntimeBaseName: "WonderlandRuntime",
   WebXRRequiredFeatures: ["local"],
   WebXROptionalFeatures: ["local", "hand-tracking", "hit-test"]
+};
+var RuntimeOptions = {
+  physx: false,
+  loader: false,
+  xrFramebufferScaleFactor: 1,
+  xrOfferSession: {
+    mode: "auto",
+    features: Constants.WebXRRequiredFeatures,
+    optionalFeatures: Constants.WebXROptionalFeatures
+  },
+  canvas: "canvas"
 };
 var engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
 Object.assign(engine, dist_exports);
