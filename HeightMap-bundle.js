@@ -15359,7 +15359,7 @@ var HeightMap = class extends Component {
     }
     console.log("Vertices:", vertexCount);
     console.log("Data size:", "unknown", "bytes");
-    this.mesh = new Mesh(this._engine, {
+    this.mesh = new Mesh(this.engine, {
       vertexCount,
       indexData: this.indexData,
       indexType: MeshIndexType.UnsignedInt
