@@ -1,0 +1,922 @@
+{
+    "objects": {
+        "14": {
+            "name": "Player",
+            "components": [
+                {
+                    "type": "wasd-controls",
+                    "wasd-controls": {
+                        "headObject": "17"
+                    }
+                }
+            ],
+            "translation": [
+                -1.178291,
+                -0.258263,
+                -2.2241621
+            ],
+            "scaling": [
+                0.9999791,
+                0.9999989,
+                0.9999757
+            ],
+            "rotation": [
+                -4.7565438876517874e-7,
+                0.9659255,
+                0.0000021,
+                -0.25882
+            ]
+        },
+        "17": {
+            "name": "NonVrCamera",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "mouse-look"
+                }
+            ]
+        },
+        "18": {
+            "name": "EyeLeft",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "input",
+                    "input": {
+                        "type": "eye left"
+                    }
+                }
+            ]
+        },
+        "19": {
+            "name": "EyeRight",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "input",
+                    "input": {
+                        "type": "eye right"
+                    }
+                }
+            ]
+        },
+        "90": {
+            "link": {
+                "name": "node_damagedHelmet_-6514",
+                "file": "DamagedHelmet.glb"
+            },
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                -7.277347435774573e-7,
+                -0.7071068,
+                0.7071067,
+                7.277346867340384e-7
+            ],
+            "scaling": [
+                0.9999991,
+                0.9999994,
+                1.0000016
+            ]
+        },
+        "115": {
+            "name": "TextHDRI",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "HDRi: Venice Sunset from polyhaven.com",
+                        "effect": "none"
+                    }
+                }
+            ],
+            "translation": [
+                2.384185791015625e-7,
+                -1.1920928955078125e-7,
+                0.0
+            ],
+            "rotation": [
+                3.139168711641105e-7,
+                1.0,
+                -4.3312525122019e-7,
+                8.923507976987821e-8
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "118"
+        },
+        "116": {
+            "name": "Credit",
+            "parent": null,
+            "translation": [
+                2.9087727,
+                1.1129001,
+                0.1294239
+            ],
+            "rotation": [
+                0.0000145,
+                0.3826834,
+                0.0000059,
+                0.9238795
+            ],
+            "scaling": [
+                0.9999998,
+                1.0,
+                0.9999998
+            ]
+        },
+        "117": {
+            "name": "Background",
+            "parent": "118",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "7",
+                        "material": "20"
+                    }
+                }
+            ],
+            "rotation": [
+                7.549901681613846e-8,
+                1.0,
+                1.099975861507119e-7,
+                -6.887553922751977e-7
+            ],
+            "translation": [
+                0.0000123,
+                0.0000249,
+                0.0694713
+            ],
+            "scaling": [
+                1.3927254,
+                0.2580448,
+                0.9999989
+            ]
+        },
+        "118": {
+            "name": "Credit HDRI",
+            "parent": "116",
+            "translation": [
+                -1.1920928955078125e-7,
+                0.0,
+                -1.1920928955078125e-7
+            ],
+            "rotation": [
+                -0.0,
+                1.2516283121044582e-8,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0000001,
+                1.0,
+                1.0000001
+            ]
+        },
+        "119": {
+            "name": "Credit Helmet",
+            "parent": "116",
+            "translation": [
+                -0.0000122,
+                -0.5857543,
+                -0.000003
+            ],
+            "rotation": [
+                1.3335741755327038e-7,
+                3.99503420567271e-7,
+                -0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0000001,
+                1.0,
+                1.0000001
+            ]
+        },
+        "120": {
+            "name": "Background",
+            "parent": "119",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "7",
+                        "material": "20"
+                    }
+                }
+            ],
+            "rotation": [
+                7.549901681613846e-8,
+                1.0,
+                1.099975861507119e-7,
+                -6.887553922751977e-7
+            ],
+            "translation": [
+                0.0000123,
+                0.0000249,
+                0.0694713
+            ],
+            "scaling": [
+                1.3927254,
+                0.2580448,
+                0.9999989
+            ]
+        },
+        "121": {
+            "name": "Text Helmet",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Model: Damaged Sci-fi Helmet, by theblueturtle_",
+                        "effect": "none"
+                    }
+                }
+            ],
+            "translation": [
+                2.384185791015625e-7,
+                -1.1920928955078125e-7,
+                0.0
+            ],
+            "rotation": [
+                3.139168711641105e-7,
+                1.0,
+                -4.3312525122019e-7,
+                8.923507976987821e-8
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "119"
+        }
+    },
+    "meshes": {
+        "7": {
+            "link": {
+                "name": "PrimitivePlane",
+                "file": "default"
+            }
+        },
+        "8": {
+            "link": {
+                "name": "PrimitiveCube",
+                "file": "default"
+            }
+        },
+        "9": {
+            "link": {
+                "name": "PrimitiveSphere",
+                "file": "default"
+            }
+        },
+        "10": {
+            "link": {
+                "name": "PrimitiveCone",
+                "file": "default"
+            }
+        },
+        "11": {
+            "link": {
+                "name": "PrimitiveCylinder",
+                "file": "default"
+            }
+        },
+        "12": {
+            "link": {
+                "name": "PrimitiveCircle",
+                "file": "default"
+            }
+        },
+        "89": {
+            "link": {
+                "name": "mesh_helmet_LP_13930damagedHelmet",
+                "file": "DamagedHelmet.glb"
+            }
+        }
+    },
+    "materials": {
+        "DefaultFontMaterial": {
+            "link": {
+                "name": "DefaultFontMaterial",
+                "file": "default"
+            },
+            "Text": {
+                "font": "55"
+            }
+        },
+        "20": {
+            "name": "White",
+            "shader": "Phong",
+            "Phong": {
+                "specularColor": [
+                    9.999899930335232e-7,
+                    9.99993744699168e-7,
+                    9.999999974752427e-7,
+                    1.0
+                ],
+                "shininess": 1
+            }
+        },
+        "22": {
+            "name": "Pink",
+            "Phong": {
+                "diffuseColor": [
+                    0.9098039,
+                    0.0,
+                    0.5411764,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999899930335232e-7,
+                    9.999911299019004e-7,
+                    9.999999974752427e-7,
+                    1.0
+                ],
+                "shininess": 10,
+                "ambientColor": [
+                    0.317647,
+                    0.0,
+                    0.2165777,
+                    1.0
+                ]
+            }
+        },
+        "25": {
+            "name": "Yellow",
+            "Phong": {
+                "diffuseColor": [
+                    1.0,
+                    0.8039215,
+                    0.0,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.3843137,
+                    0.3089579,
+                    0.0,
+                    1.0
+                ]
+            }
+        },
+        "26": {
+            "name": "Green",
+            "Phong": {
+                "diffuseColor": [
+                    0.1529411,
+                    0.7882353,
+                    0.5411764,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.0,
+                    0.2352941,
+                    0.1437908,
+                    1.0
+                ]
+            }
+        },
+        "88": {
+            "link": {
+                "name": "Material_MR",
+                "file": "DamagedHelmet.glb"
+            },
+            "pipeline": "48",
+            "Physical": {
+                "metallicFactor": 1.0,
+                "roughnessFactor": 1.0,
+                "occlusionFactor": 1.0,
+                "normalTexture": "87",
+                "roughnessMetallicTexture": "84",
+                "emissiveColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "emissiveTexture": "85"
+            }
+        },
+        "92": {
+            "link": {
+                "name": "Material_MR",
+                "file": "DamagedHelmet.glb"
+            },
+            "pipeline": "54",
+            "Physical": {
+                "metallicFactor": 1.0
+            },
+            "name": "Sky",
+            "Sky": {
+                "mip": 1
+            }
+        }
+    },
+    "shaders": {
+        "1": {
+            "link": {
+                "name": "DistanceFieldVector Textured.frag",
+                "file": "default"
+            }
+        },
+        "2": {
+            "link": {
+                "name": "Flat.frag",
+                "file": "default"
+            }
+        },
+        "3": {
+            "link": {
+                "name": "Flat Textured.frag",
+                "file": "default"
+            }
+        },
+        "4": {
+            "link": {
+                "name": "MeshVisualizer.frag",
+                "file": "default"
+            }
+        },
+        "5": {
+            "link": {
+                "name": "Phong.frag",
+                "file": "default"
+            }
+        },
+        "6": {
+            "link": {
+                "name": "Phong Textured.frag",
+                "file": "default"
+            }
+        },
+        "28": {
+            "link": {
+                "name": "Dynamic.vert",
+                "file": "default"
+            }
+        },
+        "29": {
+            "link": {
+                "name": "Particle Textured.frag",
+                "file": "default"
+            }
+        },
+        "30": {
+            "link": {
+                "name": "Skinning.vert",
+                "file": "default"
+            }
+        },
+        "31": {
+            "link": {
+                "name": "Static.frag",
+                "file": "default"
+            }
+        },
+        "32": {
+            "link": {
+                "name": "DistanceFieldVector.frag",
+                "file": "default"
+            }
+        },
+        "39": {
+            "link": {
+                "name": "Particle.frag",
+                "file": "default"
+            }
+        },
+        "42": {
+            "link": {
+                "name": "Background.frag",
+                "file": "default"
+            }
+        },
+        "43": {
+            "link": {
+                "name": "Depth.frag",
+                "file": "default"
+            }
+        },
+        "45": {
+            "link": {
+                "name": "FullScreenTriangle.vert",
+                "file": "default"
+            }
+        },
+        "46": {
+            "link": {
+                "name": "Physical.frag",
+                "file": "default"
+            }
+        },
+        "49": {
+            "link": {
+                "name": "Sky.frag",
+                "file": "default"
+            }
+        },
+        "50": {
+            "link": {
+                "name": "Text.frag",
+                "file": "default"
+            }
+        },
+        "52": {
+            "link": {
+                "name": "Text.vert",
+                "file": "default"
+            }
+        },
+        "53": {
+            "link": {
+                "name": "TileFeedback.frag",
+                "file": "default"
+            }
+        },
+        "56": {
+            "link": {
+                "name": "lib\\Color.glsl",
+                "file": "default"
+            }
+        },
+        "57": {
+            "link": {
+                "name": "lib\\Compatibility.frag",
+                "file": "default"
+            }
+        },
+        "58": {
+            "link": {
+                "name": "lib\\CoordinateSystems.glsl",
+                "file": "default"
+            }
+        },
+        "59": {
+            "link": {
+                "name": "lib\\GI.frag",
+                "file": "default"
+            }
+        },
+        "60": {
+            "link": {
+                "name": "lib\\Inputs.frag",
+                "file": "default"
+            }
+        },
+        "61": {
+            "link": {
+                "name": "lib\\Lights.frag",
+                "file": "default"
+            }
+        },
+        "62": {
+            "link": {
+                "name": "lib\\Materials.frag",
+                "file": "default"
+            }
+        },
+        "63": {
+            "link": {
+                "name": "lib\\Math.glsl",
+                "file": "default"
+            }
+        },
+        "64": {
+            "link": {
+                "name": "lib\\Packing.frag",
+                "file": "default"
+            }
+        },
+        "65": {
+            "link": {
+                "name": "lib\\Quaternion.glsl",
+                "file": "default"
+            }
+        },
+        "66": {
+            "link": {
+                "name": "lib\\Slug.frag",
+                "file": "default"
+            }
+        },
+        "67": {
+            "link": {
+                "name": "lib\\Slug.vert",
+                "file": "default"
+            }
+        },
+        "68": {
+            "link": {
+                "name": "lib\\Surface.frag",
+                "file": "default"
+            }
+        },
+        "69": {
+            "link": {
+                "name": "lib\\Textures.frag",
+                "file": "default"
+            }
+        },
+        "71": {
+            "link": {
+                "name": "lib\\Tonemapping.glsl",
+                "file": "default"
+            }
+        },
+        "72": {
+            "link": {
+                "name": "lib\\Uniforms.glsl",
+                "file": "default"
+            }
+        },
+        "105": {
+            "link": {
+                "name": "lib\\GI_MultiScattering.frag",
+                "file": "default"
+            }
+        }
+    },
+    "settings": {
+        "project": {
+            "name": "ExampleHDRI",
+            "version": [
+                1,
+                1,
+                6
+            ]
+        },
+        "vr": {
+            "leftEyeObject": "18",
+            "rightEyeObject": "19"
+        },
+        "scripting": {
+            "bundlingType": "esbuild",
+            "libraryPaths": [
+                "/js/lib/"
+            ]
+        },
+        "rendering": {
+            "hdr": {
+                "exposure": 1.5,
+                "tonemapping": "aces"
+            },
+            "environment": {
+                "enabled": true,
+                "image": "102",
+                "bakeExposure": 1.0,
+                "intensity": 1.0,
+                "maxSpecularEnvironmentSize": 1024
+            },
+            "useMultiDraw": false,
+            "sky": {
+                "enabled": true,
+                "material": "92"
+            },
+            "bloom": {
+                "enabled": false
+            }
+        }
+    },
+    "animations": {},
+    "skins": {},
+    "pipelines": {
+        "33": {
+            "link": {
+                "name": "DistanceFieldVector",
+                "file": "default"
+            }
+        },
+        "36": {
+            "link": {
+                "name": "MeshVisualizer",
+                "file": "default"
+            }
+        },
+        "44": {
+            "link": {
+                "name": "Depth",
+                "file": "default"
+            }
+        },
+        "48": {
+            "link": {
+                "name": "Physical Opaque Textured",
+                "file": "default"
+            },
+            "features": {
+                "GLOBAL_ILLUMINATION": true,
+                "TONEMAPPING": true,
+                "WITH_EMISSIVE": true,
+                "OCCLUSION_TEXTURE": true,
+                "NORMAL_MAPPING": true
+            },
+            "castShadows": false
+        },
+        "51": {
+            "link": {
+                "name": "Text",
+                "file": "default"
+            }
+        },
+        "54": {
+            "link": {
+                "name": "Sky",
+                "file": "default"
+            },
+            "features": {
+                "ENVIRONMENT_PROBE": true,
+                "TEXTURED": false
+            }
+        },
+        "70": {
+            "link": {
+                "name": "TileFeedback",
+                "file": "default"
+            }
+        },
+        "106": {
+            "link": {
+                "name": "Flat Opaque",
+                "file": "default"
+            }
+        },
+        "107": {
+            "link": {
+                "name": "Flat Opaque Textured",
+                "file": "default"
+            }
+        },
+        "108": {
+            "link": {
+                "name": "Phong Opaque",
+                "file": "default"
+            }
+        },
+        "109": {
+            "link": {
+                "name": "Phong Opaque Textured",
+                "file": "default"
+            }
+        },
+        "110": {
+            "link": {
+                "name": "Physical Opaque",
+                "file": "default"
+            }
+        },
+        "111": {
+            "link": {
+                "name": "Phong Normalmapped",
+                "file": "default"
+            }
+        },
+        "112": {
+            "link": {
+                "name": "Phong Lightmapped",
+                "file": "default"
+            }
+        },
+        "113": {
+            "link": {
+                "name": "Foliage",
+                "file": "default"
+            }
+        },
+        "114": {
+            "link": {
+                "name": "Particle",
+                "file": "default"
+            }
+        }
+    },
+    "textures": {
+        "83": {
+            "link": {
+                "name": "texture_0",
+                "file": "DamagedHelmet.glb"
+            }
+        },
+        "84": {
+            "link": {
+                "name": "texture_1",
+                "file": "DamagedHelmet.glb"
+            }
+        },
+        "85": {
+            "link": {
+                "name": "texture_2",
+                "file": "DamagedHelmet.glb"
+            }
+        },
+        "86": {
+            "link": {
+                "name": "texture_3",
+                "file": "DamagedHelmet.glb"
+            }
+        },
+        "87": {
+            "link": {
+                "name": "texture_4",
+                "file": "DamagedHelmet.glb"
+            }
+        },
+        "103": {
+            "link": {
+                "name": "venice_sunset_4k.hdr",
+                "file": "venice_sunset_4k.hdr"
+            }
+        }
+    },
+    "images": {
+        "78": {
+            "link": {
+                "name": "image_0",
+                "file": "DamagedHelmet.glb"
+            },
+            "compression": "etc1s"
+        },
+        "79": {
+            "link": {
+                "name": "image_1",
+                "file": "DamagedHelmet.glb"
+            },
+            "compression": "uastc"
+        },
+        "80": {
+            "link": {
+                "name": "image_2",
+                "file": "DamagedHelmet.glb"
+            },
+            "compression": "none"
+        },
+        "81": {
+            "link": {
+                "name": "image_3",
+                "file": "DamagedHelmet.glb"
+            }
+        },
+        "82": {
+            "link": {
+                "name": "image_4",
+                "file": "DamagedHelmet.glb"
+            },
+            "compression": "uastc"
+        },
+        "102": {
+            "link": {
+                "name": "venice_sunset_4k.hdr",
+                "file": "venice_sunset_4k.hdr"
+            },
+            "hdr": true,
+            "compression": "none"
+        }
+    },
+    "fonts": {
+        "55": {
+            "link": {
+                "name": "DejaVuSans.ttf",
+                "file": "default"
+            }
+        }
+    },
+    "languages": {},
+    "files": {
+        "91": {
+            "fileName": "DamagedHelmet.glb",
+            "importerName": ""
+        },
+        "104": {
+            "fileName": "venice_sunset_4k.hdr",
+            "importerName": ""
+        }
+    }
+}
