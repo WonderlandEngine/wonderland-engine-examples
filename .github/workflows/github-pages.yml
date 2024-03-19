@@ -16,6 +16,8 @@ jobs:
           if [ ! -d "$project" ]; then continue; fi
           if [ "$project" = ".github" ]; then continue; fi
           if [ "$project" = "public" ]; then continue; fi
+          # react-embed has special build instructions
+          if [ "$project" = "react-embed" ]; then continue; fi
 
           echo "Zipping $project"
           zip -r ./public/$project.zip $project
@@ -26,6 +28,18 @@ jobs:
           done
           mv public/index.html public/$project.html
         done
+
+        # Special build for 'react-embed'
+        echo "Zipping react-embed"
+        zip -r ./public/$react-embed.zip $project
+        echo "Building react-embed"
+        /usr/local/bin/entrypoint.sh WonderlandEditor --credentials "$WLE_CREDENTIALS" --windowless --package --project ./react-embed/wonderland/React.wlp
+        cd ./react-embed
+        npm ci
+        npm run build
+        cd ..
+        cp -r react-embed/dist/* public/
+        mv public/index.html public/react-embed.html
       env:
           WLE_CREDENTIALS: ${{ secrets.WLE_CREDENTIALS }}
     - name: Gzip
