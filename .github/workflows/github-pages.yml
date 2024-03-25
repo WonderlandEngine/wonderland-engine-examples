@@ -17,15 +17,46 @@ jobs:
           if [ "$project" = ".github" ]; then continue; fi
           if [ "$project" = "public" ]; then continue; fi
 
-          echo "Zipping $project"
-          zip -r ./public/$project.zip $project
+          echo "Processing $project"
 
-          echo "Building $project"
-          for projectFile in $project/*.wlp ; do
-            /usr/local/bin/entrypoint.sh WonderlandEditor --credentials "$WLE_CREDENTIALS" --windowless --package --project ./$projectFile --output ./public/
-          done
-          mv public/index.html public/$project.html
+          # Check if package.json exists
+          if [ -f "$project/package.json" ]; then
+            # Get the name parameter from package.json
+            project_name=$(jq -r '.name' "$project/package.json")
+            echo "Found project name: $project_name"
+
+            # Check if a corresponding .wlp file exists
+            if [ -f "$project/$project_name.wlp" ]; then
+              echo "Found $project_name.wlp"
+
+              # Check if there are other .wlp files in the same folder
+              wlp_files=$(ls -1 "$project"/*.wlp | wc -l)
+              if [ "$wlp_files" -gt 1 ]; then
+                echo "Multiple .wlp files found in the same folder"
+
+                # Package other .wlp files first
+                for file in "$project"/*.wlp; do
+                  if [ "$file" != "$project/$project_name.wlp" ]; then
+                    echo "Packaging $file"
+                    /usr/local/bin/entrypoint.sh WonderlandEditor --credentials "$WLE_CREDENTIALS" --windowless --package --project "$file" --output ./public/
+                  fi
+                done
+              fi
+
+              # Package the main .wlp file
+              echo "Packaging $project_name.wlp"
+              /usr/local/bin/entrypoint.sh WonderlandEditor --credentials "$WLE_CREDENTIALS" --windowless --package --project "$project/$project_name.wlp" --output ./public/
+            else
+              echo "No corresponding .wlp file found for $project_name"
+            fi
+          else
+            echo "No package.json found in $project"
+          fi
+
+          # Rename index.html to project_name.html
+          mv public/index.html "public/$project_name.html"
         done
+
       env:
           WLE_CREDENTIALS: ${{ secrets.WLE_CREDENTIALS }}
     - name: Gzip
