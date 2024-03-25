@@ -1,20 +1,20 @@
 {
-  "name": "scene2.wlp",
-  "version": "1.0.0",
-  "description": "My Wonderland project",
-  "main": "js/index.js",
-  "type": "module",
-  "module": "js/index.js",
-  "scripts": {
-    "build": "echo \"The 'build' script is run by the editor and should produce your application bundle\""
-  },
-  "keywords": [
-    "wonderland-engine"
-  ],
-  "dependencies": {
-    "@wonderlandengine/api": "file:D:/vr/WLE_Nighty/WonderlandEngine-1.1.6-nightly-20240318-win64/js/api/wonderlandengine-api.tgz",
-    "@wonderlandengine/components": "^1.0.7",
-    "@wonderlandengine/spatial-audio": "^1.1.2",
-    "gl-matrix": "^3.4.3"
-  }
+    "name": "MultisceneExample",
+    "version": "1.0.0",
+    "description": "My Wonderland project",
+    "main": "js/index.js",
+    "type": "module",
+    "module": "js/index.js",
+    "scripts": {
+        "build": "echo \"The 'build' script is run by the editor and should produce your application bundle\""
+    },
+    "keywords": [
+        "wonderland-engine"
+    ],
+    "dependencies": {
+        "@wonderlandengine/api": "file:D:/vr/WLE_Nighty/WonderlandEngine-1.1.6-nightly-20240318-win64/js/api/wonderlandengine-api.tgz",
+        "@wonderlandengine/components": "^1.0.7",
+        "@wonderlandengine/spatial-audio": "^1.1.2",
+        "gl-matrix": "^3.4.3"
+    }
 }

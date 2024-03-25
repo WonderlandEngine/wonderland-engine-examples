@@ -7,7 +7,8 @@ import {PlayerHeight} from '@wonderlandengine/components';
 import {TeleportComponent} from '@wonderlandengine/components';
 import {VrModeActiveSwitch} from '@wonderlandengine/components';
 import {WasdControlsComponent} from '@wonderlandengine/components';
-import {SwitchScene} from './js/switch-scene.js';
+import {Portal} from './js/portal.js';
+import {SwitchScene} from './js/switch.js';
 /* wle:auto-imports:end */
 
 export default function registerSceneComponents(engine) {
@@ -20,6 +21,7 @@ engine.registerComponent(PlayerHeight);
 engine.registerComponent(TeleportComponent);
 engine.registerComponent(VrModeActiveSwitch);
 engine.registerComponent(WasdControlsComponent);
+engine.registerComponent(Portal);
 engine.registerComponent(SwitchScene);
 /* wle:auto-register:end */
 }

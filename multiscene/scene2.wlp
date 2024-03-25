@@ -30,7 +30,7 @@
                     "switch-scene": {
                         "target": "4838",
                         "translationDuration": 1.0,
-                        "initialTranslate": 10.0,
+                        "initialTranslate": 12.0,
                         "testText": "Iam scene2"
                     }
                 }
@@ -18942,28 +18942,67 @@
                         "mesh": "7",
                         "material": "4831"
                     }
+                },
+                {
+                    "type": "portal",
+                    "portal": {
+                        "target": "14",
+                        "initialTranslate": 14.0,
+                        "translationDuration": 1.0
+                    }
+                },
+                {
+                    "type": "switch-scene"
                 }
             ],
             "translation": [
                 -1.346632,
-                1.9952822,
+                1.9952821,
                 0.2251272
             ],
             "rotation": [
-                1.0677022288518857e-7,
+                1.0677022999061593e-7,
                 -0.7071068,
-                1.0676971129441881e-7,
+                1.0676971839984617e-7,
                 0.7071067
             ],
             "scaling": [
-                0.9999902,
-                1.0,
-                0.9999902
+                0.8399916,
+                0.84,
+                0.8399916
             ],
             "parent": "257"
         },
         "4840": {
             "name": "Empty"
+        },
+        "4842": {
+            "name": "Text",
+            "parent": null,
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Credit\nThe Assests used are from multiple sources \n Shindiego.ds : https://skfb.ly/66VwP\n Simon Ustal : https://skfb.ly/6SKDX\nPlease ensure they are distributed with \nappropriate license before using.\n"
+                    }
+                }
+            ],
+            "translation": [
+                9.0060787,
+                0.3583045,
+                0.7609715
+            ],
+            "rotation": [
+                1.2644112246107397e-7,
+                -0.7071068,
+                1.0536709993402837e-7,
+                0.7071067
+            ],
+            "scaling": [
+                1.058389,
+                1.0584,
+                1.058389
+            ]
         }
     },
     "meshes": {
@@ -32318,7 +32357,7 @@
     },
     "settings": {
         "project": {
-            "name": "scene2.wlp",
+            "name": "scene2",
             "version": [
                 1,
                 1,

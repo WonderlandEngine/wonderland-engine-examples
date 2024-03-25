@@ -21,16 +21,13 @@
             "parent": null,
             "components": [
                 {
-                    "type": "switch-scene",
-                    "switch-scene": {
-                        "target": "286"
-                    }
-                },
-                {
                     "type": "wasd-controls",
                     "wasd-controls": {
                         "headObject": "17"
                     }
+                },
+                {
+                    "type": "switch-scene"
                 }
             ]
         },
@@ -1387,6 +1384,15 @@
                         "material": "278"
                     },
                     "active": true
+                },
+                {
+                    "type": "portal",
+                    "portal": {
+                        "target": "14"
+                    }
+                },
+                {
+                    "type": "switch-scene"
                 }
             ],
             "translation": [
@@ -1681,6 +1687,34 @@
             },
             "parent": "134",
             "skin": "133"
+        },
+        "289": {
+            "name": "Credit",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Credit\nThe Assests used are from multiple sources \n Shindiego.ds : https://skfb.ly/66VwP\n Simon Ustal : https://skfb.ly/6SKDX\nPlease ensure they are distributed with \nappropriate license before using.\n"
+                    }
+                }
+            ],
+            "translation": [
+                11.329132,
+                3.2119889,
+                -0.5239801
+            ],
+            "rotation": [
+                -0.0,
+                -0.6662013,
+                -5.674441467817815e-7,
+                0.7457719
+            ],
+            "scaling": [
+                2.5903038,
+                2.5902957,
+                2.5903038
+            ],
+            "parent": null
         }
     },
     "meshes": {
@@ -2515,7 +2549,7 @@
     },
     "settings": {
         "project": {
-            "name": "MultisceneExample.wlp",
+            "name": "MultisceneExample",
             "version": [
                 1,
                 1,
