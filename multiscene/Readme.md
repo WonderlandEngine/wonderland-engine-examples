@@ -13,10 +13,17 @@ Wonderland Engine previously supported managing only a single scene. With the ne
 ```javascript
 engine.loadSceneGroup('myNewScene.bin');
 ```
+
+Every scene root loaded is indexed and stored in the engine in case you don't want to store it yourself. You can retrieve it like 
+
+```js
+const sceneGroup = this.engine.getSceneGroup(0)
+```
+
 Scene Activation
 
 ```js
-const myNewScene = this.engine.getSceneGroup(1).getScene(0);
+const myNewScene = sceneGroup.getScene(0);
 myNewScene.activate();
 ```
 
@@ -30,9 +37,6 @@ myNewScene.activate();
 1. While doing ci/cd be aware to include the packing of the secondary scenes before the main scene.
 
 ## Additional Details
-1. detailed information about the SceneGroup API, refer to the documentation.
-2. Resources such as materials, meshes, and textures are now managed per SceneGroup.
-3. Destroy scenes using scene.destroy(). Resources can be destroyed individually or with the SceneGroup.
-4. Editor support for multiscene is planned for the future.
+1. For more information, refer to the [Multiscene blog post](https://wonderlandengine.com/news/runtime-multiscene-1.2.0/)
 
 
