@@ -663,6 +663,12 @@
                 "name": "lib\\GI_MultiScattering.frag",
                 "file": "default"
             }
+        },
+        "122": {
+            "link": {
+                "name": "lib\\PhysicalBSDF.glsl",
+                "file": "default"
+            }
         }
     },
     "settings": {
@@ -679,10 +685,11 @@
             "rightEyeObject": "19"
         },
         "scripting": {
-            "bundlingType": "esbuild",
+            "bundlingType": "none",
             "libraryPaths": [
                 "/js/lib/"
-            ]
+            ],
+            "entryPoint": ""
         },
         "rendering": {
             "hdr": {
