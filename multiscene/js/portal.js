@@ -1,5 +1,6 @@
 import {Component, Property} from "@wonderlandengine/api";
 import { SwitchScene } from './switch';
+import { vec3 } from 'gl-matrix';
 
 /**
  * switch-scene
@@ -14,9 +15,6 @@ export class Portal extends Component {
 		portalRotateSpeed: Property.float(1.0),
 	};
 
-	startBool = false;
-	startUpdate = true;
-
 	onActivate() {
 		this.target.translateObject([0, 0, this.initialTranslate]);
 	}
@@ -26,35 +24,22 @@ export class Portal extends Component {
 			[0, 0, 1],
 			dt * 10000 * this.portalRotateSpeed,
 		);
-		this.playerPosition = this.target.getPositionWorld([]);
-		this.portalPosition = this.object.getPositionWorld([]);
-		if (this.playerPosition[0] <= this.portalPosition[0]) {
+		const playerPosition = this.target.getPositionWorld([]);
+		const portalPosition = this.object.getPositionWorld([]);
+		const sqDist= vec3.squaredDistance(playerPosition, portalPosition)
+		if (sqDist > 0.1) {
 			const distanceRemaining = Math.abs(
-				this.portalPosition[0] - this.playerPosition[0],
+				portalPosition[0] - playerPosition[0],
 			);
 			const alpha =
 				1 -
 				Math.exp(-dt / (this.translationDuration * distanceRemaining));
-
-			const newPosition = this.lerpVector(
-				this.playerPosition,
-				this.portalPosition,
-				alpha,
-			);
+			const newPosition= new Float32Array(3)
+			vec3.lerp(newPosition,playerPosition,portalPosition,alpha,)
 			this.target.setPositionWorld(newPosition);
 		}
-		if (this.playerPosition[0] >= this.portalPosition[0]) {
-			this.startUpdate = false;
+		else{
 			this.object.getComponent(SwitchScene).switch();
 		}
 	}
-
-	lerpVector(v1, v2, alpha) {
-		return [
-			v1[0] + (v2[0] - v1[0]) * alpha,
-			v1[1] + (v2[1] - v1[1]) * alpha,
-			v1[2] + (v2[2] - v1[2]) * alpha,
-		];
-	}
-
 }
