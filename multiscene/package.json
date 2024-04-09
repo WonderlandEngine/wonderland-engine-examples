@@ -12,7 +12,7 @@
         "wonderland-engine"
     ],
     "dependencies": {
-        "@wonderlandengine/api": "file:D:/vr/WLE_Nighty/WonderlandEngine-1.2.0-nightly-20240403-win64/js/api/wonderlandengine-api.tgz",
+        "@wonderlandengine/api": "file:D:/vr/WLE_Nighty/WonderlandEngine-1.2.0-nightly-20240405-win64/WonderlandEngine-1.2.0-nightly-20240405-win64/js/api/wonderlandengine-api.tgz",
         "@wonderlandengine/components": "^1.0.7",
         "@wonderlandengine/spatial-audio": "^1.1.2",
         "gl-matrix": "^3.4.3"
