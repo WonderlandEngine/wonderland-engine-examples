@@ -669,6 +669,12 @@
                 "name": "lib\\PhysicalBSDF.glsl",
                 "file": "default"
             }
+        },
+        "123": {
+            "link": {
+                "name": "lib\\MorphTargets.glsl",
+                "file": "default"
+            }
         }
     },
     "settings": {
@@ -676,8 +682,9 @@
             "name": "ExampleHDRI",
             "version": [
                 1,
-                1,
-                6
+                2,
+                0,
+                1
             ]
         },
         "vr": {
@@ -701,7 +708,7 @@
                 "image": "102",
                 "bakeExposure": 1.0,
                 "intensity": 1.0,
-                "maxSpecularEnvironmentSize": 1024
+                "maxSpecularEnvironmentSize": 512
             },
             "useMultiDraw": false,
             "sky": {
@@ -858,8 +865,8 @@
         },
         "103": {
             "link": {
-                "name": "venice_sunset_4k.hdr",
-                "file": "venice_sunset_4k.hdr"
+                "name": "venice_sunset_2k.hdr",
+                "file": "venice_sunset_2k.hdr"
             }
         }
     },
@@ -900,8 +907,8 @@
         },
         "102": {
             "link": {
-                "name": "venice_sunset_4k.hdr",
-                "file": "venice_sunset_4k.hdr"
+                "name": "venice_sunset_2k.hdr",
+                "file": "venice_sunset_2k.hdr"
             },
             "hdr": true,
             "compression": "none"
@@ -922,8 +929,9 @@
             "importerName": ""
         },
         "104": {
-            "fileName": "venice_sunset_4k.hdr",
+            "fileName": "venice_sunset_2k.hdr",
             "importerName": ""
         }
-    }
+    },
+    "morphTargets": {}
 }
