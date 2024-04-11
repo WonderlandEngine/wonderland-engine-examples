@@ -6,7 +6,4 @@ node_modules/
 
 # Wonderland Engine
 deploy/
-cache/js/
-
-# Projects
 **/cache/js/
