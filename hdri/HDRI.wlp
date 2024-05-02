@@ -683,8 +683,7 @@
             "version": [
                 1,
                 2,
-                0,
-                1
+                0
             ]
         },
         "vr": {
@@ -692,11 +691,11 @@
             "rightEyeObject": "19"
         },
         "scripting": {
-            "bundlingType": "none",
+            "bundlingType": "esbuild",
             "libraryPaths": [
                 "/js/lib/"
             ],
-            "entryPoint": ""
+            "entryPoint": "js/index.js"
         },
         "rendering": {
             "hdr": {
