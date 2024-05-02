@@ -1,17 +1,12 @@
-import {Component} from "@wonderlandengine/api";
+import {Component} from '@wonderlandengine/api';
+import {Scenes} from './scenes.js';
 
-/**
- * switch-scene
- */
+/** Component to switch between the main and second scene. */
 export class SwitchScene extends Component {
-	static TypeName = "switch-scene"
+	static TypeName = 'switch-scene';
+
 	switch() {
-		const scene0 = this.engine.getSceneGroup(0).getScene(0);
-		const scene1 = this.engine.getSceneGroup(1).getScene(0);
-		if (this.scene === scene1) {
-			scene0.activate();
-		} else {
-			scene1.activate();
-		}
+		const nextScene = this.scene === Scenes.main ? Scenes.second : Scenes.main;
+		this.engine.switchTo(nextScene);
 	}
 }
