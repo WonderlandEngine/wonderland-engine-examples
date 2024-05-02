@@ -1,19 +1,24 @@
 import {Component} from '@wonderlandengine/api';
 import {CursorTarget} from '@wonderlandengine/components';
 
+const PREFAB_URL = 'Prefab.bin';
+
+/** Instantiate the prefab at the cursor location. */
 export class Spawn extends Component {
     static TypeName = 'spawn';
 
-    _binScene = null;
+    /** Prefab */
+    _prefab = null;
+
+    /** Cursor target component */
     _target = null;
 
     init() {
-        const root = this._scene.root;
-        root.loadScene('RandomMesh.bin')
-            .then((scene) => this._binScene = scene)
+        this.engine.loadPrefab(PREFAB_URL)
+            .then((scene) => this._prefab = scene)
             .catch((e) => {
                 this.active = false;
-                console.error(`Failed to load 'RandomMesh.bin', reason:`, e);
+                console.error(`Failed to load '${PREFAB_URL}', reason:`, e);
             });
     }
 
@@ -33,9 +38,10 @@ export class Spawn extends Component {
         this._target.onClick.remove(this._spawn);
     }
 
+    /** Spawn the prefab at the cursor location. */
     _spawn = (_, cursor) => {
         const pos = cursor.cursorPos;
-        const {root} = this._scene.instantiate(this._binScene);
+        const {root} = this.scene.instantiate(this._prefab);
         root.setPositionWorld(pos);
     }
 }

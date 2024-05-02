@@ -27,8 +27,8 @@ import registerInstanceComponents from './instance-index.js';
 const Constants = {
     ProjectName: 'MainScene',
     RuntimeBaseName: 'WonderlandRuntime',
-    WebXRRequiredFeatures: [],
-    WebXROptionalFeatures: [],
+    WebXRRequiredFeatures: ['local',],
+    WebXROptionalFeatures: ['local','hand-tracking','hit-test',],
 };
 const RuntimeOptions = {
     physx: false,
@@ -91,10 +91,12 @@ engine.registerComponent(Spawn);
 /* Registers all components required by the `Instance.wlp` scene */
 registerInstanceComponents(engine);
 
-engine.scene.load(`${Constants.ProjectName}.bin`).catch((e) => {
+try {
+    await engine.loadMainScene(`${Constants.ProjectName}.bin`);
+} catch(e) {
     console.error(e);
     window.alert(`Failed to load ${Constants.ProjectName}.bin:`, e);
-});
+}
 
 /* wle:auto-benchmark:start */
 /* wle:auto-benchmark:end */
