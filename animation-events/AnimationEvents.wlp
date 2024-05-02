@@ -1,0 +1,2124 @@
+{
+    "objects": {
+        "14": {
+            "name": "Player",
+            "components": [
+                {
+                    "type": "controls"
+                },
+                {
+                    "type": "gun-controller",
+                    "gun-controller": {
+                        "gunObject": "295",
+                        "firstGunObject": "603",
+                        "secondGunObject": null
+                    }
+                }
+            ],
+            "scaling": [
+                0.9999998,
+                1.0,
+                0.9999998
+            ],
+            "translation": [
+                -0.0023143,
+                1.8000135,
+                2.8860318
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        "15": {
+            "name": "FloorPlane",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "7",
+                        "material": "20"
+                    }
+                }
+            ],
+            "scaling": [
+                4.0,
+                4.0,
+                4.0
+            ],
+            "translation": [
+                0.0,
+                0.0,
+                1.1920928955078125e-7
+            ],
+            "rotation": [
+                -0.7072496,
+                0.0,
+                0.0,
+                0.7069638
+            ]
+        },
+        "16": {
+            "name": "Cube",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "8",
+                        "material": "22"
+                    }
+                }
+            ],
+            "scaling": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "translation": [
+                2.9802322387695313e-8,
+                0.4999999,
+                5.960464477539065e-8
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        "17": {
+            "name": "NonVrCamera",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view",
+                    "view": {
+                        "near": 0.0000999
+                    }
+                }
+            ]
+        },
+        "18": {
+            "name": "EyeLeft",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "input",
+                    "input": {
+                        "type": "eye left"
+                    }
+                }
+            ]
+        },
+        "19": {
+            "name": "EyeRight",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "input",
+                    "input": {
+                        "type": "eye right"
+                    }
+                }
+            ]
+        },
+        "21": {
+            "name": "Light",
+            "components": [
+                {
+                    "type": "light",
+                    "light": {
+                        "intensity": 3.3329999
+                    }
+                }
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "translation": [
+                0.0,
+                3.0,
+                2.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        "23": {
+            "name": "Light.000",
+            "components": [
+                {
+                    "type": "light",
+                    "light": {
+                        "intensity": 3.3329999
+                    }
+                }
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "translation": [
+                -1.0,
+                3.0,
+                -1.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        "24": {
+            "name": "Cone",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "10",
+                        "material": "25"
+                    }
+                }
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "translation": [
+                1.5,
+                1.0,
+                -1.4901161193847656e-8
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        "27": {
+            "name": "Sphere",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "9",
+                        "material": "26"
+                    }
+                }
+            ],
+            "scaling": [
+                0.75,
+                0.75,
+                0.75
+            ],
+            "translation": [
+                0.4999999,
+                0.75,
+                -1.25
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        "295": {
+            "link": {
+                "name": "Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "translation": [
+                0.1014914,
+                -0.4657596,
+                -0.280959
+            ],
+            "rotation": [
+                0.0370079,
+                0.7061524,
+                0.7061229,
+                0.0370065
+            ],
+            "scaling": [
+                1.9919136,
+                1.9919279,
+                1.991935
+            ],
+            "name": "offset",
+            "parent": "603"
+        },
+        "296": {
+            "link": {
+                "name": "810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "295"
+        },
+        "297": {
+            "link": {
+                "name": "Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "296"
+        },
+        "298": {
+            "link": {
+                "name": "RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "297"
+        },
+        "299": {
+            "link": {
+                "name": "arms<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "298"
+        },
+        "300": {
+            "link": {
+                "name": "Camera<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "298"
+        },
+        "301": {
+            "link": {
+                "name": "Object_6<Camera<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "300"
+        },
+        "302": {
+            "link": {
+                "name": "Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "298"
+        },
+        "303": {
+            "link": {
+                "name": "Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "302"
+        },
+        "304": {
+            "link": {
+                "name": "_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "303",
+            "skin": "294"
+        },
+        "305": {
+            "link": {
+                "name": "Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "304",
+            "skin": "294"
+        },
+        "306": {
+            "link": {
+                "name": "Arm_L_02<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "305",
+            "skin": "294",
+            "components": [
+                {
+                    "animation": {
+                        "preview": false,
+                        "playCount": 1
+                    }
+                },
+                {
+                    "animation": {
+                        "preview": false,
+                        "playCount": 1
+                    }
+                },
+                {
+                    "type": "animation",
+                    "animation": {
+                        "animation": "399",
+                        "skin": "294",
+                        "preview": false,
+                        "playCount": 1
+                    }
+                },
+                {
+                    "type": "animation",
+                    "animation": {
+                        "animation": "401",
+                        "skin": "294",
+                        "preview": false,
+                        "playCount": 1
+                    }
+                },
+                {
+                    "type": "animation",
+                    "animation": {
+                        "preview": false,
+                        "animation": "404",
+                        "playCount": 1
+                    }
+                },
+                {
+                    "type": "animation",
+                    "animation": {
+                        "animation": "397",
+                        "autoplay": false
+                    }
+                },
+                {
+                    "type": "animation",
+                    "animation": {
+                        "animation": "402",
+                        "playCount": 1
+                    }
+                }
+            ]
+        },
+        "307": {
+            "link": {
+                "name": "UpArm_L_03<Arm_L_02<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "306",
+            "skin": "294",
+            "components": [
+                {
+                    "active": false
+                },
+                {
+                    "active": false
+                },
+                {
+                    "active": false
+                }
+            ]
+        },
+        "308": {
+            "link": {
+                "name": "Forearm_L_04<UpArm_L_03<Arm_L_02<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "307",
+            "skin": "294"
+        },
+        "309": {
+            "link": {
+                "name": "BoneTwist_03.L_05<Forearm_L_04<UpArm_L_03<Arm_L_02<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "308",
+            "skin": "294"
+        },
+        "310": {
+            "link": {
+                "name": "BoneTwist_02.L_06<BoneTwist_03.L_05<Forearm_L_04<UpArm_L_03<Arm_L_02<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "309",
+            "skin": "294"
+        },
+        "311": {
+            "link": {
+                "name": "BoneTwist_01.L_07<BoneTwist_02.L_06<BoneTwist_03.L_05<Forearm_L_04<UpArm_L_03<Arm_L_02<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "310",
+            "skin": "294"
+        },
+        "312": {
+            "link": {
+                "name": "BoneTwist_01.L_end_064<BoneTwist_01.L_07<BoneTwist_02.L_06<BoneTwist_03.L_05<Forearm_L_04<UpArm_L_03<Arm_L_02<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "311",
+            "skin": "294"
+        },
+        "313": {
+            "link": {
+                "name": "Arm_R_08<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "305",
+            "skin": "294"
+        },
+        "314": {
+            "link": {
+                "name": "UpArm_R_09<Arm_R_08<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "313",
+            "skin": "294"
+        },
+        "315": {
+            "link": {
+                "name": "Forearm_R_010<UpArm_R_09<Arm_R_08<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "314",
+            "skin": "294"
+        },
+        "316": {
+            "link": {
+                "name": "BoneTwist_03.R_011<Forearm_R_010<UpArm_R_09<Arm_R_08<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "315",
+            "skin": "294"
+        },
+        "317": {
+            "link": {
+                "name": "BoneTwist_02.R_012<BoneTwist_03.R_011<Forearm_R_010<UpArm_R_09<Arm_R_08<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "316",
+            "skin": "294"
+        },
+        "318": {
+            "link": {
+                "name": "BoneTwist_01.R_013<BoneTwist_02.R_012<BoneTwist_03.R_011<Forearm_R_010<UpArm_R_09<Arm_R_08<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "317",
+            "skin": "294"
+        },
+        "319": {
+            "link": {
+                "name": "BoneTwist_01.R_end_065<BoneTwist_01.R_013<BoneTwist_02.R_012<BoneTwist_03.R_011<Forearm_R_010<UpArm_R_09<Arm_R_08<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "318",
+            "skin": "294"
+        },
+        "320": {
+            "link": {
+                "name": "Head_Cam_014<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "305",
+            "skin": "294"
+        },
+        "321": {
+            "link": {
+                "name": "Head_Cam_end_066<Head_Cam_014<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "320",
+            "skin": "294"
+        },
+        "322": {
+            "link": {
+                "name": "IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "305",
+            "skin": "294"
+        },
+        "323": {
+            "link": {
+                "name": "Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "322",
+            "skin": "294"
+        },
+        "324": {
+            "link": {
+                "name": "Bone_L.004_017<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "323",
+            "skin": "294"
+        },
+        "325": {
+            "link": {
+                "name": "Bone_L.005_018<Bone_L.004_017<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "324",
+            "skin": "294"
+        },
+        "326": {
+            "link": {
+                "name": "Bone_L.006_019<Bone_L.005_018<Bone_L.004_017<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "325",
+            "skin": "294"
+        },
+        "327": {
+            "link": {
+                "name": "Bone_L.007_020<Bone_L.006_019<Bone_L.005_018<Bone_L.004_017<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "326",
+            "skin": "294"
+        },
+        "328": {
+            "link": {
+                "name": "Bone_L.007_end_067<Bone_L.007_020<Bone_L.006_019<Bone_L.005_018<Bone_L.004_017<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "327",
+            "skin": "294"
+        },
+        "329": {
+            "link": {
+                "name": "Bone_L.008_021<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "323",
+            "skin": "294"
+        },
+        "330": {
+            "link": {
+                "name": "Bone_L.009_022<Bone_L.008_021<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "329",
+            "skin": "294"
+        },
+        "331": {
+            "link": {
+                "name": "Bone_L.010_023<Bone_L.009_022<Bone_L.008_021<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "330",
+            "skin": "294"
+        },
+        "332": {
+            "link": {
+                "name": "Bone_L.011_024<Bone_L.010_023<Bone_L.009_022<Bone_L.008_021<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "331",
+            "skin": "294"
+        },
+        "333": {
+            "link": {
+                "name": "Bone_L.011_end_068<Bone_L.011_024<Bone_L.010_023<Bone_L.009_022<Bone_L.008_021<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "332",
+            "skin": "294"
+        },
+        "334": {
+            "link": {
+                "name": "Bone_L.012_025<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "323",
+            "skin": "294"
+        },
+        "335": {
+            "link": {
+                "name": "Bone_L.013_026<Bone_L.012_025<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "334",
+            "skin": "294"
+        },
+        "336": {
+            "link": {
+                "name": "Bone_L.014_027<Bone_L.013_026<Bone_L.012_025<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "335",
+            "skin": "294"
+        },
+        "337": {
+            "link": {
+                "name": "Bone_L.015_028<Bone_L.014_027<Bone_L.013_026<Bone_L.012_025<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "336",
+            "skin": "294"
+        },
+        "338": {
+            "link": {
+                "name": "Bone_L.015_end_069<Bone_L.015_028<Bone_L.014_027<Bone_L.013_026<Bone_L.012_025<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "337",
+            "skin": "294"
+        },
+        "339": {
+            "link": {
+                "name": "Bone_L.016_029<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "323",
+            "skin": "294"
+        },
+        "340": {
+            "link": {
+                "name": "Bone_L.017_030<Bone_L.016_029<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "339",
+            "skin": "294"
+        },
+        "341": {
+            "link": {
+                "name": "Bone_L.018_031<Bone_L.017_030<Bone_L.016_029<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "340",
+            "skin": "294"
+        },
+        "342": {
+            "link": {
+                "name": "Bone_L.019_032<Bone_L.018_031<Bone_L.017_030<Bone_L.016_029<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "341",
+            "skin": "294"
+        },
+        "343": {
+            "link": {
+                "name": "Bone_L.019_end_070<Bone_L.019_032<Bone_L.018_031<Bone_L.017_030<Bone_L.016_029<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "342",
+            "skin": "294"
+        },
+        "344": {
+            "link": {
+                "name": "Bone_L.020_033<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "323",
+            "skin": "294"
+        },
+        "345": {
+            "link": {
+                "name": "Bone_L.021_034<Bone_L.020_033<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "344",
+            "skin": "294"
+        },
+        "346": {
+            "link": {
+                "name": "Bone_L.022_035<Bone_L.021_034<Bone_L.020_033<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "345",
+            "skin": "294"
+        },
+        "347": {
+            "link": {
+                "name": "Bone_L.022_end_071<Bone_L.022_035<Bone_L.021_034<Bone_L.020_033<Hand_L_016<IK_Hand_Cntrl_L_015<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "346",
+            "skin": "294"
+        },
+        "348": {
+            "link": {
+                "name": "IK_PoleTrgt_L_00<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "305",
+            "skin": "294"
+        },
+        "349": {
+            "link": {
+                "name": "IK_PoleTrgt_L_end_072<IK_PoleTrgt_L_00<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "348",
+            "skin": "294"
+        },
+        "350": {
+            "link": {
+                "name": "IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "305",
+            "skin": "294"
+        },
+        "351": {
+            "link": {
+                "name": "Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "350",
+            "skin": "294"
+        },
+        "352": {
+            "link": {
+                "name": "Bone_R.004_038<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "351",
+            "skin": "294"
+        },
+        "353": {
+            "link": {
+                "name": "Bone_R.005_039<Bone_R.004_038<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "352",
+            "skin": "294"
+        },
+        "354": {
+            "link": {
+                "name": "Bone_R.006_040<Bone_R.005_039<Bone_R.004_038<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "353",
+            "skin": "294"
+        },
+        "355": {
+            "link": {
+                "name": "Bone_R.007_041<Bone_R.006_040<Bone_R.005_039<Bone_R.004_038<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "354",
+            "skin": "294"
+        },
+        "356": {
+            "link": {
+                "name": "Bone_R.007_end_073<Bone_R.007_041<Bone_R.006_040<Bone_R.005_039<Bone_R.004_038<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "355",
+            "skin": "294"
+        },
+        "357": {
+            "link": {
+                "name": "Bone_R.008_042<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "351",
+            "skin": "294"
+        },
+        "358": {
+            "link": {
+                "name": "Bone_R.009_043<Bone_R.008_042<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "357",
+            "skin": "294"
+        },
+        "359": {
+            "link": {
+                "name": "Bone_R.010_044<Bone_R.009_043<Bone_R.008_042<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "358",
+            "skin": "294"
+        },
+        "360": {
+            "link": {
+                "name": "Bone_R.011_045<Bone_R.010_044<Bone_R.009_043<Bone_R.008_042<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "359",
+            "skin": "294"
+        },
+        "361": {
+            "link": {
+                "name": "Bone_R.011_end_074<Bone_R.011_045<Bone_R.010_044<Bone_R.009_043<Bone_R.008_042<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "360",
+            "skin": "294"
+        },
+        "362": {
+            "link": {
+                "name": "Bone_R.012_046<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "351",
+            "skin": "294"
+        },
+        "363": {
+            "link": {
+                "name": "Bone_R.013_047<Bone_R.012_046<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "362",
+            "skin": "294"
+        },
+        "364": {
+            "link": {
+                "name": "Bone_R.014_048<Bone_R.013_047<Bone_R.012_046<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "363",
+            "skin": "294"
+        },
+        "365": {
+            "link": {
+                "name": "Bone_R.015_049<Bone_R.014_048<Bone_R.013_047<Bone_R.012_046<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "364",
+            "skin": "294"
+        },
+        "366": {
+            "link": {
+                "name": "Bone_R.015_end_075<Bone_R.015_049<Bone_R.014_048<Bone_R.013_047<Bone_R.012_046<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "365",
+            "skin": "294"
+        },
+        "367": {
+            "link": {
+                "name": "Bone_R.016_050<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "351",
+            "skin": "294"
+        },
+        "368": {
+            "link": {
+                "name": "Bone_R.017_051<Bone_R.016_050<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "367",
+            "skin": "294"
+        },
+        "369": {
+            "link": {
+                "name": "Bone_R.018_052<Bone_R.017_051<Bone_R.016_050<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "368",
+            "skin": "294"
+        },
+        "370": {
+            "link": {
+                "name": "Bone_R.019_053<Bone_R.018_052<Bone_R.017_051<Bone_R.016_050<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "369",
+            "skin": "294"
+        },
+        "371": {
+            "link": {
+                "name": "Bone_R.019_end_076<Bone_R.019_053<Bone_R.018_052<Bone_R.017_051<Bone_R.016_050<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "370",
+            "skin": "294"
+        },
+        "372": {
+            "link": {
+                "name": "Bone_R.020_054<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "351",
+            "skin": "294"
+        },
+        "373": {
+            "link": {
+                "name": "Bone_R.021_055<Bone_R.020_054<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "372",
+            "skin": "294"
+        },
+        "374": {
+            "link": {
+                "name": "Bone_R.022_056<Bone_R.021_055<Bone_R.020_054<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "373",
+            "skin": "294"
+        },
+        "375": {
+            "link": {
+                "name": "Bone_R.022_end_077<Bone_R.022_056<Bone_R.021_055<Bone_R.020_054<Hand_R_037<IK_Hand_Cntrl_R_036<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "374",
+            "skin": "294"
+        },
+        "376": {
+            "link": {
+                "name": "IK_PoleTrgt_R_057<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "305",
+            "skin": "294"
+        },
+        "377": {
+            "link": {
+                "name": "IK_PoleTrgt_R_end_078<IK_PoleTrgt_R_057<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "376",
+            "skin": "294"
+        },
+        "378": {
+            "link": {
+                "name": "PBody_058<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "305",
+            "skin": "294"
+        },
+        "379": {
+            "link": {
+                "name": "Rif_059<PBody_058<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "378",
+            "skin": "294"
+        },
+        "380": {
+            "link": {
+                "name": "Rif_end_079<Rif_059<PBody_058<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "379",
+            "skin": "294"
+        },
+        "381": {
+            "link": {
+                "name": "Trigger_060<PBody_058<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "378",
+            "skin": "294"
+        },
+        "382": {
+            "link": {
+                "name": "Trigger_end_080<Trigger_060<PBody_058<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "381",
+            "skin": "294"
+        },
+        "383": {
+            "link": {
+                "name": "Safety_061<PBody_058<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "378",
+            "skin": "294"
+        },
+        "384": {
+            "link": {
+                "name": "Safety_end_081<Safety_061<PBody_058<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "383",
+            "skin": "294"
+        },
+        "385": {
+            "link": {
+                "name": "Pmag_062<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "305",
+            "skin": "294"
+        },
+        "386": {
+            "link": {
+                "name": "Pmag_end_082<Pmag_062<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "385",
+            "skin": "294"
+        },
+        "387": {
+            "link": {
+                "name": "Pmag2_063<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "305",
+            "skin": "294"
+        },
+        "388": {
+            "link": {
+                "name": "Pmag2_end_083<Pmag2_063<Root_01<_rootJoint<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "387",
+            "skin": "294"
+        },
+        "389": {
+            "link": {
+                "name": "Object_11<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "303",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "294"
+                    }
+                }
+            ]
+        },
+        "390": {
+            "link": {
+                "name": "Object_97<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "303",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "294"
+                    }
+                }
+            ]
+        },
+        "391": {
+            "link": {
+                "name": "Object_99<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "303",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "294"
+                    }
+                }
+            ]
+        },
+        "392": {
+            "link": {
+                "name": "Object_10<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "303"
+        },
+        "393": {
+            "link": {
+                "name": "Object_96<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "303"
+        },
+        "394": {
+            "link": {
+                "name": "Object_98<Object_8<Rig<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "303"
+        },
+        "395": {
+            "link": {
+                "name": "Ak<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "298"
+        },
+        "396": {
+            "link": {
+                "name": "Mag_2<RootNode<Object_2<810f0276179d4425a118b331d5f38189.fbx<Sketchfab_model",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "parent": "298"
+        },
+        "602": {
+            "name": "Guns",
+            "parent": "17"
+        },
+        "603": {
+            "name": "ak-74m",
+            "parent": "602",
+            "components": [
+                {
+                    "type": "gun",
+                    "gun": {
+                        "animationsObject": "306",
+                        "shootAnimation": "401",
+                        "idleAnimation": "397",
+                        "drawAnimation": "398",
+                        "reloadAnimation": "402",
+                        "fullReloadAnimation": "404"
+                    }
+                }
+            ]
+        },
+        "803": {
+            "name": "Text",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "ak74m model and animations by Cransh"
+                    }
+                }
+            ],
+            "translation": [
+                0.0,
+                1.9565248,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        }
+    },
+    "meshes": {
+        "7": {
+            "link": {
+                "name": "PrimitivePlane",
+                "file": "default"
+            }
+        },
+        "8": {
+            "link": {
+                "name": "PrimitiveCube",
+                "file": "default"
+            }
+        },
+        "9": {
+            "link": {
+                "name": "PrimitiveSphere",
+                "file": "default"
+            }
+        },
+        "10": {
+            "link": {
+                "name": "PrimitiveCone",
+                "file": "default"
+            }
+        },
+        "11": {
+            "link": {
+                "name": "PrimitiveCylinder",
+                "file": "default"
+            }
+        },
+        "12": {
+            "link": {
+                "name": "PrimitiveCircle",
+                "file": "default"
+            }
+        },
+        "288": {
+            "link": {
+                "name": "arms_arms_0",
+                "file": "Models\\ak-74m\\scene.gltf"
+            }
+        },
+        "289": {
+            "link": {
+                "name": "arms_arms_0-uv1",
+                "file": "Models\\ak-74m\\scene.gltf"
+            }
+        },
+        "290": {
+            "link": {
+                "name": "Ak_ak74m_0",
+                "file": "Models\\ak-74m\\scene.gltf"
+            }
+        },
+        "291": {
+            "link": {
+                "name": "Ak_ak74m_0-uv1",
+                "file": "Models\\ak-74m\\scene.gltf"
+            }
+        },
+        "292": {
+            "link": {
+                "name": "Mag_2_ak74m_0",
+                "file": "Models\\ak-74m\\scene.gltf"
+            }
+        },
+        "293": {
+            "link": {
+                "name": "Mag_2_ak74m_0-uv1",
+                "file": "Models\\ak-74m\\scene.gltf"
+            }
+        }
+    },
+    "materials": {
+        "DefaultFontMaterial": {
+            "link": {
+                "name": "DefaultFontMaterial",
+                "file": "default"
+            },
+            "Text": {
+                "font": "55"
+            }
+        },
+        "20": {
+            "name": "White",
+            "shader": "Phong",
+            "Phong": {
+                "specularColor": [
+                    9.999899930335232e-7,
+                    9.99993744699168e-7,
+                    9.999999974752427e-7,
+                    1.0
+                ],
+                "shininess": 1,
+                "emissiveColor": [
+                    0.2,
+                    0.2,
+                    0.2,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ]
+            }
+        },
+        "22": {
+            "name": "Pink",
+            "Phong": {
+                "diffuseColor": [
+                    0.9098039,
+                    0.0,
+                    0.5411764,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999899930335232e-7,
+                    9.999911299019004e-7,
+                    9.999999974752427e-7,
+                    1.0
+                ],
+                "shininess": 10,
+                "ambientColor": [
+                    0.317647,
+                    0.0,
+                    0.2165777,
+                    1.0
+                ],
+                "emissiveColor": [
+                    0.317647,
+                    0.0,
+                    0.2165777,
+                    1.0
+                ]
+            }
+        },
+        "25": {
+            "name": "Yellow",
+            "Phong": {
+                "diffuseColor": [
+                    1.0,
+                    0.8039215,
+                    0.0,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.3843137,
+                    0.3089579,
+                    0.0,
+                    1.0
+                ],
+                "emissiveColor": [
+                    0.3843137,
+                    0.3089579,
+                    0.0,
+                    1.0
+                ]
+            }
+        },
+        "26": {
+            "name": "Green",
+            "Phong": {
+                "diffuseColor": [
+                    0.1529411,
+                    0.7882353,
+                    0.5411764,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.0,
+                    0.2352941,
+                    0.1437908,
+                    1.0
+                ],
+                "emissiveColor": [
+                    0.0,
+                    0.2352941,
+                    0.1437908,
+                    1.0
+                ]
+            }
+        },
+        "286": {
+            "link": {
+                "name": "arms",
+                "file": "Models\\ak-74m\\scene.gltf"
+            }
+        },
+        "287": {
+            "link": {
+                "name": "ak74m",
+                "file": "Models\\ak-74m\\scene.gltf"
+            }
+        }
+    },
+    "shaders": {
+        "1": {
+            "link": {
+                "name": "DistanceFieldVector Textured.frag",
+                "file": "default"
+            }
+        },
+        "2": {
+            "link": {
+                "name": "Flat.frag",
+                "file": "default"
+            }
+        },
+        "3": {
+            "link": {
+                "name": "Flat Textured.frag",
+                "file": "default"
+            }
+        },
+        "4": {
+            "link": {
+                "name": "MeshVisualizer.frag",
+                "file": "default"
+            }
+        },
+        "5": {
+            "link": {
+                "name": "Phong.frag",
+                "file": "default"
+            }
+        },
+        "6": {
+            "link": {
+                "name": "Phong Textured.frag",
+                "file": "default"
+            }
+        },
+        "28": {
+            "link": {
+                "name": "Dynamic.vert",
+                "file": "default"
+            }
+        },
+        "29": {
+            "link": {
+                "name": "Particle Textured.frag",
+                "file": "default"
+            }
+        },
+        "30": {
+            "link": {
+                "name": "Skinning.vert",
+                "file": "default"
+            }
+        },
+        "31": {
+            "link": {
+                "name": "Static.frag",
+                "file": "default"
+            }
+        },
+        "32": {
+            "link": {
+                "name": "DistanceFieldVector.frag",
+                "file": "default"
+            }
+        },
+        "39": {
+            "link": {
+                "name": "Particle.frag",
+                "file": "default"
+            }
+        },
+        "42": {
+            "link": {
+                "name": "Background.frag",
+                "file": "default"
+            }
+        },
+        "43": {
+            "link": {
+                "name": "Depth.frag",
+                "file": "default"
+            }
+        },
+        "45": {
+            "link": {
+                "name": "FullScreenTriangle.vert",
+                "file": "default"
+            }
+        },
+        "46": {
+            "link": {
+                "name": "Physical.frag",
+                "file": "default"
+            }
+        },
+        "49": {
+            "link": {
+                "name": "Sky.frag",
+                "file": "default"
+            }
+        },
+        "50": {
+            "link": {
+                "name": "Text.frag",
+                "file": "default"
+            }
+        },
+        "52": {
+            "link": {
+                "name": "Text.vert",
+                "file": "default"
+            }
+        },
+        "53": {
+            "link": {
+                "name": "TileFeedback.frag",
+                "file": "default"
+            }
+        },
+        "56": {
+            "link": {
+                "name": "lib\\Color.glsl",
+                "file": "default"
+            }
+        },
+        "57": {
+            "link": {
+                "name": "lib\\Compatibility.frag",
+                "file": "default"
+            }
+        },
+        "58": {
+            "link": {
+                "name": "lib\\CoordinateSystems.glsl",
+                "file": "default"
+            }
+        },
+        "59": {
+            "link": {
+                "name": "lib\\GI.frag",
+                "file": "default"
+            }
+        },
+        "60": {
+            "link": {
+                "name": "lib\\Inputs.frag",
+                "file": "default"
+            }
+        },
+        "61": {
+            "link": {
+                "name": "lib\\Lights.frag",
+                "file": "default"
+            }
+        },
+        "62": {
+            "link": {
+                "name": "lib\\Materials.frag",
+                "file": "default"
+            }
+        },
+        "63": {
+            "link": {
+                "name": "lib\\Math.glsl",
+                "file": "default"
+            }
+        },
+        "64": {
+            "link": {
+                "name": "lib\\Packing.frag",
+                "file": "default"
+            }
+        },
+        "65": {
+            "link": {
+                "name": "lib\\Quaternion.glsl",
+                "file": "default"
+            }
+        },
+        "66": {
+            "link": {
+                "name": "lib\\Slug.frag",
+                "file": "default"
+            }
+        },
+        "67": {
+            "link": {
+                "name": "lib\\Slug.vert",
+                "file": "default"
+            }
+        },
+        "68": {
+            "link": {
+                "name": "lib\\Surface.frag",
+                "file": "default"
+            }
+        },
+        "69": {
+            "link": {
+                "name": "lib\\Textures.frag",
+                "file": "default"
+            }
+        },
+        "71": {
+            "link": {
+                "name": "lib\\Uniforms.glsl",
+                "file": "default"
+            }
+        },
+        "801": {
+            "link": {
+                "name": "lib\\MorphTargets.glsl",
+                "file": "default"
+            }
+        },
+        "802": {
+            "link": {
+                "name": "lib\\PhysicalBSDF.glsl",
+                "file": "default"
+            }
+        }
+    },
+    "settings": {
+        "project": {
+            "name": "AnimationEvents",
+            "version": [
+                1,
+                2,
+                0,
+                2
+            ]
+        },
+        "vr": {
+            "leftEyeObject": "18",
+            "rightEyeObject": "19"
+        },
+        "scripting": {
+            "sourcePaths": [
+                "js/"
+            ],
+            "bundlingType": "esbuild",
+            "libraryPaths": [
+                "/js/lib/"
+            ]
+        },
+        "rendering": {
+            "hdr": {
+                "exposure": 1.5
+            }
+        }
+    },
+    "animations": {
+        "397": {
+            "link": {
+                "name": "Rig|AK_Idle",
+                "file": "Models\\ak-74m\\scene.gltf"
+            }
+        },
+        "398": {
+            "link": {
+                "name": "Rig|AK_Draw",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "events": [
+                {
+                    "time": 0.6166666,
+                    "name": "draw"
+                },
+                {
+                    "time": 0.6333333,
+                    "name": "end"
+                },
+                {
+                    "time": 0.0166666,
+                    "name": "hide"
+                },
+                {
+                    "time": 0.0166666,
+                    "name": "sfx-unholster"
+                }
+            ]
+        },
+        "399": {
+            "link": {
+                "name": "Rig|AK_Walk",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "events": [
+                {
+                    "time": 0.05,
+                    "name": "sfx-shoot"
+                }
+            ]
+        },
+        "400": {
+            "link": {
+                "name": "Rig|AK_Run",
+                "file": "Models\\ak-74m\\scene.gltf"
+            }
+        },
+        "401": {
+            "link": {
+                "name": "Rig|AK_Shot",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "events": [
+                {
+                    "time": 0.1,
+                    "name": "shoot"
+                },
+                {
+                    "time": 0.0833333,
+                    "name": "sfx-shoot"
+                }
+            ]
+        },
+        "402": {
+            "link": {
+                "name": "Rig|AK_Reload",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "events": [
+                {
+                    "time": 1.6666666,
+                    "name": "reload"
+                },
+                {
+                    "time": 2.6333334,
+                    "name": "end"
+                },
+                {
+                    "time": 1.0,
+                    "name": "sfx-removeclip"
+                }
+            ]
+        },
+        "403": {
+            "link": {
+                "name": "Rig|AK_Reload_var2",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "events": [
+                {
+                    "time": 1.6666666,
+                    "name": "reload"
+                },
+                {
+                    "time": 2.7999999,
+                    "name": "end"
+                }
+            ]
+        },
+        "404": {
+            "link": {
+                "name": "Rig|AK_Reload_full",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "events": [
+                {
+                    "time": 1.6666666,
+                    "name": "reload"
+                },
+                {
+                    "time": 3.4833333,
+                    "name": "end"
+                },
+                {
+                    "time": 1.0,
+                    "name": "sfx-removeclip"
+                },
+                {
+                    "time": 2.5,
+                    "name": "sfx-caulk"
+                }
+            ]
+        }
+    },
+    "skins": {
+        "294": {
+            "link": {
+                "name": "skin_0",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "joints": [
+                "304",
+                "305",
+                "306",
+                "307",
+                "308",
+                "309",
+                "310",
+                "311",
+                "312",
+                "313",
+                "314",
+                "315",
+                "316",
+                "317",
+                "318",
+                "319",
+                "320",
+                "321",
+                "322",
+                "323",
+                "324",
+                "325",
+                "326",
+                "327",
+                "328",
+                "329",
+                "330",
+                "331",
+                "332",
+                "333",
+                "334",
+                "335",
+                "336",
+                "337",
+                "338",
+                "339",
+                "340",
+                "341",
+                "342",
+                "343",
+                "344",
+                "345",
+                "346",
+                "347",
+                "348",
+                "349",
+                "350",
+                "351",
+                "352",
+                "353",
+                "354",
+                "355",
+                "356",
+                "357",
+                "358",
+                "359",
+                "360",
+                "361",
+                "362",
+                "363",
+                "364",
+                "365",
+                "366",
+                "367",
+                "368",
+                "369",
+                "370",
+                "371",
+                "372",
+                "373",
+                "374",
+                "375",
+                "376",
+                "377",
+                "378",
+                "379",
+                "380",
+                "381",
+                "382",
+                "383",
+                "384",
+                "385",
+                "386",
+                "387",
+                "388"
+            ]
+        }
+    },
+    "pipelines": {
+        "33": {
+            "link": {
+                "name": "DistanceFieldVector",
+                "file": "default"
+            }
+        },
+        "34": {
+            "link": {
+                "name": "Flat Opaque",
+                "file": "default"
+            }
+        },
+        "35": {
+            "link": {
+                "name": "Flat Opaque Textured",
+                "file": "default"
+            }
+        },
+        "36": {
+            "link": {
+                "name": "MeshVisualizer",
+                "file": "default"
+            }
+        },
+        "37": {
+            "link": {
+                "name": "Phong Opaque",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true,
+                "WITH_EMISSIVE": true
+            }
+        },
+        "38": {
+            "link": {
+                "name": "Phong Opaque Textured",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "40": {
+            "link": {
+                "name": "Foliage",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "41": {
+            "link": {
+                "name": "Particle",
+                "file": "default"
+            }
+        },
+        "44": {
+            "link": {
+                "name": "Depth",
+                "file": "default"
+            }
+        },
+        "47": {
+            "link": {
+                "name": "Physical Opaque",
+                "file": "default"
+            }
+        },
+        "48": {
+            "link": {
+                "name": "Physical Opaque Textured",
+                "file": "default"
+            }
+        },
+        "51": {
+            "link": {
+                "name": "Text",
+                "file": "default"
+            }
+        },
+        "54": {
+            "link": {
+                "name": "Sky",
+                "file": "default"
+            }
+        },
+        "70": {
+            "link": {
+                "name": "TileFeedback",
+                "file": "default"
+            }
+        },
+        "72": {
+            "link": {
+                "name": "Phong Normalmapped",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "73": {
+            "link": {
+                "name": "Phong Lightmapped",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        }
+    },
+    "textures": {
+        "279": {
+            "link": {
+                "name": "texture_0",
+                "file": "Models\\ak-74m\\scene.gltf"
+            }
+        },
+        "280": {
+            "link": {
+                "name": "texture_1",
+                "file": "Models\\ak-74m\\scene.gltf"
+            }
+        },
+        "281": {
+            "link": {
+                "name": "texture_2",
+                "file": "Models\\ak-74m\\scene.gltf"
+            }
+        },
+        "282": {
+            "link": {
+                "name": "texture_3",
+                "file": "Models\\ak-74m\\scene.gltf"
+            }
+        },
+        "283": {
+            "link": {
+                "name": "texture_4",
+                "file": "Models\\ak-74m\\scene.gltf"
+            }
+        },
+        "284": {
+            "link": {
+                "name": "texture_5",
+                "file": "Models\\ak-74m\\scene.gltf"
+            }
+        },
+        "285": {
+            "link": {
+                "name": "texture_6",
+                "file": "Models\\ak-74m\\scene.gltf"
+            }
+        }
+    },
+    "images": {
+        "272": {
+            "link": {
+                "name": "image_0",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "maxSize": [
+                1024,
+                1024
+            ]
+        },
+        "273": {
+            "link": {
+                "name": "image_1",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "maxSize": [
+                1024,
+                1024
+            ]
+        },
+        "274": {
+            "link": {
+                "name": "image_2",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "maxSize": [
+                1024,
+                1024
+            ]
+        },
+        "275": {
+            "link": {
+                "name": "image_3",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "maxSize": [
+                1024,
+                1024
+            ]
+        },
+        "276": {
+            "link": {
+                "name": "image_4",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "maxSize": [
+                1024,
+                1024
+            ]
+        },
+        "277": {
+            "link": {
+                "name": "image_5",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "maxSize": [
+                1024,
+                1024
+            ]
+        },
+        "278": {
+            "link": {
+                "name": "image_6",
+                "file": "Models\\ak-74m\\scene.gltf"
+            },
+            "maxSize": [
+                1024,
+                1024
+            ]
+        }
+    },
+    "fonts": {
+        "55": {
+            "link": {
+                "name": "DejaVuSans.ttf",
+                "file": "default"
+            }
+        }
+    },
+    "languages": {},
+    "files": {
+        "405": {
+            "fileName": "Models/ak-74m/scene.gltf",
+            "importerName": ""
+        }
+    },
+    "morphTargets": {}
+}
