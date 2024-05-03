@@ -1,0 +1,8 @@
+{
+  "name": "hdri-example",
+  "version": "1.0.0",
+  "dependencies": {
+    "@wonderlandengine/api": "^1.2.0",
+    "@wonderlandengine/components": "^1.0.0"
+  }
+}
