@@ -240,7 +240,7 @@
                 {
                     "type": "text",
                     "text": {
-                        "text": "Click to instantiate the RandomMesh.bin file",
+                        "text": "Click to instantiate the Prefab.bin file",
                         "effect": "none",
                         "lineSpacing": 1.1,
                         "characterSpacing": 0.1,
@@ -730,6 +730,18 @@
                 "name": "lib\\Tonemapping.glsl",
                 "file": "default"
             }
+        },
+        "92": {
+            "link": {
+                "name": "lib\\MorphTargets.glsl",
+                "file": "default"
+            }
+        },
+        "93": {
+            "link": {
+                "name": "lib\\PhysicalBSDF.glsl",
+                "file": "default"
+            }
         }
     },
     "settings": {
@@ -737,8 +749,8 @@
             "name": "PrefabMainScene",
             "version": [
                 1,
-                1,
-                6
+                2,
+                0
             ]
         },
         "vr": {
@@ -758,6 +770,9 @@
             "sky": {
                 "enabled": true,
                 "material": "76"
+            },
+            "hdr": {
+                "exposure": 1.5
             }
         },
         "runtime": {
@@ -913,5 +928,6 @@
     "languages": {},
     "files": {},
     "images": {},
-    "textures": {}
+    "textures": {},
+    "morphTargets": {}
 }

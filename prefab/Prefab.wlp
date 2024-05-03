@@ -472,7 +472,7 @@
             "libraryPaths": [
                 "/js/lib/"
             ],
-            "entryPoint": "js/instance-index.js"
+            "entryPoint": "js/prefab-index.js"
         },
         "physx": {
             "enable": false
