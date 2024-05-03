@@ -21,11 +21,11 @@ import {Spawn} from './components/spawn.js';
 
 import {loadRuntime} from '@wonderlandengine/api';
 
-import registerInstanceComponents from './instance-index.js';
+import registerPrefabComponents from './prefab-index.js';
 
 /* wle:auto-constants:start */
 const Constants = {
-    ProjectName: 'MainScene',
+    ProjectName: 'PrefabMainScene',
     RuntimeBaseName: 'WonderlandRuntime',
     WebXRRequiredFeatures: ['local',],
     WebXROptionalFeatures: ['local','hand-tracking','hit-test',],
@@ -89,7 +89,7 @@ engine.registerComponent(Spawn);
 /* wle:auto-register:end */
 
 /* Registers all components required by the `Instance.wlp` scene */
-registerInstanceComponents(engine);
+registerPrefabComponents(engine);
 
 try {
     await engine.loadMainScene(`${Constants.ProjectName}.bin`);
