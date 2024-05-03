@@ -228,7 +228,7 @@ var require_howler = __commonJS({
           }
           var mpegTest = audioTest.canPlayType("audio/mpeg;").replace(/^no$/, "");
           var ua = self2._navigator ? self2._navigator.userAgent : "";
-          var checkOpera = ua.match(/OPR\/([0-6].)/g);
+          var checkOpera = ua.match(/OPR\/(\d+)/g);
           var isOldOpera = checkOpera && parseInt(checkOpera[0].split("/")[1], 10) < 33;
           var checkSafari = ua.indexOf("Safari") !== -1 && ua.indexOf("Chrome") === -1;
           var safariVersion = ua.match(/Version\/(.*?) /);
@@ -611,7 +611,7 @@ var require_howler = __commonJS({
           }
           var seek = Math.max(0, sound._seek > 0 ? sound._seek : self2._sprite[sprite][0] / 1e3);
           var duration = Math.max(0, (self2._sprite[sprite][0] + self2._sprite[sprite][1]) / 1e3 - seek);
-          var timeout2 = duration * 1e3 / Math.abs(sound._rate);
+          var timeout = duration * 1e3 / Math.abs(sound._rate);
           var start = self2._sprite[sprite][0] / 1e3;
           var stop = (self2._sprite[sprite][0] + self2._sprite[sprite][1]) / 1e3;
           sound._sprite = sprite;
@@ -641,8 +641,8 @@ var require_howler = __commonJS({
               } else {
                 sound._loop ? node.bufferSource.start(0, seek, 86400) : node.bufferSource.start(0, seek, duration);
               }
-              if (timeout2 !== Infinity) {
-                self2._endTimers[sound._id] = setTimeout(self2._ended.bind(self2, sound), timeout2);
+              if (timeout !== Infinity) {
+                self2._endTimers[sound._id] = setTimeout(self2._ended.bind(self2, sound), timeout);
               }
               if (!internal) {
                 setTimeout(function() {
@@ -694,7 +694,7 @@ var require_howler = __commonJS({
                   return;
                 }
                 if (sprite !== "__default" || sound._loop) {
-                  self2._endTimers[sound._id] = setTimeout(self2._ended.bind(self2, sound), timeout2);
+                  self2._endTimers[sound._id] = setTimeout(self2._ended.bind(self2, sound), timeout);
                 } else {
                   self2._endTimers[sound._id] = function() {
                     self2._ended(sound);
@@ -1139,10 +1139,10 @@ var require_howler = __commonJS({
                 }
                 var seek = self2.seek(id[i]);
                 var duration = (self2._sprite[sound._sprite][0] + self2._sprite[sound._sprite][1]) / 1e3 - seek;
-                var timeout2 = duration * 1e3 / Math.abs(sound._rate);
+                var timeout = duration * 1e3 / Math.abs(sound._rate);
                 if (self2._endTimers[id[i]] || !sound._paused) {
                   self2._clearTimer(id[i]);
-                  self2._endTimers[id[i]] = setTimeout(self2._ended.bind(self2, sound), timeout2);
+                  self2._endTimers[id[i]] = setTimeout(self2._ended.bind(self2, sound), timeout);
                 }
                 self2._emit("rate", sound._id);
               }
@@ -1445,8 +1445,8 @@ var require_howler = __commonJS({
             sound._seek = sound._start || 0;
             sound._rateSeek = 0;
             sound._playStart = Howler2.ctx.currentTime;
-            var timeout2 = (sound._stop - sound._start) * 1e3 / Math.abs(sound._rate);
-            self2._endTimers[sound._id] = setTimeout(self2._ended.bind(self2, sound), timeout2);
+            var timeout = (sound._stop - sound._start) * 1e3 / Math.abs(sound._rate);
+            self2._endTimers[sound._id] = setTimeout(self2._ended.bind(self2, sound), timeout);
           }
           if (self2._webAudio && !loop) {
             sound._paused = true;
@@ -1586,6 +1586,9 @@ var require_howler = __commonJS({
         _cleanBuffer: function(node) {
           var self2 = this;
           var isIOS = Howler2._navigator && Howler2._navigator.vendor.indexOf("Apple") >= 0;
+          if (!node.bufferSource) {
+            return self2;
+          }
           if (Howler2._scratchBuffer && node.bufferSource) {
             node.bufferSource.onended = null;
             node.bufferSource.disconnect(0);
@@ -2165,21 +2168,21 @@ var require_howler = __commonJS({
               panningModel: typeof o.panningModel !== "undefined" ? o.panningModel : pa.panningModel
             };
             var panner = sound._panner;
-            if (panner) {
-              panner.coneInnerAngle = pa.coneInnerAngle;
-              panner.coneOuterAngle = pa.coneOuterAngle;
-              panner.coneOuterGain = pa.coneOuterGain;
-              panner.distanceModel = pa.distanceModel;
-              panner.maxDistance = pa.maxDistance;
-              panner.refDistance = pa.refDistance;
-              panner.rolloffFactor = pa.rolloffFactor;
-              panner.panningModel = pa.panningModel;
-            } else {
+            if (!panner) {
               if (!sound._pos) {
                 sound._pos = self2._pos || [0, 0, -0.5];
               }
               setupPanner(sound, "spatial");
+              panner = sound._panner;
             }
+            panner.coneInnerAngle = pa.coneInnerAngle;
+            panner.coneOuterAngle = pa.coneOuterAngle;
+            panner.coneOuterGain = pa.coneOuterGain;
+            panner.distanceModel = pa.distanceModel;
+            panner.maxDistance = pa.maxDistance;
+            panner.refDistance = pa.refDistance;
+            panner.rolloffFactor = pa.rolloffFactor;
+            panner.panningModel = pa.panningModel;
           }
         }
         return self2;
@@ -2725,68 +2728,6 @@ var require_earcut = __commonJS({
   }
 });
 
-// node_modules/@wonderlandengine/api/dist/index.js
-var dist_exports = {};
-__export(dist_exports, {
-  APIVersion: () => APIVersion,
-  Alignment: () => Alignment,
-  Animation: () => Animation,
-  AnimationComponent: () => AnimationComponent,
-  AnimationState: () => AnimationState,
-  BitSet: () => BitSet,
-  BrokenComponent: () => BrokenComponent,
-  Collider: () => Collider,
-  CollisionComponent: () => CollisionComponent,
-  CollisionEventType: () => CollisionEventType,
-  Component: () => Component,
-  DestroyedComponentInstance: () => DestroyedComponentInstance,
-  DestroyedObjectInstance: () => DestroyedObjectInstance,
-  DestroyedTextureInstance: () => DestroyedTextureInstance,
-  Emitter: () => Emitter,
-  ForceMode: () => ForceMode,
-  I18N: () => I18N,
-  InputComponent: () => InputComponent,
-  InputType: () => InputType,
-  Justification: () => Justification,
-  LightComponent: () => LightComponent,
-  LightType: () => LightType,
-  LockAxis: () => LockAxis,
-  LogLevel: () => LogLevel,
-  LogTag: () => LogTag,
-  Logger: () => Logger,
-  Material: () => Material,
-  MaterialParamType: () => MaterialParamType,
-  Mesh: () => Mesh,
-  MeshAttribute: () => MeshAttribute,
-  MeshAttributeAccessor: () => MeshAttributeAccessor,
-  MeshComponent: () => MeshComponent,
-  MeshIndexType: () => MeshIndexType,
-  MeshSkinningType: () => MeshSkinningType,
-  Object: () => Object3D,
-  Object3D: () => Object3D,
-  PhysXComponent: () => PhysXComponent,
-  Physics: () => Physics,
-  Property: () => Property,
-  RayHit: () => RayHit,
-  RetainEmitter: () => RetainEmitter,
-  Scene: () => Scene,
-  Shape: () => Shape,
-  Skin: () => Skin,
-  TextComponent: () => TextComponent,
-  TextEffect: () => TextEffect,
-  Texture: () => Texture,
-  TextureManager: () => TextureManager,
-  Type: () => Type,
-  ViewComponent: () => ViewComponent,
-  WASM: () => WASM,
-  WonderlandEngine: () => WonderlandEngine,
-  XR: () => XR,
-  checkRuntimeCompatibility: () => checkRuntimeCompatibility,
-  inheritProperties: () => inheritProperties,
-  loadRuntime: () => loadRuntime,
-  math: () => math
-});
-
 // node_modules/wasm-feature-detect/dist/esm/index.js
 var simd = async () => WebAssembly.validate(new Uint8Array([0, 97, 115, 109, 1, 0, 0, 0, 1, 5, 1, 96, 0, 1, 123, 3, 2, 1, 0, 10, 10, 1, 8, 0, 65, 0, 253, 15, 253, 98, 11]));
 var threads = () => (async (e) => {
@@ -2800,20 +2741,37 @@ var threads = () => (async (e) => {
 // node_modules/@wonderlandengine/api/dist/property.js
 var Type;
 (function(Type2) {
-  Type2[Type2["Native"] = 1] = "Native";
-  Type2[Type2["Bool"] = 2] = "Bool";
-  Type2[Type2["Int"] = 4] = "Int";
-  Type2[Type2["Float"] = 8] = "Float";
-  Type2[Type2["String"] = 16] = "String";
-  Type2[Type2["Enum"] = 32] = "Enum";
-  Type2[Type2["Object"] = 64] = "Object";
-  Type2[Type2["Mesh"] = 128] = "Mesh";
-  Type2[Type2["Texture"] = 256] = "Texture";
-  Type2[Type2["Material"] = 512] = "Material";
-  Type2[Type2["Animation"] = 1024] = "Animation";
-  Type2[Type2["Skin"] = 2048] = "Skin";
-  Type2[Type2["Color"] = 4096] = "Color";
+  Type2[Type2["Native"] = 0] = "Native";
+  Type2[Type2["Bool"] = 1] = "Bool";
+  Type2[Type2["Int"] = 2] = "Int";
+  Type2[Type2["Float"] = 3] = "Float";
+  Type2[Type2["String"] = 4] = "String";
+  Type2[Type2["Enum"] = 5] = "Enum";
+  Type2[Type2["Object"] = 6] = "Object";
+  Type2[Type2["Mesh"] = 7] = "Mesh";
+  Type2[Type2["Texture"] = 8] = "Texture";
+  Type2[Type2["Material"] = 9] = "Material";
+  Type2[Type2["Animation"] = 10] = "Animation";
+  Type2[Type2["Skin"] = 11] = "Skin";
+  Type2[Type2["Color"] = 12] = "Color";
+  Type2[Type2["Vector2"] = 13] = "Vector2";
+  Type2[Type2["Vector3"] = 14] = "Vector3";
+  Type2[Type2["Vector4"] = 15] = "Vector4";
 })(Type || (Type = {}));
+var DefaultPropertyCloner = class {
+  clone(type, value) {
+    switch (type) {
+      case Type.Color:
+      case Type.Vector2:
+      case Type.Vector3:
+      case Type.Vector4:
+        return value.slice();
+      default:
+        return value;
+    }
+  }
+};
+var defaultPropertyCloner = new DefaultPropertyCloner();
 var Property = {
   /**
    * Create an boolean property.
@@ -2891,6 +2849,36 @@ var Property = {
    */
   color(r = 0, g = 0, b = 0, a = 1) {
     return { type: Type.Color, default: [r, g, b, a] };
+  },
+  /**
+   * Create a two-element vector property.
+   *
+   * @param x The x component.
+   * @param y The y component.
+   */
+  vector2(x = 0, y = 0) {
+    return { type: Type.Vector2, default: [x, y] };
+  },
+  /**
+   * Create a three-element vector property.
+   *
+   * @param x The x component.
+   * @param y The y component.
+   * @param z The z component.
+   */
+  vector3(x = 0, y = 0, z = 0) {
+    return { type: Type.Vector3, default: [x, y, z] };
+  },
+  /**
+   * Create a four-element vector property.
+   *
+   * @param x The x component.
+   * @param y The y component.
+   * @param z The z component.
+   * @param w The w component.
+   */
+  vector4(x = 0, y = 0, z = 0, w = 0) {
+    return { type: Type.Vector4, default: [x, y, z, w] };
   }
 };
 
@@ -2931,6 +2919,9 @@ function isNumber(value) {
   if (value === null || value === void 0)
     return false;
   return typeof value === "number" || value.constructor === Number;
+}
+function isImageLike(value) {
+  return value instanceof HTMLImageElement || value instanceof HTMLVideoElement || value instanceof HTMLCanvasElement;
 }
 
 // node_modules/@wonderlandengine/api/dist/utils/event.js
@@ -3277,6 +3268,864 @@ var RetainEmitter = class extends Emitter {
   }
 };
 
+// node_modules/@wonderlandengine/api/dist/resources/resource.js
+function createDestroyedProxy(host, type) {
+  return new Proxy({}, {
+    get(_, param) {
+      if (param === "isDestroyed")
+        return true;
+      throw new Error(`Cannot read '${param}' of destroyed '${type.name}' resource from ${host}`);
+    },
+    set(_, param) {
+      throw new Error(`Cannot write '${param}' of destroyed '${type.name}' resource from ${host}`);
+    }
+  });
+}
+var Resource = class {
+  /** Relative index in the host. @hidden */
+  _index = -1;
+  /** For compatibility with SceneResource. @hidden */
+  _id = -1;
+  /** @hidden */
+  _engine;
+  constructor(engine2, index) {
+    this._engine = engine2;
+    this._index = index;
+    this._id = index;
+  }
+  /** Hosting engine instance. */
+  get engine() {
+    return this._engine;
+  }
+  /** Index of this resource in the {@link Scene}'s manager. */
+  get index() {
+    return this._index;
+  }
+  /**
+   * Checks equality by comparing ids and **not** the JavaScript reference.
+   *
+   * @deprecated Use JavaScript reference comparison instead:
+   *
+   * ```js
+   * const meshA = engine.meshes.create({vertexCount: 1});
+   * const meshB = engine.meshes.create({vertexCount: 1});
+   * const meshC = meshB;
+   * console.log(meshA === meshB); // false
+   * console.log(meshA === meshA); // true
+   * console.log(meshB === meshC); // true
+   * ```
+   */
+  equals(other) {
+    if (!other)
+      return false;
+    return this._index === other._index;
+  }
+  /**
+   * `true` if the object is destroyed, `false` otherwise.
+   *
+   * If {@link WonderlandEngine.erasePrototypeOnDestroy} is `true`,
+   * reading a class attribute / method will throw.
+   */
+  get isDestroyed() {
+    return this._index <= 0;
+  }
+};
+var SceneResource = class {
+  static _pack(scene, index) {
+    return scene << 22 | index;
+  }
+  /** Relative index in the host. @hidden */
+  _index = -1;
+  /** For compatibility with SceneResource. @hidden */
+  _id = -1;
+  /** @hidden */
+  _scene;
+  constructor(scene, index) {
+    this._scene = scene;
+    this._index = index;
+    this._id = SceneResource._pack(scene._index, index);
+  }
+  /**
+   * Checks equality by comparing ids and **not** the JavaScript reference.
+   *
+   * @deprecated Use JavaScript reference comparison instead:
+   *
+   * ```js
+   * const meshA = engine.meshes.create({vertexCount: 1});
+   * const meshB = engine.meshes.create({vertexCount: 1});
+   * const meshC = meshB;
+   * console.log(meshA === meshB); // false
+   * console.log(meshA === meshA); // true
+   * console.log(meshB === meshC); // true
+   * ```
+   */
+  equals(other) {
+    if (!other)
+      return false;
+    return this._id === other._id;
+  }
+  /** Hosting instance. */
+  get scene() {
+    return this._scene;
+  }
+  /** Hosting engine instance. */
+  get engine() {
+    return this._scene.engine;
+  }
+  /** Index of this resource in the {@link Scene}'s manager. */
+  get index() {
+    return this._index;
+  }
+  /**
+   * `true` if the object is destroyed, `false` otherwise.
+   *
+   * If {@link WonderlandEngine.erasePrototypeOnDestroy} is `true`,
+   * reading a class attribute / method will throw.
+   */
+  get isDestroyed() {
+    return this._id <= 0;
+  }
+};
+var ResourceManager = class {
+  /** @hidden */
+  _host;
+  /** Cache. @hidden */
+  _cache = [];
+  /** Resource class. @hidden */
+  _template;
+  /** Destructor proxy, used if {@link WonderlandEngine.erasePrototypeOnDestroy} is `true`. @hidden */
+  _destructor = null;
+  _engine;
+  /**
+   * Create a new manager
+   *
+   * @param host The host containing the managed resources.
+   * @param Class The class to instantiate when wrapping an index.
+   *
+   * @hidden
+   */
+  constructor(host, Class) {
+    this._host = host;
+    this._template = Class;
+    this._engine = host.engine ?? host;
+  }
+  /**
+   * Wrap the index into a resource instance.
+   *
+   * @note The index is relative to the host, i.e., doesn't pack the host index (if any).
+   *
+   * @param index The resource index.
+   * @returns
+   */
+  wrap(index) {
+    if (index <= 0)
+      return null;
+    const texture = this._cache[index] ?? (this._cache[index] = new this._template(this._host, index));
+    return texture;
+  }
+  /**
+   * Retrieve the resource at the given index.
+   *
+   * @note The index is relative to the host, i.e., doesn't pack the host index.
+   */
+  get(index) {
+    return this._cache[index] ?? null;
+  }
+  /** Number of textures allocated in the manager. */
+  get allocatedCount() {
+    return this._cache.length;
+  }
+  /**
+   * Number of textures in the manager.
+   *
+   * @note For performance reasons, avoid calling this method when possible.
+   */
+  get count() {
+    let count = 0;
+    for (const res of this._cache) {
+      if (res && res.index >= 0)
+        ++count;
+    }
+    return count;
+  }
+  /** Hosting engine instance. */
+  get engine() {
+    return this._engine;
+  }
+  /**
+   * Destroy the instance.
+   *
+   * @note This method takes care of the prototype destruction.
+   *
+   * @hidden
+   */
+  _destroy(instance) {
+    const index = instance.index;
+    instance._index = -1;
+    instance._id = -1;
+    this._cache[index] = null;
+    if (!this.engine.erasePrototypeOnDestroy)
+      return;
+    if (!this._destructor)
+      this._destructor = createDestroyedProxy(this._host, this._template);
+    Object.setPrototypeOf(instance, this._destructor);
+  }
+  /**
+   * Mark all instances as destroyed.
+   *
+   * @hidden
+   */
+  _clear() {
+    if (!this.engine.erasePrototypeOnDestroy)
+      return;
+    for (let i = 0; i < this._cache.length; ++i) {
+      const instance = this._cache[i];
+      if (instance)
+        this._destroy(instance);
+    }
+    this._cache.length = 0;
+  }
+};
+
+// node_modules/@wonderlandengine/api/dist/component.js
+var ComponentManagers = class {
+  /** Animation manager index. */
+  animation = -1;
+  /** Collision manager index. */
+  collision = -1;
+  /** JavaScript manager index. */
+  js = -1;
+  /** Physx manager index. */
+  physx = -1;
+  /** View manager index. */
+  view = -1;
+  /**
+   * Component class instances per type to avoid GC.
+   *
+   * @note Maps the manager index to the list of components.
+   *
+   * @todo: Refactor ResourceManager and re-use for components.
+   */
+  _cache = [];
+  /** Manager index to component class. */
+  _constructors;
+  /* Manager name to the manager index. */
+  _nativeManagers = /* @__PURE__ */ new Map();
+  /** Host instance. */
+  _scene;
+  constructor(scene) {
+    this._scene = scene;
+    const wasm = this._scene.engine.wasm;
+    const native = [
+      AnimationComponent,
+      CollisionComponent,
+      InputComponent,
+      LightComponent,
+      MeshComponent,
+      PhysXComponent,
+      TextComponent,
+      ViewComponent
+    ];
+    this._cache = new Array(native.length);
+    this._constructors = new Array(native.length);
+    for (const Class of native) {
+      const ptr2 = wasm.tempUTF8(Class.TypeName);
+      const manager = wasm._wl_scene_get_component_manager_index(scene._index, ptr2);
+      this._constructors;
+      this._constructors[manager] = Class;
+      this._cache[manager] = [];
+      this._nativeManagers.set(Class.TypeName, manager);
+    }
+    this.animation = this._nativeManagers.get(AnimationComponent.TypeName);
+    this.collision = this._nativeManagers.get(CollisionComponent.TypeName);
+    this.physx = this._nativeManagers.get(PhysXComponent.TypeName);
+    this.view = this._nativeManagers.get(ViewComponent.TypeName);
+    const ptr = wasm.tempUTF8("js");
+    this.js = wasm._wl_scene_get_component_manager_index(scene._index, ptr);
+    this._cache[this.js] = [];
+  }
+  createJs(index, id, type, object) {
+    const wasm = this._scene.engine.wasm;
+    const ctor = wasm._componentTypes[type];
+    if (!ctor) {
+      throw new Error(`Type index ${type} isn't registered`);
+    }
+    const log = this._scene.engine.log;
+    let component = null;
+    try {
+      component = new ctor(this._scene, this.js, id);
+    } catch (e) {
+      log.error(LogTag.Component, `Exception during instantiation of component ${ctor.TypeName}`);
+      log.error(LogTag.Component, e);
+      component = new BrokenComponent(this._scene);
+    }
+    component._object = this._scene.wrap(object);
+    try {
+      component.resetProperties();
+    } catch (e) {
+      log.error(LogTag.Component, `Exception during ${component.type} resetProperties() on object ${component.object.name}`);
+      log.error(LogTag.Component, e);
+    }
+    this._scene._jsComponents[index] = component;
+    this._cache[this.js][id] = component;
+    return component;
+  }
+  /**
+   * Retrieve a cached component.
+   *
+   * @param manager The manager index.
+   * @param id The component id.
+   * @returns The component if cached, `null` otherwise.
+   */
+  get(manager, id) {
+    return this._cache[manager][id] ?? null;
+  }
+  /**
+   * Wrap the animation.
+   *
+   * @param id Id to wrap.
+   * @returns The previous instance if it was cached, or a new one.
+   */
+  wrapAnimation(id) {
+    return this.wrapNative(this.animation, id);
+  }
+  /**
+   * Wrap the collision.
+   *
+   * @param id Id to wrap.
+   * @returns The previous instance if it was cached, or a new one.
+   */
+  wrapCollision(id) {
+    return this.wrapNative(this.collision, id);
+  }
+  /**
+   * Wrap the view.
+   *
+   * @param id Id to wrap.
+   * @returns The previous instance if it was cached, or a new one.
+   */
+  wrapView(id) {
+    return this.wrapNative(this.view, id);
+  }
+  /**
+   * Wrap the physx.
+   *
+   * @param id Id to wrap.
+   * @returns The previous instance if it was cached, or a new one.
+   */
+  wrapPhysx(id) {
+    return this.wrapNative(this.physx, id);
+  }
+  /**
+   * Retrieves a component instance if it exists, or create and cache
+   * a new one.
+   *
+   * @note This api is meant to be used internally. Please have a look at
+   * {@link Object3D.addComponent} instead.
+   *
+   * @param componentType Component manager index
+   * @param componentId Component id in the manager
+   *
+   * @returns JavaScript instance wrapping the native component
+   */
+  wrapNative(manager, id) {
+    if (id < 0)
+      return null;
+    const cache = this._cache[manager];
+    if (cache[id])
+      return cache[id];
+    const scene = this._scene;
+    const Class = this._constructors[manager];
+    const component = new Class(scene, manager, id);
+    cache[id] = component;
+    return component;
+  }
+  /**
+   * Wrap a native or js component.
+   *
+   * @throws For JavaScript components that weren't previously cached,
+   * since that would be a bug in the runtime / api.
+   *
+   * @param manager The manager index.
+   * @param id The id to wrap.
+   * @returns The previous instance if it was cached, or a new one.
+   */
+  wrapAny(manager, id) {
+    if (id < 0)
+      return null;
+    if (manager === this.js) {
+      const found = this._cache[this.js][id];
+      if (!found) {
+        throw new Error("JS components must always be cached");
+      }
+      return found.constructor !== BrokenComponent ? found : null;
+    }
+    return this.wrapNative(manager, id);
+  }
+  getNativeManager(name) {
+    const manager = this._nativeManagers.get(name);
+    return manager !== void 0 ? manager : null;
+  }
+  /**
+   * Perform cleanup upon component destruction.
+   *
+   * @param instance The instance to destroy.
+   *
+   * @hidden
+   */
+  destroy(instance) {
+    const localId = instance._localId;
+    const manager = instance._manager;
+    instance._id = -1;
+    instance._localId = -1;
+    instance._manager = -1;
+    const erasePrototypeOnDestroy = this._scene.engine.erasePrototypeOnDestroy;
+    if (erasePrototypeOnDestroy && instance) {
+      Object.setPrototypeOf(instance, DestroyedComponentInstance);
+    }
+    this._cache[manager][localId] = null;
+  }
+  /** Number of managers, including the JavaScript manager. */
+  get managersCount() {
+    return this._nativeManagers.size + 1;
+  }
+};
+
+// node_modules/@wonderlandengine/api/dist/utils/fetch.js
+function fetchWithProgress(path, onProgress) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", path);
+    xhr.responseType = "arraybuffer";
+    xhr.onprogress = (progress) => {
+      if (progress.lengthComputable) {
+        onProgress?.(progress.loaded, progress.total);
+      }
+    };
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        const buffer = xhr.response;
+        onProgress?.(buffer.byteLength, buffer.byteLength);
+        resolve(buffer);
+      } else {
+        reject(xhr.statusText);
+      }
+    };
+    xhr.onerror = () => reject(xhr.statusText);
+    xhr.send();
+  });
+}
+function getBaseUrl(url) {
+  return url.substring(0, url.lastIndexOf("/"));
+}
+function getFilename(url) {
+  if (url.endsWith("/")) {
+    url = url.substring(0, url.lastIndexOf("/"));
+  }
+  const lastSlash = url.lastIndexOf("/");
+  if (lastSlash < 0)
+    return url;
+  return url.substring(lastSlash + 1);
+}
+function onImageReady(image) {
+  return new Promise((res, rej) => {
+    if (image instanceof HTMLCanvasElement) {
+      res(image);
+    } else if (image instanceof HTMLVideoElement) {
+      if (image.readyState >= 2) {
+        res(image);
+        return;
+      }
+      image.addEventListener("loadeddata", () => {
+        if (image.readyState >= 2)
+          res(image);
+      }, { once: true });
+      return;
+    } else if (image.complete) {
+      res(image);
+      return;
+    }
+    image.addEventListener("load", () => res(image), { once: true });
+    image.addEventListener("error", rej, { once: true });
+  });
+}
+
+// node_modules/@wonderlandengine/api/dist/prefab.js
+var Prefab = class {
+  /**
+   * Load an `ArrayBuffer` using fetch.
+   *
+   * @param opts The url or options.
+   * @param progress Progress callback
+   * @returns An {@link InMemoryLoadOptions} object.
+   *
+   * @hidden
+   */
+  static async loadBuffer(opts, progress) {
+    const url = isString(opts) ? opts : opts.url;
+    const buffer = await fetchWithProgress(url, progress);
+    const baseURL = getBaseUrl(url);
+    const filename = getFilename(url);
+    return { buffer, baseURL, filename };
+  }
+  /**
+   * Validate the in memory options.
+   *
+   * @param options Options to validate.
+   * @returns Validated options object.
+   *
+   * @hidden
+   */
+  static validateBufferOptions(options) {
+    const { buffer, baseURL, filename = "scene.bin" } = options;
+    if (!buffer) {
+      throw new Error("missing 'buffer' in options");
+    }
+    if (!isString(baseURL)) {
+      throw new Error("missing 'baseURL' in options");
+    }
+    const url = baseURL ? `${baseURL}/${filename}` : filename;
+    return { buffer, baseURL, url };
+  }
+  /** Index in the scene manager. @hidden */
+  _index;
+  /** @hidden */
+  _engine;
+  /**
+   * Component manager caching to avoid GC.
+   *
+   * @hidden
+   */
+  _components;
+  /**
+   * JavaScript components for this scene.
+   *
+   * This array is moved into the WASM instance upon activation.
+   *
+   * @hidden
+   */
+  _jsComponents = [];
+  /** @hidden */
+  _animations;
+  /** @hidden */
+  _skins;
+  /**
+   * Object class instances to avoid GC.
+   *
+   * @hidden
+   */
+  _objectCache = [];
+  /**
+   * @note This api is meant to be used internally.
+   *
+   * @hidden
+   */
+  constructor(engine2, index) {
+    this._engine = engine2;
+    this._index = index;
+    this._components = new ComponentManagers(this);
+    this._animations = new ResourceManager(this, Animation);
+    this._skins = new ResourceManager(this, Skin);
+  }
+  /**
+   * Add an object to the scene.
+   *
+   * @param parent Parent object or `null`.
+   * @returns A newly created object.
+   */
+  addObject(parent = null) {
+    this.assertOrigin(parent);
+    const parentId = parent ? parent._id : 0;
+    const objectId = this.engine.wasm._wl_scene_add_object(this._index, parentId);
+    return this.wrap(objectId);
+  }
+  /**
+   * Batch-add objects to the scene.
+   *
+   * Will provide better performance for adding multiple objects (e.g. > 16)
+   * than calling {@link Scene#addObject} repeatedly in a loop.
+   *
+   * By providing upfront information of how many objects will be required,
+   * the engine is able to batch-allocate the required memory rather than
+   * convervatively grow the memory in small steps.
+   *
+   * @experimental This API might change in upcoming versions.
+   *
+   * @param count Number of objects to add.
+   * @param parent Parent object or `null`, default `null`.
+   * @param componentCountHint Hint for how many components in total will
+   *      be added to the created objects afterwards, default `0`.
+   * @returns Newly created objects
+   */
+  addObjects(count, parent = null, componentCountHint = 0) {
+    const parentId = parent ? parent._id : 0;
+    this.engine.wasm.requireTempMem(count * 2);
+    const actualCount = this.engine.wasm._wl_scene_add_objects(this._index, parentId, count, componentCountHint || 0, this.engine.wasm._tempMem, this.engine.wasm._tempMemSize >> 1);
+    const ids = this.engine.wasm._tempMemUint16.subarray(0, actualCount);
+    const wrapper = this.wrap.bind(this);
+    const objects = Array.from(ids, wrapper);
+    return objects;
+  }
+  /**
+   * Pre-allocate memory for a given amount of objects and components.
+   *
+   * Will provide better performance for adding objects later with {@link Scene#addObject}
+   * and {@link Scene#addObjects}.
+   *
+   * By providing upfront information of how many objects will be required,
+   * the engine is able to batch-allocate the required memory rather than
+   * conservatively grow the memory in small steps.
+   *
+   * **Experimental:** This API might change in upcoming versions.
+   *
+   * @param objectCount Number of objects to add.
+   * @param componentCountPerType Amount of components to
+   *      allocate for {@link Object3D.addComponent}, e.g. `{mesh: 100, collision: 200, "my-comp": 100}`.
+   * @since 0.8.10
+   */
+  reserveObjects(objectCount, componentCountPerType) {
+    const wasm = this.engine.wasm;
+    componentCountPerType = componentCountPerType || {};
+    const names = Object.keys(componentCountPerType);
+    const countsPerTypeIndex = wasm._tempMemInt;
+    for (let i = 0; i < this._components.managersCount; ++i) {
+      countsPerTypeIndex[i] = 0;
+    }
+    for (const name of names) {
+      const count = componentCountPerType[name];
+      const nativeIndex = this._components.getNativeManager(name);
+      countsPerTypeIndex[nativeIndex !== null ? nativeIndex : this._components.js] += count;
+    }
+    wasm._wl_scene_reserve_objects(this._index, objectCount, wasm._tempMem);
+  }
+  /**
+   * Root object's children.
+   *
+   * See {@link Object3D.getChildren} for more information.
+   *
+   * @param out Destination array, expected to have at least `this.childrenCount` elements.
+   * @returns The `out` parameter.
+   */
+  getChildren(out = new Array(this.childrenCount)) {
+    const root = this.wrap(0);
+    return root.getChildren(out);
+  }
+  /**
+   * Top-level objects of this scene.
+   *
+   * See {@link Object3D.children} for more information.
+   *
+   * @since 1.2.0
+   */
+  get children() {
+    const root = this.wrap(0);
+    return root.children;
+  }
+  /** The number of children of the root object. */
+  get childrenCount() {
+    return this.engine.wasm._wl_object_get_children_count(0);
+  }
+  /**
+   * Search for objects matching the name.
+   *
+   * See {@link Object3D.findByName} for more information.
+   *
+   * @param name The name to search for.
+   * @param recursive If `true`, the method will look at all the objects of
+   *     this scene. If `false`, this method will only perform the search in
+   *     root objects.
+   * @returns An array of {@link Object3D} matching the name.
+   *
+   * @since 1.2.0
+   */
+  findByName(name, recursive = false) {
+    const root = this.wrap(0);
+    return root.findByName(name, recursive);
+  }
+  /**
+   * Search for all **top-level** objects matching the name.
+   *
+   * See {@link Object3D.findByNameDirect} for more information.
+   *
+   * @param name The name to search for.
+   * @returns An array of {@link Object3D} matching the name.
+   *
+   * @since 1.2.0
+   */
+  findByNameDirect(name) {
+    const root = this.wrap(0);
+    return root.findByNameDirect(name);
+  }
+  /**
+   * Search for **all objects** matching the name.
+   *
+   * See {@link Object3D.findByNameRecursive} for more information.
+   *
+   * @param name The name to search for.
+   * @returns An array of {@link Object3D} matching the name.
+   *
+   * @since 1.2.0
+   */
+  findByNameRecursive(name) {
+    const root = this.wrap(0);
+    return root.findByNameRecursive(name);
+  }
+  /**
+   * Wrap an object ID using {@link Object}.
+   *
+   * @note This method performs caching and will return the same
+   * instance on subsequent calls.
+   *
+   * @param objectId ID of the object to create.
+   *
+   * @returns The object
+   */
+  wrap(objectId) {
+    const cache = this._objectCache;
+    const o = cache[objectId] || (cache[objectId] = new Object3D(this, objectId));
+    return o;
+  }
+  /**
+   * Destroy the scene.
+   *
+   * For now, destroying a scene doesn't remove the resources it references. Thus,
+   * you will need to reload a main scene to free the memory.
+   *
+   * For more information about destruction, have a look at the {@link Scene.destroy} method.
+   */
+  destroy() {
+    this.engine._destroyScene(this);
+  }
+  /* Public Getters & Setters */
+  /**
+   * `true` if the scene is active, `false` otherwise.
+   *
+   * Always false for {@link Prefab} and {@link PrefabGLTF}.
+   */
+  get isActive() {
+    return !!this.engine.wasm._wl_scene_active(this._index);
+  }
+  /**
+   * Relative directory of the scene that was loaded.
+   *
+   * This is used for loading any files relative to the scene.
+   */
+  get baseURL() {
+    const wasm = this.engine.wasm;
+    const ptr = wasm._wl_scene_get_baseURL(this._index);
+    if (!ptr)
+      return "";
+    return wasm.UTF8ToString(ptr);
+  }
+  /**
+   * Filename used when loading the file.
+   *
+   * If the scenes was loaded from memory and no filename was provided,
+   * this accessor will return an empty string.
+   */
+  get filename() {
+    const wasm = this.engine.wasm;
+    const ptr = wasm._wl_scene_get_filename(this._index);
+    if (!ptr)
+      return "";
+    return wasm.UTF8ToString(ptr);
+  }
+  /** Animation resources */
+  get animations() {
+    return this._animations;
+  }
+  /** Skin resources */
+  get skins() {
+    return this._skins;
+  }
+  /** Hosting engine instance. */
+  get engine() {
+    return this._engine;
+  }
+  /**
+   * `true` if the object is destroyed, `false` otherwise.
+   *
+   * If {@link WonderlandEngine.erasePrototypeOnDestroy} is `true`,
+   * reading a class attribute / method will throw.
+   */
+  get isDestroyed() {
+    return this._index < 0;
+  }
+  /** @overload */
+  toString() {
+    if (this.isDestroyed) {
+      return "Scene(destroyed)";
+    }
+    return `Scene('${this.filename}', ${this._index})`;
+  }
+  /**
+   * Checks that the input's scene is the same as this instance.
+   *
+   * It is forbidden to mix objects and components from different scenes, e.g.,
+   *
+   * ```js
+   * const objA = sceneA.addObject();
+   * const objB = sceneA.addObject();
+   * objA.parent = objB; // Throws
+   * ```
+   *
+   * @param other Object / component to check.
+   *
+   * @throws If other's scene isn't the same reference as this.
+   */
+  assertOrigin(other) {
+    if (other && other.scene !== this) {
+      throw new Error(`Attempt to use ${other} from ${other.scene} in ${this}`);
+    }
+  }
+  /**
+   * Download dependencies and initialize the scene.
+   *
+   * @hidden
+   */
+  _initialize() {
+    this.engine.wasm._wl_scene_initialize(this._index);
+  }
+  /**
+   * Perform cleanup upon object destruction.
+   *
+   * @param localId The id to destroy.
+   *
+   * @hidden
+   */
+  _destroyObject(localId) {
+    const instance = this._objectCache[localId];
+    if (!instance)
+      return;
+    instance._id = -1;
+    instance._localId = -1;
+    if (this.engine.erasePrototypeOnDestroy && instance) {
+      Object.setPrototypeOf(instance, DestroyedObjectInstance);
+    }
+    this._objectCache[localId] = null;
+  }
+};
+
+// node_modules/@wonderlandengine/api/dist/utils/misc.js
+function clamp(val, min2, max2) {
+  return Math.max(Math.min(max2, val), min2);
+}
+function capitalizeFirstUTF8(str5) {
+  return `${str5[0].toUpperCase()}${str5.substring(1)}`;
+}
+function createDestroyedProxy2(type) {
+  return new Proxy({}, {
+    get(_, param) {
+      if (param === "isDestroyed")
+        return true;
+      throw new Error(`Cannot read '${param}' of destroyed ${type}`);
+    },
+    set(_, param) {
+      throw new Error(`Cannot write '${param}' of destroyed ${type}`);
+    }
+  });
+}
+
 // node_modules/@wonderlandengine/api/dist/wonderland.js
 var __decorate = function(decorators, target, key, desc) {
   var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3306,13 +4155,13 @@ var Alignment;
   Alignment2[Alignment2["Center"] = 1] = "Center";
   Alignment2[Alignment2["Right"] = 2] = "Right";
 })(Alignment || (Alignment = {}));
-var Justification;
-(function(Justification2) {
-  Justification2[Justification2["Line"] = 0] = "Line";
-  Justification2[Justification2["Middle"] = 1] = "Middle";
-  Justification2[Justification2["Top"] = 2] = "Top";
-  Justification2[Justification2["Bottom"] = 3] = "Bottom";
-})(Justification || (Justification = {}));
+var VerticalAlignment;
+(function(VerticalAlignment2) {
+  VerticalAlignment2[VerticalAlignment2["Line"] = 0] = "Line";
+  VerticalAlignment2[VerticalAlignment2["Middle"] = 1] = "Middle";
+  VerticalAlignment2[VerticalAlignment2["Top"] = 2] = "Top";
+  VerticalAlignment2[VerticalAlignment2["Bottom"] = 3] = "Bottom";
+})(VerticalAlignment || (VerticalAlignment = {}));
 var TextEffect;
 (function(TextEffect2) {
   TextEffect2[TextEffect2["None"] = 0] = "None";
@@ -3374,29 +4223,9 @@ var MeshAttribute;
   MeshAttribute2[MeshAttribute2["JointId"] = 5] = "JointId";
   MeshAttribute2[MeshAttribute2["JointWeight"] = 6] = "JointWeight";
 })(MeshAttribute || (MeshAttribute = {}));
-var MaterialParamType;
-(function(MaterialParamType2) {
-  MaterialParamType2[MaterialParamType2["UnsignedInt"] = 0] = "UnsignedInt";
-  MaterialParamType2[MaterialParamType2["Int"] = 1] = "Int";
-  MaterialParamType2[MaterialParamType2["Float"] = 2] = "Float";
-  MaterialParamType2[MaterialParamType2["Sampler"] = 3] = "Sampler";
-  MaterialParamType2[MaterialParamType2["Font"] = 4] = "Font";
-})(MaterialParamType || (MaterialParamType = {}));
-function createDestroyedProxy(type) {
-  return new Proxy({}, {
-    get(_, param) {
-      if (param === "isDestroyed")
-        return true;
-      throw new Error(`Canno't read '${param}' of destroyed ${type}`);
-    },
-    set(_, param) {
-      throw new Error(`Canno't write '${param}' of destroyed ${type}`);
-    }
-  });
-}
-var DestroyedObjectInstance = createDestroyedProxy("object");
-var DestroyedComponentInstance = createDestroyedProxy("component");
-var DestroyedTextureInstance = createDestroyedProxy("texture");
+var DestroyedObjectInstance = createDestroyedProxy2("object");
+var DestroyedComponentInstance = createDestroyedProxy2("component");
+var DestroyedPrefabInstance = createDestroyedProxy2("prefab/scene");
 function isMeshShape(shape) {
   return shape === Shape.ConvexMesh || shape === Shape.TriangleMesh;
 }
@@ -3405,7 +4234,19 @@ function isBaseComponentClass(value) {
 }
 var UP_VECTOR = [0, 1, 0];
 var SQRT_3 = Math.sqrt(3);
-var Component = class {
+var _Component = class {
+  /**
+   * Pack scene index and component id.
+   *
+   * @param scene Scene index.
+   * @param id Component id.
+   * @returns The packed id.
+   *
+   * @hidden
+   */
+  static _pack(scene, id) {
+    return scene << 22 | id;
+  }
   /**
    * Allows to inherit properties directly inside the editor.
    *
@@ -3418,8 +4259,10 @@ var Component = class {
   }
   /** Manager index. @hidden */
   _manager;
-  /** Instance index. @hidden */
+  /** Packed id, containing the scene and the local id. @hidden */
   _id;
+  /** Id relative to the scene component's manager. @hidden */
+  _localId;
   /**
    * Object containing this object.
    *
@@ -3428,8 +4271,8 @@ var Component = class {
    * @hidden
    */
   _object;
-  /** Wonderland Engine instance. @hidden */
-  _engine;
+  /** Scene instance. @hidden */
+  _scene;
   /**
    * Create a new instance
    *
@@ -3439,26 +4282,31 @@ var Component = class {
    *
    * @hidden
    */
-  constructor(engine2, manager = -1, id = -1) {
-    this._engine = engine2;
+  constructor(scene, manager = -1, id = -1) {
+    this._scene = scene;
     this._manager = manager;
-    this._id = id;
+    this._localId = id;
+    this._id = _Component._pack(scene._index, id);
     this._object = null;
+  }
+  /** Scene this component is part of. */
+  get scene() {
+    return this._scene;
   }
   /** Hosting engine instance. */
   get engine() {
-    return this._engine;
+    return this._scene.engine;
   }
   /** The name of this component's type */
   get type() {
     const ctor = this.constructor;
-    return ctor.TypeName ?? this._engine.wasm._typeNameFor(this._manager);
+    return ctor.TypeName;
   }
   /** The object this component is attached to. */
   get object() {
     if (!this._object) {
-      const objectId = this._engine.wasm._wl_component_get_object(this._manager, this._id);
-      this._object = this._engine.wrapObject(objectId);
+      const objectId = this.engine.wasm._wl_component_get_object(this._manager, this._id);
+      this._object = this._scene.wrap(objectId);
     }
     return this._object;
   }
@@ -3474,13 +4322,20 @@ var Component = class {
    * @param active New active state.
    */
   set active(active) {
-    this._engine.wasm._wl_component_setActive(this._manager, this._id, active);
+    this.engine.wasm._wl_component_setActive(this._manager, this._id, active);
+  }
+  /** `true` if the component is marked as active and its scene is active. */
+  get active() {
+    return this.markedActive && this._scene.isActive;
   }
   /**
-   * Whether this component is active
+   * `true` if the component is marked as active in the scene, `false` otherwise.
+   *
+   * @note At the opposite of {@link Component.active}, this accessor doesn't
+   * take into account whether the scene is active or not.
    */
-  get active() {
-    return this._engine.wasm._wl_component_isActive(this._manager, this._id) != 0;
+  get markedActive() {
+    return this.engine.wasm._wl_component_isActive(this._manager, this._id) != 0;
   }
   /**
    * Copy all the properties from `src` into this instance.
@@ -3519,11 +4374,16 @@ var Component = class {
    */
   copy(src) {
     const ctor = this.constructor;
-    for (const name in ctor.Properties) {
+    const properties = ctor.Properties;
+    if (!properties)
+      return this;
+    for (const name in properties) {
+      const property2 = properties[name];
       const value = src[name];
-      if (value !== void 0) {
-        this[name] = value;
-      }
+      if (value === void 0)
+        continue;
+      const cloner = property2.cloner ?? defaultPropertyCloner;
+      this[name] = cloner.clone(property2.type, value);
     }
     return this;
   }
@@ -3543,22 +4403,26 @@ var Component = class {
     const manager = this._manager;
     if (manager < 0 || this._id < 0)
       return;
-    const jsManager = this.engine.wasm._jsManagerIndex;
-    this._engine.wasm._wl_component_remove(manager, this._id);
-    if (manager !== jsManager)
-      this._triggerOnDestroy();
+    this.engine.wasm._wl_component_remove(manager, this._id);
   }
   /**
-   * Checks equality by comparing whether the wrapped native component ids
-   * and component manager types are equal.
+   * Checks equality by comparing ids and **not** the JavaScript reference.
    *
-   * @param otherComponent Component to check equality with.
-   * @returns Whether this component equals the given component.
+   * @deprecate Use JavaScript reference comparison instead:
+   *
+   * ```js
+   * const componentA = obj.addComponent('mesh');
+   * const componentB = obj.addComponent('mesh');
+   * const componentC = componentB;
+   * console.log(componentA === componentB); // false
+   * console.log(componentA === componentA); // true
+   * console.log(componentB === componentC); // true
+   * ```
    */
   equals(otherComponent) {
     if (!otherComponent)
       return false;
-    return this._manager == otherComponent._manager && this._id == otherComponent._id;
+    return this._manager === otherComponent._manager && this._id === otherComponent._id;
   }
   /**
    * Reset the component properties to default.
@@ -3573,7 +4437,9 @@ var Component = class {
     if (!properties)
       return this;
     for (const name in properties) {
-      this[name] = properties[name].default;
+      const property2 = properties[name];
+      const cloner = property2.cloner ?? defaultPropertyCloner;
+      this[name] = cloner.clone(property2.type, property2.default);
     }
     return this;
   }
@@ -3599,6 +4465,13 @@ var Component = class {
       }
     }
   }
+  /** @overload */
+  toString() {
+    if (this.isDestroyed) {
+      return "Component(destroyed)";
+    }
+    return `Component('${this.type}', ${this._localId})`;
+  }
   /**
    * `true` if the component is destroyed, `false` otherwise.
    *
@@ -3621,6 +4494,43 @@ var Component = class {
    */
   get isDestroyed() {
     return this._id < 0;
+  }
+  _copy(src, offsetsPtr) {
+    const wasm = this.engine.wasm;
+    const offsets = wasm.HEAPU32;
+    const offsetsStart = offsetsPtr >>> 2;
+    const destScene = this._scene;
+    const ctor = this.constructor;
+    for (const name in ctor.Properties) {
+      const value = src[name];
+      if (value === null) {
+        this[name] = null;
+        continue;
+      }
+      const prop = ctor.Properties[name];
+      const offset2 = offsets[offsetsStart + prop.type];
+      let retargeted;
+      switch (prop.type) {
+        case Type.Object: {
+          const index = wasm._wl_object_index(value._id);
+          const id = wasm._wl_object_id(destScene._index, index + offset2);
+          retargeted = destScene.wrap(id);
+          break;
+        }
+        case Type.Animation:
+          retargeted = destScene.animations.wrap(offset2 + value._index);
+          break;
+        case Type.Skin:
+          retargeted = destScene.skins.wrap(offset2 + value._index);
+          break;
+        default:
+          const cloner = prop.cloner ?? defaultPropertyCloner;
+          retargeted = cloner.clone(prop.type, value);
+          break;
+      }
+      this[name] = retargeted;
+    }
+    return this;
   }
   /**
    * Trigger the component {@link Component.init} method.
@@ -3688,7 +4598,7 @@ var Component = class {
     } catch (e) {
       this.engine.log.error(LogTag.Component, `Exception during ${this.type} update() on object ${this.object.name}`);
       this.engine.log.error(LogTag.Component, e);
-      if (this._engine.wasm._deactivate_component_on_error) {
+      if (this.engine.wasm._deactivate_component_on_error) {
         this.active = false;
       }
     }
@@ -3742,9 +4652,10 @@ var Component = class {
       this.engine.log.error(LogTag.Component, `Exception during ${this.type} onDestroy() on object ${this.object.name}`);
       this.engine.log.error(LogTag.Component, e);
     }
-    this._engine._destroyComponent(this);
+    this._scene._components.destroy(this);
   }
 };
+var Component = _Component;
 /**
  * `true` for every class inheriting from this class.
  *
@@ -3754,6 +4665,15 @@ var Component = class {
  * @hidden
  */
 __publicField(Component, "_isBaseComponent", true);
+/**
+ * Fixed order of attributes in the `Properties` array.
+ *
+ * @note This is used for parameter deserialization and is filled during
+ * component registration.
+ *
+ * @hidden
+ */
+__publicField(Component, "_propertyOrder", []);
 /**
  * Unique identifier for this component class.
  *
@@ -3912,22 +4832,31 @@ function inheritProperties(target) {
     if (!needsMerge)
       break;
     if (comp.TypeName && comp.hasOwnProperty("Properties")) {
-      chain.push(comp.Properties);
+      chain.push(comp);
     }
     curr = Object.getPrototypeOf(curr);
   }
-  if (chain.length <= 1)
+  if (!chain.length || chain.length === 1 && chain[0] === target) {
     return;
+  }
   const merged = {};
   for (let i = chain.length - 1; i >= 0; --i) {
-    Object.assign(merged, chain[i]);
+    Object.assign(merged, chain[i].Properties);
   }
   target.Properties = merged;
 }
-var _CollisionComponent = class extends Component {
+var CollisionComponent = class extends Component {
+  getExtents(out = new Float32Array(3)) {
+    const wasm = this.engine.wasm;
+    const ptr = wasm._wl_collision_component_get_extents(this._id) / 4;
+    out[0] = wasm.HEAPF32[ptr];
+    out[1] = wasm.HEAPF32[ptr + 1];
+    out[2] = wasm.HEAPF32[ptr + 2];
+    return out;
+  }
   /** Collision component collider */
   get collider() {
-    return this._engine.wasm._wl_collision_component_get_collider(this._id);
+    return this.engine.wasm._wl_collision_component_get_collider(this._id);
   }
   /**
    * Set collision component collider.
@@ -3935,16 +4864,15 @@ var _CollisionComponent = class extends Component {
    * @param collider Collider of the collision component.
    */
   set collider(collider) {
-    this._engine.wasm._wl_collision_component_set_collider(this._id, collider);
+    this.engine.wasm._wl_collision_component_set_collider(this._id, collider);
   }
   /**
-   * Collision component extents.
+   * Equivalent to {@link CollisionComponent.getExtents}.
    *
-   * If {@link collider} returns {@link Collider.Sphere}, only the first
-   * component of the returned vector is used.
+   * @note Prefer to use {@link CollisionComponent.getExtents} for performance.
    */
   get extents() {
-    const wasm = this._engine.wasm;
+    const wasm = this.engine.wasm;
     return new Float32Array(wasm.HEAPF32.buffer, wasm._wl_collision_component_get_extents(this._id), 3);
   }
   /**
@@ -3964,7 +4892,11 @@ var _CollisionComponent = class extends Component {
    *      3 component array.
    */
   set extents(extents) {
-    this.extents.set(extents);
+    const wasm = this.engine.wasm;
+    const ptr = wasm._wl_collision_component_get_extents(this._id) / 4;
+    wasm.HEAPF32[ptr] = extents[0];
+    wasm.HEAPF32[ptr + 1] = extents[1];
+    wasm.HEAPF32[ptr + 2] = extents[2];
   }
   /**
    * Get collision component radius.
@@ -3984,7 +4916,7 @@ var _CollisionComponent = class extends Component {
    *
    */
   get radius() {
-    const wasm = this._engine.wasm;
+    const wasm = this.engine.wasm;
     if (this.collider === Collider.Sphere)
       return wasm.HEAPF32[wasm._wl_collision_component_get_extents(this._id) >> 2];
     const extents = new Float32Array(wasm.HEAPF32.buffer, wasm._wl_collision_component_get_extents(this._id), 3);
@@ -4039,7 +4971,7 @@ var _CollisionComponent = class extends Component {
    * ```
    */
   get group() {
-    return this._engine.wasm._wl_collision_component_get_group(this._id);
+    return this.engine.wasm._wl_collision_component_get_group(this._id);
   }
   /**
    * Set collision component group.
@@ -4047,7 +4979,7 @@ var _CollisionComponent = class extends Component {
    * @param group Group mask of the collision component.
    */
   set group(group) {
-    this._engine.wasm._wl_collision_component_set_group(this._id, group);
+    this.engine.wasm._wl_collision_component_set_group(this._id, group);
   }
   /**
    * Query overlapping objects.
@@ -4066,15 +4998,15 @@ var _CollisionComponent = class extends Component {
    * @returns Collision components overlapping this collider.
    */
   queryOverlaps() {
-    const count = this._engine.wasm._wl_collision_component_query_overlaps(this._id, this._engine.wasm._tempMem, this._engine.wasm._tempMemSize >> 1);
+    const count = this.engine.wasm._wl_collision_component_query_overlaps(this._id, this.engine.wasm._tempMem, this.engine.wasm._tempMemSize >> 1);
     const overlaps = new Array(count);
     for (let i = 0; i < count; ++i) {
-      overlaps[i] = new _CollisionComponent(this._engine, this._manager, this._engine.wasm._tempMemUint16[i]);
+      const id = this.engine.wasm._tempMemUint16[i];
+      overlaps[i] = this._scene._components.wrapCollision(id);
     }
     return overlaps;
   }
 };
-var CollisionComponent = _CollisionComponent;
 /** @override */
 __publicField(CollisionComponent, "TypeName", "collision");
 __decorate([
@@ -4089,7 +5021,7 @@ __decorate([
 var TextComponent = class extends Component {
   /** Text component alignment. */
   get alignment() {
-    return this._engine.wasm._wl_text_component_get_horizontal_alignment(this._id);
+    return this.engine.wasm._wl_text_component_get_horizontal_alignment(this._id);
   }
   /**
    * Set text component alignment.
@@ -4097,23 +5029,45 @@ var TextComponent = class extends Component {
    * @param alignment Alignment for the text component.
    */
   set alignment(alignment) {
-    this._engine.wasm._wl_text_component_set_horizontal_alignment(this._id, alignment);
+    this.engine.wasm._wl_text_component_set_horizontal_alignment(this._id, alignment);
   }
-  /** Text component justification. */
+  /**
+   * Text component vertical alignment.
+   * @since 1.2.0
+   */
+  get verticalAlignment() {
+    return this.engine.wasm._wl_text_component_get_vertical_alignment(this._id);
+  }
+  /**
+   * Set text component vertical alignment.
+   *
+   * @param verticalAlignment Vertical for the text component.
+   * @since 1.2.0
+   */
+  set verticalAlignment(verticalAlignment) {
+    this.engine.wasm._wl_text_component_set_vertical_alignment(this._id, verticalAlignment);
+  }
+  /**
+   * Text component justification.
+   *
+   * @deprecated Please use {@link TextComponent.verticalAlignment} instead.
+   */
   get justification() {
-    return this._engine.wasm._wl_text_component_get_vertical_alignment(this._id);
+    return this.verticalAlignment;
   }
   /**
    * Set text component justification.
    *
    * @param justification Justification for the text component.
+   *
+   * @deprecated Please use {@link TextComponent.verticalAlignment} instead.
    */
   set justification(justification) {
-    this._engine.wasm._wl_text_component_set_vertical_alignment(this._id, justification);
+    this.verticalAlignment = justification;
   }
   /** Text component character spacing. */
   get characterSpacing() {
-    return this._engine.wasm._wl_text_component_get_character_spacing(this._id);
+    return this.engine.wasm._wl_text_component_get_character_spacing(this._id);
   }
   /**
    * Set text component character spacing.
@@ -4121,11 +5075,11 @@ var TextComponent = class extends Component {
    * @param spacing Character spacing for the text component.
    */
   set characterSpacing(spacing) {
-    this._engine.wasm._wl_text_component_set_character_spacing(this._id, spacing);
+    this.engine.wasm._wl_text_component_set_character_spacing(this._id, spacing);
   }
   /** Text component line spacing. */
   get lineSpacing() {
-    return this._engine.wasm._wl_text_component_get_line_spacing(this._id);
+    return this.engine.wasm._wl_text_component_get_line_spacing(this._id);
   }
   /**
    * Set text component line spacing
@@ -4133,11 +5087,11 @@ var TextComponent = class extends Component {
    * @param spacing Line spacing for the text component
    */
   set lineSpacing(spacing) {
-    this._engine.wasm._wl_text_component_set_line_spacing(this._id, spacing);
+    this.engine.wasm._wl_text_component_set_line_spacing(this._id, spacing);
   }
   /** Text component effect. */
   get effect() {
-    return this._engine.wasm._wl_text_component_get_effect(this._id);
+    return this.engine.wasm._wl_text_component_get_effect(this._id);
   }
   /**
    * Set text component effect
@@ -4145,11 +5099,11 @@ var TextComponent = class extends Component {
    * @param effect Effect for the text component
    */
   set effect(effect) {
-    this._engine.wasm._wl_text_component_set_effect(this._id, effect);
+    this.engine.wasm._wl_text_component_set_effect(this._id, effect);
   }
   /** Text component text. */
   get text() {
-    const wasm = this._engine.wasm;
+    const wasm = this.engine.wasm;
     const ptr = wasm._wl_text_component_get_text(this._id);
     return wasm.UTF8ToString(ptr);
   }
@@ -4159,7 +5113,7 @@ var TextComponent = class extends Component {
    * @param text Text of the text component.
    */
   set text(text) {
-    const wasm = this._engine.wasm;
+    const wasm = this.engine.wasm;
     wasm._wl_text_component_set_text(this._id, wasm.tempUTF8(text.toString()));
   }
   /**
@@ -4168,13 +5122,85 @@ var TextComponent = class extends Component {
    * @param material New material.
    */
   set material(material) {
-    const matIndex = material ? material._index : 0;
-    this._engine.wasm._wl_text_component_set_material(this._id, matIndex);
+    const matIndex = material ? material._id : 0;
+    this.engine.wasm._wl_text_component_set_material(this._id, matIndex);
   }
   /** Material used to render the text. */
   get material() {
-    const id = this._engine.wasm._wl_text_component_get_material(this._id);
-    return id > 0 ? new Material(this._engine, id) : null;
+    const index = this.engine.wasm._wl_text_component_get_material(this._id);
+    return this.engine.materials.wrap(index);
+  }
+  /**
+   * Axis-aligned bounding box for a given text, in object space.
+   *
+   * To calculate the size for the currently set text, use
+   * {@link getBoundingBox}.
+   *
+   * Useful for calculating the text size before an update and potentially
+   * adjusting the text:
+   *
+   * ```js
+   * let updatedName = 'some very long name';
+   * const box = new Float32Array(4);
+   * text.getBoundingBoxForText(updatedName, box);
+   * const width = box[2] - box[0];
+   * if(width > 2.0) {
+   *     updatedName = updatedName.slice(0, 5) + '...';
+   * }
+   * text.text = updatedName;
+   * ```
+   *
+   * @param text Text string to calculate the bounding box for.
+   * @param out Preallocated array to write into, to avoid garbage,
+   *     otherwise will allocate a new Float32Array.
+   *
+   * @returns Bounding box - left, bottom, right, top.
+   */
+  getBoundingBoxForText(text, out = new Float32Array(4)) {
+    const wasm = this.engine.wasm;
+    const textPtr = wasm.tempUTF8(text, 4 * 4);
+    this.engine.wasm._wl_text_component_get_boundingBox(this._id, textPtr, wasm._tempMem);
+    out[0] = wasm._tempMemFloat[0];
+    out[1] = wasm._tempMemFloat[1];
+    out[2] = wasm._tempMemFloat[2];
+    out[3] = wasm._tempMemFloat[3];
+    return out;
+  }
+  /**
+   * Axis-aligned bounding box, in object space.
+   *
+   * The bounding box is computed using the current component properties
+   * that influence the position and size of the text. The bounding box is
+   * affected by alignment, spacing, effect type and the font set in the
+   * material.
+   *
+   * To calculate the size for a different text, use
+   * {@link getBoundingBoxForText}.
+   *
+   * Useful for adjusting text position or scaling:
+   *
+   * ```js
+   * const box = new Float32Array(4);
+   * text.getBoundingBox(box);
+   * const width = box[2] - box[0];
+   * // Make text 1m wide
+   * text.object.setScalingLocal([1/width, 1, 1]);
+   * ```
+   *
+   * @param text Text string to calculate the bounding box for.
+   * @param out Preallocated array to write into, to avoid garbage,
+   *     otherwise will allocate a new Float32Array.
+   *
+   * @returns Bounding box - left, bottom, right, top.
+   */
+  getBoundingBox(out = new Float32Array(4)) {
+    const wasm = this.engine.wasm;
+    this.engine.wasm._wl_text_component_get_boundingBox(this._id, 0, wasm._tempMem);
+    out[0] = wasm._tempMemFloat[0];
+    out[1] = wasm._tempMemFloat[1];
+    out[2] = wasm._tempMemFloat[2];
+    out[3] = wasm._tempMemFloat[3];
+    return out;
   }
 };
 /** @override */
@@ -4182,6 +5208,9 @@ __publicField(TextComponent, "TypeName", "text");
 __decorate([
   nativeProperty()
 ], TextComponent.prototype, "alignment", null);
+__decorate([
+  nativeProperty()
+], TextComponent.prototype, "verticalAlignment", null);
 __decorate([
   nativeProperty()
 ], TextComponent.prototype, "justification", null);
@@ -4201,14 +5230,26 @@ __decorate([
   nativeProperty()
 ], TextComponent.prototype, "material", null);
 var ViewComponent = class extends Component {
-  /** Projection matrix. */
+  getProjectionMatrix(out = new Float32Array(16)) {
+    const wasm = this.engine.wasm;
+    const ptr = wasm._wl_view_component_get_projection_matrix(this._id) / 4;
+    for (let i = 0; i < 16; ++i) {
+      out[i] = wasm.HEAPF32[ptr + i];
+    }
+    return out;
+  }
+  /**
+   * Equivalent to {@link ViewComponent.getProjectionMatrix}.
+   *
+   * @note Prefer to use {@link ViewComponent.getProjectionMatrix} for performance.
+   */
   get projectionMatrix() {
-    const wasm = this._engine.wasm;
+    const wasm = this.engine.wasm;
     return new Float32Array(wasm.HEAPF32.buffer, wasm._wl_view_component_get_projection_matrix(this._id), 16);
   }
   /** ViewComponent near clipping plane value. */
   get near() {
-    return this._engine.wasm._wl_view_component_get_near(this._id);
+    return this.engine.wasm._wl_view_component_get_near(this._id);
   }
   /**
    * Set near clipping plane distance for the view.
@@ -4219,11 +5260,11 @@ var ViewComponent = class extends Component {
    * @param near Near depth value.
    */
   set near(near) {
-    this._engine.wasm._wl_view_component_set_near(this._id, near);
+    this.engine.wasm._wl_view_component_set_near(this._id, near);
   }
   /** Far clipping plane value. */
   get far() {
-    return this._engine.wasm._wl_view_component_get_far(this._id);
+    return this.engine.wasm._wl_view_component_get_far(this._id);
   }
   /**
    * Set far clipping plane distance for the view.
@@ -4234,7 +5275,7 @@ var ViewComponent = class extends Component {
    * @param far Near depth value.
    */
   set far(far) {
-    this._engine.wasm._wl_view_component_set_far(this._id, far);
+    this.engine.wasm._wl_view_component_set_far(this._id, far);
   }
   /**
    * Get the horizontal field of view for the view, **in degrees**.
@@ -4243,7 +5284,7 @@ var ViewComponent = class extends Component {
    * the device, regardless of the fov that was set.
    */
   get fov() {
-    return this._engine.wasm._wl_view_component_get_fov(this._id);
+    return this.engine.wasm._wl_view_component_get_fov(this._id);
   }
   /**
    * Set the horizontal field of view for the view, **in degrees**.
@@ -4255,7 +5296,7 @@ var ViewComponent = class extends Component {
    * @param fov Horizontal field of view, **in degrees**.
    */
   set fov(fov) {
-    this._engine.wasm._wl_view_component_set_fov(this._id, fov);
+    this.engine.wasm._wl_view_component_set_fov(this._id, fov);
   }
 };
 /** @override */
@@ -4275,7 +5316,7 @@ __decorate([
 var InputComponent = class extends Component {
   /** Input component type */
   get inputType() {
-    return this._engine.wasm._wl_input_component_get_type(this._id);
+    return this.engine.wasm._wl_input_component_get_type(this._id);
   }
   /**
    * Set input component type.
@@ -4283,14 +5324,14 @@ var InputComponent = class extends Component {
    * @params New input component type.
    */
   set inputType(type) {
-    this._engine.wasm._wl_input_component_set_type(this._id, type);
+    this.engine.wasm._wl_input_component_set_type(this._id, type);
   }
   /**
    * WebXR Device API input source associated with this input component,
    * if type {@link InputType.ControllerLeft} or {@link InputType.ControllerRight}.
    */
   get xrInputSource() {
-    const xr = this._engine.xr;
+    const xr = this.engine.xr;
     if (!xr)
       return null;
     for (let inputSource of xr.session.inputSources) {
@@ -4325,7 +5366,7 @@ __decorate([
 ], InputComponent.prototype, "handedness", null);
 var LightComponent = class extends Component {
   getColor(out = new Float32Array(3)) {
-    const wasm = this._engine.wasm;
+    const wasm = this.engine.wasm;
     const ptr = wasm._wl_light_component_get_color(this._id) / 4;
     out[0] = wasm.HEAPF32[ptr];
     out[1] = wasm.HEAPF32[ptr + 1];
@@ -4339,7 +5380,7 @@ var LightComponent = class extends Component {
    * @since 1.0.0
    */
   setColor(c) {
-    const wasm = this._engine.wasm;
+    const wasm = this.engine.wasm;
     const ptr = wasm._wl_light_component_get_color(this._id) / 4;
     wasm.HEAPF32[ptr] = c[0];
     wasm.HEAPF32[ptr + 1] = c[1];
@@ -4351,7 +5392,7 @@ var LightComponent = class extends Component {
    * @note Prefer to use {@link getColor} in performance-critical code.
    */
   get color() {
-    const wasm = this._engine.wasm;
+    const wasm = this.engine.wasm;
     return new Float32Array(wasm.HEAPF32.buffer, wasm._wl_light_component_get_color(this._id), 3);
   }
   /**
@@ -4366,7 +5407,7 @@ var LightComponent = class extends Component {
   }
   /** Light type. */
   get lightType() {
-    return this._engine.wasm._wl_light_component_get_type(this._id);
+    return this.engine.wasm._wl_light_component_get_type(this._id);
   }
   /**
    * Set light type.
@@ -4374,14 +5415,14 @@ var LightComponent = class extends Component {
    * @param lightType Type of the light component.
    */
   set lightType(t) {
-    this._engine.wasm._wl_light_component_set_type(this._id, t);
+    this.engine.wasm._wl_light_component_set_type(this._id, t);
   }
   /**
    * Light intensity.
    * @since 1.0.0
    */
   get intensity() {
-    return this._engine.wasm._wl_light_component_get_intensity(this._id);
+    return this.engine.wasm._wl_light_component_get_intensity(this._id);
   }
   /**
    * Set light intensity.
@@ -4390,14 +5431,14 @@ var LightComponent = class extends Component {
    * @since 1.0.0
    */
   set intensity(intensity) {
-    this._engine.wasm._wl_light_component_set_intensity(this._id, intensity);
+    this.engine.wasm._wl_light_component_set_intensity(this._id, intensity);
   }
   /**
    * Outer angle for spot lights, in degrees.
    * @since 1.0.0
    */
   get outerAngle() {
-    return this._engine.wasm._wl_light_component_get_outerAngle(this._id);
+    return this.engine.wasm._wl_light_component_get_outerAngle(this._id);
   }
   /**
    * Set outer angle for spot lights.
@@ -4406,14 +5447,14 @@ var LightComponent = class extends Component {
    * @since 1.0.0
    */
   set outerAngle(angle2) {
-    this._engine.wasm._wl_light_component_set_outerAngle(this._id, angle2);
+    this.engine.wasm._wl_light_component_set_outerAngle(this._id, angle2);
   }
   /**
    * Inner angle for spot lights, in degrees.
    * @since 1.0.0
    */
   get innerAngle() {
-    return this._engine.wasm._wl_light_component_get_innerAngle(this._id);
+    return this.engine.wasm._wl_light_component_get_innerAngle(this._id);
   }
   /**
    * Set inner angle for spot lights.
@@ -4422,14 +5463,14 @@ var LightComponent = class extends Component {
    * @since 1.0.0
    */
   set innerAngle(angle2) {
-    this._engine.wasm._wl_light_component_set_innerAngle(this._id, angle2);
+    this.engine.wasm._wl_light_component_set_innerAngle(this._id, angle2);
   }
   /**
    * Whether the light casts shadows.
    * @since 1.0.0
    */
   get shadows() {
-    return !!this._engine.wasm._wl_light_component_get_shadows(this._id);
+    return !!this.engine.wasm._wl_light_component_get_shadows(this._id);
   }
   /**
    * Set whether the light casts shadows.
@@ -4438,14 +5479,14 @@ var LightComponent = class extends Component {
    * @since 1.0.0
    */
   set shadows(b) {
-    this._engine.wasm._wl_light_component_set_shadows(this._id, b);
+    this.engine.wasm._wl_light_component_set_shadows(this._id, b);
   }
   /**
    * Range for shadows.
    * @since 1.0.0
    */
   get shadowRange() {
-    return this._engine.wasm._wl_light_component_get_shadowRange(this._id);
+    return this.engine.wasm._wl_light_component_get_shadowRange(this._id);
   }
   /**
    * Set range for shadows.
@@ -4454,14 +5495,14 @@ var LightComponent = class extends Component {
    * @since 1.0.0
    */
   set shadowRange(range) {
-    this._engine.wasm._wl_light_component_set_shadowRange(this._id, range);
+    this.engine.wasm._wl_light_component_set_shadowRange(this._id, range);
   }
   /**
    * Bias value for shadows.
    * @since 1.0.0
    */
   get shadowBias() {
-    return this._engine.wasm._wl_light_component_get_shadowBias(this._id);
+    return this.engine.wasm._wl_light_component_get_shadowBias(this._id);
   }
   /**
    * Set bias value for shadows.
@@ -4470,14 +5511,14 @@ var LightComponent = class extends Component {
    * @since 1.0.0
    */
   set shadowBias(bias) {
-    this._engine.wasm._wl_light_component_set_shadowBias(this._id, bias);
+    this.engine.wasm._wl_light_component_set_shadowBias(this._id, bias);
   }
   /**
    * Normal bias value for shadows.
    * @since 1.0.0
    */
   get shadowNormalBias() {
-    return this._engine.wasm._wl_light_component_get_shadowNormalBias(this._id);
+    return this.engine.wasm._wl_light_component_get_shadowNormalBias(this._id);
   }
   /**
    * Set normal bias value for shadows.
@@ -4486,14 +5527,14 @@ var LightComponent = class extends Component {
    * @since 1.0.0
    */
   set shadowNormalBias(bias) {
-    this._engine.wasm._wl_light_component_set_shadowNormalBias(this._id, bias);
+    this.engine.wasm._wl_light_component_set_shadowNormalBias(this._id, bias);
   }
   /**
    * Texel size for shadows.
    * @since 1.0.0
    */
   get shadowTexelSize() {
-    return this._engine.wasm._wl_light_component_get_shadowTexelSize(this._id);
+    return this.engine.wasm._wl_light_component_get_shadowTexelSize(this._id);
   }
   /**
    * Set texel size for shadows.
@@ -4502,14 +5543,14 @@ var LightComponent = class extends Component {
    * @since 1.0.0
    */
   set shadowTexelSize(size) {
-    this._engine.wasm._wl_light_component_set_shadowTexelSize(this._id, size);
+    this.engine.wasm._wl_light_component_set_shadowTexelSize(this._id, size);
   }
   /**
    * Cascade count for {@link LightType.Sun} shadows.
    * @since 1.0.0
    */
   get cascadeCount() {
-    return this._engine.wasm._wl_light_component_get_cascadeCount(this._id);
+    return this.engine.wasm._wl_light_component_get_cascadeCount(this._id);
   }
   /**
    * Set cascade count for {@link LightType.Sun} shadows.
@@ -4518,7 +5559,7 @@ var LightComponent = class extends Component {
    * @since 1.0.0
    */
   set cascadeCount(count) {
-    this._engine.wasm._wl_light_component_set_cascadeCount(this._id, count);
+    this.engine.wasm._wl_light_component_set_cascadeCount(this._id, count);
   }
 };
 /** @override */
@@ -4558,6 +5599,12 @@ __decorate([
 ], LightComponent.prototype, "cascadeCount", null);
 var AnimationComponent = class extends Component {
   /**
+   * Emitter for animation events triggered on this component.
+   *
+   * The first argument is the name of the event.
+   */
+  onEvent = new Emitter();
+  /**
    * Set animation to play.
    *
    * Make sure to {@link Animation#retarget} the animation to affect the
@@ -4566,12 +5613,13 @@ var AnimationComponent = class extends Component {
    * @param anim Animation to play.
    */
   set animation(anim) {
-    this._engine.wasm._wl_animation_component_set_animation(this._id, anim ? anim._index : 0);
+    this.scene.assertOrigin(anim);
+    this.engine.wasm._wl_animation_component_set_animation(this._id, anim ? anim._id : 0);
   }
   /** Animation set for this component */
   get animation() {
-    const id = this._engine.wasm._wl_animation_component_get_animation(this._id);
-    return id > 0 ? new Animation(this._engine, id) : null;
+    const index = this.engine.wasm._wl_animation_component_get_animation(this._id);
+    return this._scene.animations.wrap(index);
   }
   /**
    * Set play count. Set to `0` to loop indefinitely.
@@ -4579,11 +5627,11 @@ var AnimationComponent = class extends Component {
    * @param playCount Number of times to repeat the animation.
    */
   set playCount(playCount) {
-    this._engine.wasm._wl_animation_component_set_playCount(this._id, playCount);
+    this.engine.wasm._wl_animation_component_set_playCount(this._id, playCount);
   }
   /** Number of times the animation is played. */
   get playCount() {
-    return this._engine.wasm._wl_animation_component_get_playCount(this._id);
+    return this.engine.wasm._wl_animation_component_get_playCount(this._id);
   }
   /**
    * Set speed. Set to negative values to run the animation backwards.
@@ -4595,7 +5643,7 @@ var AnimationComponent = class extends Component {
    * @since 0.8.10
    */
   set speed(speed) {
-    this._engine.wasm._wl_animation_component_set_speed(this._id, speed);
+    this.engine.wasm._wl_animation_component_set_speed(this._id, speed);
   }
   /**
    * Speed factor at which the animation is played.
@@ -4603,11 +5651,11 @@ var AnimationComponent = class extends Component {
    * @since 0.8.10
    */
   get speed() {
-    return this._engine.wasm._wl_animation_component_get_speed(this._id);
+    return this.engine.wasm._wl_animation_component_get_speed(this._id);
   }
   /** Current playing state of the animation */
   get state() {
-    return this._engine.wasm._wl_animation_component_state(this._id);
+    return this.engine.wasm._wl_animation_component_state(this._id);
   }
   /**
    * Play animation.
@@ -4618,15 +5666,49 @@ var AnimationComponent = class extends Component {
    * To restart the animation, {@link AnimationComponent#stop} it first.
    */
   play() {
-    this._engine.wasm._wl_animation_component_play(this._id);
+    this.engine.wasm._wl_animation_component_play(this._id);
   }
   /** Stop animation. */
   stop() {
-    this._engine.wasm._wl_animation_component_stop(this._id);
+    this.engine.wasm._wl_animation_component_stop(this._id);
   }
   /** Pause animation. */
   pause() {
-    this._engine.wasm._wl_animation_component_pause(this._id);
+    this.engine.wasm._wl_animation_component_pause(this._id);
+  }
+  /**
+   * Get the value of a float parameter in the attached graph.
+   * Throws if the parameter is missing.
+   *
+   * @param name Name of the parameter.
+   * @since 1.2.0
+   */
+  getFloatParameter(name) {
+    const wasm = this.engine.wasm;
+    const index = wasm._wl_animation_component_getGraphParamIndex(this._id, wasm.tempUTF8(name));
+    if (index === -1) {
+      throw Error(`Missing parameter '${name}'`);
+    }
+    wasm._wl_animation_component_getGraphParamValue(this._id, index, wasm._tempMem);
+    return wasm._tempMemFloat[0];
+  }
+  /**
+   * Set the value of a float parameter in the attached graph
+   * Throws if the parameter is missing.
+   *
+   * @param name Name of the parameter.
+   * @param value Float value to set.
+   * @returns 1 if the parameter was successfully set, 0 on fail.
+   * @since 1.2.0
+   */
+  setFloatParameter(name, value) {
+    const wasm = this.engine.wasm;
+    const index = wasm._wl_animation_component_getGraphParamIndex(this._id, wasm.tempUTF8(name));
+    if (index === -1) {
+      throw Error(`Missing parameter '${name}'`);
+    }
+    wasm._tempMemFloat[0] = value;
+    wasm._wl_animation_component_setGraphParamValue(this._id, index, wasm._tempMem);
   }
 };
 /** @override */
@@ -4650,17 +5732,17 @@ var MeshComponent = class extends Component {
    * @param material Material to render the mesh with.
    */
   set material(material) {
-    this._engine.wasm._wl_mesh_component_set_material(this._id, material ? material._index : 0);
+    this.engine.wasm._wl_mesh_component_set_material(this._id, material ? material._id : 0);
   }
   /** Material used to render the mesh. */
   get material() {
-    const id = this._engine.wasm._wl_mesh_component_get_material(this._id);
-    return id > 0 ? new Material(this._engine, id) : null;
+    const index = this.engine.wasm._wl_mesh_component_get_material(this._id);
+    return this.engine.materials.wrap(index);
   }
   /** Mesh rendered by this component. */
   get mesh() {
-    const id = this._engine.wasm._wl_mesh_component_get_mesh(this._id);
-    return id > 0 ? new Mesh(this._engine, id) : null;
+    const index = this.engine.wasm._wl_mesh_component_get_mesh(this._id);
+    return this.engine.meshes.wrap(index);
   }
   /**
    * Set mesh to rendered with this component.
@@ -4668,12 +5750,12 @@ var MeshComponent = class extends Component {
    * @param mesh Mesh rendered by this component.
    */
   set mesh(mesh) {
-    this._engine.wasm._wl_mesh_component_set_mesh(this._id, mesh ? mesh._index : 0);
+    this.engine.wasm._wl_mesh_component_set_mesh(this._id, mesh?._id ?? 0);
   }
   /** Skin for this mesh component. */
   get skin() {
-    const id = this._engine.wasm._wl_mesh_component_get_skin(this._id);
-    return id > 0 ? new Skin(this._engine, id) : null;
+    const index = this.engine.wasm._wl_mesh_component_get_skin(this._id);
+    return this._scene.skins.wrap(index);
   }
   /**
    * Set skin to transform this mesh component.
@@ -4681,7 +5763,113 @@ var MeshComponent = class extends Component {
    * @param skin Skin to use for rendering skinned meshes.
    */
   set skin(skin) {
-    this._engine.wasm._wl_mesh_component_set_skin(this._id, skin ? skin._index : 0);
+    this.scene.assertOrigin(skin);
+    this.engine.wasm._wl_mesh_component_set_skin(this._id, skin ? skin._id : 0);
+  }
+  /**
+   * Morph targets for this mesh component.
+   *
+   * @since 1.2.0
+   */
+  get morphTargets() {
+    const index = this.engine.wasm._wl_mesh_component_get_morph_targets(this._id);
+    return this.engine.morphTargets.wrap(index);
+  }
+  /**
+   * Set morph targets to transform this mesh component.
+   *
+   * @param morphTargets Morph targets to use for rendering.
+   *
+   * @since 1.2.0
+   */
+  set morphTargets(morphTargets) {
+    this.engine.wasm._wl_mesh_component_set_morph_targets(this._id, morphTargets?._id ?? 0);
+  }
+  /**
+   * Equivalent to {@link getMorphTargetWeights}.
+   *
+   * @note Prefer to use {@link getMorphTargetWeights} for performance.
+   *
+   * @since 1.2.0
+   */
+  get morphTargetWeights() {
+    return this.getMorphTargetWeights();
+  }
+  /**
+   * Set the morph target weights to transform this mesh component.
+   *
+   * @param weights New weights.
+   *
+   * @since 1.2.0
+   */
+  set morphTargetWeights(weights) {
+    this.setMorphTargetWeights(weights);
+  }
+  getMorphTargetWeights(out) {
+    const wasm = this.engine.wasm;
+    const count = wasm._wl_mesh_component_get_morph_target_weights(this._id, wasm._tempMem);
+    if (!out) {
+      out = new Float32Array(count);
+    }
+    for (let i = 0; i < count; ++i) {
+      out[i] = wasm._tempMemFloat[i];
+    }
+    return out;
+  }
+  /**
+   * Get the weight of a single morph target.
+   *
+   * @param target Index of the morph target.
+   * @returns The weight.
+   *
+   * @since 1.2.0
+   */
+  getMorphTargetWeight(target) {
+    const count = this.morphTargets?.count ?? 0;
+    if (target >= count) {
+      throw new Error(`Index ${target} is out of bounds for ${count} targets`);
+    }
+    return this.engine.wasm._wl_mesh_component_get_morph_target_weight(this._id, target);
+  }
+  /**
+   * Set morph target weights for this mesh component.
+   *
+   * @param weights Array of new weights, expected to have at least as many
+   *     elements as {@link MorphTargets.count}.
+   *
+   * @since 1.2.0
+   */
+  setMorphTargetWeights(weights) {
+    const count = this.morphTargets?.count ?? 0;
+    if (weights.length !== count) {
+      throw new Error(`Expected ${count} weights but got ${weights.length}`);
+    }
+    const wasm = this.engine.wasm;
+    wasm._tempMemFloat.set(weights);
+    wasm._wl_mesh_component_set_morph_target_weights(this._id, wasm._tempMem, weights.length);
+  }
+  /**
+   * Set the weight of a single morph target.
+   *
+   * @param target Index of the morph target.
+   * @param weight The new weight.
+   *
+   * ## Usage
+   *
+   * ```js
+   * const mesh = object.getComponent('mesh');
+   * const mouthTarget = mesh.morphTargets.getTargetIndex('mouth');
+   * mesh.setMorphTargetWeight(mouthTarget, 0.5);
+   * ```
+   *
+   * @since 1.2.0
+   */
+  setMorphTargetWeight(target, weight) {
+    const count = this.morphTargets?.count ?? 0;
+    if (target >= count) {
+      throw new Error(`Index ${target} is out of bounds for ${count} targets`);
+    }
+    this.engine.wasm._wl_mesh_component_set_morph_target_weight(this._id, target, weight);
   }
 };
 /** @override */
@@ -4695,6 +5883,12 @@ __decorate([
 __decorate([
   nativeProperty()
 ], MeshComponent.prototype, "skin", null);
+__decorate([
+  nativeProperty()
+], MeshComponent.prototype, "morphTargets", null);
+__decorate([
+  nativeProperty()
+], MeshComponent.prototype, "morphTargetWeights", null);
 var LockAxis;
 (function(LockAxis2) {
   LockAxis2[LockAxis2["None"] = 0] = "None";
@@ -4704,7 +5898,7 @@ var LockAxis;
 })(LockAxis || (LockAxis = {}));
 var PhysXComponent = class extends Component {
   getTranslationOffset(out = new Float32Array(3)) {
-    const wasm = this._engine.wasm;
+    const wasm = this.engine.wasm;
     wasm._wl_physx_component_get_offsetTranslation(this._id, wasm._tempMem);
     out[0] = wasm._tempMemFloat[0];
     out[1] = wasm._tempMemFloat[1];
@@ -4712,12 +5906,38 @@ var PhysXComponent = class extends Component {
     return out;
   }
   getRotationOffset(out = new Float32Array(4)) {
-    const wasm = this._engine.wasm;
+    const wasm = this.engine.wasm;
     const ptr = wasm._wl_physx_component_get_offsetTransform(this._id) >> 2;
     out[0] = wasm.HEAPF32[ptr];
     out[1] = wasm.HEAPF32[ptr + 1];
     out[2] = wasm.HEAPF32[ptr + 2];
     out[3] = wasm.HEAPF32[ptr + 3];
+    return out;
+  }
+  getExtents(out = new Float32Array(3)) {
+    const wasm = this.engine.wasm;
+    const ptr = wasm._wl_physx_component_get_extents(this._id) / 4;
+    out[0] = wasm.HEAPF32[ptr];
+    out[1] = wasm.HEAPF32[ptr + 1];
+    out[2] = wasm.HEAPF32[ptr + 2];
+    return out;
+  }
+  getLinearVelocity(out = new Float32Array(3)) {
+    const wasm = this.engine.wasm;
+    const tempMemFloat = wasm._tempMemFloat;
+    wasm._wl_physx_component_get_linearVelocity(this._id, wasm._tempMem);
+    out[0] = tempMemFloat[0];
+    out[1] = tempMemFloat[1];
+    out[2] = tempMemFloat[2];
+    return out;
+  }
+  getAngularVelocity(out = new Float32Array(3)) {
+    const wasm = this.engine.wasm;
+    const tempMemFloat = wasm._tempMemFloat;
+    wasm._wl_physx_component_get_angularVelocity(this._id, wasm._tempMem);
+    out[0] = tempMemFloat[0];
+    out[1] = tempMemFloat[1];
+    out[2] = tempMemFloat[2];
     return out;
   }
   /**
@@ -4729,7 +5949,7 @@ var PhysXComponent = class extends Component {
    * @param b Whether the rigid body should be static.
    */
   set static(b) {
-    this._engine.wasm._wl_physx_component_set_static(this._id, b);
+    this.engine.wasm._wl_physx_component_set_static(this._id, b);
   }
   /**
    * Whether this rigid body is static.
@@ -4742,7 +5962,7 @@ var PhysXComponent = class extends Component {
    * static.
    */
   get static() {
-    return !!this._engine.wasm._wl_physx_component_get_static(this._id);
+    return !!this.engine.wasm._wl_physx_component_get_static(this._id);
   }
   /**
    * Equivalent to {@link PhysXComponent.getTranslationOffset}.
@@ -4766,7 +5986,7 @@ var PhysXComponent = class extends Component {
    * @since 1.1.1
    */
   set translationOffset(offset2) {
-    const wasm = this._engine.wasm;
+    const wasm = this.engine.wasm;
     wasm._wl_physx_component_set_offsetTranslation(this._id, offset2[0], offset2[1], offset2[2]);
   }
   /**
@@ -4791,7 +6011,7 @@ var PhysXComponent = class extends Component {
    * @since 1.1.1
    */
   set rotationOffset(offset2) {
-    const wasm = this._engine.wasm;
+    const wasm = this.engine.wasm;
     wasm._wl_physx_component_set_offsetRotation(this._id, offset2[0], offset2[1], offset2[2], offset2[3]);
   }
   /**
@@ -4800,13 +6020,13 @@ var PhysXComponent = class extends Component {
    * @param b Whether the rigid body should be kinematic.
    */
   set kinematic(b) {
-    this._engine.wasm._wl_physx_component_set_kinematic(this._id, b);
+    this.engine.wasm._wl_physx_component_set_kinematic(this._id, b);
   }
   /**
    * Whether this rigid body is kinematic.
    */
   get kinematic() {
-    return !!this._engine.wasm._wl_physx_component_get_kinematic(this._id);
+    return !!this.engine.wasm._wl_physx_component_get_kinematic(this._id);
   }
   /**
    * Set whether this rigid body's gravity is enabled.
@@ -4814,13 +6034,13 @@ var PhysXComponent = class extends Component {
    * @param b Whether the rigid body's gravity should be enabled.
    */
   set gravity(b) {
-    this._engine.wasm._wl_physx_component_set_gravity(this._id, b);
+    this.engine.wasm._wl_physx_component_set_gravity(this._id, b);
   }
   /**
    * Whether this rigid body's gravity flag is enabled.
    */
   get gravity() {
-    return !!this._engine.wasm._wl_physx_component_get_gravity(this._id);
+    return !!this.engine.wasm._wl_physx_component_get_gravity(this._id);
   }
   /**
    * Set whether this rigid body's simulate flag is enabled.
@@ -4828,13 +6048,13 @@ var PhysXComponent = class extends Component {
    * @param b Whether the rigid body's simulate flag should be enabled.
    */
   set simulate(b) {
-    this._engine.wasm._wl_physx_component_set_simulate(this._id, b);
+    this.engine.wasm._wl_physx_component_set_simulate(this._id, b);
   }
   /**
    * Whether this rigid body's simulate flag is enabled.
    */
   get simulate() {
-    return !!this._engine.wasm._wl_physx_component_get_simulate(this._id);
+    return !!this.engine.wasm._wl_physx_component_get_simulate(this._id);
   }
   /**
    * Set whether to allow simulation of this rigid body.
@@ -4846,13 +6066,13 @@ var PhysXComponent = class extends Component {
    * @param b Whether to allow simulation of this rigid body.
    */
   set allowSimulation(b) {
-    this._engine.wasm._wl_physx_component_set_allowSimulation(this._id, b);
+    this.engine.wasm._wl_physx_component_set_allowSimulation(this._id, b);
   }
   /**
    * Whether to allow simulation of this rigid body.
    */
   get allowSimulation() {
-    return !!this._engine.wasm._wl_physx_component_get_allowSimulation(this._id);
+    return !!this.engine.wasm._wl_physx_component_get_allowSimulation(this._id);
   }
   /**
    * Set whether this rigid body may be queried in ray casts.
@@ -4860,13 +6080,13 @@ var PhysXComponent = class extends Component {
    * @param b Whether this rigid body may be queried in ray casts.
    */
   set allowQuery(b) {
-    this._engine.wasm._wl_physx_component_set_allowQuery(this._id, b);
+    this.engine.wasm._wl_physx_component_set_allowQuery(this._id, b);
   }
   /**
    * Whether this rigid body may be queried in ray casts.
    */
   get allowQuery() {
-    return !!this._engine.wasm._wl_physx_component_get_allowQuery(this._id);
+    return !!this.engine.wasm._wl_physx_component_get_allowQuery(this._id);
   }
   /**
    * Set whether this physics body is a trigger.
@@ -4878,13 +6098,13 @@ var PhysXComponent = class extends Component {
    * @param b Whether this physics body is a trigger.
    */
   set trigger(b) {
-    this._engine.wasm._wl_physx_component_set_trigger(this._id, b);
+    this.engine.wasm._wl_physx_component_set_trigger(this._id, b);
   }
   /**
    * Whether this physics body is a trigger.
    */
   get trigger() {
-    return !!this._engine.wasm._wl_physx_component_get_trigger(this._id);
+    return !!this.engine.wasm._wl_physx_component_get_trigger(this._id);
   }
   /**
    * Set the shape for collision detection.
@@ -4893,11 +6113,11 @@ var PhysXComponent = class extends Component {
    * @since 0.8.5
    */
   set shape(s) {
-    this._engine.wasm._wl_physx_component_set_shape(this._id, s);
+    this.engine.wasm._wl_physx_component_set_shape(this._id, s);
   }
   /** The shape for collision detection. */
   get shape() {
-    return this._engine.wasm._wl_physx_component_get_shape(this._id);
+    return this.engine.wasm._wl_physx_component_get_shape(this._id);
   }
   /**
    * Set additional data for the shape.
@@ -4908,7 +6128,7 @@ var PhysXComponent = class extends Component {
   set shapeData(d) {
     if (d == null || !isMeshShape(this.shape))
       return;
-    this._engine.wasm._wl_physx_component_set_shape_data(this._id, d.index);
+    this.engine.wasm._wl_physx_component_set_shape_data(this._id, d.index);
   }
   /**
    * Additional data for the shape.
@@ -4923,7 +6143,7 @@ var PhysXComponent = class extends Component {
     if (!isMeshShape(this.shape))
       return null;
     return {
-      index: this._engine.wasm._wl_physx_component_get_shape_data(this._id)
+      index: this.engine.wasm._wl_physx_component_get_shape_data(this._id)
     };
   }
   /**
@@ -4936,10 +6156,12 @@ var PhysXComponent = class extends Component {
     this.extents.set(e);
   }
   /**
-   * The shape extents for collision detection.
+   * Equivalent to {@link PhysXComponent.getExtents}.
+   *
+   * @note Prefer to use {@link PhysXComponent.getExtents} for performance.
    */
   get extents() {
-    const wasm = this._engine.wasm;
+    const wasm = this.engine.wasm;
     const ptr = wasm._wl_physx_component_get_extents(this._id);
     return new Float32Array(wasm.HEAPF32.buffer, ptr, 3);
   }
@@ -4947,34 +6169,34 @@ var PhysXComponent = class extends Component {
    * Get staticFriction.
    */
   get staticFriction() {
-    return this._engine.wasm._wl_physx_component_get_staticFriction(this._id);
+    return this.engine.wasm._wl_physx_component_get_staticFriction(this._id);
   }
   /**
    * Set staticFriction.
    * @param v New staticFriction.
    */
   set staticFriction(v) {
-    this._engine.wasm._wl_physx_component_set_staticFriction(this._id, v);
+    this.engine.wasm._wl_physx_component_set_staticFriction(this._id, v);
   }
   /**
    * Get dynamicFriction.
    */
   get dynamicFriction() {
-    return this._engine.wasm._wl_physx_component_get_dynamicFriction(this._id);
+    return this.engine.wasm._wl_physx_component_get_dynamicFriction(this._id);
   }
   /**
    * Set dynamicFriction
    * @param v New dynamicDamping.
    */
   set dynamicFriction(v) {
-    this._engine.wasm._wl_physx_component_set_dynamicFriction(this._id, v);
+    this.engine.wasm._wl_physx_component_set_dynamicFriction(this._id, v);
   }
   /**
    * Get bounciness.
    * @since 0.9.0
    */
   get bounciness() {
-    return this._engine.wasm._wl_physx_component_get_bounciness(this._id);
+    return this.engine.wasm._wl_physx_component_get_bounciness(this._id);
   }
   /**
    * Set bounciness.
@@ -4982,31 +6204,31 @@ var PhysXComponent = class extends Component {
    * @since 0.9.0
    */
   set bounciness(v) {
-    this._engine.wasm._wl_physx_component_set_bounciness(this._id, v);
+    this.engine.wasm._wl_physx_component_set_bounciness(this._id, v);
   }
   /**
    * Get linearDamping/
    */
   get linearDamping() {
-    return this._engine.wasm._wl_physx_component_get_linearDamping(this._id);
+    return this.engine.wasm._wl_physx_component_get_linearDamping(this._id);
   }
   /**
    * Set linearDamping.
    * @param v New linearDamping.
    */
   set linearDamping(v) {
-    this._engine.wasm._wl_physx_component_set_linearDamping(this._id, v);
+    this.engine.wasm._wl_physx_component_set_linearDamping(this._id, v);
   }
   /** Get angularDamping. */
   get angularDamping() {
-    return this._engine.wasm._wl_physx_component_get_angularDamping(this._id);
+    return this.engine.wasm._wl_physx_component_get_angularDamping(this._id);
   }
   /**
    * Set angularDamping.
    * @param v New angularDamping.
    */
   set angularDamping(v) {
-    this._engine.wasm._wl_physx_component_set_angularDamping(this._id, v);
+    this.engine.wasm._wl_physx_component_set_angularDamping(this._id, v);
   }
   /**
    * Set linear velocity.
@@ -5018,11 +6240,15 @@ var PhysXComponent = class extends Component {
    * @param v New linear velocity.
    */
   set linearVelocity(v) {
-    this._engine.wasm._wl_physx_component_set_linearVelocity(this._id, v[0], v[1], v[2]);
+    this.engine.wasm._wl_physx_component_set_linearVelocity(this._id, v[0], v[1], v[2]);
   }
-  /** Linear velocity or `[0, 0, 0]` if the component is not active. */
+  /**
+   * Equivalent to {@link PhysXComponent.getLinearVelocity}.
+   *
+   * @note Prefer to use {@link PhysXComponent.getLinearVelocity} for performance.
+   */
   get linearVelocity() {
-    const wasm = this._engine.wasm;
+    const wasm = this.engine.wasm;
     wasm._wl_physx_component_get_linearVelocity(this._id, wasm._tempMem);
     return new Float32Array(wasm.HEAPF32.buffer, wasm._tempMem, 3);
   }
@@ -5036,11 +6262,15 @@ var PhysXComponent = class extends Component {
    * @param v New angular velocity
    */
   set angularVelocity(v) {
-    this._engine.wasm._wl_physx_component_set_angularVelocity(this._id, v[0], v[1], v[2]);
+    this.engine.wasm._wl_physx_component_set_angularVelocity(this._id, v[0], v[1], v[2]);
   }
-  /** Angular velocity or `[0, 0, 0]` if the component is not active. */
+  /**
+   * Equivalent to {@link PhysXComponent.getAngularVelocity}.
+   *
+   * @note Prefer to use {@link PhysXComponent.getAngularVelocity} for performance.
+   */
   get angularVelocity() {
-    const wasm = this._engine.wasm;
+    const wasm = this.engine.wasm;
     wasm._wl_physx_component_get_angularVelocity(this._id, wasm._tempMem);
     return new Float32Array(wasm.HEAPF32.buffer, wasm._tempMem, 3);
   }
@@ -5050,7 +6280,7 @@ var PhysXComponent = class extends Component {
    * @param flags New flags that need to be set.
    */
   set groupsMask(flags) {
-    this._engine.wasm._wl_physx_component_set_groupsMask(this._id, flags);
+    this.engine.wasm._wl_physx_component_set_groupsMask(this._id, flags);
   }
   /**
    * Get the components groups mask flags.
@@ -5072,7 +6302,7 @@ var PhysXComponent = class extends Component {
    * ```
    */
   get groupsMask() {
-    return this._engine.wasm._wl_physx_component_get_groupsMask(this._id);
+    return this.engine.wasm._wl_physx_component_get_groupsMask(this._id);
   }
   /**
    * Set the components blocks mask.
@@ -5080,7 +6310,7 @@ var PhysXComponent = class extends Component {
    * @param flags New flags that need to be set.
    */
   set blocksMask(flags) {
-    this._engine.wasm._wl_physx_component_set_blocksMask(this._id, flags);
+    this.engine.wasm._wl_physx_component_set_blocksMask(this._id, flags);
   }
   /**
    * Get the components blocks mask flags.
@@ -5102,7 +6332,7 @@ var PhysXComponent = class extends Component {
    * ```
    */
   get blocksMask() {
-    return this._engine.wasm._wl_physx_component_get_blocksMask(this._id);
+    return this.engine.wasm._wl_physx_component_get_blocksMask(this._id);
   }
   /**
    * Set axes to lock for linear velocity.
@@ -5119,7 +6349,7 @@ var PhysXComponent = class extends Component {
    * @note This has no effect if the component is static.
    */
   set linearLockAxis(lock) {
-    this._engine.wasm._wl_physx_component_set_linearLockAxis(this._id, lock);
+    this.engine.wasm._wl_physx_component_set_linearLockAxis(this._id, lock);
   }
   /**
    * Get the linear lock axes flags.
@@ -5135,7 +6365,7 @@ var PhysXComponent = class extends Component {
    * @return axes that are currently locked for linear movement.
    */
   get linearLockAxis() {
-    return this._engine.wasm._wl_physx_component_get_linearLockAxis(this._id);
+    return this.engine.wasm._wl_physx_component_get_linearLockAxis(this._id);
   }
   /**
    * Set axes to lock for angular velocity.
@@ -5150,7 +6380,7 @@ var PhysXComponent = class extends Component {
    * @note This has no effect if the component is static.
    */
   set angularLockAxis(lock) {
-    this._engine.wasm._wl_physx_component_set_angularLockAxis(this._id, lock);
+    this.engine.wasm._wl_physx_component_set_angularLockAxis(this._id, lock);
   }
   /**
    * Get the angular lock axes flags.
@@ -5166,7 +6396,7 @@ var PhysXComponent = class extends Component {
    * @return axes that are currently locked for angular movement.
    */
   get angularLockAxis() {
-    return this._engine.wasm._wl_physx_component_get_angularLockAxis(this._id);
+    return this.engine.wasm._wl_physx_component_get_angularLockAxis(this._id);
   }
   /**
    * Set mass.
@@ -5176,11 +6406,11 @@ var PhysXComponent = class extends Component {
    * @param m New mass.
    */
   set mass(m) {
-    this._engine.wasm._wl_physx_component_set_mass(this._id, m);
+    this.engine.wasm._wl_physx_component_set_mass(this._id, m);
   }
   /** Mass */
   get mass() {
-    return this._engine.wasm._wl_physx_component_get_mass(this._id);
+    return this.engine.wasm._wl_physx_component_get_mass(this._id);
   }
   /**
    * Set mass space interia tensor.
@@ -5192,7 +6422,7 @@ var PhysXComponent = class extends Component {
    * @param v New mass space interatia tensor.
    */
   set massSpaceInteriaTensor(v) {
-    this._engine.wasm._wl_physx_component_set_massSpaceInertiaTensor(this._id, v[0], v[1], v[2]);
+    this.engine.wasm._wl_physx_component_set_massSpaceInertiaTensor(this._id, v[0], v[1], v[2]);
   }
   /**
    * Set the rigid body to sleep upon activation.
@@ -5204,7 +6434,7 @@ var PhysXComponent = class extends Component {
    * @since 1.1.5
    */
   set sleepOnActivate(flag) {
-    this._engine.wasm._wl_physx_component_set_sleepOnActivate(this._id, flag);
+    this.engine.wasm._wl_physx_component_set_sleepOnActivate(this._id, flag);
   }
   /**
    * `true` if the rigid body is set to sleep upon activation, `false` otherwise.
@@ -5212,7 +6442,7 @@ var PhysXComponent = class extends Component {
    * @since 1.1.5
    */
   get sleepOnActivate() {
-    return !!this._engine.wasm._wl_physx_component_get_sleepOnActivate(this._id);
+    return !!this.engine.wasm._wl_physx_component_get_sleepOnActivate(this._id);
   }
   /**
    * Apply a force.
@@ -5228,7 +6458,7 @@ var PhysXComponent = class extends Component {
    * @param local Whether position is in local space, default `false`.
    */
   addForce(f, m = ForceMode.Force, localForce = false, p, local = false) {
-    const wasm = this._engine.wasm;
+    const wasm = this.engine.wasm;
     if (!p) {
       wasm._wl_physx_component_addForce(this._id, f[0], f[1], f[2], m, localForce);
       return;
@@ -5246,7 +6476,7 @@ var PhysXComponent = class extends Component {
    * @param m Force mode, see {@link ForceMode}, default `Force`.
    */
   addTorque(f, m = ForceMode.Force) {
-    this._engine.wasm._wl_physx_component_addTorque(this._id, f[0], f[1], f[2], m);
+    this.engine.wasm._wl_physx_component_addTorque(this._id, f[0], f[1], f[2], m);
   }
   /**
    * Add on collision callback.
@@ -5282,10 +6512,10 @@ var PhysXComponent = class extends Component {
    * @returns Id of the new callback for use with {@link PhysXComponent#removeCollisionCallback}.
    */
   onCollisionWith(otherComp, callback) {
-    const physics = this._engine.physics;
+    const physics = this.engine.physics;
     physics._callbacks[this._id] = physics._callbacks[this._id] || [];
     physics._callbacks[this._id].push(callback);
-    return this._engine.wasm._wl_physx_component_addCallback(this._id, otherComp._id || this._id);
+    return this.engine.wasm._wl_physx_component_addCallback(this._id, otherComp._id || this._id);
   }
   /**
    * Remove a collision callback added with {@link PhysXComponent#onCollision} or {@link PhysXComponent#onCollisionWith}.
@@ -5295,8 +6525,8 @@ var PhysXComponent = class extends Component {
    * @throws When the callback does not exist.
    */
   removeCollisionCallback(callbackId) {
-    const physics = this._engine.physics;
-    const r = this._engine.wasm._wl_physx_component_removeCallback(this._id, callbackId);
+    const physics = this.engine.physics;
+    const r = this.engine.wasm._wl_physx_component_removeCallback(this._id, callbackId);
     if (r)
       physics._callbacks[this._id].splice(-r);
   }
@@ -5385,38 +6615,58 @@ var Physics = class {
    * **Note**: This is public to emulate a `friend` accessor.
    */
   _callbacks;
+  /** Hit. */
+  _hit;
   /** Wonderland Engine instance */
   _engine;
   /** Ray Hit */
   _rayHit;
-  /** Hit. */
-  _hit;
   constructor(engine2) {
     this._engine = engine2;
     this._rayHit = engine2.wasm._malloc(4 * (3 * 4 + 3 * 4 + 4 + 2) + 4);
-    this._hit = new RayHit(this._engine, this._rayHit);
+    this._hit = new RayHit(engine2.scene, this._rayHit);
     this._callbacks = {};
   }
   /**
-   * Cast a ray through the physics scene and find intersecting objects.
+   * Cast a ray through the scene and find intersecting physics components.
    *
    * The resulting ray hit will contain **up to 4** closest ray hits,
    * sorted by increasing distance.
    *
+   * Example:
+   *
+   * ```js
+   * const hit = engine.physics.rayCast(
+   *     [0, 0, 0],
+   *     [0, 0, 1],
+   *     1 << 0 | 1 << 4, // Only check against physics components in groups 0 and 4
+   *     25
+   * );
+   * if (hit.hitCount > 0) {
+   *     const locations = hit.getLocations();
+   *     console.log(`Object hit at: ${locations[0][0]}, ${locations[0][1]}, ${locations[0][2]}`);
+   * }
+   * ```
+   *
    * @param o Ray origin.
    * @param d Ray direction.
-   * @param group Collision group to filter by: only objects that are
-   *        part of given group are considered for raycast.
-   * @param maxDistance Maximum ray distance, default `100.0`.
+   * @param groupMask Bitmask of physics groups to filter by: only objects
+   *        that are part of given groups are considered for the raycast.
+   * @param maxDistance Maximum **inclusive** hit distance. Defaults to `100`.
    *
-   * @returns The RayHit instance, belonging to this class.
+   * @returns The {@link RayHit} instance, cached by this class.
    *
-   * @note The returned {@link RayHit} object is owned by the Physics instance and
-   *       will be reused with the next {@link Physics#rayCast} call.
+   * @note The returned {@link RayHit} object is owned by the {@link Physics}
+   *       instance and will be reused with the next {@link Physics#rayCast} call.
    */
-  rayCast(o, d, group, maxDistance = 100) {
-    this._engine.wasm._wl_physx_ray_cast(o[0], o[1], o[2], d[0], d[1], d[2], group, maxDistance, this._rayHit);
+  rayCast(o, d, groupMask, maxDistance = 100) {
+    const scene = this._engine.scene._index;
+    this._engine.wasm._wl_physx_ray_cast(scene, o[0], o[1], o[2], d[0], d[1], d[2], groupMask, maxDistance, this._rayHit);
     return this._hit;
+  }
+  /** Hosting engine instance. */
+  get engine() {
+    return this._engine;
   }
 };
 var MeshIndexType;
@@ -5431,62 +6681,33 @@ var MeshSkinningType;
   MeshSkinningType2[MeshSkinningType2["FourJoints"] = 1] = "FourJoints";
   MeshSkinningType2[MeshSkinningType2["EightJoints"] = 2] = "EightJoints";
 })(MeshSkinningType || (MeshSkinningType = {}));
-var Mesh = class {
+var Mesh = class extends Resource {
   /**
-   * Index of the mesh in the manager.
+   * @deprecated Use {@link MeshManager.create} instead, accessible via {@link WonderlandEngine.meshes}:
    *
-   * @hidden
-   */
-  _index = -1;
-  /** Wonderland Engine instance. @hidden */
-  _engine;
-  /**
-   * Create a new instance.
-   *
-   * @param params Either a mesh index to wrap or set of parameters to create a new mesh.
-   *    For more information, please have a look at the {@link MeshParameters} interface.
+   * ```js
+   * const mesh = engine.meshes.create({vertexCount: 3, indexData: [0, 1, 2]});
+   * ...
+   * mesh.update();
+   * ```
    */
   constructor(engine2, params) {
-    this._engine = engine2 ?? WL;
-    this._index = -1;
-    if (isNumber(params)) {
-      this._index = params;
-      return;
+    if (!isNumber(params)) {
+      const mesh = engine2.meshes.create(params);
+      super(engine2, mesh._index);
+      return mesh;
     }
-    if (!params.vertexCount)
-      throw new Error("Missing parameter 'vertexCount'");
-    const wasm = this._engine.wasm;
-    let indexData = 0;
-    let indexType = 0;
-    let indexDataSize = 0;
-    if (params.indexData) {
-      indexType = params.indexType || MeshIndexType.UnsignedShort;
-      indexDataSize = params.indexData.length * indexType;
-      indexData = wasm._malloc(indexDataSize);
-      switch (indexType) {
-        case MeshIndexType.UnsignedByte:
-          wasm.HEAPU8.set(params.indexData, indexData);
-          break;
-        case MeshIndexType.UnsignedShort:
-          wasm.HEAPU16.set(params.indexData, indexData >> 1);
-          break;
-        case MeshIndexType.UnsignedInt:
-          wasm.HEAPU32.set(params.indexData, indexData >> 2);
-          break;
-      }
-    }
-    const { skinningType = MeshSkinningType.None } = params;
-    this._index = wasm._wl_mesh_create(indexData, indexDataSize, indexType, params.vertexCount, skinningType);
+    super(engine2, params);
   }
   /** Number of vertices in this mesh. */
   get vertexCount() {
-    return this._engine.wasm._wl_mesh_get_vertexCount(this._index);
+    return this.engine.wasm._wl_mesh_get_vertexCount(this._id);
   }
   /** Index data (read-only) or `null` if the mesh is not indexed. */
   get indexData() {
-    const wasm = this._engine.wasm;
+    const wasm = this.engine.wasm;
     const tempMem = wasm._tempMem;
-    const ptr = wasm._wl_mesh_get_indexData(this._index, tempMem, tempMem + 4);
+    const ptr = wasm._wl_mesh_get_indexData(this._id, tempMem, tempMem + 4);
     if (ptr === null)
       return null;
     const indexCount = wasm.HEAPU32[tempMem / 4];
@@ -5501,10 +6722,6 @@ var Mesh = class {
     }
     return null;
   }
-  /** Hosting engine instance. */
-  get engine() {
-    return this._engine;
-  }
   /**
    * Apply changes to {@link attribute | vertex attributes}.
    *
@@ -5516,26 +6733,27 @@ var Mesh = class {
    * modifications at all.
    */
   update() {
-    this._engine.wasm._wl_mesh_update(this._index);
+    this.engine.wasm._wl_mesh_update(this._id);
   }
   getBoundingSphere(out = new Float32Array(4)) {
-    const tempMemFloat = this._engine.wasm._tempMemFloat;
-    this._engine.wasm._wl_mesh_get_boundingSphere(this._index, this._engine.wasm._tempMem);
-    out[0] = tempMemFloat[0];
-    out[1] = tempMemFloat[1];
-    out[2] = tempMemFloat[2];
-    out[3] = tempMemFloat[3];
+    const wasm = this.engine.wasm;
+    this.engine.wasm._wl_mesh_get_boundingSphere(this._id, wasm._tempMem);
+    out[0] = wasm._tempMemFloat[0];
+    out[1] = wasm._tempMemFloat[1];
+    out[2] = wasm._tempMemFloat[2];
+    out[3] = wasm._tempMemFloat[3];
     return out;
   }
   attribute(attr) {
     if (typeof attr != "number")
       throw new TypeError("Expected number, but got " + typeof attr);
-    const tempMemUint32 = this._engine.wasm._tempMemUint32;
-    this._engine.wasm._wl_mesh_get_attribute(this._index, attr, this._engine.wasm._tempMem);
+    const wasm = this.engine.wasm;
+    const tempMemUint32 = wasm._tempMemUint32;
+    wasm._wl_mesh_get_attribute(this._id, attr, wasm._tempMem);
     if (tempMemUint32[0] == 255)
       return null;
     const arraySize = tempMemUint32[5];
-    return new MeshAttributeAccessor(this._engine, {
+    return new MeshAttributeAccessor(this.engine, {
       attribute: tempMemUint32[0],
       offset: tempMemUint32[1],
       stride: tempMemUint32[2],
@@ -5564,21 +6782,15 @@ var Mesh = class {
    * @since 0.9.0
    */
   destroy() {
-    this._engine.wasm._wl_mesh_destroy(this._index);
+    this.engine.wasm._wl_mesh_destroy(this._id);
+    this.engine.meshes._destroy(this);
   }
-  /**
-   * Checks equality by comparing whether the wrapped native mesh ids are
-   * equal.
-   *
-   * @param otherMesh Mesh to check equality with.
-   * @returns Whether this mesh equals the given mesh.
-   *
-   * @since 1.0.0
-   */
-  equals(otherMesh) {
-    if (!otherMesh)
-      return false;
-    return this._index === otherMesh._index;
+  /** @overload */
+  toString() {
+    if (this.isDestroyed) {
+      return "Mesh(destroyed)";
+    }
+    return `Mesh(${this._index})`;
   }
 };
 var MeshAttributeAccessor = class {
@@ -5696,200 +6908,105 @@ var MeshAttributeAccessor = class {
     wasm._wl_mesh_set_attribute_values(this._attribute, srcFormatSize, v.byteOffset, srcSize, destFormatSize, this._offset + i * this._stride, this._stride);
     return this;
   }
-};
-var Material = class {
-  /**
-   * Index of this material in the manager.
-   *
-   * @hidden
-   */
-  _index;
-  /**
-   * Material definition index in the scene.
-   *
-   * @hidden
-   */
-  _definition;
-  /** Wonderland Engine instance. @hidden */
-  _engine;
-  /**
-   * Create a new Material.
-   *
-   * @note Creating material is expensive. Please use {@link Material#clone} to clone a material.
-   * @note Do not use this constructor directly with an index, this is reserved for internal purposes.
-   */
-  constructor(engine2, params) {
-    this._engine = engine2;
-    if (typeof params !== "number") {
-      if (!params?.pipeline)
-        throw new Error("Missing parameter 'pipeline'");
-      const wasm = this._engine.wasm;
-      const pipeline = params.pipeline;
-      this._index = wasm._wl_material_create(wasm.tempUTF8(pipeline));
-      if (this._index < 0)
-        throw new Error(`No such pipeline '${pipeline}'`);
-    } else {
-      this._index = params;
-    }
-    this._definition = this._engine.wasm._wl_material_get_definition(this._index);
-    if (!this._engine.wasm._materialDefinitions[this._definition])
-      throw new Error(`Material Definition ${this._definition} not found for material with index ${this._index}`);
-    return new Proxy(this, {
-      get(target, prop) {
-        const wasm = engine2.wasm;
-        const definition = wasm._materialDefinitions[target._definition];
-        const param = definition.get(prop);
-        if (!param)
-          return target[prop];
-        if (wasm._wl_material_get_param_value(target._index, param.index, wasm._tempMem)) {
-          const type = param.type;
-          switch (type.type) {
-            case MaterialParamType.UnsignedInt:
-              return type.componentCount == 1 ? wasm._tempMemUint32[0] : new Uint32Array(wasm.HEAPU32.buffer, wasm._tempMem, type.componentCount);
-            case MaterialParamType.Int:
-              return type.componentCount == 1 ? wasm._tempMemInt[0] : new Int32Array(wasm.HEAP32.buffer, wasm._tempMem, type.componentCount);
-            case MaterialParamType.Float:
-              return type.componentCount == 1 ? wasm._tempMemFloat[0] : new Float32Array(wasm.HEAPF32.buffer, wasm._tempMem, type.componentCount);
-            case MaterialParamType.Sampler:
-              return engine2.textures.wrap(wasm._tempMemInt[0]);
-            default:
-              throw new Error(`Invalid type ${type.type} on parameter ${param.index} for material ${target._index}`);
-          }
-        }
-      },
-      set(target, prop, value) {
-        const wasm = engine2.wasm;
-        const definition = wasm._materialDefinitions[target._definition];
-        const param = definition.get(prop);
-        if (!param) {
-          target[prop] = value;
-          return true;
-        }
-        const type = param.type;
-        switch (type.type) {
-          case MaterialParamType.UnsignedInt:
-          case MaterialParamType.Int:
-          case MaterialParamType.Sampler:
-            const v = value.id ?? value;
-            wasm._wl_material_set_param_value_uint(target._index, param.index, v);
-            break;
-          case MaterialParamType.Float:
-            let count = 1;
-            if (typeof value === "number") {
-              wasm._tempMemFloat[0] = value;
-            } else {
-              count = value.length;
-              for (let i = 0; i < count; ++i)
-                wasm._tempMemFloat[i] = value[i];
-            }
-            wasm._wl_material_set_param_value_float(target._index, param.index, wasm._tempMem, count);
-            break;
-          case MaterialParamType.Font:
-            throw new Error("Setting font properties is currently unsupported.");
-        }
-        return true;
-      }
-    });
-  }
-  /** @deprecated Use {@link #pipeline} instead. */
-  get shader() {
-    return this.pipeline;
-  }
-  /** Name of the pipeline used by this material. */
-  get pipeline() {
-    const wasm = this._engine.wasm;
-    return wasm.UTF8ToString(wasm._wl_material_get_pipeline(this._index));
-  }
   /** Hosting engine instance. */
   get engine() {
     return this._engine;
   }
-  /**
-   * Create a copy of the underlying native material.
-   *
-   * @returns Material clone.
-   */
-  clone() {
-    const id = this._engine.wasm._wl_material_clone(this._index);
-    return id > 0 ? new Material(this._engine, id) : null;
+};
+var Font = class extends Resource {
+  /** Em height in object space. Equivalent to line height. */
+  get emHeight() {
+    return this.engine.wasm._wl_font_get_emHeight(this._id);
   }
   /**
-   * Checks equality by comparing whether the wrapped native material ids are
-   * equal.
-   *
-   * @param otherMaterial Material to check equality with.
-   * @returns Whether this material equals the given material.
-   *
-   * @since 1.0.0
+   * Cap height in object space. This is the typical height of capital
+   * letters. Can be 0 if not defined by the font.
    */
-  equals(otherMaterial) {
-    if (!otherMaterial)
-      return false;
-    return this._index === otherMaterial._index;
+  get capHeight() {
+    return this.engine.wasm._wl_font_get_capHeight(this._id);
   }
   /**
-   * Wrap a native material index.
-   *
-   * @param engine Engine instance.
-   * @param index The index.
-   * @returns Material instance or `null` if index <= 0.
-   *
-   * @deprecated Please use `new Material()` instead.
+   * X height in object space. This is the typical height of lowercase
+   * letters. Can be 0 if not defined by the font.
    */
-  static wrap(engine2, index) {
-    return index > 0 ? new Material(engine2, index) : null;
+  get xHeight() {
+    return this.engine.wasm._wl_font_get_xHeight(this._id);
   }
 };
 var temp2d = null;
-var Texture = class {
-  /** Wonderland Engine instance. @hidden */
-  _engine;
-  /** Index in the manager. @hidden */
-  _id = 0;
-  /** HTML image index. @hidden */
-  _imageIndex = null;
+var Texture = class extends Resource {
   /**
-   * @param engine The engine instance
-   * @param param HTML media element to create texture from or texture id to wrap.
+   * @deprecated Use {@link TextureManager.create} instead, accessible via
+   * {@link WonderlandEngine.textures}:
+   *
+   * ```js
+   * const image = new Image();
+   * image.onload = () => {
+   *     const texture = engine.textures.create(image);
+   * };
+   * ```
    */
   constructor(engine2, param) {
-    this._engine = engine2 ?? WL;
-    const wasm = engine2.wasm;
-    if (param instanceof HTMLImageElement || param instanceof HTMLVideoElement || param instanceof HTMLCanvasElement) {
-      const index = wasm._images.length;
-      wasm._images.push(param);
-      this._imageIndex = index;
-      this._id = this._engine.wasm._wl_renderer_addImage(index);
-    } else {
-      this._id = param;
+    if (isImageLike(param)) {
+      const texture = engine2.textures.create(param);
+      super(engine2, texture._index);
+      return texture;
     }
-    this._engine.textures._set(this);
+    super(engine2, param);
   }
-  /** Whether this texture is valid. */
+  /**
+   * Whether this texture is valid
+   *
+   * @deprecated Use {@link SceneResource#isDestroyed} instead.
+   */
   get valid() {
-    return this._id >= 0;
+    return !this.isDestroyed;
   }
-  /** Index in this manager. */
+  /**
+   * Index in this manager.
+   *
+   * @deprecated Use {@link Texture.index} instead.
+   */
   get id() {
-    return this._id;
+    return this.index;
   }
   /** Update the texture to match the HTML element (e.g. reflect the current frame of a video). */
   update() {
-    if (!this.valid || this._imageIndex === null)
+    const image = this._imageIndex;
+    if (!this.valid || !image)
       return;
-    this._engine.wasm._wl_renderer_updateImage(this._id, this._imageIndex);
+    this.engine.wasm._wl_renderer_updateImage(image);
   }
   /** Width of the texture. */
   get width() {
-    return this._engine.wasm._wl_texture_width(this._id);
+    const element = this.htmlElement;
+    if (element)
+      return element.width;
+    const wasm = this.engine.wasm;
+    wasm._wl_image_size(this._imageIndex, wasm._tempMem);
+    return wasm._tempMemUint32[0];
   }
   /** Height of the texture. */
   get height() {
-    return this._engine.wasm._wl_texture_height(this._id);
+    const element = this.htmlElement;
+    if (element)
+      return element.height;
+    const wasm = this.engine.wasm;
+    wasm._wl_image_size(this._imageIndex, wasm._tempMem);
+    return wasm._tempMemUint32[1];
   }
-  /** Hosting engine instance. */
-  get engine() {
-    return this._engine;
+  /**
+   * Returns the html element associated to this texture.
+   *
+   * @note This accessor will return `null` if the image is compressed.
+   */
+  get htmlElement() {
+    const image = this._imageIndex;
+    if (!image)
+      return null;
+    const wasm = this.engine.wasm;
+    const jsImageIndex = wasm._wl_image_get_jsImage_index(image);
+    return wasm._images[jsImageIndex];
   }
   /**
    * Update a subrange on the texture to match the HTML element (e.g. reflect the current frame of a video).
@@ -5907,8 +7024,13 @@ var Texture = class {
    * @param h height
    */
   updateSubImage(x, y, w, h) {
-    if (!this.valid || this._imageIndex === null)
+    if (this.isDestroyed)
       return;
+    const image = this._imageIndex;
+    if (!image)
+      return;
+    const wasm = this.engine.wasm;
+    const jsImageIndex = wasm._wl_image_get_jsImage_index(image);
     if (!temp2d) {
       const canvas2 = document.createElement("canvas");
       const ctx = canvas2.getContext("2d");
@@ -5920,17 +7042,16 @@ var Texture = class {
         ctx
       };
     }
-    const wasm = this._engine.wasm;
-    const img = wasm._images[this._imageIndex];
+    const img = wasm._images[jsImageIndex];
     if (!img)
       return;
     temp2d.canvas.width = w;
     temp2d.canvas.height = h;
     temp2d.ctx.drawImage(img, x, y, w, h, 0, 0, w, h);
     const yOffset = (img.videoHeight ?? img.height) - y - h;
-    wasm._images[this._imageIndex] = temp2d.canvas;
-    wasm._wl_renderer_updateImage(this._id, this._imageIndex, x, yOffset);
-    wasm._images[this._imageIndex] = img;
+    wasm._images[jsImageIndex] = temp2d.canvas;
+    wasm._wl_renderer_updateImage(image, x, yOffset);
+    wasm._images[jsImageIndex] = img;
   }
   /**
    * Destroy and free the texture's texture altas space and memory.
@@ -5946,44 +7067,36 @@ var Texture = class {
    * @since 0.9.0
    */
   destroy() {
-    this.engine._destroyTexture(this);
-    this._id = -1;
-    this._imageIndex = null;
+    const wasm = this.engine.wasm;
+    wasm._wl_texture_destroy(this._id);
+    this.engine.textures._destroy(this);
   }
-  /**
-   * Checks equality by comparing whether the wrapped native texture ids are
-   * equal.
-   *
-   * @param otherTexture Texture to check equality with.
-   * @returns Whether this texture equals the given texture.
-   *
-   * @since 1.0.0
-   */
-  equals(otherTexture) {
-    if (!otherTexture)
-      return false;
-    return this._id === otherTexture._id;
+  /** @overload */
+  toString() {
+    if (this.isDestroyed) {
+      return "Texture(destroyed)";
+    }
+    return `Texture(${this._index})`;
+  }
+  get _imageIndex() {
+    return this.engine.wasm._wl_texture_get_image_index(this._id);
   }
 };
-var Animation = class {
-  /** Index of the mesh in the manager. @hidden */
-  _index;
-  /** Wonderland Engine instance. @hidden */
-  _engine;
+var Animation = class extends SceneResource {
   /**
    * @param index Index in the manager
    */
-  constructor(engine2 = WL, index) {
-    this._engine = engine2;
-    this._index = index;
+  constructor(host = WL, index) {
+    const scene = host instanceof Prefab ? host : host.scene;
+    super(scene, index);
   }
   /** Duration of this animation. */
   get duration() {
-    return this._engine.wasm._wl_animation_get_duration(this._index);
+    return this.engine.wasm._wl_animation_get_duration(this._id);
   }
   /** Number of tracks in this animation. */
   get trackCount() {
-    return this._engine.wasm._wl_animation_get_trackCount(this._index);
+    return this.engine.wasm._wl_animation_get_trackCount(this._id);
   }
   /**
    * Clone this animation retargeted to a new set of objects.
@@ -6002,54 +7115,66 @@ var Animation = class {
    * @returns The retargeted clone of this animation.
    */
   retarget(newTargets) {
-    const wasm = this._engine.wasm;
+    const wasm = this.engine.wasm;
     if (newTargets instanceof Skin) {
-      const animId2 = wasm._wl_animation_retargetToSkin(this._index, newTargets._index);
-      return new Animation(this._engine, animId2);
+      const index2 = wasm._wl_animation_retargetToSkin(this._id, newTargets._id);
+      return this._scene.animations.wrap(index2);
     }
     if (newTargets.length != this.trackCount) {
       throw Error("Expected " + this.trackCount.toString() + " targets, but got " + newTargets.length.toString());
     }
     const ptr = wasm._malloc(2 * newTargets.length);
     for (let i = 0; i < newTargets.length; ++i) {
+      const object3d = newTargets[i];
+      this.scene.assertOrigin(object3d);
       wasm.HEAPU16[ptr >> 1 + i] = newTargets[i].objectId;
     }
-    const animId = wasm._wl_animation_retarget(this._index, ptr);
+    const index = wasm._wl_animation_retarget(this._id, ptr);
     wasm._free(ptr);
-    return new Animation(this._engine, animId);
+    return this._scene.animations.wrap(index);
   }
-  /**
-   * Checks equality by comparing whether the wrapped native animation ids
-   * are equal.
-   *
-   * @param otherAnimation Animation to check equality with.
-   * @returns Whether this animation equals the given animation.
-   *
-   * @since 1.0.0
-   */
-  equals(otherAnimation) {
-    if (!otherAnimation)
-      return false;
-    return this._index === otherAnimation._index;
+  /** @overload */
+  toString() {
+    if (this.isDestroyed) {
+      return "Animation(destroyed)";
+    }
+    return `Animation(${this._index})`;
   }
 };
 var Object3D = class {
   /**
-   * Object index in the manager.
+   * Packed object id, containing scene index and local id.
    *
    * @hidden
    */
-  _objectId = -1;
+  _id = -1;
+  /** Object id, relative to the scene manager. @hidden */
+  _localId = -1;
+  /** Scene instance. @hidden */
+  _scene;
   /** Wonderland Engine instance. @hidden */
   _engine;
   /**
-   * @param o Object id to wrap
+   * @param o Object id to wrap.
    *
-   * For performance reasons, please use {@link WonderlandEngine.wrapObject}
+   * @deprecated Objects must be obtained via {@link Scene.addObject} or {@link Scene.wrap}:
+   *
+   * ```js
+   * // Create a new object.
+   * const obj = scene.addObject();
+   *
+   * // Wrap an object using its id. The id must be valid.
+   * const obj = scene.wrap(0);
+   * ```
+   *
+   * @hidden
    */
-  constructor(engine2, o) {
-    this._objectId = o;
-    this._engine = engine2;
+  constructor(scene, id) {
+    scene = scene instanceof Prefab ? scene : scene.scene;
+    this._localId = id;
+    this._id = scene._index << 22 | id;
+    this._scene = scene;
+    this._engine = scene.engine;
   }
   /**
    * Name of the object.
@@ -6058,7 +7183,7 @@ var Object3D = class {
    */
   get name() {
     const wasm = this._engine.wasm;
-    return wasm.UTF8ToString(wasm._wl_object_name(this.objectId));
+    return wasm.UTF8ToString(wasm._wl_object_name(this._id));
   }
   /**
    * Set the object's name.
@@ -6067,39 +7192,26 @@ var Object3D = class {
    */
   set name(newName) {
     const wasm = this._engine.wasm;
-    wasm._wl_object_set_name(this.objectId, wasm.tempUTF8(newName));
+    wasm._wl_object_set_name(this._id, wasm.tempUTF8(newName));
   }
   /**
    * Parent of this object or `null` if parented to root.
    */
   get parent() {
-    const p = this._engine.wasm._wl_object_parent(this.objectId);
-    return p === 0 ? null : this._engine.wrapObject(p);
+    const p = this._engine.wasm._wl_object_parent(this._id);
+    return p === 0 ? null : this._scene.wrap(p);
   }
   /**
-   * Children of this object.
+   * Equivalent to {@link Object3D.getChildren}.
    *
-   * @note Child order is **undefined**. No assumptions should be made
-   * about the index of a specific object.
-   *
-   * If you need to access a specific child of this object, you can
-   * use {@link Object3D.findByName}.
-   *
-   * When the object exists in the scene at editor time, prefer passing it as
-   * a component property.
+   * @note Prefer to use {@link Object3D.getChildren} for performance.
    */
   get children() {
-    const childrenCount = this._engine.wasm._wl_object_get_children_count(this.objectId);
-    if (childrenCount === 0)
-      return [];
-    const wasm = this._engine.wasm;
-    wasm.requireTempMem(childrenCount * 2);
-    this._engine.wasm._wl_object_get_children(this.objectId, wasm._tempMem, wasm._tempMemSize >> 1);
-    const children = new Array(childrenCount);
-    for (let i = 0; i < childrenCount; ++i) {
-      children[i] = this._engine.wrapObject(wasm._tempMemUint16[i]);
-    }
-    return children;
+    return this.getChildren();
+  }
+  /** The number of children of this object. */
+  get childrenCount() {
+    return this._engine.wasm._wl_object_get_children_count(this._id);
   }
   /**
    * Reparent object to given object.
@@ -6109,11 +7221,16 @@ var Object3D = class {
    * @param newParent New parent or `null` to parent to root
    */
   set parent(newParent) {
-    this._engine.wasm._wl_object_set_parent(this.objectId, newParent == null ? 0 : newParent.objectId);
+    this.scene.assertOrigin(newParent);
+    this._engine.wasm._wl_object_set_parent(this._id, newParent == null ? 0 : newParent._id);
   }
-  /** Object index in the manager. */
+  /** Local object id in the scene manager. */
   get objectId() {
-    return this._objectId;
+    return this._localId;
+  }
+  /** Scene instance. */
+  get scene() {
+    return this._scene;
   }
   /** Hosting engine instance. */
   get engine() {
@@ -6134,9 +7251,40 @@ var Object3D = class {
    * @returns The clone of this object.
    */
   clone(parent = null) {
+    this.scene.assertOrigin(parent);
     const engine2 = this._engine;
-    const id = engine2.wasm._wl_object_clone(this._objectId, parent ? parent._objectId : 0);
-    return engine2.wrapObject(id);
+    const id = engine2.wasm._wl_object_clone(this._id, parent ? parent._id : 0);
+    return this._scene.wrap(id);
+  }
+  /**
+   * Children of this object.
+   *
+   * @note Child order is **undefined**. No assumptions should be made
+   * about the index of a specific object.
+   *
+   * If you need to access a specific child of this object, you can
+   * use {@link Object3D.findByName}.
+   *
+   * When the object exists in the scene at editor time, prefer passing it as
+   * a component property.
+   *
+   * @note When providing an output array, only `this.childrenCount` elements will be written.
+   * The rest of the array will not be modified by this method.
+   *
+   * @param out Destination array, expected to have at least `this.childrenCount` elements.
+   * @returns The `out` parameter.
+   */
+  getChildren(out = new Array(this.childrenCount)) {
+    const childrenCount = this.childrenCount;
+    if (childrenCount === 0)
+      return out;
+    const wasm = this._engine.wasm;
+    wasm.requireTempMem(childrenCount * 2);
+    this._engine.wasm._wl_object_get_children(this._id, wasm._tempMem, wasm._tempMemSize >> 1);
+    for (let i = 0; i < childrenCount; ++i) {
+      out[i] = this._scene.wrap(wasm._tempMemUint16[i]);
+    }
+    return out;
   }
   /**
    * Reset local transformation (translation, rotation and scaling) to identity.
@@ -6144,8 +7292,8 @@ var Object3D = class {
    * @returns Reference to self (for method chaining).
    */
   resetTransform() {
-    this._engine.wasm._wl_object_reset_translation_rotation(this.objectId);
-    this._engine.wasm._wl_object_reset_scaling(this.objectId);
+    this._engine.wasm._wl_object_reset_translation_rotation(this._id);
+    this._engine.wasm._wl_object_reset_scaling(this._id);
     return this;
   }
   /**
@@ -6154,7 +7302,7 @@ var Object3D = class {
    * @returns Reference to self (for method chaining).
    */
   resetPositionRotation() {
-    this._engine.wasm._wl_object_reset_translation_rotation(this.objectId);
+    this._engine.wasm._wl_object_reset_translation_rotation(this._id);
     return this;
   }
   /** @deprecated Please use {@link Object3D.resetPositionRotation} instead. */
@@ -6170,7 +7318,7 @@ var Object3D = class {
    * @returns Reference to self (for method chaining).
    */
   resetRotation() {
-    this._engine.wasm._wl_object_reset_rotation(this.objectId);
+    this._engine.wasm._wl_object_reset_rotation(this._id);
     return this;
   }
   /**
@@ -6182,7 +7330,7 @@ var Object3D = class {
    * @returns Reference to self (for method chaining).
    */
   resetPosition() {
-    this._engine.wasm._wl_object_reset_translation(this.objectId);
+    this._engine.wasm._wl_object_reset_translation(this._id);
     return this;
   }
   /** @deprecated Please use {@link Object3D.resetPosition} instead. */
@@ -6195,7 +7343,7 @@ var Object3D = class {
    * @returns Reference to self (for method chaining).
    */
   resetScaling() {
-    this._engine.wasm._wl_object_reset_scaling(this.objectId);
+    this._engine.wasm._wl_object_reset_scaling(this._id);
     return this;
   }
   /** @deprecated Please use {@link Object3D.translateLocal} instead. */
@@ -6210,7 +7358,7 @@ var Object3D = class {
    * @returns Reference to self (for method chaining).
    */
   translateLocal(v) {
-    this._engine.wasm._wl_object_translate(this.objectId, v[0], v[1], v[2]);
+    this._engine.wasm._wl_object_translate(this._id, v[0], v[1], v[2]);
     return this;
   }
   /**
@@ -6221,7 +7369,7 @@ var Object3D = class {
    * @returns Reference to self (for method chaining).
    */
   translateObject(v) {
-    this._engine.wasm._wl_object_translate_obj(this.objectId, v[0], v[1], v[2]);
+    this._engine.wasm._wl_object_translate_obj(this._id, v[0], v[1], v[2]);
     return this;
   }
   /**
@@ -6232,7 +7380,7 @@ var Object3D = class {
    * @returns Reference to self (for method chaining).
    */
   translateWorld(v) {
-    this._engine.wasm._wl_object_translate_world(this.objectId, v[0], v[1], v[2]);
+    this._engine.wasm._wl_object_translate_world(this._id, v[0], v[1], v[2]);
     return this;
   }
   /** @deprecated Please use {@link Object3D.rotateAxisAngleDegLocal} instead. */
@@ -6255,7 +7403,7 @@ var Object3D = class {
    * @returns Reference to self (for method chaining).
    */
   rotateAxisAngleDegLocal(a, d) {
-    this._engine.wasm._wl_object_rotate_axis_angle(this.objectId, a[0], a[1], a[2], d);
+    this._engine.wasm._wl_object_rotate_axis_angle(this._id, a[0], a[1], a[2], d);
     return this;
   }
   /** @deprecated Please use {@link Object3D.rotateAxisAngleRadLocal} instead. */
@@ -6277,7 +7425,7 @@ var Object3D = class {
    * @returns Reference to self (for method chaining).
    */
   rotateAxisAngleRadLocal(a, d) {
-    this._engine.wasm._wl_object_rotate_axis_angle_rad(this.objectId, a[0], a[1], a[2], d);
+    this._engine.wasm._wl_object_rotate_axis_angle_rad(this._id, a[0], a[1], a[2], d);
     return this;
   }
   /**
@@ -6294,7 +7442,7 @@ var Object3D = class {
    * @returns Reference to self (for method chaining).
    */
   rotateAxisAngleDegObject(a, d) {
-    this._engine.wasm._wl_object_rotate_axis_angle_obj(this.objectId, a[0], a[1], a[2], d);
+    this._engine.wasm._wl_object_rotate_axis_angle_obj(this._id, a[0], a[1], a[2], d);
     return this;
   }
   /**
@@ -6310,7 +7458,7 @@ var Object3D = class {
    * @returns Reference to self (for method chaining).
    */
   rotateAxisAngleRadObject(a, d) {
-    this._engine.wasm._wl_object_rotate_axis_angle_rad_obj(this.objectId, a[0], a[1], a[2], d);
+    this._engine.wasm._wl_object_rotate_axis_angle_rad_obj(this._id, a[0], a[1], a[2], d);
     return this;
   }
   /** @deprecated Please use {@link Object3D.rotateLocal} instead. */
@@ -6326,7 +7474,7 @@ var Object3D = class {
    * @returns Reference to self (for method chaining).
    */
   rotateLocal(q) {
-    this._engine.wasm._wl_object_rotate_quat(this.objectId, q[0], q[1], q[2], q[3]);
+    this._engine.wasm._wl_object_rotate_quat(this._id, q[0], q[1], q[2], q[3]);
     return this;
   }
   /**
@@ -6340,7 +7488,7 @@ var Object3D = class {
    * @returns Reference to self (for method chaining).
    */
   rotateObject(q) {
-    this._engine.wasm._wl_object_rotate_quat_obj(this.objectId, q[0], q[1], q[2], q[3]);
+    this._engine.wasm._wl_object_rotate_quat_obj(this._id, q[0], q[1], q[2], q[3]);
     return this;
   }
   /** @deprecated Please use {@link Object3D.scaleLocal} instead. */
@@ -6356,12 +7504,12 @@ var Object3D = class {
    * @returns Reference to self (for method chaining).
    */
   scaleLocal(v) {
-    this._engine.wasm._wl_object_scale(this.objectId, v[0], v[1], v[2]);
+    this._engine.wasm._wl_object_scale(this._id, v[0], v[1], v[2]);
     return this;
   }
   getPositionLocal(out = new Float32Array(3)) {
     const wasm = this._engine.wasm;
-    wasm._wl_object_get_translation_local(this.objectId, wasm._tempMem);
+    wasm._wl_object_get_translation_local(this._id, wasm._tempMem);
     out[0] = wasm._tempMemFloat[0];
     out[1] = wasm._tempMemFloat[1];
     out[2] = wasm._tempMemFloat[2];
@@ -6372,7 +7520,7 @@ var Object3D = class {
   }
   getPositionWorld(out = new Float32Array(3)) {
     const wasm = this._engine.wasm;
-    wasm._wl_object_get_translation_world(this.objectId, wasm._tempMem);
+    wasm._wl_object_get_translation_world(this._id, wasm._tempMem);
     out[0] = wasm._tempMemFloat[0];
     out[1] = wasm._tempMemFloat[1];
     out[2] = wasm._tempMemFloat[2];
@@ -6391,7 +7539,7 @@ var Object3D = class {
    * @returns Reference to self (for method chaining).
    */
   setPositionLocal(v) {
-    this._engine.wasm._wl_object_set_translation_local(this.objectId, v[0], v[1], v[2]);
+    this._engine.wasm._wl_object_set_translation_local(this._id, v[0], v[1], v[2]);
     return this;
   }
   /** @deprecated Please use {@link Object3D.setPositionLocal} instead. */
@@ -6409,7 +7557,7 @@ var Object3D = class {
    * @returns Reference to self (for method chaining).
    */
   setPositionWorld(v) {
-    this._engine.wasm._wl_object_set_translation_world(this.objectId, v[0], v[1], v[2]);
+    this._engine.wasm._wl_object_set_translation_world(this._id, v[0], v[1], v[2]);
     return this;
   }
   /** @deprecated Please use {@link Object3D.setPositionWorld} instead. */
@@ -6418,7 +7566,7 @@ var Object3D = class {
   }
   getScalingLocal(out = new Float32Array(3)) {
     const wasm = this._engine.wasm;
-    const ptr = wasm._wl_object_scaling_local(this.objectId) / 4;
+    const ptr = wasm._wl_object_scaling_local(this._id) / 4;
     out[0] = wasm.HEAPF32[ptr];
     out[1] = wasm.HEAPF32[ptr + 1];
     out[2] = wasm.HEAPF32[ptr + 2];
@@ -6432,12 +7580,12 @@ var Object3D = class {
    * @returns Reference to self (for method chaining).
    */
   setScalingLocal(v) {
-    this._engine.wasm._wl_object_set_scaling_local(this.objectId, v[0], v[1], v[2]);
+    this._engine.wasm._wl_object_set_scaling_local(this._id, v[0], v[1], v[2]);
     return this;
   }
   getScalingWorld(out = new Float32Array(3)) {
     const wasm = this._engine.wasm;
-    const ptr = wasm._wl_object_scaling_world(this.objectId) / 4;
+    const ptr = wasm._wl_object_scaling_world(this._id) / 4;
     out[0] = wasm.HEAPF32[ptr];
     out[1] = wasm.HEAPF32[ptr + 1];
     out[2] = wasm.HEAPF32[ptr + 2];
@@ -6451,12 +7599,12 @@ var Object3D = class {
    * @returns Reference to self (for method chaining).
    */
   setScalingWorld(v) {
-    this._engine.wasm._wl_object_set_scaling_world(this.objectId, v[0], v[1], v[2]);
+    this._engine.wasm._wl_object_set_scaling_world(this._id, v[0], v[1], v[2]);
     return this;
   }
   getRotationLocal(out = new Float32Array(4)) {
     const wasm = this._engine.wasm;
-    const ptr = wasm._wl_object_trans_local(this.objectId) / 4;
+    const ptr = wasm._wl_object_trans_local(this._id) / 4;
     out[0] = wasm.HEAPF32[ptr];
     out[1] = wasm.HEAPF32[ptr + 1];
     out[2] = wasm.HEAPF32[ptr + 2];
@@ -6471,12 +7619,12 @@ var Object3D = class {
    * @returns Reference to self (for method chaining).
    */
   setRotationLocal(v) {
-    this._engine.wasm._wl_object_set_rotation_local(this.objectId, v[0], v[1], v[2], v[3]);
+    this._engine.wasm._wl_object_set_rotation_local(this._id, v[0], v[1], v[2], v[3]);
     return this;
   }
   getRotationWorld(out = new Float32Array(4)) {
     const wasm = this._engine.wasm;
-    const ptr = wasm._wl_object_trans_world(this.objectId) / 4;
+    const ptr = wasm._wl_object_trans_world(this._id) / 4;
     out[0] = wasm.HEAPF32[ptr];
     out[1] = wasm.HEAPF32[ptr + 1];
     out[2] = wasm.HEAPF32[ptr + 2];
@@ -6491,12 +7639,12 @@ var Object3D = class {
    * @returns Reference to self (for method chaining).
    */
   setRotationWorld(v) {
-    this._engine.wasm._wl_object_set_rotation_world(this.objectId, v[0], v[1], v[2], v[3]);
+    this._engine.wasm._wl_object_set_rotation_world(this._id, v[0], v[1], v[2], v[3]);
     return this;
   }
   getTransformLocal(out = new Float32Array(8)) {
     const wasm = this._engine.wasm;
-    const ptr = wasm._wl_object_trans_local(this.objectId) / 4;
+    const ptr = wasm._wl_object_trans_local(this._id) / 4;
     out[0] = wasm.HEAPF32[ptr];
     out[1] = wasm.HEAPF32[ptr + 1];
     out[2] = wasm.HEAPF32[ptr + 2];
@@ -6516,7 +7664,7 @@ var Object3D = class {
    */
   setTransformLocal(v) {
     const wasm = this._engine.wasm;
-    const ptr = wasm._wl_object_trans_local(this.objectId) / 4;
+    const ptr = wasm._wl_object_trans_local(this._id) / 4;
     wasm.HEAPF32[ptr] = v[0];
     wasm.HEAPF32[ptr + 1] = v[1];
     wasm.HEAPF32[ptr + 2] = v[2];
@@ -6530,7 +7678,7 @@ var Object3D = class {
   }
   getTransformWorld(out = new Float32Array(8)) {
     const wasm = this._engine.wasm;
-    const ptr = wasm._wl_object_trans_world(this.objectId) / 4;
+    const ptr = wasm._wl_object_trans_world(this._id) / 4;
     out[0] = wasm.HEAPF32[ptr];
     out[1] = wasm.HEAPF32[ptr + 1];
     out[2] = wasm.HEAPF32[ptr + 2];
@@ -6550,7 +7698,7 @@ var Object3D = class {
    */
   setTransformWorld(v) {
     const wasm = this._engine.wasm;
-    const ptr = wasm._wl_object_trans_world(this.objectId) / 4;
+    const ptr = wasm._wl_object_trans_world(this._id) / 4;
     wasm.HEAPF32[ptr] = v[0];
     wasm.HEAPF32[ptr + 1] = v[1];
     wasm.HEAPF32[ptr + 2] = v[2];
@@ -6559,7 +7707,7 @@ var Object3D = class {
     wasm.HEAPF32[ptr + 5] = v[5];
     wasm.HEAPF32[ptr + 6] = v[6];
     wasm.HEAPF32[ptr + 7] = v[7];
-    this._engine.wasm._wl_object_trans_world_to_local(this.objectId);
+    this._engine.wasm._wl_object_trans_world_to_local(this._id);
     return this;
   }
   /**
@@ -6570,7 +7718,7 @@ var Object3D = class {
    */
   get transformLocal() {
     const wasm = this._engine.wasm;
-    return new Float32Array(wasm.HEAPF32.buffer, wasm._wl_object_trans_local(this.objectId), 8);
+    return new Float32Array(wasm.HEAPF32.buffer, wasm._wl_object_trans_local(this._id), 8);
   }
   /**
    * Set local transform.
@@ -6597,7 +7745,7 @@ var Object3D = class {
    */
   get transformWorld() {
     const wasm = this._engine.wasm;
-    return new Float32Array(wasm.HEAPF32.buffer, wasm._wl_object_trans_world(this.objectId), 8);
+    return new Float32Array(wasm.HEAPF32.buffer, wasm._wl_object_trans_world(this._id), 8);
   }
   /**
    * Set world transform.
@@ -6611,7 +7759,7 @@ var Object3D = class {
    */
   set transformWorld(t) {
     this.transformWorld.set(t);
-    this._engine.wasm._wl_object_trans_world_to_local(this.objectId);
+    this._engine.wasm._wl_object_trans_world_to_local(this._id);
   }
   /**
    * Local / object space scaling.
@@ -6621,7 +7769,7 @@ var Object3D = class {
    */
   get scalingLocal() {
     const wasm = this._engine.wasm;
-    return new Float32Array(wasm.HEAPF32.buffer, wasm._wl_object_scaling_local(this.objectId), 3);
+    return new Float32Array(wasm.HEAPF32.buffer, wasm._wl_object_scaling_local(this._id), 3);
   }
   /**
    * Set local space scaling.
@@ -6648,7 +7796,7 @@ var Object3D = class {
    */
   get scalingWorld() {
     const wasm = this._engine.wasm;
-    return new Float32Array(wasm.HEAPF32.buffer, wasm._wl_object_scaling_world(this.objectId), 3);
+    return new Float32Array(wasm.HEAPF32.buffer, wasm._wl_object_scaling_world(this._id), 3);
   }
   /**
    * Set world space scaling.
@@ -6662,7 +7810,7 @@ var Object3D = class {
    */
   set scalingWorld(s) {
     this.scalingWorld.set(s);
-    this._engine.wasm._wl_object_scaling_world_to_local(this.objectId);
+    this._engine.wasm._wl_object_scaling_world_to_local(this._id);
   }
   /**
    * Local space rotation.
@@ -6697,7 +7845,7 @@ var Object3D = class {
    * {@link Object3D.setRotationLocal} instead.
    */
   set rotationLocal(r) {
-    this._engine.wasm._wl_object_set_rotation_local(this.objectId, r[0], r[1], r[2], r[3]);
+    this._engine.wasm._wl_object_set_rotation_local(this._id, r[0], r[1], r[2], r[3]);
   }
   /**
    * Set world space rotation.
@@ -6710,7 +7858,7 @@ var Object3D = class {
    * {@link Object3D.setRotationWorld} instead.
    */
   set rotationWorld(r) {
-    this._engine.wasm._wl_object_set_rotation_world(this.objectId, r[0], r[1], r[2], r[3]);
+    this._engine.wasm._wl_object_set_rotation_world(this._id, r[0], r[1], r[2], r[3]);
   }
   /** @deprecated Please use {@link Object3D.getForwardWorld} instead. */
   getForward(out) {
@@ -6780,7 +7928,7 @@ var Object3D = class {
     wasm._tempMemFloat[0] = v[0];
     wasm._tempMemFloat[1] = v[1];
     wasm._tempMemFloat[2] = v[2];
-    wasm._wl_object_transformVectorWorld(this.objectId, wasm._tempMem);
+    wasm._wl_object_transformVectorWorld(this._id, wasm._tempMem);
     out[0] = wasm._tempMemFloat[0];
     out[1] = wasm._tempMemFloat[1];
     out[2] = wasm._tempMemFloat[2];
@@ -6800,7 +7948,7 @@ var Object3D = class {
     wasm._tempMemFloat[0] = v[0];
     wasm._tempMemFloat[1] = v[1];
     wasm._tempMemFloat[2] = v[2];
-    wasm._wl_object_transformVectorLocal(this.objectId, wasm._tempMem);
+    wasm._wl_object_transformVectorLocal(this._id, wasm._tempMem);
     out[0] = wasm._tempMemFloat[0];
     out[1] = wasm._tempMemFloat[1];
     out[2] = wasm._tempMemFloat[2];
@@ -6820,7 +7968,7 @@ var Object3D = class {
     wasm._tempMemFloat[0] = p[0];
     wasm._tempMemFloat[1] = p[1];
     wasm._tempMemFloat[2] = p[2];
-    wasm._wl_object_transformPointWorld(this.objectId, wasm._tempMem);
+    wasm._wl_object_transformPointWorld(this._id, wasm._tempMem);
     out[0] = wasm._tempMemFloat[0];
     out[1] = wasm._tempMemFloat[1];
     out[2] = wasm._tempMemFloat[2];
@@ -6840,7 +7988,7 @@ var Object3D = class {
     wasm._tempMemFloat[0] = p[0];
     wasm._tempMemFloat[1] = p[1];
     wasm._tempMemFloat[2] = p[2];
-    wasm._wl_object_transformPointLocal(this.objectId, wasm._tempMem);
+    wasm._wl_object_transformPointLocal(this._id, wasm._tempMem);
     out[0] = wasm._tempMemFloat[0];
     out[1] = wasm._tempMemFloat[1];
     out[2] = wasm._tempMemFloat[2];
@@ -6860,7 +8008,7 @@ var Object3D = class {
     wasm._tempMemFloat[0] = v[0];
     wasm._tempMemFloat[1] = v[1];
     wasm._tempMemFloat[2] = v[2];
-    wasm._wl_object_transformVectorInverseWorld(this.objectId, wasm._tempMem);
+    wasm._wl_object_transformVectorInverseWorld(this._id, wasm._tempMem);
     out[0] = wasm._tempMemFloat[0];
     out[1] = wasm._tempMemFloat[1];
     out[2] = wasm._tempMemFloat[2];
@@ -6880,7 +8028,7 @@ var Object3D = class {
     wasm._tempMemFloat[0] = v[0];
     wasm._tempMemFloat[1] = v[1];
     wasm._tempMemFloat[2] = v[2];
-    wasm._wl_object_transformVectorInverseLocal(this.objectId, wasm._tempMem);
+    wasm._wl_object_transformVectorInverseLocal(this._id, wasm._tempMem);
     out[0] = wasm._tempMemFloat[0];
     out[1] = wasm._tempMemFloat[1];
     out[2] = wasm._tempMemFloat[2];
@@ -6900,7 +8048,7 @@ var Object3D = class {
     wasm._tempMemFloat[0] = p[0];
     wasm._tempMemFloat[1] = p[1];
     wasm._tempMemFloat[2] = p[2];
-    wasm._wl_object_transformPointInverseWorld(this.objectId, wasm._tempMem);
+    wasm._wl_object_transformPointInverseWorld(this._id, wasm._tempMem);
     out[0] = wasm._tempMemFloat[0];
     out[1] = wasm._tempMemFloat[1];
     out[2] = wasm._tempMemFloat[2];
@@ -6918,7 +8066,7 @@ var Object3D = class {
   transformPointInverseLocal(out, p = out) {
     const wasm = this._engine.wasm;
     wasm._tempMemFloat.set(p);
-    wasm._wl_object_transformPointInverseLocal(this.objectId, wasm._tempMem);
+    wasm._wl_object_transformPointInverseLocal(this._id, wasm._tempMem);
     out[0] = wasm._tempMemFloat[0];
     out[1] = wasm._tempMemFloat[1];
     out[2] = wasm._tempMemFloat[2];
@@ -6936,7 +8084,7 @@ var Object3D = class {
   toWorldSpaceTransform(out, q = out) {
     const wasm = this._engine.wasm;
     wasm._tempMemFloat.set(q);
-    wasm._wl_object_toWorldSpaceTransform(this.objectId, wasm._tempMem);
+    wasm._wl_object_toWorldSpaceTransform(this._id, wasm._tempMem);
     out[0] = wasm._tempMemFloat[0];
     out[1] = wasm._tempMemFloat[1];
     out[2] = wasm._tempMemFloat[2];
@@ -6986,7 +8134,7 @@ var Object3D = class {
   toObjectSpaceTransform(out, q = out) {
     const wasm = this._engine.wasm;
     wasm._tempMemFloat.set(q);
-    wasm._wl_object_toObjectSpaceTransform(this.objectId, wasm._tempMem);
+    wasm._wl_object_toObjectSpaceTransform(this._id, wasm._tempMem);
     out[0] = wasm._tempMemFloat[0];
     out[1] = wasm._tempMemFloat[1];
     out[2] = wasm._tempMemFloat[2];
@@ -7011,15 +8159,14 @@ var Object3D = class {
    * @returns Reference to self (for method chaining).
    */
   lookAt(p, up = UP_VECTOR) {
-    this._engine.wasm._wl_object_lookAt(this.objectId, p[0], p[1], p[2], up[0], up[1], up[2]);
+    this._engine.wasm._wl_object_lookAt(this._id, p[0], p[1], p[2], up[0], up[1], up[2]);
     return this;
   }
   /** Destroy the object with all of its components and remove it from the scene */
   destroy() {
-    if (this._objectId < 0)
+    if (this._id < 0)
       return;
-    this.engine.wasm._wl_scene_remove_object(this._objectId);
-    this.engine._destroyObject(this);
+    this.engine.wasm._wl_object_remove(this._id);
   }
   /**
    * Mark transformation dirty.
@@ -7030,7 +8177,7 @@ var Object3D = class {
    * happens first.
    */
   setDirty() {
-    this._engine.wasm._wl_object_set_dirty(this.objectId);
+    this._engine.wasm._wl_object_set_dirty(this._id);
   }
   /**
    * Disable/enable all components of this object.
@@ -7046,78 +8193,72 @@ var Object3D = class {
     }
   }
   getComponent(typeOrClass, index = 0) {
-    const type = isString(typeOrClass) ? typeOrClass : typeOrClass.TypeName;
     const wasm = this._engine.wasm;
-    const componentType = wasm._wl_get_component_manager_index(wasm.tempUTF8(type));
+    const type = isString(typeOrClass) ? typeOrClass : typeOrClass.TypeName;
+    const scene = this._scene;
+    const componentType = wasm._wl_scene_get_component_manager_index(scene._index, wasm.tempUTF8(type));
     if (componentType < 0) {
       const typeIndex = wasm._componentTypeIndices[type];
       if (typeIndex === void 0)
         return null;
-      const jsIndex = wasm._wl_get_js_component_index(this.objectId, typeIndex, index);
+      const jsIndex = wasm._wl_get_js_component_index(this._id, typeIndex, index);
       if (jsIndex < 0)
         return null;
-      const component = this._engine.wasm._components[jsIndex];
+      const component = this._scene._jsComponents[jsIndex];
       return component.constructor !== BrokenComponent ? component : null;
     }
-    const componentId = this._engine.wasm._wl_get_component_id(this.objectId, componentType, index);
-    return this._engine._wrapComponent(type, componentType, componentId);
+    const componentId = wasm._wl_get_component_id(this._id, componentType, index);
+    return scene._components.wrapNative(componentType, componentId);
   }
   getComponents(typeOrClass) {
     const wasm = this._engine.wasm;
-    let componentType = null;
+    const scene = this._scene;
+    let manager = null;
     let type = null;
     if (typeOrClass) {
       type = isString(typeOrClass) ? typeOrClass : typeOrClass.TypeName;
-      componentType = wasm._typeIndexFor(type);
+      const nativeManager = scene._components.getNativeManager(type);
+      manager = nativeManager !== null ? nativeManager : scene._components.js;
     }
     const components = [];
     const maxComps = Math.floor(wasm._tempMemSize / 3 * 2);
-    const componentsCount = wasm._wl_object_get_components(this.objectId, wasm._tempMem, maxComps);
+    const componentsCount = wasm._wl_object_get_components(this._id, wasm._tempMem, maxComps);
     const offset2 = 2 * componentsCount;
-    wasm._wl_object_get_component_types(this.objectId, wasm._tempMem + offset2, maxComps);
-    const jsManagerIndex = wasm._jsManagerIndex;
+    wasm._wl_object_get_component_types(this._id, wasm._tempMem + offset2, maxComps);
     for (let i = 0; i < componentsCount; ++i) {
       const t = wasm._tempMemUint8[i + offset2];
       const componentId = wasm._tempMemUint16[i];
-      if (t == jsManagerIndex) {
-        const typeIndex = wasm._wl_get_js_component_index_for_id(componentId);
-        const comp = wasm._components[typeIndex];
-        const matches = componentType === null || comp.type == type;
-        if (comp.constructor !== BrokenComponent && matches) {
-          components.push(comp);
-        }
+      if (manager !== null && t !== manager)
         continue;
-      }
-      if (componentType === null) {
-        const managerName = wasm._typeNameFor(t);
-        components.push(this._engine._wrapComponent(managerName, t, componentId));
-      } else if (t == componentType) {
-        components.push(this._engine._wrapComponent(type, componentType, componentId));
-      }
+      const comp = this._scene._components.wrapAny(t, componentId);
+      if (!comp)
+        continue;
+      if (type && type !== comp.constructor.TypeName)
+        continue;
+      components.push(comp);
     }
     return components;
   }
   addComponent(typeOrClass, params) {
     const wasm = this._engine.wasm;
     const type = isString(typeOrClass) ? typeOrClass : typeOrClass.TypeName;
-    const componentType = wasm._typeIndexFor(type);
-    let component = null;
-    let componentIndex = null;
-    if (componentType < 0) {
+    const nativeManager = this._scene._components.getNativeManager(type);
+    const isNative = nativeManager !== null;
+    const manager = isNative ? nativeManager : this._scene._components.js;
+    let componentId = -1;
+    if (!isNative) {
       if (!(type in wasm._componentTypeIndices)) {
         throw new TypeError("Unknown component type '" + type + "'");
       }
-      const componentId = wasm._wl_object_add_js_component(this.objectId, wasm._componentTypeIndices[type]);
-      componentIndex = wasm._wl_get_js_component_index_for_id(componentId);
-      component = wasm._components[componentIndex];
+      componentId = wasm._wl_object_add_js_component(this._id, wasm._componentTypeIndices[type]);
     } else {
-      const componentId = wasm._wl_object_add_component(this.objectId, componentType);
-      component = this._engine._wrapComponent(type, componentType, componentId);
+      componentId = wasm._wl_object_add_component(this._id, manager);
     }
+    const component = this._scene._components.wrapAny(manager, componentId);
     if (params !== void 0)
       component.copy(params);
-    if (componentType < 0) {
-      wasm._wljs_component_init(componentIndex);
+    if (!isNative) {
+      component._triggerInit();
     }
     if (!params || !("active" in params && !params.active)) {
       component.active = true;
@@ -7153,7 +8294,7 @@ var Object3D = class {
    */
   findByNameDirect(name) {
     const wasm = this._engine.wasm;
-    const id = this._objectId;
+    const id = this._id;
     const tempSizeU16 = wasm._tempMemSize >> 2;
     const maxCount = tempSizeU16 - 2;
     const buffer = wasm._tempMemUint16;
@@ -7166,8 +8307,9 @@ var Object3D = class {
     const result = [];
     let read = 0;
     while (read = wasm._wl_object_findByName(id, namePtr, indexPtr, childCountPtr, bufferPtr, maxCount)) {
-      for (let i = 0; i < read; ++i)
-        result.push(this.engine.wrapObject(buffer[i]));
+      for (let i = 0; i < read; ++i) {
+        result.push(this._scene.wrap(buffer[i]));
+      }
     }
     return result;
   }
@@ -7184,7 +8326,7 @@ var Object3D = class {
    */
   findByNameRecursive(name) {
     const wasm = this._engine.wasm;
-    const id = this._objectId;
+    const id = this._id;
     const tempSizeU16 = wasm._tempMemSize >> 2;
     const maxCount = tempSizeU16 - 1;
     const buffer = wasm._tempMemUint16;
@@ -7195,8 +8337,9 @@ var Object3D = class {
     let read = 0;
     const result = [];
     while (read = wasm._wl_object_findByNameRecursive(id, namePtr, indexPtr, bufferPtr, maxCount)) {
-      for (let i = 0; i < read; ++i)
-        result.push(this.engine.wrapObject(buffer[i]));
+      for (let i = 0; i < read; ++i) {
+        result.push(this._scene.wrap(buffer[i]));
+      }
     }
     return result;
   }
@@ -7204,7 +8347,7 @@ var Object3D = class {
    * Whether given object's transformation has changed.
    */
   get changed() {
-    return !!this._engine.wasm._wl_object_is_changed(this.objectId);
+    return !!this._engine.wasm._wl_object_is_changed(this._id);
   }
   /**
    * `true` if the object is destroyed, `false` otherwise.
@@ -7227,41 +8370,44 @@ var Object3D = class {
    * @since 1.1.1
    */
   get isDestroyed() {
-    return this._objectId < 0;
+    return this._id < 0;
   }
   /**
-   * Checks equality by comparing whether the wrapped native object ids are
-   * equal.
+   * Checks equality by comparing ids and **not** the JavaScript reference.
    *
-   * @param otherObject Object to check equality with.
-   * @returns Whether this object equals the given object.
+   * @deprecate Use JavaScript reference comparison instead:
+   *
+   * ```js
+   * const objectA = scene.addObject();
+   * const objectB = scene.addObject();
+   * const objectC = objectB;
+   * console.log(objectA === objectB); // false
+   * console.log(objectA === objectA); // true
+   * console.log(objectB === objectC); // true
+   * ```
    */
   equals(otherObject) {
     if (!otherObject)
       return false;
-    return this.objectId == otherObject.objectId;
+    return this._id == otherObject._id;
+  }
+  /** @overload */
+  toString() {
+    if (this.isDestroyed) {
+      return "Object3D(destroyed)";
+    }
+    return `Object3D('${this.name}', ${this._localId})`;
   }
 };
-var Skin = class {
-  /**
-   * Index of the skin in the manager.
-   * @hidden
-   */
-  _index;
-  /** Wonderland Engine instance. @hidden */
-  _engine;
-  constructor(engine2, index) {
-    this._engine = engine2;
-    this._index = index;
-  }
+var Skin = class extends SceneResource {
   /** Amount of joints in this skin. */
   get jointCount() {
-    return this._engine.wasm._wl_skin_get_joint_count(this._index);
+    return this.engine.wasm._wl_skin_get_joint_count(this._id);
   }
   /** Joints object ids for this skin */
   get jointIds() {
-    const wasm = this._engine.wasm;
-    return new Uint16Array(wasm.HEAPU16.buffer, wasm._wl_skin_joint_ids(this._index), this.jointCount);
+    const wasm = this.engine.wasm;
+    return new Uint16Array(wasm.HEAPU16.buffer, wasm._wl_skin_joint_ids(this._id), this.jointCount);
   }
   /**
    * Dual quaternions in a flat array of size 8 times {@link jointCount}.
@@ -7269,8 +8415,8 @@ var Skin = class {
    * Inverse bind transforms of the skin.
    */
   get inverseBindTransforms() {
-    const wasm = this._engine.wasm;
-    return new Float32Array(wasm.HEAPF32.buffer, wasm._wl_skin_inverse_bind_transforms(this._index), 8 * this.jointCount);
+    const wasm = this.engine.wasm;
+    return new Float32Array(wasm.HEAPF32.buffer, wasm._wl_skin_inverse_bind_transforms(this._id), 8 * this.jointCount);
   }
   /**
    * Vectors in a flat array of size 3 times {@link jointCount}.
@@ -7278,113 +8424,141 @@ var Skin = class {
    * Inverse bind scalings of the skin.
    */
   get inverseBindScalings() {
-    const wasm = this._engine.wasm;
-    return new Float32Array(wasm.HEAPF32.buffer, wasm._wl_skin_inverse_bind_scalings(this._index), 3 * this.jointCount);
+    const wasm = this.engine.wasm;
+    return new Float32Array(wasm.HEAPF32.buffer, wasm._wl_skin_inverse_bind_scalings(this._id), 3 * this.jointCount);
+  }
+};
+var MorphTargets = class extends Resource {
+  /** Amount of targets in this morph target set. */
+  get count() {
+    return this.engine.wasm._wl_morph_targets_get_target_count(this._id);
+  }
+  /** Returns the name of a given target */
+  getTargetName(target) {
+    if (target >= this.count) {
+      throw new Error(`Index ${target} is out of bounds for ${this.count} targets`);
+    }
+    const wasm = this.engine.wasm;
+    return wasm.UTF8ToString(wasm._wl_morph_targets_get_target_name(this._id, target));
   }
   /**
-   * Checks equality by comparing whether the wrapped native skin ids are
-   * equal.
+   * Get the index for a given target name.
    *
-   * @param otherSkin Skin to check equality with.
-   * @returns Whether this skin equals the given skin.
+   * Throws if no target with that name exists.
    *
-   * @since 1.0.0
+   * @param name Name of the target.
    */
-  equals(otherSkin) {
-    if (!otherSkin)
-      return false;
-    return this._index === otherSkin._index;
+  getTargetIndex(name) {
+    const wasm = this.engine.wasm;
+    const index = wasm._wl_morph_targets_get_target_index(this._id, wasm.tempUTF8(name));
+    if (index === -1) {
+      throw Error(`Missing target '${name}'`);
+    }
+    return index;
   }
 };
 var RayHit = class {
-  /** Wonderland Engine instance. @hidden */
-  _engine;
+  /** Scene instance. @hidden */
+  _scene;
   /** Pointer to the memory heap. */
   _ptr;
   /**
    * @param ptr Pointer to the ray hits memory.
    */
-  constructor(engine2, ptr) {
+  constructor(scene, ptr) {
     if ((ptr & 3) !== 0) {
       throw new Error("Misaligned pointer: please report a bug");
     }
-    this._engine = engine2;
+    this._scene = scene;
     this._ptr = ptr;
   }
-  /** Array of ray hit locations. */
-  get locations() {
-    let p = this._ptr;
-    let l = [];
+  getLocations(out) {
+    out = out ?? Array.from({ length: this.hitCount }, () => new Float32Array(3));
+    const wasm = this.engine.wasm;
+    const alignedPtr = this._ptr / 4;
     for (let i = 0; i < this.hitCount; ++i) {
-      l.push(new Float32Array(this._engine.wasm.HEAPF32.buffer, p + 12 * i, 3));
+      const locationPtr = alignedPtr + 3 * i;
+      out[i][0] = wasm.HEAPF32[locationPtr];
+      out[i][1] = wasm.HEAPF32[locationPtr + 1];
+      out[i][2] = wasm.HEAPF32[locationPtr + 2];
     }
-    return l;
+    return out;
   }
-  /** Array of ray hit normals (only when using {@link Physics#rayCast}. */
-  get normals() {
-    let p = this._ptr + 48;
-    let l = [];
+  getNormals(out) {
+    out = out ?? Array.from({ length: this.hitCount }, () => new Float32Array(3));
+    const wasm = this.engine.wasm;
+    const alignedPtr = (this._ptr + 48) / 4;
     for (let i = 0; i < this.hitCount; ++i) {
-      l.push(new Float32Array(this._engine.wasm.HEAPF32.buffer, p + 12 * i, 3));
+      const normalPtr = alignedPtr + 3 * i;
+      out[i][0] = wasm.HEAPF32[normalPtr];
+      out[i][1] = wasm.HEAPF32[normalPtr + 1];
+      out[i][2] = wasm.HEAPF32[normalPtr + 2];
     }
-    return l;
+    return out;
+  }
+  getDistances(out = new Float32Array(this.hitCount)) {
+    const wasm = this.engine.wasm;
+    const alignedPtr = (this._ptr + 48 * 2) / 4;
+    for (let i = 0; i < this.hitCount; ++i) {
+      const distancePtr = alignedPtr + i;
+      out[i] = wasm.HEAPF32[distancePtr];
+    }
+    return out;
   }
   /**
-   * Prefer these to recalculating the distance from locations.
+   * Array of hit objects.
    *
-   * Distances of array hits to ray origin.
+   * @param out Destination array/vector, expected to have at least `this.hitCount` elements.
+   * @returns The `out` parameter.
+   */
+  getObjects(out = new Array(this.hitCount)) {
+    const HEAPU16 = this.engine.wasm.HEAPU16;
+    const alignedPtr = this._ptr + (48 * 2 + 16) >> 1;
+    for (let i = 0; i < this.hitCount; ++i) {
+      out[i] = this._scene.wrap(HEAPU16[alignedPtr + i]);
+    }
+    return out;
+  }
+  /** Hosting engine instance. */
+  get engine() {
+    return this._scene.engine;
+  }
+  /**
+   * Equivalent to {@link RayHit.getLocations}.
+   *
+   * @note Prefer to use {@link RayHit.getLocations} for performance.
+   */
+  get locations() {
+    return this.getLocations();
+  }
+  /**
+   * Equivalent to {@link RayHit.getNormals}.
+   *
+   * @note Prefer to use {@link RayHit.getNormals} for performance.
+   */
+  get normals() {
+    return this.getNormals();
+  }
+  /**
+   * Equivalent to {@link RayHit.getDistances}.
+   *
+   * @note Prefer to use {@link RayHit.getDistances} for performance.
    */
   get distances() {
-    const p = this._ptr + 48 * 2;
-    return new Float32Array(this._engine.wasm.HEAPF32.buffer, p, this.hitCount);
+    return this.getDistances();
   }
-  /** Hit objects */
+  /**
+   * Equivalent to {@link RayHit.getObjects}.
+   *
+   * @note Prefer to use {@link RayHit.getObjects} for performance.
+   */
   get objects() {
-    const HEAPU16 = this._engine.wasm.HEAPU16;
     const objects = [null, null, null, null];
-    let p = this._ptr + (48 * 2 + 16) >> 1;
-    for (let i = 0; i < this.hitCount; ++i) {
-      objects[i] = this._engine.wrapObject(HEAPU16[p + i]);
-    }
-    return objects;
+    return this.getObjects(objects);
   }
   /** Number of hits (max 4) */
   get hitCount() {
-    return Math.min(this._engine.wasm.HEAPU32[this._ptr / 4 + 30], 4);
-  }
-};
-var math = class {
-  /** (Experimental!) Cubic Hermite spline interpolation for vector3 and quaternions.
-   *
-   * With `f == 0`, `out` will be `b`, if `f == 1`, `out` will be c.
-   *
-   * Whether a quaternion or vector3 interpolation is intended is determined by
-   * length of `a`.
-   *
-   * @param out Array to write result to.
-   * @param a First tangent/handle.
-   * @param b First point or quaternion.
-   * @param c Second point or quaternion.
-   * @param d Second handle.
-   * @param f Interpolation factor in [0; 1].
-   * @returns The `out` parameter.
-   *
-   * @since 0.8.6
-   */
-  static cubicHermite(out, a, b, c, d, f, engine2 = WL) {
-    const wasm = engine2.wasm;
-    wasm._tempMemFloat.subarray(0).set(a);
-    wasm._tempMemFloat.subarray(4).set(b);
-    wasm._tempMemFloat.subarray(8).set(c);
-    wasm._tempMemFloat.subarray(12).set(d);
-    const isQuat = a.length == 4;
-    wasm._wl_math_cubicHermite(wasm._tempMem + 4 * 16, wasm._tempMem + 4 * 0, wasm._tempMem + 4 * 4, wasm._tempMem + 4 * 8, wasm._tempMem + 4 * 12, f, isQuat);
-    out[0] = wasm._tempMemFloat[16];
-    out[1] = wasm._tempMemFloat[17];
-    out[2] = wasm._tempMemFloat[18];
-    if (isQuat)
-      out[3] = wasm._tempMemFloat[19];
-    return out;
+    return Math.min(this.engine.wasm.HEAPU32[this._ptr / 4 + 30], 4);
   }
 };
 var I18N = class {
@@ -7456,13 +8630,18 @@ var I18N = class {
    * @returns A promise that resolves with the current index code when the
    *     language is loaded.
    */
-  setLanguage(code) {
+  async setLanguage(code) {
     if (code == null)
       return Promise.resolve(this.currentIndex);
     const wasm = this._engine.wasm;
     this._prevLanguageIndex = this.currentIndex;
     wasm._wl_i18n_setLanguage(wasm.tempUTF8(code));
-    return this._engine.scene._flushAppend(this._engine.scene.baseURL).then(() => this.currentIndex);
+    const scene = this.engine.scene;
+    const filename = wasm.UTF8ToString(wasm._wl_i18n_languageFile(this.currentIndex));
+    const url = `${scene.baseURL}/locale/${filename}`;
+    await scene._downloadDependency(url);
+    this.onLanguageChanged.notify(this._prevLanguageIndex, this.currentIndex);
+    return this.currentIndex;
   }
   /**
    * Get translated string for a term for the currently loaded language.
@@ -7516,6 +8695,10 @@ var I18N = class {
     if (name === 0)
       return null;
     return wasm.UTF8ToString(name);
+  }
+  /** Hosting engine instance. */
+  get engine() {
+    return this._engine;
   }
 };
 var XR = class {
@@ -7572,235 +8755,652 @@ var XR = class {
   }
 };
 
-// node_modules/@wonderlandengine/api/dist/utils/fetch.js
-function fetchWithProgress(path, onProgress) {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", path);
-    xhr.responseType = "arraybuffer";
-    xhr.onprogress = (progress) => {
-      if (progress.lengthComputable) {
-        onProgress?.(progress.loaded, progress.total);
+// node_modules/@wonderlandengine/api/dist/resources/material-manager.js
+var MaterialParamType;
+(function(MaterialParamType2) {
+  MaterialParamType2[MaterialParamType2["UnsignedInt"] = 0] = "UnsignedInt";
+  MaterialParamType2[MaterialParamType2["Int"] = 1] = "Int";
+  MaterialParamType2[MaterialParamType2["HalfFloat"] = 2] = "HalfFloat";
+  MaterialParamType2[MaterialParamType2["Float"] = 3] = "Float";
+  MaterialParamType2[MaterialParamType2["Sampler"] = 4] = "Sampler";
+  MaterialParamType2[MaterialParamType2["Font"] = 5] = "Font";
+})(MaterialParamType || (MaterialParamType = {}));
+var Material = class extends Resource {
+  /**
+   * @deprecated Use {@link MaterialManager#getTemplate} via {@link WonderlandEngine.materials}
+   * to create a new material with a given pipeline:
+   *
+   * ```js
+   * const PhongMaterial = engine.materials.getTemplate('Phong Opaque');
+   * const material = new PhongMaterial();
+   * material.setDiffuseColor([1, 0, 0]);
+   * ```
+   */
+  constructor(engine2, params) {
+    if (typeof params !== "number") {
+      if (!params?.pipeline)
+        throw new Error("Missing parameter 'pipeline'");
+      const template = engine2.materials.getTemplate(params.pipeline);
+      const material = new template();
+      super(engine2, material._index);
+      return material;
+    }
+    super(engine2, params);
+  }
+  /**
+   * Check whether a parameter exists on this material.
+   *
+   * @param name The name to check.
+   * @returns `true` if the parameter with name `name` exists on this material,
+   *     `false` otherwise.
+   */
+  hasParameter(name) {
+    const parameters = this.constructor.Parameters;
+    return parameters && parameters.has(name);
+  }
+  /** @deprecated Use {@link #pipeline} instead. */
+  get shader() {
+    return this.pipeline;
+  }
+  /** Name of the pipeline used by this material. */
+  get pipeline() {
+    const wasm = this.engine.wasm;
+    return wasm.UTF8ToString(wasm._wl_material_get_pipeline(this._id));
+  }
+  /**
+   * Create a copy of the underlying native material.
+   *
+   * @returns Material clone.
+   */
+  clone() {
+    const index = this.engine.wasm._wl_material_clone(this._id);
+    return this.engine.materials.wrap(index);
+  }
+  /** @overload */
+  toString() {
+    if (this.isDestroyed) {
+      return "Material(destroyed)";
+    }
+    return `Material('${this.pipeline}', ${this._index})`;
+  }
+  /**
+   * Wrap a native material index.
+   *
+   * @param engine Engine instance.
+   * @param index The index.
+   * @returns Material instance or `null` if index <= 0.
+   *
+   * @deprecated Use the {@link WonderlandEngine.materials} instead.
+   */
+  static wrap(engine2, index) {
+    return engine2.materials.wrap(index);
+  }
+};
+/** Proxy used to override prototypes of destroyed materials. */
+__publicField(Material, "_destroyedPrototype", createDestroyedProxy2("material"));
+var MaterialManager = class extends ResourceManager {
+  /** Material classes. @hidden. */
+  _materialTemplates = [];
+  /** @hidden */
+  constructor(engine2) {
+    super(engine2, Material);
+    this._cacheDefinitions();
+  }
+  /** @override */
+  wrap(index) {
+    if (index <= 0)
+      return null;
+    const cached = this._cache[index];
+    if (cached)
+      return cached;
+    const wasm = this.engine.wasm;
+    const definition = wasm._wl_material_get_definition(index);
+    const Template = this._materialTemplates[definition];
+    const material = new Template(index);
+    return this._wrapInstance(material);
+  }
+  /**
+   * Get the material class with the given pipeline name.
+   *
+   * #### Usage
+   *
+   * ```js
+   * const PhongMaterial = engine.materials.getTemplate('Phong Opaque');
+   * const material = new PhongMaterial();
+   * material.setDiffuseColor([1.0, 0.0, 0.0, 1.0]);
+   * ```
+   *
+   * @param pipeline The pipeline name to search for.
+   * @returns The material class.
+   *
+   * @throws `Error` if the material class doesn't exist.
+   */
+  getTemplate(pipeline) {
+    const wasm = this.engine.wasm;
+    const index = wasm._wl_get_material_definition_index(wasm.tempUTF8(pipeline));
+    if (!index) {
+      throw new Error(`Pipeline '${pipeline}' doesn't exist in the scene`);
+    }
+    return this._materialTemplates[index];
+  }
+  /**
+   * Wrap a material instance.
+   *
+   * @todo: Remove at 2.0.0.
+   *
+   * @note Wrapping should only be called once per instance.
+   *
+   * @param instance The material instance.
+   * @returns The new material, wrapped in a proxy.
+   */
+  _wrapInstance(instance) {
+    this._cache[instance.index] = instance;
+    if (!this.engine.legacyMaterialSupport)
+      return instance;
+    const proxy = new Proxy(instance, {
+      get(target, prop) {
+        if (!target.hasParameter(prop)) {
+          return target[prop];
+        }
+        const name = `get${capitalizeFirstUTF8(prop)}`;
+        return target[name]();
+      },
+      set(target, prop, value) {
+        if (!target.hasParameter(prop)) {
+          target[prop] = value;
+          return true;
+        }
+        const name = `set${capitalizeFirstUTF8(prop)}`;
+        target[name](value);
+        return true;
+      }
+    });
+    this._cache[instance.index] = proxy;
+    return proxy;
+  }
+  /**
+   * Cache all pipeline definitions.
+   *
+   * @hidden
+   */
+  _cacheDefinitions() {
+    const wasm = this.engine.wasm;
+    const count = wasm._wl_get_material_definition_count();
+    for (let i = 0; i < count; ++i) {
+      this._materialTemplates[i] = this._createMaterialTemplate(i);
+    }
+  }
+  /**
+   * Create a material class from a definition index.
+   *
+   * @param wasm The WASM instance.
+   * @param definitionIndex The definition index to wrap.
+   * @returns The material class.
+   */
+  _createMaterialTemplate(definitionIndex) {
+    const engine2 = this.engine;
+    const template = class CustomMaterial extends Material {
+      static Parameters = /* @__PURE__ */ new Set();
+      constructor(index) {
+        index = index ?? engine2.wasm._wl_material_create(definitionIndex);
+        super(engine2, index);
+        return engine2.materials._wrapInstance(this);
       }
     };
-    xhr.onload = () => {
-      if (xhr.status >= 200 && xhr.status < 300) {
-        const buffer = xhr.response;
-        onProgress?.(buffer.byteLength, buffer.byteLength);
-        resolve(buffer);
-      } else {
-        reject(xhr.statusText);
+    const wasm = this.engine.wasm;
+    const nbParams = wasm._wl_material_definition_get_param_count(definitionIndex);
+    for (let index = 0; index < nbParams; ++index) {
+      const name = wasm.UTF8ToString(wasm._wl_material_definition_get_param_name(definitionIndex, index));
+      template.Parameters.add(name);
+      const t = wasm._wl_material_definition_get_param_type(definitionIndex, index);
+      const type = t & 255;
+      const componentCount = t >> 8 & 255;
+      const capitalized = capitalizeFirstUTF8(name);
+      const getterId = `get${capitalized}`;
+      const setterId = `set${capitalized}`;
+      const templateProto = template.prototype;
+      switch (type) {
+        case MaterialParamType.UnsignedInt:
+          templateProto[getterId] = uint32Getter(index, componentCount);
+          templateProto[setterId] = uint32Setter(index);
+          break;
+        case MaterialParamType.Int:
+          templateProto[getterId] = int32Getter(index, componentCount);
+          templateProto[setterId] = uint32Setter(index);
+          break;
+        case MaterialParamType.HalfFloat:
+        case MaterialParamType.Float:
+          templateProto[getterId] = float32Getter(index, componentCount);
+          templateProto[setterId] = float32Setter(index);
+          break;
+        case MaterialParamType.Sampler:
+          templateProto[getterId] = samplerGetter(index);
+          templateProto[setterId] = samplerSetter(index);
+          break;
+        case MaterialParamType.Font:
+          templateProto[getterId] = fontGetter(index);
+          break;
       }
+    }
+    return template;
+  }
+};
+function uint32Getter(index, count) {
+  if (count === 1) {
+    return function() {
+      const wasm = this.engine.wasm;
+      wasm._wl_material_get_param_value(this._id, index, wasm._tempMem);
+      return wasm._tempMemUint32[0];
     };
-    xhr.onerror = () => reject(xhr.statusText);
-    xhr.send();
-  });
+  }
+  return function(out = new Uint32Array(count)) {
+    const wasm = this.engine.wasm;
+    wasm._wl_material_get_param_value(this._id, index, wasm._tempMem);
+    for (let i = 0; i < out.length; ++i) {
+      out[i] = wasm._tempMemUint32[i];
+    }
+    return out;
+  };
 }
-function getBaseUrl(url) {
-  return url.substring(0, url.lastIndexOf("/"));
+function uint32Setter(index) {
+  return function(value) {
+    const wasm = this.engine.wasm;
+    wasm._wl_material_set_param_value_uint(this._id, index, value);
+  };
+}
+function int32Getter(index, count) {
+  if (count === 1) {
+    return function() {
+      const wasm = this.engine.wasm;
+      wasm._wl_material_get_param_value(this._id, index, wasm._tempMem);
+      return wasm._tempMemInt[0];
+    };
+  }
+  return function(out = new Int32Array(count)) {
+    const wasm = this.engine.wasm;
+    wasm._wl_material_get_param_value(this._id, index, wasm._tempMem);
+    for (let i = 0; i < out.length; ++i) {
+      out[i] = wasm._tempMemInt[i];
+    }
+    return out;
+  };
+}
+function float32Getter(index, count) {
+  if (count === 1) {
+    return function() {
+      const wasm = this.engine.wasm;
+      wasm._wl_material_get_param_value(this._id, index, wasm._tempMem);
+      return wasm._tempMemFloat[0];
+    };
+  }
+  return function(out = new Float32Array(count)) {
+    const wasm = this.engine.wasm;
+    wasm._wl_material_get_param_value(this._id, index, wasm._tempMem);
+    for (let i = 0; i < out.length; ++i) {
+      out[i] = wasm._tempMemFloat[i];
+    }
+    return out;
+  };
+}
+function float32Setter(index) {
+  return function(value) {
+    const wasm = this.engine.wasm;
+    let count = 1;
+    if (typeof value === "number") {
+      wasm._tempMemFloat[0] = value;
+    } else {
+      count = value.length;
+      for (let i = 0; i < count; ++i)
+        wasm._tempMemFloat[i] = value[i];
+    }
+    wasm._wl_material_set_param_value_float(this._id, index, wasm._tempMem, count);
+  };
+}
+function samplerGetter(index) {
+  return function() {
+    const wasm = this.engine.wasm;
+    wasm._wl_material_get_param_value(this._id, index, wasm._tempMem);
+    return this.engine.textures.wrap(wasm._tempMemInt[0]);
+  };
+}
+function samplerSetter(index) {
+  return function(value) {
+    const wasm = this.engine.wasm;
+    wasm._wl_material_set_param_value_uint(this._id, index, value._id);
+  };
+}
+function fontGetter(index) {
+  return function() {
+    const wasm = this.engine.wasm;
+    wasm._wl_material_get_param_value(this._id, index, wasm._tempMem);
+    return this.engine.fonts.wrap(wasm._tempMemInt[0]);
+  };
 }
 
-// node_modules/@wonderlandengine/api/dist/utils/misc.js
-function timeout(time) {
-  return new Promise((res) => setTimeout(res, time));
-}
-function clamp(val, min2, max2) {
-  return Math.max(Math.min(max2, val), min2);
-}
+// node_modules/@wonderlandengine/api/dist/resources/mesh-manager.js
+var MeshManager = class extends ResourceManager {
+  constructor(engine2) {
+    super(engine2, Mesh);
+  }
+  /**
+   * Create a new mesh.
+   *
+   * @param params Vertex and index data. For more information, have a look
+   *     at the {@link MeshParameters} object.
+   */
+  create(params) {
+    if (!params.vertexCount)
+      throw new Error("Missing parameter 'vertexCount'");
+    const wasm = this.engine.wasm;
+    let indexData = 0;
+    let indexType = 0;
+    let indexDataSize = 0;
+    if (params.indexData) {
+      indexType = params.indexType || MeshIndexType.UnsignedShort;
+      indexDataSize = params.indexData.length * indexType;
+      indexData = wasm._malloc(indexDataSize);
+      switch (indexType) {
+        case MeshIndexType.UnsignedByte:
+          wasm.HEAPU8.set(params.indexData, indexData);
+          break;
+        case MeshIndexType.UnsignedShort:
+          wasm.HEAPU16.set(params.indexData, indexData >> 1);
+          break;
+        case MeshIndexType.UnsignedInt:
+          wasm.HEAPU32.set(params.indexData, indexData >> 2);
+          break;
+      }
+    }
+    const { skinningType = MeshSkinningType.None } = params;
+    const index = wasm._wl_mesh_create(indexData, indexDataSize, indexType, params.vertexCount, skinningType);
+    const instance = new Mesh(this._host, index);
+    this._cache[instance.index] = instance;
+    return instance;
+  }
+};
+
+// node_modules/@wonderlandengine/api/dist/resources/texture-manager.js
+var TextureManager = class extends ResourceManager {
+  constructor(engine2) {
+    super(engine2, Texture);
+  }
+  /**
+   * Create a new texture from an image or video.
+   *
+   * #### Usage
+   *
+   * ```js
+   * const img = new Image();
+   * img.load = function(img) {
+   *     const texture = engine.textures.create(img);
+   * };
+   * img.src = 'my-image.png';
+   * ```
+   *
+   * @note The media must already be loaded. To automatically
+   * load the media and create a texture, use {@link TextureManager.load} instead.
+   *
+   * @param image Media element to create the texture from.
+   * @ret\urns The new texture with the media content.
+   */
+  create(image) {
+    const wasm = this.engine.wasm;
+    const jsImageIndex = wasm._images.length;
+    wasm._images.push(image);
+    if (image instanceof HTMLImageElement && !image.complete) {
+      throw new Error("image must be ready to create a texture");
+    }
+    const width = image.videoWidth ?? image.width;
+    const height = image.videoHeight ?? image.height;
+    const imageIndex = wasm._wl_image_create(jsImageIndex, width, height);
+    const index = wasm._wl_texture_create(imageIndex);
+    const instance = new Texture(this.engine, index);
+    this._cache[instance.index] = instance;
+    return instance;
+  }
+  /**
+   * Load an image from URL as {@link Texture}.
+   *
+   * #### Usage
+   *
+   * ```js
+   * const texture = await engine.textures.load('my-image.png');
+   * ```
+   *
+   * @param filename URL to load from.
+   * @param crossOrigin Cross origin flag for the image object.
+   * @returns Loaded texture.
+   */
+  load(filename, crossOrigin) {
+    let image = new Image();
+    image.crossOrigin = crossOrigin ?? image.crossOrigin;
+    image.src = filename;
+    return new Promise((resolve, reject) => {
+      image.onload = () => {
+        resolve(this.create(image));
+      };
+      image.onerror = function() {
+        reject("Failed to load image. Not found or no read access");
+      };
+    });
+  }
+};
+
+// node_modules/@wonderlandengine/api/dist/scene-gltf.js
+var GLTFExtensions = class {
+  objectCount;
+  /** glTF root extensions object. JSON data indexed by extension name. */
+  root = {};
+  /**
+   * Mesh extension objects. Key is the gltf index, value is JSON
+   * data indexed by extension name.
+   */
+  mesh = {};
+  /**
+   * Node extension objects. Key is a glTF index, value is JSON
+   * data indexed by extension name.
+   */
+  node = {};
+  constructor(count) {
+    this.objectCount = count;
+  }
+};
+var PrefabGLTF = class extends Prefab {
+  /**
+   * Raw extensions read from the glTF file.
+   *
+   * The extensions will be mapped to the hierarchy upon instantiation.
+   * For more information, have a look at the {@link InstantiateGltfResult} type.
+   *
+   * @note The glTF must be loaded with `extensions` enabled. If not, this
+   * field will be set to `null`. For more information, have a look at the
+   * {@link GLTFOptions} type.
+   */
+  extensions = null;
+  /**
+   * @note This api is meant to be used internally.
+   *
+   * @hidden
+   */
+  constructor(engine2, index) {
+    super(engine2, index);
+    this.extensions = this._readExtensions();
+  }
+  /**
+   * Instantiate the glTF extensions on an active sub scene graph.
+   *
+   * @param id The root object id.
+   * @param result The instantiation object result.
+   *
+   * @hidden
+   */
+  _processInstantiaton(dest, root, result) {
+    if (!this.extensions)
+      return null;
+    const wasm = this.engine.wasm;
+    const count = this.extensions.objectCount;
+    const idMapping = new Array(count);
+    const activeRootIndex = wasm._wl_object_index(root._id);
+    for (let i = 0; i < count; ++i) {
+      const mappedId = wasm._wl_glTF_scene_extensions_gltfIndex_to_id(this._index, dest._index, activeRootIndex, i);
+      idMapping[i] = mappedId;
+    }
+    const remapped = {
+      mesh: {},
+      node: {},
+      idMapping
+    };
+    for (const gltfIndex in this.extensions.mesh) {
+      const id = idMapping[gltfIndex];
+      remapped.mesh[id] = this.extensions.mesh[gltfIndex];
+    }
+    for (const gltfIndex in this.extensions.node) {
+      const id = idMapping[gltfIndex];
+      remapped.node[id] = this.extensions.node[gltfIndex];
+    }
+    result.extensions = remapped;
+  }
+  /**
+   * Unmarshalls gltf extensions.
+   *
+   * @hidden
+   */
+  _readExtensions() {
+    const wasm = this.engine.wasm;
+    const ptr = wasm._wl_glTF_scene_get_extensions(this._index);
+    if (!ptr)
+      return null;
+    let index = ptr / 4;
+    const data = wasm.HEAPU32;
+    const readString = () => {
+      const strPtr = data[index++];
+      const strLen = data[index++];
+      return wasm.UTF8ViewToString(strPtr, strPtr + strLen);
+    };
+    const objectCount = data[index++];
+    const extensions = new GLTFExtensions(objectCount);
+    const meshExtensionsSize = data[index++];
+    for (let i = 0; i < meshExtensionsSize; ++i) {
+      const objectId = data[index++];
+      extensions.mesh[objectId] = JSON.parse(readString());
+    }
+    const nodeExtensionsSize = data[index++];
+    for (let i = 0; i < nodeExtensionsSize; ++i) {
+      const objectId = data[index++];
+      extensions.node[objectId] = JSON.parse(readString());
+    }
+    const rootExtensionsStr = readString();
+    if (rootExtensionsStr) {
+      extensions.root = JSON.parse(rootExtensionsStr);
+    }
+    return extensions;
+  }
+};
 
 // node_modules/@wonderlandengine/api/dist/scene.js
 var MAGIC_BIN = "WLEV";
-var Scene = class {
+var Scene = class extends Prefab {
   /** Called before rendering the scene */
   onPreRender = new Emitter();
   /** Called after the scene has been rendered */
   onPostRender = new Emitter();
-  /** Wonderland Engine instance. @hidden */
-  _engine;
   /** Ray hit pointer in WASM heap. @hidden */
   _rayHit;
   /** Ray hit. @hidden */
   _hit;
+  constructor(engine2, index) {
+    super(engine2, index);
+    this._rayHit = this.engine?.wasm._malloc(4 * (3 * 4 + 3 * 4 + 4 + 2) + 4);
+    this._hit = new RayHit(this, this._rayHit);
+  }
+  instantiate(prefab) {
+    const wasm = this.engine.wasm;
+    const id = wasm._wl_scene_instantiate(prefab._index, this._index);
+    const result = { root: this.wrap(id) };
+    if (prefab instanceof PrefabGLTF) {
+      const obj = this.wrap(id);
+      prefab._processInstantiaton(this, obj, result);
+    }
+    return result;
+  }
+  /** @todo: Add `instantiateBatch` to instantiate multiple chunks in a row. */
   /**
-   * Relative directory of the scene that was loaded with {@link Scene.load}
-   * Used for loading any files relative to the main scene.
+   * @todo Provide an API to delete all resources linked to a scene.
    *
-   * We need this for the tests that load bin files since we aren't loading
-   * from the deploy folder directly. (test/resources/projects/*.bin)
+   * Example:
    *
-   * @hidden
+   * ```ts
+   * const scene = await engine.loadScene('Scene.bin');
+   * ...
+   * scene.destroy({removeResources: true});
+   * ```
    */
-  _baseURL;
-  constructor(engine2) {
-    this._engine = engine2;
-    this._rayHit = engine2.wasm._malloc(4 * (3 * 4 + 3 * 4 + 4 + 2) + 4);
-    this._hit = new RayHit(this._engine, this._rayHit);
-    this._baseURL = "";
+  /**
+   * Destroy this scene and remove it from the engine.
+   *
+   * @note Destroying a scene **doesn't** remove the materials, meshes,
+   * and textures it references in the engine. Those should be cleaned up either by loading
+   * another main scene via {@link WonderlandEngine.loadMainScene}, or manually using {@link Mesh.destroy}.
+   *
+   * @throws If the scene is currently active.
+   * */
+  destroy() {
+    if (this.isActive) {
+      throw new Error(`Attempt to destroy ${this}, but destroying the active scene is not supported`);
+    }
+    const wasm = this.engine.wasm;
+    const rayPtr = this._rayHit;
+    super.destroy();
+    wasm._free(rayPtr);
   }
   /**
    * Currently active view components.
    */
   get activeViews() {
-    const wasm = this._engine.wasm;
-    const count = wasm._wl_scene_get_active_views(this._engine.wasm._tempMem, 16);
+    const wasm = this.engine.wasm;
+    const count = wasm._wl_scene_get_active_views(this._index, wasm._tempMem, 16);
     const views = [];
-    const viewTypeIndex = wasm._typeIndexFor("view");
     for (let i = 0; i < count; ++i) {
-      views.push(new ViewComponent(this._engine, viewTypeIndex, this._engine.wasm._tempMemInt[i]));
+      const id = wasm._tempMemInt[i];
+      views.push(this._components.wrapView(id));
     }
     return views;
   }
   /**
-   * Relative directory of the scene that was loaded with {@link Scene.load}
-   * Used for loading any files relative to the main scene.
+   * Cast a ray through the scene and find intersecting collision components.
    *
-   * @hidden
-   */
-  get baseURL() {
-    return this._baseURL;
-  }
-  /**
-   * Cast a ray through the scene and find intersecting objects.
-   *
-   * The resulting ray hit will contain up to **4** closest ray hits,
+   * The resulting ray hit will contain **up to 4** closest ray hits,
    * sorted by increasing distance.
+   *
+   * Example:
+   *
+   * ```js
+   * const hit = engine.scene.rayCast(
+   *     [0, 0, 0],
+   *     [0, 0, 1],
+   *     1 << 0 | 1 << 4, // Only check against components in groups 0 and 4
+   *     25
+   * );
+   * if (hit.hitCount > 0) {
+   *     const locations = hit.getLocations();
+   *     console.log(`Object hit at: ${locations[0][0]}, ${locations[0][1]}, ${locations[0][2]}`);
+   * }
+   * ```
    *
    * @param o Ray origin.
    * @param d Ray direction.
-   * @param group Collision group to filter by: only objects that are
-   *        part of given group are considered for raycast.
+   * @param groupMask Bitmask of collision groups to filter by: only objects
+   *        that are part of given groups are considered for the raycast.
    * @param maxDistance Maximum **inclusive** hit distance. Defaults to `100`.
    *
-   * @returns The scene cached {@link RayHit} instance.
-   * @note The returned object is owned by the Scene instance
-   *   will be reused with the next {@link Scene#rayCast} call.
+   * @returns The {@link RayHit} instance, cached by this class.
+   *
+   * @note The returned {@link RayHit} object is owned by the {@link Scene}
+   *       instance and will be reused with the next {@link Scene#rayCast} call.
    */
-  rayCast(o, d, group, maxDistance = 100) {
-    this._engine.wasm._wl_scene_ray_cast(o[0], o[1], o[2], d[0], d[1], d[2], group, this._rayHit, maxDistance);
+  rayCast(o, d, groupMask, maxDistance = 100) {
+    this.engine.wasm._wl_scene_ray_cast(this._index, o[0], o[1], o[2], d[0], d[1], d[2], groupMask, this._rayHit, maxDistance);
     return this._hit;
-  }
-  /**
-   * Add an object to the scene.
-   *
-   * @param parent Parent object or `null`.
-   * @returns A newly created object.
-   */
-  addObject(parent = null) {
-    const parentId = parent ? parent.objectId : 0;
-    const objectId = this._engine.wasm._wl_scene_add_object(parentId);
-    return this._engine.wrapObject(objectId);
-  }
-  /**
-   * Batch-add objects to the scene.
-   *
-   * Will provide better performance for adding multiple objects (e.g. > 16)
-   * than calling {@link Scene#addObject} repeatedly in a loop.
-   *
-   * By providing upfront information of how many objects will be required,
-   * the engine is able to batch-allocate the required memory rather than
-   * convervatively grow the memory in small steps.
-   *
-   * **Experimental:** This API might change in upcoming versions.
-   *
-   * @param count Number of objects to add.
-   * @param parent Parent object or `null`, default `null`.
-   * @param componentCountHint Hint for how many components in total will
-   *      be added to the created objects afterwards, default `0`.
-   * @returns Newly created objects
-   */
-  addObjects(count, parent = null, componentCountHint = 0) {
-    const parentId = parent ? parent.objectId : 0;
-    this._engine.wasm.requireTempMem(count * 2);
-    const actualCount = this._engine.wasm._wl_scene_add_objects(parentId, count, componentCountHint || 0, this._engine.wasm._tempMem, this._engine.wasm._tempMemSize >> 1);
-    const ids = this._engine.wasm._tempMemUint16.subarray(0, actualCount);
-    const wrapper = this._engine.wrapObject.bind(this._engine);
-    const objects = Array.from(ids, wrapper);
-    return objects;
-  }
-  /**
-   * Pre-allocate memory for a given amount of objects and components.
-   *
-   * Will provide better performance for adding objects later with {@link Scene#addObject}
-   * and {@link Scene#addObjects}.
-   *
-   * By providing upfront information of how many objects will be required,
-   * the engine is able to batch-allocate the required memory rather than
-   * conservatively grow the memory in small steps.
-   *
-   * **Experimental:** This API might change in upcoming versions.
-   *
-   * @param objectCount Number of objects to add.
-   * @param componentCountPerType Amount of components to
-   *      allocate for {@link Object3D.addComponent}, e.g. `{mesh: 100, collision: 200, "my-comp": 100}`.
-   * @since 0.8.10
-   */
-  reserveObjects(objectCount, componentCountPerType) {
-    const wasm = this._engine.wasm;
-    componentCountPerType = componentCountPerType || {};
-    const jsManagerIndex = wasm._jsManagerIndex;
-    let countsPerTypeIndex = wasm._tempMemInt.subarray();
-    countsPerTypeIndex.fill(0);
-    for (const e of Object.entries(componentCountPerType)) {
-      const typeIndex = wasm._typeIndexFor(e[0]);
-      countsPerTypeIndex[typeIndex < 0 ? jsManagerIndex : typeIndex] += e[1];
-    }
-    wasm._wl_scene_reserve_objects(objectCount, wasm._tempMem);
-  }
-  /**
-   * Top-level objects of this scene.
-   *
-   * See {@link Object3D.children} for more information.
-   *
-   * @since 1.2.0
-   */
-  get children() {
-    const root = this._engine.wrapObject(0);
-    return root.children;
-  }
-  /**
-   * Search for objects matching the name.
-   *
-   * See {@link Object3D.findByName} for more information.
-   *
-   * @param name The name to search for.
-   * @param recursive If `true`, the method will look at all the objects of
-   *     this scene. If `false`, this method will only perform the search in
-   *     root objects.
-   * @returns An array of {@link Object3D} matching the name.
-   *
-   * @since 1.2.0
-   */
-  findByName(name, recursive = false) {
-    const root = this._engine.wrapObject(0);
-    return root.findByName(name, recursive);
-  }
-  /**
-   * Search for all **top-level** objects matching the name.
-   *
-   * See {@link Object3D.findByNameDirect} for more information.
-   *
-   * @param name The name to search for.
-   * @returns An array of {@link Object3D} matching the name.
-   *
-   * @since 1.2.0
-   */
-  findByNameDirect(name) {
-    const root = this._engine.wrapObject(0);
-    return root.findByNameDirect(name);
-  }
-  /**
-   * Search for **all objects** matching the name.
-   *
-   * See {@link Object3D.findByNameRecursive} for more information.
-   *
-   * @param name The name to search for.
-   * @returns An array of {@link Object3D} matching the name.
-   *
-   * @since 1.2.0
-   */
-  findByNameRecursive(name) {
-    const root = this._engine.wrapObject(0);
-    return root.findByNameRecursive(name);
   }
   /**
    * Set the background clear color.
@@ -7809,7 +9409,7 @@ var Scene = class {
    * @since 0.8.5
    */
   set clearColor(color) {
-    this._engine.wasm._wl_scene_set_clearColor(color[0], color[1], color[2], color[3]);
+    this.engine.wasm._wl_scene_set_clearColor(color[0], color[1], color[2], color[3]);
   }
   /**
    * Set whether to clear the color framebuffer before drawing.
@@ -7822,11 +9422,7 @@ var Scene = class {
    * @since 0.9.4
    */
   set colorClearEnabled(b) {
-    this._engine.wasm._wl_scene_enableColorClear(b);
-  }
-  /** Hosting engine instance. */
-  get engine() {
-    return this._engine;
+    this.engine.wasm._wl_scene_enableColorClear(b);
   }
   /**
    * Load a scene file (.bin).
@@ -7854,49 +9450,30 @@ var Scene = class {
    * Use {@link Scene.setLoadingProgress} to update the loading progress bar
    * when using an ArrayBuffer.
    *
-   * @param opts Path to the file to load, or an option object.
+   * @deprecated Use the new {@link Scene} and {@link Scene} API.
+   *
+   * @param options Path to the file to load, or an option object.
    *     For more information about the options, see the {@link SceneLoadOptions} documentation.
    * @returns Promise that resolves when the scene was loaded.
    */
   async load(options) {
-    let buffer = null;
-    let baseURL = null;
-    let filename = null;
+    let dispatchReadyEvent = false;
+    let opts;
     if (isString(options)) {
-      filename = options;
-      buffer = await fetchWithProgress(filename, (bytes, size2) => {
-        this.engine.log.info(LogTag.Scene, `Scene downloading: ${bytes} / ${size2}`);
-        this.setLoadingProgress(bytes / size2);
+      opts = await Scene.loadBuffer(options, (bytes, size) => {
+        this.engine.log.info(LogTag.Scene, `Scene downloading: ${bytes} / ${size}`);
+        this.setLoadingProgress(bytes / size);
       });
-      baseURL = getBaseUrl(filename);
-      this.engine.log.info(LogTag.Scene, `Scene download of ${buffer.byteLength} bytes successful.`);
     } else {
-      ({ buffer, baseURL } = options);
-      filename = baseURL ? `${baseURL}/scene.bin` : "scene.bin";
+      opts = options;
+      dispatchReadyEvent = options.dispatchReadyEvent ?? false;
     }
-    if (!buffer) {
-      throw new Error("Failed to load scene, buffer not provided");
-    }
-    if (!isString(baseURL)) {
-      throw new Error("Failed to load scene, baseURL not provided");
-    }
-    if (!this._engine.onLoadingScreenEnd.isDataRetained) {
-      this._engine.onLoadingScreenEnd.notify();
-    }
-    this._baseURL = baseURL;
-    const wasm = this._engine.wasm;
-    const size = buffer.byteLength;
-    const ptr = wasm._malloc(size);
-    new Uint8Array(wasm.HEAPU8.buffer, ptr, size).set(new Uint8Array(buffer));
-    try {
-      wasm._wl_load_scene_bin(ptr, size, wasm.tempUTF8(filename));
-    } finally {
-      wasm._free(ptr);
-    }
-    const i18n = this._engine.i18n;
-    const langPromise = i18n.setLanguage(i18n.languageCode(0));
-    await Promise.all([langPromise, this._flushAppend(this._baseURL)]);
-    this._engine.onSceneLoaded.notify();
+    const scene = await this.engine.loadMainSceneFromBuffer({
+      ...opts,
+      dispatchReadyEvent
+    });
+    this.engine.onSceneLoaded.notify();
+    return scene;
   }
   /**
    * Append a scene file.
@@ -7940,55 +9517,36 @@ var Scene = class {
    * });
    * ```
    *
+   * @deprecated Use the new {@link Prefab} and {@link Scene} API.
+   *
    * @param file The .bin, .gltf or .glb file to append. Should be a URL or
    *   an `ArrayBuffer` with the file content.
    * @param options Additional options for loading.
    * @returns Promise that resolves when the scene was appended.
    */
   async append(file, options = {}) {
-    const { loadGltfExtensions = false, baseURL = isString(file) ? getBaseUrl(file) : this._baseURL } = options;
-    const wasm = this._engine.wasm;
+    const { baseURL = isString(file) ? getBaseUrl(file) : this.baseURL } = options;
     const buffer = isString(file) ? await fetchWithProgress(file) : file;
-    let error = null;
-    let result = void 0;
-    let callback = wasm.addFunction((objectId, extensionData, extensionDataSize) => {
-      if (objectId < 0) {
-        error = new Error(`Scene.append(): Internal runtime error, found root id = ${objectId}`);
-        return;
-      }
-      const root = objectId ? this._engine.wrapObject(objectId) : null;
-      result = root;
-      if (!extensionData || !extensionDataSize)
-        return;
-      const marshalled = new Uint32Array(wasm.HEAPU32.buffer, extensionData, extensionDataSize / 4);
-      const extensions = this._unmarshallGltfExtensions(marshalled);
-      result = { root, extensions };
-    }, "viii");
-    const size = buffer.byteLength;
-    const ptr = wasm._malloc(size);
-    const data = new Uint8Array(wasm.HEAPU8.buffer, ptr, size);
-    data.set(new Uint8Array(buffer));
+    const data = new Uint8Array(buffer);
     const isBinFile = data.byteLength > MAGIC_BIN.length && data.subarray(0, MAGIC_BIN.length).every((value, i) => value === MAGIC_BIN.charCodeAt(i));
-    try {
-      if (isBinFile) {
-        wasm._wl_append_scene_bin(ptr, size, callback);
-      } else {
-        wasm._wl_append_scene_gltf(ptr, size, loadGltfExtensions, callback);
-      }
-    } catch (e) {
-      wasm.removeFunction(callback);
-      throw e;
-    } finally {
-      wasm._free(ptr);
+    const scene = isBinFile ? this.engine.loadPrefabFromBuffer({ buffer, baseURL }) : this.engine.loadGLTFFromBuffer({
+      buffer,
+      baseURL,
+      extensions: options.loadGltfExtensions
+    });
+    const result = this.instantiate(scene);
+    if (scene instanceof PrefabGLTF) {
+      if (!scene.extensions)
+        return result.root;
+      return {
+        root: result.root,
+        extensions: {
+          ...result.extensions,
+          root: scene.extensions.root
+        }
+      };
     }
-    while (result === void 0 && !error)
-      await timeout(4);
-    wasm.removeFunction(callback);
-    if (error)
-      throw error;
-    if (isBinFile)
-      await this._flushAppend(baseURL);
-    return result;
+    return result.root;
   }
   /**
    * Update the loading screen progress bar.
@@ -8000,216 +9558,70 @@ var Scene = class {
     wasm._wl_set_loading_screen_progress(clamp(percentage, 0, 1));
   }
   /**
+   * Dispatch an event 'wle-scene-ready' in the document.
+   *
+   * @note This is used for automatic testing.
+   */
+  dispatchReadyEvent() {
+    document.dispatchEvent(new CustomEvent("wle-scene-ready", {
+      detail: { filename: this.filename }
+    }));
+  }
+  /**
    * Set the current material to render the sky.
    *
    * @note The sky needs to be enabled in the editor when creating the scene.
    * For more information, please refer to the background [tutorial](https://wonderlandengine.com/tutorials/background-effect/).
    */
   set skyMaterial(material) {
-    this._engine.wasm._wl_scene_set_sky_material(material?._index ?? 0);
+    this.engine.wasm._wl_scene_set_sky_material(this._index, material?._id ?? 0);
   }
   /** Current sky material, or `null` if no sky is set. */
   get skyMaterial() {
-    const id = this._engine.wasm._wl_scene_get_sky_material();
-    return id > 0 ? new Material(this._engine, id) : null;
-  }
-  /**
-   * Load all currently queued bin files.
-   *
-   * Used by {@link Scene.append} and {@link Scene.load}
-   * to load all delay-load bins.
-   *
-   * Used by {@link I18N.language} to trigger loading the
-   * associated language bin, after it was queued.
-   *
-   * @param baseURL Url that is added to each path.
-   * @param options Additional options for loading.
-   *
-   * @hidden
-   */
-  _flushAppend(baseURL) {
-    const wasm = this._engine.wasm;
-    const count = wasm._wl_scene_queued_bin_count();
-    if (!count)
-      return Promise.resolve();
-    const urls = new Array(count).fill(0).map((_, i) => {
-      const ptr = wasm._wl_scene_queued_bin_path(i);
-      return wasm.UTF8ToString(ptr);
-    });
-    wasm._wl_scene_clear_queued_bin_list();
-    const promises = urls.map((path) => this.append(baseURL.length ? `${baseURL}/${path}` : path));
-    return Promise.all(promises).then((data) => {
-      const i18n = this._engine.i18n;
-      this._engine.i18n.onLanguageChanged.notify(i18n.previousIndex, i18n.currentIndex);
-      return data;
-    });
-  }
-  /**
-   * Unmarshalls the GltfExtensions from an Uint32Array.
-   *
-   * @param data Array containing the gltf extension data.
-   * @returns The extensions stored in an object literal.
-   *
-   * @hidden
-   */
-  _unmarshallGltfExtensions(data) {
-    const extensions = {
-      root: {},
-      mesh: {},
-      node: {},
-      idMapping: []
-    };
-    let index = 0;
-    const readString = () => {
-      const strPtr = data[index++];
-      const strLen = data[index++];
-      return this._engine.wasm.UTF8ViewToString(strPtr, strPtr + strLen);
-    };
-    const idMappingSize = data[index++];
-    const idMapping = new Array(idMappingSize);
-    for (let i = 0; i < idMappingSize; ++i) {
-      idMapping[i] = data[index++];
-    }
-    extensions.idMapping = idMapping;
-    const meshExtensionsSize = data[index++];
-    for (let i = 0; i < meshExtensionsSize; ++i) {
-      const objectId = data[index++];
-      extensions.mesh[idMapping[objectId]] = JSON.parse(readString());
-    }
-    const nodeExtensionsSize = data[index++];
-    for (let i = 0; i < nodeExtensionsSize; ++i) {
-      const objectId = data[index++];
-      extensions.node[idMapping[objectId]] = JSON.parse(readString());
-    }
-    const rootExtensionsStr = readString();
-    if (rootExtensionsStr) {
-      extensions.root = JSON.parse(rootExtensionsStr);
-    }
-    return extensions;
+    const index = this.engine.wasm._wl_scene_get_sky_material(this._index);
+    return this.engine.materials.wrap(index);
   }
   /**
    * Reset the scene.
    *
    * This method deletes all used and allocated objects, and components.
+   *
+   * @deprecated Load a new scene and activate it instead.
    */
   reset() {
-    this._engine.wasm._wl_scene_reset();
-    this._baseURL = "";
-  }
-};
-
-// node_modules/@wonderlandengine/api/dist/texture-manager.js
-var TextureManager = class {
-  /** Wonderland Engine instance. @hidden */
-  _engine;
-  /** Texture cache. @hidden */
-  #cache = [];
-  /** @hidden */
-  constructor(engine2) {
-    this._engine = engine2;
   }
   /**
-   * Retrieve the texture with the given id.
+   * Download and apply queued dependency files (.bin).
    *
-   * @param id The texture identifier.
-   * @return The {@link Texture} if found, `null` otherwise.
+   * @hidden
    */
-  get(id) {
-    return this.#cache[id] ?? null;
+  async _downloadDependency(url) {
+    const wasm = this.engine.wasm;
+    const buffer = await fetchWithProgress(url);
+    const ptr = wasm.copyBufferToHeap(buffer);
+    try {
+      wasm._wl_scene_load_queued_bin(this._index, ptr, buffer.byteLength);
+    } finally {
+      wasm._free(ptr);
+    }
   }
   /**
-   * Load an image from URL as {@link Texture}.
+   * Download and apply queued dependency files (.bin).
    *
-   * @param filename URL to load from.
-   * @param crossOrigin Cross origin flag for the image object.
-   * @returns Loaded texture.
+   * @hidden
    */
-  load(filename, crossOrigin) {
-    let image = new Image();
-    image.crossOrigin = crossOrigin ?? image.crossOrigin;
-    image.src = filename;
-    return new Promise((resolve, reject) => {
-      image.onload = () => {
-        let texture = new Texture(this._engine, image);
-        if (!texture.valid) {
-          reject("Failed to add image " + image.src + " to texture atlas. Probably incompatible format.");
-        }
-        resolve(texture);
-      };
-      image.onerror = function() {
-        reject("Failed to load image. Not found or no read access");
-      };
+  async _downloadDependencies() {
+    const wasm = this.engine.wasm;
+    const count = wasm._wl_scene_queued_bin_count(this._index);
+    if (!count)
+      return Promise.resolve();
+    const urls = new Array(count).fill(0).map((_, i) => {
+      const ptr = wasm._wl_scene_queued_bin_path(this._index, i);
+      const url = wasm.UTF8ToString(ptr);
+      return url;
     });
-  }
-  /**
-   * Wrap a texture ID using {@link Texture}.
-   *
-   * @note This method performs caching and will return the same
-   * instance on subsequent calls.
-   *
-   * @param id ID of the texture to create.
-   *
-   * @returns The texture.
-   */
-  wrap(id) {
-    const texture = this.#cache[id] ?? (this.#cache[id] = new Texture(this._engine, id));
-    texture["_id"] = id;
-    return texture;
-  }
-  /** Number of textures allocated in the manager. */
-  get allocatedCount() {
-    return this.#cache.length;
-  }
-  /**
-   * Number of textures in the manager.
-   *
-   * @note For performance reasons, avoid calling this method when possible.
-   */
-  get count() {
-    let count = 0;
-    for (const tex of this.#cache) {
-      if (tex && tex.id >= 0)
-        ++count;
-    }
-    return count;
-  }
-  /**
-   * Set a new texture in the manager cache.
-   *
-   * @note This api is meant to be used internally.
-   *
-   * @param texture The texture to add.
-   *
-   * @hidden
-   */
-  _set(texture) {
-    this.#cache[texture.id] = texture;
-  }
-  /**
-   * Destroys the texture.
-   *
-   * @note This api is meant to be used internally.
-   *
-   * @param texture The texture to destroy.
-   *
-   * @hidden
-   */
-  _destroy(texture) {
-    this._engine.wasm._wl_texture_destroy(texture.id);
-    const img = texture["_imageIndex"];
-    if (img !== null) {
-      this._engine.wasm._images[img] = null;
-    }
-  }
-  /**
-   * Reset the manager.
-   *
-   * @note This api is meant to be used internally.
-   *
-   * @hidden
-   */
-  _reset() {
-    this.#cache.length = 0;
+    wasm._wl_scene_clear_queued_bin_list(this._index);
+    return Promise.all(urls.map((url) => this._downloadDependency(url)));
   }
 };
 
@@ -8305,12 +9717,30 @@ var WonderlandEngine = class {
    * ```js
    * this.engine.onSceneLoaded.add(() => console.log("Scene switched!"));
    * ```
+   *
+   * @deprecated Use {@link onSceneActivated} instead.
    */
   onSceneLoaded = new Emitter();
   /**
-   * Current main scene.
+   * {@link Emitter} for scene activated events.
+   *
+   * This listener is notified with the old scene as first parameter, and
+   * the new scene as second.
+   *
+   * This listener is notified after all resources are loaded and all components had their
+   * {@link Component#init()} as well as (if active)
+   * {@link Component#start()} and {@link Component#onActivate()} methods
+   * called.
+   *
+   * Usage from within a component:
+   *
+   * ```js
+   * this.engine.onSceneActivated.add((oldScene, newScene) => {
+   *     console.log(`Scene switch from ${oldScene.filename} to ${newScene.filename}`);
+   * });
+   * ```
    */
-  scene = null;
+  onSceneActivated = new Emitter();
   /**
    * Access to internationalization.
    */
@@ -8378,15 +9808,50 @@ var WonderlandEngine = class {
    */
   erasePrototypeOnDestroy = false;
   /**
-   * Component class instances per type to avoid GC.
+   * If `true`, the materials will be wrapped in a proxy to support pre-1.2.0
+   * material access, i.e.,
    *
-   * @note Maps the manager index to the list of components.
+   * ```js
+   * const material = new Material(engine, 'Phong Opaque');
+   * material.diffuseColor = [1.0, 0.0, 0.0, 1.0];
+   * ```
+   *
+   * If `false`, property accessors will not be available and material
+   * properties should be accessed via methods, i.e.,
+   *
+   * ```js
+   * const PhongOpaque = engine.materials.getTemplate('Phong Opaque');
+   * const material = new PhongOpaque();
+   * material.setDiffuseColor([1.0, 0.0, 0.0, 1.0]);
+   * ...
+   * const diffuse = material.getDiffuseColor();
+   * ```
+   *
+   * When disabled, reading/writing to materials is slightly more efficient on the CPU.
+   */
+  legacyMaterialSupport = true;
+  /**
+   * Scene cache in scene manager.
    *
    * @hidden
    */
-  _componentCache = {};
-  /** Object class instances to avoid GC. @hidden */
-  _objectCache = [];
+  _scenes = [];
+  /**
+   * Currently active scene.
+   *
+   * @hidden
+   */
+  _scene = null;
+  /** @hidden */
+  _textures = null;
+  /** @hidden */
+  _materials = null;
+  /** @hidden */
+  _meshes = null;
+  /** @hidden */
+  _morphTargets = null;
+  /** @hidden */
+  _fonts = null;
   /**
    * WebAssembly bridge.
    *
@@ -8399,8 +9864,6 @@ var WonderlandEngine = class {
    * @hidden
    */
   #physics = null;
-  /** Texture manager. @hidden */
-  #textures = new TextureManager(this);
   /**
    * Resize observer to track for canvas size changes.
    *
@@ -8426,8 +9889,6 @@ var WonderlandEngine = class {
     this.#wasm = wasm;
     this.#wasm["_setEngine"](this);
     this.#wasm._loadingScreen = loadingScreen;
-    this._componentCache = {};
-    this._objectCache.length = 0;
     this.canvas.addEventListener("webglcontextlost", (e) => this.log.error(LogTag.Engine, "Context lost:", e), false);
   }
   /**
@@ -8474,6 +9935,246 @@ var WonderlandEngine = class {
   registerComponent(...classes) {
     for (const arg of classes) {
       this.wasm._registerComponent(arg);
+    }
+  }
+  /**
+   * Switch the current active scene.
+   *
+   * Once active, the scene will be updated and rendered on the canvas.
+   *
+   * The currently active scene is accessed via {@link WonderlandEngine.scene}:
+   *
+   * ```js
+   * import {Component} from '@wonderlandengine/api';
+   *
+   * class MyComponent extends Component{
+   *     start() {
+   *         console.log(this.scene === this.engine.scene); // Prints `true`
+   *     }
+   * }
+   * ```
+   *
+   * @note This method will throw if the scene isn't activatable.
+   *
+   * #### Component Lifecycle
+   *
+   * Marking a scene as active will:
+   * * Call {@link Component#onDeactivate} for all active components of the previous scene
+   * * Call {@link Component#onActivate} for all active components of the new scene
+   *
+   * #### Usage
+   *
+   * ```js
+   * const scene = await engine.loadScene('Scene.bin');
+   * engine.switchTo(scene);
+   * ```
+   *
+   * @returns A promise that resolves once the scene is ready.
+   *
+   * @since 1.2.0
+   */
+  async switchTo(scene, opts = {}) {
+    this.wasm._wl_deactivate_activeScene();
+    const previous = this.scene;
+    this._scene = scene;
+    this.wasm._wl_scene_activate(scene._index);
+    if (!this.onLoadingScreenEnd.isDataRetained) {
+      this.onLoadingScreenEnd.notify();
+    }
+    scene._downloadDependencies();
+    if (this.physics)
+      this.physics._hit._scene = scene;
+    await this.i18n.setLanguage(this.i18n.languageCode(0));
+    const { dispatchReadyEvent = false } = opts;
+    this.onSceneActivated.notify(previous, scene);
+    if (dispatchReadyEvent)
+      scene.dispatchReadyEvent();
+  }
+  /**
+   * Load the scene from a URL, as the main scene of a new {@link Scene}.
+   *
+   * #### Usage
+   *
+   * ```js
+   * // The method returns the main scene
+   * const scene = await engine.loadMainScene();
+   * ```
+   *
+   * #### Destruction
+   *
+   * Loading a new main scene entirely resets the state of the engine, and destroys:
+   * - All loaded scenes, prefabs, and gltf files
+   * - Meshes
+   * - Textures
+   * - Materials
+   *
+   * @note This method can only load Wonderland Engine `.bin` files.
+   *
+   * @param url The URL pointing to the scene to load.
+   * @param progress Optional progress callback.
+   * @returns The main scene of the new {@link Scene}.
+   */
+  async loadMainScene(opts, progress = () => {
+  }) {
+    const options = await Scene.loadBuffer(opts, progress);
+    return this.loadMainSceneFromBuffer(options);
+  }
+  /**
+   * Similar to {@link WonderlandEngine.loadMainScene}, but loading is done from an ArrayBuffer.
+   *
+   * @param options An object containing the buffer and extra metadata.
+   * @returns The main scene of the new {@link Scene}.
+   */
+  async loadMainSceneFromBuffer(options) {
+    const { buffer, url } = Prefab.validateBufferOptions(options);
+    const wasm = this.#wasm;
+    wasm._wl_deactivate_activeScene();
+    for (let i = this._scenes.length - 1; i >= 0; --i) {
+      const scene = this._scenes[i];
+      if (scene)
+        scene.destroy();
+    }
+    this._textures._clear();
+    this._materials._clear();
+    this._meshes._clear();
+    this._morphTargets._clear();
+    const ptr = wasm.copyBufferToHeap(buffer);
+    let index = -1;
+    try {
+      index = wasm._wl_load_main_scene(ptr, buffer.byteLength, wasm.tempUTF8(url));
+    } finally {
+      wasm._free(ptr);
+    }
+    if (index === -1)
+      throw new Error("Failed to load main scene");
+    const mainScene = this._reload(index);
+    let previous = this.scene;
+    this._scene = mainScene;
+    mainScene._initialize();
+    this._scene = previous;
+    await this.switchTo(mainScene, options);
+    return mainScene;
+  }
+  /**
+   * Load a {@link Prefab} from a URL.
+   *
+   * #### Usage
+   *
+   * ```js
+   * const prefab = await engine.loadPrefab('Prefab.bin');
+   * ```
+   *
+   * @note This method can only load Wonderland Engine `.bin` files.
+   * @note This method is a wrapper around {@link WonderlandEngine.loadPrefabFromBuffer}.
+   *
+   * @param url The URL pointing to the prefab to load.
+   * @param progress Optional progress callback.
+   * @returns The loaded {@link Prefab}.
+   */
+  async loadPrefab(opts, progress = () => {
+  }) {
+    const options = await Scene.loadBuffer(opts, progress);
+    return this.loadPrefabFromBuffer(options);
+  }
+  /**
+   * Similar to {@link WonderlandEngine.loadPrefab}, but loading is done from an ArrayBuffer.
+   *
+   * @param options An object containing the buffer and extra metadata.
+   * @returns A new loaded {@link Prefab}.
+   */
+  loadPrefabFromBuffer(options) {
+    const scene = this._loadSceneFromBuffer(Prefab, options);
+    if (this.wasm._wl_scene_activatable(scene._index)) {
+      this.wasm._wl_scene_destroy(scene._index);
+      throw new Error("File is not a prefab. To load a scene, use loadScene() instead");
+    }
+    scene._initialize();
+    return scene;
+  }
+  /**
+   * Load a scene from a URL.
+   *
+   * At the opposite of {@link WonderlandEngine.loadMainScene}, the scene loaded
+   * will be added to the list of existing scenes, and its resources will be made
+   * available for other scenes/prefabs/gltf to use.
+   *
+   * #### Resources Sharing
+   *
+   * Upon loading, the scene resources are added in the engine, and references
+   * to those resources are updated.
+   *
+   * It's impossible for a scene loaded with this method to import pipelines.
+   * Thus, the loaded scene will reference existing pipelines in the main scene,
+   * based on their names.
+   *
+   * #### Usage
+   *
+   * ```js
+   * const scene = await engine.loadScene('Scene.bin');
+   * ```
+   *
+   * @note This method can only load Wonderland Engine `.bin` files.
+   * @note This method is a wrapper around {@link WonderlandEngine#loadSceneFromBuffer}.
+   *
+   * @param url The URL pointing to the scene to load.
+   * @param progress Optional progress callback.
+   * @returns A new loaded {@link Scene}.
+   */
+  async loadScene(opts, progress = () => {
+  }) {
+    const options = await Scene.loadBuffer(opts, progress);
+    return this.loadSceneFromBuffer(options);
+  }
+  /**
+   * Create a glTF scene from a URL.
+   *
+   * @note This method is a wrapper around {@link WonderlandEngine.loadGLTFFromBuffer}.
+   *
+   * @param options The URL as a string, or an object of the form {@link GLTFOptions}.
+   * @param progress Optional progress callback.
+   * @returns A new loaded {@link PrefabGLTF}.
+   */
+  async loadGLTF(opts, progress = () => {
+  }) {
+    const memOptions = await Scene.loadBuffer(opts, progress);
+    const options = isString(opts) ? memOptions : { ...opts, ...memOptions };
+    return this.loadGLTFFromBuffer(options);
+  }
+  /**
+   * Similar to {@link WonderlandEngine.loadScene}, but loading is done from an ArrayBuffer.
+   *
+   * @throws If the scene is streamable.
+   *
+   * @param options An object containing the buffer and extra metadata.
+   * @returns A new loaded {@link Scene}.
+   */
+  loadSceneFromBuffer(options) {
+    const scene = this._loadSceneFromBuffer(Scene, options);
+    if (!this.wasm._wl_scene_activatable(scene._index)) {
+      this.wasm._wl_scene_destroy(scene._index);
+      throw new Error("File is not a scene. To load a prefab, use loadPrefab() instead");
+    }
+    scene._initialize();
+    return scene;
+  }
+  /**
+   * Similar to {@link WonderlandEngine.loadGLTF}, but loading is done from an ArrayBuffer.
+   *
+   * @param options An object containing the buffer and extra glTF metadata.
+   * @returns A new loaded {@link PrefabGLTF}.
+   */
+  loadGLTFFromBuffer(options) {
+    Scene.validateBufferOptions(options);
+    const { buffer, extensions = false } = options;
+    const wasm = this.wasm;
+    const ptr = wasm.copyBufferToHeap(buffer);
+    try {
+      const index = wasm._wl_glTF_scene_create(extensions, ptr, buffer.byteLength);
+      const scene = new PrefabGLTF(this, index);
+      this._scenes[scene._index] = scene;
+      return scene;
+    } finally {
+      wasm._free(ptr);
     }
   }
   /**
@@ -8560,15 +10261,21 @@ var WonderlandEngine = class {
    *
    * @param objectId ID of the object to create.
    *
+   * @deprecated Use {@link Scene#wrap} instead.
+   *
    * @returns The object
    */
   wrapObject(objectId) {
-    const cache = this._objectCache;
-    const o = cache[objectId] || (cache[objectId] = new Object3D(this, objectId));
-    o["_objectId"] = objectId;
-    return o;
+    return this.scene.wrap(objectId);
+  }
+  toString() {
+    return "engine";
   }
   /* Public Getters & Setter */
+  /** Currently active scene. */
+  get scene() {
+    return this._scene;
+  }
   /**
    * WebAssembly bridge.
    *
@@ -8631,13 +10338,47 @@ var WonderlandEngine = class {
   get physics() {
     return this.#physics;
   }
-  /**
-   * Texture managger.
-   *
-   * Use this to load or programmatically create new textures at runtime.
-   */
+  /** Texture resources */
   get textures() {
-    return this.#textures;
+    return this._textures;
+  }
+  /** Material resources */
+  get materials() {
+    return this._materials;
+  }
+  /** Mesh resources */
+  get meshes() {
+    return this._meshes;
+  }
+  /** Morph target set resources */
+  get morphTargets() {
+    return this._morphTargets;
+  }
+  /** Font resources */
+  get fonts() {
+    return this._fonts;
+  }
+  /** Get all uncompressed images. */
+  get images() {
+    const wasm = this.wasm;
+    const max2 = wasm._tempMemSize >> 1;
+    const count = wasm._wl_get_images(wasm._tempMem, max2);
+    const result = new Array(count);
+    for (let i = 0; i < count; ++i) {
+      const index = wasm._tempMemUint16[i];
+      result[i] = wasm._images[index];
+    }
+    return result;
+  }
+  /**
+   * Promise that resolve once all uncompressed images are loaded.
+   *
+   * This is equivalent to calling {@link WonderlandEngine.images}, and wrapping each
+   * `load` listener into a promise.
+   */
+  get imagesPromise() {
+    const promises = this.images.map((i) => onImageReady(i));
+    return Promise.all(promises);
   }
   /*
    * Enable or disable the mechanism to automatically resize the canvas.
@@ -8691,7 +10432,6 @@ var WonderlandEngine = class {
    * @hidden
    */
   _init() {
-    this.scene = new Scene(this);
     const onXRStart = () => {
       this.#initialReferenceSpaceType = this.xr.currentReferenceSpaceType;
       const newSpace = this.xr.referenceSpaceForType("local") ?? this.xr.referenceSpaceForType("viewer");
@@ -8712,13 +10452,15 @@ var WonderlandEngine = class {
     if (this.#wasm.withPhysX) {
       const physics = new Physics(this);
       this.#wasm._wl_physx_set_collision_callback(this.#wasm.addFunction((a, index, type, b) => {
-        const callback = physics._callbacks[a][index];
-        const component = new PhysXComponent(this, this.wasm._typeIndexFor("physx"), b);
-        callback(type, component);
+        const physxA = this.scene._components.wrapPhysx(a);
+        const physxB = this.scene._components.wrapPhysx(b);
+        const callback = physics._callbacks[physxA._id][index];
+        callback(type, physxB);
       }, "viiii"));
       this.#physics = physics;
     }
     this.resize(this.canvas.clientWidth, this.canvas.clientHeight);
+    this._scene = this._reload(0);
   }
   /**
    * Reset the runtime state, including:
@@ -8731,108 +10473,76 @@ var WonderlandEngine = class {
    * @hidden
    */
   _reset() {
-    this._componentCache = {};
-    this._objectCache.length = 0;
-    this.#textures._reset();
-    this.scene.reset();
     this.wasm.reset();
+    this._scenes.length = 0;
+    this._scene = this._reload(0);
+    this.switchTo(this._scene);
   }
   /**
-   * Retrieves a component instance if it exists, or create and cache
-   * a new one.
+   * Add an empty scene.
    *
-   * @note This api is meant to be used internally. Please have a look at
-   * {@link Object3D.addComponent} instead.
-   *
-   * @param type component type name
-   * @param componentType Component manager index
-   * @param componentId Component id in the manager
-   *
-   * @returns JavaScript instance wrapping the native component
+   * @returns The newly created scene
    *
    * @hidden
    */
-  _wrapComponent(type, componentType, componentId) {
-    if (componentId < 0)
-      return null;
-    const c = this._componentCache[componentType] || (this._componentCache[componentType] = []);
-    if (c[componentId]) {
-      return c[componentId];
-    }
-    let component;
-    if (type == "collision") {
-      component = new CollisionComponent(this, componentType, componentId);
-    } else if (type == "text") {
-      component = new TextComponent(this, componentType, componentId);
-    } else if (type == "view") {
-      component = new ViewComponent(this, componentType, componentId);
-    } else if (type == "mesh") {
-      component = new MeshComponent(this, componentType, componentId);
-    } else if (type == "input") {
-      component = new InputComponent(this, componentType, componentId);
-    } else if (type == "light") {
-      component = new LightComponent(this, componentType, componentId);
-    } else if (type == "animation") {
-      component = new AnimationComponent(this, componentType, componentId);
-    } else if (type == "physx") {
-      component = new PhysXComponent(this, componentType, componentId);
-    } else {
-      const typeIndex = this.wasm._componentTypeIndices[type];
-      const constructor = this.wasm._componentTypes[typeIndex];
-      component = new constructor(this);
-    }
-    component._engine = this;
-    component._manager = componentType;
-    component._id = componentId;
-    c[componentId] = component;
-    return component;
+  _createEmpty() {
+    const wasm = this.wasm;
+    const index = wasm._wl_scene_create_empty();
+    const scene = new Scene(this, index);
+    this._scenes[index] = scene;
+    return scene;
   }
-  /**
-   * Perform cleanup upon object destruction.
-   *
-   * @param instance The instance to destroy.
-   *
-   * @hidden
-   */
-  _destroyObject(instance) {
-    const id = instance.objectId;
-    instance._objectId = -1;
-    if (this.erasePrototypeOnDestroy && instance) {
-      Object.setPrototypeOf(instance, DestroyedObjectInstance);
-    }
-    this._objectCache[id] = null;
-  }
-  /**
-   * Perform cleanup upon component destruction.
-   *
-   * @param instance The instance to destroy.
-   *
-   * @hidden
-   */
-  _destroyComponent(instance) {
-    const id = instance._id;
-    const manager = instance._manager;
-    instance._id = -1;
-    instance._manager = -1;
-    if (this.erasePrototypeOnDestroy && instance) {
-      Object.setPrototypeOf(instance, DestroyedComponentInstance);
-    }
-    const cache = this._componentCache[manager];
-    if (cache)
-      cache[id] = null;
-  }
-  /**
-   * Perform cleanup upon texture destruction.
-   *
-   * @param texture The instance to destroy.
-   *
-   * @hidden
-   */
-  _destroyTexture(texture) {
-    this.textures._destroy(texture);
+  /** @hidden */
+  _destroyScene(instance) {
+    const wasm = this.wasm;
+    wasm._wl_scene_destroy(instance._index);
+    const index = instance._index;
+    instance._index = -1;
     if (this.erasePrototypeOnDestroy) {
-      Object.setPrototypeOf(texture, DestroyedTextureInstance);
+      Object.setPrototypeOf(instance, DestroyedPrefabInstance);
     }
+    this._scenes[index] = null;
+  }
+  /**
+   * Reload the state of the engine with a new main scene.
+   *
+   * @param index Scene index.
+   *
+   * @hidden
+   */
+  _reload(index) {
+    const scene = new Scene(this, index);
+    this._scenes[index] = scene;
+    this._textures = new TextureManager(this);
+    this._materials = new MaterialManager(this);
+    this._meshes = new MeshManager(this);
+    this._morphTargets = new ResourceManager(this, MorphTargets);
+    this._fonts = new ResourceManager(this, Font);
+    return scene;
+  }
+  /**
+   * Helper to load prefab and activatable scene.
+   *
+   * @param options Loading options.
+   * @returns The the loaded prefab.
+   *
+   * @hidden
+   */
+  _loadSceneFromBuffer(PrefabClass, options) {
+    const { buffer, url } = Scene.validateBufferOptions(options);
+    const wasm = this.wasm;
+    const ptr = wasm.copyBufferToHeap(buffer);
+    let index = -1;
+    try {
+      index = wasm._wl_scene_create(ptr, buffer.byteLength, wasm.tempUTF8(url));
+    } finally {
+      wasm._free(ptr);
+    }
+    if (!index)
+      throw new Error("Failed to parse scene");
+    const scene = new PrefabClass(this, index);
+    this._scenes[index] = scene;
+    return scene;
   }
 };
 
@@ -8969,6 +10679,285 @@ var Logger = class {
   }
 };
 
+// node_modules/@wonderlandengine/api/dist/utils/cbor.js
+var kCborTagBignum = 2;
+var kCborTagNegativeBignum = 3;
+var kCborTagUint8 = 64;
+var kCborTagUint16 = 69;
+var kCborTagUint32 = 70;
+var kCborTagUint64 = 71;
+var kCborTagInt8 = 72;
+var kCborTagInt16 = 77;
+var kCborTagInt32 = 78;
+var kCborTagInt64 = 79;
+var kCborTagFloat32 = 85;
+var kCborTagFloat64 = 86;
+function decode(data, tagger = (_, value) => value, options = {}) {
+  const { dictionary = "object" } = options;
+  const dataView = new DataView(data.buffer, data.byteOffset, data.byteLength);
+  let offset2 = 0;
+  function commitRead(length5, value) {
+    offset2 += length5;
+    return value;
+  }
+  function readArrayBuffer(length5) {
+    return commitRead(length5, data.subarray(offset2, offset2 + length5));
+  }
+  function readFloat16() {
+    const POW_2_24 = 5960464477539063e-23;
+    const tempArrayBuffer = new ArrayBuffer(4);
+    const tempDataView = new DataView(tempArrayBuffer);
+    const value = readUint16();
+    const sign = value & 32768;
+    let exponent = value & 31744;
+    const fraction = value & 1023;
+    if (exponent === 31744)
+      exponent = 255 << 10;
+    else if (exponent !== 0)
+      exponent += 127 - 15 << 10;
+    else if (fraction !== 0)
+      return (sign ? -1 : 1) * fraction * POW_2_24;
+    tempDataView.setUint32(0, sign << 16 | exponent << 13 | fraction << 13);
+    return tempDataView.getFloat32(0);
+  }
+  function readFloat32() {
+    return commitRead(4, dataView.getFloat32(offset2));
+  }
+  function readFloat64() {
+    return commitRead(8, dataView.getFloat64(offset2));
+  }
+  function readUint8() {
+    return commitRead(1, data[offset2]);
+  }
+  function readUint16() {
+    return commitRead(2, dataView.getUint16(offset2));
+  }
+  function readUint32() {
+    return commitRead(4, dataView.getUint32(offset2));
+  }
+  function readUint64() {
+    return commitRead(8, dataView.getBigUint64(offset2));
+  }
+  function readBreak() {
+    if (data[offset2] !== 255)
+      return false;
+    offset2 += 1;
+    return true;
+  }
+  function readLength(additionalInformation) {
+    if (additionalInformation < 24)
+      return additionalInformation;
+    if (additionalInformation === 24)
+      return readUint8();
+    if (additionalInformation === 25)
+      return readUint16();
+    if (additionalInformation === 26)
+      return readUint32();
+    if (additionalInformation === 27) {
+      const integer = readUint64();
+      if (integer <= Number.MAX_SAFE_INTEGER)
+        return Number(integer);
+      return integer;
+    }
+    if (additionalInformation === 31)
+      return -1;
+    throw new Error("CBORError: Invalid length encoding");
+  }
+  function readIndefiniteStringLength(majorType) {
+    const initialByte = readUint8();
+    if (initialByte === 255)
+      return -1;
+    const length5 = readLength(initialByte & 31);
+    if (length5 < 0 || initialByte >> 5 !== majorType) {
+      throw new Error("CBORError: Invalid indefinite length element");
+    }
+    return Number(length5);
+  }
+  function appendUtf16Data(utf16data, length5) {
+    for (let i = 0; i < length5; ++i) {
+      let value = readUint8();
+      if (value & 128) {
+        if (value < 224) {
+          value = (value & 31) << 6 | readUint8() & 63;
+          length5 -= 1;
+        } else if (value < 240) {
+          value = (value & 15) << 12 | (readUint8() & 63) << 6 | readUint8() & 63;
+          length5 -= 2;
+        } else {
+          value = (value & 7) << 18 | (readUint8() & 63) << 12 | (readUint8() & 63) << 6 | readUint8() & 63;
+          length5 -= 3;
+        }
+      }
+      if (value < 65536) {
+        utf16data.push(value);
+      } else {
+        value -= 65536;
+        utf16data.push(55296 | value >> 10);
+        utf16data.push(56320 | value & 1023);
+      }
+    }
+  }
+  function decodeItem() {
+    const initialByte = readUint8();
+    const majorType = initialByte >> 5;
+    const additionalInformation = initialByte & 31;
+    let i;
+    let length5;
+    if (majorType === 7) {
+      switch (additionalInformation) {
+        case 25:
+          return readFloat16();
+        case 26:
+          return readFloat32();
+        case 27:
+          return readFloat64();
+      }
+    }
+    length5 = readLength(additionalInformation);
+    if (length5 < 0 && (majorType < 2 || 6 < majorType)) {
+      throw new Error("CBORError: Invalid length");
+    }
+    switch (majorType) {
+      case 0:
+        return length5;
+      case 1:
+        if (typeof length5 === "number") {
+          return -1 - length5;
+        }
+        return -1n - length5;
+      case 2: {
+        if (length5 < 0) {
+          const elements = [];
+          let fullArrayLength = 0;
+          while ((length5 = readIndefiniteStringLength(majorType)) >= 0) {
+            fullArrayLength += length5;
+            elements.push(readArrayBuffer(length5));
+          }
+          const fullArray = new Uint8Array(fullArrayLength);
+          let fullArrayOffset = 0;
+          for (i = 0; i < elements.length; ++i) {
+            fullArray.set(elements[i], fullArrayOffset);
+            fullArrayOffset += elements[i].length;
+          }
+          return fullArray;
+        }
+        return readArrayBuffer(length5).slice();
+      }
+      case 3: {
+        const utf16data = [];
+        if (length5 < 0) {
+          while ((length5 = readIndefiniteStringLength(majorType)) >= 0) {
+            appendUtf16Data(utf16data, length5);
+          }
+        } else {
+          appendUtf16Data(utf16data, length5);
+        }
+        let string = "";
+        const DECODE_CHUNK_SIZE = 8192;
+        for (i = 0; i < utf16data.length; i += DECODE_CHUNK_SIZE) {
+          string += String.fromCharCode.apply(null, utf16data.slice(i, i + DECODE_CHUNK_SIZE));
+        }
+        return string;
+      }
+      case 4: {
+        let retArray;
+        if (length5 < 0) {
+          retArray = [];
+          let index = 0;
+          while (!readBreak()) {
+            retArray.push(decodeItem());
+          }
+        } else {
+          retArray = new Array(length5);
+          for (i = 0; i < length5; ++i) {
+            retArray[i] = decodeItem();
+          }
+        }
+        return retArray;
+      }
+      case 5: {
+        if (dictionary === "map") {
+          const retMap = /* @__PURE__ */ new Map();
+          for (i = 0; i < length5 || length5 < 0 && !readBreak(); ++i) {
+            const key = decodeItem();
+            if (retMap.has(key)) {
+              throw new Error("CBORError: Duplicate key encountered");
+            }
+            retMap.set(key, decodeItem());
+          }
+          return retMap;
+        }
+        const retObject = {};
+        for (i = 0; i < length5 || length5 < 0 && !readBreak(); ++i) {
+          const key = decodeItem();
+          if (Object.prototype.hasOwnProperty.call(retObject, key)) {
+            throw new Error("CBORError: Duplicate key encountered");
+          }
+          retObject[key] = decodeItem();
+        }
+        return retObject;
+      }
+      case 6: {
+        const value = decodeItem();
+        const tag = length5;
+        if (value instanceof Uint8Array) {
+          switch (tag) {
+            case kCborTagBignum:
+            case kCborTagNegativeBignum:
+              let num = value.reduce((acc, n) => (acc << 8n) + BigInt(n), 0n);
+              if (tag == kCborTagNegativeBignum) {
+                num = -1n - num;
+              }
+              return num;
+            case kCborTagUint8:
+              return value;
+            case kCborTagInt8:
+              return new Int8Array(value.buffer);
+            case kCborTagUint16:
+              return new Uint16Array(value.buffer);
+            case kCborTagInt16:
+              return new Int16Array(value.buffer);
+            case kCborTagUint32:
+              return new Uint32Array(value.buffer);
+            case kCborTagInt32:
+              return new Int32Array(value.buffer);
+            case kCborTagUint64:
+              return new BigUint64Array(value.buffer);
+            case kCborTagInt64:
+              return new BigInt64Array(value.buffer);
+            case kCborTagFloat32:
+              return new Float32Array(value.buffer);
+            case kCborTagFloat64:
+              return new Float64Array(value.buffer);
+          }
+        }
+        return tagger(tag, value);
+      }
+      case 7:
+        switch (length5) {
+          case 20:
+            return false;
+          case 21:
+            return true;
+          case 22:
+            return null;
+          case 23:
+            return void 0;
+          default:
+            return length5;
+        }
+    }
+  }
+  const ret = decodeItem();
+  if (offset2 !== data.byteLength) {
+    throw new Error("CBORError: Remaining bytes");
+  }
+  return ret;
+}
+var CBOR = {
+  decode
+};
+
 // node_modules/@wonderlandengine/api/dist/wasm.js
 var _componentDefaults = /* @__PURE__ */ new Map([
   [Type.Bool, false],
@@ -8982,7 +10971,10 @@ var _componentDefaults = /* @__PURE__ */ new Map([
   [Type.Material, null],
   [Type.Animation, null],
   [Type.Skin, null],
-  [Type.Color, [0, 0, 0, 1]]
+  [Type.Color, Float32Array.from([0, 0, 0, 1])],
+  [Type.Vector2, Float32Array.from([0, 0])],
+  [Type.Vector3, Float32Array.from([0, 0, 0])],
+  [Type.Vector4, Float32Array.from([0, 0, 0, 0])]
 ]);
 function _setupDefaults(ctor) {
   for (const name in ctor.Properties) {
@@ -8998,11 +10990,17 @@ function _setupDefaults(ctor) {
       } else {
         p.default = void 0;
       }
-    } else {
-      p.default = p.default ?? _componentDefaults.get(p.type);
+    } else if ((p.type === Type.Color || p.type === Type.Vector2 || p.type === Type.Vector3 || p.type === Type.Vector4) && Array.isArray(p.default)) {
+      p.default = Float32Array.from(p.default);
+    } else if (p.default === void 0) {
+      const cloner = p.cloner ?? defaultPropertyCloner;
+      p.default = cloner.clone(p.type, _componentDefaults.get(p.type));
     }
     ctor.prototype[name] = p.default;
   }
+}
+function _setPropertyOrder(ctor) {
+  ctor._propertyOrder = ctor.hasOwnProperty("Properties") ? Object.keys(ctor.Properties).sort() : [];
 }
 var WASM = class {
   /**
@@ -9023,6 +11021,12 @@ var WASM = class {
    * @note This api is meant to be used internally.
    */
   canvas = null;
+  /**
+   * WebGPU device.
+   *
+   * @note This api is meant to be used internally.
+   */
+  preinitializedWebGPUDevice = null;
   /** Current WebXR  */
   /**
    * Emscripten WebXR session.
@@ -9116,15 +11120,10 @@ var WASM = class {
   _loadingScreen = null;
   /** List of callbacks triggered when the scene is loaded. */
   _sceneLoadedCallback = [];
-  /**
-   * Material definition cache. Each pipeline has its own
-   * associated material definition.
-   */
-  _materialDefinitions = [];
   /** Image cache. */
-  _images = [];
+  _images = [null];
   /** Component instances. */
-  _components = [];
+  _components = null;
   /** Component Type info. */
   _componentTypes = [];
   /** Index per component type name. */
@@ -9139,8 +11138,6 @@ var WASM = class {
   _withPhysX = false;
   /** Decoder for UTF8 `ArrayBuffer` to JavaScript string. */
   _utf8Decoder = new TextDecoder("utf8");
-  /** JavaScript manager index. */
-  _jsManagerIndexCached = null;
   /**
    * Registration index of {@link BrokenComponent}.
    *
@@ -9162,13 +11159,13 @@ var WASM = class {
           return "";
         return this._utf8Decoder.decode(this.HEAPU8.slice(s, e));
       };
-      return;
+    } else {
+      this.UTF8ViewToString = (s, e) => {
+        if (!s)
+          return "";
+        return this._utf8Decoder.decode(this.HEAPU8.subarray(s, e));
+      };
     }
-    this.UTF8ViewToString = (s, e) => {
-      if (!s)
-        return "";
-      return this._utf8Decoder.decode(this.HEAPU8.subarray(s, e));
-    };
     this._brokenComponentIndex = this._registerComponent(BrokenComponent);
   }
   /**
@@ -9177,20 +11174,12 @@ var WASM = class {
    * @note Should only be called when tearing down the runtime.
    */
   reset() {
-    for (const img of this._images) {
-      if (!img || !img.src)
-        continue;
-      img.src = "";
-      img.onload = null;
-      img.onerror = null;
-    }
-    this._images = [];
+    this._wl_reset();
+    this._components = null;
+    this._images.length = 1;
     this.allocateTempMemory(1024);
-    this._materialDefinitions = [];
-    this._components = [];
     this._componentTypes = [];
     this._componentTypeIndices = {};
-    this._jsManagerIndexCached = null;
     this._brokenComponentIndex = this._registerComponent(BrokenComponent);
   }
   /**
@@ -9236,6 +11225,7 @@ var WASM = class {
     }
     inheritProperties(ctor);
     _setupDefaults(ctor);
+    _setPropertyOrder(ctor);
     const typeIndex = ctor.TypeName in this._componentTypeIndices ? this._componentTypeIndices[ctor.TypeName] : this._componentTypes.length;
     this._componentTypes[typeIndex] = ctor;
     this._componentTypeIndices[ctor.TypeName] = typeIndex;
@@ -9369,43 +11359,24 @@ var WASM = class {
     return ptr;
   }
   /**
-   * Return the index of the component type.
+   * Copy the buffer into the WASM heap.
    *
-   * @note This method uses malloc and copies the string
-   * to avoid overwriting caller's temporary data.
+   * @note The returned pointer must be freed.
    *
-   * @param type The type
-   * @return The component type index
+   * @param buffer The buffer to copy into the heap.
+   * @returns An allocated pointer, that must be free after use.
    */
-  _typeIndexFor(type) {
-    const lengthBytes = this.lengthBytesUTF8(type) + 1;
-    const mem = this._malloc(lengthBytes);
-    this.stringToUTF8(type, mem, lengthBytes);
-    const componentType = this._wl_get_component_manager_index(mem);
-    this._free(mem);
-    return componentType;
-  }
-  /**
-   * Return the name of component type stored at the given index.
-   *
-   * @param typeIndex The type index
-   * @return The name as a string
-   */
-  _typeNameFor(typeIndex) {
-    return this.UTF8ToString(this._wl_component_manager_name(typeIndex));
+  copyBufferToHeap(buffer) {
+    const size = buffer.byteLength;
+    const ptr = this._malloc(size);
+    this.HEAPU8.set(new Uint8Array(buffer), ptr);
+    return ptr;
   }
   /**
    * Returns `true` if the runtime supports physx or not.
    */
   get withPhysX() {
     return this._withPhysX;
-  }
-  /** JavaScript manager index. */
-  get _jsManagerIndex() {
-    if (this._jsManagerIndexCached === null) {
-      this._jsManagerIndexCached = this._typeIndexFor("js");
-    }
-    return this._jsManagerIndexCached;
   }
   /**
    * Set the engine instance holding this bridge.
@@ -9435,79 +11406,135 @@ var WASM = class {
     this._engine.arSupported = false;
     this._engine.vrSupported = false;
   }
-  _wljs_allocate(numComponents) {
-    this._components = new Array(numComponents);
-  }
   _wljs_init(withPhysX) {
     this._withPhysX = withPhysX;
     this.allocateTempMemory(1024);
   }
-  _wljs_reallocate(numComponents) {
-    if (numComponents > this._components.length) {
-      this._components.length = numComponents;
+  _wljs_scene_switch(index) {
+    const scene = this._engine._scenes[index];
+    this._components = scene?._jsComponents ?? null;
+  }
+  _wljs_destroy_image(index) {
+    const img = this._images[index];
+    if (!img)
+      return;
+    this._images[index] = null;
+    if (img.src !== void 0) {
+      img.src = "";
+    }
+    if (img.onload !== void 0) {
+      img.onload = null;
+    }
+    if (img.onerror !== void 0) {
+      img.onerror = null;
     }
   }
-  _wljs_scene_add_material_definition(definitionId) {
-    const definition = /* @__PURE__ */ new Map();
-    const nbParams = this._wl_material_definition_get_count(definitionId);
-    for (let i = 0; i < nbParams; ++i) {
-      const name = this.UTF8ToString(this._wl_material_definition_get_param_name(definitionId, i));
-      const t = this._wl_material_definition_get_param_type(definitionId, i);
-      definition.set(name, {
-        index: i,
-        type: {
-          type: t & 255,
-          componentCount: t >> 8 & 255,
-          metaType: t >> 16 & 255
+  _wljs_objects_markDestroyed(sceneIndex, idsPtr, count) {
+    const scene = this._engine._scenes[sceneIndex];
+    const start = idsPtr >>> 1;
+    for (let i = 0; i < count; ++i) {
+      const id = this.HEAPU16[start + i];
+      scene._destroyObject(id);
+    }
+  }
+  _wljs_scene_initialize(sceneIndex, idsPtr, idsEnd, paramDataPtr, paramDataEndPtr, offsetsPtr, offsetsEndPtr) {
+    const cbor = this.HEAPU8.subarray(paramDataPtr, paramDataEndPtr);
+    const offsets = this.HEAPU32.subarray(offsetsPtr >>> 2, offsetsEndPtr >>> 2);
+    const ids = this.HEAPU16.subarray(idsPtr >>> 1, idsEnd >>> 1);
+    const engine2 = this._engine;
+    const scene = engine2._scenes[sceneIndex];
+    const components = scene._jsComponents;
+    let decoded;
+    try {
+      decoded = CBOR.decode(cbor);
+    } catch (e) {
+      this._log.error(LogTag.Engine, "Exception during component parameter decoding");
+      this._log.error(LogTag.Component, e);
+      return;
+    }
+    if (!Array.isArray(decoded)) {
+      this._log.error(LogTag.Engine, "Parameter data must be an array");
+      return;
+    }
+    if (decoded.length !== ids.length) {
+      this._log.error(LogTag.Engine, `Parameter data has size ${decoded.length} but expected ${ids.length}`);
+      return;
+    }
+    for (let i = 0; i < decoded.length; ++i) {
+      const id = Component._pack(sceneIndex, ids[i]);
+      const index = this._wl_get_js_component_index_for_id(id);
+      const component = components[index];
+      const ctor = component.constructor;
+      if (ctor == BrokenComponent)
+        continue;
+      const paramNames = ctor._propertyOrder;
+      const paramValues = decoded[i];
+      if (!Array.isArray(paramValues)) {
+        this._log.error(LogTag.Engine, "Component parameter data must be an array");
+        continue;
+      }
+      if (paramValues.length !== paramNames.length) {
+        this._log.error(LogTag.Engine, `Component parameter data has size ${paramValues.length} but expected ${paramNames.length}`);
+        continue;
+      }
+      for (let j = 0; j < paramValues.length; ++j) {
+        const name = paramNames[j];
+        const property2 = ctor.Properties[name];
+        const type = property2.type;
+        let value = paramValues[j];
+        if (value === void 0) {
+          const cloner = property2.cloner ?? defaultPropertyCloner;
+          value = cloner.clone(type, property2.default);
+          component[name] = value;
+          continue;
         }
-      });
+        if (typeof value === "number") {
+          value += offsets[type];
+        }
+        switch (type) {
+          case Type.Bool:
+          case Type.Int:
+          case Type.Float:
+          case Type.String:
+          case Type.Enum:
+          case Type.Vector2:
+          case Type.Vector3:
+          case Type.Vector4:
+            break;
+          case Type.Object:
+            value = value ? scene.wrap(this._wl_object_id(scene._index, value)) : null;
+            break;
+          case Type.Mesh:
+            value = engine2.meshes.wrap(value);
+            break;
+          case Type.Texture:
+            value = engine2.textures.wrap(value);
+            break;
+          case Type.Material:
+            value = engine2.materials.wrap(value);
+            break;
+          case Type.Animation:
+            value = scene.animations.wrap(value);
+            break;
+          case Type.Skin:
+            value = scene.skins.wrap(value);
+            break;
+          case Type.Color:
+            const max2 = (1 << value.BYTES_PER_ELEMENT * 8) - 1;
+            value = Float32Array.from(value, (f, _) => f / max2);
+            break;
+        }
+        component[name] = value;
+      }
     }
-    this._materialDefinitions[definitionId] = definition;
   }
-  _wljs_set_component_param_bool(c, p, pe, v) {
-    const param = this.UTF8ViewToString(p, pe);
-    this._components[c][param] = v !== 0;
-  }
-  _wljs_set_component_param_int(c, p, pe, v) {
-    const param = this.UTF8ViewToString(p, pe);
-    this._components[c][param] = v;
-  }
-  _wljs_set_component_param_float(c, p, pe, v) {
-    const param = this.UTF8ViewToString(p, pe);
-    this._components[c][param] = v;
-  }
-  _wljs_set_component_param_string(c, p, pe, v, ve) {
-    const param = this.UTF8ViewToString(p, pe);
-    const value = this.UTF8ViewToString(v, ve);
-    this._components[c][param] = value;
-  }
-  _wljs_set_component_param_color(c, p, pe, v) {
-    const param = this.UTF8ViewToString(p, pe);
-    this._components[c][param] = new Float32Array([0, 8, 16, 24].map((s) => (v >>> s & 255) / 255));
-  }
-  _wljs_set_component_param_object(c, p, pe, v) {
-    const param = this.UTF8ViewToString(p, pe);
-    this._components[c][param] = v > 0 ? this._engine.wrapObject(v) : null;
-  }
-  _wljs_set_component_param_mesh(c, p, pe, v) {
-    const param = this.UTF8ViewToString(p, pe);
-    this._components[c][param] = v > 0 ? new Mesh(this._engine, v) : null;
-  }
-  _wljs_set_component_param_texture(c, p, pe, v) {
-    const param = this.UTF8ViewToString(p, pe);
-    this._components[c][param] = v > 0 ? this._engine.textures.wrap(v) : null;
-  }
-  _wljs_set_component_param_material(c, p, pe, v) {
-    const param = this.UTF8ViewToString(p, pe);
-    this._components[c][param] = v > 0 ? new Material(this._engine, v) : null;
-  }
-  _wljs_set_component_param_animation(c, p, pe, v) {
-    const param = this.UTF8ViewToString(p, pe);
-    this._components[c][param] = v > 0 ? new Animation(this._engine, v) : null;
-  }
-  _wljs_set_component_param_skin(c, p, pe, v) {
-    const param = this.UTF8ViewToString(p, pe);
-    this._components[c][param] = v > 0 ? new Skin(this._engine, v) : null;
+  _wljs_set_component_param_translation(scene, component, param, valuePtr, valueEndPtr) {
+    const components = this._engine._scenes[scene]._jsComponents;
+    const comp = components[component];
+    const value = this.UTF8ViewToString(valuePtr, valueEndPtr);
+    const ctor = comp.constructor;
+    const paramName = ctor._propertyOrder[param];
+    comp[paramName] = value;
   }
   _wljs_get_component_type_index(namePtr, nameEndPtr) {
     const typename = this.UTF8ViewToString(namePtr, nameEndPtr);
@@ -9517,34 +11544,13 @@ var WASM = class {
     }
     return index;
   }
-  _wljs_component_create(jsManagerIndex, index, id, type, object) {
-    const ctor = this._componentTypes[type];
-    if (!ctor) {
-      throw new Error(`Type index ${type} isn't registered`);
-    }
-    let component = null;
-    try {
-      component = new ctor();
-    } catch (e) {
-      this._log.error(LogTag.Component, `Exception during instantiation of component ${ctor.TypeName}`);
-      this._log.error(LogTag.Component, e);
-      component = new BrokenComponent(this._engine);
-    }
-    component._engine = this._engine;
-    component._manager = jsManagerIndex;
-    component._id = id;
-    component._object = this._engine.wrapObject(object);
-    try {
-      component.resetProperties();
-    } catch (e) {
-      this._log.error(LogTag.Component, `Exception during ${component.type} resetProperties() on object ${component.object.name}`);
-      this._log.error(LogTag.Component, e);
-    }
-    this._components[index] = component;
-    return component;
+  _wljs_component_create(sceneIndex, index, id, type, object) {
+    const scene = this._engine._scenes[sceneIndex];
+    scene._components.createJs(index, id, type, object);
   }
-  _wljs_component_init(component) {
-    const c = this._components[component];
+  _wljs_component_init(scene, component) {
+    const components = this._engine._scenes[scene]._jsComponents;
+    const c = components[component];
     c._triggerInit();
   }
   _wljs_component_update(component, dt) {
@@ -9553,54 +11559,59 @@ var WASM = class {
   }
   _wljs_component_onActivate(component) {
     const c = this._components[component];
-    if (c)
-      c._triggerOnActivate();
+    c._triggerOnActivate();
   }
   _wljs_component_onDeactivate(component) {
     const c = this._components[component];
     c._triggerOnDeactivate();
   }
-  _wljs_component_onDestroy(component) {
-    const c = this._components[component];
-    c._triggerOnDestroy();
+  _wljs_component_markDestroyed(sceneIndex, manager, componentId) {
+    const scene = this._engine._scenes[sceneIndex];
+    const component = scene._components.get(manager, componentId);
+    component?._triggerOnDestroy();
   }
-  _wljs_swap(a, b) {
-    const componentA = this._components[a];
-    this._components[a] = this._components[b];
-    this._components[b] = componentA;
+  _wljs_swap(scene, a, b) {
+    const components = this._engine._scenes[scene]._jsComponents;
+    const componentA = components[a];
+    components[a] = components[b];
+    components[b] = componentA;
   }
-  _wljs_copy(src, dst) {
-    const destComp = this._components[dst];
+  _wljs_copy(srcSceneIndex, srcIndex, dstSceneIndex, dstIndex, offsetsPtr) {
+    const srcScene = this._engine._scenes[srcSceneIndex];
+    const dstScene = this._engine._scenes[dstSceneIndex];
+    const destComp = dstScene._jsComponents[dstIndex];
+    const srcComp = srcScene._jsComponents[srcIndex];
     try {
-      destComp.copy(this._components[src]);
+      destComp._copy(srcComp, offsetsPtr);
     } catch (e) {
       this._log.error(LogTag.Component, `Exception during ${destComp.type} copy() on object ${destComp.object.name}`);
       this._log.error(LogTag.Component, e);
     }
   }
+  /**
+   * Forward an animation event to a corresponding
+   * {@link AnimationComponent}
+   *
+   * @note This api is meant to be used internally. Please have a look at
+   * {@link AnimationComponent.onEvent} instead.
+   *
+   * @param componentId Component id in the manager
+   * @param namePtr Pointer to UTF8 event name
+   * @param nameEndPtr Pointer to end of UTF8 event name
+   */
+  _wljs_trigger_animationEvent(componentId, namePtr, nameEndPtr) {
+    const scene = this._engine.scene;
+    const comp = scene._components.wrapAnimation(componentId);
+    const nameStr = this.UTF8ViewToString(namePtr, nameEndPtr);
+    comp.onEvent.notify(nameStr);
+  }
 };
-function throwInvalidRuntime(version) {
-  return function() {
-    throw new Error(`Feature added in version ${version}.
-	\u2192 Please use a Wonderland Engine editor version >= ${version}`);
-  };
-}
-var requireRuntime1_1_1 = throwInvalidRuntime("1.1.1");
-var requireRuntime1_1_5 = throwInvalidRuntime("1.1.5");
-WASM.prototype._wl_physx_component_get_offsetTranslation = requireRuntime1_1_1;
-WASM.prototype._wl_physx_component_set_offsetTranslation = requireRuntime1_1_1;
-WASM.prototype._wl_physx_component_get_offsetTransform = requireRuntime1_1_1;
-WASM.prototype._wl_physx_component_set_offsetRotation = requireRuntime1_1_1;
-WASM.prototype._wl_object_clone = requireRuntime1_1_1;
-WASM.prototype._wl_physx_component_set_sleepOnActivate = requireRuntime1_1_5;
-WASM.prototype._wl_physx_component_get_sleepOnActivate = requireRuntime1_1_5;
-WASM.prototype.webxr_offerSession = requireRuntime1_1_5;
 
 // node_modules/@wonderlandengine/api/dist/version.js
 var APIVersion = {
   major: 1,
-  minor: 1,
-  patch: 5,
+  minor: 2,
+  patch: 0,
   rc: 0
 };
 
@@ -9674,8 +11685,10 @@ async function loadRuntime(runtime, options = {}) {
   const xrPromise = checkXRSupport2();
   const baseURL = getBaseUrl(runtime);
   const { simdSupported, threadsSupported } = await detectFeatures();
-  const { simd: simd2 = simdSupported, threads: threads2 = threadsSupported, physx = false, loader = false, xrFramebufferScaleFactor = 1, xrOfferSession = null, loadingScreen = baseURL ? `${baseURL}/${LOADING_SCREEN_PATH}` : LOADING_SCREEN_PATH, canvas: canvas2 = "canvas", logs = [LogLevel.Info, LogLevel.Warn, LogLevel.Error] } = options;
+  const { simd: simd2 = simdSupported, threads: threads2 = threadsSupported, webgpu = false, physx = false, loader = false, xrFramebufferScaleFactor = 1, xrOfferSession = null, loadingScreen = baseURL ? `${baseURL}/${LOADING_SCREEN_PATH}` : LOADING_SCREEN_PATH, canvas: canvas2 = "canvas", logs = [LogLevel.Info, LogLevel.Warn, LogLevel.Error] } = options;
   const variant = [];
+  if (webgpu)
+    variant.push("webgpu");
   if (loader)
     variant.push("loader");
   if (physx)
@@ -9699,18 +11712,26 @@ async function loadRuntime(runtime, options = {}) {
     download(`${filename}.wasm`, "Failed to fetch runtime .wasm file"),
     download(loadingScreen, "Failed to fetch loading screen file")
   ]);
-  const glCanvas = document.getElementById(canvas2);
-  if (!glCanvas) {
+  const canvasElement = document.getElementById(canvas2);
+  if (!canvasElement) {
     throw new Error(`loadRuntime(): Failed to find canvas with id '${canvas2}'`);
   }
-  if (!(glCanvas instanceof HTMLCanvasElement)) {
+  if (!(canvasElement instanceof HTMLCanvasElement)) {
     throw new Error(`loadRuntime(): HTML element '${canvas2}' must be a canvas`);
   }
   const wasm = new WASM(threads2);
   wasm.worker = `${filename}.worker.js`;
   wasm.wasm = wasmData;
-  wasm.canvas = glCanvas;
+  wasm.canvas = canvasElement;
   wasm._log.levels.enable(...logs);
+  if (webgpu) {
+    const adapter = await navigator.gpu.requestAdapter();
+    const desc = {
+      requiredFeatures: ["texture-compression-bc"]
+    };
+    const device = await adapter.requestDevice(desc);
+    wasm.preinitializedWebGPUDevice = device;
+  }
   const engine2 = new WonderlandEngine(wasm, loadingScreenData);
   if (!window._WL) {
     window._WL = { runtimes: {} };
@@ -10085,9 +12106,9 @@ function setXRRigidTransformLocal(o, transform) {
   tempVec[0] = t.x;
   tempVec[1] = t.y;
   tempVec[2] = t.z;
-  o.resetTranslationRotation();
-  o.transformLocal.set(tempQuat);
-  o.translate(tempVec);
+  o.resetPositionRotation();
+  o.setRotationLocal(tempQuat);
+  o.translateLocal(tempVec);
 }
 
 // node_modules/@wonderlandengine/components/dist/anchor.js
@@ -13052,6 +15073,7 @@ var __decorate4 = function(decorators, target, key, desc) {
   return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var tempVec2 = new Float32Array(3);
+var ZERO = [0, 0, 0];
 var CursorTargetEmitters = class {
   /** Emitter for events when the target is hovered */
   onHover = new Emitter();
@@ -13081,8 +15103,8 @@ var Cursor = class extends Component {
   _isDown = false;
   _lastIsDown = false;
   _arTouchDown = false;
+  _lastPointerPos = new Float32Array(2);
   _lastCursorPosOnTarget = new Float32Array(3);
-  _cursorRayScale = new Float32Array(3);
   _hitTestLocation = null;
   _hitTestObject = null;
   _onSessionStartCallback = null;
@@ -13091,8 +15113,6 @@ var Cursor = class extends Component {
    * that matches the collision group
    */
   visible = true;
-  /** Maximum distance for the cursor's ray cast */
-  maxDistance = 100;
   /** Currently hovered object */
   hoveringObject = null;
   /** CursorTarget component of the currently hovered object */
@@ -13129,6 +15149,8 @@ var Cursor = class extends Component {
   handedness = 0;
   /** Mode for raycasting, whether to use PhysX or simple collision components */
   rayCastMode = 0;
+  /** Maximum distance for the cursor's ray cast. */
+  maxDistance = 100;
   /** Whether to set the CSS style of the mouse cursor on desktop */
   styleCursor = true;
   /**
@@ -13187,22 +15209,16 @@ var Cursor = class extends Component {
       });
     }
     this._onViewportResize();
-    this.object.getTranslationWorld(this._origin);
-    this.object.getForward(this._direction);
-    if (this.cursorRayObject) {
-      this._cursorRayScale.set(this.cursorRayObject.scalingLocal);
-      this._setCursorRayTransform(vec3_exports.add(tempVec2, this._origin, this._direction));
-    }
   }
   _setCursorRayTransform(hitPosition) {
     if (!this.cursorRayObject)
       return;
     const dist2 = vec3_exports.dist(this._origin, hitPosition);
-    this.cursorRayObject.setTranslationLocal([0, 0, -dist2 / 2]);
+    this.cursorRayObject.setPositionLocal([0, 0, -dist2 / 2]);
     if (this.cursorRayScalingAxis != 4) {
-      this.cursorRayObject.resetScaling();
-      this._cursorRayScale[this.cursorRayScalingAxis] = dist2 / 2;
-      this.cursorRayObject.scale(this._cursorRayScale);
+      tempVec2.fill(1);
+      tempVec2[this.cursorRayScalingAxis] = dist2 / 2;
+      this.cursorRayObject.setScalingLocal(tempVec2);
     }
   }
   _setCursorVisibility(visible) {
@@ -13212,11 +15228,10 @@ var Cursor = class extends Component {
     if (!this.cursorObject)
       return;
     if (visible) {
-      this.cursorObject.resetScaling();
-      this.cursorObject.scale(this._cursorObjScale);
+      this.cursorObject.setScalingWorld(this._cursorObjScale);
     } else {
-      this._cursorObjScale.set(this.cursorObject.scalingLocal);
-      this.cursorObject.scale([0, 0, 0]);
+      this.cursorObject.getScalingWorld(this._cursorObjScale);
+      this.cursorObject.scaleLocal([0, 0, 0]);
     }
   }
   update() {
@@ -13225,16 +15240,20 @@ var Cursor = class extends Component {
       this._direction[0] = p[0];
       this._direction[1] = -p[1];
       this._direction[2] = -1;
+      this.applyTransformAndProjectDirection();
+    } else if (this.engine.xr && this._input && this._input.xrInputSource) {
+      this._direction[0] = 0;
+      this._direction[1] = 0;
+      this._direction[2] = -1;
+      this.applyTransformToDirection();
+    } else if (this._viewComponent) {
       this.updateDirection();
-    } else {
-      this.object.getTranslationWorld(this._origin);
-      this.object.getForwardWorld(this._direction);
     }
     this.rayCast(null, this.engine.xr?.frame);
     if (this.cursorObject) {
       if (this.hoveringObject && (this.cursorPos[0] != 0 || this.cursorPos[1] != 0 || this.cursorPos[2] != 0)) {
         this._setCursorVisibility(true);
-        this.cursorObject.setTranslationWorld(this.cursorPos);
+        this.cursorObject.setPositionWorld(this.cursorPos);
         this._setCursorRayTransform(this.cursorPos);
       } else {
         this._setCursorVisibility(false);
@@ -13286,19 +15305,21 @@ var Cursor = class extends Component {
     }
     if (hit) {
       if (this.hoveringObject) {
-        this.hoveringObject.toLocalSpaceTransform(tempVec2, this.cursorPos);
+        this.hoveringObject.transformPointInverseWorld(tempVec2, this.cursorPos);
       } else {
         tempVec2.set(this.cursorPos);
       }
-      if (this._lastCursorPosOnTarget[0] != tempVec2[0] || this._lastCursorPosOnTarget[1] != tempVec2[1] || this._lastCursorPosOnTarget[2] != tempVec2[2]) {
+      if (!vec3_exports.equals(this._lastCursorPosOnTarget, tempVec2)) {
         this.notify("onMove", originalEvent);
         this._lastCursorPosOnTarget.set(tempVec2);
       }
     } else if (this.hoveringReality) {
-      if (this._lastCursorPosOnTarget[0] != this.cursorPos[0] || this._lastCursorPosOnTarget[1] != this.cursorPos[1] || this._lastCursorPosOnTarget[2] != this.cursorPos[2]) {
+      if (!vec3_exports.equals(this._lastCursorPosOnTarget, this.cursorPos)) {
         this.hitTestTarget.onMove.notify(hitTestResult, this, originalEvent ?? void 0);
         this._lastCursorPosOnTarget.set(this.cursorPos);
       }
+    } else {
+      this._lastCursorPosOnTarget.set(this.cursorPos);
     }
     this._lastIsDown = this._isDown;
   }
@@ -13311,6 +15332,8 @@ var Cursor = class extends Component {
   setupVREvents(s) {
     if (!s)
       console.error("setupVREvents called without a valid session");
+    if (!this.active)
+      return;
     const onSelect = this.onSelect.bind(this);
     s.addEventListener("select", onSelect);
     const onSelectStart = this.onSelectStart.bind(this);
@@ -13318,7 +15341,7 @@ var Cursor = class extends Component {
     const onSelectEnd = this.onSelectEnd.bind(this);
     s.addEventListener("selectend", onSelectEnd);
     this._onDeactivateCallbacks.push(() => {
-      if (!this.engine.xrSession)
+      if (!this.engine.xr)
         return;
       s.removeEventListener("select", onSelect);
       s.removeEventListener("selectstart", onSelectStart);
@@ -13333,7 +15356,7 @@ var Cursor = class extends Component {
     if (this.hoveringObject)
       this.notify("onUnhover", null);
     if (this.cursorRayObject)
-      this.cursorRayObject.scale([0, 0, 0]);
+      this.cursorRayObject.setScalingLocal(ZERO);
     for (const f of this._onDeactivateCallbacks)
       f();
     this._onDeactivateCallbacks.length = 0;
@@ -13393,30 +15416,38 @@ var Cursor = class extends Component {
   }
   /**
    * Update mouse position in non-VR mode and raycast for new position
-   * @returns @ref WL.RayHit for new position.
+   * @returns @ref RayHit for new position.
    */
   updateMousePos(e) {
-    const bounds = this.engine.canvas.getBoundingClientRect();
-    const left = e.clientX / bounds.width;
-    const top = e.clientY / bounds.height;
-    this._direction[0] = left * 2 - 1;
-    this._direction[1] = -top * 2 + 1;
-    this._direction[2] = -1;
+    this._lastPointerPos[0] = e.clientX;
+    this._lastPointerPos[1] = e.clientY;
     this.updateDirection();
   }
   updateDirection() {
-    this.object.getTranslationWorld(this._origin);
+    const bounds = this.engine.canvas.getBoundingClientRect();
+    const left = this._lastPointerPos[0] / bounds.width;
+    const top = this._lastPointerPos[1] / bounds.height;
+    this._direction[0] = left * 2 - 1;
+    this._direction[1] = -top * 2 + 1;
+    this._direction[2] = -1;
+    this.applyTransformAndProjectDirection();
+  }
+  applyTransformAndProjectDirection() {
     vec3_exports.transformMat4(this._direction, this._direction, this._projectionMatrix);
     vec3_exports.normalize(this._direction, this._direction);
-    vec3_exports.transformQuat(this._direction, this._direction, this.object.transformWorld);
+    this.applyTransformToDirection();
+  }
+  applyTransformToDirection() {
+    this.object.transformVectorWorld(this._direction, this._direction);
+    this.object.getPositionWorld(this._origin);
   }
   rayCast(originalEvent, frame = null, doClick = false) {
     const rayHit = this.rayCastMode == 0 ? this.engine.scene.rayCast(this._origin, this._direction, this._collisionMask) : this.engine.physics.rayCast(this._origin, this._direction, this._collisionMask, this.maxDistance);
     let hitResultDistance = Infinity;
     let hitTestResult = null;
     if (this._hitTestLocation?.visible) {
-      this._hitTestObject.getTranslationWorld(this.cursorPos);
-      hitResultDistance = vec3_exports.distance(this.object.getTranslationWorld(tempVec2), this.cursorPos);
+      this._hitTestObject.getPositionWorld(this.cursorPos);
+      hitResultDistance = vec3_exports.distance(this.object.getPositionWorld(tempVec2), this.cursorPos);
       hitTestResult = this._hitTestLocation?.getHitTestResults(frame)[0];
     }
     let hoveringReality = false;
@@ -13463,6 +15494,9 @@ __decorate4([
 __decorate4([
   property.enum(["collision", "physx"], "collision")
 ], Cursor.prototype, "rayCastMode", void 0);
+__decorate4([
+  property.float(100)
+], Cursor.prototype, "maxDistance", void 0);
 __decorate4([
   property.bool(true)
 ], Cursor.prototype, "styleCursor", void 0);
@@ -13521,6 +15555,16 @@ __publicField(FixedFoveation, "Properties", {
 });
 
 // node_modules/@wonderlandengine/components/dist/hand-tracking.js
+var __decorate6 = function(decorators, target, key, desc) {
+  var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+  if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+    r = Reflect.decorate(decorators, target, key, desc);
+  else
+    for (var i = decorators.length - 1; i >= 0; i--)
+      if (d = decorators[i])
+        r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+  return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 var ORDERED_JOINTS = [
   "wrist",
   "thumb-metacarpal",
@@ -13548,9 +15592,24 @@ var ORDERED_JOINTS = [
   "pinky-finger-phalanx-distal",
   "pinky-finger-tip"
 ];
-var invTranslation = new Float32Array(3);
-var invRotation = new Float32Array(4);
+var invTranslation = vec3_exports.create();
+var invRotation = quat_exports.create();
+var tempVec0 = vec3_exports.create();
+var tempVec1 = vec3_exports.create();
 var HandTracking = class extends Component {
+  /** Handedness determining whether to receive tracking input from right or left hand */
+  handedness = 0;
+  /** (optional) Mesh to use to visualize joints */
+  jointMesh = null;
+  /** Material to use for display. Applied to either the spawned skinned mesh or the joint spheres. */
+  jointMaterial = null;
+  /** (optional) Skin to apply tracked joint poses to. If not present,
+   * joint spheres will be used for display instead. */
+  handSkin = null;
+  /** Deactivate children if no pose was tracked */
+  deactivateChildrenWithoutPose = true;
+  /** Controller objects to activate including children if no pose is available */
+  controllerToDeactivate = null;
   init() {
     this.handedness = ["left", "right"][this.handedness];
   }
@@ -13566,41 +15625,37 @@ var HandTracking = class extends Component {
       return;
     }
     if (this.handSkin) {
-      let skin = this.handSkin;
-      let jointIds = skin.jointIds;
+      const skin = this.handSkin;
+      const jointIds = skin.jointIds;
       this.joints[ORDERED_JOINTS[0]] = this.engine.wrapObject(jointIds[0]);
       for (let j = 0; j < jointIds.length; ++j) {
-        let joint = this.engine.wrapObject(jointIds[j]);
+        const joint = this.engine.wrapObject(jointIds[j]);
         this.joints[joint.name] = joint;
       }
       return;
     }
-    const jointObjects = this.engine.scene.addObjects(ORDERED_JOINTS.length, this.object.parent, ORDERED_JOINTS.length);
+    const jointObjects = this.engine.scene.addObjects(ORDERED_JOINTS.length, this.object, ORDERED_JOINTS.length);
     for (let j = 0; j < ORDERED_JOINTS.length; ++j) {
-      let joint = jointObjects[j];
+      const joint = jointObjects[j];
       joint.addComponent(MeshComponent, {
         mesh: this.jointMesh,
         material: this.jointMaterial
       });
       this.joints[ORDERED_JOINTS[j]] = joint;
+      joint.name = ORDERED_JOINTS[j];
     }
   }
   update(dt) {
-    if (!this.session) {
-      if (this.engine.xr)
-        this.setupVREvents(this.engine.xr.session);
-    }
-    if (!this.session)
+    if (!this.engine.xr)
       return;
     this.hasPose = false;
-    if (this.session && this.session.inputSources) {
-      for (let i = 0; i < this.session.inputSources.length; ++i) {
-        const inputSource = this.session.inputSources[i];
-        if (!inputSource || !inputSource.hand || inputSource.handedness != this.handedness)
+    if (this.engine.xr.session.inputSources) {
+      for (let i = 0; i < this.engine.xr.session.inputSources.length; ++i) {
+        const inputSource = this.engine.xr.session.inputSources[i];
+        if (!inputSource?.hand || inputSource?.handedness != this.handedness)
           continue;
-        this.hasPose = true;
         const wristSpace = inputSource.hand.get("wrist");
-        if (wristSpace !== null) {
+        if (wristSpace) {
           const p = this.engine.xr.frame.getJointPose(wristSpace, this.engine.xr.currentReferenceSpace);
           if (p) {
             setXRRigidTransformLocal(this.object, p.transform);
@@ -13608,34 +15663,34 @@ var HandTracking = class extends Component {
         }
         this.object.getRotationLocal(invRotation);
         quat_exports.conjugate(invRotation, invRotation);
-        this.object.getTranslationLocal(invTranslation);
+        this.object.getPositionLocal(invTranslation);
+        this.joints["wrist"].resetTransform();
         for (let j = 0; j < ORDERED_JOINTS.length; ++j) {
           const jointName = ORDERED_JOINTS[j];
           const joint = this.joints[jointName];
-          if (joint === null)
+          if (!joint)
             continue;
           let jointPose = null;
           const jointSpace = inputSource.hand.get(jointName);
-          if (jointSpace !== null) {
+          if (jointSpace) {
             jointPose = this.engine.xr.frame.getJointPose(jointSpace, this.engine.xr.currentReferenceSpace);
           }
-          if (jointPose !== null) {
-            if (this.handSkin) {
-              joint.resetTranslationRotation();
-              joint.translate([
-                jointPose.transform.position.x - invTranslation[0],
-                jointPose.transform.position.y - invTranslation[1],
-                jointPose.transform.position.z - invTranslation[2]
-              ]);
-              joint.rotate(invRotation);
-              joint.rotateObject([
-                jointPose.transform.orientation.x,
-                jointPose.transform.orientation.y,
-                jointPose.transform.orientation.z,
-                jointPose.transform.orientation.w
-              ]);
-            } else {
-              setXRRigidTransformLocal(joint, jointPose.transform);
+          if (jointPose) {
+            this.hasPose = true;
+            joint.resetPositionRotation();
+            joint.translateLocal([
+              jointPose.transform.position.x - invTranslation[0],
+              jointPose.transform.position.y - invTranslation[1],
+              jointPose.transform.position.z - invTranslation[2]
+            ]);
+            joint.rotateLocal(invRotation);
+            joint.rotateObject([
+              jointPose.transform.orientation.x,
+              jointPose.transform.orientation.y,
+              jointPose.transform.orientation.z,
+              jointPose.transform.orientation.w
+            ]);
+            if (!this.handSkin) {
               const r = jointPose.radius || 7e-3;
               joint.setScalingLocal([r, r, r]);
             }
@@ -13672,31 +15727,30 @@ var HandTracking = class extends Component {
     }
   }
   isGrabbing() {
-    const indexTipPos = [0, 0, 0];
-    quat2_exports.getTranslation(indexTipPos, this.joints["index-finger-tip"].transformLocal);
-    const thumbTipPos = [0, 0, 0];
-    quat2_exports.getTranslation(thumbTipPos, this.joints["thumb-tip"].transformLocal);
-    return vec3_exports.sqrDist(thumbTipPos, indexTipPos) < 1e-3;
-  }
-  setupVREvents(s) {
-    this.session = s;
+    this.joints["index-finger-tip"].getPositionLocal(tempVec0);
+    this.joints["thumb-tip"].getPositionLocal(tempVec1);
+    return vec3_exports.sqrDist(tempVec0, tempVec1) < 1e-3;
   }
 };
 __publicField(HandTracking, "TypeName", "hand-tracking");
-__publicField(HandTracking, "Properties", {
-  /** Handedness determining whether to receive tracking input from right or left hand */
-  handedness: { type: Type.Enum, default: "left", values: ["left", "right"] },
-  /** (optional) Mesh to use to visualize joints */
-  jointMesh: { type: Type.Mesh, default: null },
-  /** Material to use for display. Applied to either the spawned skinned mesh or the joint spheres. */
-  jointMaterial: { type: Type.Material, default: null },
-  /** (optional) Skin to apply tracked joint poses to. If not present, joint spheres will be used for display instead. */
-  handSkin: { type: Type.Skin, default: null },
-  /** Deactivate children if no pose was tracked */
-  deactivateChildrenWithoutPose: { type: Type.Bool, default: true },
-  /** Controller objects to activate including children if no pose is available */
-  controllerToDeactivate: { type: Type.Object }
-});
+__decorate6([
+  property.enum(["left", "right"])
+], HandTracking.prototype, "handedness", void 0);
+__decorate6([
+  property.mesh()
+], HandTracking.prototype, "jointMesh", void 0);
+__decorate6([
+  property.material()
+], HandTracking.prototype, "jointMaterial", void 0);
+__decorate6([
+  property.skin()
+], HandTracking.prototype, "handSkin", void 0);
+__decorate6([
+  property.bool(true)
+], HandTracking.prototype, "deactivateChildrenWithoutPose", void 0);
+__decorate6([
+  property.object()
+], HandTracking.prototype, "controllerToDeactivate", void 0);
 
 // node_modules/@wonderlandengine/components/dist/howler-audio-listener.js
 var import_howler = __toESM(require_howler(), 1);
@@ -13811,6 +15865,12 @@ function setFirstMaterialTexture(mat, texture, customTextureProperty) {
   }
   return false;
 }
+function deg2rad(value) {
+  return value * Math.PI / 180;
+}
+function rad2deg(value) {
+  return value * 180 / Math.PI;
+}
 
 // node_modules/@wonderlandengine/components/dist/image-texture.js
 var ImageTexture = class extends Component {
@@ -13837,87 +15897,139 @@ __publicField(ImageTexture, "Properties", {
 });
 
 // node_modules/@wonderlandengine/components/dist/mouse-look.js
-var MouseLookComponent = class extends Component {
-  init() {
-    this.currentRotationY = 0;
-    this.currentRotationX = 0;
-    this.origin = new Float32Array(3);
-    this.parentOrigin = new Float32Array(3);
-    this.rotationX = 0;
-    this.rotationY = 0;
-  }
-  start() {
-    document.addEventListener("mousemove", (e) => {
-      if (this.active && (this.mouseDown || !this.requireMouseDown)) {
-        this.rotationY = -this.sensitity * e.movementX / 100;
-        this.rotationX = -this.sensitity * e.movementY / 100;
-        this.currentRotationX += this.rotationX;
-        this.currentRotationY += this.rotationY;
-        this.currentRotationX = Math.min(1.507, this.currentRotationX);
-        this.currentRotationX = Math.max(-1.507, this.currentRotationX);
-        this.object.getTranslationWorld(this.origin);
-        const parent = this.object.parent;
-        if (parent !== null) {
-          parent.getTranslationWorld(this.parentOrigin);
-          vec3_exports.sub(this.origin, this.origin, this.parentOrigin);
-        }
-        this.object.resetTranslationRotation();
-        this.object.rotateAxisAngleRad([1, 0, 0], this.currentRotationX);
-        this.object.rotateAxisAngleRad([0, 1, 0], this.currentRotationY);
-        this.object.translate(this.origin);
-      }
-    });
-    const canvas2 = this.engine.canvas;
-    if (this.pointerLockOnClick) {
-      canvas2.addEventListener("mousedown", () => {
-        canvas2.requestPointerLock = canvas2.requestPointerLock || canvas2.mozRequestPointerLock || canvas2.webkitRequestPointerLock;
-        canvas2.requestPointerLock();
-      });
-    }
-    if (this.requireMouseDown) {
-      if (this.mouseButtonIndex == 2) {
-        canvas2.addEventListener("contextmenu", (e) => {
-          e.preventDefault();
-        }, false);
-      }
-      canvas2.addEventListener("mousedown", (e) => {
-        if (e.button == this.mouseButtonIndex) {
-          this.mouseDown = true;
-          document.body.style.cursor = "grabbing";
-          if (e.button == 1) {
-            e.preventDefault();
-            return false;
-          }
-        }
-      });
-      canvas2.addEventListener("mouseup", (e) => {
-        if (e.button == this.mouseButtonIndex) {
-          this.mouseDown = false;
-          document.body.style.cursor = "initial";
-        }
-      });
-    }
-  }
+var __decorate7 = function(decorators, target, key, desc) {
+  var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+  if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+    r = Reflect.decorate(decorators, target, key, desc);
+  else
+    for (var i = decorators.length - 1; i >= 0; i--)
+      if (d = decorators[i])
+        r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+  return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-__publicField(MouseLookComponent, "TypeName", "mouse-look");
-__publicField(MouseLookComponent, "Properties", {
+var preventDefault = (e) => {
+  e.preventDefault();
+};
+var MouseLookComponent = class extends Component {
   /** Mouse look sensitivity */
-  sensitity: { type: Type.Float, default: 0.25 },
+  sensitity = 0.25;
   /** Require a mouse button to be pressed to control view.
    * Otherwise view will allways follow mouse movement */
-  requireMouseDown: { type: Type.Bool, default: true },
+  requireMouseDown = true;
   /** If "moveOnClick" is enabled, mouse button which should
    * be held down to control view */
-  mouseButtonIndex: { type: Type.Int },
+  mouseButtonIndex = 0;
   /** Enables pointer lock on "mousedown" event on canvas */
-  pointerLockOnClick: { type: Type.Bool, default: false }
-});
+  pointerLockOnClick = false;
+  currentRotationY = 0;
+  currentRotationX = 0;
+  origin = new Float32Array(3);
+  parentOrigin = new Float32Array(3);
+  rotationX = 0;
+  rotationY = 0;
+  mouseDown = false;
+  onActivate() {
+    document.addEventListener("mousemove", this.onMouseMove);
+    const canvas2 = this.engine.canvas;
+    if (this.pointerLockOnClick) {
+      canvas2.addEventListener("mousedown", this.requestPointerLock);
+    }
+    if (this.requireMouseDown) {
+      if (this.mouseButtonIndex === 2) {
+        canvas2.addEventListener("contextmenu", preventDefault, false);
+      }
+      canvas2.addEventListener("mousedown", this.onMouseDown);
+      canvas2.addEventListener("mouseup", this.onMouseUp);
+    }
+  }
+  onDeactivate() {
+    document.removeEventListener("mousemove", this.onMouseMove);
+    const canvas2 = this.engine.canvas;
+    if (this.pointerLockOnClick) {
+      canvas2.removeEventListener("mousedown", this.requestPointerLock);
+    }
+    if (this.requireMouseDown) {
+      if (this.mouseButtonIndex === 2) {
+        canvas2.removeEventListener("contextmenu", preventDefault, false);
+      }
+      canvas2.removeEventListener("mousedown", this.onMouseDown);
+      canvas2.removeEventListener("mouseup", this.onMouseUp);
+    }
+  }
+  requestPointerLock = () => {
+    const canvas2 = this.engine.canvas;
+    canvas2.requestPointerLock = canvas2.requestPointerLock || canvas2.mozRequestPointerLock || canvas2.webkitRequestPointerLock;
+    canvas2.requestPointerLock();
+  };
+  onMouseDown = (e) => {
+    if (e.button === this.mouseButtonIndex) {
+      this.mouseDown = true;
+      document.body.style.cursor = "grabbing";
+      if (e.button === 1) {
+        e.preventDefault();
+        return false;
+      }
+    }
+  };
+  onMouseUp = (e) => {
+    if (e.button === this.mouseButtonIndex) {
+      this.mouseDown = false;
+      document.body.style.cursor = "initial";
+    }
+  };
+  onMouseMove = (e) => {
+    if (this.active && (this.mouseDown || !this.requireMouseDown)) {
+      this.rotationY = -this.sensitity * e.movementX / 100;
+      this.rotationX = -this.sensitity * e.movementY / 100;
+      this.currentRotationX += this.rotationX;
+      this.currentRotationY += this.rotationY;
+      this.currentRotationX = Math.min(1.507, this.currentRotationX);
+      this.currentRotationX = Math.max(-1.507, this.currentRotationX);
+      this.object.getPositionWorld(this.origin);
+      const parent = this.object.parent;
+      if (parent) {
+        parent.getPositionWorld(this.parentOrigin);
+        vec3_exports.sub(this.origin, this.origin, this.parentOrigin);
+      }
+      this.object.resetPositionRotation();
+      this.object.rotateAxisAngleRadLocal([1, 0, 0], this.currentRotationX);
+      this.object.rotateAxisAngleRadLocal([0, 1, 0], this.currentRotationY);
+      this.object.translateLocal(this.origin);
+    }
+  };
+};
+__publicField(MouseLookComponent, "TypeName", "mouse-look");
+__decorate7([
+  property.float(0.25)
+], MouseLookComponent.prototype, "sensitity", void 0);
+__decorate7([
+  property.bool(true)
+], MouseLookComponent.prototype, "requireMouseDown", void 0);
+__decorate7([
+  property.int()
+], MouseLookComponent.prototype, "mouseButtonIndex", void 0);
+__decorate7([
+  property.bool(false)
+], MouseLookComponent.prototype, "pointerLockOnClick", void 0);
 
 // node_modules/@wonderlandengine/components/dist/player-height.js
+var __decorate8 = function(decorators, target, key, desc) {
+  var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+  if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+    r = Reflect.decorate(decorators, target, key, desc);
+  else
+    for (var i = decorators.length - 1; i >= 0; i--)
+      if (d = decorators[i])
+        r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+  return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 var PlayerHeight = class extends Component {
+  height = 1.75;
+  onSessionStartCallback;
+  onSessionEndCallback;
   start() {
-    this.object.resetTranslationRotation();
-    this.object.translate([0, this.height, 0]);
+    this.object.resetPositionRotation();
+    this.object.translateLocal([0, this.height, 0]);
     this.onSessionStartCallback = this.onXRSessionStart.bind(this);
     this.onSessionEndCallback = this.onXRSessionEnd.bind(this);
   }
@@ -13930,21 +16042,23 @@ var PlayerHeight = class extends Component {
     this.engine.onXRSessionEnd.remove(this.onSessionEndCallback);
   }
   onXRSessionStart() {
-    if (!["local", "viewer"].includes(this.engine.xr.currentReferenceSpace)) {
-      this.object.resetTranslationRotation();
+    const type = this.engine.xr?.currentReferenceSpaceType;
+    if (type !== "local" && type !== "viewer") {
+      this.object.resetPositionRotation();
     }
   }
   onXRSessionEnd() {
-    if (!["local", "viewer"].includes(this.engine.xr.currentReferenceSpace)) {
-      this.object.resetTranslationRotation();
-      this.object.translate([0, this.height, 0]);
+    const type = this.engine.xr?.currentReferenceSpaceType;
+    if (type !== "local" && type !== "viewer") {
+      this.object.resetPositionRotation();
+      this.object.translateLocal([0, this.height, 0]);
     }
   }
 };
 __publicField(PlayerHeight, "TypeName", "player-height");
-__publicField(PlayerHeight, "Properties", {
-  height: { type: Type.Float, default: 1.75 }
-});
+__decorate8([
+  property.float(1.75)
+], PlayerHeight.prototype, "height", void 0);
 
 // node_modules/@wonderlandengine/components/dist/target-framerate.js
 var TargetFramerate = class extends Component {
@@ -14194,49 +16308,81 @@ __publicField(TeleportComponent, "Properties", {
 });
 
 // node_modules/@wonderlandengine/components/dist/trail.js
+var __decorate9 = function(decorators, target, key, desc) {
+  var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+  if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+    r = Reflect.decorate(decorators, target, key, desc);
+  else
+    for (var i = decorators.length - 1; i >= 0; i--)
+      if (d = decorators[i])
+        r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+  return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 var direction = vec3_exports.create();
 var offset = vec3_exports.create();
 var normal = vec3_exports.create();
+var UP = vec3_exports.fromValues(0, 1, 0);
 var Trail = class extends Component {
-  init() {
-    this.points = new Array(this.segments + 1);
-    for (let i = 0; i < this.points.length; ++i) {
-      this.points[i] = vec3_exports.create();
-    }
-    this.currentPointOffset = 0;
-    this.up = [0, 1, 0];
-    this.timeTillNext = this.interval;
-  }
+  /** The material to apply to the trail mesh */
+  material = null;
+  /** The number of segments in the trail mesh */
+  segments = 50;
+  /** The time interval before recording a new point */
+  interval = 0.1;
+  /** The width of the trail (in world space) */
+  width = 1;
+  /** Whether or not the trail should taper off */
+  taper = true;
+  /**
+   * The maximum delta time in seconds, above which the trail resets.
+   * This prevents the trail from jumping around when updates happen
+   * infrequently (e.g. when the tab doesn't have focus).
+   */
+  resetThreshold = 0.5;
+  _currentPointIndex = 0;
+  _timeTillNext = 0;
+  _points = [];
+  _trailContainer = null;
+  _meshComp = null;
+  _mesh = null;
+  _indexData = null;
   start() {
-    this.trailContainer = this.engine.scene.addObject();
-    this.meshComp = this.trailContainer.addComponent("mesh");
-    this.meshComp.material = this.material;
-    const vertexCount = 2 * this.points.length;
-    this.indexData = new Uint32Array(6 * this.segments);
-    for (let i = 0, v = 0; i < vertexCount - 2; i += 2, v += 6) {
-      this.indexData.subarray(v, v + 6).set([i + 1, i + 0, i + 2, i + 2, i + 3, i + 1]);
+    this._points = new Array(this.segments + 1);
+    for (let i = 0; i < this._points.length; ++i) {
+      this._points[i] = vec3_exports.create();
     }
-    this.mesh = new Mesh(this.engine, {
+    this._timeTillNext = this.interval;
+    this._trailContainer = this.engine.scene.addObject();
+    this._meshComp = this._trailContainer.addComponent("mesh");
+    this._meshComp.material = this.material;
+    const vertexCount = 2 * this._points.length;
+    this._indexData = new Uint32Array(6 * this.segments);
+    for (let i = 0, v = 0; i < vertexCount - 2; i += 2, v += 6) {
+      this._indexData.subarray(v, v + 6).set([i + 1, i + 0, i + 2, i + 2, i + 3, i + 1]);
+    }
+    this._mesh = new Mesh(this.engine, {
       vertexCount,
-      indexData: this.indexData,
+      indexData: this._indexData,
       indexType: MeshIndexType.UnsignedInt
     });
-    this.meshComp.mesh = this.mesh;
+    this._meshComp.mesh = this._mesh;
   }
   updateVertices() {
-    const positions = this.mesh.attribute(MeshAttribute.Position);
-    const texCoords = this.mesh.attribute(MeshAttribute.TextureCoordinate);
-    const normals = this.mesh.attribute(MeshAttribute.Normal);
+    if (!this._mesh)
+      return;
+    const positions = this._mesh.attribute(MeshAttribute.Position);
+    const texCoords = this._mesh.attribute(MeshAttribute.TextureCoordinate);
+    const normals = this._mesh.attribute(MeshAttribute.Normal);
     vec3_exports.set(direction, 0, 0, 0);
-    for (let i = 0; i < this.points.length; ++i) {
-      const curr = this.points[(this.currentPointIndex + i + 1) % this.points.length];
-      const next = this.points[(this.currentPointIndex + i + 2) % this.points.length];
-      if (i !== this.points.length - 1) {
+    for (let i = 0; i < this._points.length; ++i) {
+      const curr = this._points[(this._currentPointIndex + i + 1) % this._points.length];
+      const next = this._points[(this._currentPointIndex + i + 2) % this._points.length];
+      if (i !== this._points.length - 1) {
         vec3_exports.sub(direction, next, curr);
       }
-      vec3_exports.cross(offset, this.up, direction);
+      vec3_exports.cross(offset, UP, direction);
       vec3_exports.normalize(offset, offset);
-      const timeFraction = 1 - this.timeTillNext / this.interval;
+      const timeFraction = 1 - this._timeTillNext / this.interval;
       const fraction = (i - timeFraction) / this.segments;
       vec3_exports.scale(offset, offset, (this.taper ? fraction : 1) * this.width / 2);
       positions.set(i * 2, [
@@ -14260,165 +16406,166 @@ var Trail = class extends Component {
         texCoords.set(i * 2 + 1, [1, fraction]);
       }
     }
-    this.mesh.update();
+    this._mesh.update();
   }
   resetTrail() {
-    this.object.getTranslationWorld(this.points[0]);
-    for (let i = 1; i < this.points.length; ++i) {
-      vec3_exports.copy(this.points[i], this.points[0]);
+    this.object.getPositionWorld(this._points[0]);
+    for (let i = 1; i < this._points.length; ++i) {
+      vec3_exports.copy(this._points[i], this._points[0]);
     }
-    this.currentPointIndex = 0;
-    this.timeTillNext = this.interval;
+    this._currentPointIndex = 0;
+    this._timeTillNext = this.interval;
   }
   update(dt) {
-    this.timeTillNext -= dt;
+    this._timeTillNext -= dt;
     if (dt > this.resetThreshold) {
       this.resetTrail();
     }
-    if (this.timeTillNext < 0) {
-      this.currentPointIndex = (this.currentPointIndex + 1) % this.points.length;
-      this.timeTillNext = this.timeTillNext % this.interval + this.interval;
+    if (this._timeTillNext < 0) {
+      this._currentPointIndex = (this._currentPointIndex + 1) % this._points.length;
+      this._timeTillNext = this._timeTillNext % this.interval + this.interval;
     }
-    this.object.getTranslationWorld(this.points[this.currentPointIndex]);
+    this.object.getPositionWorld(this._points[this._currentPointIndex]);
     this.updateVertices();
   }
   onActivate() {
     this.resetTrail();
+    if (this._meshComp)
+      this._meshComp.active = true;
+  }
+  onDeactivate() {
+    if (this._meshComp)
+      this._meshComp.active = false;
   }
   onDestroy() {
-    this.trailContainer.destroy();
-    this.mesh.destroy();
+    if (this._trailContainer)
+      this._trailContainer.destroy();
+    if (this._meshComp)
+      this._meshComp.destroy();
+    if (this._mesh)
+      this._mesh.destroy();
   }
 };
 __publicField(Trail, "TypeName", "trail");
-__publicField(Trail, "Properties", {
-  /** The material to apply to the trail mesh */
-  material: { type: Type.Material },
-  /** The number of segments in the trail mesh */
-  segments: { type: Type.Int, default: 50 },
-  /** The time interval before recording a new point */
-  interval: { type: Type.Float, default: 0.1 },
-  /** The width of the trail (in world space) */
-  width: { type: Type.Float, default: 1 },
-  /** Whether or not the trail should taper off */
-  taper: { type: Type.Bool, default: true },
-  /**
-   * The maximum delta time in seconds, above which the trail resets.
-   * This prevents the trail from jumping around when updates happen
-   * infrequently (e.g. when the tab doesn't have focus).
-   */
-  resetThreshold: { type: Type.Float, default: 0.5 }
-});
+__decorate9([
+  property.material()
+], Trail.prototype, "material", void 0);
+__decorate9([
+  property.int(50)
+], Trail.prototype, "segments", void 0);
+__decorate9([
+  property.float(50)
+], Trail.prototype, "interval", void 0);
+__decorate9([
+  property.float(1)
+], Trail.prototype, "width", void 0);
+__decorate9([
+  property.bool(true)
+], Trail.prototype, "taper", void 0);
+__decorate9([
+  property.float(1)
+], Trail.prototype, "resetThreshold", void 0);
 
 // node_modules/@wonderlandengine/components/dist/two-joint-ik-solver.js
-Math.clamp = function(v, a, b) {
+function clamp2(v, a, b) {
   return Math.max(a, Math.min(v, b));
-};
+}
+var rootScaling = new Float32Array(3);
+var tempQuat3 = new Float32Array(4);
+var middlePos = new Float32Array(3);
+var endPos = new Float32Array(3);
+var targetPos = new Float32Array(3);
+var helperPos = new Float32Array(3);
+var rootTransform = new Float32Array(8);
+var middleTransform = new Float32Array(8);
+var endTransform = new Float32Array(8);
 var twoJointIK = function() {
-  let ta = new Float32Array(3);
-  let ca = new Float32Array(3);
-  let ba = new Float32Array(3);
-  let ab = new Float32Array(3);
-  let cb = new Float32Array(3);
-  let axis0 = new Float32Array(3);
-  let axis1 = new Float32Array(3);
-  let temp = new Float32Array(4);
-  let r0 = new Float32Array(4);
-  let r1 = new Float32Array(4);
-  let r2 = new Float32Array(4);
-  return function(a_lr, b_lr, a, b, c, t, eps, a_gr, b_gr, helper) {
-    vec3_exports.sub(ba, b, a);
+  const ta = new Float32Array(3);
+  const ca = new Float32Array(3);
+  const ba = new Float32Array(3);
+  const ab = new Float32Array(3);
+  const cb = new Float32Array(3);
+  const axis0 = new Float32Array(3);
+  const axis1 = new Float32Array(3);
+  const temp = new Float32Array(3);
+  return function(root, middle, b, c, targetPos2, eps, helper) {
+    ba.set(b);
     const lab = vec3_exports.length(ba);
     vec3_exports.sub(ta, b, c);
     const lcb = vec3_exports.length(ta);
-    vec3_exports.sub(ta, t, a);
-    const lat = Math.clamp(vec3_exports.length(ta), eps, lab + lcb - eps);
-    vec3_exports.sub(ca, c, a);
-    vec3_exports.sub(ab, a, b);
+    ta.set(targetPos2);
+    const lat = clamp2(vec3_exports.length(ta), eps, lab + lcb - eps);
+    ca.set(c);
+    vec3_exports.scale(ab, b, -1);
     vec3_exports.sub(cb, c, b);
     vec3_exports.normalize(ca, ca);
     vec3_exports.normalize(ba, ba);
     vec3_exports.normalize(ab, ab);
     vec3_exports.normalize(cb, cb);
     vec3_exports.normalize(ta, ta);
-    const ac_ab_0 = Math.acos(Math.clamp(vec3_exports.dot(ca, ba), -1, 1));
-    const ba_bc_0 = Math.acos(Math.clamp(vec3_exports.dot(ab, cb), -1, 1));
-    const ac_at_0 = Math.acos(Math.clamp(vec3_exports.dot(ca, ta), -1, 1));
-    const ac_ab_1 = Math.acos(Math.clamp((lcb * lcb - lab * lab - lat * lat) / (-2 * lab * lat), -1, 1));
-    const ba_bc_1 = Math.acos(Math.clamp((lat * lat - lab * lab - lcb * lcb) / (-2 * lab * lcb), -1, 1));
-    vec3_exports.sub(ca, c, a);
-    vec3_exports.sub(ba, b, a);
-    vec3_exports.sub(ta, t, a);
-    vec3_exports.cross(axis0, ca, ba);
-    vec3_exports.cross(axis1, ca, ta);
+    const ac_ab_0 = Math.acos(clamp2(vec3_exports.dot(ca, ba), -1, 1));
+    const ba_bc_0 = Math.acos(clamp2(vec3_exports.dot(ab, cb), -1, 1));
+    const ac_at_0 = Math.acos(clamp2(vec3_exports.dot(ca, ta), -1, 1));
+    const ac_ab_1 = Math.acos(clamp2((lcb * lcb - lab * lab - lat * lat) / (-2 * lab * lat), -1, 1));
+    const ba_bc_1 = Math.acos(clamp2((lat * lat - lab * lab - lcb * lcb) / (-2 * lab * lcb), -1, 1));
     if (helper) {
       vec3_exports.sub(ba, helper, b);
-      vec3_exports.transformQuat(ba, [0, 0, -1], b_gr);
-    } else {
-      vec3_exports.sub(ba, b, a);
+      vec3_exports.normalize(ba, ba);
     }
-    const l = vec3_exports.length(axis0);
-    if (l == 0) {
-      axis0.set([1, 0, 0]);
-    } else {
-      vec3_exports.scale(axis0, axis0, 1 / l);
-    }
+    vec3_exports.cross(axis0, ca, ba);
+    vec3_exports.normalize(axis0, axis0);
+    vec3_exports.cross(axis1, c, targetPos2);
     vec3_exports.normalize(axis1, axis1);
-    quat_exports.conjugate(a_gr, a_gr);
-    quat_exports.setAxisAngle(r0, vec3_exports.transformQuat(temp, axis0, a_gr), ac_ab_1 - ac_ab_0);
-    quat_exports.setAxisAngle(r2, vec3_exports.transformQuat(temp, axis1, a_gr), ac_at_0);
-    quat_exports.mul(a_lr, a_lr, quat_exports.mul(temp, r0, r2));
-    quat_exports.normalize(a_lr, a_lr);
-    quat_exports.conjugate(b_gr, b_gr);
-    quat_exports.setAxisAngle(r1, vec3_exports.transformQuat(temp, axis0, b_gr), ba_bc_1 - ba_bc_0);
-    quat_exports.mul(b_lr, b_lr, r1);
-    quat_exports.normalize(b_lr, b_lr);
+    middle.transformVectorInverseLocal(temp, axis0);
+    root.rotateAxisAngleRadObject(axis1, ac_at_0);
+    root.rotateAxisAngleRadObject(axis0, ac_ab_1 - ac_ab_0);
+    middle.rotateAxisAngleRadObject(axis0, ba_bc_1 - ba_bc_0);
   };
 }();
 var TwoJointIkSolver = class extends Component {
-  init() {
-    this.pos = new Float32Array(3 * 7);
-    this.p = [
-      this.pos.subarray(0, 3),
-      this.pos.subarray(3, 6),
-      this.pos.subarray(6, 9),
-      this.pos.subarray(9, 12),
-      this.pos.subarray(12, 15),
-      this.pos.subarray(15, 18),
-      this.pos.subarray(18, 21)
-    ];
+  time = 0;
+  start() {
+    this.root.getTransformLocal(rootTransform);
+    this.middle.getTransformLocal(middleTransform);
+    this.end.getTransformLocal(endTransform);
   }
-  update() {
-    const p = this.p;
-    this.root.getTranslationWorld(p[0]);
-    this.middle.getTranslationWorld(p[1]);
-    this.end.getTranslationWorld(p[2]);
-    this.target.getTranslationWorld(p[3]);
-    const tla = p[4];
-    const tlb = p[5];
-    this.root.getTranslationLocal(tla);
-    this.middle.getTranslationLocal(tlb);
-    if (this.helper)
-      this.helper.getTranslationWorld(p[6]);
-    twoJointIK(this.root.transformLocal, this.middle.transformLocal, p[0], p[1], p[2], p[3], 0.01, this.root.transformWorld.subarray(0, 4), this.middle.transformWorld.subarray(0, 4), this.helper ? p[6] : null);
-    this.root.setTranslationLocal(tla);
-    this.middle.setTranslationLocal(tlb);
-    this.root.setDirty();
-    this.middle.setDirty();
+  update(dt) {
+    this.time += dt;
+    this.root.setTransformLocal(rootTransform);
+    this.middle.setTransformLocal(middleTransform);
+    this.end.setTransformLocal(endTransform);
+    this.root.getScalingWorld(rootScaling);
+    this.middle.getPositionLocal(middlePos);
+    this.end.getPositionLocal(endPos);
+    this.middle.transformPointLocal(endPos, endPos);
+    if (this.helper) {
+      this.helper.getPositionWorld(helperPos);
+      this.root.transformPointInverseWorld(helperPos, helperPos);
+      vec3_exports.div(helperPos, helperPos, rootScaling);
+    }
+    this.target.getPositionWorld(targetPos);
+    this.root.transformPointInverseWorld(targetPos, targetPos);
+    vec3_exports.div(targetPos, targetPos, rootScaling);
+    twoJointIK(this.root, this.middle, middlePos, endPos, targetPos, 0.01, this.helper ? helperPos : null, this.time);
+    if (this.copyTargetRotation) {
+      this.end.setRotationWorld(this.target.getRotationWorld(tempQuat3));
+    }
   }
 };
 __publicField(TwoJointIkSolver, "TypeName", "two-joint-ik-solver");
 __publicField(TwoJointIkSolver, "Properties", {
   /** Root bone, never moves */
-  root: { type: Type.Object },
+  root: Property.object(),
   /** Bone attached to the root */
-  middle: { type: Type.Object },
+  middle: Property.object(),
   /** Bone attached to the middle */
-  end: { type: Type.Object },
+  end: Property.object(),
   /** Target the joins should reach for */
-  target: { type: Type.Object },
+  target: Property.object(),
+  /** Flag for copying rotation from target to end */
+  copyTargetRotation: Property.bool(true),
   /** Helper object to use to determine joint rotation axis */
-  helper: { type: Type.Object }
+  helper: Property.object()
 });
 
 // node_modules/@wonderlandengine/components/dist/video-texture.js
@@ -14550,7 +16697,7 @@ __publicField(VrModeActiveSwitch, "Properties", {
 
 // node_modules/@wonderlandengine/components/dist/plane-detection.js
 var import_earcut = __toESM(require_earcut(), 1);
-var __decorate6 = function(decorators, target, key, desc) {
+var __decorate10 = function(decorators, target, key, desc) {
   var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
   if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
     r = Reflect.decorate(decorators, target, key, desc);
@@ -14716,10 +16863,10 @@ planeUpdatePose_fn = function(plane) {
   setXRRigidTransformLocal(o, pose.transform);
 };
 __publicField(PlaneDetection, "TypeName", "plane-detection");
-__decorate6([
+__decorate10([
   property.material()
 ], PlaneDetection.prototype, "planeMaterial", void 0);
-__decorate6([
+__decorate10([
   property.int()
 ], PlaneDetection.prototype, "collisionMask", void 0);
 
@@ -15269,6 +17416,7 @@ __publicField(Vrm, "Properties", {
 });
 
 // node_modules/@wonderlandengine/components/dist/wasd-controls.js
+var _direction = new Float32Array(3);
 var WasdControlsComponent = class extends Component {
   init() {
     this.up = false;
@@ -15282,20 +17430,25 @@ var WasdControlsComponent = class extends Component {
     this.headObject = this.headObject || this.object;
   }
   update() {
-    let direction2 = [0, 0, 0];
+    vec3_exports.zero(_direction);
     if (this.up)
-      direction2[2] -= 1;
+      _direction[2] -= 1;
     if (this.down)
-      direction2[2] += 1;
+      _direction[2] += 1;
     if (this.left)
-      direction2[0] -= 1;
+      _direction[0] -= 1;
     if (this.right)
-      direction2[0] += 1;
-    vec3_exports.normalize(direction2, direction2);
-    direction2[0] *= this.speed;
-    direction2[2] *= this.speed;
-    vec3_exports.transformQuat(direction2, direction2, this.headObject.transformWorld);
-    this.object.translate(direction2);
+      _direction[0] += 1;
+    vec3_exports.normalize(_direction, _direction);
+    _direction[0] *= this.speed;
+    _direction[2] *= this.speed;
+    vec3_exports.transformQuat(_direction, _direction, this.headObject.transformWorld);
+    if (this.lockY) {
+      _direction[1] = 0;
+      vec3_exports.normalize(_direction, _direction);
+      vec3_exports.scale(_direction, _direction, this.speed);
+    }
+    this.object.translateLocal(_direction);
   }
   press(e) {
     if (e.keyCode === 38 || e.keyCode === 87 || e.keyCode === 90) {
@@ -15324,9 +17477,567 @@ __publicField(WasdControlsComponent, "TypeName", "wasd-controls");
 __publicField(WasdControlsComponent, "Properties", {
   /** Movement speed in m/s. */
   speed: { type: Type.Float, default: 0.1 },
+  /** Flag for only moving the object on the global x & z planes */
+  lockY: { type: Type.Bool, default: false },
   /** Object of which the orientation is used to determine forward direction */
   headObject: { type: Type.Object }
 });
+
+// node_modules/@wonderlandengine/components/dist/input-profile.js
+var __decorate11 = function(decorators, target, key, desc) {
+  var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+  if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+    r = Reflect.decorate(decorators, target, key, desc);
+  else
+    for (var i = decorators.length - 1; i >= 0; i--)
+      if (d = decorators[i])
+        r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+  return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var _tempVec = vec3_exports.create();
+var _tempQuat = quat_exports.create();
+var _tempRotation1 = new Float32Array(4);
+var _tempRotation2 = new Float32Array(4);
+var minTemp = new Float32Array(3);
+var maxTemp = new Float32Array(3);
+var hands = ["left", "right"];
+var _InputProfile = class extends Component {
+  _gamepadObjects = {};
+  _controllerModel = null;
+  _defaultControllerComponents;
+  _handedness;
+  _profileJSON = null;
+  _buttons = [];
+  _axes = [];
+  /**
+   * The XR gamepad associated with the current input source.
+   */
+  gamepad;
+  /**
+   * A reference to the emitter which triggered on model lodaed event.
+   */
+  onModelLoaded = new Emitter();
+  /**
+   * Returns url of input profile json file
+   */
+  url;
+  /**
+   * A set of components to filter during component retrieval.
+   */
+  toFilter = /* @__PURE__ */ new Set(["vr-mode-active-mode-switch"]);
+  /**
+   * The index representing the handedness of the controller (0 for left, 1 for right).
+   */
+  handedness = 0;
+  /**
+   * The base path where XR input profiles are stored.
+   */
+  defaultBasePath;
+  /**
+   * An optional folder path for loading custom XR input profiles.
+   */
+  customBasePath;
+  /**
+   * The default 3D controller model used when a custom model fails to load.
+   */
+  defaultController;
+  /**
+   * The object which has HandTracking component added to it.
+   */
+  trackedHand;
+  /**
+   * If true, the input profile will be mapped to the default controller, and no dynamic 3D model of controller will be loaded.
+   */
+  mapToDefaultController;
+  /**
+   * If true, adds a VR mode switch component to the loaded controller model.
+   */
+  addVrModeSwitch;
+  onActivate() {
+    this._handedness = hands[this.handedness];
+    const defaultHandName = "Hand" + this._handedness.charAt(0).toUpperCase() + this._handedness.slice(1);
+    this.trackedHand = this.trackedHand ?? this.object.parent?.findByNameRecursive(defaultHandName)[0];
+    this.defaultController = this.defaultController || this.object.children[0];
+    this._defaultControllerComponents = this._getComponents(this.defaultController);
+    this.engine.onXRSessionStart.add(() => {
+      this.engine.xr?.session.addEventListener("inputsourceschange", this._onInputSourcesChange.bind(this));
+    });
+  }
+  onDeactivate() {
+    this.engine.xr?.session?.removeEventListener("inputsourceschange", this._onInputSourcesChange.bind(this));
+  }
+  /**
+   * Sets newly loaded controllers for the HandTracking component to proper switching.
+   * @param controllerObject The controller object.
+   * @hidden
+   */
+  _setHandTrackingControllers(controllerObject) {
+    const handtrackingComponent = this.trackedHand.getComponent(HandTracking);
+    if (!handtrackingComponent)
+      return;
+    handtrackingComponent.controllerToDeactivate = controllerObject;
+  }
+  /**
+   * Retrieves all components from the specified object and its children.
+   * @param obj The object to retrieve components from.
+   * @return An array of components.
+   * @hidden
+   */
+  _getComponents(obj) {
+    const components = [];
+    if (obj == null)
+      return components;
+    const stack = [obj];
+    while (stack.length > 0) {
+      const currentObj = stack.pop();
+      const comps = currentObj.getComponents().filter((c) => !this.toFilter.has(c.type));
+      components.push(...comps);
+      const children = currentObj.children;
+      for (let i = children.length - 1; i >= 0; --i) {
+        stack.push(children[i]);
+      }
+    }
+    return components;
+  }
+  /**
+   * Activates or deactivates components based on the specified boolean value.
+   * @param active If true, components are set to active; otherwise, they are set to inactive.
+   * @hidden
+   */
+  _setComponentsActive(active) {
+    const comps = this._defaultControllerComponents;
+    if (comps == void 0)
+      return;
+    for (let i = 0; i < comps.length; ++i) {
+      comps[i].active = active;
+    }
+  }
+  /**
+   * Event handler triggered when XR input sources change.
+   * Detects new XR input sources and initiates the loading of input profiles.
+   * @param event The XR input source change event.
+   * @hidden
+   */
+  _onInputSourcesChange(event) {
+    if (this._isModelLoaded() && !this.mapToDefaultController) {
+      this._setComponentsActive(false);
+    }
+    event.added.forEach((xrInputSource) => {
+      if (xrInputSource.hand != null)
+        return;
+      if (this._handedness != xrInputSource.handedness)
+        return;
+      this.gamepad = xrInputSource.gamepad;
+      const profile = this.customBasePath !== "" ? this.customBasePath : this.defaultBasePath + xrInputSource.profiles[0];
+      this.url = profile + "/profile.json";
+      this._profileJSON = _InputProfile.Cache.get(this.url) ?? null;
+      if (this._profileJSON != null)
+        return;
+      fetch(this.url).then((res) => res.json()).then((out) => {
+        this._profileJSON = out;
+        _InputProfile.Cache.set(this.url, this._profileJSON);
+        if (!this._isModelLoaded())
+          this._loadAndMapGamepad(profile);
+      }).catch((e) => {
+        console.error(`Failed to load profile from ${this.url}. Reason:`, e);
+      });
+    });
+  }
+  /**
+   * Checks if the 3D controller model is loaded.
+   * @return True if the model is loaded; otherwise, false.
+   * @hidden
+   */
+  _isModelLoaded() {
+    return this._controllerModel !== null;
+  }
+  /**
+   * Loads the 3D controller model and caches the mapping to the gamepad.
+   * @param profile The path to the input profile.
+   * @hidden
+   */
+  async _loadAndMapGamepad(profile) {
+    const assetPath = profile + "/" + this._handedness + ".glb";
+    this._controllerModel = this.defaultController;
+    if (!this.mapToDefaultController) {
+      try {
+        this._controllerModel = await this.engine.scene.append(assetPath);
+      } catch (e) {
+        console.error(`Failed to load i-p controller model. Reason:`, e, `Continuing with ${this._handedness} default controller.`);
+        this._setComponentsActive(true);
+      }
+      this._controllerModel.parent = this.object;
+      this._controllerModel.setPositionLocal([0, 0, 0]);
+      this._setComponentsActive(false);
+      if (this.addVrModeSwitch)
+        this._controllerModel.addComponent(VrModeActiveSwitch);
+      this.onModelLoaded.notify();
+    }
+    this._cacheGamepadObjectsFromProfile(this._profileJSON, this._controllerModel);
+    this._setHandTrackingControllers(this._controllerModel);
+    this.update = () => this._mapGamepadInput();
+  }
+  /**
+   * Caches gamepad objects (buttons, axes) from the loaded input profile.
+   * @hidden
+   */
+  _cacheGamepadObjectsFromProfile(profile, obj) {
+    const components = profile.layouts[this._handedness].components;
+    if (!components)
+      return;
+    this._buttons = [];
+    this._axes = [];
+    for (const i in components) {
+      const visualResponses = components[i].visualResponses;
+      for (const j in visualResponses) {
+        const visualResponse = visualResponses[j];
+        const valueNode = visualResponse.valueNodeName;
+        const minNode = visualResponse.minNodeName;
+        const maxNode = visualResponse.maxNodeName;
+        this._gamepadObjects[valueNode] = obj.findByNameRecursive(valueNode)[0];
+        this._gamepadObjects[minNode] = obj.findByNameRecursive(minNode)[0];
+        this._gamepadObjects[maxNode] = obj.findByNameRecursive(maxNode)[0];
+        const indice = visualResponses[j].componentProperty;
+        const response = {
+          target: this._gamepadObjects[valueNode],
+          min: this._gamepadObjects[minNode],
+          max: this._gamepadObjects[maxNode],
+          id: components[i].gamepadIndices[indice]
+          // Assign a unique ID
+        };
+        switch (indice) {
+          case "button":
+            this._buttons.push(response);
+            break;
+          case "xAxis":
+          case "yAxis":
+            this._axes.push(response);
+            break;
+        }
+      }
+    }
+  }
+  /**
+   * Assigns a transformed position and rotation to the target based on minimum and maximum values and a normalized input value.
+   * @param target The target object to be transformed.
+   * @param min The minimum object providing transformation limits.
+   * @param max The maximum object providing transformation limits.
+   * @param value The normalized input value.
+   * @hidden
+   */
+  _assignTransform(target, min2, max2, value) {
+    vec3_exports.lerp(_tempVec, min2.getPositionWorld(minTemp), max2.getPositionWorld(maxTemp), value);
+    target.setPositionWorld(_tempVec);
+    quat_exports.lerp(_tempQuat, min2.getRotationWorld(_tempRotation1), max2.getRotationWorld(_tempRotation2), value);
+    quat_exports.normalize(_tempQuat, _tempQuat);
+    target.setRotationWorld(_tempQuat);
+  }
+  /**
+   * Maps input values (buttons, axes) to the 3D controller model.
+   * @hidden
+   */
+  _mapGamepadInput() {
+    for (const button of this._buttons) {
+      const buttonValue = this.gamepad.buttons[button.id].value;
+      this._assignTransform(button.target, button.min, button.max, buttonValue);
+    }
+    for (const axis of this._axes) {
+      const axisValue = this.gamepad.axes[axis.id];
+      const normalizedAxisValue = (axisValue + 1) / 2;
+      this._assignTransform(axis.target, axis.min, axis.max, normalizedAxisValue);
+    }
+  }
+};
+var InputProfile = _InputProfile;
+__publicField(InputProfile, "TypeName", "input-profile");
+/**
+ * A cache to store loaded profiles for reuse.
+ */
+__publicField(InputProfile, "Cache", /* @__PURE__ */ new Map());
+__decorate11([
+  property.enum(hands, 0)
+], InputProfile.prototype, "handedness", void 0);
+__decorate11([
+  property.string("https://cdn.jsdelivr.net/npm/@webxr-input-profiles/assets@latest/dist/profiles/")
+], InputProfile.prototype, "defaultBasePath", void 0);
+__decorate11([
+  property.string()
+], InputProfile.prototype, "customBasePath", void 0);
+__decorate11([
+  property.object()
+], InputProfile.prototype, "defaultController", void 0);
+__decorate11([
+  property.object()
+], InputProfile.prototype, "trackedHand", void 0);
+__decorate11([
+  property.bool(false)
+], InputProfile.prototype, "mapToDefaultController", void 0);
+__decorate11([
+  property.bool(true)
+], InputProfile.prototype, "addVrModeSwitch", void 0);
+
+// node_modules/@wonderlandengine/components/dist/orbital-camera.js
+var __decorate12 = function(decorators, target, key, desc) {
+  var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+  if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+    r = Reflect.decorate(decorators, target, key, desc);
+  else
+    for (var i = decorators.length - 1; i >= 0; i--)
+      if (d = decorators[i])
+        r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+  return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var preventDefault2 = (e) => {
+  e.preventDefault();
+};
+var tempVec4 = [0, 0, 0];
+var tempquat = quat_exports.create();
+var tempquat2 = quat_exports.create();
+var tempVec33 = vec3_exports.create();
+var OrbitalCamera = class extends Component {
+  mouseButtonIndex = 0;
+  radial = 5;
+  minElevation = 0;
+  maxElevation = 89.99;
+  minZoom = 0.01;
+  maxZoom = 10;
+  xSensitivity = 0.5;
+  ySensitivity = 0.5;
+  zoomSensitivity = 0.02;
+  damping = 0.9;
+  _mouseDown = false;
+  _origin = [0, 0, 0];
+  _azimuth = 0;
+  _polar = 45;
+  _initialPinchDistance = 0;
+  _touchStartX = 0;
+  _touchStartY = 0;
+  _azimuthSpeed = 0;
+  _polarSpeed = 0;
+  init() {
+    this.object.getPositionWorld(this._origin);
+  }
+  start() {
+    this._updateCamera();
+  }
+  onActivate() {
+    const canvas2 = this.engine.canvas;
+    if (this.mouseButtonIndex === 2) {
+      canvas2.addEventListener("contextmenu", preventDefault2, { passive: false });
+    }
+    canvas2.addEventListener("mousedown", this._onMouseDown);
+    canvas2.addEventListener("wheel", this._onMouseScroll, { passive: false });
+    canvas2.addEventListener("touchstart", this._onTouchStart, { passive: false });
+    canvas2.addEventListener("touchmove", this._onTouchMove, { passive: false });
+    canvas2.addEventListener("touchend", this._onTouchEnd);
+  }
+  onDeactivate() {
+    const canvas2 = this.engine.canvas;
+    if (this.mouseButtonIndex === 2) {
+      canvas2.removeEventListener("contextmenu", preventDefault2);
+    }
+    canvas2.removeEventListener("mousemove", this._onMouseMove);
+    canvas2.removeEventListener("mousedown", this._onMouseDown);
+    canvas2.removeEventListener("wheel", this._onMouseScroll);
+    canvas2.removeEventListener("touchstart", this._onTouchStart);
+    canvas2.removeEventListener("touchmove", this._onTouchMove);
+    canvas2.removeEventListener("touchend", this._onTouchEnd);
+    this._mouseDown = false;
+    this._initialPinchDistance = 0;
+    this._touchStartX = 0;
+    this._touchStartY = 0;
+    this._azimuthSpeed = 0;
+    this._polarSpeed = 0;
+  }
+  update() {
+    this._azimuthSpeed *= this.damping;
+    this._polarSpeed *= this.damping;
+    if (Math.abs(this._azimuthSpeed) < 0.01)
+      this._azimuthSpeed = 0;
+    if (Math.abs(this._polarSpeed) < 0.01)
+      this._polarSpeed = 0;
+    this._azimuth += this._azimuthSpeed;
+    this._polar += this._polarSpeed;
+    this._polar = Math.min(this.maxElevation, Math.max(this.minElevation, this._polar));
+    if (this._azimuthSpeed !== 0 || this._polarSpeed !== 0) {
+      this._updateCamera();
+    }
+  }
+  /**
+   * Get the closest position to the given position on the orbit sphere of the camera.
+   * This can be used to get a position and rotation to transition to.
+   *
+   * You pass this a position object. The method calculates the closest positition and updates the position parameter.
+   * It also sets the rotation parameter to reflect the rotate the camera will have when it is on the orbit sphere,
+   * pointing towards the center.
+   * @param position the position to get the closest position to
+   * @param rotation the rotation to get the closest position to
+   */
+  getClosestPosition(position, rotation) {
+    this.object.getRotationWorld(tempquat);
+    this.object.lookAt(this._origin);
+    this.object.getRotationWorld(tempquat2);
+    if (quat_exports.dot(tempquat, tempquat2) < 0) {
+      quat_exports.scale(tempquat2, tempquat2, -1);
+    }
+    this.object.setRotationWorld(tempquat);
+    const directionToCamera = vec3_exports.create();
+    vec3_exports.subtract(directionToCamera, position, this._origin);
+    vec3_exports.normalize(directionToCamera, directionToCamera);
+    const nearestPointOnSphere = vec3_exports.create();
+    vec3_exports.scale(nearestPointOnSphere, directionToCamera, this.radial);
+    vec3_exports.add(nearestPointOnSphere, nearestPointOnSphere, this._origin);
+    vec3_exports.copy(position, nearestPointOnSphere);
+    quat_exports.copy(rotation, tempquat2);
+  }
+  /**
+   * Set the camera position based on the given position and calculate the rotation.
+   * @param cameraPosition the position to set the camera to
+   */
+  setPosition(cameraPosition) {
+    const centerOfOrbit = this._origin;
+    vec3_exports.subtract(tempVec33, cameraPosition, centerOfOrbit);
+    vec3_exports.normalize(tempVec33, tempVec33);
+    const azimuth = Math.atan2(tempVec33[0], tempVec33[2]);
+    const polar = Math.acos(tempVec33[1]);
+    const azimuthDeg = rad2deg(azimuth);
+    const polarDeg = 90 - rad2deg(polar);
+    this._azimuth = azimuthDeg;
+    this._polar = polarDeg;
+  }
+  /**
+   * Update the camera position based on the current azimuth,
+   * polar and radial values
+   */
+  _updateCamera() {
+    const azimuthInRadians = deg2rad(this._azimuth);
+    const polarInRadians = deg2rad(this._polar);
+    tempVec4[0] = this.radial * Math.sin(azimuthInRadians) * Math.cos(polarInRadians);
+    tempVec4[1] = this.radial * Math.sin(polarInRadians);
+    tempVec4[2] = this.radial * Math.cos(azimuthInRadians) * Math.cos(polarInRadians);
+    this.object.setPositionWorld(tempVec4);
+    this.object.translateWorld(this._origin);
+    this.object.lookAt(this._origin);
+  }
+  /* Mouse Event Handlers */
+  _onMouseDown = (e) => {
+    window.addEventListener("mouseup", this._onMouseUp);
+    window.addEventListener("mousemove", this._onMouseMove);
+    if (e.button === this.mouseButtonIndex) {
+      this._mouseDown = true;
+      document.body.style.cursor = "grabbing";
+      if (e.button === 1) {
+        e.preventDefault();
+        return false;
+      }
+    }
+  };
+  _onMouseUp = (e) => {
+    window.removeEventListener("mouseup", this._onMouseUp);
+    window.removeEventListener("mousemove", this._onMouseMove);
+    if (e.button === this.mouseButtonIndex) {
+      this._mouseDown = false;
+      document.body.style.cursor = "initial";
+    }
+  };
+  _onMouseMove = (e) => {
+    if (this.active && this._mouseDown) {
+      if (this.active && this._mouseDown) {
+        this._azimuthSpeed = -(e.movementX * this.xSensitivity);
+        this._polarSpeed = e.movementY * this.ySensitivity;
+      }
+    }
+  };
+  _onMouseScroll = (e) => {
+    e.preventDefault();
+    this.radial *= 1 - e.deltaY * this.zoomSensitivity * -1e-3;
+    this.radial = Math.min(this.maxZoom, Math.max(this.minZoom, this.radial));
+    this._updateCamera();
+  };
+  /* Touch event handlers */
+  _onTouchStart = (e) => {
+    if (e.touches.length === 1) {
+      e.preventDefault();
+      this._touchStartX = e.touches[0].clientX;
+      this._touchStartY = e.touches[0].clientY;
+      this._mouseDown = true;
+    } else if (e.touches.length === 2) {
+      this._initialPinchDistance = this._getDistanceBetweenTouches(e.touches);
+      e.preventDefault();
+    }
+  };
+  _onTouchMove = (e) => {
+    if (!this.active || !this._mouseDown) {
+      return;
+    }
+    e.preventDefault();
+    if (e.touches.length === 1) {
+      const deltaX = e.touches[0].clientX - this._touchStartX;
+      const deltaY = e.touches[0].clientY - this._touchStartY;
+      this._azimuthSpeed = -(deltaX * this.xSensitivity);
+      this._polarSpeed = deltaY * this.ySensitivity;
+      this._touchStartX = e.touches[0].clientX;
+      this._touchStartY = e.touches[0].clientY;
+    } else if (e.touches.length === 2) {
+      const currentPinchDistance = this._getDistanceBetweenTouches(e.touches);
+      const pinchScale = this._initialPinchDistance / currentPinchDistance;
+      this.radial *= pinchScale;
+      this.radial = Math.min(this.maxZoom, Math.max(this.minZoom, this.radial));
+      this._updateCamera();
+      this._initialPinchDistance = currentPinchDistance;
+    }
+  };
+  _onTouchEnd = (e) => {
+    if (e.touches.length < 2) {
+      this._mouseDown = false;
+    }
+    if (e.touches.length === 1) {
+      this._touchStartX = e.touches[0].clientX;
+      this._touchStartY = e.touches[0].clientY;
+    }
+  };
+  /**
+   * Helper function to calculate the distance between two touch points
+   * @param touches list of touch points
+   * @returns distance between the two touch points
+   */
+  _getDistanceBetweenTouches(touches) {
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
+};
+__publicField(OrbitalCamera, "TypeName", "orbital-camera");
+__decorate12([
+  property.int()
+], OrbitalCamera.prototype, "mouseButtonIndex", void 0);
+__decorate12([
+  property.float(5)
+], OrbitalCamera.prototype, "radial", void 0);
+__decorate12([
+  property.float()
+], OrbitalCamera.prototype, "minElevation", void 0);
+__decorate12([
+  property.float(89.99)
+], OrbitalCamera.prototype, "maxElevation", void 0);
+__decorate12([
+  property.float()
+], OrbitalCamera.prototype, "minZoom", void 0);
+__decorate12([
+  property.float(10)
+], OrbitalCamera.prototype, "maxZoom", void 0);
+__decorate12([
+  property.float(0.5)
+], OrbitalCamera.prototype, "xSensitivity", void 0);
+__decorate12([
+  property.float(0.5)
+], OrbitalCamera.prototype, "ySensitivity", void 0);
+__decorate12([
+  property.float(0.02)
+], OrbitalCamera.prototype, "zoomSensitivity", void 0);
+__decorate12([
+  property.float(0.9)
+], OrbitalCamera.prototype, "damping", void 0);
 
 // force-on-click.js
 var force = new Float32Array(3);
@@ -15370,19 +18081,13 @@ var RuntimeOptions = {
   canvas: "canvas"
 };
 var engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
-Object.assign(engine, dist_exports);
-window.WL = engine;
-engine.onSceneLoaded.once(() => {
+engine.onLoadingScreenEnd.once(() => {
   const el = document.getElementById("version");
   if (el)
     setTimeout(() => el.remove(), 2e3);
 });
 function requestSession(mode) {
-  engine.requestXRSession(
-    mode,
-    Constants.WebXRRequiredFeatures,
-    Constants.WebXROptionalFeatures
-  ).catch((e) => console.error(e));
+  engine.requestXRSession(mode, Constants.WebXRRequiredFeatures, Constants.WebXROptionalFeatures).catch((e) => console.error(e));
 }
 function setupButtonsXR() {
   const arButton = document.getElementById("ar-button");
@@ -15405,12 +18110,17 @@ engine.registerComponent(Cursor);
 engine.registerComponent(MouseLookComponent);
 engine.registerComponent(WasdControlsComponent);
 engine.registerComponent(ApplyForceOnClick);
-engine.scene.load(`${Constants.ProjectName}.bin`);
+try {
+  await engine.loadMainScene(`${Constants.ProjectName}.bin`);
+} catch (e) {
+  console.error(e);
+  window.alert(`Failed to load ${Constants.ProjectName}.bin:`, e);
+}
 /*! Bundled license information:
 
 howler/dist/howler.js:
   (*!
-   *  howler.js v2.2.3
+   *  howler.js v2.2.4
    *  howlerjs.com
    *
    *  (c) 2013-2020, James Simpson of GoldFire Studios
@@ -15421,7 +18131,7 @@ howler/dist/howler.js:
   (*!
    *  Spatial Plugin - Adds support for stereo and 3D audio where Web Audio is supported.
    *  
-   *  howler.js v2.2.3
+   *  howler.js v2.2.4
    *  howlerjs.com
    *
    *  (c) 2013-2020, James Simpson of GoldFire Studios
