@@ -734,7 +734,7 @@
     },
     "settings": {
         "project": {
-            "name": "MainScene",
+            "name": "PrefabMainScene",
             "version": [
                 1,
                 1,
