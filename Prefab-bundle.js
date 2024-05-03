@@ -3576,12 +3576,12 @@ var RotateY = class extends Component {
 __publicField(RotateY, "TypeName", "rotate-y");
 __publicField(RotateY, "Properties", { speed: Property.float(1) });
 
-// js/instance-index.js
-function instance_index_default(engine) {
+// js/prefab-index.js
+function prefab_index_default(engine) {
   engine.registerComponent(RandomMesh);
   engine.registerComponent(RotateY);
 }
 export {
-  instance_index_default as default
+  prefab_index_default as default
 };
 //# sourceMappingURL=Prefab-bundle.js.map

@@ -18122,8 +18122,8 @@ var RotateY = class extends Component {
 __publicField(RotateY, "TypeName", "rotate-y");
 __publicField(RotateY, "Properties", { speed: Property.float(1) });
 
-// js/instance-index.js
-function instance_index_default(engine2) {
+// js/prefab-index.js
+function prefab_index_default(engine2) {
   engine2.registerComponent(RandomMesh);
   engine2.registerComponent(RotateY);
 }
@@ -18178,7 +18178,7 @@ engine.registerComponent(CursorTarget);
 engine.registerComponent(MouseLookComponent);
 engine.registerComponent(WasdControlsComponent);
 engine.registerComponent(Spawn);
-instance_index_default(engine);
+prefab_index_default(engine);
 try {
   await engine.loadMainScene(`${Constants.ProjectName}.bin`);
 } catch (e) {
