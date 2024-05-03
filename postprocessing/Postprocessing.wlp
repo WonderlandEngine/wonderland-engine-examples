@@ -218,22 +218,22 @@
                 "name": "swirl3<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
                 "file": "assets\\fish_hologram.glb"
             },
-            "parent": "171",
+            "parent": "156",
             "translation": [
-                0.0000038,
-                5.9983615,
-                0.0000019
+                1.790184,
+                -33.9352645,
+                -12.4316177
             ],
             "rotation": [
                 0.0,
-                0.7674353,
+                -0.7003265,
                 0.0,
-                0.6411265
+                0.7138226
             ],
             "scaling": [
-                1.0672048,
-                1.0,
-                1.0672048
+                1.2390695,
+                0.7277885,
+                1.2390695
             ]
         },
         "174": {
