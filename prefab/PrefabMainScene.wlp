@@ -134,7 +134,7 @@
                 {
                     "type": "text",
                     "text": {
-                        "text": "Scene Instancing",
+                        "text": "Prefab Instancing",
                         "effect": "outline",
                         "lineSpacing": 1.1,
                         "characterSpacing": 0.1
@@ -245,7 +245,8 @@
                         "lineSpacing": 1.1,
                         "characterSpacing": 0.1,
                         "material": "91"
-                    }
+                    },
+                    "active": true
                 }
             ],
             "translation": [
