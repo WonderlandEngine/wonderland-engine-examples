@@ -15,16 +15,12 @@
 /* wle:auto-imports:end */
 
 import {loadRuntime} from '@wonderlandengine/api';
-import * as API from '@wonderlandengine/api'; // Deprecated: Backward compatibility.
 
 /* wle:auto-constants:start */
 /* wle:auto-constants:end */
 
 const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
-Object.assign(engine, API); // Deprecated: Backward compatibility.
-window.WL = engine; // Deprecated: Backward compatibility.
-
-engine.onSceneLoaded.once(() => {
+engine.onLoadingScreenEnd.once(() => {
     const el = document.getElementById('version');
     if (el) setTimeout(() => el.remove(), 2000);
 });
@@ -33,11 +29,7 @@ engine.onSceneLoaded.once(() => {
 
 function requestSession(mode) {
     engine
-        .requestXRSession(
-            mode,
-            Constants.WebXRRequiredFeatures,
-            Constants.WebXROptionalFeatures
-        )
+        .requestXRSession(mode, Constants.WebXRRequiredFeatures, Constants.WebXROptionalFeatures)
         .catch((e) => console.error(e));
 }
 
@@ -64,7 +56,12 @@ if (document.readyState === 'loading') {
 /* wle:auto-register:start */
 /* wle:auto-register:end */
 
-engine.scene.load(`${Constants.ProjectName}.bin`);
+try {
+    await engine.loadMainScene(`${Constants.ProjectName}.bin`);
+} catch (e) {
+    console.error(e);
+    window.alert(`Failed to load ${Constants.ProjectName}.bin:`, e);
+}
 
 /* wle:auto-benchmark:start */
 /* wle:auto-benchmark:end */
