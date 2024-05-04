@@ -324,19 +324,19 @@
             ],
             "translation": [
                 -0.8633192,
-                3.3691728,
-                -0.9034327
+                3.3691713,
+                -1.0892241
             ],
             "rotation": [
-                0.0124506,
+                0.0124503,
                 -0.393195,
-                -0.0067102,
-                0.9193463
+                -0.0067103,
+                0.9193462
             ],
             "scaling": [
                 3.0000002,
                 2.9999997,
-                2.9999997
+                3.0
             ]
         },
         "68": {
@@ -860,14 +860,14 @@
                 0.7071067
             ],
             "translation": [
-                2.2736959,
-                1.4297468,
-                1.8506911
+                0.6667751,
+                1.3088934,
+                2.4307355
             ],
             "scaling": [
-                0.9999668,
-                1.0,
-                0.9999668
+                0.75,
+                0.75,
+                0.75
             ]
         },
         "117": {
@@ -887,6 +887,175 @@
                         "textObject": "75"
                     }
                 }
+            ]
+        },
+        "120": {
+            "name": "Wrap",
+            "rotation": [
+                0.0,
+                -0.7071068,
+                0.0,
+                0.7071067
+            ],
+            "translation": [
+                1.0045379,
+                2.8484029,
+                1.8451217
+            ],
+            "scaling": [
+                0.9999661,
+                1.0,
+                0.9999661
+            ]
+        },
+        "121": {
+            "name": "None",
+            "parent": "120",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Wrapping is off by default",
+                        "wrapWidth": 1.0,
+                        "alignment": "left",
+                        "verticalAlignment": "top"
+                    }
+                }
+            ],
+            "translation": [
+                0.0000154,
+                0.5722401,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                -0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "122": {
+            "name": "Clip",
+            "parent": "120",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Clip mode cuts off text",
+                        "wrapMode": "clip",
+                        "wrapWidth": 1.0,
+                        "alignment": "left",
+                        "verticalAlignment": "top"
+                    }
+                }
+            ],
+            "translation": [
+                0.000032,
+                0.2798116,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                -0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "123": {
+            "name": "Soft",
+            "parent": "120",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Soft wrap tries to break at word boundaries",
+                        "wrapWidth": 1.0,
+                        "wrapMode": "soft",
+                        "alignment": "left",
+                        "verticalAlignment": "top"
+                    }
+                }
+            ],
+            "translation": [
+                0.0000141,
+                0.0339746,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                -0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "124": {
+            "name": "Hard",
+            "parent": "120",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "wrapMode": "hard",
+                        "wrapWidth": 1.0,
+                        "text": "Hard wrap breaks at any character",
+                        "alignment": "left",
+                        "verticalAlignment": "top"
+                    }
+                }
+            ],
+            "translation": [
+                0.0000298,
+                -0.4493563,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                -0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "125": {
+            "name": "WrapLine",
+            "parent": "120",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "material": "20",
+                        "mesh": "11"
+                    }
+                }
+            ],
+            "scaling": [
+                0.0099999,
+                0.6499999,
+                0.0099999
+            ],
+            "translation": [
+                1.0,
+                0.0,
+                0.0
             ]
         }
     },
