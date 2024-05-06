@@ -12,8 +12,8 @@
         "wonderland-engine"
     ],
     "dependencies": {
-        "@wonderlandengine/api": "file:../../../wonderland-engine/js/api/wonderlandengine-api.tgz",
-        "@wonderlandengine/components": "^1.0.7",
+        "@wonderlandengine/api": "^1.2.0",
+        "@wonderlandengine/components": "^1.1.4",
         "@wonderlandengine/spatial-audio": "^1.1.2",
         "gl-matrix": "^3.4.3"
     }

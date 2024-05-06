@@ -13,24 +13,24 @@
 
 /* wle:auto-imports:start */
 import {Cursor} from '@wonderlandengine/components';
-import {FingerCursor} from '@wonderlandengine/components';
 import {HandTracking} from '@wonderlandengine/components';
 import {HowlerAudioListener} from '@wonderlandengine/components';
 import {MouseLookComponent} from '@wonderlandengine/components';
 import {PlayerHeight} from '@wonderlandengine/components';
-import {TeleportComponent} from '@wonderlandengine/components';
 import {VrModeActiveSwitch} from '@wonderlandengine/components';
 import {WasdControlsComponent} from '@wonderlandengine/components';
 import {Portal} from './js/portal.js';
 import {SwitchScene} from './js/switch.js';
 /* wle:auto-imports:end */
 
+import {Scenes} from './js/scenes.js';
+import registerSceneComponents from './index-scene2.js';
+
 import {loadRuntime} from '@wonderlandengine/api';
-import * as API from '@wonderlandengine/api'; // Deprecated: Backward compatibility.
 
 /* wle:auto-constants:start */
 const Constants = {
-    ProjectName: 'MultisceneExample',
+    ProjectName: 'Multiscene',
     RuntimeBaseName: 'WonderlandRuntime',
     WebXRRequiredFeatures: ['local',],
     WebXROptionalFeatures: ['local','local-floor','hand-tracking','hit-test',],
@@ -51,9 +51,6 @@ const RuntimeOptions = {
 RuntimeOptions.threads = false;
 
 const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
-Object.assign(engine, API); // Deprecated: Backward compatibility.
-window.WL = engine; // Deprecated: Backward compatibility.
-
 engine.onSceneActivated.once(() => {
     const el = document.getElementById('version');
     if (el) setTimeout(() => el.remove(), 2000);
@@ -93,33 +90,30 @@ if (document.readyState === 'loading') {
 
 /* wle:auto-register:start */
 engine.registerComponent(Cursor);
-engine.registerComponent(FingerCursor);
 engine.registerComponent(HandTracking);
 engine.registerComponent(HowlerAudioListener);
 engine.registerComponent(MouseLookComponent);
 engine.registerComponent(PlayerHeight);
-engine.registerComponent(TeleportComponent);
 engine.registerComponent(VrModeActiveSwitch);
 engine.registerComponent(WasdControlsComponent);
 engine.registerComponent(Portal);
 engine.registerComponent(SwitchScene);
 /* wle:auto-register:end */
+registerSceneComponents(engine);
 
-let sceneGroup;
 try {
-    sceneGroup = await engine.loadSceneGroup(`${Constants.ProjectName}.bin`);
-    const scene = sceneGroup.getScene(0);
-    scene.activate();
+    Scenes.main = await engine.loadMainScene(`${Constants.ProjectName}.bin`);
 } catch (e) {
     console.error(e);
     window.alert(`Failed to load ${Constants.ProjectName}.bin:`, e);
 }
 
-/* Load second scene */
-engine.loadSceneGroup('scene2.bin');
-
-/* wle:auto-benchmark:start */
-/* wle:auto-benchmark:end */
-
-import registerSceneComponents from './index-scene2.js';
-registerSceneComponents(engine);
+/* Start loading the second scene as soon as possible */
+engine
+    .loadScene('scene2.bin')
+    .then((scene) => {
+        Scenes.second = scene;
+    })
+    .catch((e) => {
+        console.error("Failed to load 'scene2.bin', reason:", e);
+    });

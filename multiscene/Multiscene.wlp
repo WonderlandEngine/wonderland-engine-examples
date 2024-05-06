@@ -8,7 +8,7 @@
                 -0.0000014
             ],
             "rotation": [
-                1.0676981077040183e-7,
+                1.0676981077040184e-7,
                 -0.7071068,
                 1.0677034367745365e-7,
                 0.7071067
@@ -680,58 +680,6 @@
             },
             "parent": "124"
         },
-        "126": {
-            "name": "CursorLeft",
-            "parent": "205",
-            "components": [
-                {
-                    "type": "cursor",
-                    "cursor": {
-                        "cursorObject": "127",
-                        "collisionGroup": 0,
-                        "cursorRayObject": "209",
-                        "cursorRayScalingAxis": "y"
-                    }
-                },
-                {
-                    "type": "input",
-                    "input": {
-                        "type": "ray left"
-                    }
-                },
-                {
-                    "type": "teleport",
-                    "teleport": {
-                        "floorGroup": 2,
-                        "camRoot": "14",
-                        "cam": "17",
-                        "teleportIndicatorMeshObject": "208",
-                        "indicatorYOffset": 0.0099999,
-                        "eyeLeft": "18",
-                        "eyeRight": "19"
-                    }
-                },
-                {
-                    "type": "vr-mode-active-switch"
-                }
-            ],
-            "translation": [
-                2.384185791015625e-7,
-                1.1920928955078125e-7,
-                -2.384185791015625e-7
-            ],
-            "rotation": [
-                0.0,
-                0.0,
-                0.0,
-                1.0
-            ],
-            "scaling": [
-                1.0,
-                1.0,
-                1.0
-            ]
-        },
         "127": {
             "name": "3DCursorHitLeft",
             "components": [
@@ -965,9 +913,6 @@
                         },
                         "groups": 2
                     }
-                },
-                {
-                    "type": "finger-cursor"
                 }
             ],
             "skin": "166"
@@ -1138,154 +1083,6 @@
                 1.0,
                 1.0,
                 1.0
-            ]
-        },
-        "209": {
-            "name": "CursorRayLeft",
-            "parent": "126",
-            "translation": [
-                0.0,
-                0.0,
-                2.384185791015625e-7
-            ],
-            "rotation": [
-                0.0,
-                0.0,
-                0.0,
-                1.0
-            ],
-            "scaling": [
-                1.0,
-                1.0,
-                1.0
-            ]
-        },
-        "210": {
-            "name": "CursorRayMeshLeft",
-            "parent": "209",
-            "components": [
-                {
-                    "type": "mesh",
-                    "mesh": {
-                        "mesh": "10",
-                        "material": "128"
-                    }
-                }
-            ],
-            "translation": [
-                2.3841928964429826e-7,
-                0.0002447,
-                0.0
-            ],
-            "rotation": [
-                0.707,
-                0.0,
-                0.0,
-                0.7072135
-            ],
-            "scaling": [
-                0.0049998,
-                0.3500002,
-                0.0049999
-            ]
-        },
-        "212": {
-            "name": "CursorRight",
-            "parent": "205",
-            "components": [
-                {
-                    "type": "cursor",
-                    "cursor": {
-                        "cursorObject": "215",
-                        "collisionGroup": 0,
-                        "cursorRayObject": "213",
-                        "cursorRayScalingAxis": "y"
-                    }
-                },
-                {
-                    "type": "input",
-                    "input": {
-                        "type": "ray right"
-                    }
-                },
-                {
-                    "type": "teleport",
-                    "teleport": {
-                        "floorGroup": 2,
-                        "camRoot": "14",
-                        "cam": "17",
-                        "teleportIndicatorMeshObject": "208",
-                        "indicatorYOffset": 0.0099999,
-                        "eyeLeft": "18",
-                        "eyeRight": "19",
-                        "rayCastMode": "collision"
-                    }
-                }
-            ],
-            "translation": [
-                0.0,
-                0.0,
-                -2.384185791015625e-7
-            ],
-            "rotation": [
-                0.0,
-                0.0,
-                0.0,
-                1.0
-            ],
-            "scaling": [
-                1.0,
-                1.0,
-                1.0
-            ]
-        },
-        "213": {
-            "name": "CursorRayRight",
-            "parent": "212",
-            "translation": [
-                0.0,
-                0.0,
-                2.384185791015625e-7
-            ],
-            "rotation": [
-                0.0,
-                0.0,
-                0.0,
-                1.0
-            ],
-            "scaling": [
-                1.0,
-                1.0,
-                1.0
-            ]
-        },
-        "214": {
-            "name": "CursorRayMeshRight",
-            "parent": "213",
-            "components": [
-                {
-                    "type": "mesh",
-                    "mesh": {
-                        "mesh": "10",
-                        "material": "128"
-                    }
-                }
-            ],
-            "translation": [
-                2.384185791015625e-7,
-                0.0002447,
-                0.0
-            ],
-            "rotation": [
-                0.7072796,
-                0.0,
-                0.0,
-                0.7069339
-            ],
-            "scaling": [
-                0.0049998,
-                0.3499999,
-                0.0049999
             ]
         },
         "215": {
@@ -2790,6 +2587,15 @@
                 "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
+        "37": {
+            "link": {
+                "name": "Phong Opaque",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
         "33": {
             "link": {
                 "name": "DistanceFieldVector",
@@ -2806,21 +2612,16 @@
             "link": {
                 "name": "Flat Opaque Textured",
                 "file": "default"
+            },
+            "doubleSided": true,
+            "features": {
+                "ALPHA_MASKED": true
             }
         },
         "36": {
             "link": {
                 "name": "MeshVisualizer",
                 "file": "default"
-            }
-        },
-        "37": {
-            "link": {
-                "name": "Phong Opaque",
-                "file": "default"
-            },
-            "features": {
-                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "38": {
