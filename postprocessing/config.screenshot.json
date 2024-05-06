@@ -1,0 +1,6 @@
+{
+    "scenarios": {
+        "readyEvent": "Postprocessing.bin",
+        "reference": "./test/reference.png"
+    }
+}
