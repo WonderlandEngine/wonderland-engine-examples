@@ -1,5 +1,22 @@
 {
+  "name": "AnimationEvents",
+  "version": "1.0.0",
+  "description": "My Wonderland project",
+  "main": "js/index.js",
+  "type": "module",
+  "module": "js/index.js",
+  "scripts": {
+    "build": "echo \"The 'build' script is run by the editor and should produce your application bundle\""
+  },
+  "keywords": [
+    "wonderland-engine"
+  ],
+  "overrides": {
+    "@wonderlandengine/api": "$@wonderlandengine/api"
+  },
   "dependencies": {
-    "@wonderlandengine/api": "file:../../wonderland-engine/js/api/wonderlandengine-api.tgz"
+    "@wonderlandengine/api": "^1.2.0",
+    "@wonderlandengine/components": "^1.1.4",
+    "gl-matrix": "^3.4.3"
   }
 }

@@ -14,21 +14,14 @@ export class GunController extends Component {
     /* Properties that are configurable in the editor */
     static Properties = {
         firstGunObject: Property.object(),
-        secondGunObject: Property.object(),
     };
 
-    init() {
-        this.fireTimer = 0.0;
-        this.shootDown = false;
-    }
+    fireTimer = 0.0;
+    shootDown = false;
+    guns = new Array();
 
     start() {
-        this.guns = new Array();
         this.guns.push(this.firstGunObject.getComponent(Gun));
-
-        if (this.secondGunObject)
-            this.guns.push(this.secondGunObject.getComponent(Gun));
-
         this.gun = null;
         this.nextGun = null;
     }
@@ -93,6 +86,7 @@ export class GunController extends Component {
     /** Callback for when the currently equiped gun has holstered */
     onHideGun() {
         this.gun = this.nextGun;
-        this.gun.draw();
+        if (this.gun)
+            this.gun.draw();
     }
 }

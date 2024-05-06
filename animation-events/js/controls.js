@@ -9,18 +9,9 @@ import { GunController } from './gun-controller.js';
 export class Controls extends Component {
     static TypeName = 'controls';
 
-    static Properties = {
-        shootMouseButton: Property.int(0),
-        reloadButton: Property.int(82),
-        drawFirstWeaponButton: Property.int(49),
-        drawSecondWeaponButton: Property.int(50),
-        holsterWeaponButton: Property.int(91)
-    };
-
     init() {
         this.reloadDown = false;
-        this.drawFirstDown = false;
-        this.drawSecondDown = false;
+        this.drawWeaponDown = false;
         this.holsterDown = false;
         this.mouseDown = false;
 
@@ -49,19 +40,18 @@ export class Controls extends Component {
 
     /** Callback for when a button is pressed */
     press(e) {
-        if (e.keyCode === this.reloadButton) {
+        /* R to reload */
+        if (e.keyCode === 82) {
             if (this.reloadDown) return;
             this.reloadDown = true;
             this.gunController.onReloadInput();
-        } else if (e.keyCode === this.drawFirstWeaponButton) {
-            if (this.drawFirstDown) return;
-            this.drawFirstDown = true;
+        /* 1 to draw weapon */
+        } else if (e.keyCode === 49) {
+            if (this.drawWeaponDown) return;
+            this.drawWeaponDown = true;
             this.gunController.onDrawInput(0);
-        } else if (e.keyCode === this.drawSecondWeaponButton) {
-            if (this.drawSecondDown) return;
-            this.drawSecondDown = true;
-            this.gunController.onDrawInput(1);
-        } else if (e.keyCode === this.holsterWeaponButton) {
+        /* F to holster weapon */
+        } else if (e.keyCode === 70) {
             if (this.holsterDown) return;
             this.holsterDown = true;
             this.gunController.onDrawInput(-1);
@@ -70,12 +60,12 @@ export class Controls extends Component {
 
     /** Callback for when a button is released */
     release(e) {
-        if (e.keyCode === this.reloadButton) {
+        if (e.keyCode === 82) {
             this.reloadDown = false;
-        } else if (e.keyCode === this.drawFirstWeaponButton) {
-            this.drawFirstDown = false;
-        } else if (e.keyCode === this.drawSecondWeaponButton) {
-            this.drawSecondDown = false;
+        } else if (e.keyCode === 49) {
+            this.drawWeaponDown = false;
+        } else if (e.keyCode === 70) {
+            this.holsterDown = false;
         }
     }
 
@@ -89,7 +79,8 @@ export class Controls extends Component {
 
     /** Callback for when a mouse button is down */
     onMouseDown = (e) => {
-        if (e.button === this.shootMouseButton) {
+        /* Left mouse button */
+        if (e.button === 0) {
             this.mouseDown = true;
             if (e.button === 1) {
                 e.preventDefault();
@@ -100,7 +91,8 @@ export class Controls extends Component {
 
     /** Callback for when a mouse button is released */
     onMouseUp = (e) => {
-        if (e.button === this.shootMouseButton) {
+        /* Left mouse button */
+        if (e.button === 0) {
             this.mouseDown = false;
         }
     }
