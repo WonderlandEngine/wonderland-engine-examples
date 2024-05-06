@@ -1,0 +1,1099 @@
+{
+    "objects": {
+        "14": {
+            "name": "Player",
+            "components": [
+                {
+                    "type": "wasd-controls",
+                    "wasd-controls": {
+                        "headObject": "17"
+                    }
+                }
+            ],
+            "translation": [
+                -3.2591099,
+                1.8000135,
+                1.7569212
+            ],
+            "rotation": [
+                0.0,
+                -0.3768199,
+                0.0,
+                0.9262865
+            ],
+            "scaling": [
+                0.9999998,
+                1.0,
+                0.9999998
+            ]
+        },
+        "17": {
+            "name": "NonVrCamera",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "mouse-look"
+                }
+            ]
+        },
+        "18": {
+            "name": "EyeLeft",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "input",
+                    "input": {
+                        "type": "eye left"
+                    }
+                }
+            ]
+        },
+        "19": {
+            "name": "EyeRight",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "input",
+                    "input": {
+                        "type": "eye right"
+                    }
+                }
+            ]
+        },
+        "156": {
+            "link": {
+                "name": "RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": null,
+            "translation": [
+                9.1931076,
+                1.844436,
+                -5.601716
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                0.1,
+                0.1,
+                0.1
+            ],
+            "name": "Hologram"
+        },
+        "157": {
+            "link": {
+                "name": "fishA<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "156",
+            "components": [
+                {
+                    "animation": {
+                        "preview": true,
+                        "autoplay": true
+                    }
+                }
+            ]
+        },
+        "158": {
+            "link": {
+                "name": "fishA_FishAMat_0<fishA<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "157"
+        },
+        "159": {
+            "link": {
+                "name": "fishA1<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "156"
+        },
+        "160": {
+            "link": {
+                "name": "fishA1_FishAMat_0<fishA1<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "159"
+        },
+        "161": {
+            "link": {
+                "name": "fishA2<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "156"
+        },
+        "162": {
+            "link": {
+                "name": "fishA2_FishAMat_0<fishA2<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "161"
+        },
+        "163": {
+            "link": {
+                "name": "fishA3<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "156"
+        },
+        "164": {
+            "link": {
+                "name": "fishA3_FishAMat_0<fishA3<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "163"
+        },
+        "165": {
+            "link": {
+                "name": "fishA4<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "156"
+        },
+        "166": {
+            "link": {
+                "name": "fishA4_FishAMat_0<fishA4<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "165"
+        },
+        "167": {
+            "link": {
+                "name": "fishA5<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "156"
+        },
+        "168": {
+            "link": {
+                "name": "fishA5_FishAMat_0<fishA5<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "167"
+        },
+        "169": {
+            "link": {
+                "name": "swirl1<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "156"
+        },
+        "170": {
+            "link": {
+                "name": "swirl1_RingMat_0<swirl1<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "169"
+        },
+        "171": {
+            "link": {
+                "name": "swirl2<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "156"
+        },
+        "172": {
+            "link": {
+                "name": "swirl2_RingMat_0<swirl2<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "171"
+        },
+        "173": {
+            "link": {
+                "name": "swirl3<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "156",
+            "translation": [
+                1.790184,
+                -33.9352645,
+                -12.4316177
+            ],
+            "rotation": [
+                0.0,
+                -0.7003265,
+                0.0,
+                0.7138226
+            ],
+            "scaling": [
+                1.2390695,
+                0.7277885,
+                1.2390695
+            ]
+        },
+        "174": {
+            "link": {
+                "name": "swirl3_RingMat_0<swirl3<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "173"
+        },
+        "175": {
+            "link": {
+                "name": "swirl4<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "156"
+        },
+        "176": {
+            "link": {
+                "name": "swirl4_RingMat_0<swirl4<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "175"
+        },
+        "177": {
+            "link": {
+                "name": "swirl5<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "156"
+        },
+        "178": {
+            "link": {
+                "name": "swirl5_RingMat_0<swirl5<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "177"
+        },
+        "179": {
+            "link": {
+                "name": "swirl6<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "156"
+        },
+        "180": {
+            "link": {
+                "name": "swirl6_RingMat_0<swirl6<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "179"
+        },
+        "181": {
+            "link": {
+                "name": "swirl7<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "156"
+        },
+        "182": {
+            "link": {
+                "name": "swirl7_RingMat_0<swirl7<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "181"
+        },
+        "183": {
+            "link": {
+                "name": "swirl8<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "156"
+        },
+        "184": {
+            "link": {
+                "name": "swirl8_RingMat_0<swirl8<RootNode<Object_2<fishHologram.fbx<Sketchfab_model",
+                "file": "assets\\fish_hologram.glb"
+            },
+            "parent": "183"
+        },
+        "187": {
+            "name": "Attribution",
+            "translation": [
+                -1.37328,
+                4.4627962,
+                2.3161756
+            ],
+            "rotation": [
+                -7.549790836947069e-8,
+                1.0,
+                -7.549790836947069e-8,
+                -4.371138118131057e-8
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "188": {
+            "name": "Text",
+            "parent": "187",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Model: Fish Hologram\n\n(c) 2019, Pat Sipes\nCC BY 4.0 International"
+                    }
+                }
+            ],
+            "translation": [
+                -4.8912634,
+                -1.7035484,
+                0.809014
+            ],
+            "rotation": [
+                -0.0,
+                0.1822355,
+                0.0,
+                0.9832549
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        }
+    },
+    "meshes": {
+        "7": {
+            "link": {
+                "name": "PrimitivePlane",
+                "file": "default"
+            }
+        },
+        "8": {
+            "link": {
+                "name": "PrimitiveCube",
+                "file": "default"
+            }
+        },
+        "9": {
+            "link": {
+                "name": "PrimitiveSphere",
+                "file": "default"
+            }
+        },
+        "10": {
+            "link": {
+                "name": "PrimitiveCone",
+                "file": "default"
+            }
+        },
+        "11": {
+            "link": {
+                "name": "PrimitiveCylinder",
+                "file": "default"
+            }
+        },
+        "12": {
+            "link": {
+                "name": "PrimitiveCircle",
+                "file": "default"
+            }
+        },
+        "139": {
+            "link": {
+                "name": "fishA_FishAMat_0",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "140": {
+            "link": {
+                "name": "fishA1_FishAMat_0",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "141": {
+            "link": {
+                "name": "fishA2_FishAMat_0",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "142": {
+            "link": {
+                "name": "fishA3_FishAMat_0",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "143": {
+            "link": {
+                "name": "fishA4_FishAMat_0",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "144": {
+            "link": {
+                "name": "fishA5_FishAMat_0",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "145": {
+            "link": {
+                "name": "swirl1_RingMat_0",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "146": {
+            "link": {
+                "name": "swirl2_RingMat_0",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "147": {
+            "link": {
+                "name": "swirl3_RingMat_0",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "148": {
+            "link": {
+                "name": "swirl4_RingMat_0",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "149": {
+            "link": {
+                "name": "swirl5_RingMat_0",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "150": {
+            "link": {
+                "name": "swirl6_RingMat_0",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "151": {
+            "link": {
+                "name": "swirl7_RingMat_0",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "152": {
+            "link": {
+                "name": "swirl8_RingMat_0",
+                "file": "assets\\fish_hologram.glb"
+            }
+        }
+    },
+    "materials": {
+        "DefaultFontMaterial": {
+            "link": {
+                "name": "DefaultFontMaterial",
+                "file": "default"
+            },
+            "Text": {
+                "font": "55"
+            }
+        },
+        "20": {
+            "name": "White",
+            "shader": "Phong",
+            "Phong": {
+                "specularColor": [
+                    9.999899930335232e-7,
+                    9.99993744699168e-7,
+                    9.999999974752427e-7,
+                    1.0
+                ],
+                "shininess": 1
+            }
+        },
+        "22": {
+            "name": "Pink",
+            "Phong": {
+                "diffuseColor": [
+                    0.9098039,
+                    0.0,
+                    0.5411764,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999899930335232e-7,
+                    9.999911299019004e-7,
+                    9.999999974752427e-7,
+                    1.0
+                ],
+                "shininess": 10,
+                "ambientColor": [
+                    0.317647,
+                    0.0,
+                    0.2165777,
+                    1.0
+                ]
+            }
+        },
+        "25": {
+            "name": "Yellow",
+            "Phong": {
+                "diffuseColor": [
+                    1.0,
+                    0.8039215,
+                    0.0,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.3843137,
+                    0.3089579,
+                    0.0,
+                    1.0
+                ]
+            }
+        },
+        "26": {
+            "name": "Green",
+            "Phong": {
+                "diffuseColor": [
+                    0.1529411,
+                    0.7882353,
+                    0.5411764,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.0,
+                    0.2352941,
+                    0.1437908,
+                    1.0
+                ]
+            }
+        },
+        "137": {
+            "link": {
+                "name": "FishAMat",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "138": {
+            "link": {
+                "name": "RingMat",
+                "file": "assets\\fish_hologram.glb"
+            }
+        }
+    },
+    "shaders": {
+        "1": {
+            "link": {
+                "name": "DistanceFieldVector Textured.frag",
+                "file": "default"
+            }
+        },
+        "2": {
+            "link": {
+                "name": "Flat.frag",
+                "file": "default"
+            }
+        },
+        "3": {
+            "link": {
+                "name": "Flat Textured.frag",
+                "file": "default"
+            }
+        },
+        "4": {
+            "link": {
+                "name": "MeshVisualizer.frag",
+                "file": "default"
+            }
+        },
+        "5": {
+            "link": {
+                "name": "Phong.frag",
+                "file": "default"
+            }
+        },
+        "6": {
+            "link": {
+                "name": "Phong Textured.frag",
+                "file": "default"
+            }
+        },
+        "28": {
+            "link": {
+                "name": "Dynamic.vert",
+                "file": "default"
+            }
+        },
+        "29": {
+            "link": {
+                "name": "Particle Textured.frag",
+                "file": "default"
+            }
+        },
+        "30": {
+            "link": {
+                "name": "Skinning.vert",
+                "file": "default"
+            }
+        },
+        "31": {
+            "link": {
+                "name": "Static.frag",
+                "file": "default"
+            }
+        },
+        "32": {
+            "link": {
+                "name": "DistanceFieldVector.frag",
+                "file": "default"
+            }
+        },
+        "39": {
+            "link": {
+                "name": "Particle.frag",
+                "file": "default"
+            }
+        },
+        "42": {
+            "link": {
+                "name": "Background.frag",
+                "file": "default"
+            }
+        },
+        "43": {
+            "link": {
+                "name": "Depth.frag",
+                "file": "default"
+            }
+        },
+        "45": {
+            "link": {
+                "name": "FullScreenTriangle.vert",
+                "file": "default"
+            }
+        },
+        "46": {
+            "link": {
+                "name": "Physical.frag",
+                "file": "default"
+            }
+        },
+        "49": {
+            "link": {
+                "name": "Sky.frag",
+                "file": "default"
+            }
+        },
+        "50": {
+            "link": {
+                "name": "Text.frag",
+                "file": "default"
+            }
+        },
+        "52": {
+            "link": {
+                "name": "Text.vert",
+                "file": "default"
+            }
+        },
+        "53": {
+            "link": {
+                "name": "TileFeedback.frag",
+                "file": "default"
+            }
+        },
+        "56": {
+            "link": {
+                "name": "lib\\Color.glsl",
+                "file": "default"
+            }
+        },
+        "57": {
+            "link": {
+                "name": "lib\\Compatibility.frag",
+                "file": "default"
+            }
+        },
+        "58": {
+            "link": {
+                "name": "lib\\CoordinateSystems.glsl",
+                "file": "default"
+            }
+        },
+        "59": {
+            "link": {
+                "name": "lib\\GI.frag",
+                "file": "default"
+            }
+        },
+        "60": {
+            "link": {
+                "name": "lib\\Inputs.frag",
+                "file": "default"
+            }
+        },
+        "61": {
+            "link": {
+                "name": "lib\\Lights.frag",
+                "file": "default"
+            }
+        },
+        "62": {
+            "link": {
+                "name": "lib\\Materials.frag",
+                "file": "default"
+            }
+        },
+        "63": {
+            "link": {
+                "name": "lib\\Math.glsl",
+                "file": "default"
+            }
+        },
+        "64": {
+            "link": {
+                "name": "lib\\MorphTargets.glsl",
+                "file": "default"
+            }
+        },
+        "65": {
+            "link": {
+                "name": "lib\\Packing.frag",
+                "file": "default"
+            }
+        },
+        "66": {
+            "link": {
+                "name": "lib\\PhysicalBSDF.glsl",
+                "file": "default"
+            }
+        },
+        "67": {
+            "link": {
+                "name": "lib\\Quaternion.glsl",
+                "file": "default"
+            }
+        },
+        "68": {
+            "link": {
+                "name": "lib\\Slug.frag",
+                "file": "default"
+            }
+        },
+        "69": {
+            "link": {
+                "name": "lib\\Slug.vert",
+                "file": "default"
+            }
+        },
+        "70": {
+            "link": {
+                "name": "lib\\Surface.frag",
+                "file": "default"
+            }
+        },
+        "71": {
+            "link": {
+                "name": "lib\\Textures.frag",
+                "file": "default"
+            }
+        },
+        "73": {
+            "link": {
+                "name": "lib\\Uniforms.glsl",
+                "file": "default"
+            }
+        }
+    },
+    "settings": {
+        "project": {
+            "name": "Postprocessing",
+            "version": [
+                1,
+                2,
+                0
+            ]
+        },
+        "vr": {
+            "leftEyeObject": "18",
+            "rightEyeObject": "19"
+        },
+        "scripting": {
+            "bundlingType": "esbuild",
+            "libraryPaths": [
+                "/js/lib/"
+            ]
+        },
+        "rendering": {
+            "hdr": {
+                "exposure": 1.5,
+                "tonemapping": "aces approximated"
+            },
+            "clearColor": [
+                0.0392156,
+                0.0392156,
+                0.0392156,
+                1.0
+            ],
+            "bloom": {
+                "enabled": true,
+                "threshold": 0.8,
+                "passes": 5,
+                "intensity": 1.0,
+                "width": 0.6999999
+            }
+        }
+    },
+    "animations": {
+        "185": {
+            "link": {
+                "name": "Take 001",
+                "file": "assets\\fish_hologram.glb"
+            }
+        }
+    },
+    "skins": {},
+    "pipelines": {
+        "33": {
+            "link": {
+                "name": "DistanceFieldVector",
+                "file": "default"
+            }
+        },
+        "34": {
+            "link": {
+                "name": "Flat Opaque",
+                "file": "default"
+            }
+        },
+        "35": {
+            "link": {
+                "name": "Flat Opaque Textured",
+                "file": "default"
+            }
+        },
+        "36": {
+            "link": {
+                "name": "MeshVisualizer",
+                "file": "default"
+            }
+        },
+        "37": {
+            "link": {
+                "name": "Phong Opaque",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true,
+                "WITH_EMISSIVE": true,
+                "WITH_FOG": false
+            }
+        },
+        "38": {
+            "link": {
+                "name": "Phong Opaque Textured",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "40": {
+            "link": {
+                "name": "Foliage",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "41": {
+            "link": {
+                "name": "Particle",
+                "file": "default"
+            }
+        },
+        "44": {
+            "link": {
+                "name": "Depth",
+                "file": "default"
+            }
+        },
+        "47": {
+            "link": {
+                "name": "Physical Opaque",
+                "file": "default"
+            }
+        },
+        "48": {
+            "link": {
+                "name": "Physical Opaque Textured",
+                "file": "default"
+            }
+        },
+        "51": {
+            "link": {
+                "name": "Text",
+                "file": "default"
+            }
+        },
+        "54": {
+            "link": {
+                "name": "Sky",
+                "file": "default"
+            }
+        },
+        "72": {
+            "link": {
+                "name": "TileFeedback",
+                "file": "default"
+            }
+        },
+        "74": {
+            "link": {
+                "name": "Phong Normalmapped",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "75": {
+            "link": {
+                "name": "Phong Lightmapped",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "105": {
+            "link": {
+                "name": "Phong Opaque",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true,
+                "WITH_EMISSIVE": true,
+                "WITH_FOG": false,
+                "ALPHA_MASKED": false,
+                "VERTEX_COLORS": true
+            },
+            "name": "Holographic",
+            "sampleAlphaToCoverage": false
+        }
+    },
+    "textures": {
+        "130": {
+            "link": {
+                "name": "texture_0",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "131": {
+            "link": {
+                "name": "texture_1",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "132": {
+            "link": {
+                "name": "texture_2",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "133": {
+            "link": {
+                "name": "texture_3",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "134": {
+            "link": {
+                "name": "texture_4",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "135": {
+            "link": {
+                "name": "texture_5",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "136": {
+            "link": {
+                "name": "texture_6",
+                "file": "assets\\fish_hologram.glb"
+            }
+        }
+    },
+    "images": {
+        "123": {
+            "link": {
+                "name": "image_0",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "124": {
+            "link": {
+                "name": "image_1",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "125": {
+            "link": {
+                "name": "image_2",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "126": {
+            "link": {
+                "name": "image_3",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "127": {
+            "link": {
+                "name": "image_4",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "128": {
+            "link": {
+                "name": "image_5",
+                "file": "assets\\fish_hologram.glb"
+            }
+        },
+        "129": {
+            "link": {
+                "name": "image_6",
+                "file": "assets\\fish_hologram.glb"
+            }
+        }
+    },
+    "fonts": {
+        "55": {
+            "link": {
+                "name": "DejaVuSans.ttf",
+                "file": "default"
+            }
+        }
+    },
+    "languages": {},
+    "files": {
+        "186": {
+            "fileName": "assets/fish_hologram.glb",
+            "importerName": "",
+            "importPhysicalAsPhongMaterials": true
+        }
+    },
+    "morphTargets": {}
+}
