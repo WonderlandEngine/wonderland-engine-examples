@@ -13,15 +13,15 @@ import {SwitchScene} from './js/switch.js';
 
 export default function registerSceneComponents(engine) {
     /* wle:auto-register:start */
-    engine.registerComponent(Cursor);
-    engine.registerComponent(HandTracking);
-    engine.registerComponent(HowlerAudioListener);
-    engine.registerComponent(MouseLookComponent);
-    engine.registerComponent(PlayerHeight);
-    engine.registerComponent(TeleportComponent);
-    engine.registerComponent(VrModeActiveSwitch);
-    engine.registerComponent(WasdControlsComponent);
-    engine.registerComponent(Portal);
-    engine.registerComponent(SwitchScene);
-    /* wle:auto-register:end */
+engine.registerComponent(Cursor);
+engine.registerComponent(HandTracking);
+engine.registerComponent(HowlerAudioListener);
+engine.registerComponent(MouseLookComponent);
+engine.registerComponent(PlayerHeight);
+engine.registerComponent(TeleportComponent);
+engine.registerComponent(VrModeActiveSwitch);
+engine.registerComponent(WasdControlsComponent);
+engine.registerComponent(Portal);
+engine.registerComponent(SwitchScene);
+/* wle:auto-register:end */
 }
