@@ -110,10 +110,10 @@ try {
 
 /* Start loading the second scene as soon as possible */
 engine
-    .loadScene('scene2.bin')
+    .loadScene('CherryBlossomScene.bin')
     .then((scene) => {
         Scenes.second = scene;
     })
     .catch((e) => {
-        console.error("Failed to load 'scene2.bin', reason:", e);
+        console.error("Failed to load 'CherryBlossomScene.bin', reason:", e);
     });

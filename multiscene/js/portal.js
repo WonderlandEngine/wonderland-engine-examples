@@ -11,7 +11,7 @@ export class Portal extends Component {
 	static Properties = {
 		target: Property.object(),
 		translationDuration: Property.float(0.5),
-		initialTranslate: Property.float(30),
+		initialTranslate: Property.float(15),
 		portalRotateSpeed: Property.float(1.0),
 	};
 
