@@ -21,17 +21,22 @@ import {loadRuntime} from '@wonderlandengine/api';
 import * as API from '@wonderlandengine/api'; // Deprecated: Backward compatibility.
 
 /* wle:auto-constants:start */
-const RuntimeOptions = {
-    physx: false,
-    loader: false,
-    xrFramebufferScaleFactor: 1,
-    canvas: 'canvas',
-};
 const Constants = {
     ProjectName: 'Localization',
     RuntimeBaseName: 'WonderlandRuntime',
     WebXRRequiredFeatures: ['local',],
     WebXROptionalFeatures: ['local','hand-tracking','hit-test',],
+};
+const RuntimeOptions = {
+    physx: false,
+    loader: false,
+    xrFramebufferScaleFactor: 1,
+    xrOfferSession: {
+        mode: 'auto',
+        features: Constants.WebXRRequiredFeatures,
+        optionalFeatures: Constants.WebXROptionalFeatures,
+    },
+    canvas: 'canvas',
 };
 /* wle:auto-constants:end */
 
