@@ -108,7 +108,7 @@
                 {
                     "type": "light",
                     "light": {
-                        "intensity": 2.5,
+                        "intensity": 4.0,
                         "type": "sun",
                         "color": [
                             0.3255162,
@@ -443,7 +443,7 @@
             ],
             "rotation": [
                 -0.0000246,
-                -9.085891861104756e-8,
+                -9.085891861104757e-8,
                 -0.0,
                 1.0
             ]
@@ -466,7 +466,7 @@
             ],
             "rotation": [
                 9.72525384668188e-8,
-                3.9091037251637317e-7,
+                3.909103725163732e-7,
                 -0.0,
                 1.0
             ],
@@ -910,7 +910,7 @@
                 "enabled": true,
                 "image": "92",
                 "maxSpecularEnvironmentSize": 128,
-                "intensity": 0.2,
+                "intensity": 0.4,
                 "tint": [
                     1.0,
                     1.0,
@@ -938,48 +938,9 @@
                 "file": "default"
             }
         },
-        "35": {
-            "link": {
-                "name": "Flat Opaque Textured",
-                "file": "default"
-            }
-        },
         "36": {
             "link": {
                 "name": "MeshVisualizer",
-                "file": "default"
-            }
-        },
-        "37": {
-            "link": {
-                "name": "Phong Opaque",
-                "file": "default"
-            },
-            "features": {
-                "DEPRECATED_LIGHT_ATTENUATION": true
-            }
-        },
-        "38": {
-            "link": {
-                "name": "Phong Opaque Textured",
-                "file": "default"
-            },
-            "features": {
-                "DEPRECATED_LIGHT_ATTENUATION": true
-            }
-        },
-        "40": {
-            "link": {
-                "name": "Foliage",
-                "file": "default"
-            },
-            "features": {
-                "DEPRECATED_LIGHT_ATTENUATION": true
-            }
-        },
-        "41": {
-            "link": {
-                "name": "Particle",
                 "file": "default"
             }
         },
@@ -998,26 +959,10 @@
                 "GLOBAL_ILLUMINATION": true
             }
         },
-        "48": {
-            "link": {
-                "name": "Physical Opaque Textured",
-                "file": "default"
-            }
-        },
         "51": {
             "link": {
                 "name": "Text",
                 "file": "default"
-            }
-        },
-        "54": {
-            "link": {
-                "name": "Sky",
-                "file": "default"
-            },
-            "features": {
-                "ENVIRONMENT_PROBE": true,
-                "TEXTURED": false
             }
         },
         "72": {
@@ -1026,22 +971,58 @@
                 "file": "default"
             }
         },
-        "74": {
+        "111": {
+            "link": {
+                "name": "Flat Opaque Textured",
+                "file": "default"
+            }
+        },
+        "112": {
+            "link": {
+                "name": "Phong Opaque",
+                "file": "default"
+            }
+        },
+        "113": {
+            "link": {
+                "name": "Phong Opaque Textured",
+                "file": "default"
+            }
+        },
+        "114": {
+            "link": {
+                "name": "Physical Opaque Textured",
+                "file": "default"
+            }
+        },
+        "115": {
             "link": {
                 "name": "Phong Normalmapped",
                 "file": "default"
-            },
-            "features": {
-                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
-        "75": {
+        "116": {
             "link": {
                 "name": "Phong Lightmapped",
                 "file": "default"
-            },
-            "features": {
-                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "117": {
+            "link": {
+                "name": "Foliage",
+                "file": "default"
+            }
+        },
+        "118": {
+            "link": {
+                "name": "Particle",
+                "file": "default"
+            }
+        },
+        "119": {
+            "link": {
+                "name": "Sky",
+                "file": "default"
             }
         }
     },
