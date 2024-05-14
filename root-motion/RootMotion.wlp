@@ -1,0 +1,3430 @@
+{
+    "objects": {
+        "14": {
+            "name": "Player",
+            "components": [
+                {
+                    "type": "wasd-controls",
+                    "wasd-controls": {
+                        "headObject": "17"
+                    }
+                }
+            ],
+            "scaling": [
+                0.9999998,
+                0.9999987,
+                0.9999987
+            ],
+            "translation": [
+                0.0,
+                2.6454429,
+                4.8521413
+            ],
+            "rotation": [
+                -0.0934902,
+                0.0,
+                0.0,
+                0.9956201
+            ]
+        },
+        "15": {
+            "name": "FloorPlane",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "7",
+                        "material": "20"
+                    }
+                }
+            ],
+            "translation": [
+                0.0,
+                0.0,
+                1.1920928955078125e-7
+            ],
+            "rotation": [
+                -0.7072496,
+                0.0,
+                0.0,
+                0.7069638
+            ],
+            "scaling": [
+                4.0,
+                4.0,
+                4.0
+            ]
+        },
+        "16": {
+            "name": "Cube",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "8",
+                        "material": "22"
+                    }
+                }
+            ],
+            "translation": [
+                -2.854681,
+                0.4999994,
+                -0.3518887
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                0.5,
+                0.5,
+                0.5
+            ]
+        },
+        "17": {
+            "name": "NonVrCamera",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "mouse-look"
+                }
+            ]
+        },
+        "21": {
+            "name": "Light",
+            "components": [
+                {
+                    "type": "light",
+                    "light": {
+                        "intensity": 3.3329999
+                    }
+                }
+            ],
+            "translation": [
+                0.0,
+                3.0,
+                2.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "23": {
+            "name": "Light.000",
+            "components": [
+                {
+                    "type": "light",
+                    "light": {
+                        "intensity": 3.3329999
+                    }
+                }
+            ],
+            "translation": [
+                -1.0,
+                3.0,
+                -1.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "24": {
+            "name": "Cone",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "10",
+                        "material": "25"
+                    }
+                }
+            ],
+            "translation": [
+                2.867979,
+                1.0,
+                -0.1239213
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "27": {
+            "name": "Sphere",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "9",
+                        "material": "26"
+                    }
+                }
+            ],
+            "translation": [
+                -0.2347902,
+                0.75,
+                -2.4685719
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                0.75,
+                0.75,
+                0.75
+            ]
+        },
+        "82": {
+            "link": {
+                "name": "mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "skin": "81",
+            "parent": "287",
+            "scaling": [
+                0.0099999,
+                0.0099999,
+                0.0099999
+            ],
+            "components": [
+                {
+                    "animation": {
+                        "preview": true,
+                        "animation": "150",
+                        "retarget": true,
+                        "rootMotionMode": "applyToOwner",
+                        "autoplay": true
+                    }
+                }
+            ]
+        },
+        "83": {
+            "link": {
+                "name": "mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "82",
+            "skin": "81"
+        },
+        "84": {
+            "link": {
+                "name": "mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "83",
+            "skin": "81"
+        },
+        "85": {
+            "link": {
+                "name": "mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "84",
+            "skin": "81"
+        },
+        "86": {
+            "link": {
+                "name": "mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "85",
+            "skin": "81"
+        },
+        "87": {
+            "link": {
+                "name": "mixamorig:Head<mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "86",
+            "skin": "81"
+        },
+        "88": {
+            "link": {
+                "name": "mixamorig:HeadTop_End<mixamorig:Head<mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "87"
+        },
+        "89": {
+            "link": {
+                "name": "mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "85",
+            "skin": "81"
+        },
+        "90": {
+            "link": {
+                "name": "mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "89",
+            "skin": "81"
+        },
+        "91": {
+            "link": {
+                "name": "mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "90",
+            "skin": "81"
+        },
+        "92": {
+            "link": {
+                "name": "mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "91",
+            "skin": "81"
+        },
+        "93": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "92",
+            "skin": "81"
+        },
+        "94": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb2<mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "93",
+            "skin": "81"
+        },
+        "95": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb3<mixamorig:LeftHandThumb2<mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "94",
+            "skin": "81"
+        },
+        "96": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb4<mixamorig:LeftHandThumb3<mixamorig:LeftHandThumb2<mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "95"
+        },
+        "97": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "92",
+            "skin": "81"
+        },
+        "98": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex2<mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "97",
+            "skin": "81"
+        },
+        "99": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex3<mixamorig:LeftHandIndex2<mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "98",
+            "skin": "81"
+        },
+        "100": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex4<mixamorig:LeftHandIndex3<mixamorig:LeftHandIndex2<mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "99"
+        },
+        "101": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "92",
+            "skin": "81"
+        },
+        "102": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle2<mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "101",
+            "skin": "81"
+        },
+        "103": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle3<mixamorig:LeftHandMiddle2<mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "102",
+            "skin": "81"
+        },
+        "104": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle4<mixamorig:LeftHandMiddle3<mixamorig:LeftHandMiddle2<mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "103"
+        },
+        "105": {
+            "link": {
+                "name": "mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "92",
+            "skin": "81"
+        },
+        "106": {
+            "link": {
+                "name": "mixamorig:LeftHandRing2<mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "105",
+            "skin": "81"
+        },
+        "107": {
+            "link": {
+                "name": "mixamorig:LeftHandRing3<mixamorig:LeftHandRing2<mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "106",
+            "skin": "81"
+        },
+        "108": {
+            "link": {
+                "name": "mixamorig:LeftHandRing4<mixamorig:LeftHandRing3<mixamorig:LeftHandRing2<mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "107"
+        },
+        "109": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "92",
+            "skin": "81"
+        },
+        "110": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky2<mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "109",
+            "skin": "81"
+        },
+        "111": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky3<mixamorig:LeftHandPinky2<mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "110",
+            "skin": "81"
+        },
+        "112": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky4<mixamorig:LeftHandPinky3<mixamorig:LeftHandPinky2<mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "111"
+        },
+        "113": {
+            "link": {
+                "name": "mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "85",
+            "skin": "81"
+        },
+        "114": {
+            "link": {
+                "name": "mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "113",
+            "skin": "81"
+        },
+        "115": {
+            "link": {
+                "name": "mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "114",
+            "skin": "81"
+        },
+        "116": {
+            "link": {
+                "name": "mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "115",
+            "skin": "81"
+        },
+        "117": {
+            "link": {
+                "name": "mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "116",
+            "skin": "81"
+        },
+        "118": {
+            "link": {
+                "name": "mixamorig:RightHandThumb2<mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "117",
+            "skin": "81"
+        },
+        "119": {
+            "link": {
+                "name": "mixamorig:RightHandThumb3<mixamorig:RightHandThumb2<mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "118",
+            "skin": "81"
+        },
+        "120": {
+            "link": {
+                "name": "mixamorig:RightHandThumb4<mixamorig:RightHandThumb3<mixamorig:RightHandThumb2<mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "119"
+        },
+        "121": {
+            "link": {
+                "name": "mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "116",
+            "skin": "81"
+        },
+        "122": {
+            "link": {
+                "name": "mixamorig:RightHandIndex2<mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "121",
+            "skin": "81"
+        },
+        "123": {
+            "link": {
+                "name": "mixamorig:RightHandIndex3<mixamorig:RightHandIndex2<mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "122",
+            "skin": "81"
+        },
+        "124": {
+            "link": {
+                "name": "mixamorig:RightHandIndex4<mixamorig:RightHandIndex3<mixamorig:RightHandIndex2<mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "123"
+        },
+        "125": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "116",
+            "skin": "81"
+        },
+        "126": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle2<mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "125",
+            "skin": "81"
+        },
+        "127": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle3<mixamorig:RightHandMiddle2<mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "126",
+            "skin": "81"
+        },
+        "128": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle4<mixamorig:RightHandMiddle3<mixamorig:RightHandMiddle2<mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "127"
+        },
+        "129": {
+            "link": {
+                "name": "mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "116",
+            "skin": "81"
+        },
+        "130": {
+            "link": {
+                "name": "mixamorig:RightHandRing2<mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "129",
+            "skin": "81"
+        },
+        "131": {
+            "link": {
+                "name": "mixamorig:RightHandRing3<mixamorig:RightHandRing2<mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "130",
+            "skin": "81"
+        },
+        "132": {
+            "link": {
+                "name": "mixamorig:RightHandRing4<mixamorig:RightHandRing3<mixamorig:RightHandRing2<mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "131"
+        },
+        "133": {
+            "link": {
+                "name": "mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "116",
+            "skin": "81"
+        },
+        "134": {
+            "link": {
+                "name": "mixamorig:RightHandPinky2<mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "133",
+            "skin": "81"
+        },
+        "135": {
+            "link": {
+                "name": "mixamorig:RightHandPinky3<mixamorig:RightHandPinky2<mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "134",
+            "skin": "81"
+        },
+        "136": {
+            "link": {
+                "name": "mixamorig:RightHandPinky4<mixamorig:RightHandPinky3<mixamorig:RightHandPinky2<mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "135"
+        },
+        "137": {
+            "link": {
+                "name": "mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "82",
+            "skin": "81"
+        },
+        "138": {
+            "link": {
+                "name": "mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "137",
+            "skin": "81"
+        },
+        "139": {
+            "link": {
+                "name": "mixamorig:LeftFoot<mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "138",
+            "skin": "81"
+        },
+        "140": {
+            "link": {
+                "name": "mixamorig:LeftToeBase<mixamorig:LeftFoot<mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "139",
+            "skin": "81"
+        },
+        "141": {
+            "link": {
+                "name": "mixamorig:LeftToe_End<mixamorig:LeftToeBase<mixamorig:LeftFoot<mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "140"
+        },
+        "142": {
+            "link": {
+                "name": "mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "82",
+            "skin": "81"
+        },
+        "143": {
+            "link": {
+                "name": "mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "142",
+            "skin": "81"
+        },
+        "144": {
+            "link": {
+                "name": "mixamorig:RightFoot<mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "143",
+            "skin": "81"
+        },
+        "145": {
+            "link": {
+                "name": "mixamorig:RightToeBase<mixamorig:RightFoot<mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "144",
+            "skin": "81"
+        },
+        "146": {
+            "link": {
+                "name": "mixamorig:RightToe_End<mixamorig:RightToeBase<mixamorig:RightFoot<mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "models\\Y Bot.fbx"
+            },
+            "parent": "145"
+        },
+        "147": {
+            "link": {
+                "name": "Alpha_Surface",
+                "file": "models\\Y Bot.fbx"
+            },
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "80"
+                    }
+                }
+            ],
+            "parent": "287",
+            "scaling": [
+                0.01,
+                0.0099999,
+                0.01
+            ],
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        "148": {
+            "link": {
+                "name": "Alpha_Joints",
+                "file": "models\\Y Bot.fbx"
+            },
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "81"
+                    }
+                }
+            ],
+            "parent": "287",
+            "scaling": [
+                0.01,
+                0.0099999,
+                0.01
+            ],
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        "153": {
+            "link": {
+                "name": "mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "422",
+            "translation": [
+                0.0,
+                0.997919,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                -0.0000017,
+                0.0000436,
+                1.0
+            ],
+            "scaling": [
+                0.0099999,
+                0.0099999,
+                0.0099999
+            ]
+        },
+        "154": {
+            "link": {
+                "name": "mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "153"
+        },
+        "155": {
+            "link": {
+                "name": "mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "154"
+        },
+        "156": {
+            "link": {
+                "name": "mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "155"
+        },
+        "157": {
+            "link": {
+                "name": "mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "156"
+        },
+        "158": {
+            "link": {
+                "name": "mixamorig:Head<mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "157"
+        },
+        "159": {
+            "link": {
+                "name": "mixamorig:HeadTop_End<mixamorig:Head<mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "158"
+        },
+        "160": {
+            "link": {
+                "name": "mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "156"
+        },
+        "161": {
+            "link": {
+                "name": "mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "160"
+        },
+        "162": {
+            "link": {
+                "name": "mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "161"
+        },
+        "163": {
+            "link": {
+                "name": "mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "162"
+        },
+        "164": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "163"
+        },
+        "165": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb2<mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "164"
+        },
+        "166": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb3<mixamorig:LeftHandThumb2<mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "165"
+        },
+        "167": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb4<mixamorig:LeftHandThumb3<mixamorig:LeftHandThumb2<mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "166"
+        },
+        "168": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "163"
+        },
+        "169": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex2<mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "168"
+        },
+        "170": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex3<mixamorig:LeftHandIndex2<mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "169"
+        },
+        "171": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex4<mixamorig:LeftHandIndex3<mixamorig:LeftHandIndex2<mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "170"
+        },
+        "172": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "163"
+        },
+        "173": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle2<mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "172"
+        },
+        "174": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle3<mixamorig:LeftHandMiddle2<mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "173"
+        },
+        "175": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle4<mixamorig:LeftHandMiddle3<mixamorig:LeftHandMiddle2<mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "174"
+        },
+        "176": {
+            "link": {
+                "name": "mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "163"
+        },
+        "177": {
+            "link": {
+                "name": "mixamorig:LeftHandRing2<mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "176"
+        },
+        "178": {
+            "link": {
+                "name": "mixamorig:LeftHandRing3<mixamorig:LeftHandRing2<mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "177"
+        },
+        "179": {
+            "link": {
+                "name": "mixamorig:LeftHandRing4<mixamorig:LeftHandRing3<mixamorig:LeftHandRing2<mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "178"
+        },
+        "180": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "163"
+        },
+        "181": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky2<mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "180"
+        },
+        "182": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky3<mixamorig:LeftHandPinky2<mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "181"
+        },
+        "183": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky4<mixamorig:LeftHandPinky3<mixamorig:LeftHandPinky2<mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "182"
+        },
+        "184": {
+            "link": {
+                "name": "mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "156"
+        },
+        "185": {
+            "link": {
+                "name": "mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "184"
+        },
+        "186": {
+            "link": {
+                "name": "mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "185"
+        },
+        "187": {
+            "link": {
+                "name": "mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "186"
+        },
+        "188": {
+            "link": {
+                "name": "mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "187"
+        },
+        "189": {
+            "link": {
+                "name": "mixamorig:RightHandThumb2<mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "188"
+        },
+        "190": {
+            "link": {
+                "name": "mixamorig:RightHandThumb3<mixamorig:RightHandThumb2<mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "189"
+        },
+        "191": {
+            "link": {
+                "name": "mixamorig:RightHandThumb4<mixamorig:RightHandThumb3<mixamorig:RightHandThumb2<mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "190"
+        },
+        "192": {
+            "link": {
+                "name": "mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "187"
+        },
+        "193": {
+            "link": {
+                "name": "mixamorig:RightHandIndex2<mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "192"
+        },
+        "194": {
+            "link": {
+                "name": "mixamorig:RightHandIndex3<mixamorig:RightHandIndex2<mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "193"
+        },
+        "195": {
+            "link": {
+                "name": "mixamorig:RightHandIndex4<mixamorig:RightHandIndex3<mixamorig:RightHandIndex2<mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "194"
+        },
+        "196": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "187"
+        },
+        "197": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle2<mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "196"
+        },
+        "198": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle3<mixamorig:RightHandMiddle2<mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "197"
+        },
+        "199": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle4<mixamorig:RightHandMiddle3<mixamorig:RightHandMiddle2<mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "198"
+        },
+        "200": {
+            "link": {
+                "name": "mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "187"
+        },
+        "201": {
+            "link": {
+                "name": "mixamorig:RightHandRing2<mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "200"
+        },
+        "202": {
+            "link": {
+                "name": "mixamorig:RightHandRing3<mixamorig:RightHandRing2<mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "201"
+        },
+        "203": {
+            "link": {
+                "name": "mixamorig:RightHandRing4<mixamorig:RightHandRing3<mixamorig:RightHandRing2<mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "202"
+        },
+        "204": {
+            "link": {
+                "name": "mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "187"
+        },
+        "205": {
+            "link": {
+                "name": "mixamorig:RightHandPinky2<mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "204"
+        },
+        "206": {
+            "link": {
+                "name": "mixamorig:RightHandPinky3<mixamorig:RightHandPinky2<mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "205"
+        },
+        "207": {
+            "link": {
+                "name": "mixamorig:RightHandPinky4<mixamorig:RightHandPinky3<mixamorig:RightHandPinky2<mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "206"
+        },
+        "208": {
+            "link": {
+                "name": "mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "153"
+        },
+        "209": {
+            "link": {
+                "name": "mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "208"
+        },
+        "210": {
+            "link": {
+                "name": "mixamorig:LeftFoot<mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "209"
+        },
+        "211": {
+            "link": {
+                "name": "mixamorig:LeftToeBase<mixamorig:LeftFoot<mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "210"
+        },
+        "212": {
+            "link": {
+                "name": "mixamorig:LeftToe_End<mixamorig:LeftToeBase<mixamorig:LeftFoot<mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "211"
+        },
+        "213": {
+            "link": {
+                "name": "mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "153"
+        },
+        "214": {
+            "link": {
+                "name": "mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "213"
+        },
+        "215": {
+            "link": {
+                "name": "mixamorig:RightFoot<mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "214"
+        },
+        "216": {
+            "link": {
+                "name": "mixamorig:RightToeBase<mixamorig:RightFoot<mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "215"
+        },
+        "217": {
+            "link": {
+                "name": "mixamorig:RightToe_End<mixamorig:RightToeBase<mixamorig:RightFoot<mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "animations\\idle.fbx"
+            },
+            "parent": "216"
+        },
+        "220": {
+            "link": {
+                "name": "mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "422",
+            "translation": [
+                0.0,
+                0.997919,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                -0.0000017,
+                0.0000436,
+                1.0
+            ],
+            "scaling": [
+                0.0099999,
+                0.0099999,
+                0.0099999
+            ]
+        },
+        "221": {
+            "link": {
+                "name": "mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "220"
+        },
+        "222": {
+            "link": {
+                "name": "mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "221"
+        },
+        "223": {
+            "link": {
+                "name": "mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "222"
+        },
+        "224": {
+            "link": {
+                "name": "mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "223"
+        },
+        "225": {
+            "link": {
+                "name": "mixamorig:Head<mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "224"
+        },
+        "226": {
+            "link": {
+                "name": "mixamorig:HeadTop_End<mixamorig:Head<mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "225"
+        },
+        "227": {
+            "link": {
+                "name": "mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "223"
+        },
+        "228": {
+            "link": {
+                "name": "mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "227"
+        },
+        "229": {
+            "link": {
+                "name": "mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "228"
+        },
+        "230": {
+            "link": {
+                "name": "mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "229"
+        },
+        "231": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "230"
+        },
+        "232": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb2<mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "231"
+        },
+        "233": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb3<mixamorig:LeftHandThumb2<mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "232"
+        },
+        "234": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb4<mixamorig:LeftHandThumb3<mixamorig:LeftHandThumb2<mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "233"
+        },
+        "235": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "230"
+        },
+        "236": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex2<mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "235"
+        },
+        "237": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex3<mixamorig:LeftHandIndex2<mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "236"
+        },
+        "238": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex4<mixamorig:LeftHandIndex3<mixamorig:LeftHandIndex2<mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "237"
+        },
+        "239": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "230"
+        },
+        "240": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle2<mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "239"
+        },
+        "241": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle3<mixamorig:LeftHandMiddle2<mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "240"
+        },
+        "242": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle4<mixamorig:LeftHandMiddle3<mixamorig:LeftHandMiddle2<mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "241"
+        },
+        "243": {
+            "link": {
+                "name": "mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "230"
+        },
+        "244": {
+            "link": {
+                "name": "mixamorig:LeftHandRing2<mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "243"
+        },
+        "245": {
+            "link": {
+                "name": "mixamorig:LeftHandRing3<mixamorig:LeftHandRing2<mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "244"
+        },
+        "246": {
+            "link": {
+                "name": "mixamorig:LeftHandRing4<mixamorig:LeftHandRing3<mixamorig:LeftHandRing2<mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "245"
+        },
+        "247": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "230"
+        },
+        "248": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky2<mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "247"
+        },
+        "249": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky3<mixamorig:LeftHandPinky2<mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "248"
+        },
+        "250": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky4<mixamorig:LeftHandPinky3<mixamorig:LeftHandPinky2<mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "249"
+        },
+        "251": {
+            "link": {
+                "name": "mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "223"
+        },
+        "252": {
+            "link": {
+                "name": "mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "251"
+        },
+        "253": {
+            "link": {
+                "name": "mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "252"
+        },
+        "254": {
+            "link": {
+                "name": "mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "253"
+        },
+        "255": {
+            "link": {
+                "name": "mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "254"
+        },
+        "256": {
+            "link": {
+                "name": "mixamorig:RightHandThumb2<mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "255"
+        },
+        "257": {
+            "link": {
+                "name": "mixamorig:RightHandThumb3<mixamorig:RightHandThumb2<mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "256"
+        },
+        "258": {
+            "link": {
+                "name": "mixamorig:RightHandThumb4<mixamorig:RightHandThumb3<mixamorig:RightHandThumb2<mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "257"
+        },
+        "259": {
+            "link": {
+                "name": "mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "254"
+        },
+        "260": {
+            "link": {
+                "name": "mixamorig:RightHandIndex2<mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "259"
+        },
+        "261": {
+            "link": {
+                "name": "mixamorig:RightHandIndex3<mixamorig:RightHandIndex2<mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "260"
+        },
+        "262": {
+            "link": {
+                "name": "mixamorig:RightHandIndex4<mixamorig:RightHandIndex3<mixamorig:RightHandIndex2<mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "261"
+        },
+        "263": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "254"
+        },
+        "264": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle2<mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "263"
+        },
+        "265": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle3<mixamorig:RightHandMiddle2<mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "264"
+        },
+        "266": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle4<mixamorig:RightHandMiddle3<mixamorig:RightHandMiddle2<mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "265"
+        },
+        "267": {
+            "link": {
+                "name": "mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "254"
+        },
+        "268": {
+            "link": {
+                "name": "mixamorig:RightHandRing2<mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "267"
+        },
+        "269": {
+            "link": {
+                "name": "mixamorig:RightHandRing3<mixamorig:RightHandRing2<mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "268"
+        },
+        "270": {
+            "link": {
+                "name": "mixamorig:RightHandRing4<mixamorig:RightHandRing3<mixamorig:RightHandRing2<mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "269"
+        },
+        "271": {
+            "link": {
+                "name": "mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "254"
+        },
+        "272": {
+            "link": {
+                "name": "mixamorig:RightHandPinky2<mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "271"
+        },
+        "273": {
+            "link": {
+                "name": "mixamorig:RightHandPinky3<mixamorig:RightHandPinky2<mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "272"
+        },
+        "274": {
+            "link": {
+                "name": "mixamorig:RightHandPinky4<mixamorig:RightHandPinky3<mixamorig:RightHandPinky2<mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "273"
+        },
+        "275": {
+            "link": {
+                "name": "mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "220"
+        },
+        "276": {
+            "link": {
+                "name": "mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "275"
+        },
+        "277": {
+            "link": {
+                "name": "mixamorig:LeftFoot<mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "276"
+        },
+        "278": {
+            "link": {
+                "name": "mixamorig:LeftToeBase<mixamorig:LeftFoot<mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "277"
+        },
+        "279": {
+            "link": {
+                "name": "mixamorig:LeftToe_End<mixamorig:LeftToeBase<mixamorig:LeftFoot<mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "278"
+        },
+        "280": {
+            "link": {
+                "name": "mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "220"
+        },
+        "281": {
+            "link": {
+                "name": "mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "280"
+        },
+        "282": {
+            "link": {
+                "name": "mixamorig:RightFoot<mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "281"
+        },
+        "283": {
+            "link": {
+                "name": "mixamorig:RightToeBase<mixamorig:RightFoot<mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "282"
+        },
+        "284": {
+            "link": {
+                "name": "mixamorig:RightToe_End<mixamorig:RightToeBase<mixamorig:RightFoot<mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "animations\\walking.fbx"
+            },
+            "parent": "283"
+        },
+        "287": {
+            "name": "Character",
+            "components": [
+                {
+                    "type": "controls",
+                    "controls": {
+                        "idleAnim": "218",
+                        "walkAnim": "285",
+                        "meshObject": "148",
+                        "animObject": "82",
+                        "rotateLeftAnim": "488",
+                        "rotateRightAnim": "555"
+                    }
+                }
+            ]
+        },
+        "422": {
+            "name": "Rigs"
+        },
+        "423": {
+            "link": {
+                "name": "mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "422"
+        },
+        "424": {
+            "link": {
+                "name": "mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "423"
+        },
+        "425": {
+            "link": {
+                "name": "mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "424"
+        },
+        "426": {
+            "link": {
+                "name": "mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "425"
+        },
+        "427": {
+            "link": {
+                "name": "mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "426"
+        },
+        "428": {
+            "link": {
+                "name": "mixamorig:Head<mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "427"
+        },
+        "429": {
+            "link": {
+                "name": "mixamorig:HeadTop_End<mixamorig:Head<mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "428"
+        },
+        "430": {
+            "link": {
+                "name": "mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "426"
+        },
+        "431": {
+            "link": {
+                "name": "mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "430"
+        },
+        "432": {
+            "link": {
+                "name": "mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "431"
+        },
+        "433": {
+            "link": {
+                "name": "mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "432"
+        },
+        "434": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "433"
+        },
+        "435": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb2<mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "434"
+        },
+        "436": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb3<mixamorig:LeftHandThumb2<mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "435"
+        },
+        "437": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb4<mixamorig:LeftHandThumb3<mixamorig:LeftHandThumb2<mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "436"
+        },
+        "438": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "433"
+        },
+        "439": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex2<mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "438"
+        },
+        "440": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex3<mixamorig:LeftHandIndex2<mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "439"
+        },
+        "441": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex4<mixamorig:LeftHandIndex3<mixamorig:LeftHandIndex2<mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "440"
+        },
+        "442": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "433"
+        },
+        "443": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle2<mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "442"
+        },
+        "444": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle3<mixamorig:LeftHandMiddle2<mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "443"
+        },
+        "445": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle4<mixamorig:LeftHandMiddle3<mixamorig:LeftHandMiddle2<mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "444"
+        },
+        "446": {
+            "link": {
+                "name": "mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "433"
+        },
+        "447": {
+            "link": {
+                "name": "mixamorig:LeftHandRing2<mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "446"
+        },
+        "448": {
+            "link": {
+                "name": "mixamorig:LeftHandRing3<mixamorig:LeftHandRing2<mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "447"
+        },
+        "449": {
+            "link": {
+                "name": "mixamorig:LeftHandRing4<mixamorig:LeftHandRing3<mixamorig:LeftHandRing2<mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "448"
+        },
+        "450": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "433"
+        },
+        "451": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky2<mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "450"
+        },
+        "452": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky3<mixamorig:LeftHandPinky2<mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "451"
+        },
+        "453": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky4<mixamorig:LeftHandPinky3<mixamorig:LeftHandPinky2<mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "452"
+        },
+        "454": {
+            "link": {
+                "name": "mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "426"
+        },
+        "455": {
+            "link": {
+                "name": "mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "454"
+        },
+        "456": {
+            "link": {
+                "name": "mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "455"
+        },
+        "457": {
+            "link": {
+                "name": "mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "456"
+        },
+        "458": {
+            "link": {
+                "name": "mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "457"
+        },
+        "459": {
+            "link": {
+                "name": "mixamorig:RightHandThumb2<mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "458"
+        },
+        "460": {
+            "link": {
+                "name": "mixamorig:RightHandThumb3<mixamorig:RightHandThumb2<mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "459"
+        },
+        "461": {
+            "link": {
+                "name": "mixamorig:RightHandThumb4<mixamorig:RightHandThumb3<mixamorig:RightHandThumb2<mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "460"
+        },
+        "462": {
+            "link": {
+                "name": "mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "457"
+        },
+        "463": {
+            "link": {
+                "name": "mixamorig:RightHandIndex2<mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "462"
+        },
+        "464": {
+            "link": {
+                "name": "mixamorig:RightHandIndex3<mixamorig:RightHandIndex2<mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "463"
+        },
+        "465": {
+            "link": {
+                "name": "mixamorig:RightHandIndex4<mixamorig:RightHandIndex3<mixamorig:RightHandIndex2<mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "464"
+        },
+        "466": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "457"
+        },
+        "467": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle2<mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "466"
+        },
+        "468": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle3<mixamorig:RightHandMiddle2<mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "467"
+        },
+        "469": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle4<mixamorig:RightHandMiddle3<mixamorig:RightHandMiddle2<mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "468"
+        },
+        "470": {
+            "link": {
+                "name": "mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "457"
+        },
+        "471": {
+            "link": {
+                "name": "mixamorig:RightHandRing2<mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "470"
+        },
+        "472": {
+            "link": {
+                "name": "mixamorig:RightHandRing3<mixamorig:RightHandRing2<mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "471"
+        },
+        "473": {
+            "link": {
+                "name": "mixamorig:RightHandRing4<mixamorig:RightHandRing3<mixamorig:RightHandRing2<mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "472"
+        },
+        "474": {
+            "link": {
+                "name": "mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "457"
+        },
+        "475": {
+            "link": {
+                "name": "mixamorig:RightHandPinky2<mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "474"
+        },
+        "476": {
+            "link": {
+                "name": "mixamorig:RightHandPinky3<mixamorig:RightHandPinky2<mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "475"
+        },
+        "477": {
+            "link": {
+                "name": "mixamorig:RightHandPinky4<mixamorig:RightHandPinky3<mixamorig:RightHandPinky2<mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "476"
+        },
+        "478": {
+            "link": {
+                "name": "mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "423"
+        },
+        "479": {
+            "link": {
+                "name": "mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "478"
+        },
+        "480": {
+            "link": {
+                "name": "mixamorig:LeftFoot<mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "479"
+        },
+        "481": {
+            "link": {
+                "name": "mixamorig:LeftToeBase<mixamorig:LeftFoot<mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "480"
+        },
+        "482": {
+            "link": {
+                "name": "mixamorig:LeftToe_End<mixamorig:LeftToeBase<mixamorig:LeftFoot<mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "481"
+        },
+        "483": {
+            "link": {
+                "name": "mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "423"
+        },
+        "484": {
+            "link": {
+                "name": "mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "483"
+        },
+        "485": {
+            "link": {
+                "name": "mixamorig:RightFoot<mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "484"
+        },
+        "486": {
+            "link": {
+                "name": "mixamorig:RightToeBase<mixamorig:RightFoot<mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "485"
+        },
+        "487": {
+            "link": {
+                "name": "mixamorig:RightToe_End<mixamorig:RightToeBase<mixamorig:RightFoot<mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "parent": "486"
+        },
+        "490": {
+            "link": {
+                "name": "mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "422"
+        },
+        "491": {
+            "link": {
+                "name": "mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "490"
+        },
+        "492": {
+            "link": {
+                "name": "mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "491"
+        },
+        "493": {
+            "link": {
+                "name": "mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "492"
+        },
+        "494": {
+            "link": {
+                "name": "mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "493"
+        },
+        "495": {
+            "link": {
+                "name": "mixamorig:Head<mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "494"
+        },
+        "496": {
+            "link": {
+                "name": "mixamorig:HeadTop_End<mixamorig:Head<mixamorig:Neck<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "495"
+        },
+        "497": {
+            "link": {
+                "name": "mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "493"
+        },
+        "498": {
+            "link": {
+                "name": "mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "497"
+        },
+        "499": {
+            "link": {
+                "name": "mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "498"
+        },
+        "500": {
+            "link": {
+                "name": "mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "499"
+        },
+        "501": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "500"
+        },
+        "502": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb2<mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "501"
+        },
+        "503": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb3<mixamorig:LeftHandThumb2<mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "502"
+        },
+        "504": {
+            "link": {
+                "name": "mixamorig:LeftHandThumb4<mixamorig:LeftHandThumb3<mixamorig:LeftHandThumb2<mixamorig:LeftHandThumb1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "503"
+        },
+        "505": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "500"
+        },
+        "506": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex2<mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "505"
+        },
+        "507": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex3<mixamorig:LeftHandIndex2<mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "506"
+        },
+        "508": {
+            "link": {
+                "name": "mixamorig:LeftHandIndex4<mixamorig:LeftHandIndex3<mixamorig:LeftHandIndex2<mixamorig:LeftHandIndex1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "507"
+        },
+        "509": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "500"
+        },
+        "510": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle2<mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "509"
+        },
+        "511": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle3<mixamorig:LeftHandMiddle2<mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "510"
+        },
+        "512": {
+            "link": {
+                "name": "mixamorig:LeftHandMiddle4<mixamorig:LeftHandMiddle3<mixamorig:LeftHandMiddle2<mixamorig:LeftHandMiddle1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "511"
+        },
+        "513": {
+            "link": {
+                "name": "mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "500"
+        },
+        "514": {
+            "link": {
+                "name": "mixamorig:LeftHandRing2<mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "513"
+        },
+        "515": {
+            "link": {
+                "name": "mixamorig:LeftHandRing3<mixamorig:LeftHandRing2<mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "514"
+        },
+        "516": {
+            "link": {
+                "name": "mixamorig:LeftHandRing4<mixamorig:LeftHandRing3<mixamorig:LeftHandRing2<mixamorig:LeftHandRing1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "515"
+        },
+        "517": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "500"
+        },
+        "518": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky2<mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "517"
+        },
+        "519": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky3<mixamorig:LeftHandPinky2<mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "518"
+        },
+        "520": {
+            "link": {
+                "name": "mixamorig:LeftHandPinky4<mixamorig:LeftHandPinky3<mixamorig:LeftHandPinky2<mixamorig:LeftHandPinky1<mixamorig:LeftHand<mixamorig:LeftForeArm<mixamorig:LeftArm<mixamorig:LeftShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "519"
+        },
+        "521": {
+            "link": {
+                "name": "mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "493"
+        },
+        "522": {
+            "link": {
+                "name": "mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "521"
+        },
+        "523": {
+            "link": {
+                "name": "mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "522"
+        },
+        "524": {
+            "link": {
+                "name": "mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "523"
+        },
+        "525": {
+            "link": {
+                "name": "mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "524"
+        },
+        "526": {
+            "link": {
+                "name": "mixamorig:RightHandThumb2<mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "525"
+        },
+        "527": {
+            "link": {
+                "name": "mixamorig:RightHandThumb3<mixamorig:RightHandThumb2<mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "526"
+        },
+        "528": {
+            "link": {
+                "name": "mixamorig:RightHandThumb4<mixamorig:RightHandThumb3<mixamorig:RightHandThumb2<mixamorig:RightHandThumb1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "527"
+        },
+        "529": {
+            "link": {
+                "name": "mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "524"
+        },
+        "530": {
+            "link": {
+                "name": "mixamorig:RightHandIndex2<mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "529"
+        },
+        "531": {
+            "link": {
+                "name": "mixamorig:RightHandIndex3<mixamorig:RightHandIndex2<mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "530"
+        },
+        "532": {
+            "link": {
+                "name": "mixamorig:RightHandIndex4<mixamorig:RightHandIndex3<mixamorig:RightHandIndex2<mixamorig:RightHandIndex1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "531"
+        },
+        "533": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "524"
+        },
+        "534": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle2<mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "533"
+        },
+        "535": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle3<mixamorig:RightHandMiddle2<mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "534"
+        },
+        "536": {
+            "link": {
+                "name": "mixamorig:RightHandMiddle4<mixamorig:RightHandMiddle3<mixamorig:RightHandMiddle2<mixamorig:RightHandMiddle1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "535"
+        },
+        "537": {
+            "link": {
+                "name": "mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "524"
+        },
+        "538": {
+            "link": {
+                "name": "mixamorig:RightHandRing2<mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "537"
+        },
+        "539": {
+            "link": {
+                "name": "mixamorig:RightHandRing3<mixamorig:RightHandRing2<mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "538"
+        },
+        "540": {
+            "link": {
+                "name": "mixamorig:RightHandRing4<mixamorig:RightHandRing3<mixamorig:RightHandRing2<mixamorig:RightHandRing1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "539"
+        },
+        "541": {
+            "link": {
+                "name": "mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "524"
+        },
+        "542": {
+            "link": {
+                "name": "mixamorig:RightHandPinky2<mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "541"
+        },
+        "543": {
+            "link": {
+                "name": "mixamorig:RightHandPinky3<mixamorig:RightHandPinky2<mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "542"
+        },
+        "544": {
+            "link": {
+                "name": "mixamorig:RightHandPinky4<mixamorig:RightHandPinky3<mixamorig:RightHandPinky2<mixamorig:RightHandPinky1<mixamorig:RightHand<mixamorig:RightForeArm<mixamorig:RightArm<mixamorig:RightShoulder<mixamorig:Spine2<mixamorig:Spine1<mixamorig:Spine<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "543"
+        },
+        "545": {
+            "link": {
+                "name": "mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "490"
+        },
+        "546": {
+            "link": {
+                "name": "mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "545"
+        },
+        "547": {
+            "link": {
+                "name": "mixamorig:LeftFoot<mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "546"
+        },
+        "548": {
+            "link": {
+                "name": "mixamorig:LeftToeBase<mixamorig:LeftFoot<mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "547"
+        },
+        "549": {
+            "link": {
+                "name": "mixamorig:LeftToe_End<mixamorig:LeftToeBase<mixamorig:LeftFoot<mixamorig:LeftLeg<mixamorig:LeftUpLeg<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "548"
+        },
+        "550": {
+            "link": {
+                "name": "mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "490"
+        },
+        "551": {
+            "link": {
+                "name": "mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "550"
+        },
+        "552": {
+            "link": {
+                "name": "mixamorig:RightFoot<mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "551"
+        },
+        "553": {
+            "link": {
+                "name": "mixamorig:RightToeBase<mixamorig:RightFoot<mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "552"
+        },
+        "554": {
+            "link": {
+                "name": "mixamorig:RightToe_End<mixamorig:RightToeBase<mixamorig:RightFoot<mixamorig:RightLeg<mixamorig:RightUpLeg<mixamorig:Hips",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "parent": "553"
+        },
+        "557": {
+            "name": "Controls",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Controls:\nForward: Numpad 8\nBackward: Numpad 2\nTurn Left: Numpad 4\nTurn Right: Numpad 6",
+                        "alignment": "center"
+                    }
+                }
+            ],
+            "translation": [
+                0.0,
+                3.0235762,
+                0.8846023
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        }
+    },
+    "meshes": {
+        "7": {
+            "link": {
+                "name": "PrimitivePlane",
+                "file": "default"
+            }
+        },
+        "8": {
+            "link": {
+                "name": "PrimitiveCube",
+                "file": "default"
+            }
+        },
+        "9": {
+            "link": {
+                "name": "PrimitiveSphere",
+                "file": "default"
+            }
+        },
+        "10": {
+            "link": {
+                "name": "PrimitiveCone",
+                "file": "default"
+            }
+        },
+        "11": {
+            "link": {
+                "name": "PrimitiveCylinder",
+                "file": "default"
+            }
+        },
+        "12": {
+            "link": {
+                "name": "PrimitiveCircle",
+                "file": "default"
+            }
+        },
+        "78": {
+            "link": {
+                "name": "mesh_0",
+                "file": "models\\Y Bot.fbx"
+            }
+        },
+        "79": {
+            "link": {
+                "name": "mesh_1",
+                "file": "models\\Y Bot.fbx"
+            }
+        }
+    },
+    "materials": {
+        "DefaultFontMaterial": {
+            "link": {
+                "name": "DefaultFontMaterial",
+                "file": "default"
+            },
+            "Text": {
+                "font": "55"
+            }
+        },
+        "20": {
+            "name": "White",
+            "shader": "Phong",
+            "Phong": {
+                "specularColor": [
+                    9.999899930335232e-7,
+                    9.99993744699168e-7,
+                    9.999999974752427e-7,
+                    1.0
+                ],
+                "shininess": 1
+            }
+        },
+        "22": {
+            "name": "Pink",
+            "Phong": {
+                "diffuseColor": [
+                    0.9098039,
+                    0.0,
+                    0.5411764,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999899930335232e-7,
+                    9.999911299019004e-7,
+                    9.999999974752427e-7,
+                    1.0
+                ],
+                "shininess": 10,
+                "ambientColor": [
+                    0.317647,
+                    0.0,
+                    0.2165777,
+                    1.0
+                ]
+            }
+        },
+        "25": {
+            "name": "Yellow",
+            "Phong": {
+                "diffuseColor": [
+                    1.0,
+                    0.8039215,
+                    0.0,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.3843137,
+                    0.3089579,
+                    0.0,
+                    1.0
+                ]
+            }
+        },
+        "26": {
+            "name": "Green",
+            "Phong": {
+                "diffuseColor": [
+                    0.1529411,
+                    0.7882353,
+                    0.5411764,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.0,
+                    0.2352941,
+                    0.1437908,
+                    1.0
+                ]
+            }
+        },
+        "76": {
+            "link": {
+                "name": "Alpha_Body_MAT",
+                "file": "models\\Y Bot.fbx"
+            }
+        },
+        "77": {
+            "link": {
+                "name": "Alpha_Joints_MAT",
+                "file": "models\\Y Bot.fbx"
+            }
+        }
+    },
+    "shaders": {
+        "1": {
+            "link": {
+                "name": "DistanceFieldVector Textured.frag",
+                "file": "default"
+            }
+        },
+        "2": {
+            "link": {
+                "name": "Flat.frag",
+                "file": "default"
+            }
+        },
+        "3": {
+            "link": {
+                "name": "Flat Textured.frag",
+                "file": "default"
+            }
+        },
+        "4": {
+            "link": {
+                "name": "MeshVisualizer.frag",
+                "file": "default"
+            }
+        },
+        "5": {
+            "link": {
+                "name": "Phong.frag",
+                "file": "default"
+            }
+        },
+        "6": {
+            "link": {
+                "name": "Phong Textured.frag",
+                "file": "default"
+            }
+        },
+        "28": {
+            "link": {
+                "name": "Dynamic.vert",
+                "file": "default"
+            }
+        },
+        "29": {
+            "link": {
+                "name": "Particle Textured.frag",
+                "file": "default"
+            }
+        },
+        "30": {
+            "link": {
+                "name": "Skinning.vert",
+                "file": "default"
+            }
+        },
+        "31": {
+            "link": {
+                "name": "Static.frag",
+                "file": "default"
+            }
+        },
+        "32": {
+            "link": {
+                "name": "DistanceFieldVector.frag",
+                "file": "default"
+            }
+        },
+        "39": {
+            "link": {
+                "name": "Particle.frag",
+                "file": "default"
+            }
+        },
+        "42": {
+            "link": {
+                "name": "Background.frag",
+                "file": "default"
+            }
+        },
+        "43": {
+            "link": {
+                "name": "Depth.frag",
+                "file": "default"
+            }
+        },
+        "45": {
+            "link": {
+                "name": "FullScreenTriangle.vert",
+                "file": "default"
+            }
+        },
+        "46": {
+            "link": {
+                "name": "Physical.frag",
+                "file": "default"
+            }
+        },
+        "49": {
+            "link": {
+                "name": "Sky.frag",
+                "file": "default"
+            }
+        },
+        "50": {
+            "link": {
+                "name": "Text.frag",
+                "file": "default"
+            }
+        },
+        "52": {
+            "link": {
+                "name": "Text.vert",
+                "file": "default"
+            }
+        },
+        "53": {
+            "link": {
+                "name": "TileFeedback.frag",
+                "file": "default"
+            }
+        },
+        "56": {
+            "link": {
+                "name": "lib\\Color.glsl",
+                "file": "default"
+            }
+        },
+        "57": {
+            "link": {
+                "name": "lib\\Compatibility.frag",
+                "file": "default"
+            }
+        },
+        "58": {
+            "link": {
+                "name": "lib\\CoordinateSystems.glsl",
+                "file": "default"
+            }
+        },
+        "59": {
+            "link": {
+                "name": "lib\\GI.frag",
+                "file": "default"
+            }
+        },
+        "60": {
+            "link": {
+                "name": "lib\\Inputs.frag",
+                "file": "default"
+            }
+        },
+        "61": {
+            "link": {
+                "name": "lib\\Lights.frag",
+                "file": "default"
+            }
+        },
+        "62": {
+            "link": {
+                "name": "lib\\Materials.frag",
+                "file": "default"
+            }
+        },
+        "63": {
+            "link": {
+                "name": "lib\\Math.glsl",
+                "file": "default"
+            }
+        },
+        "64": {
+            "link": {
+                "name": "lib\\MorphTargets.glsl",
+                "file": "default"
+            }
+        },
+        "65": {
+            "link": {
+                "name": "lib\\Packing.frag",
+                "file": "default"
+            }
+        },
+        "66": {
+            "link": {
+                "name": "lib\\PhysicalBSDF.glsl",
+                "file": "default"
+            }
+        },
+        "67": {
+            "link": {
+                "name": "lib\\Quaternion.glsl",
+                "file": "default"
+            }
+        },
+        "68": {
+            "link": {
+                "name": "lib\\Slug.frag",
+                "file": "default"
+            }
+        },
+        "69": {
+            "link": {
+                "name": "lib\\Slug.vert",
+                "file": "default"
+            }
+        },
+        "70": {
+            "link": {
+                "name": "lib\\Surface.frag",
+                "file": "default"
+            }
+        },
+        "71": {
+            "link": {
+                "name": "lib\\Textures.frag",
+                "file": "default"
+            }
+        },
+        "73": {
+            "link": {
+                "name": "lib\\Uniforms.glsl",
+                "file": "default"
+            }
+        }
+    },
+    "settings": {
+        "project": {
+            "name": "RootMotion",
+            "version": [
+                1,
+                2,
+                0
+            ]
+        },
+        "vr": {
+            "leftEyeObject": null,
+            "rightEyeObject": null,
+            "enable": false
+        },
+        "scripting": {
+            "bundlingType": "esbuild",
+            "libraryPaths": [
+                "/js/lib/"
+            ]
+        },
+        "rendering": {
+            "hdr": {
+                "exposure": 1.5
+            }
+        }
+    },
+    "animations": {
+        "149": {
+            "link": {
+                "name": "Take 001",
+                "file": "models\\Y Bot.fbx"
+            }
+        },
+        "150": {
+            "link": {
+                "name": "mixamo.com",
+                "file": "models\\Y Bot.fbx"
+            }
+        },
+        "218": {
+            "link": {
+                "name": "mixamo.com",
+                "file": "animations\\idle.fbx"
+            }
+        },
+        "285": {
+            "link": {
+                "name": "mixamo.com",
+                "file": "animations\\walking.fbx"
+            },
+            "rootMotion": {
+                "translationAxis": 4
+            }
+        },
+        "488": {
+            "link": {
+                "name": "mixamo.com",
+                "file": "animations\\left turn 90.fbx"
+            },
+            "rootMotion": {
+                "rotationAxis": 1,
+                "translationAxis": 4
+            }
+        },
+        "555": {
+            "link": {
+                "name": "mixamo.com",
+                "file": "animations\\right turn 90.fbx"
+            },
+            "rootMotion": {
+                "rotationAxis": 1,
+                "translationAxis": 4
+            }
+        }
+    },
+    "skins": {
+        "80": {
+            "link": {
+                "name": "Skin Alpha_Surface",
+                "file": "models\\Y Bot.fbx"
+            },
+            "joints": [
+                "82",
+                "83",
+                "84",
+                "85",
+                "86",
+                "87",
+                "89",
+                "90",
+                "91",
+                "92",
+                "93",
+                "94",
+                "95",
+                "97",
+                "98",
+                "99",
+                "101",
+                "102",
+                "103",
+                "105",
+                "106",
+                "107",
+                "109",
+                "110",
+                "111",
+                "113",
+                "114",
+                "115",
+                "116",
+                "117",
+                "118",
+                "119",
+                "121",
+                "122",
+                "123",
+                "125",
+                "126",
+                "127",
+                "129",
+                "130",
+                "131",
+                "133",
+                "134",
+                "135",
+                "137",
+                "138",
+                "139",
+                "140",
+                "142",
+                "143",
+                "144",
+                "145"
+            ]
+        },
+        "81": {
+            "link": {
+                "name": "Skin Alpha_Joints",
+                "file": "models\\Y Bot.fbx"
+            },
+            "joints": [
+                "82",
+                "83",
+                "84",
+                "85",
+                "86",
+                "87",
+                "89",
+                "90",
+                "91",
+                "92",
+                "93",
+                "94",
+                "95",
+                "97",
+                "98",
+                "99",
+                "101",
+                "102",
+                "103",
+                "105",
+                "106",
+                "107",
+                "109",
+                "110",
+                "111",
+                "113",
+                "114",
+                "115",
+                "116",
+                "117",
+                "118",
+                "119",
+                "121",
+                "122",
+                "123",
+                "125",
+                "126",
+                "127",
+                "129",
+                "130",
+                "131",
+                "133",
+                "134",
+                "135",
+                "137",
+                "138",
+                "139",
+                "140",
+                "142",
+                "143",
+                "144",
+                "145"
+            ]
+        }
+    },
+    "pipelines": {
+        "33": {
+            "link": {
+                "name": "DistanceFieldVector",
+                "file": "default"
+            }
+        },
+        "34": {
+            "link": {
+                "name": "Flat Opaque",
+                "file": "default"
+            }
+        },
+        "35": {
+            "link": {
+                "name": "Flat Opaque Textured",
+                "file": "default"
+            }
+        },
+        "36": {
+            "link": {
+                "name": "MeshVisualizer",
+                "file": "default"
+            }
+        },
+        "37": {
+            "link": {
+                "name": "Phong Opaque",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "38": {
+            "link": {
+                "name": "Phong Opaque Textured",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "40": {
+            "link": {
+                "name": "Foliage",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "41": {
+            "link": {
+                "name": "Particle",
+                "file": "default"
+            }
+        },
+        "44": {
+            "link": {
+                "name": "Depth",
+                "file": "default"
+            }
+        },
+        "47": {
+            "link": {
+                "name": "Physical Opaque",
+                "file": "default"
+            }
+        },
+        "48": {
+            "link": {
+                "name": "Physical Opaque Textured",
+                "file": "default"
+            }
+        },
+        "51": {
+            "link": {
+                "name": "Text",
+                "file": "default"
+            }
+        },
+        "54": {
+            "link": {
+                "name": "Sky",
+                "file": "default"
+            }
+        },
+        "72": {
+            "link": {
+                "name": "TileFeedback",
+                "file": "default"
+            }
+        },
+        "74": {
+            "link": {
+                "name": "Phong Normalmapped",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "75": {
+            "link": {
+                "name": "Phong Lightmapped",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        }
+    },
+    "textures": {},
+    "images": {},
+    "fonts": {
+        "55": {
+            "link": {
+                "name": "DejaVuSans.ttf",
+                "file": "default"
+            }
+        }
+    },
+    "languages": {},
+    "files": {
+        "151": {
+            "fileName": "models/Y Bot.fbx",
+            "importerName": "",
+            "importPhysicalAsPhongMaterials": true
+        },
+        "219": {
+            "fileName": "animations/idle.fbx",
+            "importerName": "",
+            "importPhysicalAsPhongMaterials": true
+        },
+        "286": {
+            "fileName": "animations/walking.fbx",
+            "importerName": "",
+            "importPhysicalAsPhongMaterials": true
+        },
+        "354": {
+            "fileName": "animations/left turn.fbx",
+            "importerName": "",
+            "importPhysicalAsPhongMaterials": true
+        },
+        "421": {
+            "fileName": "animations/right turn.fbx",
+            "importerName": "",
+            "importPhysicalAsPhongMaterials": true
+        },
+        "489": {
+            "fileName": "animations/left turn 90.fbx",
+            "importerName": "",
+            "importPhysicalAsPhongMaterials": true
+        },
+        "556": {
+            "fileName": "animations/right turn 90.fbx",
+            "importerName": "",
+            "importPhysicalAsPhongMaterials": true
+        }
+    },
+    "morphTargets": {}
+}
