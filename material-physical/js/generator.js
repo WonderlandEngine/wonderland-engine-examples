@@ -20,34 +20,29 @@ export class Generator extends Component {
             throw new Error('Missing mesh component');
         }
 
+        this.prefab.setScalingWorld([0, 0, 0]); /* Hide the prefab */
+
         const max = Colors.length;
         const half = (max - 1) * 0.5;
 
+        /* Create multiple rows of spheres with varying levels of roughness/metallic */
         const mesh = meshComp.mesh;
-        const prefabMaterial = meshComp.material;
-        for (let y = 0; y < max; ++y) {
-            const rgba = Colors[y];
-            for (let x = 0; x < max; ++x) {
-                const obj = this.scene.addObject(this.prefab.parent);
-                obj.setScalingWorld([0.25, 0.25, 0.25]);
-                obj.setPositionWorld([x - half, y - half, 0]);
+        for (let i = 0; i < max * max; ++i) {
+            const x = i % max;
+            const y = Math.floor(i / max);
 
-                const material = prefabMaterial.clone();
-                material.setRoughnessFactor((x + 1) / max);
-                material.setMetallicFactor((y + 1) / max);
-                material.setAlbedoColor(rgba);
+            const obj = this.scene.addObject(this.prefab.parent);
+            obj.setScalingWorld([0.25, 0.25, 0.25]);
+            obj.setPositionWorld([x - half, y - half, 0]);
 
-                obj.addComponent('mesh', {mesh, material});
-            }
+            const material = meshComp.material.clone();
+            material.setRoughnessFactor((x + 1) / max);
+            material.setMetallicFactor((y + 1) / max);
+            material.setAlbedoColor(Colors[y]);
+
+            obj.addComponent('mesh', {mesh, material});
         }
 
-        /* Hide the prefab */
-        this.prefab.setScalingWorld([0, 0, 0]);
-
         this.scene.dispatchReadyEvent(); /* For screenshot testing */
-    }
-
-    update(dt) {
-        /* Called every frame. */
     }
 }
