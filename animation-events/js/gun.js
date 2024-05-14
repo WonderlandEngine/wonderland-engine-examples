@@ -36,53 +36,25 @@ export class Gun extends Component {
         hideAnimation: Property.animation(),
     };
 
-    init() {
-        this.drawing = false;
-        this.drawn = false;
-        this.reloading = false;
-        this.chambered = false;
-
-        this.animationComponentsMap = new Map();
-
-        this.onHide = new Emitter();
-    }
+    drawing = false;
+    drawn = false;
+    reloading = false;
+    chambered = false;
+    animationsMap = new Map();
+    onHide = new Emitter();
+    mag = 0;
 
     start() {
-        this.animationComponents = this.animationsObject.getComponents(AnimationComponent);
+        const animationComponent = this.animationsObject.getComponent(AnimationComponent);
+        animationComponent.onEvent.add(this.onAnimationEvent.bind(this));
         this.mag = this.magSize;
 
-        this.animationComponentsMap.set(Gun.AnimationNames.Idle, this.findAnimationComponent(this.idleAnimation));
-        this.animationComponentsMap.set(Gun.AnimationNames.Draw, this.findAnimationComponent(this.drawAnimation));
-        this.animationComponentsMap.set(Gun.AnimationNames.Hide, this.findAnimationComponent(this.hideAnimation));
-        this.animationComponentsMap.set(Gun.AnimationNames.Shoot, this.findAnimationComponent(this.shootAnimation));
-        this.animationComponentsMap.set(Gun.AnimationNames.Reload, this.findAnimationComponent(this.reloadAnimation));
-        this.animationComponentsMap.set(Gun.AnimationNames.FullReload, this.findAnimationComponent(this.fullReloadAnimation));
-
-        const drawAnimationComponent = this.animationComponentsMap.get(Gun.AnimationNames.Draw);
-        if (drawAnimationComponent) {
-            drawAnimationComponent.onEvent.add(this.onAnimationEvent.bind(this));
-        }
-
-        const shootAnimationComponent = this.animationComponentsMap.get(Gun.AnimationNames.Shoot);
-        if (shootAnimationComponent) {
-            shootAnimationComponent.onEvent.add(this.onAnimationEvent.bind(this));
-        }
-
-        const reloadAnimationComponent = this.animationComponentsMap.get(Gun.AnimationNames.Reload);
-        if (reloadAnimationComponent) {
-            reloadAnimationComponent.onEvent.add(this.onAnimationEvent.bind(this));
-        }
-
-        const fullReloadAnimationComponent = this.animationComponentsMap.get(Gun.AnimationNames.FullReload);
-        if (fullReloadAnimationComponent) {
-            fullReloadAnimationComponent.onEvent.add(this.onAnimationEvent.bind(this));
-        }
-
-        const hideAnimationComponent = this.animationComponentsMap.get(Gun.AnimationNames.Hide);
-        if (hideAnimationComponent) {
-            hideAnimationComponent.onEvent.add(this.onAnimationEvent.bind(this));
-        }
-
+        this.animationsMap.set(Gun.AnimationNames.Idle, this.idleAnimation);
+        this.animationsMap.set(Gun.AnimationNames.Draw, this.drawAnimation);
+        this.animationsMap.set(Gun.AnimationNames.Hide, this.hideAnimation);
+        this.animationsMap.set(Gun.AnimationNames.Shoot, this.shootAnimation);
+        this.animationsMap.set(Gun.AnimationNames.Reload, this.reloadAnimation);
+        this.animationsMap.set(Gun.AnimationNames.FullReload, this.fullReloadAnimation);
         this.hideObject();
     }
 
@@ -171,9 +143,11 @@ export class Gun extends Component {
      */
     playAnimation(anim) {
         this.stopAnimation(Gun.AnimationNames.Idle);
-        const animationComponent = this.animationComponentsMap.get(anim);
-        if (!animationComponent) return;
+        const animationComponent = this.animationsObject.getComponent(AnimationComponent);
+        const animation = this.animationsMap.get(anim);
+        if (!animation) return;
         animationComponent.stop();
+        animationComponent.animation = animation;
         animationComponent.speed = 1.0;
         animationComponent.play();
     }
@@ -185,9 +159,11 @@ export class Gun extends Component {
      */
     playAnimationReverse(anim) {
         this.stopAnimation(Gun.AnimationNames.Idle);
-        const animationComponent = this.animationComponentsMap.get(anim);
-        if (!animationComponent) return;
+        const animationComponent = this.animationsObject.getComponent(AnimationComponent);
+        const animation = this.animationsMap.get(anim);
+        if (!animation) return;
         animationComponent.stop();
+        animationComponent.animation = animation;
         animationComponent.speed = -1.0;
         animationComponent.play();
     }
@@ -198,21 +174,9 @@ export class Gun extends Component {
      * @param anim Name of the animation to stop, see AnimationNames
      */
     stopAnimation(anim) {
-        this.animationComponentsMap.get(anim)?.stop();
-    }
-
-    /**
-     * Find an animation component for the given animation
-     *
-     * @param anim Name of the animation to find a component for, see AnimationNames
-     */
-    findAnimationComponent(anim) {
-        for (var i = 0; i < this.animationComponents.length; ++i) {
-            if (this.animationComponents[i].animation.equals(anim)) {
-                return this.animationComponents[i];
-            }
-        }
-        return null;
+        const animationComponent = this.animationsObject.getComponent(AnimationComponent);
+        if (animationComponent.animation != anim) return;
+        animationComponent.stop();
     }
 
     /** Callback for the draw animation event */

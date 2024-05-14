@@ -347,53 +347,8 @@
                 {
                     "animation": {
                         "preview": false,
-                        "playCount": 1
-                    }
-                },
-                {
-                    "animation": {
-                        "preview": false,
-                        "playCount": 1
-                    }
-                },
-                {
-                    "type": "animation",
-                    "animation": {
-                        "animation": "399",
-                        "skin": "294",
-                        "preview": false,
-                        "playCount": 1
-                    }
-                },
-                {
-                    "type": "animation",
-                    "animation": {
-                        "animation": "401",
-                        "skin": "294",
-                        "preview": false,
-                        "playCount": 1
-                    }
-                },
-                {
-                    "type": "animation",
-                    "animation": {
-                        "preview": false,
-                        "animation": "404",
-                        "playCount": 1
-                    }
-                },
-                {
-                    "type": "animation",
-                    "animation": {
-                        "animation": "397",
-                        "autoplay": false
-                    }
-                },
-                {
-                    "type": "animation",
-                    "animation": {
-                        "animation": "402",
-                        "playCount": 1
+                        "playCount": 1,
+                        "animation": "398"
                     }
                 }
             ]
