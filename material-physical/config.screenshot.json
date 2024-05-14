@@ -1,0 +1,6 @@
+{
+    "scenarios": {
+        "readyEvent": "MaterialPhysical.bin",
+        "reference": "./test/reference.png"
+    }
+}
