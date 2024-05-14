@@ -43,6 +43,8 @@ export class Generator extends Component {
 
         /* Hide the prefab */
         this.prefab.setScalingWorld([0, 0, 0]);
+
+        this.scene.dispatchReadyEvent(); /* For screenshot testing */
     }
 
     update(dt) {

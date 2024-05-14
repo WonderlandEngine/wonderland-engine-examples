@@ -16,4 +16,5 @@ await engine.scene.load(`${Constants.ProjectName}.bin`);
 document.getElementById('version')?.remove();
 document.getElementById('ar-button')?.remove();
 document.getElementById('vr-button')?.remove();
-engine.scene.dispatchReadyEvent();
+
+/* Event is dispatched in the generator.js component */
