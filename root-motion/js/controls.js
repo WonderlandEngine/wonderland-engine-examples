@@ -12,6 +12,7 @@ export class Controls extends Component {
     static Properties = {
         idleAnim: Property.animation(),
         walkAnim: Property.animation(),
+        runAnim: Property.animation(),
         rotateLeftAnim: Property.animation(),
         rotateRightAnim: Property.animation(),
         meshObject: Property.object(),
@@ -22,10 +23,12 @@ export class Controls extends Component {
     backward = false;
     left = false;
     right = false;
+    run = false;
     meshComponent = null;
     animationComponent = null;
     retargetedIdle = null;
     retargetedWalk = null;
+    retargetedRun = null;
     retargetedRotateLeft = null;
     retargetedRotateRight = null;
 
@@ -39,6 +42,7 @@ export class Controls extends Component {
         this.animationComponent = this.animObject.getComponent(AnimationComponent);
         this.retargetedIdle = this.idleAnim.retarget(this.meshComponent.skin);
         this.retargetedWalk = this.walkAnim.retarget(this.meshComponent.skin);
+        this.retargetedRun = this.runAnim.retarget(this.meshComponent.skin);
         this.retargetedRotateLeft = this.rotateLeftAnim.retarget(this.meshComponent.skin);
         this.retargetedRotateRight = this.rotateRightAnim.retarget(this.meshComponent.skin);
         this.setAnim(this.retargetedIdle, 1.0);
@@ -50,12 +54,12 @@ export class Controls extends Component {
         if (e.keyCode === 104) {
             if (this.forward) return;
             this.forward = true;
-            this.setAnim(this.retargetedWalk, 1.0);
+            this.setAnim(this.run ? this.retargetedRun : this.retargetedWalk, 1.0);
         /* Numpad 2 for backwards */
         } else if (e.keyCode === 98) {
             if (this.backward) return;
             this.backward = true;
-            this.setAnim(this.retargetedWalk, -1.0);
+            this.setAnim(this.run ? this.retargetedRun : this.retargetedWalk, -1.0);
         /* Numpad 4 to rotate left */
         } else if (e.keyCode === 100) {
             if (this.left) return;
@@ -66,6 +70,15 @@ export class Controls extends Component {
             if (this.right) return;
             this.right = true;
             this.setAnim(this.retargetedRotateRight, 1.0, 1);
+        /* Hold shift to run when holding forward or backward */
+        } else if (e.keyCode === 16) {
+            if (this.run) return;
+            this.run = true;
+
+            if (this.forward)
+                this.setAnim(this.retargetedRun, 1.0);
+            else if (this.backward)
+                this.setAnim(this.retargetedRun, -1.0);
         }
     }
 
@@ -73,7 +86,13 @@ export class Controls extends Component {
     release(e) {
         if (e.keyCode === 104) {
             this.forward = false;
-            this.setAnim(this.backward ? this.retargetedWalk : this.retargetedIdle, this.backward ? -1.0 : 1.0);
+            if (this.run) {
+                this.setAnim(this.backward ? this.retargetedRun : this.retargetedIdle,
+                    this.backward ? -1.0 : 1.0);
+            } else {
+                this.setAnim(this.backward ? this.retargetedWalk : this.retargetedIdle,
+                    this.backward ? -1.0 : 1.0);
+            }
         } else if (e.keyCode === 98) {
             this.backward = false;
             this.setAnim(this.forward ? this.retargetedWalk : this.retargetedIdle, 1.0);
@@ -81,9 +100,21 @@ export class Controls extends Component {
             this.left = false;
         } else if (e.keyCode === 102) {
             this.right = false;
+        } else if (e.keyCode === 16) {
+            this.run = false;
+
+            if (this.forward)
+                this.setAnim(this.retargetedWalk, 1.0);
+            else if (this.backward)
+                this.setAnim(this.retargetedWalk, -1.0);
         }
     }
 
+    /** Play an animation an the animation component
+     * @param anim Animation to play
+     * @param speed Playback speed of the animation
+     * @param playCount Number of times to loop the animation, 0 for infinite
+     */
     setAnim(anim, speed, playCount = 0) {
         this.animationComponent.stop();
         this.animationComponent.animation = anim;

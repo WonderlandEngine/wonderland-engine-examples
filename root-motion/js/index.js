@@ -13,7 +13,6 @@
 
 /* wle:auto-imports:start */
 import {MouseLookComponent} from '@wonderlandengine/components';
-import {WasdControlsComponent} from '@wonderlandengine/components';
 import {Controls} from './controls.js';
 /* wle:auto-imports:end */
 
@@ -75,7 +74,6 @@ if (document.readyState === 'loading') {
 
 /* wle:auto-register:start */
 engine.registerComponent(MouseLookComponent);
-engine.registerComponent(WasdControlsComponent);
 engine.registerComponent(Controls);
 /* wle:auto-register:end */
 
