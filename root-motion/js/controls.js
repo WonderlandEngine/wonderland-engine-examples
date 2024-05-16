@@ -32,9 +32,19 @@ export class Controls extends Component {
     retargetedRotateLeft = null;
     retargetedRotateRight = null;
 
-    init() {
-        window.addEventListener('keydown', this.press.bind(this));
-        window.addEventListener('keyup', this.release.bind(this));
+    keydownCallback = null;
+    keyupCallback = null;
+
+    onActivate() {
+        this.keydownCallback = this.press.bind(this);
+        this.keyupCallback = this.release.bind(this);
+        window.addEventListener('keydown', this.keydownCallback);
+        window.addEventListener('keyup', this.keyupCallback);
+    }
+
+    onDeactivate() {
+        window.removeEventListener('keydown', this.keydownCallback);
+        window.removeEventListener('keyup', this.keyupCallback);
     }
 
     start() {
