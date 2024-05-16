@@ -9,26 +9,29 @@ import { GunController } from './gun-controller.js';
 export class Controls extends Component {
     static TypeName = 'controls';
 
-    init() {
-        this.reloadDown = false;
-        this.drawWeaponDown = false;
-        this.holsterDown = false;
-        this.mouseDown = false;
+    reloadDown = false;
+    drawWeaponDown = false;
+    holsterDown = false;
+    mouseDown = false;
 
-        window.addEventListener('keydown', this.press.bind(this));
-        window.addEventListener('keyup', this.release.bind(this));
-
-        const canvas = this.engine.canvas;
-        canvas.addEventListener('mousedown', this.onMouseDown);
-        canvas.addEventListener('mouseup', this.onMouseUp);
-    }
+    keydownCallback = null;
+    keyupCallback = null;
 
     onActivate() {
+        this.keydownCallback = this.press.bind(this);
+        this.keyupCallback = this.release.bind(this);
+
+        window.addEventListener('keydown', this.keydownCallback);
+        window.addEventListener('keyup', this.keyupCallback);
+
         const canvas = this.engine.canvas;
         canvas.addEventListener('mousedown', this.onMouseDown);
         canvas.addEventListener('mouseup', this.onMouseUp);
     }
     onDeactivate() {
+        window.removeEventListener('keydown', this.keydownCallback);
+        window.removeEventListener('keyup', this.keyupCallback);
+
         const canvas = this.engine.canvas;
         canvas.removeEventListener('mousedown', this.onMouseDown);
         canvas.removeEventListener('mouseup', this.onMouseUp);

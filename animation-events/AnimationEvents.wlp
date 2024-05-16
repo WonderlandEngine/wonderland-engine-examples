@@ -347,53 +347,8 @@
                 {
                     "animation": {
                         "preview": false,
-                        "playCount": 1
-                    }
-                },
-                {
-                    "animation": {
-                        "preview": false,
-                        "playCount": 1
-                    }
-                },
-                {
-                    "type": "animation",
-                    "animation": {
-                        "animation": "399",
-                        "skin": "294",
-                        "preview": false,
-                        "playCount": 1
-                    }
-                },
-                {
-                    "type": "animation",
-                    "animation": {
-                        "animation": "401",
-                        "skin": "294",
-                        "preview": false,
-                        "playCount": 1
-                    }
-                },
-                {
-                    "type": "animation",
-                    "animation": {
-                        "preview": false,
-                        "animation": "404",
-                        "playCount": 1
-                    }
-                },
-                {
-                    "type": "animation",
-                    "animation": {
-                        "animation": "397",
-                        "autoplay": false
-                    }
-                },
-                {
-                    "type": "animation",
-                    "animation": {
-                        "animation": "402",
-                        "playCount": 1
+                        "playCount": 1,
+                        "animation": "398"
                     }
                 }
             ]
@@ -1175,7 +1130,93 @@
             ],
             "translation": [
                 0.0,
-                1.9565248,
+                2.2699327,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "804": {
+            "name": "Text",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Controls:",
+                        "alignment": "right"
+                    }
+                }
+            ],
+            "translation": [
+                0.0,
+                2.1429765,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": null
+        },
+        "805": {
+            "name": "Text",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Draw weapon: 1\nHolster weapon: F\nShoot: Left mouse button\nReload: R",
+                        "alignment": "left",
+                        "verticalAlignment": "top"
+                    }
+                }
+            ],
+            "translation": [
+                0.0280252,
+                2.1743762,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "806": {
+            "name": "Text",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "You can cancel the reload by pressing R again",
+                        "alignment": "center"
+                    }
+                }
+            ],
+            "translation": [
+                0.0,
+                1.6714046,
                 0.0
             ],
             "rotation": [
