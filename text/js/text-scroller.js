@@ -1,9 +1,9 @@
-import {Component, Type} from '@wonderlandengine/api';
+import {Component, Property} from '@wonderlandengine/api';
 
 export class TextScroller extends Component {
     static TypeName = 'text-scroller';
     static Properties = {
-        speed: {type: Type.Float, default: 0.5},
+        speed: Property.float(0.5),
     };
 
     init() {
