@@ -1631,7 +1631,7 @@
             "version": [
                 1,
                 2,
-                0
+                2
             ]
         },
         "vr": {
@@ -1915,7 +1915,9 @@
                 "file": "default"
             },
             "features": {
-                "DEPRECATED_LIGHT_ATTENUATION": true
+                "DEPRECATED_LIGHT_ATTENUATION": true,
+                "NORMAL_MAPPING": true,
+                "WITH_EMISSIVE": false
             }
         },
         "40": {
@@ -2061,7 +2063,8 @@
             "maxSize": [
                 1024,
                 1024
-            ]
+            ],
+            "compression": "uastc"
         },
         "275": {
             "link": {
@@ -2091,17 +2094,8 @@
             "maxSize": [
                 1024,
                 1024
-            ]
-        },
-        "278": {
-            "link": {
-                "name": "image_6",
-                "file": "models\\ak-74m\\scene.gltf"
-            },
-            "maxSize": [
-                1024,
-                1024
-            ]
+            ],
+            "compression": "uastc"
         }
     },
     "fonts": {
