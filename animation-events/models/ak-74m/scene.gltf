@@ -59363,25 +59363,25 @@
   ],
   "images": [
     {
-      "uri": "textures/arms_baseColor.png"
+      "uri": "textures/arms_baseColor.jpg"
     },
     {
-      "uri": "textures/arms_metallicRoughness.png"
+      "uri": "textures/arms_metallicRoughness.jpg"
     },
     {
-      "uri": "textures/arms_normal.png"
+      "uri": "textures/arms_normal.jpg"
     },
     {
-      "uri": "textures/ak74m_baseColor.png"
+      "uri": "textures/ak74m_baseColor.jpg"
     },
     {
-      "uri": "textures/ak74m_metallicRoughness.png"
+      "uri": "textures/ak74m_metallicRoughness.jpg"
     },
     {
-      "uri": "textures/ak74m_normal.png"
+      "uri": "textures/ak74m_normal.jpg"
     },
     {
-      "uri": "textures/ak74m_specularf0.png"
+      "uri": "textures/ak74m_specularf0.jpg"
     }
   ],
   "materials": [
