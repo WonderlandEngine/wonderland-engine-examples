@@ -5,21 +5,30 @@ import {Rotate} from './../js/rotate.js';
 /* wle:auto-imports:end */
 
 import {loadRuntime} from '@wonderlandengine/api';
+import {runScreenshotTest} from '../../test-utils.js';
 
 /* wle:auto-constants:start */
-const RuntimeOptions = {
-    physx: false,
-    loader: false,
-    xrFramebufferScaleFactor: 1,
-    canvas: 'canvas',
-};
 const Constants = {
     ProjectName: 'MatcapShader',
     RuntimeBaseName: 'WonderlandRuntime',
     WebXRRequiredFeatures: ['local',],
     WebXROptionalFeatures: ['local','hand-tracking','hit-test',],
 };
+const RuntimeOptions = {
+    physx: false,
+    loader: false,
+    xrFramebufferScaleFactor: 1,
+    xrOfferSession: {
+        mode: 'auto',
+        features: Constants.WebXRRequiredFeatures,
+        optionalFeatures: Constants.WebXROptionalFeatures,
+    },
+    canvas: 'canvas',
+};
 /* wle:auto-constants:end */
+
+RuntimeOptions.threads = false; /* Disabled for testing on any browser */
+RuntimeOptions.simd = false;
 
 const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
 
@@ -29,24 +38,13 @@ engine.registerComponent(WasdControlsComponent);
 engine.registerComponent(Rotate);
 /* wle:auto-register:end */
 
-await engine.scene.load(`${Constants.ProjectName}.bin`);
-
 document.getElementById('version')?.remove();
 document.getElementById('ar-button')?.remove();
 document.getElementById('vr-button')?.remove();
 
-/* Dispatch scene ready event once the image is loaded.
-    * This ensure the test suite takes a screenshot after
-    * all resources are available. */
-const promises = [new Promise((res) => setTimeout(res, 1000))];
-for (const img of engine.wasm._images) {
-    if (!(img instanceof HTMLImageElement)) continue;
-    if (img.complete) continue;
-    promises.push(new Promise((res, rej) => {
-        img.addEventListener('load', res, {once: true});
-        img.addEventListener('error', rej, {once: true});
-    }));
-}
-
-await Promise.all(promises);
-engine.scene.dispatchReadyEvent();
+await engine.loadMainScene({
+    url: `${Constants.ProjectName}.bin`,
+    waitForDependencies: true,
+    dispatchReadyEvent: false
+});
+runScreenshotTest(engine);

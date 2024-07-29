@@ -4,21 +4,30 @@ import {WasdControlsComponent} from '@wonderlandengine/components';
 /* wle:auto-imports:end */
 
 import {loadRuntime} from '@wonderlandengine/api';
+import {runScreenshotTest} from '../../test-utils.js';
 
 /* wle:auto-constants:start */
-const RuntimeOptions = {
-    physx: false,
-    loader: false,
-    xrFramebufferScaleFactor: 1,
-    canvas: 'canvas',
-};
 const Constants = {
     ProjectName: 'Materials',
     RuntimeBaseName: 'WonderlandRuntime',
     WebXRRequiredFeatures: ['local',],
     WebXROptionalFeatures: ['local','hand-tracking','hit-test',],
 };
+const RuntimeOptions = {
+    physx: false,
+    loader: false,
+    xrFramebufferScaleFactor: 1,
+    xrOfferSession: {
+        mode: 'auto',
+        features: Constants.WebXRRequiredFeatures,
+        optionalFeatures: Constants.WebXROptionalFeatures,
+    },
+    canvas: 'canvas',
+};
 /* wle:auto-constants:end */
+
+RuntimeOptions.threads = false; /* Disabled for testing on any browser */
+RuntimeOptions.simd = false;
 
 const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
 
@@ -27,17 +36,13 @@ engine.registerComponent(MouseLookComponent);
 engine.registerComponent(WasdControlsComponent);
 /* wle:auto-register:end */
 
-await engine.scene.load(`${Constants.ProjectName}.bin`);
-
 document.getElementById('version')?.remove();
 document.getElementById('ar-button')?.remove();
 document.getElementById('vr-button')?.remove();
 
-/* Dispatch scene ready event once the image is loaded.
- * This ensure the test suite takes a screenshot after
- * all resources are available.
- *
- * This example uses compressed images, and there is no current
- * API to listen for compressed images. */
-await new Promise((res) => setTimeout(res, 2000));
-engine.scene.dispatchReadyEvent();
+await engine.loadMainScene({
+    url: `${Constants.ProjectName}.bin`,
+    waitForDependencies: true,
+    dispatchReadyEvent: false
+});
+runScreenshotTest(engine);
