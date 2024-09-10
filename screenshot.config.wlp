@@ -1,7 +1,9 @@
 {
     "settings": {
         "scripting": {
-            "entryPoint": "test/index.js"
+            "components": {
+                "entryPoint": "test/index.js"
+            }
         }
     }
 }
