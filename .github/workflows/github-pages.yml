@@ -60,9 +60,9 @@ jobs:
         name: wonderland-engine-examples-deploy
         path: public/
     - name: Upload pages artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: ./public
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: ./public
   deploy-pages:
     needs: package
     if: github.ref == 'refs/heads/master'
