@@ -1,14 +1,8 @@
-/* wle:auto-imports:start */
-import {MouseLookComponent} from '@wonderlandengine/components';
-import {WasdControlsComponent} from '@wonderlandengine/components';
-/* wle:auto-imports:end */
-
 import {loadRuntime} from '@wonderlandengine/api';
-import {runScreenshotTest} from '../../test-utils.js';
 
 /* wle:auto-constants:start */
 const Constants = {
-    ProjectName: 'HDRI',
+    ProjectName: 'HeightMap',
     RuntimeBaseName: 'WonderlandRuntime',
     WebXRRequiredFeatures: ['local',],
     WebXROptionalFeatures: ['local','hand-tracking','hit-test',],
@@ -31,18 +25,14 @@ RuntimeOptions.simd = false;
 
 const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
 
-/* wle:auto-register:start */
-engine.registerComponent(MouseLookComponent);
-engine.registerComponent(WasdControlsComponent);
-/* wle:auto-register:end */
-
+/* Remove them to avoid having the css animation pop during the screenshot */
 document.getElementById('version')?.remove();
 document.getElementById('ar-button')?.remove();
 document.getElementById('vr-button')?.remove();
 
+/* Event is dispatched after the heightmap generation */
 await engine.loadMainScene({
     url: `${Constants.ProjectName}.bin`,
     waitForDependencies: true,
     dispatchReadyEvent: false
 });
-runScreenshotTest(engine);

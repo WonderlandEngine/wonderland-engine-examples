@@ -1244,7 +1244,13 @@
             "libraryPaths": [
                 "/js/lib/"
             ],
-            "bundlingType": "esbuild"
+            "bundlingType": "esbuild",
+            "application": {
+                "output": "MatcapShader-app.js"
+            },
+            "components": {
+                "output": "MatcapShader-bundle.js"
+            }
         },
         "vr": {
             "enable": false

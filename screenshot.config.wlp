@@ -2,7 +2,7 @@
     "settings": {
         "scripting": {
             "application": {
-                "entryPoint": "test/index.js"
+                "entryPoint": "test/app.js"
             }
         }
     }
