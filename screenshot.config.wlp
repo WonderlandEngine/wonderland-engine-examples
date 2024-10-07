@@ -1,7 +1,7 @@
 {
     "settings": {
         "scripting": {
-            "components": {
+            "application": {
                 "entryPoint": "test/index.js"
             }
         }
