@@ -1,8 +1,3 @@
-/* wle:auto-imports:start */
-import {MouseLookComponent} from '@wonderlandengine/components';
-import {WasdControlsComponent} from '@wonderlandengine/components';
-/* wle:auto-imports:end */
-
 import {loadRuntime} from '@wonderlandengine/api';
 import {runScreenshotTest} from '../../test-utils.js';
 
@@ -30,11 +25,6 @@ RuntimeOptions.threads = false; /* Disabled for testing on any browser */
 RuntimeOptions.simd = false;
 
 const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
-
-/* wle:auto-register:start */
-engine.registerComponent(MouseLookComponent);
-engine.registerComponent(WasdControlsComponent);
-/* wle:auto-register:end */
 
 document.getElementById('version')?.remove();
 document.getElementById('ar-button')?.remove();
