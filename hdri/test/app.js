@@ -1,15 +1,9 @@
-/* wle:auto-imports:start */
-import {MouseLookComponent} from '@wonderlandengine/components';
-import {WasdControlsComponent} from '@wonderlandengine/components';
-import {Rotate} from './../js/rotate.js';
-/* wle:auto-imports:end */
-
 import {loadRuntime} from '@wonderlandengine/api';
 import {runScreenshotTest} from '../../test-utils.js';
 
 /* wle:auto-constants:start */
 const Constants = {
-    ProjectName: 'MatcapShader',
+    ProjectName: 'HDRI',
     RuntimeBaseName: 'WonderlandRuntime',
     WebXRRequiredFeatures: ['local',],
     WebXROptionalFeatures: ['local','hand-tracking','hit-test',],
@@ -31,12 +25,6 @@ RuntimeOptions.threads = false; /* Disabled for testing on any browser */
 RuntimeOptions.simd = false;
 
 const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
-
-/* wle:auto-register:start */
-engine.registerComponent(MouseLookComponent);
-engine.registerComponent(WasdControlsComponent);
-engine.registerComponent(Rotate);
-/* wle:auto-register:end */
 
 document.getElementById('version')?.remove();
 document.getElementById('ar-button')?.remove();

@@ -1,15 +1,9 @@
-/* wle:auto-imports:start */
-import {MouseLookComponent} from '@wonderlandengine/components';
-import {WasdControlsComponent} from '@wonderlandengine/components';
-import {Generator} from './../js/generator.js';
-/* wle:auto-imports:end */
-
 import {loadRuntime} from '@wonderlandengine/api';
 import {runScreenshotTest} from '../../test-utils.js';
 
 /* wle:auto-constants:start */
 const Constants = {
-    ProjectName: 'MaterialPhysical',
+    ProjectName: 'MatcapShader',
     RuntimeBaseName: 'WonderlandRuntime',
     WebXRRequiredFeatures: ['local',],
     WebXROptionalFeatures: ['local','hand-tracking','hit-test',],
@@ -32,11 +26,9 @@ RuntimeOptions.simd = false;
 
 const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
 
-/* wle:auto-register:start */
-engine.registerComponent(MouseLookComponent);
-engine.registerComponent(WasdControlsComponent);
-engine.registerComponent(Generator);
-/* wle:auto-register:end */
+document.getElementById('version')?.remove();
+document.getElementById('ar-button')?.remove();
+document.getElementById('vr-button')?.remove();
 
 await engine.loadMainScene({
     url: `${Constants.ProjectName}.bin`,

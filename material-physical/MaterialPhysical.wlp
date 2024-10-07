@@ -900,7 +900,13 @@
             "bundlingType": "esbuild",
             "libraryPaths": [
                 "/js/lib/"
-            ]
+            ],
+            "application": {
+                "output": "MaterialPhysical-app.js"
+            },
+            "components": {
+                "output": "MaterialPhysical-bundle.js"
+            }
         },
         "rendering": {
             "hdr": {

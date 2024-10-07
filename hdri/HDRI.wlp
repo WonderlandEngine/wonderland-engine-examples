@@ -695,7 +695,12 @@
             "libraryPaths": [
                 "/js/lib/"
             ],
-            "entryPoint": "js/index.js"
+            "application": {
+                "output": "HDRI-app.js"
+            },
+            "components": {
+                "output": "HDRI-bundle.js"
+            }
         },
         "rendering": {
             "hdr": {
