@@ -1,6 +1,9 @@
 {
   "name": "hdri-example",
   "version": "1.0.0",
+  "overrides": {
+    "@wonderlandengine/api": "$@wonderlandengine/api"
+  },
   "dependencies": {
     "@wonderlandengine/api": "^1.2.0",
     "@wonderlandengine/components": "^1.0.0"
