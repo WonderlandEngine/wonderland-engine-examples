@@ -1,0 +1,12 @@
+{
+    "scenarios": [
+        {
+            "event": "DefaultScene-webgl2.bin",
+            "reference": "./test/reference.png"
+        },
+        {
+            "event": "DefaultScene-webgpu.bin",
+            "reference": "./test/reference.png"
+        }
+    ]
+}
