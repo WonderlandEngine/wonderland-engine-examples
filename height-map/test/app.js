@@ -1,4 +1,5 @@
-import {loadRuntime} from '@wonderlandengine/api';
+import {HeightMap} from '../js/height-map.js';
+import {runScreenshotTest} from '../../test-utils.js';
 
 /* wle:auto-constants:start */
 const Constants = {
@@ -23,16 +24,9 @@ const RuntimeOptions = {
 RuntimeOptions.threads = false; /* Disabled for testing on any browser */
 RuntimeOptions.simd = false;
 
-const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
+const generate = HeightMap.prototype.start;
+HeightMap.prototype.generate = function() {
+    generate.bind(this)();
+};
 
-/* Remove them to avoid having the css animation pop during the screenshot */
-document.getElementById('version')?.remove();
-document.getElementById('ar-button')?.remove();
-document.getElementById('vr-button')?.remove();
-
-/* Event is dispatched after the heightmap generation */
-await engine.loadMainScene({
-    url: `${Constants.ProjectName}.bin`,
-    waitForDependencies: true,
-    dispatchReadyEvent: false
-});
+await runScreenshotTest(Constants.ProjectName, Constants.RuntimeBaseName, RuntimeOptions);

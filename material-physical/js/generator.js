@@ -42,7 +42,5 @@ export class Generator extends Component {
 
             obj.addComponent('mesh', {mesh, material});
         }
-
-        this.scene.dispatchReadyEvent(); /* For screenshot testing */
     }
 }

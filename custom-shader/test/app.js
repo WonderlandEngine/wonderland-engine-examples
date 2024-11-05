@@ -1,4 +1,3 @@
-import {loadRuntime} from '@wonderlandengine/api';
 import {runScreenshotTest} from '../../test-utils.js';
 
 /* wle:auto-constants:start */
@@ -24,15 +23,4 @@ const RuntimeOptions = {
 RuntimeOptions.threads = false; /* Used to run tests in multiple browsers */
 RuntimeOptions.simd = false;
 
-const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
-
-document.getElementById('version')?.remove();
-document.getElementById('ar-button')?.remove();
-document.getElementById('vr-button')?.remove();
-
-await engine.loadMainScene({
-    url: `${Constants.ProjectName}.bin`,
-    waitForDependencies: true,
-    dispatchReadyEvent: false
-});
-runScreenshotTest(engine);
+await runScreenshotTest(Constants.ProjectName, Constants.RuntimeBaseName, RuntimeOptions);

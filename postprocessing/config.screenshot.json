@@ -1,6 +1,8 @@
 {
-    "scenarios": {
-        "readyEvent": "Postprocessing.bin",
-        "reference": "./test/reference.png"
-    }
+    "scenarios": [
+        {
+            "event": "Postprocessing.bin",
+            "reference": "./test/reference.png"
+        }
+    ]
 }
