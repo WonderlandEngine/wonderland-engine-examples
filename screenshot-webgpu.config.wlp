@@ -1,0 +1,10 @@
+{
+    "settings": {
+        "rendering": {
+            "api": "webgpu-or-webgl2"
+        },
+        "scripting": {
+            "entryPoint": "test/index.js"
+        }
+    }
+}

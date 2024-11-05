@@ -1,4 +1,4 @@
-import {runScreenshotTest} from '../../test-utils.js';
+import {runScreenshotTestWebGL2AndWebGPU} from '../../test-utils.js';
 
 /* wle:auto-constants:start */
 const Constants = {
@@ -23,4 +23,4 @@ const RuntimeOptions = {
 RuntimeOptions.threads = false; /* Disabled for testing on any browser */
 RuntimeOptions.simd = false;
 
-await runScreenshotTest(Constants.ProjectName, Constants.RuntimeBaseName, RuntimeOptions);
+await runScreenshotTestWebGL2AndWebGPU(Constants.ProjectName, Constants.RuntimeBaseName, RuntimeOptions);
