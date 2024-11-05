@@ -80,3 +80,19 @@ export function resetCanvas(oldCanvas) {
     oldCanvas.parentNode.removeChild(oldCanvas);
     return canvas;
 }
+
+/**
+ * Run a screenshot test on both WebGL2 and WebGPU
+ */
+export async function runScreenshotTestWebGL2AndWebGPU(projectName, runtimeBaseName, runtimeOptions) {
+    const configs = [
+        { projectName: `${projectName}-webgl2`, runtimeOptions: Object.assign({}, { webgpu: false, }, runtimeOptions) },
+        { projectName: `${projectName}-webgpu`, runtimeOptions: Object.assign({}, { webgpu: true, }, runtimeOptions) },
+    ];
+
+    for (const config of configs) {
+        await runScreenshotTest(config.projectName, runtimeBaseName, config.runtimeOptions);
+        const canvas = document.getElementById('canvas');
+        resetCanvas(canvas);
+    }
+}
