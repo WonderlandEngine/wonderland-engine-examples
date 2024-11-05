@@ -1,4 +1,5 @@
-import {loadRuntime} from '@wonderlandengine/api';
+import {Generator} from '../js/generator.js';
+import {runScreenshotTest} from '../../test-utils.js';
 
 /* wle:auto-constants:start */
 const Constants = {
@@ -23,10 +24,9 @@ const RuntimeOptions = {
 RuntimeOptions.threads = false; /* Disabled for testing on any browser */
 RuntimeOptions.simd = false;
 
-const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
+const start = Generator.prototype.start;
+Generator.prototype.start = function() {
+    start.bind(this)();
+};
 
-await engine.loadMainScene({
-    url: `${Constants.ProjectName}.bin`,
-    waitForDependencies: true,
-    dispatchReadyEvent: false
-});
+await runScreenshotTest(Constants.ProjectName, Constants.RuntimeBaseName, RuntimeOptions);
