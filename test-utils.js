@@ -58,6 +58,10 @@ export async function testScreenshot(engine, binFile) {
 export async function runScreenshotTest(projectName, runtimeBaseName, runtimeOptions) {
     const engine = await loadRuntime(runtimeBaseName, runtimeOptions);
 
+    const canvas = document.getElementById('canvas');
+    engine.autoResizeCanvas = false;
+    engine.resize(canvas.clientWidth, canvas.clientHeight);
+
     document.getElementById('version')?.remove();
     document.getElementById('ar-button')?.remove();
     document.getElementById('vr-button')?.remove();
