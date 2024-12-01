@@ -46,7 +46,10 @@ export function pauseAnimations(scene) {
 export async function testScreenshot(engine, binFile) {
     pauseAnimations(engine.scene);
     await ready(engine);
-    await window.testScreenshot(binFile);
+    if (window.testScreenshot) {
+        /* Skip if not present to allow debugging */
+        await window.testScreenshot(binFile);
+    }
 }
 
 /**
