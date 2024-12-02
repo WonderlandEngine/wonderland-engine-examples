@@ -81,8 +81,7 @@ export async function runScreenshotTest(projectName, runtimeBaseName, runtimeOpt
 export function resetCanvas(oldCanvas) {
     const canvas = document.createElement('canvas');
     canvas.id = 'canvas';
-    canvas.width = oldCanvas.width;
-    canvas.height = oldCanvas.height;
+    canvas.style.cssText = oldCanvas.style.cssText;
     oldCanvas.parentNode.insertBefore(canvas, oldCanvas.nextSibling);
     oldCanvas.parentNode.removeChild(oldCanvas);
     return canvas;
