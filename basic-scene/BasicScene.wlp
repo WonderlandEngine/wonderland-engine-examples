@@ -1,12 +1,12 @@
 {
     "objects": {
-        "76": {
+        "14": {
             "name": "Player",
             "components": [
                 {
                     "type": "wasd-controls",
                     "wasd-controls": {
-                        "headObject": "77"
+                        "headObject": "17"
                     }
                 }
             ],
@@ -16,60 +16,18 @@
                 0.9999998
             ],
             "translation": [
-                -3.9999997,
-                1.8000134,
-                4.0
+                -3.2591099,
+                1.8000135,
+                1.7569212
             ],
             "rotation": [
                 0.0,
-                -0.3826834,
+                -0.3768199,
                 0.0,
-                0.9238795
+                0.9262865
             ]
         },
-        "77": {
-            "name": "NonVrCamera",
-            "parent": "76",
-            "components": [
-                {
-                    "type": "view"
-                },
-                {
-                    "type": "mouse-look"
-                }
-            ]
-        },
-        "78": {
-            "name": "EyeLeft",
-            "parent": "76",
-            "components": [
-                {
-                    "type": "view"
-                },
-                {
-                    "type": "input",
-                    "input": {
-                        "type": "eye left"
-                    }
-                }
-            ]
-        },
-        "79": {
-            "name": "EyeRight",
-            "parent": "76",
-            "components": [
-                {
-                    "type": "view"
-                },
-                {
-                    "type": "input",
-                    "input": {
-                        "type": "eye right"
-                    }
-                }
-            ]
-        },
-        "80": {
+        "15": {
             "name": "FloorPlane",
             "components": [
                 {
@@ -81,23 +39,23 @@
                 }
             ],
             "scaling": [
-                15.9999961,
-                16.0,
-                16.0
+                4.0,
+                4.0,
+                4.0
             ],
             "translation": [
                 0.0,
-                -0.0,
-                1.1921009956950004e-7
+                0.0,
+                1.1920928955078125e-7
             ],
             "rotation": [
-                -0.7072544,
+                -0.7072496,
                 0.0,
                 0.0,
-                0.7069591
+                0.7069638
             ]
         },
-        "81": {
+        "16": {
             "name": "Cube",
             "components": [
                 {
@@ -114,9 +72,9 @@
                 0.5
             ],
             "translation": [
-                -0.6665739,
+                2.9802322387695313e-8,
                 0.4999999,
-                0.5696738
+                5.960464477539065e-8
             ],
             "rotation": [
                 0.0,
@@ -125,71 +83,103 @@
                 1.0
             ]
         },
-        "82": {
+        "17": {
+            "name": "NonVrCamera",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "mouse-look"
+                }
+            ]
+        },
+        "18": {
+            "name": "EyeLeft",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "input",
+                    "input": {
+                        "type": "eye left"
+                    }
+                }
+            ]
+        },
+        "19": {
+            "name": "EyeRight",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "view"
+                },
+                {
+                    "type": "input",
+                    "input": {
+                        "type": "eye right"
+                    }
+                }
+            ]
+        },
+        "21": {
             "name": "Light",
             "components": [
                 {
                     "type": "light",
                     "light": {
-                        "intensity": 9.0,
-                        "type": "spot",
-                        "outerAngle": 120.0,
-                        "shadows": true,
-                        "shadowRange": 20.0,
-                        "innerAngle": 110.0
+                        "intensity": 3.3329999
                     }
                 }
             ],
             "scaling": [
-                1.0000013,
-                0.9999992,
+                1.0,
+                1.0,
                 1.0
             ],
             "translation": [
-                -0.2080335,
-                3.2420806,
-                2.9316577
+                0.0,
+                3.0,
+                2.0
             ],
             "rotation": [
-                0.2517567,
-                -0.7649071,
-                -0.1853631,
-                0.5631838
+                0.0,
+                0.0,
+                0.0,
+                1.0
             ]
         },
-        "83": {
+        "23": {
             "name": "Light.000",
             "components": [
                 {
                     "type": "light",
                     "light": {
-                        "intensity": 9.0,
-                        "type": "spot",
-                        "shadows": true,
-                        "outerAngle": 120.0,
-                        "innerAngle": 110.0,
-                        "shadowRange": 20.0
+                        "intensity": 3.3329999
                     }
                 }
             ],
             "scaling": [
-                0.9999988,
-                0.9999977,
-                0.9999989
+                1.0,
+                1.0,
+                1.0
             ],
             "translation": [
-                -2.3912234,
-                3.4619092,
-                -3.0973172
+                -1.0,
+                3.0,
+                -1.0
             ],
             "rotation": [
-                -0.3265219,
-                0.1176851,
-                0.3179933,
-                0.8822776
+                0.0,
+                0.0,
+                0.0,
+                1.0
             ]
         },
-        "84": {
+        "24": {
             "name": "Cone",
             "components": [
                 {
@@ -206,9 +196,9 @@
                 1.0
             ],
             "translation": [
-                0.8334258,
+                1.5,
                 1.0,
-                0.5696737
+                -1.4901161193847656e-8
             ],
             "rotation": [
                 0.0,
@@ -217,7 +207,7 @@
                 1.0
             ]
         },
-        "85": {
+        "27": {
             "name": "Sphere",
             "components": [
                 {
@@ -234,9 +224,9 @@
                 0.75
             ],
             "translation": [
-                -0.166574,
+                0.4999999,
                 0.75,
-                -0.6803262
+                -1.25
             ],
             "rotation": [
                 0.0,
@@ -348,9 +338,9 @@
                     1.0
                 ],
                 "emissiveColor": [
-                    0.1921568,
+                    0.317647,
                     0.0,
-                    0.1310161,
+                    0.2165777,
                     1.0
                 ]
             },
@@ -378,8 +368,8 @@
                     1.0
                 ],
                 "emissiveColor": [
-                    0.2588235,
-                    0.2080737,
+                    0.3843137,
+                    0.3089579,
                     0.0,
                     1.0
                 ]
@@ -409,69 +399,12 @@
                 ],
                 "emissiveColor": [
                     0.0,
-                    0.1686274,
-                    0.10305,
+                    0.2352941,
+                    0.1437908,
                     1.0
                 ]
             },
             "pipeline": "37"
-        },
-        "89": {
-            "name": "Sky",
-            "Phong": {
-                "specularColor": [
-                    9.999899930335232e-7,
-                    9.99993744699168e-7,
-                    9.999999974752427e-7,
-                    1.0
-                ],
-                "shininess": 1,
-                "emissiveColor": [
-                    0.2,
-                    0.2,
-                    0.2,
-                    1.0
-                ],
-                "ambientColor": [
-                    0.05,
-                    0.05,
-                    0.05,
-                    1.0
-                ],
-                "diffuseColor": [
-                    0.5,
-                    0.5,
-                    0.5,
-                    1.0
-                ]
-            },
-            "pipeline": "54",
-            "Sky": {
-                "colorStop3": [
-                    0.57584,
-                    0.5798863,
-                    0.5803921,
-                    1.0
-                ],
-                "colorStop2": [
-                    0.2023221,
-                    0.2037438,
-                    0.2039215,
-                    1.0
-                ],
-                "colorStop1": [
-                    0.2023221,
-                    0.2037438,
-                    0.2039215,
-                    1.0
-                ],
-                "colorStop0": [
-                    0.0,
-                    0.0,
-                    0.0,
-                    1.0
-                ]
-            }
         }
     },
     "shaders": {
@@ -696,23 +629,11 @@
                 "name": "lib\\Uniforms.glsl",
                 "file": "default"
             }
-        },
-        "86": {
-            "link": {
-                "name": "AtmosphericSky.frag",
-                "file": "default"
-            }
-        },
-        "87": {
-            "link": {
-                "name": "lib\\SkyProcedural.glsl",
-                "file": "default"
-            }
         }
     },
     "settings": {
         "project": {
-            "name": "DefaultScene",
+            "name": "BasicScene",
             "version": [
                 1,
                 3,
@@ -720,9 +641,9 @@
                 1
             ]
         },
-        "xr": {
-            "leftEyeObject": "78",
-            "rightEyeObject": "79"
+        "vr": {
+            "leftEyeObject": "18",
+            "rightEyeObject": "19"
         },
         "scripting": {
             "application": {
@@ -740,14 +661,7 @@
             "hdr": {
                 "exposure": 1.5
             },
-            "sky": {
-                "enabled": true,
-                "material": "89"
-            },
             "api": "webgpu-or-webgl2"
-        },
-        "runtime": {
-            "viewObject": "77"
         }
     },
     "animations": {},
@@ -769,6 +683,9 @@
             "link": {
                 "name": "Flat Opaque Textured",
                 "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true
             }
         },
         "36": {
@@ -781,18 +698,28 @@
             "link": {
                 "name": "Phong Opaque",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "38": {
             "link": {
                 "name": "Phong Opaque Textured",
                 "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true,
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "40": {
             "link": {
                 "name": "Foliage",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "41": {
@@ -811,9 +738,6 @@
             "link": {
                 "name": "Physical Opaque",
                 "file": "default"
-            },
-            "features": {
-                "SEPARATE_OCCLUSION_TEXTURE": true
             }
         },
         "48": {
@@ -822,7 +746,7 @@
                 "file": "default"
             },
             "features": {
-                "SEPARATE_OCCLUSION_TEXTURE": true
+                "ALPHA_MASKED": true
             }
         },
         "51": {
@@ -835,35 +759,29 @@
             "link": {
                 "name": "Sky",
                 "file": "default"
-            },
-            "features": {
-                "GRADIENT": true,
-                "TEXTURED": false,
-                "GRADIENT_4_STOPS": true,
-                "ENVIRONMENT_PROBE": false
             }
         },
         "66": {
             "link": {
                 "name": "Phong Normalmapped",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "67": {
             "link": {
                 "name": "Phong Lightmapped",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "74": {
             "link": {
                 "name": "TileFeedback",
-                "file": "default"
-            }
-        },
-        "88": {
-            "link": {
-                "name": "AtmosphericSky",
                 "file": "default"
             }
         }
