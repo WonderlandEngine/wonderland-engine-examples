@@ -13,7 +13,7 @@ import {loadRuntime} from '@wonderlandengine/api';
 
 /* wle:auto-constants:start */
 const Constants = {
-    ProjectName: 'DefaultScene',
+    ProjectName: 'BasicScene',
     RuntimeBaseName: 'WonderlandRuntime',
     WebXRRequiredFeatures: ['local',],
     WebXROptionalFeatures: ['local','hand-tracking','hit-test',],
@@ -34,10 +34,17 @@ const RuntimeOptions = {
 RuntimeOptions.webgpu = true;
 
 const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
+
 engine.onLoadingScreenEnd.once(() => {
     const el = document.getElementById('version');
     if (el) setTimeout(() => el.remove(), 2000);
 });
+
+const nextFrame = () => {
+    engine.nextFrame();
+    window.requestAnimationFrame(nextFrame);
+};
+window.requestAnimationFrame(nextFrame);
 
 /* WebXR setup. */
 

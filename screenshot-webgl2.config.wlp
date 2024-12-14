@@ -4,7 +4,9 @@
             "api": "webgl2"
         },
         "scripting": {
-            "entryPoint": "test/index.js"
+            "application": {
+                "entryPoint": "test/app.js"
+            }
         }
     }
 }
