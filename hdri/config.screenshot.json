@@ -1,8 +1,12 @@
 {
     "scenarios": [
         {
-            "event": "HDRI.bin",
-            "reference": "./test/reference.png"
+            "event": "HDRI.bin:webgl2",
+            "reference": "./test/HDRI-webgl2.png"
+        },
+        {
+            "event": "HDRI.bin:webxr",
+            "reference": "./test/HDRI-webxr.png"
         }
     ]
 }

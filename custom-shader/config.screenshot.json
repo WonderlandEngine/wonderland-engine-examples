@@ -1,8 +1,12 @@
 {
     "scenarios": [
         {
-            "event": "CustomShader.bin",
-            "reference": "./test/reference.png"
+            "event": "CustomShader.bin:webgl2",
+            "reference": "./test/CustomShader-webgl2.png"
+        },
+        {
+            "event": "CustomShader.bin:webxr",
+            "reference": "./test/CustomShader-webxr.png"
         }
     ]
 }

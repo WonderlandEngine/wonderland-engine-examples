@@ -1,5 +1,5 @@
 import {Generator} from '../js/generator.js';
-import {runScreenshotTest} from '../../test-utils.js';
+import {runScreenshotTestsMultiConfig} from '../../test-utils.js';
 
 /* wle:auto-constants:start */
 const Constants = {
@@ -29,4 +29,4 @@ Generator.prototype.start = function() {
     start.bind(this)();
 };
 
-await runScreenshotTest(Constants.ProjectName, Constants.RuntimeBaseName, RuntimeOptions);
+await runScreenshotTestsMultiConfig(Constants.ProjectName, Constants.RuntimeBaseName, RuntimeOptions, ['webgl2', 'webxr']);

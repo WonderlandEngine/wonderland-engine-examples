@@ -1,5 +1,5 @@
 import {HeightMap} from '../js/height-map.js';
-import {runScreenshotTest} from '../../test-utils.js';
+import {runScreenshotTestsMultiConfig} from '../../test-utils.js';
 
 /* wle:auto-constants:start */
 const Constants = {
@@ -29,4 +29,4 @@ HeightMap.prototype.generate = function() {
     generate.bind(this)();
 };
 
-await runScreenshotTest(Constants.ProjectName, Constants.RuntimeBaseName, RuntimeOptions);
+await runScreenshotTestsMultiConfig(Constants.ProjectName, Constants.RuntimeBaseName, RuntimeOptions, ['webgl2', 'webxr']);

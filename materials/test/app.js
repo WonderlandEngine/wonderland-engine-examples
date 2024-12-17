@@ -1,4 +1,4 @@
-import {runScreenshotTest} from '../../test-utils.js';
+import {runScreenshotTestsMultiConfig} from '../../test-utils.js';
 
 /* wle:auto-constants:start */
 const Constants = {
@@ -23,4 +23,4 @@ const RuntimeOptions = {
 RuntimeOptions.threads = false; /* Disabled for testing on any browser */
 RuntimeOptions.simd = false;
 
-await runScreenshotTest(Constants.ProjectName, Constants.RuntimeBaseName, RuntimeOptions);
+await runScreenshotTestsMultiConfig(Constants.ProjectName, Constants.RuntimeBaseName, RuntimeOptions, ['webgl2', 'webxr']);

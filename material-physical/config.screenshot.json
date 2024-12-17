@@ -1,8 +1,12 @@
 {
     "scenarios": [
         {
-            "event": "MaterialPhysical.bin",
-            "reference": "./test/reference.png"
+            "event": "MaterialPhysical.bin:webgl2",
+            "reference": "./test/MaterialPhysical-webgl2.png"
+        },
+        {
+            "event": "MaterialPhysical.bin:webxr",
+            "reference": "./test/MaterialPhysical-webxr.png"
         }
     ]
 }

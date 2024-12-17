@@ -1,11 +1,15 @@
 {
     "scenarios": [
         {
-            "event": "BasicScene-webgl2.bin",
+            "event": "BasicScene.bin:webgl2",
             "reference": "./test/BasicScene-webgl2.png"
         },
         {
-            "event": "BasicScene-webgpu.bin",
+            "event": "BasicScene.bin:webxr",
+            "reference": "./test/BasicScene-webxr.png"
+        },
+        {
+            "event": "BasicScene.bin:webgpu",
             "reference": "./test/BasicScene-webgpu.png"
         }
     ]

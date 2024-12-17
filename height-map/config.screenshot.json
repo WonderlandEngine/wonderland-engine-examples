@@ -1,8 +1,12 @@
 {
     "scenarios": [
         {
-            "event": "HeightMap.bin",
-            "reference": "./test/reference.png"
+            "event": "HeightMap.bin:webgl2",
+            "reference": "./test/HeightMap-webgl2.png"
+        },
+        {
+            "event": "HeightMap.bin:webxr",
+            "reference": "./test/HeightMap-webxr.png"
         }
     ]
 }

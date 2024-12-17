@@ -7,11 +7,11 @@ import {loadRuntime} from '@wonderlandengine/api';
  */
 export async function ready(engine) {
     await engine.imagesPromise;
-    return new Promise((res) => {
+    return new Promise((resolve) => {
         engine.scene.onPostRender.add(function() {
             if (!engine.isTextureStreamingIdle) return;
             engine.scene.onPostRender.remove('texture-streaming-end');
-            res();
+            resolve();
         }, {
             id: 'texture-streaming-end'
         });
@@ -43,28 +43,24 @@ export function pauseAnimations(scene) {
  * - Stops all animations
  * - Waits for ready() to resolve
  */
-export async function testScreenshot(engine, binFile) {
+export async function testScreenshot(engine, event) {
     pauseAnimations(engine.scene);
     await ready(engine);
     if (window.testScreenshot) {
         /* Skip if not present to allow debugging */
-        await window.testScreenshot(binFile);
+        await window.testScreenshot(event);
     }
 }
 
 /**
  * Run a screenshot test
  */
-export async function runScreenshotTest(projectName, runtimeBaseName, runtimeOptions) {
+export async function runScreenshotTest(projectName, runtimeBaseName, runtimeOptions, eventSuffix, xrMode) {
     const engine = await loadRuntime(runtimeBaseName, runtimeOptions);
 
     const canvas = document.getElementById('canvas');
     engine.autoResizeCanvas = false;
     engine.resize(canvas.clientWidth, canvas.clientHeight);
-
-    document.getElementById('version')?.remove();
-    document.getElementById('ar-button')?.remove();
-    document.getElementById('vr-button')?.remove();
 
     const binFile = `${projectName}.bin`;
     await engine.loadMainScene({
@@ -72,7 +68,31 @@ export async function runScreenshotTest(projectName, runtimeBaseName, runtimeOpt
         waitForDependencies: true,
         dispatchReadyEvent: false
     });
-    await testScreenshot(engine, binFile);
+
+    if(xrMode) {
+        const Constants = {
+            WebXRRequiredFeatures: ['local',],
+            WebXROptionalFeatures: ['local','hand-tracking','hit-test',],
+        };
+
+        /* Await random amount to be sure scene is loaded */
+        await new Promise(r => setTimeout(r, 24));
+
+        await engine
+            .requestXRSession(xrMode, Constants.WebXRRequiredFeatures, Constants.WebXROptionalFeatures)
+            .catch((e) => console.error(e));
+
+        /* Await session start + one frame */
+        await engine.webxr.onSessionFirstFrame.promise();
+        await new Promise(requestAnimationFrame);
+    }
+
+    const event = eventSuffix ? `${binFile}${eventSuffix}` : binFile;
+    await testScreenshot(engine, event);
+
+    if(xrMode) {
+        engine.xr.session.end();
+    }
 }
 
 /**
@@ -88,16 +108,22 @@ export function resetCanvas(oldCanvas) {
 }
 
 /**
- * Run a screenshot test on both WebGL2 and WebGPU
+ * Run N screenshot tests with multiple configs
  */
-export async function runScreenshotTestWebGL2AndWebGPU(projectName, runtimeBaseName, runtimeOptions) {
-    const configs = [
-        { projectName: `${projectName}-webgl2`, runtimeOptions: Object.assign({}, { webgpu: false, }, runtimeOptions) },
-        { projectName: `${projectName}-webgpu`, runtimeOptions: Object.assign({}, { webgpu: true, }, runtimeOptions) },
-    ];
+export async function runScreenshotTestsMultiConfig(projectName, runtimeBaseName, runtimeOptions, configs) {
+    const configOptions = [];
+    if(configs.includes('webgl2')) {
+        configOptions.push({ runtimeOptions: Object.assign({}, { webgpu: false, }, runtimeOptions), eventSuffix: ':webgl2'});
+    }
+    if(configs.includes('webxr')) {
+        configOptions.push({ runtimeOptions: Object.assign({}, { webgpu: false }, runtimeOptions), eventSuffix: ':webxr', xrMode: 'immersive-vr' });
+    }
+    if(configs.includes('webgpu')) {
+        configOptions.push({ runtimeOptions: Object.assign({}, { webgpu: true, }, runtimeOptions), eventSuffix: ':webgpu' });
+    }
 
-    for (const config of configs) {
-        await runScreenshotTest(config.projectName, runtimeBaseName, config.runtimeOptions);
+    for (const options of configOptions) {
+        await runScreenshotTest(projectName, runtimeBaseName, options.runtimeOptions, options.eventSuffix, options.xrMode);
         const canvas = document.getElementById('canvas');
         resetCanvas(canvas);
     }

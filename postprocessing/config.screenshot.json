@@ -1,8 +1,12 @@
 {
     "scenarios": [
         {
-            "event": "Postprocessing.bin",
-            "reference": "./test/reference.png"
+            "event": "Postprocessing.bin:webgl2",
+            "reference": "./test/Postprocessing-webgl2.png"
+        },
+        {
+            "event": "Postprocessing.bin:webxr",
+            "reference": "./test/Postprocessing-webxr.png"
         }
     ]
 }

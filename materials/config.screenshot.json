@@ -1,8 +1,12 @@
 {
     "scenarios": [
         {
-            "event": "Materials.bin",
-            "reference": "./test/reference.png"
+            "event": "Materials.bin:webgl2",
+            "reference": "./test/Materials-webgl2.png"
+        },
+        {
+            "event": "Materials.bin:webxr",
+            "reference": "./test/Materials-webxr.png"
         }
     ]
 }
