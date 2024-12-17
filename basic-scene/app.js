@@ -31,8 +31,6 @@ const RuntimeOptions = {
 };
 /* wle:auto-constants:end */
 
-RuntimeOptions.webgpu = true;
-
 const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
 
 engine.onLoadingScreenEnd.once(() => {
