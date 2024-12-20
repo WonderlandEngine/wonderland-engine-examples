@@ -1,8 +1,0 @@
-{
-    "scenarios": [
-        {
-            "event": "MatcapShader.bin:webgl2",
-            "reference": "./test/MatcapShader-webgl2.png"
-        }
-    ]
-}

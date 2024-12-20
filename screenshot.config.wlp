@@ -1,9 +1,0 @@
-{
-    "settings": {
-        "scripting": {
-            "application": {
-                "entryPoint": "test/app.js"
-            }
-        }
-    }
-}
