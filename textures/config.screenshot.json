@@ -1,0 +1,16 @@
+{
+    "scenarios": [
+        {
+            "event": "Textures.bin:webgl2",
+            "reference": "./test/Textures-webgl2.png"
+        },
+        {
+            "event": "Textures.bin:webxr",
+            "reference": "./test/Textures-webxr.png"
+        },
+        {
+            "event": "Textures.bin:webgpu",
+            "reference": "./test/Textures-webgpu.png"
+        }
+    ]
+}
