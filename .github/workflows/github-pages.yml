@@ -60,7 +60,7 @@ jobs:
         name: wonderland-engine-examples-deploy
         path: public/
     - name: Upload pages artifact
-      uses: actions/upload-pages-artifact@v1
+      uses: actions/upload-pages-artifact@v3
       with:
         path: ./public
   deploy-pages:
@@ -69,4 +69,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
