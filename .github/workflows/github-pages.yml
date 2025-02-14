@@ -13,7 +13,7 @@ jobs:
       image: wonderlandengine/editor:latest
     steps:
     - name: Install
-      run: yes | apt-get install git git-lfs
+      run: apt-get update && apt-get -y install git git-lfs
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
