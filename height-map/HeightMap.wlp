@@ -649,7 +649,13 @@
             "bundlingType": "esbuild",
             "libraryPaths": [
                 "/js/lib/"
-            ]
+            ],
+            "application": {
+                "output": "HeightMap-app.js"
+            },
+            "components": {
+                "output": "HeightMap-bundle.js"
+            }
         },
         "rendering": {
             "clearColor": [

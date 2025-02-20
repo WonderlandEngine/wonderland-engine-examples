@@ -1,5 +1,8 @@
 {
     "settings": {
+        "rendering": {
+            "api": "webgpu-or-webgl2"
+        },
         "scripting": {
             "application": {
                 "entryPoint": "test/app.js"

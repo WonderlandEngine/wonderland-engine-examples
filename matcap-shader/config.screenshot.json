@@ -1,6 +1,8 @@
 {
-    "scenarios": {
-        "readyEvent": "MatcapShader.bin",
-        "reference": "./test/reference.png"
-    }
+    "scenarios": [
+        {
+            "event": "MatcapShader.bin",
+            "reference": "./test/reference.png"
+        }
+    ]
 }

@@ -830,7 +830,13 @@
             "bundlingType": "esbuild",
             "libraryPaths": [
                 "/js/lib/"
-            ]
+            ],
+            "application": {
+                "output": "Postprocessing-app.js"
+            },
+            "components": {
+                "output": "Postprocessing-bundle.js"
+            }
         },
         "rendering": {
             "hdr": {

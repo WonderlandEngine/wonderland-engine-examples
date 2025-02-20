@@ -586,9 +586,14 @@
         },
         "scripting": {
             "sourcePaths": [
-                "/js/editor-components-bundle.js",
                 "js/"
-            ]
+            ],
+            "application": {
+                "output": "CustomShader-app.js"
+            },
+            "components": {
+                "output": "CustomShader-bundle.js"
+            }
         },
         "editor": {
             "camera": {

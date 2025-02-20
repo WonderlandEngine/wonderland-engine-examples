@@ -1,6 +1,8 @@
 {
-    "scenarios": {
-        "readyEvent": "HeightMap.bin",
-        "reference": "./test/reference.png"
-    }
+    "scenarios": [
+        {
+            "event": "HeightMap.bin",
+            "reference": "./test/reference.png"
+        }
+    ]
 }

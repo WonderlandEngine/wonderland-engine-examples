@@ -160,8 +160,6 @@ export class HeightMap extends Component {
             }
         }
         this.meshComp.mesh = this.mesh;
-
-        this.engine.scene.dispatchReadyEvent();
     }
 
     pick(coord) {

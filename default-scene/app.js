@@ -4,42 +4,37 @@
  * This is the entry point of your standalone application.
  *
  * There are multiple tags used by the editor to inject code automatically:
- *     - `wle:auto-imports:start` and `wle:auto-imports:end`: The list of import statements
- *     - `wle:auto-register:start` and `wle:auto-register:end`: The list of component to register
  *     - `wle:auto-constants:start` and `wle:auto-constants:end`: The project's constants,
  *        such as the project's name, whether it should use the physx runtime, etc...
  *     - `wle:auto-benchmark:start` and `wle:auto-benchmark:end`: Append the benchmarking code
  */
 
-/* wle:auto-imports:start */
-import {MouseLookComponent} from '@wonderlandengine/components';
-import {WasdControlsComponent} from '@wonderlandengine/components';
-import {HeightMap} from './height-map.js';
-/* wle:auto-imports:end */
-
 import {loadRuntime} from '@wonderlandengine/api';
-import * as API from '@wonderlandengine/api'; // Deprecated: Backward compatibility.
 
 /* wle:auto-constants:start */
-const RuntimeOptions = {
-    physx: false,
-    loader: false,
-    xrFramebufferScaleFactor: 1,
-    canvas: 'canvas',
-};
 const Constants = {
-    ProjectName: 'HeightMap',
+    ProjectName: 'DefaultScene',
     RuntimeBaseName: 'WonderlandRuntime',
     WebXRRequiredFeatures: ['local',],
     WebXROptionalFeatures: ['local','hand-tracking','hit-test',],
 };
+const RuntimeOptions = {
+    physx: false,
+    loader: false,
+    xrFramebufferScaleFactor: 1,
+    xrOfferSession: {
+        mode: 'auto',
+        features: Constants.WebXRRequiredFeatures,
+        optionalFeatures: Constants.WebXROptionalFeatures,
+    },
+    canvas: 'canvas',
+};
 /* wle:auto-constants:end */
 
-const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
-Object.assign(engine, API); // Deprecated: Backward compatibility.
-window.WL = engine; // Deprecated: Backward compatibility.
+RuntimeOptions.webgpu = true;
 
-engine.onSceneLoaded.once(() => {
+const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
+engine.onLoadingScreenEnd.once(() => {
     const el = document.getElementById('version');
     if (el) setTimeout(() => el.remove(), 2000);
 });
@@ -56,12 +51,12 @@ function setupButtonsXR() {
     /* Setup AR / VR buttons */
     const arButton = document.getElementById('ar-button');
     if (arButton) {
-        arButton.dataset.supported = engine.arSupported;
+        arButton.setAttribute('data-supported', engine.arSupported.toString());
         arButton.addEventListener('click', () => requestSession('immersive-ar'));
     }
     const vrButton = document.getElementById('vr-button');
     if (vrButton) {
-        vrButton.dataset.supported = engine.vrSupported;
+        vrButton.setAttribute('data-supported', engine.vrSupported.toString());
         vrButton.addEventListener('click', () => requestSession('immersive-vr'));
     }
 }
@@ -72,16 +67,13 @@ if (document.readyState === 'loading') {
     setupButtonsXR();
 }
 
-/* wle:auto-register:start */
-engine.registerComponent(MouseLookComponent);
-engine.registerComponent(WasdControlsComponent);
-engine.registerComponent(HeightMap);
-/* wle:auto-register:end */
-
-engine.scene.load(`${Constants.ProjectName}.bin`).catch((e) => {
+/* Load main scene */
+try {
+    await engine.loadMainScene(`${Constants.ProjectName}.bin`);
+} catch (e) {
     console.error(e);
     window.alert(`Failed to load ${Constants.ProjectName}.bin:`, e);
-});
+}
 
 /* wle:auto-benchmark:start */
 /* wle:auto-benchmark:end */
