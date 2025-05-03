@@ -3187,7 +3187,13 @@
             "sourcePaths": [
                 "/js/editor-components-bundle.js",
                 "js/"
-            ]
+            ],
+            "application": {
+                "output": "Materials-app.js"
+            },
+            "components": {
+                "output": "Materials-bundle.js"
+            }
         },
         "rendering": {
             "fontOutline": true

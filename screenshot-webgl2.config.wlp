@@ -1,5 +1,8 @@
 {
     "settings": {
+        "rendering": {
+            "api": "webgl2"
+        },
         "scripting": {
             "application": {
                 "entryPoint": "test/app.js"

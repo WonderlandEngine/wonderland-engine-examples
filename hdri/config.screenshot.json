@@ -1,6 +1,8 @@
 {
-    "scenarios": {
-        "readyEvent": "HDRI.bin",
-        "reference": "./test/reference.png"
-    }
+    "scenarios": [
+        {
+            "event": "HDRI.bin",
+            "reference": "./test/reference.png"
+        }
+    ]
 }

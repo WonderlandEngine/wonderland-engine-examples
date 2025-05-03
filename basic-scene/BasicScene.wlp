@@ -10,21 +10,77 @@
                     }
                 }
             ],
+            "scaling": [
+                0.9999998,
+                1.0,
+                0.9999998
+            ],
             "translation": [
-                0.0,
-                0.0,
-                7.0
+                -3.2591099,
+                1.8000135,
+                1.7569212
             ],
             "rotation": [
                 0.0,
-                -0.0,
+                -0.3768199,
                 0.0,
-                1.0
+                0.9262865
+            ]
+        },
+        "15": {
+            "name": "FloorPlane",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "7",
+                        "material": "20"
+                    }
+                }
             ],
             "scaling": [
-                0.9999964,
-                1.0,
-                0.9999965
+                4.0,
+                4.0,
+                4.0
+            ],
+            "translation": [
+                0.0,
+                0.0,
+                1.1920928955078125e-7
+            ],
+            "rotation": [
+                -0.7072496,
+                0.0,
+                0.0,
+                0.7069638
+            ]
+        },
+        "16": {
+            "name": "Cube",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "8",
+                        "material": "22"
+                    }
+                }
+            ],
+            "scaling": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "translation": [
+                2.9802322387695313e-8,
+                0.4999999,
+                5.960464477539065e-8
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
             ]
         },
         "17": {
@@ -70,73 +126,88 @@
             ]
         },
         "21": {
-            "name": "PointLight",
+            "name": "Light",
             "components": [
                 {
                     "type": "light",
                     "light": {
-                        "intensity": 8.0,
-                        "color": [
-                            0.8939929,
-                            0.6981469,
-                            0.5117556
-                        ]
+                        "intensity": 3.3329999
                     }
                 }
-            ],
-            "translation": [
-                0.0,
-                0.0,
-                1.5706417
-            ],
-            "rotation": [
-                0.0,
-                0.0,
-                0.0,
-                1.0
             ],
             "scaling": [
                 1.0,
                 1.0,
                 1.0
             ],
-            "parent": "110"
+            "translation": [
+                0.0,
+                3.0,
+                2.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
         },
         "23": {
-            "name": "Sun",
+            "name": "Light.000",
             "components": [
                 {
                     "type": "light",
                     "light": {
-                        "intensity": 4.0,
-                        "type": "sun",
-                        "color": [
-                            0.3255162,
-                            0.2946471,
-                            0.7314487
-                        ]
+                        "intensity": 3.3329999
                     }
                 }
             ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ],
             "translation": [
-                -1.0000001,
-                1.0000003,
-                1.1714487
+                -1.0,
+                3.0,
+                -1.0
             ],
             "rotation": [
-                0.1631023,
-                0.4190928,
-                0.3239548,
-                0.8323534
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        "24": {
+            "name": "Cone",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "10",
+                        "material": "25"
+                    }
+                }
             ],
             "scaling": [
-                0.9999973,
-                0.9999962,
-                0.9999982
+                1.0,
+                1.0,
+                1.0
             ],
-            "parent": "110"
+            "translation": [
+                1.5,
+                1.0,
+                -1.4901161193847656e-8
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
         },
-        "83": {
+        "27": {
             "name": "Sphere",
             "components": [
                 {
@@ -147,337 +218,22 @@
                     }
                 }
             ],
-            "translation": [
-                2.9802322387695313e-8,
-                0.0,
-                0.0
-            ],
-            "rotation": [
-                0.0,
-                0.0,
-                0.0,
-                1.0
-            ],
-            "scaling": [
-                0.25,
-                0.25,
-                0.25
-            ],
-            "parent": "89"
-        },
-        "89": {
-            "name": "Grid",
-            "components": [
-                {
-                    "type": "generator",
-                    "generator": {
-                        "prefab": "83"
-                    }
-                }
-            ]
-        },
-        "90": {
-            "name": "Text",
-            "translation": [
-                0.0,
-                0.0,
-                0.0
-            ],
-            "rotation": [
-                0.0,
-                0.0,
-                0.0,
-                1.0
-            ],
-            "scaling": [
-                2.0,
-                2.0,
-                2.0
-            ]
-        },
-        "91": {
-            "name": "Roughness",
-            "parent": "90",
-            "components": [
-                {
-                    "type": "text",
-                    "text": {
-                        "text": "Roughness",
-                        "effect": "outline"
-                    }
-                }
-            ],
-            "translation": [
-                -0.1,
-                1.5,
-                0.0
-            ]
-        },
-        "95": {
-            "name": "Metallic",
-            "parent": "90",
-            "components": [
-                {
-                    "type": "text",
-                    "text": {
-                        "text": "Metallic",
-                        "alignment": "center",
-                        "effect": "outline"
-                    }
-                }
-            ],
-            "translation": [
-                -1.5,
-                0.0,
-                0.0
-            ]
-        },
-        "96": {
-            "name": "ArrowPointer",
-            "parent": "97",
-            "components": [
-                {
-                    "type": "mesh",
-                    "mesh": {
-                        "mesh": "10",
-                        "material": "98"
-                    }
-                }
-            ],
-            "translation": [
-                0.0,
-                -0.0188755,
-                0.0
-            ],
-            "rotation": [
-                0.0,
-                0.0,
-                0.0,
-                1.0
-            ],
-            "scaling": [
-                0.025,
-                0.025,
-                0.025
-            ]
-        },
-        "97": {
-            "name": "Arrow",
-            "parent": "95",
-            "translation": [
-                0.0,
-                0.4634867,
-                0.0
-            ],
-            "rotation": [
-                0.0,
-                0.0,
-                0.0,
-                1.0
-            ],
-            "scaling": [
-                1.0,
-                1.0,
-                1.0
-            ]
-        },
-        "99": {
-            "name": "ArrowBase",
-            "parent": "97",
-            "components": [
-                {
-                    "type": "mesh",
-                    "mesh": {
-                        "mesh": "11",
-                        "material": "98"
-                    }
-                }
-            ],
-            "translation": [
-                0.0,
-                -0.1415582,
-                0.0
-            ],
-            "rotation": [
-                0.0,
-                0.0,
-                0.0,
-                1.0
-            ],
-            "scaling": [
-                0.0099999,
-                0.1,
-                0.0099999
-            ]
-        },
-        "100": {
-            "name": "Arrow",
-            "parent": "91",
-            "translation": [
-                0.6999999,
-                -0.0145717,
-                0.0
-            ],
-            "rotation": [
-                0.0,
-                0.0,
-                -0.7071051,
-                0.7071084
-            ],
-            "scaling": [
-                0.9999561,
-                0.9999561,
-                1.0
-            ]
-        },
-        "101": {
-            "name": "ArrowPointer",
-            "parent": "100",
-            "components": [
-                {
-                    "type": "mesh",
-                    "mesh": {
-                        "mesh": "10",
-                        "material": "98"
-                    }
-                }
-            ],
-            "translation": [
-                0.0,
-                -0.0175443,
-                0.0
-            ],
-            "rotation": [
-                0.0,
-                0.0,
-                0.0,
-                1.0
-            ],
-            "scaling": [
-                0.025,
-                0.025,
-                0.025
-            ]
-        },
-        "102": {
-            "name": "ArrowBase",
-            "parent": "100",
-            "components": [
-                {
-                    "type": "mesh",
-                    "mesh": {
-                        "mesh": "11",
-                        "material": "98"
-                    }
-                }
-            ],
-            "translation": [
-                0.0,
-                -0.1415582,
-                0.0
-            ],
-            "rotation": [
-                0.0,
-                0.0,
-                0.0,
-                1.0
-            ],
-            "scaling": [
-                0.0099999,
-                0.1,
-                0.0099999
-            ]
-        },
-        "104": {
-            "name": "Credits",
-            "translation": [
-                4.0605425,
-                0.9427152,
-                4.2193984
-            ],
-            "rotation": [
-                0.0000046,
-                -0.5387865,
-                -5.215786700318858e-7,
-                0.8424423
-            ],
-            "scaling": [
-                0.9999929,
-                1.0,
-                0.9999939
-            ]
-        },
-        "105": {
-            "name": "HDRI Credit",
-            "parent": "104",
-            "components": [
-                {
-                    "type": "text",
-                    "text": {
-                        "text": "HDRI Credit:"
-                    }
-                }
-            ]
-        },
-        "106": {
-            "name": "Background",
-            "parent": "104",
-            "components": [
-                {
-                    "type": "mesh",
-                    "mesh": {
-                        "mesh": "7",
-                        "material": "107"
-                    }
-                }
-            ],
-            "scaling": [
-                0.8009999,
-                0.25,
-                1.0
-            ],
-            "translation": [
-                -0.0,
-                -0.1269565,
-                0.0000014
-            ],
-            "rotation": [
-                -0.0000246,
-                -9.085891861104757e-8,
-                -0.0,
-                1.0
-            ]
-        },
-        "108": {
-            "name": "CreditsHDRI",
-            "parent": "104",
-            "components": [
-                {
-                    "type": "text",
-                    "text": {
-                        "text": "Studio Small 09 from polyhaven.com"
-                    }
-                }
-            ],
-            "translation": [
-                -0.0,
-                -0.158021,
-                0.0000043
-            ],
-            "rotation": [
-                9.72525384668188e-8,
-                3.909103725163732e-7,
-                -0.0,
-                1.0
-            ],
             "scaling": [
                 0.75,
                 0.75,
                 0.75
+            ],
+            "translation": [
+                0.4999999,
+                0.75,
+                -1.25
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
             ]
-        },
-        "110": {
-            "name": "Lights"
         }
     },
     "meshes": {
@@ -525,23 +281,103 @@
                 "file": "default"
             },
             "Text": {
-                "font": "55",
-                "effectColor": [
-                    0.2627451,
-                    0.2627451,
-                    0.2627451,
+                "font": "55"
+            }
+        },
+        "20": {
+            "name": "White",
+            "Phong": {
+                "specularColor": [
+                    9.999899930335232e-7,
+                    9.99993744699168e-7,
+                    9.999999974752427e-7,
                     1.0
                 ],
-                "color": [
-                    0.8,
-                    0.8,
-                    0.8,
+                "shininess": 1,
+                "emissiveColor": [
+                    0.2,
+                    0.2,
+                    0.2,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    0.5,
+                    0.5,
+                    0.5,
                     1.0
                 ]
-            }
+            },
+            "pipeline": "37"
+        },
+        "22": {
+            "name": "Pink",
+            "Phong": {
+                "diffuseColor": [
+                    0.9098039,
+                    0.0,
+                    0.5411764,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999899930335232e-7,
+                    9.999911299019004e-7,
+                    9.999999974752427e-7,
+                    1.0
+                ],
+                "shininess": 10,
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "emissiveColor": [
+                    0.317647,
+                    0.0,
+                    0.2165777,
+                    1.0
+                ]
+            },
+            "pipeline": "37"
+        },
+        "25": {
+            "name": "Yellow",
+            "Phong": {
+                "diffuseColor": [
+                    1.0,
+                    0.8039215,
+                    0.0,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "emissiveColor": [
+                    0.3843137,
+                    0.3089579,
+                    0.0,
+                    1.0
+                ]
+            },
+            "pipeline": "37"
         },
         "26": {
-            "name": "PhysicalMaterial",
+            "name": "Green",
             "Phong": {
                 "diffuseColor": [
                     0.1529411,
@@ -556,107 +392,19 @@
                     1.0
                 ],
                 "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "emissiveColor": [
                     0.0,
-                    0.0,
-                    0.0,
+                    0.2352941,
+                    0.1437908,
                     1.0
                 ]
             },
-            "pipeline": "47",
-            "Physical": {
-                "albedoColor": [
-                    1.0,
-                    1.0,
-                    1.0,
-                    1.0
-                ],
-                "roughnessFactor": 0.05,
-                "metallicFactor": 0.0
-            }
-        },
-        "98": {
-            "name": "Arrow",
-            "Phong": {
-                "diffuseColor": [
-                    0.1529411,
-                    0.7882353,
-                    0.5411764,
-                    1.0
-                ],
-                "specularColor": [
-                    9.999999974752427e-7,
-                    9.999899930335232e-7,
-                    9.999899930335232e-7,
-                    1.0
-                ],
-                "ambientColor": [
-                    0.0,
-                    0.0,
-                    0.0,
-                    1.0
-                ]
-            },
-            "pipeline": "34",
-            "Physical": {
-                "albedoColor": [
-                    1.0,
-                    0.0,
-                    0.9882354,
-                    1.0
-                ],
-                "roughnessFactor": 0.05,
-                "metallicFactor": 0.0
-            },
-            "Flat": {
-                "color": [
-                    0.7372548,
-                    0.7372548,
-                    0.7372548,
-                    1.0
-                ]
-            }
-        },
-        "107": {
-            "name": "Dark",
-            "Phong": {
-                "diffuseColor": [
-                    0.1529411,
-                    0.7882353,
-                    0.5411764,
-                    1.0
-                ],
-                "specularColor": [
-                    9.999999974752427e-7,
-                    9.999899930335232e-7,
-                    9.999899930335232e-7,
-                    1.0
-                ],
-                "ambientColor": [
-                    0.0,
-                    0.0,
-                    0.0,
-                    1.0
-                ]
-            },
-            "pipeline": "34",
-            "Physical": {
-                "albedoColor": [
-                    1.0,
-                    0.0,
-                    0.9882354,
-                    1.0
-                ],
-                "roughnessFactor": 0.05,
-                "metallicFactor": 0.0
-            },
-            "Flat": {
-                "color": [
-                    0.0509803,
-                    0.0509803,
-                    0.0509803,
-                    1.0
-                ]
-            }
+            "pipeline": "37"
         }
     },
     "shaders": {
@@ -840,43 +588,43 @@
                 "file": "default"
             }
         },
-        "66": {
+        "68": {
             "link": {
                 "name": "lib\\PhysicalBSDF.glsl",
                 "file": "default"
             }
         },
-        "67": {
+        "69": {
             "link": {
                 "name": "lib\\Quaternion.glsl",
                 "file": "default"
             }
         },
-        "68": {
+        "70": {
             "link": {
                 "name": "lib\\Slug.frag",
                 "file": "default"
             }
         },
-        "69": {
+        "71": {
             "link": {
                 "name": "lib\\Slug.vert",
                 "file": "default"
             }
         },
-        "70": {
+        "72": {
             "link": {
                 "name": "lib\\Surface.frag",
                 "file": "default"
             }
         },
-        "71": {
+        "73": {
             "link": {
                 "name": "lib\\Textures.frag",
                 "file": "default"
             }
         },
-        "73": {
+        "75": {
             "link": {
                 "name": "lib\\Uniforms.glsl",
                 "file": "default"
@@ -885,11 +633,12 @@
     },
     "settings": {
         "project": {
-            "name": "MaterialPhysical",
+            "name": "BasicScene",
             "version": [
                 1,
-                2,
-                0
+                3,
+                0,
+                1
             ]
         },
         "vr": {
@@ -897,36 +646,22 @@
             "rightEyeObject": "19"
         },
         "scripting": {
-            "bundlingType": "esbuild",
-            "libraryPaths": [
-                "/js/lib/"
-            ],
             "application": {
-                "output": "MaterialPhysical-app.js"
+                "output": "DefaultScene.wlp-app.js",
+                "bundling": "esbuild"
             },
             "components": {
-                "output": "MaterialPhysical-bundle.js"
-            }
+                "output": "DefaultScene.wlp-bundle.js"
+            },
+            "libraryPaths": [
+                "/js/lib/"
+            ]
         },
         "rendering": {
             "hdr": {
                 "exposure": 1.5
             },
-            "environment": {
-                "enabled": true,
-                "image": "92",
-                "maxSpecularEnvironmentSize": 128,
-                "intensity": 0.4,
-                "tint": [
-                    1.0,
-                    1.0,
-                    1.0
-                ]
-            },
-            "sky": {
-                "enabled": false,
-                "material": "103"
-            }
+            "api": "webgpu-or-webgl2"
         }
     },
     "animations": {},
@@ -944,9 +679,52 @@
                 "file": "default"
             }
         },
+        "35": {
+            "link": {
+                "name": "Flat Opaque Textured",
+                "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true
+            }
+        },
         "36": {
             "link": {
                 "name": "MeshVisualizer",
+                "file": "default"
+            }
+        },
+        "37": {
+            "link": {
+                "name": "Phong Opaque",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "38": {
+            "link": {
+                "name": "Phong Opaque Textured",
+                "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true,
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "40": {
+            "link": {
+                "name": "Foliage",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "41": {
+            "link": {
+                "name": "Particle",
                 "file": "default"
             }
         },
@@ -960,9 +738,15 @@
             "link": {
                 "name": "Physical Opaque",
                 "file": "default"
+            }
+        },
+        "48": {
+            "link": {
+                "name": "Physical Opaque Textured",
+                "file": "default"
             },
             "features": {
-                "GLOBAL_ILLUMINATION": true
+                "ALPHA_MASKED": true
             }
         },
         "51": {
@@ -971,99 +755,48 @@
                 "file": "default"
             }
         },
-        "72": {
-            "link": {
-                "name": "TileFeedback",
-                "file": "default"
-            }
-        },
-        "111": {
-            "link": {
-                "name": "Flat Opaque Textured",
-                "file": "default"
-            }
-        },
-        "112": {
-            "link": {
-                "name": "Phong Opaque",
-                "file": "default"
-            }
-        },
-        "113": {
-            "link": {
-                "name": "Phong Opaque Textured",
-                "file": "default"
-            }
-        },
-        "114": {
-            "link": {
-                "name": "Physical Opaque Textured",
-                "file": "default"
-            }
-        },
-        "115": {
-            "link": {
-                "name": "Phong Normalmapped",
-                "file": "default"
-            }
-        },
-        "116": {
-            "link": {
-                "name": "Phong Lightmapped",
-                "file": "default"
-            }
-        },
-        "117": {
-            "link": {
-                "name": "Foliage",
-                "file": "default"
-            }
-        },
-        "118": {
-            "link": {
-                "name": "Particle",
-                "file": "default"
-            }
-        },
-        "119": {
+        "54": {
             "link": {
                 "name": "Sky",
                 "file": "default"
             }
-        }
-    },
-    "textures": {
-        "93": {
+        },
+        "66": {
             "link": {
-                "name": "studio_small_09_1k.hdr",
-                "file": "studio_small_09_1k.hdr"
+                "name": "Phong Normalmapped",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "67": {
+            "link": {
+                "name": "Phong Lightmapped",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "74": {
+            "link": {
+                "name": "TileFeedback",
+                "file": "default"
             }
         }
     },
-    "images": {
-        "92": {
-            "link": {
-                "name": "studio_small_09_1k.hdr",
-                "file": "studio_small_09_1k.hdr"
-            },
-            "hdr": true
-        }
-    },
+    "textures": {},
+    "images": {},
     "fonts": {
         "55": {
             "link": {
                 "name": "DejaVuSans.ttf",
                 "file": "default"
-            },
-            "outline": true
+            }
         }
     },
     "languages": {},
-    "files": {
-        "94": {
-            "fileName": "studio_small_09_1k.hdr",
-            "importerName": ""
-        }
-    },
+    "files": {},
     "morphTargets": {}
 }
