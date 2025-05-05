@@ -1,47 +1,50 @@
 {
     "objects": {
-        "14": {
+        "1": {
             "name": "Player",
             "components": [
                 {
                     "type": "wasd-controls",
                     "wasd-controls": {
-                        "headObject": "17"
+                        "headObject": "2"
                     }
                 }
             ],
             "translation": [
-                -0.1038164,
-                2.3439404,
-                0.0
+                -10.0,
+                1.7499957,
+                -0.2999997
             ],
             "rotation": [
-                0.0,
-                -0.7071067,
-                0.0,
-                0.7071068
+                0.0049303,
+                -0.707084,
+                0.004931,
+                0.7070952
             ],
             "scaling": [
-                0.9999992,
-                1.0,
-                0.9999992
+                0.999974,
+                0.9999973,
+                0.9999698
             ]
         },
-        "17": {
+        "2": {
             "name": "NonVrCamera",
-            "parent": "14",
+            "parent": "1",
             "components": [
                 {
                     "type": "view"
                 },
                 {
                     "type": "mouse-look"
+                },
+                {
+                    "type": "cursor"
                 }
             ]
         },
-        "18": {
+        "3": {
             "name": "EyeLeft",
-            "parent": "14",
+            "parent": "1",
             "components": [
                 {
                     "type": "view"
@@ -54,9 +57,9 @@
                 }
             ]
         },
-        "19": {
+        "4": {
             "name": "EyeRight",
-            "parent": "14",
+            "parent": "1",
             "components": [
                 {
                     "type": "view"
@@ -69,57 +72,77 @@
                 }
             ]
         },
-        "21": {
-            "name": "Light",
+        "5": {
+            "name": "Sun",
             "components": [
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.1
+                        "intensity": 0.8,
+                        "shadows": true,
+                        "type": "sun",
+                        "shadowRange": 70.0,
+                        "shadowBias": 0.004,
+                        "cascadeCount": 4
                     },
                     "active": true
                 }
             ],
-            "translation": [
-                6.3584785,
-                3.0,
-                -0.46077
+            "scaling": [
+                0.9999952,
+                0.9999937,
+                0.9999957
             ],
             "rotation": [
-                0.0,
-                0.0,
-                0.0,
-                1.0
+                -0.1865162,
+                -0.3780131,
+                -0.232626,
+                0.8764718
             ],
-            "scaling": [
-                1.0,
-                1.0,
-                1.0
-            ]
+            "translation": [
+                -0.0000016,
+                4.4031848,
+                -9.5367431640625e-7
+            ],
+            "parent": "21"
         },
-        "150": {
+        "6": {
             "link": {
                 "name": "sponza",
                 "file": "sponza.glb"
             }
         },
-        "151": {
-            "name": "Light.000",
+        "7": {
+            "name": "Movable"
+        },
+        "8": {
+            "name": "Bottom",
+            "parent": "9",
             "components": [
                 {
-                    "type": "light",
-                    "light": {
-                        "attenuation": 0.1,
-                        "type": "point"
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "3",
+                        "material": "1"
+                    }
+                },
+                {
+                    "type": "trajectory",
+                    "trajectory": {
+                        "endPos": [
+                            11.0,
+                            1.5,
+                            -1.35
+                        ],
+                        "startPos": [
+                            -12.0,
+                            1.5,
+                            -1.35
+                        ]
                     }
                 }
             ],
-            "parent": null,
-            "translation": [
-                -7.9231348,
-                3.0,
-                -0.8057701
-            ],
+            "hiddenForLightBaking": true,
             "rotation": [
                 0.0,
                 0.0,
@@ -127,392 +150,677 @@
                 1.0
             ],
             "scaling": [
-                1.0,
-                1.0,
-                1.0
+                0.3499999,
+                0.3499999,
+                0.3499999
+            ],
+            "translation": [
+                -12.0,
+                1.5,
+                -1.3500001
             ]
         },
-        "184": {
-            "name": "lower-green",
+        "9": {
+            "name": "Spheres",
+            "parent": "7"
+        },
+        "10": {
+            "name": "Middle",
+            "parent": "9",
             "components": [
-                {
-                    "type": "light",
-                    "light": {
-                        "color": [
-                            0.8604198,
-                            0.972549,
-                            0.7780392
-                        ],
-                        "attenuation": 0.0799999,
-                        "shadows": false,
-                        "shadowBias": 1.0,
-                        "shadowNormalBias": 0.001,
-                        "range": 15.0
-                    }
-                },
-                {
-                    "type": "oval-motion"
-                },
                 {
                     "type": "mesh",
                     "mesh": {
-                        "mesh": "9",
-                        "material": "26"
+                        "mesh": "3",
+                        "material": "1"
+                    }
+                },
+                {
+                    "type": "trajectory",
+                    "trajectory": {
+                        "endPos": [
+                            8.0,
+                            4.5,
+                            -0.5
+                        ],
+                        "startPos": [
+                            -9.0,
+                            4.5,
+                            -0.5
+                        ]
                     }
                 }
             ],
-            "translation": [
-                -0.1038164,
-                2.3439404,
-                0.0
-            ],
+            "hiddenForLightBaking": true,
             "rotation": [
                 0.0,
-                -0.3885317,
                 0.0,
-                0.9214353
+                0.0,
+                1.0
             ],
             "scaling": [
-                0.1199626,
-                0.1199999,
-                0.1199998
+                0.3499999,
+                0.3499999,
+                0.3499999
             ],
-            "parent": null
+            "translation": [
+                8.0,
+                4.5,
+                -0.5
+            ]
         },
-        "185": {
-            "name": "upper-red",
+        "11": {
+            "name": "Transversal",
+            "parent": "9",
             "components": [
-                {
-                    "type": "light",
-                    "light": {
-                        "color": [
-                            0.972549,
-                            0.7780392,
-                            0.7780392
-                        ],
-                        "attenuation": 0.0799999,
-                        "shadows": false,
-                        "shadowBias": 1.0,
-                        "shadowNormalBias": 0.001,
-                        "range": 20.0
-                    }
-                },
-                {
-                    "type": "oval-motion",
-                    "oval-motion": {
-                        "time": 0.0
-                    }
-                },
                 {
                     "type": "mesh",
                     "mesh": {
-                        "mesh": "9",
-                        "material": "22"
+                        "mesh": "3",
+                        "material": "1"
+                    }
+                },
+                {
+                    "type": "trajectory",
+                    "trajectory": {
+                        "endPos": [
+                            0.3,
+                            6.5,
+                            3.5
+                        ],
+                        "startPos": [
+                            0.3,
+                            6.5,
+                            -5.0
+                        ]
                     }
                 }
             ],
-            "translation": [
-                -0.1038164,
-                7.2728667,
-                0.0
-            ],
+            "hiddenForLightBaking": true,
             "rotation": [
-                5.5530225750999314e-8,
-                -0.3885317,
-                -5.5530232856426665e-8,
-                0.9214353
+                0.0,
+                0.0,
+                0.0,
+                1.0
             ],
             "scaling": [
-                0.1076399,
-                0.1076399,
-                0.1076399
+                0.3499999,
+                0.3499999,
+                0.3499999
             ],
-            "parent": null
+            "translation": [
+                0.3,
+                6.5,
+                3.5
+            ]
         },
-        "186": {
-            "name": "lower-red",
+        "12": {
+            "name": "Top",
+            "parent": "9",
             "components": [
-                {
-                    "type": "light",
-                    "light": {
-                        "color": [
-                            0.972549,
-                            0.7780392,
-                            0.7780392
-                        ],
-                        "attenuation": 0.0799999,
-                        "shadows": false,
-                        "shadowBias": 1.0,
-                        "shadowNormalBias": 0.001,
-                        "range": 20.0
-                    }
-                },
-                {
-                    "type": "oval-motion",
-                    "oval-motion": {
-                        "time": 15.0
-                    }
-                },
                 {
                     "type": "mesh",
                     "mesh": {
-                        "mesh": "9",
-                        "material": "22"
+                        "mesh": "3",
+                        "material": "1"
+                    }
+                },
+                {
+                    "type": "trajectory",
+                    "trajectory": {
+                        "endPos": [
+                            -9.5,
+                            12.0,
+                            -0.3346998
+                        ],
+                        "startPos": [
+                            8.0,
+                            12.0,
+                            -0.335
+                        ]
                     }
                 }
             ],
-            "translation": [
-                -0.1038164,
-                2.3439404,
-                0.0
-            ],
+            "hiddenForLightBaking": true,
             "rotation": [
                 0.0,
-                -0.3885317,
                 0.0,
-                0.9214353
+                0.0,
+                1.0
             ],
             "scaling": [
-                0.1199997,
-                0.1199999,
-                0.1199997
+                0.3499999,
+                0.3499999,
+                0.3499999
             ],
-            "parent": null
+            "translation": [
+                8.0,
+                12.0,
+                -0.3346998
+            ]
         },
-        "187": {
-            "name": "upper-green",
+        "13": {
+            "name": "Menu",
+            "translation": [
+                -8.0000038,
+                1.2500027,
+                0.6999988
+            ],
+            "rotation": [
+                0.1293119,
+                0.8366757,
+                0.2241277,
+                -0.4827203
+            ],
+            "scaling": [
+                0.9999971,
+                0.9999988,
+                1.0000001
+            ]
+        },
+        "14": {
+            "name": "ButtonLight",
+            "parent": "13",
+            "translation": [
+                -0.3499999,
+                0.0,
+                -9.999999974752427e-7
+            ],
+            "rotation": [
+                5.82553241201822e-7,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ],
             "components": [
                 {
-                    "type": "light",
-                    "light": {
-                        "color": [
-                            0.8604198,
-                            0.972549,
-                            0.7780392
-                        ],
-                        "attenuation": 0.0799999,
-                        "shadows": true,
-                        "shadowBias": 1.0,
-                        "shadowNormalBias": 0.001,
-                        "range": 30.0
+                    "type": "collision",
+                    "collision": {
+                        "collider": "box",
+                        "aabb": {
+                            "extents": [
+                                0.25,
+                                0.15,
+                                0.05
+                            ]
+                        },
+                        "groups": 2,
+                        "box": {
+                            "extents": [
+                                0.25,
+                                0.15,
+                                0.05
+                            ]
+                        }
                     },
-                    "active": false
+                    "active": true
                 },
                 {
-                    "type": "oval-motion",
-                    "oval-motion": {
-                        "time": 3.0
-                    }
-                },
+                    "type": "button-light",
+                    "button-light": {
+                        "buttonMeshObject": "15",
+                        "hoverMaterial": "2"
+                    },
+                    "active": true
+                }
+            ]
+        },
+        "15": {
+            "name": "Mesh",
+            "parent": "14",
+            "components": [
                 {
                     "type": "mesh",
                     "mesh": {
-                        "mesh": "9",
-                        "material": "26"
-                    }
+                        "mesh": "2",
+                        "material": "4"
+                    },
+                    "active": true
                 }
             ],
+            "scaling": [
+                0.25,
+                0.15,
+                0.05
+            ],
             "translation": [
-                -0.1038164,
-                7.252305,
+                0.0,
+                0.0,
                 0.0
             ],
             "rotation": [
                 0.0,
-                -0.3885317,
                 0.0,
-                0.9214353
+                0.0,
+                1.0
+            ],
+            "hiddenForLightBaking": true
+        },
+        "16": {
+            "name": "Title",
+            "parent": "14",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "Sun",
+                        "effect": "none",
+                        "effectOffset": [
+                            0.05,
+                            0.0
+                        ]
+                    }
+                }
+            ],
+            "translation": [
+                0.0,
+                0.0,
+                0.0550668
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
             ],
             "scaling": [
-                0.1099999,
-                0.1100014,
-                0.1099999
+                1.25,
+                1.25,
+                1.25
+            ]
+        },
+        "17": {
+            "name": "ButtonGI",
+            "parent": "13",
+            "translation": [
+                0.3499999,
+                0.0,
+                0.0000013
             ],
-            "parent": null
+            "rotation": [
+                5.82553241201822e-7,
+                0.0,
+                -0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "components": [
+                {
+                    "type": "collision",
+                    "collision": {
+                        "collider": "box",
+                        "aabb": {
+                            "extents": [
+                                0.25,
+                                0.15,
+                                0.05
+                            ]
+                        },
+                        "groups": 2,
+                        "box": {
+                            "extents": [
+                                0.25,
+                                0.15,
+                                0.05
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "button-gi",
+                    "button-gi": {
+                        "buttonMeshObject": "18",
+                        "hoverMaterial": "2",
+                        "materialGI": "3",
+                        "target": 6,
+                        "targetMesh": "6"
+                    }
+                }
+            ]
+        },
+        "18": {
+            "name": "Mesh",
+            "parent": "17",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "2",
+                        "material": "4"
+                    },
+                    "active": true
+                }
+            ],
+            "scaling": [
+                0.25,
+                0.15,
+                0.05
+            ],
+            "rotation": [
+                -5.825532980452408e-7,
+                0.0,
+                -0.0,
+                1.0
+            ],
+            "hiddenForLightBaking": true
+        },
+        "19": {
+            "name": "Title",
+            "parent": "17",
+            "components": [
+                {
+                    "type": "text",
+                    "text": {
+                        "text": "GI\n",
+                        "effect": "none",
+                        "effectOffset": [
+                            0.05,
+                            0.0
+                        ]
+                    }
+                }
+            ],
+            "scaling": [
+                1.25,
+                1.25,
+                1.25
+            ],
+            "rotation": [
+                -5.825534117320785e-7,
+                0.0,
+                -0.0,
+                1.0
+            ],
+            "translation": [
+                0.0,
+                -0.0,
+                0.0549999
+            ]
+        },
+        "20": {
+            "name": "Background",
+            "parent": "13",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "2",
+                        "material": "31"
+                    },
+                    "active": true
+                }
+            ],
+            "scaling": [
+                0.72,
+                0.3499999,
+                0.025
+            ],
+            "translation": [
+                -0.0000025,
+                -0.05,
+                -0.035
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                -0.0,
+                1.0
+            ],
+            "hiddenForLightBaking": true
+        },
+        "21": {
+            "name": "Lights"
+        },
+        "22": {
+            "name": "EmissivePurple",
+            "parent": "21",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "2",
+                        "material": "33"
+                    }
+                }
+            ],
+            "translation": [
+                11.1406135,
+                -0.0100965,
+                -0.2793346
+            ],
+            "rotation": [
+                0.5001117,
+                0.5001185,
+                -0.4998833,
+                0.4998863
+            ],
+            "scaling": [
+                1.5,
+                0.9999999,
+                0.0249999
+            ]
+        },
+        "23": {
+            "name": "EmissivePurple",
+            "parent": "21",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "2",
+                        "material": "32"
+                    }
+                }
+            ],
+            "translation": [
+                0.0,
+                1.0,
+                -0.2792187
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                0.0149999
+            ]
         }
     },
     "meshes": {
-        "7": {
+        "1": {
             "link": {
                 "name": "PrimitivePlane",
                 "file": "default"
             }
         },
-        "8": {
+        "2": {
             "link": {
                 "name": "PrimitiveCube",
                 "file": "default"
             }
         },
-        "9": {
+        "3": {
             "link": {
                 "name": "PrimitiveSphere",
                 "file": "default"
             }
         },
-        "10": {
+        "4": {
             "link": {
                 "name": "PrimitiveCone",
                 "file": "default"
             }
         },
-        "11": {
+        "5": {
             "link": {
                 "name": "PrimitiveCylinder",
                 "file": "default"
             }
         },
-        "12": {
+        "6": {
             "link": {
                 "name": "PrimitiveCircle",
                 "file": "default"
             }
         },
-        "125": {
+        "7": {
             "link": {
                 "name": "sponza",
                 "file": "sponza.glb"
             }
         },
-        "126": {
+        "8": {
             "link": {
                 "name": "sponza.0",
                 "file": "sponza.glb"
             }
         },
-        "127": {
+        "9": {
             "link": {
                 "name": "sponza.1",
                 "file": "sponza.glb"
             }
         },
-        "128": {
+        "10": {
             "link": {
                 "name": "sponza.2",
                 "file": "sponza.glb"
             }
         },
-        "129": {
+        "11": {
             "link": {
                 "name": "sponza.3",
                 "file": "sponza.glb"
             }
         },
-        "130": {
+        "12": {
             "link": {
                 "name": "sponza.4",
                 "file": "sponza.glb"
             }
         },
-        "131": {
+        "13": {
             "link": {
                 "name": "sponza.5",
                 "file": "sponza.glb"
             }
         },
-        "132": {
+        "14": {
             "link": {
                 "name": "sponza.6",
                 "file": "sponza.glb"
             }
         },
-        "133": {
+        "15": {
             "link": {
                 "name": "sponza.7",
                 "file": "sponza.glb"
             }
         },
-        "134": {
+        "16": {
             "link": {
                 "name": "sponza.8",
                 "file": "sponza.glb"
             }
         },
-        "135": {
+        "17": {
             "link": {
                 "name": "sponza.9",
                 "file": "sponza.glb"
             }
         },
-        "136": {
+        "18": {
             "link": {
                 "name": "sponza.10",
                 "file": "sponza.glb"
             }
         },
-        "137": {
+        "19": {
             "link": {
                 "name": "sponza.11",
                 "file": "sponza.glb"
             }
         },
-        "138": {
+        "20": {
             "link": {
                 "name": "sponza.12",
                 "file": "sponza.glb"
             }
         },
-        "139": {
+        "21": {
             "link": {
                 "name": "sponza.13",
                 "file": "sponza.glb"
             }
         },
-        "140": {
+        "22": {
             "link": {
                 "name": "sponza.14",
                 "file": "sponza.glb"
             }
         },
-        "141": {
+        "23": {
             "link": {
                 "name": "sponza.15",
                 "file": "sponza.glb"
             }
         },
-        "142": {
+        "24": {
             "link": {
                 "name": "sponza.16",
                 "file": "sponza.glb"
             }
         },
-        "143": {
+        "25": {
             "link": {
                 "name": "sponza.17",
                 "file": "sponza.glb"
             }
         },
-        "144": {
+        "26": {
             "link": {
                 "name": "sponza.18",
                 "file": "sponza.glb"
             }
         },
-        "145": {
+        "27": {
             "link": {
                 "name": "sponza.19",
                 "file": "sponza.glb"
             }
         },
-        "146": {
+        "28": {
             "link": {
                 "name": "sponza.20",
                 "file": "sponza.glb"
             }
         },
-        "147": {
+        "29": {
             "link": {
                 "name": "sponza.21",
                 "file": "sponza.glb"
             }
         },
-        "148": {
+        "30": {
             "link": {
                 "name": "sponza.22",
                 "file": "sponza.glb"
             }
         },
-        "149": {
+        "31": {
             "link": {
                 "name": "sponza.23",
                 "file": "sponza.glb"
@@ -527,205 +835,205 @@
             },
             "name": "DefaultFont"
         },
-        "66": {
+        "1": {
             "link": {
                 "name": "texture_0",
                 "file": "sponza.glb"
             }
         },
-        "67": {
+        "2": {
             "link": {
                 "name": "texture_1",
                 "file": "sponza.glb"
             }
         },
-        "68": {
+        "3": {
             "link": {
                 "name": "texture_2",
                 "file": "sponza.glb"
             }
         },
-        "69": {
+        "4": {
             "link": {
                 "name": "texture_3",
                 "file": "sponza.glb"
             }
         },
-        "70": {
+        "5": {
             "link": {
                 "name": "texture_4",
                 "file": "sponza.glb"
             }
         },
-        "71": {
+        "6": {
             "link": {
                 "name": "texture_5",
                 "file": "sponza.glb"
             }
         },
-        "72": {
+        "7": {
             "link": {
                 "name": "texture_6",
                 "file": "sponza.glb"
             }
         },
-        "73": {
+        "8": {
             "link": {
                 "name": "texture_7",
                 "file": "sponza.glb"
             }
         },
-        "74": {
+        "9": {
             "link": {
                 "name": "texture_8",
                 "file": "sponza.glb"
             }
         },
-        "75": {
+        "10": {
             "link": {
                 "name": "texture_9",
                 "file": "sponza.glb"
             }
         },
-        "76": {
+        "11": {
             "link": {
                 "name": "texture_10",
                 "file": "sponza.glb"
             }
         },
-        "77": {
+        "12": {
             "link": {
                 "name": "texture_11",
                 "file": "sponza.glb"
             }
         },
-        "78": {
+        "13": {
             "link": {
                 "name": "texture_12",
                 "file": "sponza.glb"
             }
         },
-        "79": {
+        "14": {
             "link": {
                 "name": "texture_13",
                 "file": "sponza.glb"
             }
         },
-        "80": {
+        "15": {
             "link": {
                 "name": "texture_14",
                 "file": "sponza.glb"
             }
         },
-        "81": {
+        "16": {
             "link": {
                 "name": "texture_15",
                 "file": "sponza.glb"
             }
         },
-        "82": {
+        "17": {
             "link": {
                 "name": "texture_16",
                 "file": "sponza.glb"
             }
         },
-        "83": {
+        "18": {
             "link": {
                 "name": "texture_17",
                 "file": "sponza.glb"
             }
         },
-        "84": {
+        "19": {
             "link": {
                 "name": "texture_18",
                 "file": "sponza.glb"
             }
         },
-        "85": {
+        "20": {
             "link": {
                 "name": "texture_19",
                 "file": "sponza.glb"
             }
         },
-        "86": {
+        "21": {
             "link": {
                 "name": "texture_20",
                 "file": "sponza.glb"
             }
         },
-        "87": {
+        "22": {
             "link": {
                 "name": "texture_21",
                 "file": "sponza.glb"
             }
         },
-        "88": {
+        "23": {
             "link": {
                 "name": "texture_22",
                 "file": "sponza.glb"
             }
         },
-        "89": {
+        "24": {
             "link": {
                 "name": "texture_23",
                 "file": "sponza.glb"
             }
         },
-        "90": {
+        "25": {
             "link": {
                 "name": "texture_24",
                 "file": "sponza.glb"
             }
         },
-        "91": {
+        "26": {
             "link": {
                 "name": "texture_25",
                 "file": "sponza.glb"
             }
         },
-        "92": {
+        "27": {
             "link": {
                 "name": "texture_26",
                 "file": "sponza.glb"
             }
         },
-        "93": {
+        "28": {
             "link": {
                 "name": "texture_27",
                 "file": "sponza.glb"
             }
         },
-        "94": {
+        "29": {
             "link": {
                 "name": "texture_28",
                 "file": "sponza.glb"
             }
         },
-        "95": {
+        "30": {
             "link": {
                 "name": "texture_29",
                 "file": "sponza.glb"
             }
         },
-        "96": {
+        "31": {
             "link": {
                 "name": "texture_30",
                 "file": "sponza.glb"
             }
         },
-        "97": {
+        "32": {
             "link": {
                 "name": "texture_31",
                 "file": "sponza.glb"
             }
         },
-        "98": {
+        "33": {
             "link": {
                 "name": "texture_32",
                 "file": "sponza.glb"
             }
         },
-        "99": {
+        "34": {
             "link": {
                 "name": "texture_33",
                 "file": "sponza.glb"
@@ -733,206 +1041,206 @@
         }
     },
     "images": {
-        "32": {
+        "1": {
             "link": {
                 "name": "sponza_thorn_bump",
                 "file": "sponza.glb"
             }
         },
-        "33": {
+        "2": {
             "link": {
                 "name": "sponza_thorn_diff-sponza_thorn_mask",
                 "file": "sponza.glb"
             }
         },
-        "34": {
+        "3": {
             "link": {
                 "name": "vase_plant-vase_plant_mask",
                 "file": "sponza.glb"
             }
         },
-        "35": {
+        "4": {
             "link": {
                 "name": "vase_round_bump",
                 "file": "sponza.glb"
             }
         },
-        "36": {
+        "5": {
             "link": {
                 "name": "vase_round",
                 "file": "sponza.glb"
             }
         },
-        "37": {
+        "6": {
             "link": {
                 "name": "background_bump",
                 "file": "sponza.glb"
             }
         },
-        "38": {
+        "7": {
             "link": {
                 "name": "background",
                 "file": "sponza.glb"
             }
         },
-        "39": {
+        "8": {
             "link": {
                 "name": "spnza_bricks_a_bump",
                 "file": "sponza.glb"
             }
         },
-        "40": {
+        "9": {
             "link": {
                 "name": "spnza_bricks_a_diff",
                 "file": "sponza.glb"
             }
         },
-        "41": {
+        "10": {
             "link": {
                 "name": "sponza_arch_diff",
                 "file": "sponza.glb"
             }
         },
-        "42": {
+        "11": {
             "link": {
                 "name": "sponza_ceiling_a_diff",
                 "file": "sponza.glb"
             }
         },
-        "43": {
+        "12": {
             "link": {
                 "name": "sponza_column_a_bump",
                 "file": "sponza.glb"
             }
         },
-        "44": {
+        "13": {
             "link": {
                 "name": "sponza_column_a_diff",
                 "file": "sponza.glb"
             }
         },
-        "45": {
+        "14": {
             "link": {
                 "name": "sponza_floor_a_diff",
                 "file": "sponza.glb"
             }
         },
-        "46": {
+        "15": {
             "link": {
                 "name": "sponza_column_c_bump",
                 "file": "sponza.glb"
             }
         },
-        "47": {
+        "16": {
             "link": {
                 "name": "sponza_column_c_diff",
                 "file": "sponza.glb"
             }
         },
-        "48": {
+        "17": {
             "link": {
                 "name": "sponza_details_diff",
                 "file": "sponza.glb"
             }
         },
-        "49": {
+        "18": {
             "link": {
                 "name": "sponza_column_b_bump",
                 "file": "sponza.glb"
             }
         },
-        "50": {
+        "19": {
             "link": {
                 "name": "sponza_column_b_diff",
                 "file": "sponza.glb"
             }
         },
-        "51": {
+        "20": {
             "link": {
                 "name": "sponza_flagpole_diff",
                 "file": "sponza.glb"
             }
         },
-        "52": {
+        "21": {
             "link": {
                 "name": "sponza_fabric_green_diff",
                 "file": "sponza.glb"
             }
         },
-        "53": {
+        "22": {
             "link": {
                 "name": "sponza_fabric_blue_diff",
                 "file": "sponza.glb"
             }
         },
-        "54": {
+        "23": {
             "link": {
                 "name": "sponza_fabric_diff",
                 "file": "sponza.glb"
             }
         },
-        "55": {
+        "24": {
             "link": {
                 "name": "sponza_curtain_blue_diff",
                 "file": "sponza.glb"
             }
         },
-        "56": {
+        "25": {
             "link": {
                 "name": "sponza_curtain_diff",
                 "file": "sponza.glb"
             }
         },
-        "57": {
+        "26": {
             "link": {
                 "name": "sponza_curtain_green_diff",
                 "file": "sponza.glb"
             }
         },
-        "58": {
+        "27": {
             "link": {
                 "name": "chain_texture_bump",
                 "file": "sponza.glb"
             }
         },
-        "59": {
+        "28": {
             "link": {
                 "name": "chain_texture-chain_texture_mask",
                 "file": "sponza.glb"
             }
         },
-        "60": {
+        "29": {
             "link": {
                 "name": "vase_hanging",
                 "file": "sponza.glb"
             }
         },
-        "61": {
+        "30": {
             "link": {
                 "name": "vase_bump",
                 "file": "sponza.glb"
             }
         },
-        "62": {
+        "31": {
             "link": {
                 "name": "vase_dif",
                 "file": "sponza.glb"
             }
         },
-        "63": {
+        "32": {
             "link": {
                 "name": "lion_bump",
                 "file": "sponza.glb"
             }
         },
-        "64": {
+        "33": {
             "link": {
                 "name": "lion",
                 "file": "sponza.glb"
             },
-            "compress": false
+            "compression": "none"
         },
-        "65": {
+        "34": {
             "link": {
                 "name": "sponza_roof_diff",
                 "file": "sponza.glb"
@@ -952,10 +1260,22 @@
                 "file": "default"
             },
             "Text": {
-                "font": "182"
+                "font": "1",
+                "effectColor": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "color": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ]
             }
         },
-        "20": {
+        "1": {
             "name": "White",
             "Phong": {
                 "specularColor": [
@@ -964,12 +1284,27 @@
                     9.999999974752427e-7,
                     1.0
                 ],
-                "shininess": 1
+                "shininess": 1,
+                "ambientColor": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             },
-            "pipeline": "164"
+            "pipeline": "10",
+            "Physical": {
+                "metallicFactor": 0.0
+            }
         },
-        "22": {
-            "name": "Pink",
+        "2": {
+            "name": "ButtonHover",
             "Phong": {
                 "diffuseColor": [
                     0.9098039,
@@ -991,23 +1326,23 @@
                     1.0
                 ]
             },
-            "pipeline": "158",
+            "pipeline": "3",
             "Flat": {
                 "color": [
-                    0.9596412,
-                    0.5895553,
-                    0.5895553,
+                    0.9176468,
+                    0.0,
+                    1.0,
                     1.0
                 ]
             }
         },
-        "25": {
-            "name": "Yellow",
+        "3": {
+            "name": "GI",
             "Phong": {
                 "diffuseColor": [
                     1.0,
-                    0.8039215,
-                    0.0,
+                    1.0,
+                    1.0,
                     1.0
                 ],
                 "specularColor": [
@@ -1017,15 +1352,16 @@
                     1.0
                 ],
                 "ambientColor": [
-                    0.3843137,
-                    0.3089579,
+                    0.0,
+                    0.0,
                     0.0,
                     1.0
                 ]
-            }
+            },
+            "pipeline": "18"
         },
-        "26": {
-            "name": "Green",
+        "4": {
+            "name": "ButtonBackground",
             "Phong": {
                 "diffuseColor": [
                     0.1529411,
@@ -1046,31 +1382,31 @@
                     1.0
                 ]
             },
-            "pipeline": "158",
+            "pipeline": "6",
             "Flat": {
                 "color": [
-                    0.8167476,
-                    0.9955157,
-                    0.5758813,
+                    0.328858,
+                    0.517647,
+                    0.3599527,
                     1.0
                 ]
             }
         },
-        "100": {
+        "5": {
             "link": {
                 "name": "leaf",
                 "file": "sponza.glb"
             },
-            "pipeline": "167"
+            "pipeline": "8"
         },
-        "101": {
+        "6": {
             "link": {
                 "name": "Material__57",
                 "file": "sponza.glb"
             },
-            "pipeline": "167"
+            "pipeline": "8"
         },
-        "102": {
+        "7": {
             "link": {
                 "name": "vase_round",
                 "file": "sponza.glb"
@@ -1079,7 +1415,7 @@
                 "normalTexture": null
             }
         },
-        "103": {
+        "8": {
             "link": {
                 "name": "Material__298",
                 "file": "sponza.glb"
@@ -1087,9 +1423,9 @@
             "Phong": {
                 "normalTexture": null
             },
-            "pipeline": "165"
+            "pipeline": "7"
         },
-        "104": {
+        "9": {
             "link": {
                 "name": "bricks",
                 "file": "sponza.glb"
@@ -1098,19 +1434,19 @@
                 "normalTexture": null
             }
         },
-        "105": {
+        "10": {
             "link": {
                 "name": "arch",
                 "file": "sponza.glb"
             }
         },
-        "106": {
+        "11": {
             "link": {
                 "name": "ceiling",
                 "file": "sponza.glb"
             }
         },
-        "107": {
+        "12": {
             "link": {
                 "name": "column_a",
                 "file": "sponza.glb"
@@ -1119,7 +1455,7 @@
                 "normalTexture": null
             }
         },
-        "108": {
+        "13": {
             "link": {
                 "name": "floor",
                 "file": "sponza.glb"
@@ -1128,7 +1464,7 @@
                 "emissiveTexture": null
             }
         },
-        "109": {
+        "14": {
             "link": {
                 "name": "column_c",
                 "file": "sponza.glb"
@@ -1137,13 +1473,13 @@
                 "normalTexture": null
             }
         },
-        "110": {
+        "15": {
             "link": {
                 "name": "details",
                 "file": "sponza.glb"
             }
         },
-        "111": {
+        "16": {
             "link": {
                 "name": "column_b",
                 "file": "sponza.glb"
@@ -1152,55 +1488,55 @@
                 "normalTexture": null
             }
         },
-        "112": {
+        "17": {
             "link": {
                 "name": "Material__47",
                 "file": "sponza.glb"
             }
         },
-        "113": {
+        "18": {
             "link": {
                 "name": "flagpole",
                 "file": "sponza.glb"
             }
         },
-        "114": {
+        "19": {
             "link": {
                 "name": "fabric_e",
                 "file": "sponza.glb"
             }
         },
-        "115": {
+        "20": {
             "link": {
                 "name": "fabric_d",
                 "file": "sponza.glb"
             }
         },
-        "116": {
+        "21": {
             "link": {
                 "name": "fabric_a",
                 "file": "sponza.glb"
             }
         },
-        "117": {
+        "22": {
             "link": {
                 "name": "fabric_g",
                 "file": "sponza.glb"
             }
         },
-        "118": {
+        "23": {
             "link": {
                 "name": "fabric_c",
                 "file": "sponza.glb"
             }
         },
-        "119": {
+        "24": {
             "link": {
                 "name": "fabric_f",
                 "file": "sponza.glb"
             }
         },
-        "120": {
+        "25": {
             "link": {
                 "name": "chain",
                 "file": "sponza.glb"
@@ -1209,13 +1545,13 @@
                 "normalTexture": null
             }
         },
-        "121": {
+        "26": {
             "link": {
                 "name": "vase_hanging",
                 "file": "sponza.glb"
             }
         },
-        "122": {
+        "27": {
             "link": {
                 "name": "vase",
                 "file": "sponza.glb"
@@ -1224,7 +1560,7 @@
                 "normalTexture": null
             }
         },
-        "123": {
+        "28": {
             "link": {
                 "name": "Material__25",
                 "file": "sponza.glb"
@@ -1232,108 +1568,340 @@
             "Phong": {
                 "shininess": 1,
                 "emissiveTexture": null,
-                "normalTexture": "97"
+                "normalTexture": "32"
             },
-            "pipeline": "165",
+            "pipeline": "7",
             "Physical": {
-                "roughnessMetallicTexture": "97"
+                "roughnessMetallicTexture": "32"
             }
         },
-        "124": {
+        "29": {
             "link": {
                 "name": "roof",
                 "file": "sponza.glb"
             }
+        },
+        "30": {
+            "name": "Sky",
+            "Phong": {
+                "specularColor": [
+                    9.999899930335232e-7,
+                    9.99993744699168e-7,
+                    9.999999974752427e-7,
+                    1.0
+                ],
+                "shininess": 1
+            },
+            "pipeline": "17",
+            "AtmosphericSky": {
+                "direction": [
+                    1.0,
+                    0.8,
+                    0.0
+                ]
+            }
+        },
+        "31": {
+            "name": "MenuBackground",
+            "Phong": {
+                "diffuseColor": [
+                    0.1389619,
+                    0.1411764,
+                    0.1403152,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.0,
+                    0.2352941,
+                    0.1437908,
+                    1.0
+                ]
+            },
+            "pipeline": "6",
+            "Flat": {
+                "color": [
+                    0.328858,
+                    0.517647,
+                    0.3599527,
+                    1.0
+                ]
+            }
+        },
+        "32": {
+            "name": "Emissive",
+            "Phong": {
+                "diffuseColor": [
+                    0.9098039,
+                    0.0,
+                    0.5411764,
+                    0.0
+                ],
+                "specularColor": [
+                    0.9686098,
+                    0.9686098,
+                    0.9686098,
+                    1.0
+                ],
+                "shininess": 10,
+                "ambientColor": [
+                    0.9730941,
+                    0.4450924,
+                    0.805094,
+                    1.0
+                ]
+            },
+            "pipeline": "3",
+            "Flat": {
+                "color": [
+                    1.0,
+                    0.0,
+                    1.0,
+                    1.0
+                ]
+            }
+        },
+        "33": {
+            "name": "EmissiveYellow",
+            "Phong": {
+                "diffuseColor": [
+                    0.9098039,
+                    0.0,
+                    0.5411764,
+                    0.0
+                ],
+                "specularColor": [
+                    0.9686098,
+                    0.9686098,
+                    0.9686098,
+                    1.0
+                ],
+                "shininess": 10,
+                "ambientColor": [
+                    0.9730941,
+                    0.4450924,
+                    0.805094,
+                    1.0
+                ]
+            },
+            "pipeline": "3",
+            "Flat": {
+                "color": [
+                    0.925,
+                    0.85,
+                    0.0,
+                    1.0
+                ]
+            }
         }
     },
     "shaders": {
-        "152": {
+        "1": {
             "link": {
                 "name": "Depth.frag",
                 "file": "default"
             }
         },
-        "154": {
+        "2": {
             "link": {
                 "name": "DistanceFieldVector.frag",
                 "file": "default"
             }
         },
-        "156": {
+        "3": {
             "link": {
                 "name": "Dynamic.vert",
                 "file": "default"
             }
         },
-        "157": {
+        "4": {
             "link": {
                 "name": "Flat.frag",
                 "file": "default"
             }
         },
-        "160": {
+        "5": {
             "link": {
                 "name": "MeshVisualizer.frag",
                 "file": "default"
             }
         },
-        "162": {
+        "6": {
             "link": {
                 "name": "Skinning.vert",
                 "file": "default"
             }
         },
-        "163": {
+        "7": {
             "link": {
                 "name": "Phong.frag",
                 "file": "default"
             }
         },
-        "166": {
+        "8": {
             "link": {
                 "name": "Particle.frag",
                 "file": "default"
             }
         },
-        "169": {
+        "9": {
             "link": {
                 "name": "Background.frag",
                 "file": "default"
             }
         },
-        "170": {
+        "10": {
             "link": {
                 "name": "FullScreenTriangle.vert",
                 "file": "default"
             }
         },
-        "171": {
+        "11": {
             "link": {
                 "name": "Physical.frag",
                 "file": "default"
             }
         },
-        "174": {
+        "12": {
             "link": {
                 "name": "Sky.frag",
                 "file": "default"
             }
         },
-        "175": {
+        "13": {
             "link": {
                 "name": "Text.frag",
                 "file": "default"
             }
         },
-        "177": {
+        "14": {
             "link": {
                 "name": "Text.vert",
                 "file": "default"
             }
         },
-        "178": {
+        "15": {
             "link": {
                 "name": "TileFeedback.frag",
+                "file": "default"
+            }
+        },
+        "16": {
+            "link": {
+                "name": "AtmosphericSky.frag",
+                "file": "default"
+            }
+        },
+        "17": {
+            "link": {
+                "name": "lib\\Color.glsl",
+                "file": "default"
+            }
+        },
+        "18": {
+            "link": {
+                "name": "lib\\Compatibility.glsl",
+                "file": "default"
+            }
+        },
+        "19": {
+            "link": {
+                "name": "lib\\CoordinateSystems.glsl",
+                "file": "default"
+            }
+        },
+        "20": {
+            "link": {
+                "name": "lib\\GI.glsl",
+                "file": "default"
+            }
+        },
+        "21": {
+            "link": {
+                "name": "lib\\Inputs.glsl",
+                "file": "default"
+            }
+        },
+        "22": {
+            "link": {
+                "name": "lib\\Lights.glsl",
+                "file": "default"
+            }
+        },
+        "23": {
+            "link": {
+                "name": "lib\\Materials.glsl",
+                "file": "default"
+            }
+        },
+        "24": {
+            "link": {
+                "name": "lib\\Math.glsl",
+                "file": "default"
+            }
+        },
+        "25": {
+            "link": {
+                "name": "lib\\MorphTargets.glsl",
+                "file": "default"
+            }
+        },
+        "26": {
+            "link": {
+                "name": "lib\\Packing.glsl",
+                "file": "default"
+            }
+        },
+        "27": {
+            "link": {
+                "name": "lib\\PhysicalBSDF.glsl",
+                "file": "default"
+            }
+        },
+        "28": {
+            "link": {
+                "name": "lib\\Quaternion.glsl",
+                "file": "default"
+            }
+        },
+        "29": {
+            "link": {
+                "name": "lib\\SkyProcedural.glsl",
+                "file": "default"
+            }
+        },
+        "30": {
+            "link": {
+                "name": "lib\\Slug.frag.glsl",
+                "file": "default"
+            }
+        },
+        "31": {
+            "link": {
+                "name": "lib\\Slug.vert.glsl",
+                "file": "default"
+            }
+        },
+        "32": {
+            "link": {
+                "name": "lib\\Surface.glsl",
+                "file": "default"
+            }
+        },
+        "33": {
+            "link": {
+                "name": "lib\\Textures.glsl",
+                "file": "default"
+            }
+        },
+        "34": {
+            "link": {
+                "name": "lib\\Uniforms.glsl",
                 "file": "default"
             }
         }
@@ -1343,56 +1911,99 @@
             "name": "Sponza",
             "version": [
                 1,
-                0,
-                0,
-                2
+                3,
+                4
             ]
         },
-        "vr": {
-            "leftEyeObject": "18",
-            "rightEyeObject": "19"
+        "xr": {
+            "leftEyeObject": "3",
+            "rightEyeObject": "4"
         },
         "scripting": {
-            "sourcePaths": [
-                "js/"
-            ],
+            "components": {
+                "sourcePaths": [
+                    "js/"
+                ],
+                "bundling": "none"
+            },
             "libraryPaths": [
                 "/js/lib/"
             ],
-            "bundlingType": "esbuild"
+            "application": {
+                "output": "Sponza-bundle.js",
+                "bundling": "esbuild",
+                "esbuildFlags": "--format=esm",
+                "entryPoint": "js/index.js"
+            }
         },
         "rendering": {
             "compressedTextureAtlasSize": [
                 8192,
                 8192
-            ]
+            ],
+            "hdr": {
+                "exposure": 1.5,
+                "tonemapping": "aces approximated"
+            },
+            "sky": {
+                "enabled": true,
+                "material": "30"
+            },
+            "bloom": {
+                "enabled": false,
+                "threshold": 2.5,
+                "intensity": 0.3
+            },
+            "environment": {
+                "enabled": false
+            }
+        },
+        "gi": {
+            "probeVolume": {
+                "enabled": true,
+                "scaling": [
+                    38.7459983,
+                    15.3459997,
+                    25.7457885
+                ],
+                "translation": [
+                    -0.5894853,
+                    6.7069997,
+                    -0.425363
+                ],
+                "lods": 2,
+                "minProbeSpacing": 0.85
+            }
         }
     },
     "animations": {},
     "skins": {},
-    "files": [
-        "sponza.glb"
-    ],
+    "files": {
+        "1": {
+            "fileName": "sponza.glb",
+            "importerName": ""
+        }
+    },
     "pipelines": {
-        "153": {
+        "1": {
             "link": {
                 "name": "Depth",
                 "file": "default"
             }
         },
-        "155": {
+        "2": {
             "link": {
                 "name": "DistanceFieldVector",
                 "file": "default"
             }
         },
-        "158": {
+        "3": {
             "link": {
                 "name": "Flat Opaque",
                 "file": "default"
             }
         },
-        "159": {
+        "4": {
             "link": {
                 "name": "Flat Opaque Textured",
                 "file": "default"
@@ -1401,92 +2012,151 @@
                 "ALPHA_MASKED": true
             }
         },
-        "161": {
+        "5": {
             "link": {
                 "name": "MeshVisualizer",
                 "file": "default"
-            }
+            },
+            "depthTest": true
         },
-        "164": {
+        "6": {
             "link": {
                 "name": "Phong Opaque",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true,
+                "WITH_EMISSIVE": true,
+                "GLOBAL_ILLUMINATION_PROBE_VOLUME": true,
+                "GLOBAL_ILLUMINATION": false,
+                "TONEMAPPING": true
             }
         },
-        "165": {
+        "7": {
             "link": {
                 "name": "Phong Opaque Textured",
                 "file": "default"
             },
             "features": {
-                "ALPHA_MASKED": true
+                "ALPHA_MASKED": true,
+                "DEPRECATED_LIGHT_ATTENUATION": true,
+                "WITH_EMISSIVE": true,
+                "GLOBAL_ILLUMINATION_PROBE_VOLUME": true,
+                "GLOBAL_ILLUMINATION": false,
+                "TONEMAPPING": true
             }
         },
-        "167": {
+        "8": {
             "link": {
                 "name": "Foliage",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
-        "168": {
+        "9": {
             "link": {
                 "name": "Particle",
                 "file": "default"
             }
         },
-        "172": {
+        "10": {
             "link": {
                 "name": "Physical Opaque",
                 "file": "default"
+            },
+            "features": {
+                "SEPARATE_OCCLUSION_TEXTURE": true,
+                "GLOBAL_ILLUMINATION_PROBE_VOLUME": true,
+                "TONEMAPPING": true
             }
         },
-        "173": {
+        "11": {
             "link": {
                 "name": "Physical Opaque Textured",
                 "file": "default"
             },
             "features": {
-                "ALPHA_MASKED": true
+                "ALPHA_MASKED": true,
+                "SEPARATE_OCCLUSION_TEXTURE": true
             }
         },
-        "176": {
+        "12": {
             "link": {
                 "name": "Text",
                 "file": "default"
             }
         },
-        "179": {
+        "13": {
             "link": {
                 "name": "Phong Normalmapped",
                 "file": "default"
             },
             "features": {
                 "TEXTURED": true,
-                "WITH_EMISSIVE": true
+                "WITH_EMISSIVE": true,
+                "DEPRECATED_LIGHT_ATTENUATION": true,
+                "GLOBAL_ILLUMINATION_PROBE_VOLUME": true,
+                "GLOBAL_ILLUMINATION": false,
+                "TONEMAPPING": true
             },
-            "castShadows": false,
+            "castShadows": true,
             "sampleAlphaToCoverage": true
         },
-        "180": {
+        "14": {
             "link": {
                 "name": "Phong Lightmapped",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true,
+                "WITH_EMISSIVE": true
             }
         },
-        "181": {
+        "15": {
             "link": {
                 "name": "Sky",
                 "file": "default"
             }
+        },
+        "16": {
+            "link": {
+                "name": "TileFeedback",
+                "file": "default"
+            }
+        },
+        "17": {
+            "link": {
+                "name": "AtmosphericSky",
+                "file": "default"
+            }
+        },
+        "18": {
+            "link": {
+                "name": "Phong Opaque",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": false,
+                "WITH_EMISSIVE": false,
+                "GLOBAL_ILLUMINATION_PROBE_VOLUME": true,
+                "GLOBAL_ILLUMINATION": false,
+                "TONEMAPPING": false,
+                "WITH_FOG": false
+            },
+            "name": "Phong Opaque GI"
         }
     },
     "fonts": {
-        "182": {
+        "1": {
             "link": {
                 "name": "DejaVuSans.ttf",
                 "file": "default"
             }
         }
     },
-    "languages": {}
+    "languages": {},
+    "morphTargets": {},
+    "particleEffects": {}
 }
