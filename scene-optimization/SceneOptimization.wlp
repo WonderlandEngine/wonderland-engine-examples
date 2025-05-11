@@ -10,23 +10,21 @@
                     }
                 }
             ],
-            "transformation": [
-                0.7160133,
-                0.0,
-                0.6980865,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                -0.6980865,
-                0.0,
-                0.7160133,
-                0.0,
+            "translation": [
                 1.74669,
                 1.8000135,
-                1.7569217,
-                1.0
+                1.7569216
+            ],
+            "rotation": [
+                0.0,
+                -0.3768199,
+                0.0,
+                0.9262865
+            ],
+            "scaling": [
+                0.9999998,
+                1.0,
+                0.9999998
             ]
         },
         "17": {
@@ -77,32 +75,31 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.001,
                         "color": [
                             0.2007842,
                             0.4625278,
                             0.5019607
-                        ]
+                        ],
+                        "intensity": 0.4,
+                        "type": "sun"
                     }
                 }
             ],
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                3.576278686523438e-7,
-                -0.9999999,
-                0.0,
-                0.0,
-                0.9999999,
-                3.576278686523438e-7,
-                0.0,
-                -10.8645992,
-                11.200922,
-                1.9739422,
-                1.0
+            "translation": [
+                -10.8646192,
+                11.2009449,
+                1.9739465
+            ],
+            "rotation": [
+                -0.3673133,
+                0.3378305,
+                0.5460913,
+                0.6728563
+            ],
+            "scaling": [
+                0.9999976,
+                0.9999955,
+                0.9999988
             ]
         },
         "23": {
@@ -111,32 +108,31 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.001,
                         "color": [
                             1.0,
                             0.9634451,
                             0.6588234
-                        ]
+                        ],
+                        "intensity": 2.0,
+                        "type": "sun"
                     }
                 }
             ],
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                3.576278686523438e-7,
-                -0.9999999,
-                0.0,
-                0.0,
-                0.9999999,
-                3.576278686523438e-7,
-                0.0,
-                16.049179,
-                3.7379207,
-                -2.9560031,
-                1.0
+            "translation": [
+                16.0491752,
+                9.9414501,
+                -2.9559788
+            ],
+            "rotation": [
+                -0.5454064,
+                -0.4500334,
+                -0.4500313,
+                0.5454112
+            ],
+            "scaling": [
+                0.9999986,
+                0.9999887,
+                0.9999897
             ]
         },
         "829": {
@@ -144,23 +140,21 @@
                 "name": "RootNode (gltf orientation matrix)",
                 "file": "assets\\scene.gltf"
             },
-            "transformation": [
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                -0.7071066,
+                0.0,
+                0.0,
+                0.7071068
+            ],
+            "scaling": [
                 0.25,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                8.9406889003385e-8,
-                -0.2499997,
-                0.0,
-                0.0,
-                0.2499999,
-                8.940696716308596e-8,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0
+                0.2499997,
+                0.2499998
             ]
         },
         "830": {
@@ -1850,23 +1844,21 @@
                 "file": "assets\\scene.gltf"
             },
             "parent": "1069",
-            "transformation": [
+            "translation": [
+                1.1920928955078125e-7,
+                5.960464477539063e-8,
+                0.0
+            ],
+            "rotation": [
+                -0.0,
+                -1.4901164746561335e-8,
+                0.0,
+                1.0
+            ],
+            "scaling": [
                 0.9999998,
-                0.0,
-                2.9802322387695326e-8,
-                0.0,
-                5.960464477539065e-8,
                 1.0000001,
-                0.0,
-                0.0,
-                -2.4662199393787887e-8,
-                1.6731888763388273e-8,
-                0.9999998,
-                0.0,
-                1.192092895507813e-7,
-                5.960464477539065e-8,
-                0.0,
-                0.9999999
+                0.9999998
             ]
         },
         "1071": {
@@ -8644,23 +8636,21 @@
                 "file": "assets\\scene.gltf"
             },
             "parent": "2037",
-            "transformation": [
-                1.0,
+            "translation": [
                 0.0,
                 0.0,
-                0.0,
-                0.0,
-                0.9999999,
-                -0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.9999999,
-                0.0,
+                4.429717
+            ],
+            "rotation": [
                 0.0,
                 0.0,
                 0.0,
                 1.0
+            ],
+            "scaling": [
+                1.0,
+                0.9999998,
+                0.9999998
             ]
         },
         "2039": {
@@ -13292,7 +13282,7 @@
                 "name": "image_2",
                 "file": "assets\\scene.gltf"
             },
-            "compress": false
+            "compression": "none"
         },
         "47": {
             "link": {
@@ -13311,11 +13301,11 @@
                 "name": "image_5",
                 "file": "assets\\scene.gltf"
             },
-            "compress": false,
             "maxSize": [
                 256,
                 256
-            ]
+            ],
+            "compression": "none"
         },
         "50": {
             "link": {
@@ -13358,7 +13348,7 @@
                 "name": "image_12",
                 "file": "assets\\scene.gltf"
             },
-            "compress": false
+            "compression": "none"
         },
         "57": {
             "link": {
@@ -13371,7 +13361,7 @@
                 "name": "image_14",
                 "file": "assets\\scene.gltf"
             },
-            "compress": false
+            "compression": "none"
         },
         "59": {
             "link": {
@@ -13408,7 +13398,7 @@
                 "name": "image_20",
                 "file": "assets\\scene.gltf"
             },
-            "compress": false
+            "compression": "none"
         },
         "65": {
             "link": {
@@ -13433,7 +13423,7 @@
                 "name": "image_24",
                 "file": "assets\\scene.gltf"
             },
-            "compress": false
+            "compression": "none"
         },
         "69": {
             "link": {
@@ -13564,14 +13554,14 @@
                 "name": "image_45",
                 "file": "assets\\scene.gltf"
             },
-            "compress": false
+            "compression": "none"
         },
         "90": {
             "link": {
                 "name": "image_46",
                 "file": "assets\\scene.gltf"
             },
-            "compress": false
+            "compression": "none"
         },
         "91": {
             "link": {
@@ -13591,6 +13581,9 @@
             "link": {
                 "name": "DefaultFontMaterial",
                 "file": "default"
+            },
+            "Text": {
+                "font": "2116"
             }
         },
         "20": {
@@ -13603,7 +13596,25 @@
                     9.999999974752427e-7,
                     1.0
                 ],
-                "shininess": 1
+                "shininess": 1,
+                "emissiveColor": [
+                    0.2,
+                    0.2,
+                    0.2,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    0.5,
+                    0.5,
+                    0.5,
+                    1.0
+                ]
             }
         },
         "22": {
@@ -13623,9 +13634,15 @@
                 ],
                 "shininess": 10,
                 "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "emissiveColor": [
                     0.317647,
                     0.0,
-                    0.2165777,
+                    0.2165776,
                     1.0
                 ]
             }
@@ -13646,6 +13663,12 @@
                     1.0
                 ],
                 "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "emissiveColor": [
                     0.3843137,
                     0.3089579,
                     0.0,
@@ -13669,9 +13692,15 @@
                     1.0
                 ],
                 "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "emissiveColor": [
                     0.0,
                     0.2352941,
-                    0.1437908,
+                    0.1437907,
                     1.0
                 ]
             }
@@ -13680,66 +13709,220 @@
             "link": {
                 "name": "Material.013",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "143": {
             "link": {
                 "name": "medievalfantasyforest_unwrap",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "144": {
             "link": {
                 "name": "Ravens.001",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "145": {
             "link": {
                 "name": "Material.021",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "146": {
             "link": {
                 "name": "Material.038",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "147": {
             "link": {
                 "name": "bench_mat",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "148": {
             "link": {
                 "name": "StoneWall",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "149": {
             "link": {
                 "name": "Material.007",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "150": {
             "link": {
                 "name": "Material.009",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "151": {
             "link": {
                 "name": "Material.034",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "152": {
             "link": {
                 "name": "Objects",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "153": {
@@ -13760,216 +13943,714 @@
             "link": {
                 "name": "Water",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ]
             }
         },
         "156": {
             "link": {
                 "name": "House_2_AO_tex",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "157": {
             "link": {
                 "name": "Tower_tex_3",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "158": {
             "link": {
                 "name": "House_4_AO_tex",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "159": {
             "link": {
                 "name": "Material.001",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "160": {
             "link": {
                 "name": "Material",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "161": {
             "link": {
                 "name": "color.003",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "162": {
             "link": {
                 "name": "Material.026",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "163": {
             "link": {
                 "name": "Material.033",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "164": {
             "link": {
                 "name": "House_3_AO_tex",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "165": {
             "link": {
                 "name": "Material.025",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "166": {
             "link": {
                 "name": "Material.029",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "167": {
             "link": {
                 "name": "Material.031",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "168": {
             "link": {
                 "name": "Material.028",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "169": {
             "link": {
                 "name": "Material.024",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "170": {
             "link": {
                 "name": "Material.032",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "171": {
             "link": {
                 "name": "Material.036",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "172": {
             "link": {
                 "name": "Material.039",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "173": {
             "link": {
                 "name": "Material.037",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "174": {
             "link": {
                 "name": "Material.035",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "175": {
             "link": {
                 "name": "Tower_tex_1",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "176": {
             "link": {
                 "name": "Tower_tex_2",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "177": {
             "link": {
                 "name": "Material.014",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "178": {
             "link": {
                 "name": "Stone_Circle_Mat",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "179": {
             "link": {
                 "name": "Material.020",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "180": {
             "link": {
                 "name": "House_1_AO_tex",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "181": {
             "link": {
                 "name": "Texture-base-gloss-jpg.001",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "182": {
             "link": {
                 "name": "WATER",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "183": {
             "link": {
                 "name": "Material.017",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "184": {
             "link": {
                 "name": "Material.012",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "185": {
             "link": {
                 "name": "Material.008",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "186": {
             "link": {
                 "name": "Wizard",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "187": {
             "link": {
                 "name": "well_material.001",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "188": {
             "link": {
                 "name": "pulley_mat.001",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "189": {
             "link": {
                 "name": "Material.003",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         },
         "190": {
             "link": {
                 "name": "Material.012_0",
                 "file": "assets\\scene.gltf"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
             }
         }
     },
@@ -14066,7 +14747,7 @@
         },
         "2106": {
             "link": {
-                "name": "Sky.vert",
+                "name": "FullScreenTriangle.vert",
                 "file": "default"
             }
         },
@@ -14087,15 +14768,27 @@
                 "name": "TileFeedback.frag",
                 "file": "default"
             }
+        },
+        "2112": {
+            "link": {
+                "name": "Background.frag",
+                "file": "default"
+            }
+        },
+        "2113": {
+            "link": {
+                "name": "FullScreenTriangle.vert",
+                "file": "default"
+            }
         }
     },
     "settings": {
         "project": {
             "name": "SceneOptimization",
             "version": [
+                1,
                 0,
-                8,
-                10
+                4
             ]
         },
         "vr": {
@@ -14104,9 +14797,12 @@
         },
         "scripting": {
             "sourcePaths": [
-                "/js/editor-components-bundle.js",
                 "js/"
-            ]
+            ],
+            "libraryPaths": [
+                "/js/lib/"
+            ],
+            "bundlingType": "esbuild"
         },
         "rendering": {
             "clearColor": [
@@ -14146,6 +14842,9 @@
             "link": {
                 "name": "Flat Opaque Textured",
                 "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true
             }
         },
         "36": {
@@ -14158,18 +14857,29 @@
             "link": {
                 "name": "Phong Opaque",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true,
+                "WITH_EMISSIVE": true
             }
         },
         "38": {
             "link": {
                 "name": "Phong Opaque Textured",
                 "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true,
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "40": {
             "link": {
                 "name": "Foliage",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "41": {
@@ -14194,6 +14904,9 @@
             "link": {
                 "name": "Physical Opaque Textured",
                 "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true
             }
         },
         "2108": {
@@ -14207,9 +14920,39 @@
                 "name": "Sky",
                 "file": "default"
             }
+        },
+        "2114": {
+            "link": {
+                "name": "Phong Normalmapped",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "2115": {
+            "link": {
+                "name": "Phong Lightmapped",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
         }
     },
     "files": [
-        "assets/scene.gltf"
-    ]
+        {
+            "fileName": "assets/scene.gltf",
+            "importerName": ""
+        }
+    ],
+    "fonts": {
+        "2116": {
+            "link": {
+                "name": "DejaVuSans.ttf",
+                "file": "default"
+            }
+        }
+    },
+    "languages": {}
 }

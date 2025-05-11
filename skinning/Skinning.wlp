@@ -131,7 +131,7 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.1
+                        "intensity": 3.3329999
                     }
                 }
             ],
@@ -158,7 +158,7 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.1
+                        "intensity": 3.3329999
                     }
                 }
             ],
@@ -2299,8 +2299,7 @@
             "version": [
                 1,
                 0,
-                0,
-                2
+                4
             ]
         },
         "vr": {
@@ -2315,8 +2314,7 @@
             "libraryPaths": [
                 "/js/lib/"
             ],
-            "bundlingType": "esbuild",
-            "autoManageEntryPoint": true
+            "bundlingType": "esbuild"
         }
     },
     "animations": {
@@ -2517,9 +2515,18 @@
         }
     },
     "files": [
-        "mixamo-breakdance.glb",
-        "CesiumMan.glb",
-        "Sci-Fi_warrior_V02_male_rigged.glb"
+        {
+            "fileName": "mixamo-breakdance.glb",
+            "importerName": ""
+        },
+        {
+            "fileName": "CesiumMan.glb",
+            "importerName": ""
+        },
+        {
+            "fileName": "Sci-Fi_warrior_V02_male_rigged.glb",
+            "importerName": ""
+        }
     ],
     "pipelines": {
         "252": {
@@ -2559,6 +2566,9 @@
             "link": {
                 "name": "Phong Opaque",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "263": {
@@ -2567,13 +2577,17 @@
                 "file": "default"
             },
             "features": {
-                "ALPHA_MASKED": true
+                "ALPHA_MASKED": true,
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "266": {
             "link": {
                 "name": "Foliage",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "284": {
@@ -2613,12 +2627,18 @@
             "link": {
                 "name": "Phong Normalmapped",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "298": {
             "link": {
                 "name": "Phong Lightmapped",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         }
     },

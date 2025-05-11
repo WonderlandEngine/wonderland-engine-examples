@@ -7,27 +7,25 @@
                     "type": "wasd-controls",
                     "wasd-controls": {
                         "headObject": "17",
-                        "speed": 0.15000000596046449
+                        "speed": 0.15
                     }
                 }
             ],
-            "transformation": [
-                0.7160133123397827,
+            "translation": [
+                -8.0849571,
+                1.7999999,
+                8.9467878
+            ],
+            "rotation": [
                 0.0,
-                0.6980865001678467,
+                -0.3768199,
                 0.0,
-                0.0,
+                0.9262865
+            ],
+            "scaling": [
+                0.9999998,
                 1.0,
-                0.0,
-                0.0,
-                -0.6980865001678467,
-                0.0,
-                0.7160133123397827,
-                0.0,
-                -8.084957122802735,
-                1.7999999523162842,
-                8.94678783416748,
-                1.0
+                0.9999998
             ]
         },
         "15": {
@@ -41,55 +39,22 @@
                     }
                 }
             ],
-            "transformation": [
+            "translation": [
+                0.0,
+                0.0,
+                1.1920928955078125e-7
+            ],
+            "rotation": [
+                -0.7072496,
+                0.0,
+                0.0,
+                0.7069638
+            ],
+            "scaling": [
                 10.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                -0.004041194915771484,
-                -9.999999046325684,
-                0.0,
-                0.0,
-                9.999999046325684,
-                -0.004041194915771484,
-                0.0,
-                0.0,
-                0.0,
-                1.192092895507813e-7,
-                1.0
+                10.0,
+                10.0
             ]
-        },
-        "16": {
-            "name": "Cube",
-            "components": [
-                {
-                    "type": "mesh",
-                    "mesh": {
-                        "mesh": "8",
-                        "material": "22"
-                    }
-                }
-            ],
-            "transformation": [
-                0.5,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.5,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.5,
-                0.0,
-                2.9802322387695329e-8,
-                0.4999999403953552,
-                5.960464477539065e-8,
-                1.0
-            ],
-            "deleted": true
         },
         "17": {
             "name": "NonVrCamera",
@@ -139,26 +104,24 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.10000000149011612
+                        "intensity": 3.3329999
                     }
                 }
             ],
-            "transformation": [
-                1.0,
+            "translation": [
                 0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                4.656612873077393e-10,
                 3.0,
-                2.0,
+                2.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
                 1.0
             ]
         },
@@ -168,120 +131,38 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.10000000149011612
+                        "intensity": 3.3329999
                     }
                 }
             ],
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
+            "translation": [
                 -1.0,
                 3.0,
-                -1.0,
+                -1.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
                 1.0
             ]
         },
-        "24": {
-            "name": "Cone",
-            "components": [
-                {
-                    "type": "mesh",
-                    "mesh": {
-                        "mesh": "10",
-                        "material": "25"
-                    }
-                }
-            ],
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                1.5,
-                1.0,
-                0.0,
-                1.0
-            ],
-            "deleted": true
-        },
-        "27": {
-            "name": "Sphere",
-            "components": [
-                {
-                    "type": "mesh",
-                    "mesh": {
-                        "mesh": "9",
-                        "material": "26"
-                    }
-                }
-            ],
-            "transformation": [
-                0.75,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.75,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.75,
-                0.0,
-                0.4999999701976776,
-                0.75,
-                -1.25,
-                1.0
-            ],
-            "deleted": true
-        },
         "28": {
             "name": "Spawner",
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                2.700000047683716,
-                0.0,
-                1.0
-            ],
             "components": [
                 {
                     "type": "mesh-particles",
                     "mesh-particles": {
                         "material": "22",
                         "mesh": "8",
-                        "delay": 0.009999999776482582,
+                        "delay": 0.0099999,
                         "maxParticles": 128,
-                        "initalSpeed": 0.10000000149011612,
+                        "initalSpeed": 0.1,
                         "initialSpeed": 4.0
                     }
                 },
@@ -290,8 +171,8 @@
                     "mesh-particles": {
                         "mesh": "9",
                         "material": "26",
-                        "delay": 0.019999999552965165,
-                        "initalSpeed": 0.10000000149011612,
+                        "delay": 0.0199999,
+                        "initalSpeed": 0.1,
                         "initialSpeed": 6.0,
                         "maxParticles": 128
                     }
@@ -301,16 +182,29 @@
                     "mesh-particles": {
                         "mesh": "10",
                         "material": "25",
-                        "delay": 0.03999999910593033,
-                        "initalSpeed": 0.10000000149011612,
+                        "delay": 0.0399999,
+                        "initalSpeed": 0.1,
                         "initialSpeed": 8.0,
                         "maxParticles": 128
                     }
                 }
+            ],
+            "translation": [
+                0.0,
+                2.7,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
             ]
-        },
-        "3": {
-            "deleted": true
         }
     },
     "meshes": {
@@ -354,7 +248,7 @@
     "textures": {
         "13": {
             "link": {
-                "name": "DefaultFont",
+                "name": "DefaultTexture",
                 "file": "default"
             },
             "name": "DefaultFont"
@@ -363,7 +257,7 @@
     "images": {
         "f0": {
             "link": {
-                "name": "DefaultFontImage",
+                "name": "DefaultImage",
                 "file": "default"
             }
         }
@@ -373,41 +267,68 @@
             "link": {
                 "name": "DefaultFontMaterial",
                 "file": "default"
+            },
+            "Text": {
+                "font": "62"
             }
         },
         "20": {
             "name": "White",
-            "shader": "Phong",
             "Phong": {
                 "specularColor": [
-                    9.999899930335233e-7,
+                    9.999899930335232e-7,
                     9.99993744699168e-7,
-                    9.999999974752428e-7,
+                    9.999999974752427e-7,
                     1.0
                 ],
-                "shininess": 1
-            }
+                "shininess": 1,
+                "emissiveColor": [
+                    0.2,
+                    0.2,
+                    0.2,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    0.5,
+                    0.5,
+                    0.5,
+                    1.0
+                ]
+            },
+            "pipeline": "46"
         },
         "22": {
             "name": "Pink",
             "Phong": {
                 "diffuseColor": [
-                    0.9098039269447328,
+                    0.9098039,
                     0.0,
-                    0.5411764979362488,
-                    0.0
+                    0.5411764,
+                    1.0
                 ],
                 "specularColor": [
-                    9.999899930335233e-7,
-                    9.999911299019005e-7,
-                    9.999999974752428e-7,
+                    9.999899930335232e-7,
+                    9.999911299019004e-7,
+                    9.999999974752427e-7,
                     1.0
                 ],
                 "shininess": 10,
                 "ambientColor": [
-                    0.3176470398902893,
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "emissiveColor": [
+                    0.317647,
                     0.0,
-                    0.2165777683258057,
+                    0.2165777,
                     1.0
                 ]
             }
@@ -417,19 +338,25 @@
             "Phong": {
                 "diffuseColor": [
                     1.0,
-                    0.8039215803146362,
+                    0.8039215,
                     0.0,
                     1.0
                 ],
                 "specularColor": [
-                    9.999999974752428e-7,
-                    9.999899930335233e-7,
-                    9.999899930335233e-7,
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
                     1.0
                 ],
                 "ambientColor": [
-                    0.384313702583313,
-                    0.3089579045772553,
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "emissiveColor": [
+                    0.3843137,
+                    0.3089579,
                     0.0,
                     1.0
                 ]
@@ -439,84 +366,114 @@
             "name": "Green",
             "Phong": {
                 "diffuseColor": [
-                    0.15294118225574494,
-                    0.7882353067398071,
-                    0.5411764979362488,
+                    0.1529411,
+                    0.7882353,
+                    0.5411764,
                     1.0
                 ],
                 "specularColor": [
-                    9.999999974752428e-7,
-                    9.999899930335233e-7,
-                    9.999899930335233e-7,
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
                     1.0
                 ],
                 "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "emissiveColor": [
                     0.0,
-                    0.23529410362243653,
-                    0.1437908560037613,
+                    0.2352941,
+                    0.1437908,
                     1.0
                 ]
             }
         }
     },
     "shaders": {
-        "1": {
+        "33": {
             "link": {
-                "name": "DistanceFieldVector Textured",
+                "name": "Background.frag",
                 "file": "default"
             }
         },
-        "2": {
+        "34": {
             "link": {
-                "name": "Flat",
+                "name": "Depth.frag",
                 "file": "default"
             }
         },
-        "3": {
+        "36": {
             "link": {
-                "name": "Flat Textured",
+                "name": "DistanceFieldVector.frag",
                 "file": "default"
             }
         },
-        "4": {
+        "38": {
             "link": {
-                "name": "MeshVisualizer",
+                "name": "Dynamic.vert",
                 "file": "default"
             }
         },
-        "5": {
+        "39": {
             "link": {
-                "name": "Phong",
+                "name": "Flat.frag",
                 "file": "default"
             }
         },
-        "6": {
+        "42": {
             "link": {
-                "name": "Phong Textured",
+                "name": "FullScreenTriangle.vert",
                 "file": "default"
             }
         },
-        "29": {
+        "43": {
             "link": {
-                "name": "Particle Textured",
+                "name": "MeshVisualizer.frag",
                 "file": "default"
             }
         },
-        "30": {
+        "45": {
             "link": {
-                "name": "Dynamic",
+                "name": "Phong.frag",
                 "file": "default"
             }
         },
-        "31": {
+        "48": {
             "link": {
-                "name": "Skinning",
+                "name": "Physical.frag",
                 "file": "default"
             }
         },
-        "32": {
+        "51": {
             "link": {
-                "name": "Static",
+                "name": "Skinning.vert",
+                "file": "default"
+            }
+        },
+        "52": {
+            "link": {
+                "name": "Sky.frag",
+                "file": "default"
+            }
+        },
+        "53": {
+            "link": {
+                "name": "Text.frag",
+                "file": "default"
+            }
+        },
+        "55": {
+            "link": {
+                "name": "Text.vert",
+                "file": "default"
+            }
+        },
+        "56": {
+            "link": {
+                "name": "Particle.frag",
                 "file": "default"
             }
         }
@@ -525,9 +482,9 @@
         "project": {
             "name": "MeshParticles",
             "version": [
+                1,
                 0,
-                8,
-                2
+                4
             ]
         },
         "vr": {
@@ -536,11 +493,138 @@
         },
         "scripting": {
             "sourcePaths": [
-                "/js/components/",
                 "mesh-particles.js"
-            ]
+            ],
+            "libraryPaths": [
+                "/js/lib/"
+            ],
+            "bundlingType": "esbuild"
         }
     },
     "animations": {},
-    "skins": {}
+    "skins": {},
+    "pipelines": {
+        "35": {
+            "link": {
+                "name": "Depth",
+                "file": "default"
+            }
+        },
+        "37": {
+            "link": {
+                "name": "DistanceFieldVector",
+                "file": "default"
+            }
+        },
+        "40": {
+            "link": {
+                "name": "Flat Opaque",
+                "file": "default"
+            }
+        },
+        "41": {
+            "link": {
+                "name": "Flat Opaque Textured",
+                "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true
+            }
+        },
+        "44": {
+            "link": {
+                "name": "MeshVisualizer",
+                "file": "default"
+            }
+        },
+        "46": {
+            "link": {
+                "name": "Phong Opaque",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true,
+                "WITH_EMISSIVE": true
+            }
+        },
+        "47": {
+            "link": {
+                "name": "Phong Opaque Textured",
+                "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true,
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "49": {
+            "link": {
+                "name": "Physical Opaque",
+                "file": "default"
+            }
+        },
+        "50": {
+            "link": {
+                "name": "Physical Opaque Textured",
+                "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true
+            }
+        },
+        "54": {
+            "link": {
+                "name": "Text",
+                "file": "default"
+            }
+        },
+        "57": {
+            "link": {
+                "name": "Phong Normalmapped",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "58": {
+            "link": {
+                "name": "Phong Lightmapped",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "59": {
+            "link": {
+                "name": "Foliage",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "60": {
+            "link": {
+                "name": "Particle",
+                "file": "default"
+            }
+        },
+        "61": {
+            "link": {
+                "name": "Sky",
+                "file": "default"
+            }
+        }
+    },
+    "fonts": {
+        "62": {
+            "link": {
+                "name": "DejaVuSans.ttf",
+                "file": "default"
+            }
+        }
+    },
+    "languages": {}
 }

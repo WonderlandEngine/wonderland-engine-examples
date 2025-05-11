@@ -10,55 +10,22 @@
                     }
                 }
             ],
-            "transformation": [
-                0.4905240833759308,
+            "translation": [
+                -2.6877918,
+                1.1786487,
+                1.5543167
+            ],
+            "rotation": [
                 0.0,
-                0.8714274168014526,
+                -0.5047156,
                 0.0,
-                0.0,
+                0.8632856
+            ],
+            "scaling": [
+                0.9999998,
                 1.0,
-                0.0,
-                0.0,
-                -0.8714274168014526,
-                0.0,
-                0.4905240833759308,
-                0.0,
-                -2.6877918243408205,
-                1.1786487102508546,
-                1.554316759109497,
-                1.0
+                0.9999998
             ]
-        },
-        "15": {
-            "name": "FloorPlane",
-            "components": [
-                {
-                    "type": "mesh",
-                    "mesh": {
-                        "mesh": "7",
-                        "material": "20"
-                    }
-                }
-            ],
-            "transformation": [
-                4.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                -0.0016164779663085938,
-                -3.999999761581421,
-                0.0,
-                0.0,
-                3.999999761581421,
-                -0.0016164779663085938,
-                0.0,
-                0.0,
-                0.0,
-                1.192092895507813e-7,
-                1.0
-            ],
-            "deleted": true
         },
         "16": {
             "name": "Cube",
@@ -94,23 +61,21 @@
                     "type": "cursor-target"
                 }
             ],
-            "transformation": [
-                0.5,
+            "translation": [
+                -0.0000071,
+                0.4999999,
+                5.960464477539063e-8
+            ],
+            "rotation": [
                 0.0,
                 0.0,
                 0.0,
-                0.0,
-                0.5,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.5,
-                0.0,
-                -0.00000712275505065918,
-                0.4999999403953552,
-                5.960464477539065e-8,
                 1.0
+            ],
+            "scaling": [
+                0.5,
+                0.5,
+                0.5
             ]
         },
         "17": {
@@ -146,48 +111,30 @@
                 }
             ]
         },
-        "19": {
-            "name": "EyeRight",
-            "parent": "14",
-            "components": [
-                {
-                    "type": "view"
-                },
-                {
-                    "type": "input",
-                    "input": {
-                        "type": "eye right"
-                    }
-                }
-            ],
-            "deleted": true
-        },
         "21": {
             "name": "Light",
             "components": [
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.10000000149011612
+                        "intensity": 3.3329999
                     }
                 }
             ],
-            "transformation": [
-                1.0,
+            "translation": [
                 0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                4.656612873077393e-10,
                 3.0,
-                2.0,
+                2.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
                 1.0
             ]
         },
@@ -197,26 +144,24 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.10000000149011612
+                        "intensity": 3.3329999
                     }
                 }
             ],
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
+            "translation": [
                 -1.0,
                 3.0,
-                -1.0,
+                -1.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
                 1.0
             ]
         },
@@ -236,7 +181,7 @@
                         "collider": "sphere",
                         "aabb": {
                             "extents": [
-                                0.5699999928474426,
+                                0.5699999,
                                 1.0,
                                 0.75
                             ]
@@ -254,22 +199,20 @@
                     "type": "cursor-target"
                 }
             ],
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
+            "translation": [
                 1.5,
                 1.0,
-                -1.4901161193847657e-8,
+                -1.4901161193847656e-8
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
                 1.0
             ]
         },
@@ -284,63 +227,22 @@
                     }
                 }
             ],
-            "transformation": [
-                0.05000000074505806,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.05000000074505806,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.05000000074505806,
-                0.0,
-                0.4999999701976776,
+            "translation": [
+                0.4999999,
                 0.75,
-                -1.25,
+                -1.25
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
                 1.0
+            ],
+            "scaling": [
+                0.05,
+                0.05,
+                0.05
             ]
-        },
-        "44": {
-            "link": {
-                "name": "AR Target",
-                "file": "models\\ar-target.glb"
-            },
-            "parent": "18",
-            "components": [
-                null,
-                {
-                    "type": "hit-test-location"
-                },
-                {
-                    "type": "spawn-mesh-on-select",
-                    "spawn-mesh-on-select": {
-                        "mesh": "8",
-                        "material": "22"
-                    }
-                }
-            ],
-            "transformation": [
-                0.5,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.5,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.5,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0
-            ],
-            "deleted": true
         },
         "45": {
             "name": "EyeRight",
@@ -405,7 +307,7 @@
     "textures": {
         "t0": {
             "link": {
-                "name": "DefaultFont",
+                "name": "DefaultTexture",
                 "file": "default"
             },
             "name": "DefaultFont"
@@ -414,7 +316,7 @@
     "images": {
         "f0": {
             "link": {
-                "name": "DefaultFontImage",
+                "name": "DefaultImage",
                 "file": "default"
             }
         }
@@ -424,6 +326,9 @@
             "link": {
                 "name": "DefaultFontMaterial",
                 "file": "default"
+            },
+            "Text": {
+                "font": "60"
             }
         },
         "20": {
@@ -431,16 +336,28 @@
             "shader": "Phong",
             "Phong": {
                 "specularColor": [
-                    9.999899930335233e-7,
+                    9.999899930335232e-7,
                     9.99993744699168e-7,
-                    9.999999974752428e-7,
+                    9.999999974752427e-7,
                     1.0
                 ],
                 "shininess": 1,
                 "diffuseColor": [
                     1.0,
-                    0.9999899864196776,
-                    0.9999899864196776,
+                    0.9999899,
+                    0.9999899,
+                    1.0
+                ],
+                "emissiveColor": [
+                    0.2,
+                    0.2,
+                    0.2,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
                     1.0
                 ]
             }
@@ -449,22 +366,28 @@
             "name": "Pink",
             "Phong": {
                 "diffuseColor": [
-                    0.9098039269447328,
+                    0.9098039,
                     0.0,
-                    0.5411764979362488,
+                    0.5411764,
                     1.0
                 ],
                 "specularColor": [
-                    9.999899930335233e-7,
-                    9.999911299019005e-7,
-                    9.999999974752428e-7,
+                    9.999899930335232e-7,
+                    9.999911299019004e-7,
+                    9.999999974752427e-7,
                     1.0
                 ],
                 "shininess": 10,
                 "ambientColor": [
-                    0.3176470398902893,
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "emissiveColor": [
+                    0.317647,
                     0.0,
-                    0.2165777683258057,
+                    0.2165777,
                     1.0
                 ]
             }
@@ -474,19 +397,25 @@
             "Phong": {
                 "diffuseColor": [
                     1.0,
-                    0.8039215803146362,
+                    0.8039215,
                     0.0,
                     1.0
                 ],
                 "specularColor": [
-                    9.999999974752428e-7,
-                    9.999899930335233e-7,
-                    9.999899930335233e-7,
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
                     1.0
                 ],
                 "ambientColor": [
-                    0.384313702583313,
-                    0.3089579045772553,
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "emissiveColor": [
+                    0.3843137,
+                    0.3089579,
                     0.0,
                     1.0
                 ]
@@ -496,21 +425,27 @@
             "name": "Green",
             "Phong": {
                 "diffuseColor": [
-                    0.15294118225574494,
-                    0.7882353067398071,
-                    0.5411764979362488,
+                    0.1529411,
+                    0.7882353,
+                    0.5411764,
                     1.0
                 ],
                 "specularColor": [
-                    9.999999974752428e-7,
-                    9.999899930335233e-7,
-                    9.999899930335233e-7,
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
                     1.0
                 ],
                 "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "emissiveColor": [
                     0.0,
-                    0.23529410362243653,
-                    0.1437908560037613,
+                    0.2352941,
+                    0.1437908,
                     1.0
                 ]
             }
@@ -523,15 +458,21 @@
             "pipeline": "39",
             "Phong": {
                 "ambientColor": [
-                    0.5921568870544434,
-                    0.5921509861946106,
-                    0.5921509861946106,
+                    0.05,
+                    0.05,
+                    0.05,
                     1.0
                 ],
                 "diffuseColor": [
                     1.0,
-                    0.9999899864196776,
-                    0.9999899864196776,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "emissiveColor": [
+                    0.5921568,
+                    0.5921509,
+                    0.5921509,
                     1.0
                 ]
             }
@@ -540,73 +481,115 @@
     "shaders": {
         "1": {
             "link": {
-                "name": "DistanceFieldVector Textured",
+                "name": "DistanceFieldVector Textured.frag",
                 "file": "default"
             }
         },
         "2": {
             "link": {
-                "name": "Flat",
+                "name": "Flat.frag",
                 "file": "default"
             }
         },
         "3": {
             "link": {
-                "name": "Flat Textured",
+                "name": "Flat Textured.frag",
                 "file": "default"
             }
         },
         "4": {
             "link": {
-                "name": "MeshVisualizer",
+                "name": "MeshVisualizer.frag",
                 "file": "default"
             }
         },
         "5": {
             "link": {
-                "name": "Phong",
+                "name": "Phong.frag",
                 "file": "default"
             }
         },
         "6": {
             "link": {
-                "name": "Phong Textured",
+                "name": "Phong Textured.frag",
                 "file": "default"
             }
         },
         "28": {
             "link": {
-                "name": "Dynamic",
+                "name": "Dynamic.vert",
                 "file": "default"
             }
         },
         "29": {
             "link": {
-                "name": "Particle Textured",
+                "name": "Particle Textured.frag",
                 "file": "default"
             }
         },
         "30": {
             "link": {
-                "name": "Skinning",
+                "name": "Skinning.vert",
                 "file": "default"
             }
         },
         "31": {
             "link": {
-                "name": "Static",
+                "name": "Static.frag",
                 "file": "default"
             }
         },
         "32": {
             "link": {
-                "name": "DistanceFieldVector",
+                "name": "DistanceFieldVector.frag",
                 "file": "default"
             }
         },
         "37": {
             "link": {
-                "name": "Particle",
+                "name": "Particle.frag",
+                "file": "default"
+            }
+        },
+        "46": {
+            "link": {
+                "name": "Background.frag",
+                "file": "default"
+            }
+        },
+        "47": {
+            "link": {
+                "name": "Depth.frag",
+                "file": "default"
+            }
+        },
+        "49": {
+            "link": {
+                "name": "FullScreenTriangle.vert",
+                "file": "default"
+            }
+        },
+        "50": {
+            "link": {
+                "name": "Physical.frag",
+                "file": "default"
+            }
+        },
+        "53": {
+            "link": {
+                "name": "Sky.frag",
+                "file": "default"
+            }
+        },
+        "54": {
+            "link": {
+                "name": "Text.frag",
+                "file": "default"
+            }
+        },
+        "56": {
+            "link": {
+                "name": "Text.vert",
                 "file": "default"
             }
         }
@@ -615,9 +598,9 @@
         "project": {
             "name": "ARCursor",
             "version": [
+                1,
                 0,
-                8,
-                5
+                4
             ]
         },
         "vr": {
@@ -627,12 +610,15 @@
         },
         "scripting": {
             "sourcePaths": [
-                "/js/editor-components-bundle.js",
                 "js/"
-            ]
+            ],
+            "libraryPaths": [
+                "/js/lib/"
+            ],
+            "bundlingType": "esbuild"
         },
         "ar": {
-            "framework": "webxr"
+            "enable": true
         },
         "rendering": {
             "clearColor": [
@@ -665,6 +651,9 @@
             "link": {
                 "name": "Flat Opaque Textured",
                 "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true
             }
         },
         "36": {
@@ -677,18 +666,29 @@
             "link": {
                 "name": "Phong Opaque",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true,
+                "WITH_EMISSIVE": true
             }
         },
         "38": {
             "link": {
                 "name": "Phong Opaque Textured",
                 "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true,
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "39": {
             "link": {
                 "name": "Foliage",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "40": {
@@ -696,9 +696,72 @@
                 "name": "Particle",
                 "file": "default"
             }
+        },
+        "48": {
+            "link": {
+                "name": "Depth",
+                "file": "default"
+            }
+        },
+        "51": {
+            "link": {
+                "name": "Physical Opaque",
+                "file": "default"
+            }
+        },
+        "52": {
+            "link": {
+                "name": "Physical Opaque Textured",
+                "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true
+            }
+        },
+        "55": {
+            "link": {
+                "name": "Text",
+                "file": "default"
+            }
+        },
+        "57": {
+            "link": {
+                "name": "Phong Normalmapped",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "58": {
+            "link": {
+                "name": "Phong Lightmapped",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "59": {
+            "link": {
+                "name": "Sky",
+                "file": "default"
+            }
         }
     },
     "files": [
-        "models/ar-target.glb"
-    ]
+        {
+            "fileName": "models/ar-target.glb",
+            "importerName": ""
+        }
+    ],
+    "fonts": {
+        "60": {
+            "link": {
+                "name": "DejaVuSans.ttf",
+                "file": "default"
+            }
+        }
+    },
+    "languages": {}
 }

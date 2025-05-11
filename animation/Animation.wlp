@@ -10,23 +10,21 @@
                     }
                 }
             ],
-            "transformation": [
-                0.7160133123397827,
+            "translation": [
+                -3.2591099,
+                1.8000135,
+                1.7569212
+            ],
+            "rotation": [
                 0.0,
-                0.6980865001678467,
+                -0.3768199,
                 0.0,
-                0.0,
+                0.9262865
+            ],
+            "scaling": [
+                0.9999998,
                 1.0,
-                0.0,
-                0.0,
-                -0.6980865001678467,
-                0.0,
-                0.7160133123397827,
-                0.0,
-                -3.2591099739074709,
-                1.800013542175293,
-                1.7569212913513184,
-                1.0
+                0.9999998
             ]
         },
         "15": {
@@ -40,23 +38,21 @@
                     }
                 }
             ],
-            "transformation": [
+            "translation": [
+                0.0,
+                0.0,
+                1.1920928955078125e-7
+            ],
+            "rotation": [
+                -0.7072496,
+                0.0,
+                0.0,
+                0.7069638
+            ],
+            "scaling": [
                 4.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                -0.0016164779663085938,
-                -3.999999761581421,
-                0.0,
-                0.0,
-                3.999999761581421,
-                -0.0016164779663085938,
-                0.0,
-                0.0,
-                0.0,
-                1.192092895507813e-7,
-                1.0
+                4.0,
+                4.0
             ]
         },
         "16": {
@@ -98,25 +94,23 @@
                     "type": "play-anim-on-click"
                 }
             ],
-            "transformation": [
-                1.0,
+            "parent": "32",
+            "translation": [
+                2.9802322387695313e-8,
+                0.0,
+                1.210719347000122e-7
+            ],
+            "rotation": [
                 0.0,
                 0.0,
                 0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                2.980232238769532e-8,
-                0.0,
-                1.210719347000122e-7,
                 1.0
             ],
-            "parent": "32"
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
         },
         "17": {
             "name": "NonVrCamera",
@@ -172,26 +166,24 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.10000000149011612
+                        "intensity": 3.3329999
                     }
                 }
             ],
-            "transformation": [
-                1.0,
+            "translation": [
                 0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                4.656612873077393e-10,
                 3.0,
-                2.0,
+                2.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
                 1.0
             ]
         },
@@ -201,26 +193,24 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.10000000149011612
+                        "intensity": 3.3329999
                     }
                 }
             ],
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
+            "translation": [
                 -1.0,
                 3.0,
-                -1.0,
+                -1.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
                 1.0
             ]
         },
@@ -250,9 +240,9 @@
                         "collider": "box",
                         "box": {
                             "extents": [
-                                0.800000011920929,
+                                0.8,
                                 1.0,
-                                0.800000011920929
+                                0.8
                             ]
                         }
                     }
@@ -264,25 +254,23 @@
                     "type": "play-anim-on-click"
                 }
             ],
-            "transformation": [
-                1.0,
+            "parent": "33",
+            "translation": [
                 0.0,
                 0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
+                0.0
+            ],
+            "rotation": [
                 0.0,
                 0.0,
                 0.0,
                 1.0
             ],
-            "parent": "33"
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
         },
         "27": {
             "name": "Sphere",
@@ -327,94 +315,79 @@
                     "type": "play-anim-on-click"
                 }
             ],
-            "transformation": [
-                1.0,
+            "parent": "34",
+            "translation": [
+                0.0,
+                0.0,
+                -3.5762786865234375e-7
+            ],
+            "rotation": [
                 0.0,
                 0.0,
                 0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                -3.576278686523438e-7,
                 1.0
             ],
-            "parent": "34"
-        },
-        "30": {
-            "link": {
-                "name": "Cube",
-                "file": "animation.glb"
-            },
-            "deleted": true
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
         },
         "32": {
             "name": "CubeRoot",
-            "transformation": [
-                0.5,
-                0.0,
-                0.0,
-                0.0,
+            "translation": [
                 0.0,
                 0.5,
+                0.0
+            ],
+            "rotation": [
                 0.0,
                 0.0,
-                0.0,
-                0.0,
-                0.5,
-                0.0,
-                0.0,
-                0.5,
                 0.0,
                 1.0
+            ],
+            "scaling": [
+                0.5,
+                0.5,
+                0.5
             ]
         },
         "33": {
             "name": "ConeRoot",
-            "transformation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                1.0,
-                0.0,
+            "translation": [
                 1.5,
                 1.0,
+                0.0
+            ],
+            "rotation": [
                 0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
                 1.0
             ]
         },
         "34": {
             "name": "SphereRoot",
-            "transformation": [
-                0.75,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.75,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.75,
-                0.0,
+            "translation": [
                 0.5,
                 0.75,
-                -1.25,
+                -1.25
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
                 1.0
+            ],
+            "scaling": [
+                0.75,
+                0.75,
+                0.75
             ]
         }
     },
@@ -465,53 +438,87 @@
     "textures": {
         "13": {
             "link": {
-                "name": "DefaultFont",
+                "name": "DefaultTexture",
                 "file": "default"
             },
             "name": "DefaultFont"
         }
     },
-    "images": {},
+    "images": {
+        "f0": {
+            "link": {
+                "name": "DefaultImage",
+                "file": "default"
+            }
+        }
+    },
     "materials": {
         "DefaultFontMaterial": {
             "link": {
                 "name": "DefaultFontMaterial",
                 "file": "default"
+            },
+            "Text": {
+                "font": "68"
             }
         },
         "20": {
             "name": "White",
-            "shader": "Phong",
             "Phong": {
                 "specularColor": [
-                    9.999899930335233e-7,
+                    9.999899930335232e-7,
                     9.99993744699168e-7,
-                    9.999999974752428e-7,
+                    9.999999974752427e-7,
                     1.0
                 ],
-                "shininess": 1
-            }
+                "shininess": 1,
+                "emissiveColor": [
+                    0.2,
+                    0.2,
+                    0.2,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "diffuseColor": [
+                    0.5,
+                    0.5,
+                    0.5,
+                    1.0
+                ]
+            },
+            "pipeline": "52"
         },
         "22": {
             "name": "Pink",
             "Phong": {
                 "diffuseColor": [
-                    0.9098039269447328,
+                    0.9098039,
                     0.0,
-                    0.5411764979362488,
-                    0.0
+                    0.5411764,
+                    1.0
                 ],
                 "specularColor": [
-                    9.999899930335233e-7,
-                    9.999911299019005e-7,
-                    9.999999974752428e-7,
+                    9.999899930335232e-7,
+                    9.999911299019004e-7,
+                    9.999999974752427e-7,
                     1.0
                 ],
                 "shininess": 10,
                 "ambientColor": [
-                    0.3176470398902893,
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "emissiveColor": [
+                    0.317647,
                     0.0,
-                    0.2165777683258057,
+                    0.2165777,
                     1.0
                 ]
             }
@@ -521,19 +528,25 @@
             "Phong": {
                 "diffuseColor": [
                     1.0,
-                    0.8039215803146362,
+                    0.8039215,
                     0.0,
                     1.0
                 ],
                 "specularColor": [
-                    9.999999974752428e-7,
-                    9.999899930335233e-7,
-                    9.999899930335233e-7,
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
                     1.0
                 ],
                 "ambientColor": [
-                    0.384313702583313,
-                    0.3089579045772553,
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "emissiveColor": [
+                    0.3843137,
+                    0.3089579,
                     0.0,
                     1.0
                 ]
@@ -543,21 +556,27 @@
             "name": "Green",
             "Phong": {
                 "diffuseColor": [
-                    0.15294118225574494,
-                    0.7882353067398071,
-                    0.5411764979362488,
+                    0.1529411,
+                    0.7882353,
+                    0.5411764,
                     1.0
                 ],
                 "specularColor": [
-                    9.999999974752428e-7,
-                    9.999899930335233e-7,
-                    9.999899930335233e-7,
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
                     1.0
                 ],
                 "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ],
+                "emissiveColor": [
                     0.0,
-                    0.23529410362243653,
-                    0.1437908560037613,
+                    0.2352941,
+                    0.1437908,
                     1.0
                 ]
             }
@@ -566,67 +585,99 @@
             "link": {
                 "name": "Material",
                 "file": "animation.glb"
+            },
+            "Phong": {
+                "ambientColor": [
+                    0.05,
+                    0.05,
+                    0.05,
+                    1.0
+                ]
             }
         }
     },
     "shaders": {
-        "1": {
+        "39": {
             "link": {
-                "name": "DistanceFieldVector Textured",
+                "name": "Background.frag",
                 "file": "default"
             }
         },
-        "2": {
+        "40": {
             "link": {
-                "name": "Flat",
+                "name": "Depth.frag",
                 "file": "default"
             }
         },
-        "3": {
+        "42": {
             "link": {
-                "name": "Flat Textured",
+                "name": "DistanceFieldVector.frag",
                 "file": "default"
             }
         },
-        "4": {
+        "44": {
             "link": {
-                "name": "MeshVisualizer",
+                "name": "Dynamic.vert",
                 "file": "default"
             }
         },
-        "5": {
+        "45": {
             "link": {
-                "name": "Phong",
+                "name": "Flat.frag",
                 "file": "default"
             }
         },
-        "6": {
+        "48": {
             "link": {
-                "name": "Phong Textured",
+                "name": "FullScreenTriangle.vert",
                 "file": "default"
             }
         },
-        "35": {
+        "49": {
             "link": {
-                "name": "Particle Textured",
+                "name": "MeshVisualizer.frag",
                 "file": "default"
             }
         },
-        "36": {
+        "51": {
             "link": {
-                "name": "Dynamic",
+                "name": "Phong.frag",
                 "file": "default"
             }
         },
-        "37": {
+        "54": {
             "link": {
-                "name": "Skinning",
+                "name": "Physical.frag",
                 "file": "default"
             }
         },
-        "38": {
+        "57": {
             "link": {
-                "name": "Static",
+                "name": "Skinning.vert",
+                "file": "default"
+            }
+        },
+        "58": {
+            "link": {
+                "name": "Sky.frag",
+                "file": "default"
+            }
+        },
+        "59": {
+            "link": {
+                "name": "Text.frag",
+                "file": "default"
+            }
+        },
+        "61": {
+            "link": {
+                "name": "Text.vert",
+                "file": "default"
+            }
+        },
+        "62": {
+            "link": {
+                "name": "Particle.frag",
                 "file": "default"
             }
         }
@@ -635,9 +686,9 @@
         "project": {
             "name": "Animation",
             "version": [
+                1,
                 0,
-                7,
-                5
+                4
             ]
         },
         "vr": {
@@ -646,9 +697,12 @@
         },
         "scripting": {
             "sourcePaths": [
-                "/js/components/",
                 "play-anim-on-click.js"
-            ]
+            ],
+            "libraryPaths": [
+                "/js/lib/"
+            ],
+            "bundlingType": "esbuild"
         }
     },
     "animations": {
@@ -660,7 +714,134 @@
         }
     },
     "files": [
-        "animation.glb"
+        {
+            "fileName": "animation.glb",
+            "importerName": ""
+        }
     ],
-    "skins": {}
+    "skins": {},
+    "pipelines": {
+        "41": {
+            "link": {
+                "name": "Depth",
+                "file": "default"
+            }
+        },
+        "43": {
+            "link": {
+                "name": "DistanceFieldVector",
+                "file": "default"
+            }
+        },
+        "46": {
+            "link": {
+                "name": "Flat Opaque",
+                "file": "default"
+            }
+        },
+        "47": {
+            "link": {
+                "name": "Flat Opaque Textured",
+                "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true
+            }
+        },
+        "50": {
+            "link": {
+                "name": "MeshVisualizer",
+                "file": "default"
+            }
+        },
+        "52": {
+            "link": {
+                "name": "Phong Opaque",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true,
+                "WITH_EMISSIVE": true
+            }
+        },
+        "53": {
+            "link": {
+                "name": "Phong Opaque Textured",
+                "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true,
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "55": {
+            "link": {
+                "name": "Physical Opaque",
+                "file": "default"
+            }
+        },
+        "56": {
+            "link": {
+                "name": "Physical Opaque Textured",
+                "file": "default"
+            },
+            "features": {
+                "ALPHA_MASKED": true
+            }
+        },
+        "60": {
+            "link": {
+                "name": "Text",
+                "file": "default"
+            }
+        },
+        "63": {
+            "link": {
+                "name": "Phong Normalmapped",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "64": {
+            "link": {
+                "name": "Phong Lightmapped",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "65": {
+            "link": {
+                "name": "Foliage",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
+        },
+        "66": {
+            "link": {
+                "name": "Particle",
+                "file": "default"
+            }
+        },
+        "67": {
+            "link": {
+                "name": "Sky",
+                "file": "default"
+            }
+        }
+    },
+    "fonts": {
+        "68": {
+            "link": {
+                "name": "DejaVuSans.ttf",
+                "file": "default"
+            }
+        }
+    },
+    "languages": {}
 }
