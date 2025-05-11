@@ -45,7 +45,7 @@ jobs:
         echo "Building react-embed"
         /usr/local/bin/entrypoint.sh WonderlandEditor --credentials "$WLE_CREDENTIALS" --windowless --package --project ./react-embed/wonderland/React.wlp
         cd ./react-embed
-        npm ci
+        npm i
         npm run build
         cd ..
         cp -r react-embed/dist/* public/
