@@ -39,9 +39,9 @@
                         "shadowBias": 0.001,
                         "shadowNormalBias": 0.1,
                         "shadowTexelSize": 0.3,
-                        "range": 10.0,
                         "outerAngle": 103.6999969,
-                        "attenuation": 0.25
+                        "shadowRange": 10.0,
+                        "intensity": 1.3331999
                     }
                 }
             ],
@@ -753,72 +753,72 @@
                 "name": "1.jpg",
                 "file": "assets\\matcap\\1.jpg"
             },
-            "compress": false,
             "maxSize": [
                 256,
                 256
             ],
-            "stream": false
+            "stream": false,
+            "compression": "none"
         },
         "42": {
             "link": {
                 "name": "6.jpg",
                 "file": "assets\\matcap\\6.jpg"
             },
-            "compress": false,
             "maxSize": [
                 512,
                 512
             ],
-            "stream": false
+            "stream": false,
+            "compression": "none"
         },
         "44": {
             "link": {
                 "name": "4.jpg",
                 "file": "assets\\matcap\\4.jpg"
             },
-            "compress": false,
             "maxSize": [
                 256,
                 256
             ],
-            "stream": false
+            "stream": false,
+            "compression": "none"
         },
         "46": {
             "link": {
                 "name": "2.jpg",
                 "file": "assets\\matcap\\2.jpg"
             },
-            "compress": false,
             "maxSize": [
                 256,
                 256
             ],
-            "stream": false
+            "stream": false,
+            "compression": "none"
         },
         "48": {
             "link": {
                 "name": "5.jpg",
                 "file": "assets\\matcap\\5.jpg"
             },
-            "compress": false,
             "maxSize": [
                 256,
                 256
             ],
-            "stream": false
+            "stream": false,
+            "compression": "none"
         },
         "50": {
             "link": {
                 "name": "3.jpg",
                 "file": "assets\\matcap\\3.jpg"
             },
-            "compress": false,
             "maxSize": [
                 256,
                 256
             ],
-            "stream": false
+            "stream": false,
+            "compression": "none"
         },
         "69": {
             "link": {
@@ -829,8 +829,8 @@
                 256,
                 256
             ],
-            "compress": false,
-            "stream": false
+            "stream": false,
+            "compression": "none"
         },
         "82": {
             "link": {
@@ -838,35 +838,35 @@
                 "file": "assets\\matcap\\9.jpg"
             },
             "stream": false,
-            "compress": false,
             "maxSize": [
                 256,
                 256
-            ]
+            ],
+            "compression": "none"
         },
         "84": {
             "link": {
                 "name": "8.jpg",
                 "file": "assets\\matcap\\8.jpg"
             },
-            "compress": false,
             "stream": false,
             "maxSize": [
                 256,
                 256
-            ]
+            ],
+            "compression": "none"
         },
         "85": {
             "link": {
                 "name": "6.jpg",
                 "file": "assets\\matcap\\6.jpg"
             },
-            "compress": false,
             "stream": false,
             "maxSize": [
                 256,
                 256
-            ]
+            ],
+            "compression": "none"
         },
         "87": {
             "link": {
@@ -1142,7 +1142,10 @@
                 "file": "default"
             },
             "depthWrite": true,
-            "depthTest": true
+            "depthTest": true,
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            }
         },
         "15": {
             "link": {
@@ -1150,7 +1153,8 @@
                 "file": "default"
             },
             "features": {
-                "ALPHA_MASKED": true
+                "ALPHA_MASKED": true,
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "17": {
@@ -1178,6 +1182,9 @@
             "link": {
                 "name": "Foliage",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "27": {
@@ -1218,12 +1225,18 @@
             "link": {
                 "name": "Phong Normalmapped",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "94": {
             "link": {
                 "name": "Phong Lightmapped",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         }
     },
@@ -1233,8 +1246,7 @@
             "version": [
                 1,
                 0,
-                0,
-                2
+                4
             ]
         },
         "scripting": {
@@ -1257,16 +1269,46 @@
         }
     },
     "files": [
-        "assets/scenes/WonderlandShaderBall.glb",
-        "assets/matcap/1.jpg",
-        "assets/matcap/2.jpg",
-        "assets/matcap/3.jpg",
-        "assets/matcap/4.jpg",
-        "assets/matcap/5.jpg",
-        "assets/matcap/6.jpg",
-        "assets/matcap/7.jpg",
-        "assets/matcap/8.jpg",
-        "assets/matcap/9.jpg"
+        {
+            "fileName": "assets/scenes/WonderlandShaderBall.glb",
+            "importerName": ""
+        },
+        {
+            "fileName": "assets/matcap/1.jpg",
+            "importerName": ""
+        },
+        {
+            "fileName": "assets/matcap/2.jpg",
+            "importerName": ""
+        },
+        {
+            "fileName": "assets/matcap/3.jpg",
+            "importerName": ""
+        },
+        {
+            "fileName": "assets/matcap/4.jpg",
+            "importerName": ""
+        },
+        {
+            "fileName": "assets/matcap/5.jpg",
+            "importerName": ""
+        },
+        {
+            "fileName": "assets/matcap/6.jpg",
+            "importerName": ""
+        },
+        {
+            "fileName": "assets/matcap/7.jpg",
+            "importerName": ""
+        },
+        {
+            "fileName": "assets/matcap/8.jpg",
+            "importerName": ""
+        },
+        {
+            "fileName": "assets/matcap/9.jpg",
+            "importerName": ""
+        }
     ],
     "fonts": {
         "95": {
