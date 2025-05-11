@@ -112,7 +112,7 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.1
+                        "intensity": 3.3329999
                     }
                 }
             ],
@@ -139,7 +139,7 @@
                 {
                     "type": "light",
                     "light": {
-                        "attenuation": 0.1
+                        "intensity": 3.3329999
                     }
                 }
             ],
@@ -2151,8 +2151,7 @@
             "version": [
                 1,
                 0,
-                0,
-                2
+                4
             ]
         },
         "vr": {
@@ -2182,7 +2181,7 @@
             }
         },
         "ar": {
-            "framework": "webxr"
+            "enable": true
         },
         "rendering": {
             "clearColor": [
@@ -2296,7 +2295,8 @@
             },
             "doubleSided": true,
             "features": {
-                "WITH_FOG": false
+                "WITH_FOG": false,
+                "DEPRECATED_LIGHT_ATTENUATION": true
             },
             "castShadows": true
         },
@@ -2304,12 +2304,18 @@
             "link": {
                 "name": "Phong Opaque Textured",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "39": {
             "link": {
                 "name": "Foliage",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "40": {
@@ -2353,22 +2359,46 @@
             "link": {
                 "name": "Phong Normalmapped",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         },
         "232": {
             "link": {
                 "name": "Phong Lightmapped",
                 "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
             }
         }
     },
     "files": [
-        "models/oculus-touch-v2-left.glb",
-        "models/oculus-touch-v2-right.glb",
-        "models/hand-left.glb",
-        "models/hand-right.glb",
-        "models/button.glb",
-        "models/teleport-indicator.glb"
+        {
+            "fileName": "models/oculus-touch-v2-left.glb",
+            "importerName": ""
+        },
+        {
+            "fileName": "models/oculus-touch-v2-right.glb",
+            "importerName": ""
+        },
+        {
+            "fileName": "models/hand-left.glb",
+            "importerName": ""
+        },
+        {
+            "fileName": "models/hand-right.glb",
+            "importerName": ""
+        },
+        {
+            "fileName": "models/button.glb",
+            "importerName": ""
+        },
+        {
+            "fileName": "models/teleport-indicator.glb",
+            "importerName": ""
+        }
     ],
     "fonts": {
         "230": {
