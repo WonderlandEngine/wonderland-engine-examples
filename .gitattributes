@@ -3,3 +3,4 @@
 *.jpg filter=lfs diff=lfs merge=lfs -text
 *.png filter=lfs diff=lfs merge=lfs -text
 *.hdr filter=lfs diff=lfs merge=lfs -text
+sponza/cache/sponza/irradiance.bin filter=lfs diff=lfs merge=lfs -text
