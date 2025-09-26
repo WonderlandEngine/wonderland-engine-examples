@@ -57,9 +57,7 @@ export class PlaceShapeAnchor extends Component {
      * Ensures the Anchor component is available before use.
      */
     static onRegister(engine: WonderlandEngine) {
-        if (!engine.isRegistered(Anchor)) {
-            engine.registerComponent(Anchor);
-        }
+        engine.registerComponent(Anchor);
     }
 
     @property.mesh()
@@ -76,7 +74,7 @@ export class PlaceShapeAnchor extends Component {
     declare materialSphere: Material;
     @property.object()
     declare hitTestObject: Object3D;
-    static Dependencies = [Anchor];
+
     private declare meshes: Mesh[];
     private declare materials: Material[];
     private declare cursor: Cursor;
@@ -108,31 +106,45 @@ export class PlaceShapeAnchor extends Component {
      */
     spawnShapeAnchor(
         uuid: string | null = null,
-        frame = this.engine.xr?.frame,
-        hitResult: XRHitTestResult | null = null,
+        frame: XRFrame = this.engine.xr!.frame!,
+        hitResult: XRHitTestResult | undefined = undefined,
         shapeType: number = Math.floor(Math.random() * 3)
     ) {
-        const o = this.engine.scene.addObject(this.object.parent);
+        const o: Object3D = this.engine.scene.addObject(this.object.parent);
         o.setTransformWorld(this.cursor.cursorObject!.getTransformWorld(tempQuat2));
         o.setScalingWorld([0.1, 0.1, 0.1]);
-        //@ts-ignore Type issue with Anchor.create
-        Anchor.create(o, {persist: false, uuid: uuid}, frame, hitResult).then((a) => {
-            const m = o.addComponent(MeshComponent, {
-                material: this.materials[shapeType],
-                mesh: this.meshes[shapeType],
+
+        const anchorPromise = Anchor.create(
+            o,
+            {persist: false, uuid: uuid},
+            frame,
+            /* Cast due to an incorrect type in @types/WebXR */
+            hitResult as any
+        );
+        if (anchorPromise) {
+            anchorPromise.then((a) => {
+                const m = o.addComponent(MeshComponent, {
+                    material: this.materials[shapeType],
+                    mesh: this.meshes[shapeType],
+                });
+
+                /* The Anchor component is not typed correctly, so we need to cast it */
+                const anchor = a as unknown as Anchor;
+
+                /* Hide and show mesh if tracking is lost/restored */
+                anchor.onTrackingLost.add(() => ((m.active = false), console.log('lost')));
+                anchor.onTrackingFound.add(() => ((m.active = true), console.log('found')));
+
+                const uuidList = Anchor.getAllAnchors()
+                    .filter((a) => a.persist)
+                    .map((a) => a.uuid)
+                    .join(',');
+
+                setCookie('persistent-anchors', uuidList, 356);
             });
-            const anchor = a as unknown as Anchor;
-            /* Hide and show mesh if tracking is lost/restored */
-            anchor.onTrackingLost.add(() => ((m.active = false), console.log('lost')));
-            anchor.onTrackingFound.add(() => ((m.active = true), console.log('found')));
-
-            const uuidList = Anchor.getAllAnchors()
-                .filter((a) => a.persist)
-                .map((a) => a.uuid)
-                .join(',');
-
-            setCookie('persistent-anchors', uuidList, 356);
-        });
+        } else {
+            o.destroy();
+        }
     }
 
     /**
@@ -140,10 +152,8 @@ export class PlaceShapeAnchor extends Component {
      */
     private sessionStart = (session: XRSession, sessionMode: XRSessionMode) => {
         if (!this.engine.xr) return;
-        //@ts-ignore persistentAnchors is not yet in the types
         for (const uuid of this.engine.xr.session.persistentAnchors) {
             this.engine.xr.session
-                //@ts-ignore deletePersistentAnchor is not yet in the types
                 .deletePersistentAnchor(uuid)
                 .then(() => console.log('deleting old anchor', uuid))
                 .catch(console.error);
@@ -153,7 +163,6 @@ export class PlaceShapeAnchor extends Component {
 
         /* Restore all known anchors */
         for (const uuid of uuidList) {
-            //@ts-ignore persistentAnchors is not yet in the types
             if (!~this.engine.xr.session.persistentAnchors.indexOf(uuid)) continue;
             this.spawnShapeAnchor(uuid);
         }
@@ -163,13 +172,13 @@ export class PlaceShapeAnchor extends Component {
      * Places an anchor at the AR hit-test result provided by the cursor.
      */
     private targetHit = (result: XRHitTestResult | null, _: any, event: any) => {
-        this.spawnShapeAnchor(null, event.frame ?? null, result);
+        this.spawnShapeAnchor(null, event.frame, result ?? undefined);
     };
 
     /**
      * Places an anchor at the cursor position when no hit-test target is used.
      */
     private globalTargetHit = (clickedObject: Object3D, _: any, event: any) => {
-        this.spawnShapeAnchor(null, event.frame ?? null, null);
+        this.spawnShapeAnchor(null, event.frame);
     };
 }
