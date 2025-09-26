@@ -171,7 +171,7 @@ export class PlaceShapeAnchor extends Component {
 
         /* Restore all known anchors */
         for (const uuid of uuidList) {
-            if (!~this.engine.xr.session.persistentAnchors.indexOf(uuid)) continue;
+            if (!this.engine.xr.session.persistentAnchors.includes(uuid)) continue;
             this.spawnShapeAnchor(uuid);
         }
     };
