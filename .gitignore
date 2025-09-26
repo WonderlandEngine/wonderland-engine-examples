@@ -2,11 +2,19 @@
 .DS_Store
 
 # npm
-node_modules/
+**/node_modules/
 
 # Wonderland Engine
-deploy/
+**/deploy/
 **/cache/js/
 
-.editor/
-.autosave/
+# Local editor data
+**/.editor/
+**/.autosave/
+
+# Local editor js bundle
+**/cache/**/js/
+**/cache/packagejson.hash
+
+# VSCode settings
+**/.vscode/
