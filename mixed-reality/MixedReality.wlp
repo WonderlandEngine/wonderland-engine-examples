@@ -671,32 +671,6 @@
             "name": "ControllerRight",
             "parent": "205",
             "components": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
                 {
                     "type": "input",
                     "input": {
@@ -729,32 +703,6 @@
             "name": "ControllerLeft",
             "parent": "205",
             "components": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
                 {
                     "type": "input",
                     "input": {
@@ -1391,7 +1339,7 @@
                     "type": "cursor",
                     "cursor": {
                         "cursorObject": "235",
-                        "useWebXRHitTest": false,
+                        "useWebXRHitTest": true,
                         "cursorRayObject": null,
                         "collisionGroup": 0,
                         "cursorRayScalingAxis": "none"
@@ -1458,7 +1406,7 @@
                         "collisionGroup": 0,
                         "cursorRayObject": null,
                         "cursorRayScalingAxis": "none",
-                        "useWebXRHitTest": false
+                        "useWebXRHitTest": true
                     }
                 },
                 {
@@ -1530,43 +1478,43 @@
             "name": "Head",
             "parent": "205",
             "components": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
                 {
                     "type": "howler-audio-listener",
                     "active": false
@@ -1821,7 +1769,8 @@
                     1.0,
                     0.4705882
                 ]
-            }
+            },
+            "pipeline": "37"
         },
         "22": {
             "name": "Pink",
@@ -1845,7 +1794,8 @@
                     0.2165777,
                     1.0
                 ]
-            }
+            },
+            "pipeline": "37"
         },
         "25": {
             "name": "Yellow",
@@ -1868,7 +1818,8 @@
                     0.0,
                     1.0
                 ]
-            }
+            },
+            "pipeline": "37"
         },
         "26": {
             "name": "Green",
@@ -1891,7 +1842,8 @@
                     0.1437908,
                     1.0
                 ]
-            }
+            },
+            "pipeline": "37"
         },
         "46": {
             "link": {
@@ -1974,7 +1926,8 @@
                     0.0274507,
                     1.0
                 ]
-            }
+            },
+            "pipeline": "37"
         },
         "203": {
             "name": "GreenHover",
@@ -1997,7 +1950,8 @@
                     0.2013071,
                     1.0
                 ]
-            }
+            },
+            "pipeline": "37"
         },
         "206": {
             "link": {
@@ -2024,21 +1978,9 @@
         }
     },
     "shaders": {
-        "1": {
-            "link": {
-                "name": "DistanceFieldVector Textured.frag",
-                "file": "default"
-            }
-        },
         "2": {
             "link": {
                 "name": "Flat.frag",
-                "file": "default"
-            }
-        },
-        "3": {
-            "link": {
-                "name": "Flat Textured.frag",
                 "file": "default"
             }
         },
@@ -2054,33 +1996,15 @@
                 "file": "default"
             }
         },
-        "6": {
-            "link": {
-                "name": "Phong Textured.frag",
-                "file": "default"
-            }
-        },
         "28": {
             "link": {
                 "name": "Dynamic.vert",
                 "file": "default"
             }
         },
-        "29": {
-            "link": {
-                "name": "Particle Textured.frag",
-                "file": "default"
-            }
-        },
         "30": {
             "link": {
                 "name": "Skinning.vert",
-                "file": "default"
-            }
-        },
-        "31": {
-            "link": {
-                "name": "Static.frag",
                 "file": "default"
             }
         },
@@ -2143,6 +2067,120 @@
                 "name": "TileFeedback.frag",
                 "file": "default"
             }
+        },
+        "229": {
+            "link": {
+                "name": "AtmosphericSky.frag",
+                "file": "default"
+            }
+        },
+        "230": {
+            "link": {
+                "name": "lib\\Color.glsl",
+                "file": "default"
+            }
+        },
+        "231": {
+            "link": {
+                "name": "lib\\Compatibility.glsl",
+                "file": "default"
+            }
+        },
+        "232": {
+            "link": {
+                "name": "lib\\CoordinateSystems.glsl",
+                "file": "default"
+            }
+        },
+        "233": {
+            "link": {
+                "name": "lib\\GI.glsl",
+                "file": "default"
+            }
+        },
+        "234": {
+            "link": {
+                "name": "lib\\Inputs.glsl",
+                "file": "default"
+            }
+        },
+        "235": {
+            "link": {
+                "name": "lib\\Lights.glsl",
+                "file": "default"
+            }
+        },
+        "236": {
+            "link": {
+                "name": "lib\\Materials.glsl",
+                "file": "default"
+            }
+        },
+        "237": {
+            "link": {
+                "name": "lib\\Math.glsl",
+                "file": "default"
+            }
+        },
+        "238": {
+            "link": {
+                "name": "lib\\MorphTargets.glsl",
+                "file": "default"
+            }
+        },
+        "239": {
+            "link": {
+                "name": "lib\\Packing.glsl",
+                "file": "default"
+            }
+        },
+        "240": {
+            "link": {
+                "name": "lib\\PhysicalBSDF.glsl",
+                "file": "default"
+            }
+        },
+        "241": {
+            "link": {
+                "name": "lib\\Quaternion.glsl",
+                "file": "default"
+            }
+        },
+        "242": {
+            "link": {
+                "name": "lib\\SkyProcedural.glsl",
+                "file": "default"
+            }
+        },
+        "243": {
+            "link": {
+                "name": "lib\\Slug.frag.glsl",
+                "file": "default"
+            }
+        },
+        "244": {
+            "link": {
+                "name": "lib\\Slug.vert.glsl",
+                "file": "default"
+            }
+        },
+        "245": {
+            "link": {
+                "name": "lib\\Surface.glsl",
+                "file": "default"
+            }
+        },
+        "246": {
+            "link": {
+                "name": "lib\\Textures.glsl",
+                "file": "default"
+            }
+        },
+        "247": {
+            "link": {
+                "name": "lib\\Uniforms.glsl",
+                "file": "default"
+            }
         }
     },
     "settings": {
@@ -2150,25 +2188,16 @@
             "name": "MixedReality",
             "version": [
                 1,
-                0,
-                4
+                4,
+                7
             ]
         },
-        "vr": {
+        "xr": {
             "leftEyeObject": "18",
-            "rightEyeObject": "19"
-        },
-        "scripting": {
-            "sourcePaths": [
-                "js/"
-            ],
-            "bundlingType": "esbuild",
-            "libraryPaths": [
-                "/js/lib/"
-            ]
-        },
-        "runtime": {
-            "visualizeColliders": true,
+            "rightEyeObject": "19",
+            "ar": {
+                "enable": true
+            },
             "webxr": {
                 "optionalFeatures": {
                     "local-floor": true,
@@ -2180,8 +2209,25 @@
                 }
             }
         },
-        "ar": {
-            "enable": true
+        "scripting": {
+            "components": {
+                "sourcePaths": [
+                    "js/"
+                ],
+                "bundling": "none"
+            },
+            "application": {
+                "output": "MixedReality-bundle.js",
+                "bundling": "esbuild",
+                "esbuildFlags": "--format=esm",
+                "entryPoint": "js/index.js"
+            },
+            "libraryPaths": [
+                "/js/lib/"
+            ]
+        },
+        "runtime": {
+            "visualizeColliders": true
         },
         "rendering": {
             "clearColor": [
@@ -2189,7 +2235,14 @@
                 0.1686274,
                 0.1686274,
                 0.0
-            ]
+            ],
+            "hdr": {
+                "exposure": 1.5
+            },
+            "environment": {
+                "bakingMode": "sky",
+                "material": null
+            }
         }
     },
     "animations": {},
@@ -2296,7 +2349,8 @@
             "doubleSided": true,
             "features": {
                 "WITH_FOG": false,
-                "DEPRECATED_LIGHT_ATTENUATION": true
+                "DEPRECATED_LIGHT_ATTENUATION": true,
+                "WITH_EMISSIVE": true
             },
             "castShadows": true
         },
@@ -2306,7 +2360,8 @@
                 "file": "default"
             },
             "features": {
-                "DEPRECATED_LIGHT_ATTENUATION": true
+                "DEPRECATED_LIGHT_ATTENUATION": true,
+                "WITH_EMISSIVE": true
             }
         },
         "39": {
@@ -2335,12 +2390,18 @@
                 "name": "Physical Opaque",
                 "file": "default"
             },
-            "castShadows": true
+            "castShadows": true,
+            "features": {
+                "SEPARATE_OCCLUSION_TEXTURE": true
+            }
         },
         "223": {
             "link": {
                 "name": "Physical Opaque Textured",
                 "file": "default"
+            },
+            "features": {
+                "SEPARATE_OCCLUSION_TEXTURE": true
             }
         },
         "226": {
@@ -2361,7 +2422,8 @@
                 "file": "default"
             },
             "features": {
-                "DEPRECATED_LIGHT_ATTENUATION": true
+                "DEPRECATED_LIGHT_ATTENUATION": true,
+                "WITH_EMISSIVE": true
             }
         },
         "232": {
@@ -2370,36 +2432,49 @@
                 "file": "default"
             },
             "features": {
-                "DEPRECATED_LIGHT_ATTENUATION": true
+                "DEPRECATED_LIGHT_ATTENUATION": true,
+                "WITH_EMISSIVE": true
+            }
+        },
+        "233": {
+            "link": {
+                "name": "TileFeedback",
+                "file": "default"
+            }
+        },
+        "234": {
+            "link": {
+                "name": "AtmosphericSky",
+                "file": "default"
             }
         }
     },
-    "files": [
-        {
+    "files": {
+        "237": {
             "fileName": "models/oculus-touch-v2-left.glb",
             "importerName": ""
         },
-        {
+        "238": {
             "fileName": "models/oculus-touch-v2-right.glb",
             "importerName": ""
         },
-        {
+        "239": {
             "fileName": "models/hand-left.glb",
             "importerName": ""
         },
-        {
+        "240": {
             "fileName": "models/hand-right.glb",
             "importerName": ""
         },
-        {
+        "241": {
             "fileName": "models/button.glb",
             "importerName": ""
         },
-        {
+        "242": {
             "fileName": "models/teleport-indicator.glb",
             "importerName": ""
         }
-    ],
+    },
     "fonts": {
         "230": {
             "link": {
@@ -2408,5 +2483,7 @@
             }
         }
     },
-    "languages": {}
+    "languages": {},
+    "morphTargets": {},
+    "particleEffects": {}
 }
