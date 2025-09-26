@@ -12,12 +12,39 @@
  */
 
 /* wle:auto-imports:start */
+import {Cursor} from '@wonderlandengine/components';
+import {FingerCursor} from '@wonderlandengine/components';
+import {HandTracking} from '@wonderlandengine/components';
+import {HowlerAudioListener} from '@wonderlandengine/components';
+import {MouseLookComponent} from '@wonderlandengine/components';
+import {PlaneDetection} from '@wonderlandengine/components';
+import {PlayerHeight} from '@wonderlandengine/components';
+import {VrModeActiveSwitch} from '@wonderlandengine/components';
+import {PlaceShapeAnchor} from './place-shape-anchor.js';
+import {RandomPlaneColors} from './random-plane-colors.js';
 /* wle:auto-imports:end */
 
 import {loadRuntime} from '@wonderlandengine/api';
 import * as API from '@wonderlandengine/api'; // Deprecated: Backward compatibility.
 
 /* wle:auto-constants:start */
+const Constants = {
+    ProjectName: 'MixedReality',
+    RuntimeBaseName: 'WonderlandRuntime',
+    WebXRRequiredFeatures: ['local',],
+    WebXROptionalFeatures: ['local','local-floor','hand-tracking','hit-test','plane-detection','anchors',],
+};
+const RuntimeOptions = {
+    physx: false,
+    loader: false,
+    xrFramebufferScaleFactor: 1,
+    xrOfferSession: {
+        mode: 'auto',
+        features: Constants.WebXRRequiredFeatures,
+        optionalFeatures: Constants.WebXROptionalFeatures,
+    },
+    canvas: 'canvas',
+};
 /* wle:auto-constants:end */
 
 const engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
@@ -62,6 +89,16 @@ if (document.readyState === 'loading') {
 }
 
 /* wle:auto-register:start */
+engine.registerComponent(Cursor);
+engine.registerComponent(FingerCursor);
+engine.registerComponent(HandTracking);
+engine.registerComponent(HowlerAudioListener);
+engine.registerComponent(MouseLookComponent);
+engine.registerComponent(PlaneDetection);
+engine.registerComponent(PlayerHeight);
+engine.registerComponent(VrModeActiveSwitch);
+engine.registerComponent(PlaceShapeAnchor);
+engine.registerComponent(RandomPlaneColors);
 /* wle:auto-register:end */
 
 engine.scene.load(`${Constants.ProjectName}.bin`);
