@@ -132,8 +132,16 @@ export class PlaceShapeAnchor extends Component {
                 const anchor = a as unknown as Anchor;
 
                 /* Hide and show mesh if tracking is lost/restored */
-                anchor.onTrackingLost.add(() => ((m.active = false), console.log('lost')));
-                anchor.onTrackingFound.add(() => ((m.active = true), console.log('found')));
+                anchor.onTrackingLost.add(
+                    () => (
+                        (m.active = false), console.log('[place-shape-anchor] Anchor lost')
+                    )
+                );
+                anchor.onTrackingFound.add(
+                    () => (
+                        (m.active = true), console.log('[place-shape-anchor] Anchor found')
+                    )
+                );
 
                 const uuidList = Anchor.getAllAnchors()
                     .filter((a) => a.persist)
@@ -155,7 +163,7 @@ export class PlaceShapeAnchor extends Component {
         for (const uuid of this.engine.xr.session.persistentAnchors) {
             this.engine.xr.session
                 .deletePersistentAnchor(uuid)
-                .then(() => console.log('deleting old anchor', uuid))
+                .then(() => console.log('[place-shape-anchor] Deleting old anchor', uuid))
                 .catch(console.error);
         }
 
