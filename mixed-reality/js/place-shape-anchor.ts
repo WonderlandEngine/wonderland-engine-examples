@@ -75,6 +75,12 @@ export class PlaceShapeAnchor extends Component {
     @property.object()
     declare hitTestObject: Object3D;
 
+    @property.bool(true)
+    autoStartRoomCapture = true;
+
+    @property.float(5.0)
+    roomCaptureDelay = 5.0;
+
     private declare meshes: Mesh[];
     private declare materials: Material[];
     private declare cursor: Cursor;
@@ -95,6 +101,33 @@ export class PlaceShapeAnchor extends Component {
     onDeactivate(): void {
         this.cursor.hitTestTarget.onClick.remove(this.targetHit);
         this.cursor.globalTarget.onClick.remove(this.globalTargetHit);
+    }
+
+    private _elapsedTime: number = 0;
+    private _launchedCapture: boolean = false;
+
+    update(dt: number) {
+        if (!this.autoStartRoomCapture || !this.engine.xr?.frame) {
+            return;
+        }
+
+        if (!this.engine.xr.frame.detectedPlanes) {
+            console.error('plane-detection: WebXR feature not available.');
+            this.active = false;
+            return;
+        }
+
+        if (this.engine.xr.frame.detectedPlanes.size === 0) {
+            if (this._elapsedTime > this.roomCaptureDelay && !this._launchedCapture) {
+                if (this.engine.xr.frame.session.initiateRoomCapture) {
+                    this.engine.xr.frame.session.initiateRoomCapture();
+                }
+                this._launchedCapture = true;
+            } else {
+                this._elapsedTime += dt;
+            }
+            return;
+        }
     }
 
     /**
