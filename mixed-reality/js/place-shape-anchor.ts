@@ -107,7 +107,10 @@ export class PlaceShapeAnchor extends Component {
     private _launchedCapture: boolean = false;
 
     update(dt: number) {
-        if (!this.engine.xr?.frame) return;
+        if (!this.autoStartRoomCapture || !this.engine.xr?.frame) {
+            return;
+        }
+
         if (!this.engine.xr.frame.detectedPlanes) {
             console.error('plane-detection: WebXR feature not available.');
             this.active = false;
@@ -115,11 +118,7 @@ export class PlaceShapeAnchor extends Component {
         }
 
         if (this.engine.xr.frame.detectedPlanes.size === 0) {
-            if (
-                this._elapsedTime > this.roomCaptureDelay &&
-                !this._launchedCapture &&
-                this.autoStartRoomCapture
-            ) {
+            if (this._elapsedTime > this.roomCaptureDelay && !this._launchedCapture) {
                 if (this.engine.xr.frame.session.initiateRoomCapture) {
                     this.engine.xr.frame.session.initiateRoomCapture();
                 }
