@@ -1,0 +1,25 @@
+{
+    "name": "multiscene",
+    "version": "1.0.0",
+    "description": "My Wonderland project",
+    "main": "js/index.js",
+    "type": "module",
+    "module": "js/index.js",
+    "scripts": {
+        "build": "echo \"The 'build' script is run by the editor and should produce your application bundle\"",
+        "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\""
+    },
+    "keywords": [
+        "wonderland-engine"
+    ],
+    "dependencies": {
+        "@wonderlandengine/api": "^1.2.0",
+        "@wonderlandengine/components": "^1.1.4",
+        "@wonderlandengine/spatial-audio": "^1.1.2",
+        "gl-matrix": "^3.4.3"
+    },
+    "devDependencies": {
+        "@wonderlandengine/prettier-config": "^1.0.0",
+        "prettier": "^3.2.5"
+    }
+}
