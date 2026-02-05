@@ -4048,9 +4048,10 @@
             "ssao": {
                 "enabled": true,
                 "thickness": 1.0,
-                "radius": 0.8,
-                "intensity": 1.0,
-                "blurPreset": "medium"
+                "radius": 0.6499999,
+                "intensity": 1.5,
+                "blurPreset": "medium",
+                "useNormals": true
             }
         },
         "runtime": {

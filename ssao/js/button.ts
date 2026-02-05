@@ -1,4 +1,4 @@
-import { Component, InputComponent, Material, MeshComponent, Object3D, property } from "@wonderlandengine/api";
+import { Component, InputComponent, Material, MeshComponent, Object3D, property, Scene } from "@wonderlandengine/api";
 import { CursorTarget } from "@wonderlandengine/components";
 
 /**
@@ -51,7 +51,7 @@ export class ButtonComponent extends Component {
     private defaultMaterial: Material;
     private target: CursorTarget;
 
-    onDown() {}
+    private _intensity = 1.0;
 
     start() {
         this.mesh = this.buttonMeshObject.getComponent(MeshComponent);
@@ -61,6 +61,8 @@ export class ButtonComponent extends Component {
         this.target =
             this.object.getComponent(CursorTarget) ||
             this.object.addComponent(CursorTarget);
+
+        this._intensity = (this.scene as Scene).ssao.intensity;
     }
 
     onActivate() {
@@ -90,7 +92,9 @@ export class ButtonComponent extends Component {
     private _onDown = (_, cursor) => {
         this.object.translateLocal([0.0, 0.0, -0.05]);
         hapticFeedback(cursor.object, 1.0, 20);
-        this.onDown();
+
+        const scene = this.scene as Scene;
+        scene.ssao.intensity = this._intensity - scene.ssao.intensity;
     };
 
     /* Called by 'cursor-target' */
