@@ -1,0 +1,22 @@
+{
+    "name": "default-scene",
+    "version": "1.0.0",
+    "description": "Wonderland Engine default template",
+    "main": "js/index.js",
+    "type": "module",
+    "module": "js/index.js",
+    "scripts": {
+        "build": "echo \"The 'build' script is run by the editor and should produce your application bundle\""
+    },
+    "keywords": [
+        "wonderland-engine"
+    ],
+    "dependencies": {
+        "@wonderlandengine/api": "1.6.0",
+        "@wonderlandengine/components": "^1.2.1",
+        "gl-matrix": "^3.4.3"
+    },
+    "overrides": {
+        "@wonderlandengine/api": "$@wonderlandengine/api"
+    }
+}
