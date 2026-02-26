@@ -17,6 +17,13 @@ export function hapticFeedback(object: Object3D, strength: number, duration: num
     }
 }
 
+enum ButtonType {
+    Toggle = 0,
+    IntensityUp,
+    IntensityDown
+}
+const ButtonTypeNames = ['Toggle', 'IntensityUp', 'IntensityDown'];
+
 /**
  * Button component.
  *
@@ -36,9 +43,12 @@ export class ButtonComponent extends Component {
         engine.registerComponent(CursorTarget);
     }
 
+    @property.enum(ButtonTypeNames)
+    buttonType: ButtonType = ButtonType.Toggle;
+
     /** Object that has the button's mesh attached */
-    @property.object({required: true})
-    buttonMeshObject: Object3D;
+    @property.object()
+    buttonMeshObject: Object3D | null;
 
     /** Material to apply when the user hovers the button */
     @property.material({required: true})
@@ -51,18 +61,14 @@ export class ButtonComponent extends Component {
     private defaultMaterial: Material;
     private target: CursorTarget;
 
-    private _intensity = 1.0;
-
     start() {
-        this.mesh = this.buttonMeshObject.getComponent(MeshComponent);
+        this.mesh = (this.buttonMeshObject ?? this.object).getComponent(MeshComponent);
         this.defaultMaterial = this.mesh.material;
         this.object.getPositionLocal(this.returnPos);
 
         this.target =
             this.object.getComponent(CursorTarget) ||
             this.object.addComponent(CursorTarget);
-
-        this._intensity = (this.scene as Scene).ssao.intensity;
     }
 
     onActivate() {
@@ -94,7 +100,18 @@ export class ButtonComponent extends Component {
         hapticFeedback(cursor.object, 1.0, 20);
 
         const scene = this.scene as Scene;
-        scene.ssao.intensity = this._intensity - scene.ssao.intensity;
+        switch(this.buttonType) {
+            case ButtonType.Toggle:
+                scene.ssao.enabled = !scene.ssao.enabled;
+                break;
+            case ButtonType.IntensityUp:
+                scene.ssao.intensity += 0.5;
+                break;
+            case ButtonType.IntensityDown:
+                const intensity = Math.max(scene.ssao.intensity - 0.5, 0.0);
+                scene.ssao.intensity = intensity;
+                break;
+        }
     };
 
     /* Called by 'cursor-target' */
