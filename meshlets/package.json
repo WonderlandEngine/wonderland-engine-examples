@@ -1,0 +1,21 @@
+{
+    "name": "meshlets",
+    "version": "1.0.0",
+    "description": "Example of meshlets in Wonderland Engine to render millions of polygons efficiently.",
+    "author": "David Peicho",
+    "main": "js/index.js",
+    "type": "module",
+    "module": "js/index.js",
+    "scripts": {},
+    "keywords": [
+        "wonderland-engine"
+    ],
+    "dependencies": {
+        "@wonderlandengine/api": ">=1.6.0 <1.7.0",
+        "@wonderlandengine/components": "^1.0.1",
+        "gl-matrix": "^3.4.3"
+    },
+    "overrides": {
+        "@wonderlandengine/api": "$@wonderlandengine/api"
+    }
+}
