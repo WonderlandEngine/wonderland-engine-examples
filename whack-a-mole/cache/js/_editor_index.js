@@ -1,0 +1,10 @@
+import * as __wonderlandengine_components from '@wonderlandengine/components';
+_registerEditor(__wonderlandengine_components);
+import * as _wle_interaction from 'wle-interaction';
+_registerEditor(_wle_interaction);
+import * as __Users_akirilyuk_GIT_wonderland_engine_examples_whack_a_mole_js_button_js from '/Users/akirilyuk/GIT/wonderland-engine-examples/whack-a-mole/js/button.js';
+_registerEditor(__Users_akirilyuk_GIT_wonderland_engine_examples_whack_a_mole_js_button_js);
+import * as __Users_akirilyuk_GIT_wonderland_engine_examples_whack_a_mole_js_gamelogic_js from '/Users/akirilyuk/GIT/wonderland-engine-examples/whack-a-mole/js/gamelogic.js';
+_registerEditor(__Users_akirilyuk_GIT_wonderland_engine_examples_whack_a_mole_js_gamelogic_js);
+import * as __Users_akirilyuk_GIT_wonderland_engine_examples_whack_a_mole_js_hammer_mechanics_js from '/Users/akirilyuk/GIT/wonderland-engine-examples/whack-a-mole/js/hammer-mechanics.js';
+_registerEditor(__Users_akirilyuk_GIT_wonderland_engine_examples_whack_a_mole_js_hammer_mechanics_js);
