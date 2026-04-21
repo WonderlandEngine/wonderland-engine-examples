@@ -1,0 +1,19 @@
+{
+    "name": "360media",
+    "version": "1.0.0",
+    "description": "A demo that show how to view 360 videos and images in Wonderland Engine",
+    "main": "js/index.js",
+    "type": "module",
+    "module": "js/index.js",
+    "scripts": {
+        "build": "echo \"The 'build' script is run by the editor and should produce your application bundle\""
+    },
+    "keywords": [
+        "wonderland-engine"
+    ],
+    "dependencies": {
+        "@wonderlandengine/api": "^1.4.7",
+        "@wonderlandengine/components": "^1.2.1",
+        "gl-matrix": "^3.4.3"
+    }
+}
